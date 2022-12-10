@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Turf-Swift.h</key>
 		<data>
-		DGsfVgrhWDrpLMuZQ3YG3KsKwQQ=
+		Nf+aAW5xbRPmiFrUwqvC6cG6xEo=
 		</data>
 		<key>Headers/Turf.h</key>
 		<data>
@@ -14,55 +14,55 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		LLRhlgwoNVE82ogbo3uX9KEVq/s=
+		ugUnBIaV2a4JeAEgTc53UZBDKrI=
 		</data>
 		<key>Modules/Turf.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		H0eTHoDZNX7k42tWKL+P2CGB2eg=
+		mlWFWb8Uuzb016aRNbSMhG/c+KM=
 		</data>
 		<key>Modules/Turf.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		47+3PyPJDwNam9MAPGwvoMAiryY=
+		OmohjH/MlHf1WL4WG6lJMjryffM=
 		</data>
 		<key>Modules/Turf.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ExmVhb+Ty3pK6ncqtRdIOiwwfYA=
+		w8L/dLirMpbGMzahoIm5EZ91S2Y=
 		</data>
 		<key>Modules/Turf.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		H0eTHoDZNX7k42tWKL+P2CGB2eg=
+		mlWFWb8Uuzb016aRNbSMhG/c+KM=
 		</data>
 		<key>Modules/Turf.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		47+3PyPJDwNam9MAPGwvoMAiryY=
+		OmohjH/MlHf1WL4WG6lJMjryffM=
 		</data>
 		<key>Modules/Turf.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		ExmVhb+Ty3pK6ncqtRdIOiwwfYA=
+		w8L/dLirMpbGMzahoIm5EZ91S2Y=
 		</data>
 		<key>Modules/Turf.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		mmiEvVxIIO8xwumgBXPHHDehaIY=
+		5V3uLrzSpMZzG2xcnPdquUmaUKQ=
 		</data>
 		<key>Modules/Turf.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		FAfpyxrtyFzdt81sTI2p4dE55vQ=
+		6SgZDJk6t4MF4k1ra8NQLsGKzdI=
 		</data>
 		<key>Modules/Turf.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ktuPijRT6ZWnqXE51a7EJGvWEfk=
+		kVkl/65JuYsmQ1xP4b8itz17hBw=
 		</data>
 		<key>Modules/Turf.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		mmiEvVxIIO8xwumgBXPHHDehaIY=
+		5V3uLrzSpMZzG2xcnPdquUmaUKQ=
 		</data>
 		<key>Modules/Turf.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		FAfpyxrtyFzdt81sTI2p4dE55vQ=
+		6SgZDJk6t4MF4k1ra8NQLsGKzdI=
 		</data>
 		<key>Modules/Turf.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		ktuPijRT6ZWnqXE51a7EJGvWEfk=
+		kVkl/65JuYsmQ1xP4b8itz17hBw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -73,21 +73,13 @@
 	<dict>
 		<key>Headers/Turf-Swift.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			DGsfVgrhWDrpLMuZQ3YG3KsKwQQ=
-			</data>
 			<key>hash2</key>
 			<data>
-			tu0ulElDNc/qu8snCGYFgjR1IKlrzNqRpZCp1HshO4E=
+			sjiBKGIQNY6lE7yeIhRknSZKT2FawYtul/oyUYwRqp4=
 			</data>
 		</dict>
 		<key>Headers/Turf.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			5pACi8U4jiCGrAeuJhC20WyyYwk=
-			</data>
 			<key>hash2</key>
 			<data>
 			sGac7TXJ/hfTlnD3ziNefCxcbJ8oz0ZPXol9KJ7FwM8=
@@ -95,142 +87,90 @@
 		</dict>
 		<key>Modules/Turf.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			H0eTHoDZNX7k42tWKL+P2CGB2eg=
-			</data>
 			<key>hash2</key>
 			<data>
-			Lx5EZYBq1zdrjdxUkkDEOshpXEMlnWHyi5ns9Jq5yJU=
+			XmalXs8gn93iSx8kU383btMAc3Er4ey9qxLSM9JEEGo=
 			</data>
 		</dict>
 		<key>Modules/Turf.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			47+3PyPJDwNam9MAPGwvoMAiryY=
-			</data>
 			<key>hash2</key>
 			<data>
-			rjVoMswkpzxgc85rV8P+FKVe+yT03TO4VUTE7L03vKw=
+			Cvig3ycCYEXu6mkRp1zF0DoruqEyUkanR9qx9U+leUA=
 			</data>
 		</dict>
 		<key>Modules/Turf.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ExmVhb+Ty3pK6ncqtRdIOiwwfYA=
-			</data>
 			<key>hash2</key>
 			<data>
-			YnhmQrRgVxfteJz2zauS5kcV8+UV5BF8MTsTR1A3q3o=
+			zYWvSb33DG/OEYrIcFfUVwyB9C9acaqdFRdOjDN2C5M=
 			</data>
 		</dict>
 		<key>Modules/Turf.swiftmodule/arm64.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			H0eTHoDZNX7k42tWKL+P2CGB2eg=
-			</data>
 			<key>hash2</key>
 			<data>
-			Lx5EZYBq1zdrjdxUkkDEOshpXEMlnWHyi5ns9Jq5yJU=
+			XmalXs8gn93iSx8kU383btMAc3Er4ey9qxLSM9JEEGo=
 			</data>
 		</dict>
 		<key>Modules/Turf.swiftmodule/arm64.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			47+3PyPJDwNam9MAPGwvoMAiryY=
-			</data>
 			<key>hash2</key>
 			<data>
-			rjVoMswkpzxgc85rV8P+FKVe+yT03TO4VUTE7L03vKw=
+			Cvig3ycCYEXu6mkRp1zF0DoruqEyUkanR9qx9U+leUA=
 			</data>
 		</dict>
 		<key>Modules/Turf.swiftmodule/arm64.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ExmVhb+Ty3pK6ncqtRdIOiwwfYA=
-			</data>
 			<key>hash2</key>
 			<data>
-			YnhmQrRgVxfteJz2zauS5kcV8+UV5BF8MTsTR1A3q3o=
+			zYWvSb33DG/OEYrIcFfUVwyB9C9acaqdFRdOjDN2C5M=
 			</data>
 		</dict>
 		<key>Modules/Turf.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			mmiEvVxIIO8xwumgBXPHHDehaIY=
-			</data>
 			<key>hash2</key>
 			<data>
-			k2oSK+sFLaOd1qQ/4gBnW4SUui2FOPAaXVAPIHfz3Bc=
+			NqtXkjCX4FBSlt2WyT6veLPrwsAqi2cTThEWHRtEvtY=
 			</data>
 		</dict>
 		<key>Modules/Turf.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			FAfpyxrtyFzdt81sTI2p4dE55vQ=
-			</data>
 			<key>hash2</key>
 			<data>
-			gFqhsG+KSnlsEgeva9hx1eKsa6cIRwkqQsddNB4v+fA=
+			Qisahauocn6DQKawfT8nA/C81yzR68RT91Mdzc6ISng=
 			</data>
 		</dict>
 		<key>Modules/Turf.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ktuPijRT6ZWnqXE51a7EJGvWEfk=
-			</data>
 			<key>hash2</key>
 			<data>
-			zROF97ScC+RY/kqBnLfkuhgYBrb2BngF8/DnnMNwnhA=
+			tjTmCGRmQEvKGDBALBhcqd5bvdvngn6Vd9i9uHgxh+o=
 			</data>
 		</dict>
 		<key>Modules/Turf.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			mmiEvVxIIO8xwumgBXPHHDehaIY=
-			</data>
 			<key>hash2</key>
 			<data>
-			k2oSK+sFLaOd1qQ/4gBnW4SUui2FOPAaXVAPIHfz3Bc=
+			NqtXkjCX4FBSlt2WyT6veLPrwsAqi2cTThEWHRtEvtY=
 			</data>
 		</dict>
 		<key>Modules/Turf.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			FAfpyxrtyFzdt81sTI2p4dE55vQ=
-			</data>
 			<key>hash2</key>
 			<data>
-			gFqhsG+KSnlsEgeva9hx1eKsa6cIRwkqQsddNB4v+fA=
+			Qisahauocn6DQKawfT8nA/C81yzR68RT91Mdzc6ISng=
 			</data>
 		</dict>
 		<key>Modules/Turf.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ktuPijRT6ZWnqXE51a7EJGvWEfk=
-			</data>
 			<key>hash2</key>
 			<data>
-			zROF97ScC+RY/kqBnLfkuhgYBrb2BngF8/DnnMNwnhA=
+			tjTmCGRmQEvKGDBALBhcqd5bvdvngn6Vd9i9uHgxh+o=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			9oLa0rLVimYXMkXhB/A6DVeokKI=
-			</data>
 			<key>hash2</key>
 			<data>
 			tcFm6V91f4cOcmhqsMeHPhwp2ZPOL5azxx8cCZiute0=

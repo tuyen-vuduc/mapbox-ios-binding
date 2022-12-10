@@ -2,7 +2,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "MBMCameraManager.h"
+#import <MapboxCoreMaps/MBMCameraManager.h>
 
 @class MBMMapSnapshotOptions;
 @class MBMSize;

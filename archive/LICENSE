@@ -1,6 +1,14 @@
+**tuyen-vuduc is not responsible for, nor does it grant any licenses to, third-party packages. Some packages may require or install dependencies which are governed by additional licenses.**
+
+Note: This component depends on Mapbox SDK for iOS, which is subject to the Mapbox Terms of Service
+
+**The MIT License (MIT)**
+
+Xamarin.iOS binding library for Mapbox iOS SDK
+
 MIT License
 
-Copyright (c) 2017 Vũ Đức Tuyến
+Copyright (c) 2022 tuyen-vuduc
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

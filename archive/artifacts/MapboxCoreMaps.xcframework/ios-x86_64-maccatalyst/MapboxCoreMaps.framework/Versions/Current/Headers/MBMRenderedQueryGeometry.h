@@ -17,7 +17,7 @@ NS_SWIFT_NAME(RenderedQueryGeometry)
 __attribute__((visibility ("default")))
 @interface MBMRenderedQueryGeometry : NSObject
 
-- (nonnull instancetype)initWithValue:(nonnull id)value;
+- (nonnull instancetype)initWithValue:(nonnull id)value __attribute__((deprecated("Please use: '+from{TypeName}:' instead.")));
 
 + (nonnull instancetype)fromScreenBox:(nonnull MBMScreenBox *)value;
 + (nonnull instancetype)fromScreenCoordinate:(nonnull MBMScreenCoordinate *)value;

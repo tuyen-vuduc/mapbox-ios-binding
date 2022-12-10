@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/MMEConstants.h</key>
 		<data>
-		ejLF9aA2G7tULNxSBoPxeL0Nhpg=
+		R3/BYcZx16uan1LZL3oLlDGaOI4=
 		</data>
 		<key>Headers/MMEEvent.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		wJEslbFQRexJT0ITOuoPY6r25qw=
+		FzERIRMDDw9mSPgu8KofO4eL/lw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,11 +43,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ejLF9aA2G7tULNxSBoPxeL0Nhpg=
+			R3/BYcZx16uan1LZL3oLlDGaOI4=
 			</data>
 			<key>hash2</key>
 			<data>
-			QyChncntxVT/3UraG8dztmTnitpHQmvhxltRyD2euwc=
+			PGcAP5spCCXgXgY1uTlBz05rbARX2NAejSZvtSt5784=
 			</data>
 		</dict>
 		<key>Headers/MMEEvent.h</key>

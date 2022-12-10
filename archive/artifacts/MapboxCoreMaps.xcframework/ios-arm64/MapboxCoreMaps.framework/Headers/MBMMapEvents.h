@@ -85,7 +85,7 @@ __attribute__((visibility ("default")))
      */
     @property (nonatomic, class, readonly) NSString * MapLoaded;
     /**
-     * Describes an error that has occured while loading the Map. The `type` property defines what resource could
+     * Describes an error that has occurred while loading the Map. The `type` property defines what resource could
      * not be loaded and the `message` property will contain a descriptive error message.
      * In case of `source` or `tile` loading errors, `source-id` will contain the id of the source failing.
      * In case of `tile` loading errors, `tile-id` will contain the id of the tile
@@ -98,8 +98,8 @@ __attribute__((visibility ("default")))
      * ├── source-id - optional String
      * └── tile-id - optional Object
      *     ├── z Number (zoom level)
-     *     ├── x Number (x coorinate)
-     *     └── y Number (y coorinate)
+     *     ├── x Number (x coordinate)
+     *     └── y Number (y coordinate)
      * ```
      */
     @property (nonatomic, class, readonly) NSString * MapLoadingError;
@@ -185,8 +185,8 @@ __attribute__((visibility ("default")))
      * ├── loaded - optional Boolean
      * └── tile-id - optional Object
      *     ├── z Number (zoom level)
-     *     ├── x Number (x coorinate)
-     *     └── y Number (y coorinate)
+     *     ├── x Number (x coordinate)
+     *     └── y Number (y coordinate)
      * ```
      */
     @property (nonatomic, class, readonly) NSString * SourceDataLoaded;

@@ -27,6 +27,10 @@ namespace MapboxMaps
 		[iOS (14,0)]
 		[Export ("locationManagerDidChangeAuthorization:")]
 		void LocationManagerDidChangeAuthorization (CLLocationManager manager);
+
+		// - (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager * _Nonnull)manager SWIFT_WARN_UNUSED_RESULT;
+		[Export ("locationManagerShouldDisplayHeadingCalibration:")]
+		bool LocationManagerShouldDisplayHeadingCalibration (CLLocationManager manager);
 	}
 
 	// @interface BasicCameraAnimator : NSObject
@@ -86,6 +90,10 @@ namespace MapboxMaps
 		// @optional -(void)locationManager:(LocationManager * _Nonnull)locationManager didChangeAccuracyAuthorization:(CLAccuracyAuthorization)accuracyAuthorization;
 		[Export ("locationManager:didChangeAccuracyAuthorization:")]
 		void DidChangeAccuracyAuthorization (LocationManager locationManager, CLAccuracyAuthorization accuracyAuthorization);
+
+		// - (BOOL)locationManagerShouldDisplayHeadingCalibration:(LocationManager * _Nonnull)locationManager SWIFT_WARN_UNUSED_RESULT;
+		[Export ("locationManagerShouldDisplayHeadingCalibration:didChangeAccuracyAuthorization:")]
+		bool LocationManagerShouldDisplayHeadingCalibration (LocationManager locationManager);
 	}
 
 	// @interface MapInitOptions : NSObject
@@ -147,5 +155,17 @@ namespace MapboxMaps
 	[DisableDefaultCtor]
 	interface OrnamentsManager
 	{
+	}
+
+	// SWIFT_PROTOCOL("_TtP10MapboxMaps20PuckLocationConsumer_")
+	// @protocol PuckLocationConsumer
+	[Protocol (Name = "_TtP10MapboxMaps20PuckLocationConsumer_"), Model]
+	[BaseType(typeof(NSObject))]
+	interface PuckLocationConsumer
+	{
+		// /// To be invoked when a new puck’s location is received.
+		// - (void)puckLocationUpdateWithNewLocation:(Location * _Nonnull)newLocation;
+		[Export ("puckLocationUpdateWithNewLocation:")]
+		void PuckLocationUpdateWithNewLocation (Location newLocation);
 	}
 }

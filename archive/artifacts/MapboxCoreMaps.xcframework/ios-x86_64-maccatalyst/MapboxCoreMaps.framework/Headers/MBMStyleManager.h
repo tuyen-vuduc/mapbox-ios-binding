@@ -3,12 +3,13 @@
 #import <Foundation/Foundation.h>
 @class MBXExpected<__covariant Value, __covariant Error>;
 @class MBXFeature;
-#import "MBMObservable.h"
+#import <MapboxCoreMaps/MBMObservable.h>
 
 @class MBMCameraOptions;
 @class MBMCanonicalTileID;
 @class MBMCoordinateBounds;
 @class MBMCustomGeometrySourceOptions;
+@class MBMGeoJSONSourceData;
 @class MBMImage;
 @class MBMImageContent;
 @class MBMImageStretches;
@@ -154,6 +155,13 @@ __attribute__((visibility ("default")))
  */
 - (nonnull MBMStylePropertyValue *)getStyleLightPropertyForProperty:(nonnull NSString *)property __attribute((ns_returns_retained));
 /**
+ * Gets the value of a style atmosphere property.
+ *
+ * @param property The style atmosphere property name.
+ * @return The style atmosphere property value.
+ */
+- (nonnull MBMStylePropertyValue *)getStyleAtmospherePropertyForProperty:(nonnull NSString *)property __attribute((ns_returns_retained));
+/**
  * Gets the value of a style terrain property.
  *
  * @param property The style terrain property name.
@@ -183,6 +191,14 @@ __attribute__((visibility ("default")))
  * @return True if image exists, false otherwise.
  */
 - (BOOL)hasStyleImageForImageId:(nonnull NSString *)imageId;
+/**
+ * Checks whether a model exists.
+ *
+ * @param modelId The identifier of the model.
+ *
+ * @return True if model exists, false otherwise.
+ */
+- (BOOL)hasStyleModelForModelId:(nonnull NSString *)modelId;
 /**
  * Check if the style is completely loaded.
  *

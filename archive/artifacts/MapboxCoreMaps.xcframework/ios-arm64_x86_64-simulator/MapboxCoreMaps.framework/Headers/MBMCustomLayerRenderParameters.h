@@ -1,7 +1,8 @@
-// This file is generated and will be overwritten automatically.
+// This file is edited after generation to enable deprecated constructors.
 
 #import <Foundation/Foundation.h>
 
+@class MBMCanonicalTileID;
 @protocol MBMElevationData;
 
 /** Parameters that define the current camera position for a `CustomLayerHost::render()` function. */
@@ -24,7 +25,19 @@ __attribute__((visibility ("default")))
                                 pitch:(double)pitch
                           fieldOfView:(double)fieldOfView
                      projectionMatrix:(nonnull NSArray<NSNumber *> *)projectionMatrix
-                        elevationData:(nullable id<MBMElevationData>)elevationData;
+                        elevationData:(nullable id<MBMElevationData>)elevationData
+                     renderToTilesIDs:(nullable NSArray<MBMCanonicalTileID *> *)renderToTilesIDs __attribute__((deprecated("This constructor is internal and to be used from within Mapbox SDK only.")));
+
+- (nonnull instancetype)initWithWidth:(double)width
+                               height:(double)height
+                             latitude:(double)latitude
+                            longitude:(double)longitude
+                                 zoom:(double)zoom
+                              bearing:(double)bearing
+                                pitch:(double)pitch
+                          fieldOfView:(double)fieldOfView
+                     projectionMatrix:(nonnull NSArray<NSNumber *> *)projectionMatrix
+                        elevationData:(nullable id<MBMElevationData>)elevationData __attribute__((deprecated("This constructor is deprecated and will be removed.")));
 
 /** The width. */
 @property (nonatomic, readonly) double width;
@@ -55,6 +68,11 @@ __attribute__((visibility ("default")))
 
 /** If terrain is enabled, provides value to elevation data from render thread. Empty if terrain is not enabled. */
 @property (nonatomic, readonly, nullable) id<MBMElevationData> elevationData;
+
+/**
+ * Note! This property is an experimental feature. It can be changed or removed in future versions.
+ */
+@property (nonatomic, readonly, nullable, copy) NSArray<MBMCanonicalTileID *> *renderToTilesIDs;
 
 
 @end

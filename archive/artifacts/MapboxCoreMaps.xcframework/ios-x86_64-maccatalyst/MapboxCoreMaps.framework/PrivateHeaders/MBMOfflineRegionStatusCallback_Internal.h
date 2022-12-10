@@ -6,4 +6,5 @@
 @class MBMOfflineRegionStatus;
 
 NS_SWIFT_NAME(OfflineRegionStatusCallback)
+__attribute__((deprecated))
 typedef void (^MBMOfflineRegionStatusCallback)(MBXExpected<MBMOfflineRegionStatus *, NSString *> * _Nonnull result); // NOLINT(modernize-use-using)

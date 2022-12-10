@@ -4,7 +4,7 @@
 #import <CoreLocation/CoreLocation.h>
 @class MBXExpected<__covariant Value, __covariant Error>;
 @class MBXGeometry;
-#import "MBMStyleManager.h"
+#import <MapboxCoreMaps/MBMStyleManager.h>
 
 @class MBMCameraBounds;
 @class MBMCameraBoundsOptions;
@@ -54,13 +54,18 @@ __attribute__((visibility ("default")))
  * Convenience method that adjusts the provided `camera options` object for given parameters.
  *
  * Returns the provided `camera` options with zoom adjusted to fit `coordinates` into the `box`, so that `coordinates` on the left,
- * top and right of the effective `camera` center at the principal point of the projection (defined by `padding`) fit into the `box`.
+ * top, right, and bottom of the effective `camera` center at the principal point of the projection (defined by `padding`) fit into the `box`.
  * Returns the provided `camera` options object unchanged upon an error.
- * Note that this method may fail if the principal point of the projection is not inside the `box` or
- * if there is no sufficient screen space, defined by principal point and the `box`, to fit the geometry.
+ *
+ * The method fails if the principal point is positioned outside of the `box`
+ * or if there is no sufficient screen space, defined by principal point and the `box`, to fit the geometry.
+ * Additionally, in cases when the principal point is positioned exactly on one of the edges of the `box`,
+ * any geometry point that spans further than that edge on the same axis cannot possibly be framed and is ignored for zoom level calculation purposes.
+ *
+ * This API isn't supported by Globe projection.
  *
  * @param coordinates The `coordinates` representing the bounds of the camera.
- * @param camera The `camera options` for which zoom should be adjusted. Note that the `camera.center` is required.
+ * @param camera The `camera options` for which zoom should be adjusted. Note that the `camera.center`, and `camera.zoom` (as fallback) is required.
  * @param box The `screen box` into which `coordinates` should fit.
  *
  * @return The `camera options` object with the zoom level adjusted to fit `coordinates` into the `box`.
@@ -214,6 +219,22 @@ __attribute__((visibility ("default")))
  * @return A `camera bounds` of the map.
  */
 - (nonnull MBMCameraBounds *)getBounds __attribute((ns_returns_retained));
+/**
+ * Sets whether multiple copies of the world will be rendered side by side beyond -180 and 180 degrees longitude.
+ * If disabled, when the map is zoomed out far enough that a single representation of the world does not fill the map's entire
+ * container, there will be blank space beyond 180 and -180 degrees longitude.
+ * In this case, features that cross 180 and -180 degrees longitude will be cut in two (with one portion on the right edge of the
+ * map and the other on the left edge of the map) at every zoom level.
+ * By default, By renderWorldCopies is set to `true`.
+ *
+ * @param renderWorldCopies The `boolean` value defining whether rendering world copies is going to be enabled or not.
+ */
+- (void)setRenderWorldCopiesForRenderWorldCopies:(BOOL)renderWorldCopies;
+/**
+ * Returns whether multiple copies of the world are being rendered side by side beyond -180 and 180 degrees longitude.
+ * @return `true` if rendering world copies is enabled, `false` otherwise.
+ */
+- (BOOL)getRenderWorldCopies;
 /**
  * Prepares the drag gesture to use the provided screen coordinate as a pivot `point`. This function should be called each time when user starts a dragging action (e.g. by clicking on the map). The following dragging will be relative to the pivot.
  *

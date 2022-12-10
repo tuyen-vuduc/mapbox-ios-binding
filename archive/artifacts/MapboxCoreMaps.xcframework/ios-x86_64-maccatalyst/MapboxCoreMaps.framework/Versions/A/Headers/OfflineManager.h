@@ -6,5 +6,6 @@
 #import "MBMStylePackError.h"
 #import "MBMStylePackLoadOptions.h"
 #import "MBMTilesetDescriptorOptions.h"
+#import "MBMTilesetDescriptorOptionsForTilesets.h"
 #import "MBMOfflineManager.h"
 #import "MBMStylePackLoadProgressCallback.h"

@@ -6,6 +6,15 @@ using ObjCRuntime;
 namespace MapboxCoreMaps
 {
 	[Native]
+	public enum MBMGeoJSONSourceDataType : long
+	{
+		Geometry,
+		Feature,
+		NSArray,
+		NSString
+	} 
+
+	[Native]
 	public enum MBMGlyphsRasterizationMode : long
 	{
 		NoGlyphsRasterizedLocally,

@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MapboxMaps
 import CoreImage.CIFilterBuiltins
 import CarPlay
@@ -7,11 +7,11 @@ import CoreFoundation
 import CoreGraphics
 import CoreImage
 import CoreLocation
+import Dispatch
 import Foundation
 @_exported import MapboxCommon
 @_exported import MapboxCoreMaps
 @_exported import MapboxMaps
-import MapboxMobileEvents
 @_exported import MetalKit
 import QuartzCore
 import Swift
@@ -51,6 +51,7 @@ extension MapboxMaps.Expression {
     case concat
     case cos
     case distance
+    case distanceFromCenter
     case downcase
     case e
     case featureState
@@ -81,6 +82,7 @@ extension MapboxMaps.Expression {
     case numberFormat
     case objectExpression
     case pi
+    case pitch
     case properties
     case resolvedLocale
     case rgb
@@ -138,18 +140,22 @@ public protocol AnnotationManager : AnyObject {
 public protocol AnnotationInteractionDelegate : AnyObject {
   func annotationManager(_ manager: MapboxMaps.AnnotationManager, didDetectTappedAnnotations annotations: [MapboxMaps.Annotation])
 }
-@_hasMissingDesignatedInitializers public class AnnotationOrchestrator {
-  public var annotationManagersById: [Swift.String : MapboxMaps.AnnotationManager] {
+@_hasMissingDesignatedInitializers final public class AnnotationOrchestrator {
+  final public var annotationManagersById: [Swift.String : MapboxMaps.AnnotationManager] {
     get
   }
-  public func makePointAnnotationManager(id: Swift.String = String(UUID().uuidString.prefix(5)), layerPosition: MapboxMaps.LayerPosition? = nil) -> MapboxMaps.PointAnnotationManager
-  public func makePolygonAnnotationManager(id: Swift.String = String(UUID().uuidString.prefix(5)), layerPosition: MapboxMaps.LayerPosition? = nil) -> MapboxMaps.PolygonAnnotationManager
-  public func makePolylineAnnotationManager(id: Swift.String = String(UUID().uuidString.prefix(5)), layerPosition: MapboxMaps.LayerPosition? = nil) -> MapboxMaps.PolylineAnnotationManager
-  public func makeCircleAnnotationManager(id: Swift.String = String(UUID().uuidString.prefix(5)), layerPosition: MapboxMaps.LayerPosition? = nil) -> MapboxMaps.CircleAnnotationManager
-  public func removeAnnotationManager(withId id: Swift.String)
+  final public func makePointAnnotationManager(id: Swift.String = String(UUID().uuidString.prefix(5)), layerPosition: MapboxMaps.LayerPosition? = nil, clusterOptions: MapboxMaps.ClusterOptions? = nil) -> MapboxMaps.PointAnnotationManager
+  final public func makePolygonAnnotationManager(id: Swift.String = String(UUID().uuidString.prefix(5)), layerPosition: MapboxMaps.LayerPosition? = nil) -> MapboxMaps.PolygonAnnotationManager
+  final public func makePolylineAnnotationManager(id: Swift.String = String(UUID().uuidString.prefix(5)), layerPosition: MapboxMaps.LayerPosition? = nil) -> MapboxMaps.PolylineAnnotationManager
+  final public func makeCircleAnnotationManager(id: Swift.String = String(UUID().uuidString.prefix(5)), layerPosition: MapboxMaps.LayerPosition? = nil) -> MapboxMaps.CircleAnnotationManager
+  final public func removeAnnotationManager(withId id: Swift.String)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers final public class AppleLocationProvider : ObjectiveC.NSObject {
+  final public var headingOrientation: CoreLocation.CLDeviceOrientation {
+    get
+    set
+  }
   @objc override dynamic public init()
   @objc deinit
 }
@@ -174,10 +180,6 @@ extension MapboxMaps.AppleLocationProvider : MapboxMaps.LocationProvider {
   final public func requestTemporaryFullAccuracyAuthorization(withPurposeKey purposeKey: Swift.String)
   final public func startUpdatingLocation()
   final public func stopUpdatingLocation()
-  final public var headingOrientation: CoreLocation.CLDeviceOrientation {
-    get
-    set
-  }
   final public func startUpdatingHeading()
   final public func stopUpdatingHeading()
   final public func dismissHeadingCalibrationDisplay()
@@ -188,6 +190,24 @@ extension MapboxMaps.AppleLocationProvider : CoreLocation.CLLocationManagerDeleg
   @objc final public func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: Swift.Error)
   @available(iOS 14.0, *)
   @objc final public func locationManagerDidChangeAuthorization(_ manager: CoreLocation.CLLocationManager)
+  @objc final public func locationManagerShouldDisplayHeadingCalibration(_ manager: CoreLocation.CLLocationManager) -> Swift.Bool
+}
+public struct Atmosphere : Swift.Codable {
+  public var color: MapboxMaps.Value<MapboxMaps.StyleColor>?
+  public var colorTransition: MapboxMaps.StyleTransition?
+  public var highColor: MapboxMaps.Value<MapboxMaps.StyleColor>?
+  public var highColorTransition: MapboxMaps.StyleTransition?
+  public var horizonBlend: MapboxMaps.Value<Swift.Double>?
+  public var horizonBlendTransition: MapboxMaps.StyleTransition?
+  public var range: MapboxMaps.Value<[Swift.Double]>?
+  public var rangeTransition: MapboxMaps.StyleTransition?
+  public var spaceColor: MapboxMaps.Value<MapboxMaps.StyleColor>?
+  public var spaceColorTransition: MapboxMaps.StyleTransition?
+  public var starIntensity: MapboxMaps.Value<Swift.Double>?
+  public var starIntensityTransition: MapboxMaps.StyleTransition?
+  public init()
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public protocol AttributionURLOpener {
   func openAttributionURL(_ url: Foundation.URL)
@@ -345,6 +365,8 @@ public struct CircleAnnotation : MapboxMaps.Annotation {
   }
   public var point: Turf.Point
   public var userInfo: [Swift.String : Any]?
+  public var isSelected: Swift.Bool
+  public var isDraggable: Swift.Bool
   public init(id: Swift.String = UUID().uuidString, point: Turf.Point)
   public init(id: Swift.String = UUID().uuidString, centerCoordinate: CoreLocation.CLLocationCoordinate2D)
   public var circleSortKey: Swift.Double? {
@@ -441,6 +463,9 @@ public struct CircleLayer : MapboxMaps.Layer {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+public struct ClusterOptions {
+  public init(circleRadius: MapboxMaps.Value<Swift.Double> = .constant(18), circleColor: MapboxMaps.Value<MapboxMaps.StyleColor> = .constant(StyleColor(.black)), textColor: MapboxMaps.Value<MapboxMaps.StyleColor> = .constant(StyleColor(.white)), textSize: MapboxMaps.Value<Swift.Double> = .constant(12), textField: MapboxMaps.Value<Swift.String> = .expression(Exp(.get) { "point_count" }), clusterRadius: Swift.Double = 50, clusterMaxZoom: Swift.Double = 14, clusterProperties: [Swift.String : MapboxMaps.Expression]? = nil)
+}
 public class CompassDirectionFormatter {
   public enum Style : Swift.Hashable {
     case short
@@ -488,21 +513,23 @@ extension MapboxCoreMaps.CoordinateBounds {
     get
   }
 }
-@_spi(Experimental) @_hasMissingDesignatedInitializers final public class DefaultViewportTransition {
-  @_spi(Experimental) final public var options: MapboxMaps.DefaultViewportTransitionOptions
-  @_spi(Experimental) @objc deinit
+@_hasMissingDesignatedInitializers final public class DefaultViewportTransition {
+  final public var options: MapboxMaps.DefaultViewportTransitionOptions
+  @objc deinit
 }
-@_spi(Experimental) extension MapboxMaps.DefaultViewportTransition : MapboxMaps.ViewportTransition {
-  @_spi(Experimental) final public func run(to toState: MapboxMaps.ViewportState, completion: @escaping (Swift.Bool) -> Swift.Void) -> MapboxMaps.Cancelable
+extension MapboxMaps.DefaultViewportTransition : MapboxMaps.ViewportTransition {
+  final public func run(to toState: MapboxMaps.ViewportState, completion: @escaping (Swift.Bool) -> Swift.Void) -> MapboxMaps.Cancelable
 }
-@_spi(Experimental) public struct DefaultViewportTransitionOptions : Swift.Hashable {
-  @_spi(Experimental) public var maxDuration: Foundation.TimeInterval
-  @_spi(Experimental) public init(maxDuration: Foundation.TimeInterval = 3.5)
-  @_spi(Experimental) public func hash(into hasher: inout Swift.Hasher)
-  @_spi(Experimental) public static func == (a: MapboxMaps.DefaultViewportTransitionOptions, b: MapboxMaps.DefaultViewportTransitionOptions) -> Swift.Bool
-  @_spi(Experimental) public var hashValue: Swift.Int {
-    @_spi(Experimental) get
+public struct DefaultViewportTransitionOptions : Swift.Hashable {
+  public var maxDuration: Foundation.TimeInterval
+  public init(maxDuration: Foundation.TimeInterval = 3.5)
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: MapboxMaps.DefaultViewportTransitionOptions, b: MapboxMaps.DefaultViewportTransitionOptions) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
   }
+}
+extension Dispatch.DispatchWorkItem : MapboxMaps.Cancelable {
 }
 public enum Visibility : Swift.String, Swift.Codable {
   case visible
@@ -891,7 +918,6 @@ public enum TextWritingMode : Swift.String, Swift.Codable, Swift.CaseIterable {
     get
   }
 }
-public typealias Event = MapboxCoreMaps.Event
 public typealias Exp = MapboxMaps.Expression
 public struct Expression : Swift.Codable, Swift.CustomStringConvertible, Swift.Equatable {
   public var `operator`: MapboxMaps.Expression.Operator {
@@ -1056,6 +1082,10 @@ public struct FillExtrusionLayer : MapboxMaps.Layer {
   public var minZoom: Swift.Double?
   public var maxZoom: Swift.Double?
   public var visibility: MapboxMaps.Value<MapboxMaps.Visibility>?
+  public var fillExtrusionAmbientOcclusionIntensity: MapboxMaps.Value<Swift.Double>?
+  public var fillExtrusionAmbientOcclusionIntensityTransition: MapboxMaps.StyleTransition?
+  public var fillExtrusionAmbientOcclusionRadius: MapboxMaps.Value<Swift.Double>?
+  public var fillExtrusionAmbientOcclusionRadiusTransition: MapboxMaps.StyleTransition?
   public var fillExtrusionBase: MapboxMaps.Value<Swift.Double>?
   public var fillExtrusionBaseTransition: MapboxMaps.StyleTransition?
   public var fillExtrusionColor: MapboxMaps.Value<MapboxMaps.StyleColor>?
@@ -1110,42 +1140,38 @@ public struct FillLayer : MapboxMaps.Layer {
   final public func cancel()
   @objc deinit
 }
-@_spi(Experimental) @_hasMissingDesignatedInitializers final public class FollowPuckViewportState {
-  @_spi(Experimental) final public var options: MapboxMaps.FollowPuckViewportStateOptions {
-    @_spi(Experimental) get
-    @_spi(Experimental) set
+@_hasMissingDesignatedInitializers final public class FollowPuckViewportState {
+  final public var options: MapboxMaps.FollowPuckViewportStateOptions {
+    get
+    set
   }
-  @_spi(Experimental) @objc deinit
+  @objc deinit
 }
-@_spi(Experimental) extension MapboxMaps.FollowPuckViewportState : MapboxMaps.ViewportState {
-  @_spi(Experimental) final public func observeDataSource(with handler: @escaping (MapboxMaps.CameraOptions) -> Swift.Bool) -> MapboxMaps.Cancelable
-  @_spi(Experimental) final public func startUpdatingCamera()
-  @_spi(Experimental) final public func stopUpdatingCamera()
+extension MapboxMaps.FollowPuckViewportState : MapboxMaps.ViewportState {
+  final public func observeDataSource(with handler: @escaping (MapboxMaps.CameraOptions) -> Swift.Bool) -> MapboxMaps.Cancelable
+  final public func startUpdatingCamera()
+  final public func stopUpdatingCamera()
 }
-@_spi(Experimental) public enum FollowPuckViewportStateBearing : Swift.Hashable {
-  @_spi(Experimental) case constant(_: CoreLocation.CLLocationDirection)
-  @_spi(Experimental) case heading
-  @_spi(Experimental) case course
-  @_spi(Experimental) public func hash(into hasher: inout Swift.Hasher)
-  @_spi(Experimental) public static func == (a: MapboxMaps.FollowPuckViewportStateBearing, b: MapboxMaps.FollowPuckViewportStateBearing) -> Swift.Bool
-  @_spi(Experimental) public var hashValue: Swift.Int {
-    @_spi(Experimental) get
+public enum FollowPuckViewportStateBearing : Swift.Hashable {
+  case constant(_: CoreLocation.CLLocationDirection)
+  case heading
+  case course
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: MapboxMaps.FollowPuckViewportStateBearing, b: MapboxMaps.FollowPuckViewportStateBearing) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
   }
 }
-@_spi(Experimental) public struct FollowPuckViewportStateOptions : Swift.Hashable {
-  @_spi(Experimental) public var padding: UIKit.UIEdgeInsets?
-  @_spi(Experimental) public var zoom: CoreGraphics.CGFloat?
-  @_spi(Experimental) public var bearing: MapboxMaps.FollowPuckViewportStateBearing?
-  @_spi(Experimental) public var pitch: CoreGraphics.CGFloat?
-  @_spi(Experimental) @available(*, deprecated, message: "This option is no longer used and will be removed in a future release.")
-  public var animationDuration: Swift.Double
-  @_spi(Experimental) public init(padding: UIKit.UIEdgeInsets? = .zero, zoom: CoreGraphics.CGFloat? = 16.35, bearing: MapboxMaps.FollowPuckViewportStateBearing? = .heading, pitch: CoreGraphics.CGFloat? = 45)
-  @_spi(Experimental) @available(*, deprecated, renamed: "init(padding:zoom:bearing:pitch:)", message: "animationDuration parameter is ignored. This initializer will be removed in a future release.")
-  public init(padding: UIKit.UIEdgeInsets? = .zero, zoom: CoreGraphics.CGFloat? = 16.35, bearing: MapboxMaps.FollowPuckViewportStateBearing? = .heading, pitch: CoreGraphics.CGFloat? = 45, animationDuration: Foundation.TimeInterval = 1)
-  @_spi(Experimental) public func hash(into hasher: inout Swift.Hasher)
-  @_spi(Experimental) public static func == (a: MapboxMaps.FollowPuckViewportStateOptions, b: MapboxMaps.FollowPuckViewportStateOptions) -> Swift.Bool
-  @_spi(Experimental) public var hashValue: Swift.Int {
-    @_spi(Experimental) get
+public struct FollowPuckViewportStateOptions : Swift.Hashable {
+  public var padding: UIKit.UIEdgeInsets?
+  public var zoom: CoreGraphics.CGFloat?
+  public var bearing: MapboxMaps.FollowPuckViewportStateBearing?
+  public var pitch: CoreGraphics.CGFloat?
+  public init(padding: UIKit.UIEdgeInsets? = .zero, zoom: CoreGraphics.CGFloat? = 16.35, bearing: MapboxMaps.FollowPuckViewportStateBearing? = .heading, pitch: CoreGraphics.CGFloat? = 45)
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: MapboxMaps.FollowPuckViewportStateOptions, b: MapboxMaps.FollowPuckViewportStateOptions) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
   }
 }
 public struct GeoJSONSource : MapboxMaps.Source {
@@ -1195,6 +1221,9 @@ public protocol GestureManagerDelegate : AnyObject {
   final public var pinchGestureRecognizer: UIKit.UIGestureRecognizer {
     get
   }
+  final public var rotateGestureRecognizer: UIKit.UIGestureRecognizer {
+    get
+  }
   final public var pitchGestureRecognizer: UIKit.UIGestureRecognizer {
     get
   }
@@ -1230,7 +1259,13 @@ public enum PanMode : Swift.String, Swift.Equatable, Swift.CaseIterable {
 public struct GestureOptions : Swift.Equatable {
   public var panEnabled: Swift.Bool
   public var pinchEnabled: Swift.Bool
-  public var pinchRotateEnabled: Swift.Bool
+  @available(*, deprecated, renamed: "rotateEnabled")
+  public var pinchRotateEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var rotateEnabled: Swift.Bool
+  public var simultaneousRotateAndPinchZoomEnabled: Swift.Bool
   public var pinchZoomEnabled: Swift.Bool
   public var pinchPanEnabled: Swift.Bool
   public var pitchEnabled: Swift.Bool
@@ -1323,9 +1358,9 @@ public struct ImageSource : MapboxMaps.Source {
 extension MapboxMaps.ImageSource {
   public func encode(to encoder: Swift.Encoder) throws
 }
-@_spi(Experimental) @_hasMissingDesignatedInitializers final public class ImmediateViewportTransition : MapboxMaps.ViewportTransition {
-  @_spi(Experimental) final public func run(to toState: MapboxMaps.ViewportState, completion: @escaping (Swift.Bool) -> Swift.Void) -> MapboxMaps.Cancelable
-  @_spi(Experimental) @objc deinit
+@_hasMissingDesignatedInitializers final public class ImmediateViewportTransition : MapboxMaps.ViewportTransition {
+  final public func run(to toState: MapboxMaps.ViewportState, completion: @escaping (Swift.Bool) -> Swift.Void) -> MapboxMaps.Cancelable
+  @objc deinit
 }
 @available(iOS, deprecated: 13)
 public protocol InterfaceOrientationProvider {
@@ -1367,11 +1402,12 @@ public enum LayerType : Swift.String, Swift.Codable {
   case background
   case locationIndicator
   case sky
+  @available(*, deprecated, message: "Unsupported layer type")
   case model
+  public init?(rawValue: Swift.String)
   public var layerType: MapboxMaps.Layer.Type {
     get
   }
-  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -1480,6 +1516,8 @@ public struct LocationIndicatorLayer : MapboxMaps.Layer {
   public var imagePitchDisplacement: MapboxMaps.Value<Swift.Double>?
   public var location: MapboxMaps.Value<[Swift.Double]>?
   public var locationTransition: MapboxMaps.StyleTransition?
+  public var locationIndicatorOpacity: MapboxMaps.Value<Swift.Double>?
+  public var locationIndicatorOpacityTransition: MapboxMaps.StyleTransition?
   public var perspectiveCompensation: MapboxMaps.Value<Swift.Double>?
   public var shadowImageSize: MapboxMaps.Value<Swift.Double>?
   public var shadowImageSizeTransition: MapboxMaps.StyleTransition?
@@ -1507,6 +1545,8 @@ public struct LocationIndicatorLayer : MapboxMaps.Layer {
   final public func overrideLocationProvider(with customLocationProvider: MapboxMaps.LocationProvider)
   final public func addLocationConsumer(newConsumer consumer: MapboxMaps.LocationConsumer)
   final public func removeLocationConsumer(consumer: MapboxMaps.LocationConsumer)
+  final public func addPuckLocationConsumer(_ consumer: MapboxMaps.PuckLocationConsumer)
+  final public func removePuckLocationConsumer(_ consumer: MapboxMaps.PuckLocationConsumer)
   @available(iOS 14.0, *)
   final public func requestTemporaryFullAccuracyPermissions(withPurposeKey purposeKey: Swift.String)
   final public func updateHeadingForCurrentDeviceOrientation()
@@ -1540,6 +1580,7 @@ public enum PuckBearingSource : Swift.Equatable {
 @objc public protocol LocationPermissionsDelegate {
   @objc optional func locationManager(_ locationManager: MapboxMaps.LocationManager, didFailToLocateUserWithError error: Swift.Error)
   @objc optional func locationManager(_ locationManager: MapboxMaps.LocationManager, didChangeAccuracyAuthorization accuracyAuthorization: CoreLocation.CLAccuracyAuthorization)
+  @objc optional func locationManagerShouldDisplayHeadingCalibration(_ locationManager: MapboxMaps.LocationManager) -> Swift.Bool
 }
 public protocol LocationProvider {
   var locationProviderOptions: MapboxMaps.LocationOptions { get set }
@@ -1564,7 +1605,19 @@ public protocol LocationProviderDelegate : AnyObject {
   func locationProvider(_ provider: MapboxMaps.LocationProvider, didFailWithError error: Swift.Error)
   func locationProviderDidChangeAuthorization(_ provider: MapboxMaps.LocationProvider)
 }
+public typealias Event = MapboxCoreMaps.Event
+@_hasMissingDesignatedInitializers public class MapEvent<Payload> where Payload : Swift.Decodable {
+  public var name: Swift.String {
+    get
+  }
+  public var payload: Payload! {
+    get
+    set
+  }
+  @objc deinit
+}
 extension MapboxCoreMaps.MapEvents {
+  @available(*, deprecated, message: "Use 'Event' instead")
   public enum EventKind : Swift.RawRepresentable, Swift.CaseIterable {
     case mapLoaded
     case mapLoadingError
@@ -1591,9 +1644,57 @@ extension MapboxCoreMaps.MapEvents {
     }
   }
 }
+extension MapboxCoreMaps.MapEvents {
+  public struct Event<Payload> {
+    public static var mapLoaded: MapboxCoreMaps.MapEvents.Event<MapboxMaps.NoPayload> {
+      get
+    }
+    public static var mapLoadingError: MapboxCoreMaps.MapEvents.Event<MapboxMaps.MapLoadingErrorPayload> {
+      get
+    }
+    public static var mapIdle: MapboxCoreMaps.MapEvents.Event<MapboxMaps.NoPayload> {
+      get
+    }
+    public static var styleDataLoaded: MapboxCoreMaps.MapEvents.Event<MapboxMaps.StyleDataLoadedPayload> {
+      get
+    }
+    public static var styleLoaded: MapboxCoreMaps.MapEvents.Event<MapboxMaps.NoPayload> {
+      get
+    }
+    public static var styleImageMissing: MapboxCoreMaps.MapEvents.Event<MapboxMaps.StyleImageMissingPayload> {
+      get
+    }
+    public static var styleImageRemoveUnused: MapboxCoreMaps.MapEvents.Event<MapboxMaps.StyleImageUnusedPayload> {
+      get
+    }
+    public static var sourceDataLoaded: MapboxCoreMaps.MapEvents.Event<MapboxMaps.SourceDataLoadedPayload> {
+      get
+    }
+    public static var sourceAdded: MapboxCoreMaps.MapEvents.Event<MapboxMaps.SourceAddedPayload> {
+      get
+    }
+    public static var sourceRemoved: MapboxCoreMaps.MapEvents.Event<MapboxMaps.SourceRemovedPayload> {
+      get
+    }
+    public static var renderFrameStarted: MapboxCoreMaps.MapEvents.Event<MapboxMaps.NoPayload> {
+      get
+    }
+    public static var renderFrameFinished: MapboxCoreMaps.MapEvents.Event<MapboxMaps.RenderFrameFinishedPayload> {
+      get
+    }
+    public static var cameraChanged: MapboxCoreMaps.MapEvents.Event<MapboxMaps.NoPayload> {
+      get
+    }
+    public static var resourceRequest: MapboxCoreMaps.MapEvents.Event<MapboxMaps.ResourceRequestPayload> {
+      get
+    }
+  }
+}
 public protocol MapEventsObservable : AnyObject {
+  @available(*, deprecated, renamed: "onEvery(event:handler:)")
   @discardableResult
   func onEvery(_ eventType: MapboxCoreMaps.MapEvents.EventKind, handler: @escaping (MapboxMaps.Event) -> Swift.Void) -> MapboxMaps.Cancelable
+  @available(*, deprecated, renamed: "onNext(event:handler:)")
   @discardableResult
   func onNext(_ eventType: MapboxCoreMaps.MapEvents.EventKind, handler: @escaping (MapboxMaps.Event) -> Swift.Void) -> MapboxMaps.Cancelable
 }
@@ -1604,13 +1705,24 @@ public protocol MapEventsObservable : AnyObject {
   final public let resourceOptions: MapboxMaps.ResourceOptions
   final public let mapOptions: MapboxCoreMaps.MapOptions
   final public let styleURI: MapboxMaps.StyleURI?
+  final public let styleJSON: Swift.String?
   final public let cameraOptions: MapboxMaps.CameraOptions?
-  public init(resourceOptions: MapboxMaps.ResourceOptions = ResourceOptionsManager.default.resourceOptions, mapOptions: MapboxCoreMaps.MapOptions = MapOptions(), cameraOptions: MapboxMaps.CameraOptions? = nil, styleURI: MapboxMaps.StyleURI? = .streets)
+  public init(resourceOptions: MapboxMaps.ResourceOptions = ResourceOptionsManager.default.resourceOptions, mapOptions: MapboxCoreMaps.MapOptions = MapOptions(), cameraOptions: MapboxMaps.CameraOptions? = nil, styleURI: MapboxMaps.StyleURI? = .streets, styleJSON: Swift.String? = nil)
   @objc override final public func isEqual(_ object: Any?) -> Swift.Bool
   @objc override final public var hash: Swift.Int {
     @objc get
   }
   @objc deinit
+}
+public struct MapLoadingErrorPayload {
+  public let error: MapboxMaps.MapLoadingError
+  public let sourceId: Swift.String?
+  public var tileId: MapboxCoreMaps.CanonicalTileID? {
+    get
+  }
+}
+extension MapboxMaps.MapLoadingErrorPayload : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
 }
 extension MapboxCoreMaps.MapOptions {
   convenience public init(constrainMode: MapboxCoreMaps.ConstrainMode = .heightOnly, viewportMode: MapboxCoreMaps.ViewportMode = .default, orientation: MapboxCoreMaps.NorthOrientation = .upwards, crossSourceCollisions: Swift.Bool = true, optimizeForTerrain: Swift.Bool = true, size: CoreGraphics.CGSize? = nil, pixelRatio: CoreGraphics.CGFloat = UIScreen.main.nativeScale, glyphsRasterizationOptions: MapboxCoreMaps.GlyphsRasterizationOptions = GlyphsRasterizationOptions(fontFamilies: []))
@@ -1627,6 +1739,14 @@ extension MapboxCoreMaps.MapOptions {
   @objc override dynamic open var hash: Swift.Int {
     @objc get
   }
+}
+@_spi(Internal) @_hasMissingDesignatedInitializers final public class MapRecorder {
+  @_spi(Internal) final public func start()
+  @_spi(Internal) final public func stop() -> Swift.String
+  @_spi(Internal) final public func replay(content: Swift.String, playbackCount: Swift.Int = 1, playbackSpeedMultiplier: Swift.Double = 1.0, completion: @escaping () -> Swift.Void)
+  @_spi(Internal) final public func togglePauseReplay()
+  @_spi(Internal) final public func playbackState() -> Swift.String
+  @_spi(Internal) @objc deinit
 }
 public struct MapSnapshotOptions {
   public var size: CoreGraphics.CGSize
@@ -1671,7 +1791,7 @@ extension MapboxMaps.MapView {
   @_Concurrency.MainActor(unsafe) public var viewAnnotations: MapboxMaps.ViewAnnotationManager! {
     get
   }
-  @_spi(Experimental) @_Concurrency.MainActor(unsafe) public var viewport: MapboxMaps.Viewport! {
+  @_Concurrency.MainActor(unsafe) public var viewport: MapboxMaps.Viewport! {
     get
   }
   @_Concurrency.MainActor(unsafe) public var presentsWithTransaction: Swift.Bool {
@@ -1711,7 +1831,14 @@ extension MapboxMaps.MapView {
   @objc deinit
   @objc override dynamic open func awakeFromNib()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_spi(Metrics) @_Concurrency.MainActor(unsafe) public var metricsReporter: MapboxMaps.MapViewMetricsReporter?
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func didMoveToWindow()
+}
+@_spi(Metrics) public protocol MapViewMetricsReporter : AnyObject {
+  @_spi(Metrics) func beforeDisplayLinkCallback(displayLink: QuartzCore.CADisplayLink)
+  @_spi(Metrics) func afterDisplayLinkCallback(displayLink: QuartzCore.CADisplayLink)
+  @_spi(Metrics) func beforeMetalViewDrawCallback(metalView: MetalKit.MTKView?)
+  @_spi(Metrics) func afterMetalViewDrawCallback(metalView: MetalKit.MTKView?)
 }
 @_hasMissingDesignatedInitializers final public class MapboxMap {
   final public let style: MapboxMaps.Style
@@ -1724,6 +1851,11 @@ extension MapboxMaps.MapView {
     set
   }
   @_spi(Experimental) final public func setMemoryBudget(_ memoryBudget: MapboxCoreMaps.MapMemoryBudget?)
+  @_spi(Experimental) final public func setRenderCache(_ cacheOptions: MapboxCoreMaps.RenderCacheOptions)
+  final public var shouldRenderWorldCopies: Swift.Bool {
+    get
+    set
+  }
   final public var resourceOptions: MapboxMaps.ResourceOptions {
     get
   }
@@ -1771,9 +1903,18 @@ extension MapboxMaps.MapView {
   final public func endGesture()
 }
 extension MapboxMaps.MapboxMap {
+  @available(*, deprecated, renamed: "queryRenderedFeatures(with:options:completion:)")
   final public func queryRenderedFeatures(for shape: [CoreGraphics.CGPoint], options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: @escaping (Swift.Result<[MapboxCoreMaps.QueriedFeature], Swift.Error>) -> Swift.Void)
+  @discardableResult
+  final public func queryRenderedFeatures(with shape: [CoreGraphics.CGPoint], options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: @escaping (Swift.Result<[MapboxCoreMaps.QueriedFeature], Swift.Error>) -> Swift.Void) -> MapboxMaps.Cancelable
+  @available(*, deprecated, renamed: "queryRenderedFeatures(with:options:completion:)")
   final public func queryRenderedFeatures(in rect: CoreGraphics.CGRect, options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: @escaping (Swift.Result<[MapboxCoreMaps.QueriedFeature], Swift.Error>) -> Swift.Void)
+  @discardableResult
+  final public func queryRenderedFeatures(with rect: CoreGraphics.CGRect, options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: @escaping (Swift.Result<[MapboxCoreMaps.QueriedFeature], Swift.Error>) -> Swift.Void) -> MapboxMaps.Cancelable
+  @available(*, deprecated, renamed: "queryRenderedFeatures(with:options:completion:)")
   final public func queryRenderedFeatures(at point: CoreGraphics.CGPoint, options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: @escaping (Swift.Result<[MapboxCoreMaps.QueriedFeature], Swift.Error>) -> Swift.Void)
+  @discardableResult
+  final public func queryRenderedFeatures(with point: CoreGraphics.CGPoint, options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: @escaping (Swift.Result<[MapboxCoreMaps.QueriedFeature], Swift.Error>) -> Swift.Void) -> MapboxMaps.Cancelable
   final public func querySourceFeatures(for sourceId: Swift.String, options: MapboxCoreMaps.SourceQueryOptions, completion: @escaping (Swift.Result<[MapboxCoreMaps.QueriedFeature], Swift.Error>) -> Swift.Void)
   final public func queryFeatureExtension(for sourceId: Swift.String, feature: MapboxMaps.Feature, extension: Swift.String, extensionField: Swift.String, args: [Swift.String : Any]? = nil, completion: @escaping (Swift.Result<MapboxCoreMaps.FeatureExtensionValue, Swift.Error>) -> Swift.Void)
   final public func getGeoJsonClusterLeaves(forSourceId sourceId: Swift.String, feature: MapboxMaps.Feature, limit: Swift.UInt64 = 10, offset: Swift.UInt64 = 0, completion: @escaping (Swift.Result<MapboxCoreMaps.FeatureExtensionValue, Swift.Error>) -> Swift.Void)
@@ -1786,9 +1927,15 @@ extension MapboxMaps.MapboxMap {
 }
 extension MapboxMaps.MapboxMap : MapboxMaps.MapEventsObservable {
   @discardableResult
+  final public func onNext<Payload>(event eventType: MapboxCoreMaps.MapEvents.Event<Payload>, handler: @escaping (MapboxMaps.MapEvent<Payload>) -> Swift.Void) -> MapboxMaps.Cancelable where Payload : Swift.Decodable
+  @available(*, deprecated, renamed: "onNext(event:handler:)")
+  @discardableResult
   final public func onNext(_ eventType: MapboxCoreMaps.MapEvents.EventKind, handler: @escaping (MapboxMaps.Event) -> Swift.Void) -> MapboxMaps.Cancelable
+  @available(*, deprecated, renamed: "onEvery(event:handler:)")
   @discardableResult
   final public func onEvery(_ eventType: MapboxCoreMaps.MapEvents.EventKind, handler: @escaping (MapboxMaps.Event) -> Swift.Void) -> MapboxMaps.Cancelable
+  @discardableResult
+  final public func onEvery<Payload>(event: MapboxCoreMaps.MapEvents.Event<Payload>, handler: @escaping (MapboxMaps.MapEvent<Payload>) -> Swift.Void) -> MapboxMaps.Cancelable where Payload : Swift.Decodable
 }
 extension MapboxMaps.MapboxMap {
   final public func clearData(completion: @escaping (Swift.Error?) -> Swift.Void)
@@ -1797,6 +1944,9 @@ extension MapboxMaps.MapboxMap {
   final public func setFeatureState(sourceId: Swift.String, sourceLayerId: Swift.String? = nil, featureId: Swift.String, state: [Swift.String : Any])
   final public func getFeatureState(sourceId: Swift.String, sourceLayerId: Swift.String? = nil, featureId: Swift.String, callback: @escaping (Swift.Result<[Swift.String : Any], Swift.Error>) -> Swift.Void)
   final public func removeFeatureState(sourceId: Swift.String, sourceLayerId: Swift.String? = nil, featureId: Swift.String, stateKey: Swift.String? = nil)
+}
+extension MapboxMaps.MapboxMap {
+  @_spi(Internal) final public func makeRecorder() -> MapboxMaps.MapRecorder
 }
 public struct Model : Swift.Equatable, Swift.Codable {
   public var uri: Foundation.URL?
@@ -1814,6 +1964,9 @@ extension Foundation.NSNumber {
   public var CLLocationDirection: CoreLocation.CLLocationDirection {
     get
   }
+}
+public struct NoPayload : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
 }
 public enum TileRegionError : Foundation.LocalizedError, Swift.Equatable {
   case canceled(Swift.String)
@@ -1893,11 +2046,13 @@ public struct ScaleBarViewOptions : MapboxMaps.OrnamentOptionsProtocol, Swift.Eq
   public var position: MapboxMaps.OrnamentPosition
   public var margins: CoreGraphics.CGPoint
   public var visibility: MapboxMaps.OrnamentVisibility
+  public var useMetricUnits: Swift.Bool
   public static func == (a: MapboxMaps.ScaleBarViewOptions, b: MapboxMaps.ScaleBarViewOptions) -> Swift.Bool
 }
 public struct CompassViewOptions : MapboxMaps.OrnamentOptionsProtocol, Swift.Equatable {
   public var position: MapboxMaps.OrnamentPosition
   public var margins: CoreGraphics.CGPoint
+  public var image: UIKit.UIImage?
   public var visibility: MapboxMaps.OrnamentVisibility
   public static func == (a: MapboxMaps.CompassViewOptions, b: MapboxMaps.CompassViewOptions) -> Swift.Bool
 }
@@ -1918,6 +2073,10 @@ public enum OrnamentPosition : Swift.String, Swift.Equatable {
   case topRight
   case bottomRight
   case bottomLeft
+  case topLeading
+  case topTrailing
+  case bottomLeading
+  case bottomTrailing
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -1953,26 +2112,26 @@ public enum OrnamentVisibility : Swift.String, Swift.Equatable {
   }
   @objc deinit
 }
-@_spi(Experimental) @_hasMissingDesignatedInitializers final public class OverviewViewportState {
-  @_spi(Experimental) final public var options: MapboxMaps.OverviewViewportStateOptions {
-    @_spi(Experimental) get
-    @_spi(Experimental) set
+@_hasMissingDesignatedInitializers final public class OverviewViewportState {
+  final public var options: MapboxMaps.OverviewViewportStateOptions {
+    get
+    set
   }
-  @_spi(Experimental) @objc deinit
+  @objc deinit
 }
-@_spi(Experimental) extension MapboxMaps.OverviewViewportState : MapboxMaps.ViewportState {
-  @_spi(Experimental) final public func observeDataSource(with handler: @escaping (MapboxMaps.CameraOptions) -> Swift.Bool) -> MapboxMaps.Cancelable
-  @_spi(Experimental) final public func startUpdatingCamera()
-  @_spi(Experimental) final public func stopUpdatingCamera()
+extension MapboxMaps.OverviewViewportState : MapboxMaps.ViewportState {
+  final public func observeDataSource(with handler: @escaping (MapboxMaps.CameraOptions) -> Swift.Bool) -> MapboxMaps.Cancelable
+  final public func startUpdatingCamera()
+  final public func stopUpdatingCamera()
 }
-@_spi(Experimental) public struct OverviewViewportStateOptions : Swift.Equatable {
-  @_spi(Experimental) public var geometry: MapboxMaps.Geometry
-  @_spi(Experimental) public var padding: UIKit.UIEdgeInsets
-  @_spi(Experimental) public var bearing: CoreLocation.CLLocationDirection?
-  @_spi(Experimental) public var pitch: CoreGraphics.CGFloat?
-  @_spi(Experimental) public var animationDuration: Foundation.TimeInterval
-  @_spi(Experimental) public init(geometry: Turf.GeometryConvertible, padding: UIKit.UIEdgeInsets = .zero, bearing: CoreLocation.CLLocationDirection? = 0, pitch: CoreGraphics.CGFloat? = 0, animationDuration: Foundation.TimeInterval = 1)
-  @_spi(Experimental) public static func == (a: MapboxMaps.OverviewViewportStateOptions, b: MapboxMaps.OverviewViewportStateOptions) -> Swift.Bool
+public struct OverviewViewportStateOptions : Swift.Equatable {
+  public var geometry: MapboxMaps.Geometry
+  public var padding: UIKit.UIEdgeInsets
+  public var bearing: CoreLocation.CLLocationDirection?
+  public var pitch: CoreGraphics.CGFloat?
+  public var animationDuration: Foundation.TimeInterval
+  public init(geometry: Turf.GeometryConvertible, padding: UIKit.UIEdgeInsets = .zero, bearing: CoreLocation.CLLocationDirection? = 0, pitch: CoreGraphics.CGFloat? = 0, animationDuration: Foundation.TimeInterval = 1)
+  public static func == (a: MapboxMaps.OverviewViewportStateOptions, b: MapboxMaps.OverviewViewportStateOptions) -> Swift.Bool
 }
 extension MapboxMaps.PointAnnotation {
   public struct Image : Swift.Hashable {
@@ -1993,6 +2152,8 @@ public struct PointAnnotation : MapboxMaps.Annotation {
   }
   public var point: Turf.Point
   public var userInfo: [Swift.String : Any]?
+  public var isSelected: Swift.Bool
+  public var isDraggable: Swift.Bool
   public init(id: Swift.String = UUID().uuidString, point: Turf.Point)
   public init(id: Swift.String = UUID().uuidString, coordinate: CoreLocation.CLLocationCoordinate2D)
   public var iconAnchor: MapboxMaps.IconAnchor? {
@@ -2032,6 +2193,10 @@ public struct PointAnnotation : MapboxMaps.Annotation {
     set
   }
   public var textLetterSpacing: Swift.Double? {
+    get
+    set
+  }
+  public var textLineHeight: Swift.Double? {
     get
     set
   }
@@ -2182,10 +2347,6 @@ public struct PointAnnotation : MapboxMaps.Annotation {
     get
     set
   }
-  public var textLineHeight: Swift.Double? {
-    get
-    set
-  }
   public var textMaxAngle: Swift.Double? {
     get
     set
@@ -2230,6 +2391,11 @@ public struct PointAnnotation : MapboxMaps.Annotation {
     get
     set
   }
+  @available(*, deprecated, message: "text-line-height property is now data driven, use `PointAnnotation.textLineHeight` instead.")
+  public var textLineHeight: Swift.Double? {
+    get
+    set
+  }
   @objc deinit
 }
 public struct PolygonAnnotation : MapboxMaps.Annotation {
@@ -2239,6 +2405,8 @@ public struct PolygonAnnotation : MapboxMaps.Annotation {
   }
   public var polygon: Turf.Polygon
   public var userInfo: [Swift.String : Any]?
+  public var isSelected: Swift.Bool
+  public var isDraggable: Swift.Bool
   public init(id: Swift.String = UUID().uuidString, polygon: Turf.Polygon)
   public var fillSortKey: Swift.Double? {
     get
@@ -2292,6 +2460,8 @@ public struct PolylineAnnotation : MapboxMaps.Annotation {
   }
   public var lineString: Turf.LineString
   public var userInfo: [Swift.String : Any]?
+  public var isSelected: Swift.Bool
+  public var isDraggable: Swift.Bool
   public init(id: Swift.String = UUID().uuidString, lineString: Turf.LineString)
   public init(id: Swift.String = UUID().uuidString, lineCoordinates: [CoreLocation.CLLocationCoordinate2D])
   public var lineJoin: MapboxMaps.LineJoin? {
@@ -2374,6 +2544,7 @@ public struct PolylineAnnotation : MapboxMaps.Annotation {
 @_hasMissingDesignatedInitializers final public class Projection {
   public static let latitudeMax: CoreLocation.CLLocationDegrees
   public static let latitudeMin: Swift.Double
+  public static let latitudeRange: (Swift.ClosedRange<CoreLocation.CLLocationDegrees>)
   public static func metersPerPoint(for latitude: CoreLocation.CLLocationDegrees, zoom: CoreGraphics.CGFloat) -> Swift.Double
   public static func projectedMeters(for coordinate: CoreLocation.CLLocationCoordinate2D) -> MapboxCoreMaps.ProjectedMeters
   public static func coordinate(for projectedMeters: MapboxCoreMaps.ProjectedMeters) -> CoreLocation.CLLocationCoordinate2D
@@ -2388,21 +2559,39 @@ public enum PromoteId : Swift.Equatable, Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (a: MapboxMaps.PromoteId, b: MapboxMaps.PromoteId) -> Swift.Bool
 }
+@objc public protocol PuckLocationConsumer {
+  @objc func puckLocationUpdate(newLocation: MapboxMaps.Location)
+}
 public enum PuckType : Swift.Equatable {
   case puck2D(_: MapboxMaps.Puck2DConfiguration = Puck2DConfiguration())
   case puck3D(MapboxMaps.Puck3DConfiguration)
   public static func == (a: MapboxMaps.PuckType, b: MapboxMaps.PuckType) -> Swift.Bool
 }
 public struct Puck2DConfiguration : Swift.Equatable {
+  public struct Pulsing : Swift.Equatable {
+    public static let `default`: MapboxMaps.Puck2DConfiguration.Pulsing
+    public enum Radius : Swift.Equatable {
+      case constant(Swift.Double)
+      case accuracy
+      public static func == (a: MapboxMaps.Puck2DConfiguration.Pulsing.Radius, b: MapboxMaps.Puck2DConfiguration.Pulsing.Radius) -> Swift.Bool
+    }
+    public var isEnabled: Swift.Bool
+    public var color: UIKit.UIColor
+    public var radius: MapboxMaps.Puck2DConfiguration.Pulsing.Radius
+    public init(color: UIKit.UIColor = UIColor(red: 0.29, green: 0.565, blue: 0.886, alpha: 1), radius: MapboxMaps.Puck2DConfiguration.Pulsing.Radius = .constant(30))
+    public static func == (a: MapboxMaps.Puck2DConfiguration.Pulsing, b: MapboxMaps.Puck2DConfiguration.Pulsing) -> Swift.Bool
+  }
+  public var opacity: Swift.Double
   public var topImage: UIKit.UIImage?
   public var bearingImage: UIKit.UIImage?
   public var shadowImage: UIKit.UIImage?
   public var scale: MapboxMaps.Value<Swift.Double>?
+  public var pulsing: MapboxMaps.Puck2DConfiguration.Pulsing?
   public var showsAccuracyRing: Swift.Bool
   public var accuracyRingColor: UIKit.UIColor
   public var accuracyRingBorderColor: UIKit.UIColor
-  public init(topImage: UIKit.UIImage? = nil, bearingImage: UIKit.UIImage? = nil, shadowImage: UIKit.UIImage? = nil, scale: MapboxMaps.Value<Swift.Double>? = nil, showsAccuracyRing: Swift.Bool = false)
-  public init(topImage: UIKit.UIImage? = nil, bearingImage: UIKit.UIImage? = nil, shadowImage: UIKit.UIImage? = nil, scale: MapboxMaps.Value<Swift.Double>? = nil, showsAccuracyRing: Swift.Bool = false, accuracyRingColor: UIKit.UIColor = UIColor(red: 0.537, green: 0.812, blue: 0.941, alpha: 0.3), accuracyRingBorderColor: UIKit.UIColor = UIColor(red: 0.537, green: 0.812, blue: 0.941, alpha: 0.3))
+  public init(topImage: UIKit.UIImage? = nil, bearingImage: UIKit.UIImage? = nil, shadowImage: UIKit.UIImage? = nil, scale: MapboxMaps.Value<Swift.Double>? = nil, pulsing: MapboxMaps.Puck2DConfiguration.Pulsing? = nil, showsAccuracyRing: Swift.Bool = false, opacity: Swift.Double = 1)
+  public init(topImage: UIKit.UIImage? = nil, bearingImage: UIKit.UIImage? = nil, shadowImage: UIKit.UIImage? = nil, scale: MapboxMaps.Value<Swift.Double>? = nil, showsAccuracyRing: Swift.Bool = false, accuracyRingColor: UIKit.UIColor = UIColor(red: 0.537, green: 0.812, blue: 0.941, alpha: 0.3), accuracyRingBorderColor: UIKit.UIColor = UIColor(red: 0.537, green: 0.812, blue: 0.941, alpha: 0.3), opacity: Swift.Double = 1)
   public static func makeDefault(showBearing: Swift.Bool = false) -> MapboxMaps.Puck2DConfiguration
   public static func == (a: MapboxMaps.Puck2DConfiguration, b: MapboxMaps.Puck2DConfiguration) -> Swift.Bool
 }
@@ -2410,7 +2599,8 @@ public struct Puck3DConfiguration : Swift.Equatable {
   public var model: MapboxMaps.Model
   public var modelScale: MapboxMaps.Value<[Swift.Double]>?
   public var modelRotation: MapboxMaps.Value<[Swift.Double]>?
-  public init(model: MapboxMaps.Model, modelScale: MapboxMaps.Value<[Swift.Double]>? = nil, modelRotation: MapboxMaps.Value<[Swift.Double]>? = nil)
+  public var modelOpacity: MapboxMaps.Value<Swift.Double>?
+  public init(model: MapboxMaps.Model, modelScale: MapboxMaps.Value<[Swift.Double]>? = nil, modelRotation: MapboxMaps.Value<[Swift.Double]>? = nil, modelOpacity: MapboxMaps.Value<Swift.Double>? = nil)
   public static func == (a: MapboxMaps.Puck3DConfiguration, b: MapboxMaps.Puck3DConfiguration) -> Swift.Bool
 }
 extension MapboxCoreMaps.QueriedFeature {
@@ -2489,6 +2679,21 @@ public struct RasterSource : MapboxMaps.Source {
 extension MapboxMaps.RasterSource {
   public func encode(to encoder: Swift.Encoder) throws
 }
+public struct RenderFrameFinishedPayload : Swift.Decodable {
+  public let renderMode: MapboxMaps.RenderMode
+  public let needsRepaint: Swift.Bool
+  public let placementChanged: Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum RenderMode : Swift.String, Swift.Decodable {
+  case partial
+  case full
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 extension MapboxCoreMaps.RenderedQueryOptions {
   convenience public init(layerIds: [Swift.String]?, filter: MapboxMaps.Expression?)
   public var filter: MapboxMaps.Expression? {
@@ -2547,6 +2752,107 @@ extension MapboxMaps.ResourceOptions : Swift.CustomStringConvertible, Swift.Cust
   convenience public init(accessToken: Swift.String? = nil)
   convenience public init(resourceOptions: MapboxMaps.ResourceOptions)
   @objc deinit
+}
+public struct ResourceRequestPayload : Swift.Decodable {
+  public let dataSource: MapboxMaps.ResourceDataSource
+  public let request: MapboxMaps.ResourceRequest
+  public let response: MapboxMaps.ResourceResponse?
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum ResourceDataSource : Swift.String, Swift.Decodable {
+  case resourceLoader
+  case network
+  case database
+  case asset
+  case fileSystem
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct ResourceRequest : Swift.Decodable {
+  public enum Kind : Swift.String, Swift.Decodable {
+    case unknown
+    case style
+    case source
+    case tile
+    case glyphs
+    case spriteImage
+    case spriteJSON
+    case image
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum Priority : Swift.String, Swift.Decodable {
+    case regular
+    case low
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum LoadingMethod : Swift.String, Swift.Decodable {
+    case cache
+    case network
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let url: Swift.String
+  public let kind: MapboxMaps.ResourceRequest.Kind
+  public let priority: MapboxMaps.ResourceRequest.Priority
+  public let loadingMethod: [MapboxMaps.ResourceRequest.LoadingMethod]
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ResourceResponse : Swift.Decodable {
+  public enum Source : Swift.String, Swift.Decodable {
+    case network
+    case cache
+    case tileStore
+    case localFile
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public struct Error : Swift.Error, Swift.Decodable {
+    public enum Reason : Swift.String, Swift.Decodable {
+      case success
+      case notFound
+      case server
+      case connection
+      case rateLimit
+      case inOfflineMode
+      case other
+      public init?(rawValue: Swift.String)
+      public typealias RawValue = Swift.String
+      public var rawValue: Swift.String {
+        get
+      }
+    }
+    public let reason: MapboxMaps.ResourceResponse.Error.Reason
+    public let message: Swift.String
+    public init(from decoder: Swift.Decoder) throws
+  }
+  public let noContent: Swift.Bool
+  public let notModified: Swift.Bool
+  public let mustRevalidate: Swift.Bool
+  public let source: MapboxMaps.ResourceResponse.Source
+  public let size: Swift.Int
+  public let modified: Foundation.Date?
+  public let expires: Foundation.Date?
+  public let etag: Swift.String?
+  public let error: MapboxMaps.ResourceResponse.Error?
+  public let cancelled: Swift.Bool?
+  public init(from decoder: Swift.Decoder) throws
 }
 public struct SkyLayer : MapboxMaps.Layer {
   public var id: Swift.String
@@ -2616,10 +2922,16 @@ extension MapboxMaps.Snapshotter {
   public func unsubscribe(_ observer: MapboxCoreMaps.Observer, events: [Swift.String] = [])
 }
 extension MapboxMaps.Snapshotter : MapboxMaps.MapEventsObservable {
+  @available(*, deprecated, renamed: "onNext(event:handler:)")
   @discardableResult
   public func onNext(_ eventType: MapboxCoreMaps.MapEvents.EventKind, handler: @escaping (MapboxMaps.Event) -> Swift.Void) -> MapboxMaps.Cancelable
   @discardableResult
+  public func onNext<Payload>(event: MapboxCoreMaps.MapEvents.Event<Payload>, handler: @escaping (MapboxMaps.MapEvent<Payload>) -> Swift.Void) -> MapboxMaps.Cancelable where Payload : Swift.Decodable
+  @available(*, deprecated, renamed: "onEvery(event:handler:)")
+  @discardableResult
   public func onEvery(_ eventType: MapboxCoreMaps.MapEvents.EventKind, handler: @escaping (MapboxMaps.Event) -> Swift.Void) -> MapboxMaps.Cancelable
+  @discardableResult
+  public func onEvery<Payload>(event: MapboxCoreMaps.MapEvents.Event<Payload>, handler: @escaping (MapboxMaps.MapEvent<Payload>) -> Swift.Void) -> MapboxMaps.Cancelable where Payload : Swift.Decodable
 }
 extension MapboxMaps.Snapshotter {
   public func clearData(completion: @escaping (Swift.Error?) -> Swift.Void)
@@ -2629,6 +2941,28 @@ public protocol Source : MapboxMaps.StyleDecodable, MapboxMaps.StyleEncodable, S
 }
 extension MapboxMaps.Source {
   public init(jsonObject: [Swift.String : Any]) throws
+}
+public struct SourceAddedPayload : Swift.Decodable {
+  public let id: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct SourceDataLoadedPayload : Swift.Decodable {
+  public let id: Swift.String
+  public let type: MapboxMaps.SourceDataType
+  public let loaded: Swift.Bool?
+  public var tileId: MapboxCoreMaps.CanonicalTileID? {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum SourceDataType : Swift.String, Swift.Decodable {
+  case metadata
+  case tile
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
 }
 public struct SourceInfo {
   public var id: Swift.String
@@ -2652,6 +2986,10 @@ public enum Encoding : Swift.String, Swift.Codable {
   public var rawValue: Swift.String {
     get
   }
+}
+public struct SourceRemovedPayload : Swift.Decodable {
+  public let id: Swift.String
+  public init(from decoder: Swift.Decoder) throws
 }
 public enum SourceType : Swift.String, Swift.Codable {
   case vector
@@ -2735,6 +3073,7 @@ extension MapboxMaps.Style {
   final public func addImage(_ image: UIKit.UIImage, id: Swift.String, sdf: Swift.Bool = false, stretchX: [MapboxCoreMaps.ImageStretches], stretchY: [MapboxCoreMaps.ImageStretches], content: MapboxCoreMaps.ImageContent? = nil) throws
   final public func addImage(_ image: UIKit.UIImage, id: Swift.String, sdf: Swift.Bool = false, contentInsets: UIKit.UIEdgeInsets = .zero) throws
   final public func removeImage(withId id: Swift.String) throws
+  final public func imageExists(withId id: Swift.String) -> Swift.Bool
   final public func image(withId id: Swift.String) -> UIKit.UIImage?
   final public func setLight(_ light: MapboxMaps.Light) throws
   final public func setLight(properties: [Swift.String : Any]) throws
@@ -2747,6 +3086,11 @@ extension MapboxMaps.Style {
   final public func setTerrainProperty(_ property: Swift.String, value: Any) throws
   final public func terrainProperty(_ property: Swift.String) -> Any
   final public func terrainProperty(_ property: Swift.String) -> MapboxCoreMaps.StylePropertyValue
+  final public func setAtmosphere(_ atmosphere: MapboxMaps.Atmosphere) throws
+  final public func removeAtmosphere() throws
+  final public func setAtmosphere(properties: [Swift.String : Any]) throws
+  final public func setAtmosphereProperty(_ property: Swift.String, value: Any) throws
+  final public func atmosphereProperty(_ property: Swift.String) -> MapboxCoreMaps.StylePropertyValue
   final public func addCustomGeometrySource(withId id: Swift.String, options: MapboxCoreMaps.CustomGeometrySourceOptions) throws
   final public func setCustomGeometrySourceTileData(forSourceId sourceId: Swift.String, tileId: MapboxCoreMaps.CanonicalTileID, features: [MapboxMaps.Feature]) throws
   final public func invalidateCustomGeometrySourceTile(forSourceId sourceId: Swift.String, tileId: MapboxCoreMaps.CanonicalTileID) throws
@@ -2777,6 +3121,20 @@ public struct StyleColor : Swift.Codable, Swift.Equatable {
   public func encode(to encoder: Swift.Encoder) throws
   public static func == (a: MapboxMaps.StyleColor, b: MapboxMaps.StyleColor) -> Swift.Bool
 }
+public struct StyleDataLoadedPayload : Swift.Decodable {
+  public let type: MapboxMaps.StyleDataType
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum StyleDataType : Swift.String, Swift.Decodable {
+  case style
+  case sprite
+  case sources
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 public protocol StyleEncodable {
   func jsonObject() throws -> [Swift.String : Any]
 }
@@ -2785,6 +3143,7 @@ public protocol StyleDecodable {
 }
 extension MapboxMaps.StyleEncodable where Self : Swift.Encodable {
   public func jsonObject() throws -> [Swift.String : Any]
+  public func allStyleProperties() throws -> [Swift.String : Any]
 }
 public struct StyleError : Swift.RawRepresentable, Foundation.LocalizedError {
   public typealias RawValue = Swift.String
@@ -2818,6 +3177,14 @@ public struct MapError : Foundation.LocalizedError {
   public var errorDescription: Swift.String {
     get
   }
+}
+public struct StyleImageMissingPayload : Swift.Decodable {
+  public let id: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct StyleImageUnusedPayload : Swift.Decodable {
+  public let id: Swift.String
+  public init(from decoder: Swift.Decoder) throws
 }
 extension MapboxCoreMaps.StylePackLoadOptions {
   convenience public init?(glyphsRasterizationMode: MapboxCoreMaps.GlyphsRasterizationMode?, metadata: Any? = nil, acceptExpired: Swift.Bool = false)
@@ -2968,6 +3335,9 @@ public protocol TileStoreObserver : AnyObject {
 extension MapboxCoreMaps.TilesetDescriptorOptions {
   convenience public init(styleURI: MapboxMaps.StyleURI, zoomRange: Swift.ClosedRange<Swift.UInt8>, pixelRatio: Swift.Float = Float(UIScreen.main.scale), stylePackOptions: MapboxCoreMaps.StylePackLoadOptions? = nil)
 }
+extension MapboxCoreMaps.TilesetDescriptorOptionsForTilesets {
+  convenience public init(tilesets: [Swift.String], zoomRange: Swift.ClosedRange<Swift.UInt8>, pixelRatio: Swift.Float = Float(UIScreen.main.scale))
+}
 extension MapboxCoreMaps.TransitionOptions {
   convenience public init(duration: Foundation.TimeInterval?, delay: Foundation.TimeInterval?, enablePlacementTransitions: Swift.Bool?)
   public var duration: Foundation.TimeInterval? {
@@ -3028,16 +3398,22 @@ public protocol ViewAnnotationUpdateObserver : AnyObject {
 }
 @_hasMissingDesignatedInitializers final public class ViewAnnotationManager {
   final public var validatesViews: Swift.Bool
+  final public var annotations: [UIKit.UIView : MapboxMaps.ViewAnnotationOptions] {
+    get
+  }
   @objc deinit
   final public func add(_ view: UIKit.UIView, options: MapboxMaps.ViewAnnotationOptions) throws
+  final public func add(_ view: UIKit.UIView, id: Swift.String?, options: MapboxMaps.ViewAnnotationOptions) throws
   final public func remove(_ view: UIKit.UIView)
   final public func removeAll()
   final public func update(_ view: UIKit.UIView, options: MapboxMaps.ViewAnnotationOptions) throws
+  final public func view(forId id: Swift.String) -> UIKit.UIView?
   final public func view(forFeatureId identifier: Swift.String) -> UIKit.UIView?
   final public func options(forFeatureId identifier: Swift.String) -> MapboxMaps.ViewAnnotationOptions?
   final public func options(for view: UIKit.UIView) -> MapboxMaps.ViewAnnotationOptions?
   final public func addViewAnnotationUpdateObserver(_ observer: MapboxMaps.ViewAnnotationUpdateObserver)
   final public func removeViewAnnotationUpdateObserver(_ observer: MapboxMaps.ViewAnnotationUpdateObserver)
+  final public func camera(forAnnotations identifiers: [Swift.String], padding: UIKit.UIEdgeInsets = .zero, bearing: CoreGraphics.CGFloat? = nil, pitch: CoreGraphics.CGFloat? = nil) -> MapboxMaps.CameraOptions?
 }
 public struct ViewAnnotationOptions : Swift.Hashable {
   public var geometry: MapboxMaps.Geometry?
@@ -3057,69 +3433,69 @@ public struct ViewAnnotationOptions : Swift.Hashable {
     get
   }
 }
-@_spi(Experimental) @_hasMissingDesignatedInitializers final public class Viewport {
-  @_spi(Experimental) final public var options: MapboxMaps.ViewportOptions {
-    @_spi(Experimental) get
-    @_spi(Experimental) set
+@_hasMissingDesignatedInitializers final public class Viewport {
+  final public var options: MapboxMaps.ViewportOptions {
+    get
+    set
   }
-  @_spi(Experimental) final public var status: MapboxMaps.ViewportStatus {
-    @_spi(Experimental) get
+  final public var status: MapboxMaps.ViewportStatus {
+    get
   }
-  @_spi(Experimental) final public func addStatusObserver(_ observer: MapboxMaps.ViewportStatusObserver)
-  @_spi(Experimental) final public func removeStatusObserver(_ observer: MapboxMaps.ViewportStatusObserver)
-  @_spi(Experimental) final public func idle()
-  @_spi(Experimental) final public func transition(to toState: MapboxMaps.ViewportState, transition: MapboxMaps.ViewportTransition? = nil, completion: ((_ success: Swift.Bool) -> Swift.Void)? = nil)
-  @_spi(Experimental) final public var defaultTransition: MapboxMaps.ViewportTransition {
-    @_spi(Experimental) get
-    @_spi(Experimental) set
+  final public func addStatusObserver(_ observer: MapboxMaps.ViewportStatusObserver)
+  final public func removeStatusObserver(_ observer: MapboxMaps.ViewportStatusObserver)
+  final public func idle()
+  final public func transition(to toState: MapboxMaps.ViewportState, transition: MapboxMaps.ViewportTransition? = nil, completion: ((_ success: Swift.Bool) -> Swift.Void)? = nil)
+  final public var defaultTransition: MapboxMaps.ViewportTransition {
+    get
+    set
   }
-  @_spi(Experimental) final public func makeFollowPuckViewportState(options: MapboxMaps.FollowPuckViewportStateOptions = .init()) -> MapboxMaps.FollowPuckViewportState
-  @_spi(Experimental) final public func makeOverviewViewportState(options: MapboxMaps.OverviewViewportStateOptions) -> MapboxMaps.OverviewViewportState
-  @_spi(Experimental) final public func makeDefaultViewportTransition(options: MapboxMaps.DefaultViewportTransitionOptions = .init()) -> MapboxMaps.DefaultViewportTransition
-  @_spi(Experimental) final public func makeImmediateViewportTransition() -> MapboxMaps.ImmediateViewportTransition
-  @_spi(Experimental) @objc deinit
+  final public func makeFollowPuckViewportState(options: MapboxMaps.FollowPuckViewportStateOptions = .init()) -> MapboxMaps.FollowPuckViewportState
+  final public func makeOverviewViewportState(options: MapboxMaps.OverviewViewportStateOptions) -> MapboxMaps.OverviewViewportState
+  final public func makeDefaultViewportTransition(options: MapboxMaps.DefaultViewportTransitionOptions = .init()) -> MapboxMaps.DefaultViewportTransition
+  final public func makeImmediateViewportTransition() -> MapboxMaps.ImmediateViewportTransition
+  @objc deinit
 }
-@_spi(Experimental) public struct ViewportOptions : Swift.Hashable {
-  @_spi(Experimental) public var transitionsToIdleUponUserInteraction: Swift.Bool
-  @_spi(Experimental) public init(transitionsToIdleUponUserInteraction: Swift.Bool = true)
-  @_spi(Experimental) public func hash(into hasher: inout Swift.Hasher)
-  @_spi(Experimental) public static func == (a: MapboxMaps.ViewportOptions, b: MapboxMaps.ViewportOptions) -> Swift.Bool
-  @_spi(Experimental) public var hashValue: Swift.Int {
-    @_spi(Experimental) get
-  }
-}
-@_spi(Experimental) public protocol ViewportState : AnyObject {
-  @_spi(Experimental) func observeDataSource(with handler: @escaping (_ camera: MapboxMaps.CameraOptions) -> Swift.Bool) -> MapboxMaps.Cancelable
-  @_spi(Experimental) func startUpdatingCamera()
-  @_spi(Experimental) func stopUpdatingCamera()
-}
-@_spi(Experimental) public enum ViewportStatus : Swift.Hashable {
-  @_spi(Experimental) case idle
-  @_spi(Experimental) case state(_: MapboxMaps.ViewportState)
-  @_spi(Experimental) case transition(_: MapboxMaps.ViewportTransition, toState: MapboxMaps.ViewportState)
-  @_spi(Experimental) public static func == (lhs: MapboxMaps.ViewportStatus, rhs: MapboxMaps.ViewportStatus) -> Swift.Bool
-  @_spi(Experimental) public func hash(into hasher: inout Swift.Hasher)
-  @_spi(Experimental) public var hashValue: Swift.Int {
-    @_spi(Experimental) get
+public struct ViewportOptions : Swift.Hashable {
+  public var transitionsToIdleUponUserInteraction: Swift.Bool
+  public init(transitionsToIdleUponUserInteraction: Swift.Bool = true)
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: MapboxMaps.ViewportOptions, b: MapboxMaps.ViewportOptions) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
   }
 }
-@_spi(Experimental) public protocol ViewportStatusObserver : AnyObject {
-  @_spi(Experimental) func viewportStatusDidChange(from fromStatus: MapboxMaps.ViewportStatus, to toStatus: MapboxMaps.ViewportStatus, reason: MapboxMaps.ViewportStatusChangeReason)
+public protocol ViewportState : AnyObject {
+  func observeDataSource(with handler: @escaping (_ camera: MapboxMaps.CameraOptions) -> Swift.Bool) -> MapboxMaps.Cancelable
+  func startUpdatingCamera()
+  func stopUpdatingCamera()
 }
-@_spi(Experimental) public struct ViewportStatusChangeReason : Swift.Hashable {
-  @_spi(Experimental) public static let idleRequested: MapboxMaps.ViewportStatusChangeReason
-  @_spi(Experimental) public static let transitionStarted: MapboxMaps.ViewportStatusChangeReason
-  @_spi(Experimental) public static let transitionSucceeded: MapboxMaps.ViewportStatusChangeReason
-  @_spi(Experimental) public static let transitionFailed: MapboxMaps.ViewportStatusChangeReason
-  @_spi(Experimental) public static let userInteraction: MapboxMaps.ViewportStatusChangeReason
-  @_spi(Experimental) public func hash(into hasher: inout Swift.Hasher)
-  @_spi(Experimental) public static func == (a: MapboxMaps.ViewportStatusChangeReason, b: MapboxMaps.ViewportStatusChangeReason) -> Swift.Bool
-  @_spi(Experimental) public var hashValue: Swift.Int {
-    @_spi(Experimental) get
+public enum ViewportStatus : Swift.Hashable {
+  case idle
+  case state(_: MapboxMaps.ViewportState)
+  case transition(_: MapboxMaps.ViewportTransition, toState: MapboxMaps.ViewportState)
+  public static func == (lhs: MapboxMaps.ViewportStatus, rhs: MapboxMaps.ViewportStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
   }
 }
-@_spi(Experimental) public protocol ViewportTransition : AnyObject {
-  @_spi(Experimental) func run(to toState: MapboxMaps.ViewportState, completion: @escaping (_ success: Swift.Bool) -> Swift.Void) -> MapboxMaps.Cancelable
+public protocol ViewportStatusObserver : AnyObject {
+  func viewportStatusDidChange(from fromStatus: MapboxMaps.ViewportStatus, to toStatus: MapboxMaps.ViewportStatus, reason: MapboxMaps.ViewportStatusChangeReason)
+}
+public struct ViewportStatusChangeReason : Swift.Hashable {
+  public static let idleRequested: MapboxMaps.ViewportStatusChangeReason
+  public static let transitionStarted: MapboxMaps.ViewportStatusChangeReason
+  public static let transitionSucceeded: MapboxMaps.ViewportStatusChangeReason
+  public static let transitionFailed: MapboxMaps.ViewportStatusChangeReason
+  public static let userInteraction: MapboxMaps.ViewportStatusChangeReason
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: MapboxMaps.ViewportStatusChangeReason, b: MapboxMaps.ViewportStatusChangeReason) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol ViewportTransition : AnyObject {
+  func run(to toState: MapboxMaps.ViewportState, completion: @escaping (_ success: Swift.Bool) -> Swift.Void) -> MapboxMaps.Cancelable
 }
 extension MapboxMaps.Expression.Operator : Swift.Equatable {}
 extension MapboxMaps.Expression.Operator : Swift.Hashable {}
@@ -3215,7 +3591,9 @@ extension MapboxMaps.LayerType : Swift.Equatable {}
 extension MapboxMaps.LayerType : Swift.Hashable {}
 extension MapboxMaps.LayerType : Swift.RawRepresentable {}
 extension MapboxMaps.PuckBearingSource : Swift.Hashable {}
+@available(*, deprecated, message: "Use 'Event' instead")
 extension MapboxCoreMaps.MapEvents.EventKind : Swift.Equatable {}
+@available(*, deprecated, message: "Use 'Event' instead")
 extension MapboxCoreMaps.MapEvents.EventKind : Swift.Hashable {}
 extension MapboxMaps.MapView.SnapshotError : Swift.Equatable {}
 extension MapboxMaps.MapView.SnapshotError : Swift.Hashable {}
@@ -3226,6 +3604,30 @@ extension MapboxMaps.OrnamentVisibility : Swift.RawRepresentable {}
 extension MapboxMaps.PointAnnotationManager : MapboxMaps.AnnotationManager {}
 extension MapboxMaps.PolygonAnnotationManager : MapboxMaps.AnnotationManager {}
 extension MapboxMaps.PolylineAnnotationManager : MapboxMaps.AnnotationManager {}
+extension MapboxMaps.RenderMode : Swift.Equatable {}
+extension MapboxMaps.RenderMode : Swift.Hashable {}
+extension MapboxMaps.RenderMode : Swift.RawRepresentable {}
+extension MapboxMaps.ResourceDataSource : Swift.Equatable {}
+extension MapboxMaps.ResourceDataSource : Swift.Hashable {}
+extension MapboxMaps.ResourceDataSource : Swift.RawRepresentable {}
+extension MapboxMaps.ResourceRequest.Kind : Swift.Equatable {}
+extension MapboxMaps.ResourceRequest.Kind : Swift.Hashable {}
+extension MapboxMaps.ResourceRequest.Kind : Swift.RawRepresentable {}
+extension MapboxMaps.ResourceRequest.Priority : Swift.Equatable {}
+extension MapboxMaps.ResourceRequest.Priority : Swift.Hashable {}
+extension MapboxMaps.ResourceRequest.Priority : Swift.RawRepresentable {}
+extension MapboxMaps.ResourceRequest.LoadingMethod : Swift.Equatable {}
+extension MapboxMaps.ResourceRequest.LoadingMethod : Swift.Hashable {}
+extension MapboxMaps.ResourceRequest.LoadingMethod : Swift.RawRepresentable {}
+extension MapboxMaps.ResourceResponse.Source : Swift.Equatable {}
+extension MapboxMaps.ResourceResponse.Source : Swift.Hashable {}
+extension MapboxMaps.ResourceResponse.Source : Swift.RawRepresentable {}
+extension MapboxMaps.ResourceResponse.Error.Reason : Swift.Equatable {}
+extension MapboxMaps.ResourceResponse.Error.Reason : Swift.Hashable {}
+extension MapboxMaps.ResourceResponse.Error.Reason : Swift.RawRepresentable {}
+extension MapboxMaps.SourceDataType : Swift.Equatable {}
+extension MapboxMaps.SourceDataType : Swift.Hashable {}
+extension MapboxMaps.SourceDataType : Swift.RawRepresentable {}
 extension MapboxMaps.Scheme : Swift.Equatable {}
 extension MapboxMaps.Scheme : Swift.Hashable {}
 extension MapboxMaps.Scheme : Swift.RawRepresentable {}
@@ -3235,6 +3637,9 @@ extension MapboxMaps.Encoding : Swift.RawRepresentable {}
 extension MapboxMaps.SourceType : Swift.Equatable {}
 extension MapboxMaps.SourceType : Swift.Hashable {}
 extension MapboxMaps.SourceType : Swift.RawRepresentable {}
+extension MapboxMaps.StyleDataType : Swift.Equatable {}
+extension MapboxMaps.StyleDataType : Swift.Hashable {}
+extension MapboxMaps.StyleDataType : Swift.RawRepresentable {}
 extension MapboxMaps.TypeConversionError : Swift.Equatable {}
 extension MapboxMaps.TypeConversionError : Swift.Hashable {}
 extension MapboxMaps.ViewAnnotationManagerError : Swift.Equatable {}

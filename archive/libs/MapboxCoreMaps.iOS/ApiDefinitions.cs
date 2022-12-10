@@ -345,6 +345,14 @@ namespace MapboxCoreMaps
 		[Export ("getBounds")]
         MBMCameraBounds GetBounds();
 
+		// - (void)setRenderWorldCopiesForRenderWorldCopies:(BOOL)renderWorldCopies;
+		[Export ("setRenderWorldCopiesForRenderWorldCopies:")]
+        void SetRenderWorldCopiesForRenderWorldCopies(bool renderWorldCopies);
+
+		// - (BOOL)getRenderWorldCopies;
+		[Export ("getRenderWorldCopies")]
+        MBMCameraBounds GetRenderWorldCopies();
+
 		// -(void)dragStartForPoint:(MBMScreenCoordinate * _Nonnull)point;
 		[Export ("dragStartForPoint:")]
 		void DragStartForPoint (MBMScreenCoordinate point);
@@ -2068,8 +2076,9 @@ namespace MapboxCoreMaps
 	interface MBMCustomLayerRenderParameters
 	{
 		// -(instancetype _Nonnull)initWithWidth:(double)width height:(double)height latitude:(double)latitude longitude:(double)longitude zoom:(double)zoom bearing:(double)bearing pitch:(double)pitch fieldOfView:(double)fieldOfView projectionMatrix:(NSArray<NSNumber *> * _Nonnull)projectionMatrix elevationData:(id<MBMElevationData> _Nullable)elevationData;
-		[Export ("initWithWidth:height:latitude:longitude:zoom:bearing:pitch:fieldOfView:projectionMatrix:elevationData:")]
-		IntPtr Constructor (double width, double height, double latitude, double longitude, double zoom, double bearing, double pitch, double fieldOfView, NSNumber[] projectionMatrix, [NullAllowed] IMBMElevationData elevationData);
+		// renderToTilesIDs:(nullable NSArray<MBMCanonicalTileID *> *)renderToTilesIDs __attribute__((deprecated("This constructor is internal and to be used from within Mapbox SDK only.")));
+		[Export ("initWithWidth:height:latitude:longitude:zoom:bearing:pitch:fieldOfView:projectionMatrix:elevationData:renderToTilesIDs:")]
+		IntPtr Constructor (double width, double height, double latitude, double longitude, double zoom, double bearing, double pitch, double fieldOfView, NSNumber[] projectionMatrix, [NullAllowed] IMBMElevationData elevationData, [NullAllowed]MBMCanonicalTileID[] renderToTilesIDs);
 
 		// @property (readonly, nonatomic) double width;
 		[Export ("width")]
@@ -2110,6 +2119,10 @@ namespace MapboxCoreMaps
 		// @property (readonly, nonatomic) id<MBMElevationData> _Nullable elevationData;
 		[NullAllowed, Export ("elevationData")]
 		IMBMElevationData ElevationData { get; }
+
+		// @property (nonatomic, readonly, nullable, copy) NSArray<MBMCanonicalTileID *> *renderToTilesIDs;
+		[NullAllowed, Export ("renderToTilesIDs")]
+		MBMCanonicalTileID[] RenderToTilesIDs { get; }
 	}
 
 	// @protocol MBMElevationData
@@ -2171,6 +2184,14 @@ namespace MapboxCoreMaps
 		[Export ("renderingWillEnd")]
 		void RenderingWillEnd ();
 
+		// - (nonnull MBMCustomLayerRenderConfiguration *)prerender:(nonnull MBMCustomLayerRenderParameters *)parameters mtlCommandBuffer:(nonnull id<MTLCommandBuffer>)mtlCommandBuffer;
+		[Export ("prerender:mtlCommandBuffer:")]
+		MBMCustomLayerRenderConfiguration Prerender (MBMCustomLayerRenderParameters parameters, IMTLCommandBuffer mtlCommandBuffer);
+
+		// - (void)renderToTile:(nonnull MBMCanonicalTileID *)tileID mtlRenderCommandEncoder:(nonnull id<MTLRenderCommandEncoder>)mtlRenderCommandEncoder;
+		[Export ("renderToTile:mtlRenderCommandEncoder:")]
+		void RenderToTile (MBMCanonicalTileID tileID, IMTLRenderCommandEncoder mtlRenderCommandEncoder);
+
 		// @optional -(void)renderingWillStartOpenGL;
 		[Export ("renderingWillStartOpenGL")]
 		void RenderingWillStartOpenGL ();
@@ -2182,6 +2203,30 @@ namespace MapboxCoreMaps
 		// @optional -(void)openGLContextLost;
 		[Export ("openGLContextLost")]
 		void OpenGLContextLost ();
+	}
+
+	// @interface MBMCustomLayerRenderConfiguration : NSObject
+	[BaseType (typeof(NSObject))]
+	interface MBMCustomLayerRenderConfiguration
+	{
+		// - (nonnull instancetype)initWithIsRenderToTileSupported:(BOOL)isRenderToTileSupported
+		// 									shouldRerenderTiles:(BOOL)shouldRerenderTiles;
+		[Export ("initWithIsRenderToTileSupported:shouldRerenderTiles:z:")]
+		IntPtr Constructor (bool isRenderToTileSupported, bool shouldRerenderTiles);
+
+		// @property (nonatomic, readonly, getter=isIsRenderToTileSupported) BOOL isRenderToTileSupported;
+		[Export ("isRenderToTileSupported")]
+		bool IsRenderToTileSupported { 
+			[Export("isIsRenderToTileSupported")]
+			get; 
+		}
+
+		// @property (nonatomic, readonly, getter=isShouldRerenderTiles) BOOL shouldRerenderTiles;
+		[Export ("isRenderToTileSupported")]
+		bool ShouldRerenderTiles { 
+			[Export("isShouldRerenderTiles")]
+			get; 
+		}
 	}
 
 	// @interface MBMVec3 : NSObject
@@ -2256,5 +2301,90 @@ namespace MapboxCoreMaps
 		// @property (readonly, nonatomic) MBMScreenCoordinate * _Nonnull leftTopCoordinate;
 		[Export ("leftTopCoordinate")]
 		MBMScreenCoordinate LeftTopCoordinate { get; }
+	}
+
+	// @interface MBMGeoJSONSourceData : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMViewAnnotationPositionDescriptor
+	{
+		// + (nonnull instancetype)fromGeometry:(nonnull MBXGeometry *)value;
+		[Static, Export("fromGeometry:")]
+		MBMViewAnnotationPositionDescriptor FromGeometry(MBXGeometry value);
+
+		// + (nonnull instancetype)fromFeature:(nonnull MBXFeature *)value;
+		[Static, Export("fromGeometry:")]
+		MBMViewAnnotationPositionDescriptor FromFeature(MBXFeature value);
+
+		// + (nonnull instancetype)fromNSArray:(nonnull NSArray<MBXFeature *> *)value;
+		[Static, Export("fromGeometry:")]
+		MBMViewAnnotationPositionDescriptor FromArray(MBXFeature[] value);
+
+		// + (nonnull instancetype)fromNSString:(nonnull NSString *)value;
+		[Static, Export("fromNSString:")]
+		MBMViewAnnotationPositionDescriptor FromString(string value);
+
+		// - (BOOL)isGeometry;
+		[Export("isGeometry")]
+		bool IsGeometry ();
+
+		// - (BOOL)isFeature;
+		[Export("isFeature")]
+		bool IsFeature ();
+		
+		// - (BOOL)isNSArray;
+		[Export("isNSArray")]
+		bool IsNSArray ();
+		
+		// - (BOOL)isNSString;
+		[Export("isNSString")]
+		bool IsNSString ();
+		
+
+		// - (nonnull MBXGeometry *)getGeometry __attribute((ns_returns_retained));
+		[Export("getGeometry")]
+		MBXGeometry GetGeometry();
+
+		// - (nonnull MBXFeature *)getFeature __attribute((ns_returns_retained));
+		[Export("getFeature")]
+		MBXFeature GetFeature();
+
+		// - (nonnull NSArray<MBXFeature *> *)getNSArray __attribute((ns_returns_retained));
+		[Export("getNSArray")]
+		MBXFeature[] GetNSArray();
+
+		// - (nonnull NSString *)getNSString __attribute((ns_returns_retained));
+		[Export("getNSString")]
+		string GetNSString();
+
+		// @property (nonatomic, nonnull) id value;
+		[Export("id")]
+		NSValue Value { get; set; }
+
+		// @property (nonatomic, readonly) MBMGeoJSONSourceDataType type;
+		[Export("type")]
+		MBMGeoJSONSourceDataType Type { get; }
+	}
+
+	// @interface MBMTilesetDescriptorOptionsForTilesets : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMViewAnnotationPositionDescriptor
+	{
+		// @property (nonatomic, readonly, nonnull, copy) NSArray<NSString *> *tilesets;
+		[Export("tilesets")]
+		string[] Tilesets { get; }
+
+		// @property (nonatomic, readonly) uint8_t minZoom;
+		[Export("minZoom")]
+		byte MinZoom { get; }
+
+		// @property (nonatomic, readonly) uint8_t maxZoom;
+		[Export("maxZoom")]
+		byte MaxZoom { get; }
+
+		// @property (nonatomic, readonly) float pixelRatio;
+		[Export("pixelRatio")]
+		float PixelRatio { get; }
 	}
 }

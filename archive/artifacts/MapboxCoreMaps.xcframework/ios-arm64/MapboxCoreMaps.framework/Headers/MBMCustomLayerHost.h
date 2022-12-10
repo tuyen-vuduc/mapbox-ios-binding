@@ -3,7 +3,8 @@
 @protocol MTLDevice, MTLCommandBuffer, MTLRenderCommandEncoder;
 
 @class MTLRenderPassDescriptor;
-
+@class MBMCanonicalTileID;
+@class MBMCustomLayerRenderConfiguration;
 @class MBMCustomLayerRenderParameters;
 
 /**
@@ -52,6 +53,16 @@ mtlRenderPassDescriptor:(nonnull MTLRenderPassDescriptor *)mtlRenderPassDescript
 
 @optional
 
+/**
+ * Note! This selector is an experimental feature. It can be changed or removed in future versions.
+ */
+- (nonnull MBMCustomLayerRenderConfiguration *)prerender:(nonnull MBMCustomLayerRenderParameters *)parameters
+mtlCommandBuffer:(nonnull id<MTLCommandBuffer>)mtlCommandBuffer;
+/**
+ * Note! This selector is an experimental feature. It can be changed or removed in future versions.
+ */
+- (void)renderToTile:(nonnull MBMCanonicalTileID *)tileID
+mtlRenderCommandEncoder:(nonnull id<MTLRenderCommandEncoder>)mtlRenderCommandEncoder;
 /**
  * Initialize any OpenGL 3D graphic API state needed by the custom layer. This method is called
  * once when view starts or resumes to foreground but before rendering for the first time.

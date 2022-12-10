@@ -15,10 +15,7 @@
 
 - (nullable id<MTLTexture>)getDrawableTexture;
 
-/// The point in time at which metal view should refresh its content.
-/// In case the refresh is synced with `CADisplayLink` update,
-/// use `CADisplayLink.targetTimestamp` as a return value for this proprety.
-/// Return `CACurrentMediaTime()` to indicate that the metal view should be redrawn as soon as possible.
+/// Deprecated, implementing this method has no effect
 - (CFTimeInterval)getTargetFrameTimestamp;
 
 @end

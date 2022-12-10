@@ -15,7 +15,7 @@ NS_SWIFT_NAME(MapMemoryBudget)
 __attribute__((visibility ("default")))
 @interface MBMMapMemoryBudget : NSObject
 
-- (nonnull instancetype)initWithValue:(nonnull id)value;
+- (nonnull instancetype)initWithValue:(nonnull id)value __attribute__((deprecated("Please use: '+from{TypeName}:' instead.")));
 
 + (nonnull instancetype)fromMapMemoryBudgetInMegabytes:(nonnull MBMMapMemoryBudgetInMegabytes *)value;
 + (nonnull instancetype)fromMapMemoryBudgetInTiles:(nonnull MBMMapMemoryBudgetInTiles *)value;

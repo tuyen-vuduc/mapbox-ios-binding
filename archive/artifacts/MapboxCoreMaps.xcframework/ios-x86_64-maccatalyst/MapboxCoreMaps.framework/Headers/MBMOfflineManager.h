@@ -1,11 +1,12 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMStylePackLoadProgressCallback.h"
+#import <MapboxCoreMaps/MBMStylePackLoadProgressCallback.h>
 
 @class MBMResourceOptions;
 @class MBMStylePackLoadOptions;
 @class MBMTilesetDescriptorOptions;
+@class MBMTilesetDescriptorOptionsForTilesets;
 @class MBXCancelable;
 @class MBXTilesetDescriptor;
 
@@ -42,6 +43,16 @@ __attribute__((visibility ("default")))
  * @return A new `tileset descriptor`.
  */
 - (nonnull MBXTilesetDescriptor *)createTilesetDescriptorForTilesetDescriptorOptions:(nonnull MBMTilesetDescriptorOptions *)tilesetDescriptorOptions __attribute((ns_returns_retained));
+/**
+ * An overloaded version that accepts `TilesetDescriptorOptionsForTilesets`.
+ *
+ * This method is helpful if the required tilesets do not originally belong to
+ * a style, e.g. when their corresponding style sources are added using runtime API.
+ *
+ * @param tilesetDescriptorOptionsForTilesets The `tileset descriptor options` to manage.
+ * @return A new `tileset descriptor`.
+ */
+- (nonnull MBXTilesetDescriptor *)createTilesetDescriptorForTilesetDescriptorOptionsForTilesets:(nonnull MBMTilesetDescriptorOptionsForTilesets *)tilesetDescriptorOptionsForTilesets __attribute((ns_returns_retained));
 /**
  * Removes a style package.
  *

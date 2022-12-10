@@ -1,6 +1,6 @@
 // This file is generated and will be overwritten automatically.
 
-#import "MBMStyleManager.h"
+#import <MapboxCoreMaps/MBMStyleManager.h>
 
 @interface MBMStyleManager ()
 - (nonnull MBXExpected<NSNull *, NSString *> *)addStyleLayerForProperties:(nonnull id)properties
@@ -31,12 +31,17 @@
 - (nonnull MBXExpected<id, NSString *> *)getStyleSourcePropertiesForSourceId:(nonnull NSString *)sourceId __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)setStyleSourcePropertiesForSourceId:(nonnull NSString *)sourceId
                                                                         properties:(nonnull id)properties __attribute((ns_returns_retained));
+- (nonnull MBXExpected<NSNull *, NSString *> *)setStyleGeoJSONSourceDataForSourceId:(nonnull NSString *)sourceId
+                                                                               data:(nonnull MBMGeoJSONSourceData *)data __attribute((ns_returns_retained)) NS_REFINED_FOR_SWIFT;
 - (nonnull MBXExpected<NSNull *, NSString *> *)updateStyleImageSourceImageForSourceId:(nonnull NSString *)sourceId
                                                                                 image:(nonnull MBMImage *)image __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)removeStyleSourceForSourceId:(nonnull NSString *)sourceId __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)setStyleLightForProperties:(nonnull id)properties __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)setStyleLightPropertyForProperty:(nonnull NSString *)property
                                                                           value:(nonnull id)value __attribute((ns_returns_retained));
+- (nonnull MBXExpected<NSNull *, NSString *> *)setStyleAtmosphereForProperties:(nonnull id)properties __attribute((ns_returns_retained));
+- (nonnull MBXExpected<NSNull *, NSString *> *)setStyleAtmospherePropertyForProperty:(nonnull NSString *)property
+                                                                               value:(nonnull id)value __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)setStyleTerrainForProperties:(nonnull id)properties __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)setStyleTerrainPropertyForProperty:(nonnull NSString *)property
                                                                             value:(nonnull id)value __attribute((ns_returns_retained));
@@ -51,6 +56,9 @@
                                                               stretchY:(nonnull NSArray<MBMImageStretches *> *)stretchY
                                                                content:(nullable MBMImageContent *)content __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)removeStyleImageForImageId:(nonnull NSString *)imageId __attribute((ns_returns_retained));
+- (nonnull MBXExpected<NSNull *, NSString *> *)addStyleModelForModelId:(nonnull NSString *)modelId
+                                                              modelUri:(nonnull NSString *)modelUri __attribute((ns_returns_retained));
+- (nonnull MBXExpected<NSNull *, NSString *> *)removeStyleModelForModelId:(nonnull NSString *)modelId __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)addStyleCustomGeometrySourceForSourceId:(nonnull NSString *)sourceId
                                                                                options:(nonnull MBMCustomGeometrySourceOptions *)options __attribute((ns_returns_retained));
 - (nonnull MBXExpected<NSNull *, NSString *> *)setStyleCustomGeometrySourceTileDataForSourceId:(nonnull NSString *)sourceId

@@ -2,13 +2,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "MBMConstrainMode.h"
-#import "MBMMapDebugOptions.h"
-#import "MBMNorthOrientation.h"
-#import "MBMViewportMode.h"
+#import <MapboxCoreMaps/MBMConstrainMode.h>
+#import <MapboxCoreMaps/MBMMapDebugOptions.h>
+#import <MapboxCoreMaps/MBMNorthOrientation.h>
+#import <MapboxCoreMaps/MBMViewportMode.h>
 @class MBXExpected<__covariant Value, __covariant Error>;
 @class MBXFeature;
-#import "MBMCameraManager.h"
+#import <MapboxCoreMaps/MBMCameraManager.h>
 
 @class MBMMapMemoryBudget;
 @class MBMMapOptions;
@@ -146,10 +146,11 @@ __attribute__((visibility ("default")))
  *
  * Update entries in the `state` object of a given feature within a style source. Only properties of the
  * `state` object will be updated. A property in the feature `state` object that is not listed in `state` will
- * retain its previous value.
+ * retain its previous value. The properties must be paint properties, layout properties are not supported.
  *
  * Note that updates to feature `state` are asynchronous, so changes made by this method migth not be
- * immediately visible using `getStateFeature`.
+ * immediately visible using `getStateFeature`. And the corresponding source needs to be in use to ensure the
+ * feature data it contains can be successfully updated.
  *
  * @param sourceId The style source identifier.
  * @param sourceLayerId The style source layer identifier (for multi-layer sources such as vector sources).

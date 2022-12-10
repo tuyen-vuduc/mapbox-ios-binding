@@ -85,12 +85,16 @@ __attribute__((visibility ("default")))
  * Helper function for setting orientation of the camera by defining a focus point.
  * Elevation of 0.0 is used and no up vector.
  *
+ * Note: Orientation can be invalid after this call, if the input leads to the camera being upside down or the quaternion has zero length.
+ *
  * @param location The `coordinate` representing focal point.
  */
 - (void)lookAtPointForLocation:(CLLocationCoordinate2D)location;
 /**
  * Helper function for setting orientation of the camera by defining a focus point.
  * No up vector is used.
+ *
+ * Note: Orientation can be invalid after this call, if the input leads to the camera being upside down or the quaternion has zero length.
  *
  * @param location The `coordinate` representing focal point.
  * @param altitude The altitude in meters of the focal point.
@@ -102,6 +106,8 @@ __attribute__((visibility ("default")))
  *
  * Up vector is required in certain scenarios where bearing can't be deduced from
  * the viewing direction.
+ *
+ * Note: Orientation can be invalid after this call, if the input leads to the camera being upside down or the quaternion has zero length.
  *
  * @param location The `coordinate` representing focal point.
  * @param altitude The altitude in meters of the focal point.

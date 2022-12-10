@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMViewAnnotationAnchor.h"
+#import <MapboxCoreMaps/MBMViewAnnotationAnchor.h>
 @class MBXGeometry;
 
 /** Various options needed for displaying view annotation. */
@@ -38,7 +38,7 @@ __attribute__((visibility ("default")))
  * View annotation's visibility behaviour becomes tied to feature visibility where feature could represent an icon or a text label.
  * E.g. if the bounded symbol is not visible view annotation also becomes not visible.
  *
- * Note: Invalid associatedFeatureId (meaning no actual symbol has such feature id) will lead to the cooresponding annotation to be invisible.
+ * Note: Invalid associatedFeatureId (meaning no actual symbol has such feature id) will lead to the corresponding annotation to be invisible.
  */
 @property (nonatomic, readonly, nullable, copy) NSString *associatedFeatureId NS_REFINED_FOR_SWIFT;
 

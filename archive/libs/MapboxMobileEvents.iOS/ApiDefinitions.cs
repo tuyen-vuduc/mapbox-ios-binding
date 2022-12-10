@@ -217,6 +217,10 @@ namespace MapboxMobileEvents
 		[Field ("MMEEventKeyVerticalAccuracy", "__Internal")]
 		NSString MMEEventKeyVerticalAccuracy { get; }
 
+		// extern NSString *const MMEEventKeyPermissionStatus;
+		[Field ("MMEEventKeyPermissionStatus", "__Internal")]
+		NSString MMEEventKeyPermissionStatus { get; }
+
 		// extern NSString *const MMEEventKeyFloor;
 		[Field ("MMEEventKeyFloor", "__Internal")]
 		NSString MMEEventKeyFloor { get; }
@@ -529,6 +533,18 @@ namespace MapboxMobileEvents
 		[Field ("MMEEventStatusAuthorizedWhenInUse", "__Internal")]
 		NSString MMEEventStatusAuthorizedWhenInUse { get; }
 
+		// extern NSString * const MMEEventAuthStatusAllow;
+		[Field ("MMEEventAuthStatusAllow", "__Internal")]
+		NSString MMEEventAuthStatusAllow { get; }
+
+		// extern NSString * const MMEEventAuthStatusAllowWhenInUse;
+		[Field ("MMEEventAuthStatusAllowWhenInUse", "__Internal")]
+		NSString MMEEventAuthStatusAllowWhenInUse { get; }
+		
+		// extern NSString * const MMEEventAuthStatusAllowAlways;
+		[Field ("MMEEventAuthStatusAllowAlways", "__Internal")]
+		NSString MMEEventAuthStatusAllowAlways { get; }
+		
 		// extern NSString *const MMEEventUnknown;
 		[Field ("MMEEventUnknown", "__Internal")]
 		NSString MMEEventUnknown { get; }
