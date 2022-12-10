@@ -3,14 +3,14 @@
     <metadata>
         <!-- Required elements-->
         <id>MapboxCommon.iOS</id>
-        <version>21.3.0</version>
+        <version>23.2.1</version>
         <authors>tuyen-vuduc</authors>
         <owners>tuyen-vuduc</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>MapboxCommon iOS</title>
         <summary>Xamarin.iOS binding library for MapboxCommon</summary>
         <description>Xamarin.iOS binding library for MapboxCommon</description>
-        <releaseNotes>MapboxCommon iOS v21.3.0</releaseNotes>
+        <releaseNotes>MapboxCommon iOS v23.2.1</releaseNotes>
         <iconUrl>https://avatars0.githubusercontent.com/u/600935</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/tuyen-vuduc/mapbox-ios-binding</projectUrl>

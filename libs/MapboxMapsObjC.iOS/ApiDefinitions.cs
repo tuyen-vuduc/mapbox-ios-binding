@@ -28,6 +28,6 @@ namespace MapboxMapsObjC
 		// +(MapView * _Nonnull)createWithFrame:(CGRect)frame options:(MapInitOptions * _Nonnull)options __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithFrame:options:")]
-		MapView CreateWithFrame (CGRect frame, MapInitOptions options);
+		MapView CreateWithFrame (CGRect frame, [NullAllowed] MapInitOptions options);
 	}
 }

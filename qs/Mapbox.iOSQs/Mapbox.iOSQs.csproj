@@ -29,7 +29,7 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <LangVersion>Latest</LangVersion>
-<MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
+    <MtouchExtraArgs>--registrar:dynamic</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -90,9 +90,9 @@
     <Reference Include="Xamarin.iOS" />
     
     <PackageReference Include="Masonry" Version="1.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Xamarin.Swift">
-      <Version>1.0.9</Version>
+      <Version>1.0.11</Version>
     </PackageReference>
     <PackageReference Include="modernhttpclient">
       <Version>2.4.2</Version>
@@ -169,27 +169,33 @@
   <ItemGroup>
     <NativeReference Include="..\..\artifacts\MapboxCommon.xcframework">
       <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
     </NativeReference>
     <NativeReference Include="..\..\artifacts\MapboxCoreMaps.xcframework">
       <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
     </NativeReference>
     <NativeReference Include="..\..\artifacts\MapboxMaps.xcframework">
       <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
     </NativeReference>
     <NativeReference Include="..\..\artifacts\MapboxMobileEvents.xcframework">
       <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
     </NativeReference>
     <NativeReference Include="..\..\artifacts\Turf.xcframework">
       <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
     </NativeReference>
     <NativeReference Include="..\..\artifacts\MapboxMapObjC.xcframework">
       <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
     </NativeReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

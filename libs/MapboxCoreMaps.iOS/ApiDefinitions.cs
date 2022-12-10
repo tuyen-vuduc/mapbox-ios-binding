@@ -2211,7 +2211,7 @@ namespace MapboxCoreMaps
 	{
 		// - (nonnull instancetype)initWithIsRenderToTileSupported:(BOOL)isRenderToTileSupported
 		// 									shouldRerenderTiles:(BOOL)shouldRerenderTiles;
-		[Export ("initWithIsRenderToTileSupported:shouldRerenderTiles:z:")]
+		[Export ("initWithIsRenderToTileSupported:shouldRerenderTiles:")]
 		IntPtr Constructor (bool isRenderToTileSupported, bool shouldRerenderTiles);
 
 		// @property (nonatomic, readonly, getter=isIsRenderToTileSupported) BOOL isRenderToTileSupported;
@@ -2222,7 +2222,7 @@ namespace MapboxCoreMaps
 		}
 
 		// @property (nonatomic, readonly, getter=isShouldRerenderTiles) BOOL shouldRerenderTiles;
-		[Export ("isRenderToTileSupported")]
+		[Export ("shouldRerenderTiles")]
 		bool ShouldRerenderTiles { 
 			[Export("isShouldRerenderTiles")]
 			get; 
@@ -2306,8 +2306,8 @@ namespace MapboxCoreMaps
 	// @interface MBMGeoJSONSourceData : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface MBMViewAnnotationPositionDescriptor
-	{
+	interface MBMGeoJSONSourceData
+    {
 		// + (nonnull instancetype)fromGeometry:(nonnull MBXGeometry *)value;
 		[Static, Export("fromGeometry:")]
 		MBMViewAnnotationPositionDescriptor FromGeometry(MBXGeometry value);
@@ -2369,8 +2369,8 @@ namespace MapboxCoreMaps
 	// @interface MBMTilesetDescriptorOptionsForTilesets : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface MBMViewAnnotationPositionDescriptor
-	{
+	interface MBMTilesetDescriptorOptionsForTilesets
+    {
 		// @property (nonatomic, readonly, nonnull, copy) NSArray<NSString *> *tilesets;
 		[Export("tilesets")]
 		string[] Tilesets { get; }

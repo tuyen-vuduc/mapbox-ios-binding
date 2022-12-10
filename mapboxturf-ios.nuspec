@@ -3,14 +3,14 @@
     <metadata>
         <!-- Required elements-->
         <id>MapboxTurf.iOS</id>
-        <version>2.4.0</version>
+        <version>2.6.1</version>
         <authors>tuyen-vuduc</authors>
         <owners>tuyen-vuduc</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>MapboxTurf iOS</title>
         <summary>Xamarin.iOS binding library for MapboxTurf</summary>
         <description>Xamarin.iOS binding library for MapboxTurf</description>
-        <releaseNotes>MapboxTurf iOS v2.4.0</releaseNotes>
+        <releaseNotes>MapboxTurf iOS v2.6.1</releaseNotes>
         <iconUrl>https://avatars0.githubusercontent.com/u/600935</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/tuyen-vuduc/mapbox-ios-binding</projectUrl>

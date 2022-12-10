@@ -1,0 +1,549 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "Import",
+        "name": "MapboxMaps",
+        "printedName": "MapboxMaps",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MapInitOptionsFactory",
+        "printedName": "MapInitOptionsFactory",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "create",
+            "printedName": "create(resourceOptions:mapOptions:cameraOptions:stylePath:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MapInitOptions",
+                "printedName": "MapboxMaps.MapInitOptions",
+                "usr": "c:@M@MapboxMaps@objc(cs)MapInitOptions"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.ResourceOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResourceOptions",
+                    "printedName": "MapboxCoreMaps.ResourceOptions",
+                    "usr": "c:objc(cs)MBMResourceOptions"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.MapOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MapOptions",
+                    "printedName": "MapboxCoreMaps.MapOptions",
+                    "usr": "c:objc(cs)MBMMapOptions"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.CameraOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CameraOptions",
+                    "printedName": "MapboxCoreMaps.CameraOptions",
+                    "usr": "c:objc(cs)MBMCameraOptions"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)MapInitOptionsFactory(cm)createWithResourceOptions:mapOptions:cameraOptions:stylePath:",
+            "mangledName": "$s13MapboxMapObjC0B18InitOptionsFactoryC6create08resourceE003mapE006cameraE09stylePath0A4Maps0bdE0CSo011MBMResourceE0CSg_So06MBMMapE0CSgSo09MBMCameraE0CSgSSSgtFZ",
+            "moduleName": "MapboxMapObjC",
+            "static": true,
+            "objc_name": "createWithResourceOptions:mapOptions:cameraOptions:stylePath:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "create",
+            "printedName": "create(resourceOptions:mapOptions:cameraOptions:styleURI:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MapInitOptions",
+                "printedName": "MapboxMaps.MapInitOptions",
+                "usr": "c:@M@MapboxMaps@objc(cs)MapInitOptions"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.ResourceOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResourceOptions",
+                    "printedName": "MapboxCoreMaps.ResourceOptions",
+                    "usr": "c:objc(cs)MBMResourceOptions"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.MapOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MapOptions",
+                    "printedName": "MapboxCoreMaps.MapOptions",
+                    "usr": "c:objc(cs)MBMMapOptions"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.CameraOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CameraOptions",
+                    "printedName": "MapboxCoreMaps.CameraOptions",
+                    "usr": "c:objc(cs)MBMCameraOptions"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.URL?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)MapInitOptionsFactory(cm)createWithResourceOptions:mapOptions:cameraOptions:styleURI:",
+            "mangledName": "$s13MapboxMapObjC0B18InitOptionsFactoryC6create08resourceE003mapE006cameraE08styleURI0A4Maps0bdE0CSo011MBMResourceE0CSg_So06MBMMapE0CSgSo09MBMCameraE0CSg10Foundation3URLVSgtFZ",
+            "moduleName": "MapboxMapObjC",
+            "static": true,
+            "objc_name": "createWithResourceOptions:mapOptions:cameraOptions:styleURI:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MapInitOptionsFactory",
+                "printedName": "MapboxMapObjC.MapInitOptionsFactory",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)MapInitOptionsFactory"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)MapInitOptionsFactory(im)init",
+            "mangledName": "$s13MapboxMapObjC0B18InitOptionsFactoryCACycfc",
+            "moduleName": "MapboxMapObjC",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@MapboxMapObjC@objc(cs)MapInitOptionsFactory",
+        "mangledName": "$s13MapboxMapObjC0B18InitOptionsFactoryC",
+        "moduleName": "MapboxMapObjC",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "Import",
+        "name": "MapboxMaps",
+        "printedName": "MapboxMaps",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "MapboxMaps",
+        "printedName": "MapboxMaps",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MapViewFactory",
+        "printedName": "MapViewFactory",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "create",
+            "printedName": "create(frame:options:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MapView",
+                "printedName": "MapboxMaps.MapView",
+                "usr": "c:@M@MapboxMaps@objc(cs)MapView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxMaps.MapInitOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MapInitOptions",
+                    "printedName": "MapboxMaps.MapInitOptions",
+                    "usr": "c:@M@MapboxMaps@objc(cs)MapInitOptions"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)MapViewFactory(cm)createWithFrame:options:",
+            "mangledName": "$s13MapboxMapObjC0B11ViewFactoryC6create5frame7options0A4Maps0bD0CSo6CGRectV_AG0B11InitOptionsCSgtFZ",
+            "moduleName": "MapboxMapObjC",
+            "static": true,
+            "objc_name": "createWithFrame:options:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MapViewFactory",
+                "printedName": "MapboxMapObjC.MapViewFactory",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)MapViewFactory"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)MapViewFactory(im)init",
+            "mangledName": "$s13MapboxMapObjC0B11ViewFactoryCACycfc",
+            "moduleName": "MapboxMapObjC",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@MapboxMapObjC@objc(cs)MapViewFactory",
+        "mangledName": "$s13MapboxMapObjC0B11ViewFactoryC",
+        "moduleName": "MapboxMapObjC",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "Import",
+        "name": "MapboxMaps",
+        "printedName": "MapboxMaps",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ResourceOptions",
+        "printedName": "ResourceOptions",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ResourceOptions",
+                "printedName": "MapboxMaps.ResourceOptions",
+                "usr": "s:10MapboxMaps15ResourceOptionsV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ResourceOptions",
+                "printedName": "MapboxCoreMaps.ResourceOptions",
+                "usr": "c:objc(cs)MBMResourceOptions"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:10MapboxMaps15ResourceOptionsV0A7MapObjCEyACSo011MBMResourceD0Ccfc",
+            "mangledName": "$s10MapboxMaps15ResourceOptionsV0A7MapObjCEyACSo011MBMResourceD0Ccfc",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:10MapboxMaps15ResourceOptionsV",
+        "mangledName": "$s10MapboxMaps15ResourceOptionsV",
+        "moduleName": "MapboxMaps",
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": []
+}

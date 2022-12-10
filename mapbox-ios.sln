@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapbox.iOSQs", "demo\Mapbox.iOSQs\Mapbox.iOSQs.csproj", "{3A2E7243-0208-4292-92B4-8C25F27B9843}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapbox.iOSQs", "qs\Mapbox.iOSQs\Mapbox.iOSQs.csproj", "{3A2E7243-0208-4292-92B4-8C25F27B9843}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{D8F96117-BE6D-4B99-A089-3119F86961BB}"
 	ProjectSection(SolutionItems) = preProject
 		mapboxmaps-ios.nuspec = mapboxmaps-ios.nuspec
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{22E7F713-BE34-4A11-939A-E358DA858995}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "qs", "qs", "{22E7F713-BE34-4A11-939A-E358DA858995}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{E9AD48E2-739E-4E0D-97E4-A492512B1445}"
 EndProject
