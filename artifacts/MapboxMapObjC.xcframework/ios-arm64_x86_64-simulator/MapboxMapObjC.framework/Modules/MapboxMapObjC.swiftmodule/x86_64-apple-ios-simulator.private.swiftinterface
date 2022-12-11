@@ -8,17 +8,23 @@ import MapboxMaps
 import Swift
 import _Concurrency
 import _StringProcessing
-@_inheritsConvenienceInitializers @objc open class MapInitOptionsFactory : ObjectiveC.NSObject {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class MapInitOptionsFactory : ObjectiveC.NSObject {
   @objc public static func create(resourceOptions: MapboxCoreMaps.ResourceOptions? = nil, mapOptions: MapboxCoreMaps.MapOptions? = nil, cameraOptions: MapboxCoreMaps.CameraOptions? = nil, stylePath: Swift.String?) -> MapboxMaps.MapInitOptions
   @objc public static func create(resourceOptions: MapboxCoreMaps.ResourceOptions? = nil, mapOptions: MapboxCoreMaps.MapOptions? = nil, cameraOptions: MapboxCoreMaps.CameraOptions? = nil, styleURI: Foundation.URL?) -> MapboxMaps.MapInitOptions
-  @objc override dynamic public init()
   @objc deinit
+}
+extension MapboxMaps.MapInitOptions {
+  @objc final public func options() -> Foundation.NSArray
 }
 extension MapboxMaps.ResourceOptions {
   public init(_ objcValue: MapboxCoreMaps.ResourceOptions)
 }
-@_inheritsConvenienceInitializers @objc open class MapViewFactory : ObjectiveC.NSObject {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class MapViewFactory : ObjectiveC.NSObject {
   @objc public static func create(frame: CoreFoundation.CGRect, options: MapboxMaps.MapInitOptions?) -> MapboxMaps.MapView
-  @objc override dynamic public init()
   @objc deinit
+}
+extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLocationDelegate(_ delegate: MapboxMaps.LocationPermissionsDelegate)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func requestTemporaryFullAccuracyPermissions(_ customKey: Swift.String)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func puck2D()
 }

@@ -66,6 +66,8 @@ namespace Mapbox.iOSQs
             );
             this.View.AddSubview(mapView);
 
+            mapView.Puck2D();
+
             //         mapView.SetCenterCoordinate(new CLLocationCoordinate2D(21.028511, 105.804817), 11, false);
 
             //         var temple = new MGLPointAnnotation()

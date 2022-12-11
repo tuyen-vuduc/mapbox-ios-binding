@@ -231,6 +231,7 @@ using UInt = size_t;
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import CoreFoundation;
+@import MapboxMaps;
 @import ObjectiveC;
 #endif
 
@@ -254,27 +255,46 @@ using UInt = size_t;
 #if defined(__OBJC__)
 
 
+@class NSArray;
+
+@interface MapInitOptions (SWIFT_EXTENSION(MapboxMapObjC))
+- (NSArray * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class MBMResourceOptions;
 @class MBMMapOptions;
 @class MBMCameraOptions;
 @class NSString;
-@class MapInitOptions;
 @class NSURL;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 @interface MapInitOptionsFactory : NSObject
+/// :nodoc:
+/// See https://developer.apple.com/forums/thread/650054 for context
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 + (MapInitOptions * _Nonnull)createWithResourceOptions:(MBMResourceOptions * _Nullable)resourceOptions mapOptions:(MBMMapOptions * _Nullable)mapOptions cameraOptions:(MBMCameraOptions * _Nullable)cameraOptions stylePath:(NSString * _Nullable)stylePath SWIFT_WARN_UNUSED_RESULT;
 + (MapInitOptions * _Nonnull)createWithResourceOptions:(MBMResourceOptions * _Nullable)resourceOptions mapOptions:(MBMMapOptions * _Nullable)mapOptions cameraOptions:(MBMCameraOptions * _Nullable)cameraOptions styleURI:(NSURL * _Nullable)styleURI SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class MapView;
+@protocol LocationPermissionsDelegate;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)setLocationDelegate:(id <LocationPermissionsDelegate> _Nonnull)delegate;
+- (void)requestTemporaryFullAccuracyPermissions:(NSString * _Nonnull)customKey;
+- (void)puck2D;
+@end
+
 
 SWIFT_CLASS("_TtC13MapboxMapObjC14MapViewFactory")
 @interface MapViewFactory : NSObject
+/// :nodoc:
+/// See https://developer.apple.com/forums/thread/650054 for context
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 + (MapView * _Nonnull)createWithFrame:(CGRect)frame options:(MapInitOptions * _Nullable)options SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 #endif
