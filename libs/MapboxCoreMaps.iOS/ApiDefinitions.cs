@@ -2313,11 +2313,11 @@ namespace MapboxCoreMaps
 		MBMViewAnnotationPositionDescriptor FromGeometry(MBXGeometry value);
 
 		// + (nonnull instancetype)fromFeature:(nonnull MBXFeature *)value;
-		[Static, Export("fromGeometry:")]
+		[Static, Export("fromFeature:")]
 		MBMViewAnnotationPositionDescriptor FromFeature(MBXFeature value);
 
 		// + (nonnull instancetype)fromNSArray:(nonnull NSArray<MBXFeature *> *)value;
-		[Static, Export("fromGeometry:")]
+		[Static, Export("fromNSArray:")]
 		MBMViewAnnotationPositionDescriptor FromArray(MBXFeature[] value);
 
 		// + (nonnull instancetype)fromNSString:(nonnull NSString *)value;
