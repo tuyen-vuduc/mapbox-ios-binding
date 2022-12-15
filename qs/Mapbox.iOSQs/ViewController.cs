@@ -58,12 +58,18 @@ namespace Mapbox.iOSQs
             var myResourceOptions = new MBMResourceOptions(
                 "pk.eyJ1IjoidHV5ZW52IiwiYSI6ImNsMnpzNzh4NjBnNG0zZHBzYTFmYmxhOWUifQ.Az2oICdp9k0Hb5tu_M8b-g", // TODO Put your token here
                 null, null, null, null);
-            var myMapInitOptions = MapInitOptionsFactory.CreateWithResourceOptions(myResourceOptions, null, null, (string)null);
+            var mmapOptions = new MBMCameraOptions(
+                new CLLocation(21.0278, 105.8342),
+                null, null, 11, null, null
+            );
+            var myMapInitOptions = MapInitOptionsFactory.CreateWithResourceOptions(myResourceOptions, null, mmapOptions, (string)null);
             // Perform any additional setup after loading the view, typically from a nib.
             var mapView = MapViewFactory.CreateWithFrame(
                 View.Bounds,
                 myMapInitOptions
             );
+            //mapView.Center = new CoreGraphics.CGPoint(21.0278, 105.8342);
+
             this.View.AddSubview(mapView);
 
             mapView.Puck2D();
