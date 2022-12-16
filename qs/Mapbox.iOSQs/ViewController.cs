@@ -56,7 +56,7 @@ namespace Mapbox.iOSQs
             base.ViewDidLoad();
 
             var myResourceOptions = new MBMResourceOptions(
-                "pk.eyJ1IjoidHV5ZW52IiwiYSI6ImNsMnpzNzh4NjBnNG0zZHBzYTFmYmxhOWUifQ.Az2oICdp9k0Hb5tu_M8b-g", // TODO Put your token here
+                "YOUR_MAPBOX_TOKEN", // TODO Put your token here
                 null, null, null, null);
             var mmapOptions = new MBMCameraOptions(
                 new CLLocation(21.0278, 105.8342),

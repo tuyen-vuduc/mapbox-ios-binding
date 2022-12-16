@@ -14,44 +14,20 @@ Install-Package MapboxMapObjC.iOS
 ## Usage
 
 - 1/ How to use: Please follow the official guide [here](https://www.mapbox.com/ios-sdk/).
-- 2/ Atm, Xamarin.iOS not officially support XCFramework for a binding library yet: please download and include xcframeworks to your iOS project as below example
+- 2/ Create `Mapbox.iOSQs.props` file from `Mapbox.iOSQs.props.template`
+- 3/ Replace `YOUR_MAPBOX_DOWNLOADS_TOKEN` with your real token from Mapbox
 ```
-  <ItemGroup>
-    <NativeReference Include="..\..\artifacts\MapboxCommon.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\..\artifacts\MapboxCoreMaps.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\..\artifacts\MapboxMaps.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\..\artifacts\MapboxMobileEvents.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\..\artifacts\Turf.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\..\artifacts\MapboxMapObjC.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-  </ItemGroup>
+<MAPBOX_DOWNLOADS_TOKEN>YOUR_MAPBOX_DOWNLOADS_TOKEN</MAPBOX_DOWNLOADS_TOKEN>
 ```
+
 - 3/ Replace [your Mapbox access token](https://account.mapbox.com/) in `ViewController.cs`
 ```
 var myResourceOptions = new MBMResourceOptions(
-                "your access token", // TODO Put your token here
+                "YOUR_MAPBOX_TOKEN", // TODO Put your token here
                 null, null, null, null);
 ```
 
-
-## Upgrade
+## How to upgrade
 It takes time to do the binding library and/or upgrade it. Microsoft intends to make it a lot simpler in the future, but not now.
 
 Here are steps if you want to make changes and/or upgrade to the libraries
@@ -65,9 +41,17 @@ Here are steps if you want to make changes and/or upgrade to the libraries
 - 7/ Run `sh build.sh` to create nuget packages
 - 8/ Commit and create a PR
 
-```
-msbuild -t:Restore,Rebuild,Pack -p:Configuration=Release,PackageOutputPath=$PWD/nugets
-```
+## IMPROTANT
+Mapbox SDK for iOS now is written in Swift and not very compatible with Objective-C, hence it won't be that friendly when doing the binding.
+I have to create an additional framework to make the bridge between Swift & C# in Objective-C, it's really a time consuming task. 
+It'll require support from the developers like you in the community.
+
+## Maintainer
+This project is maintained by [tuyen-vuduc](https://github.com/tuyen-vuduc) in his spare time and/or when requested.<br>
+
+If you find this project is helpful, please give it a star, become a sponsor of the project and/or buy him a coffee.
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/tuyen.vuduc)
 
 ## License
 
