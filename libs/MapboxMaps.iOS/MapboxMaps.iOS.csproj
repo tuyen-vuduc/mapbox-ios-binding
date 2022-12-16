@@ -108,7 +108,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Xamarin.Swift">
-      <Version>1.0.9</Version>
+      <Version>1.0.11</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

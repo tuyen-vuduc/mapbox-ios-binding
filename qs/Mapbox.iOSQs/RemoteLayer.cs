@@ -28,7 +28,8 @@ namespace Mapbox.Shared
             set;
         }
 
-        public LayerMetadata Metadata {
+        public LayerMetadata Metadata
+        {
             get;
             set;
         }
@@ -36,7 +37,7 @@ namespace Mapbox.Shared
 
     public class LayerLayout
     {
-		[JsonProperty(PropertyName = "icon-image")]
+        [JsonProperty(PropertyName = "icon-image")]
         public object IconImage
         {
             get;
@@ -44,7 +45,8 @@ namespace Mapbox.Shared
         }
     }
 
-    public class IconImageWithStops {
+    public class IconImageWithStops
+    {
         public int Base
         {
             get;
@@ -80,16 +82,18 @@ namespace Mapbox.Shared
         }
     }
 
-    public class StyleMetadata {
-		[JsonProperty(PropertyName = "mapbox:groups")]
-		public Dictionary<string, MapboxGroup> Groups
-		{
-			get;
-			set;
-		}
+    public class StyleMetadata
+    {
+        [JsonProperty(PropertyName = "mapbox:groups")]
+        public Dictionary<string, MapboxGroup> Groups
+        {
+            get;
+            set;
+        }
     }
 
-    public class LayerMetadata {
+    public class LayerMetadata
+    {
         [JsonProperty(PropertyName = "mapbox:group")]
         public string GroupId
         {

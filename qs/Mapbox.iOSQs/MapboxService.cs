@@ -7,11 +7,12 @@ using Newtonsoft.Json;
 
 namespace Mapbox.Shared
 {
-    public interface IMapboxService {
+    public interface IMapboxService
+    {
         Task<RemoteLayer[]> GetLayers(string owner, string styleId, string accessToken);
         Task<RemoteStyle> GetStyleDetails(string owner, string styleId, string accessToken);
     }
-    public class MapboxService: IMapboxService
+    public class MapboxService : IMapboxService
     {
         private HttpClient client;
         public MapboxService()
@@ -27,8 +28,8 @@ namespace Mapbox.Shared
 
         public async Task<RemoteStyle> GetStyleDetails(string owner, string styleId, string accessToken)
         {
-			var url = $"https://api.mapbox.com/styles/v1/{owner}/{styleId}?access_token={accessToken}";
-			var response = await client.GetAsync(url);
+            var url = $"https://api.mapbox.com/styles/v1/{owner}/{styleId}?access_token={accessToken}";
+            var response = await client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var jsonStr = await response.Content.ReadAsStringAsync();

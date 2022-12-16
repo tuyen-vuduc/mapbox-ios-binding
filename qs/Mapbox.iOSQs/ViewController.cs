@@ -2,9 +2,9 @@
 using System.Diagnostics;
 using CoreLocation;
 using Foundation;
+using UIKit;
 using MapboxCoreMaps;
 using MapboxMaps;
-using UIKit;
 using MapboxMapsObjC;
 
 namespace Mapbox.iOSQs
@@ -17,7 +17,7 @@ namespace Mapbox.iOSQs
             // Note: this .ctor should not contain any initialization logic.
         }
 
-		public T GetValueFromExpression<T>(NSExpression expr) where T : NSObject
+        public T GetValueFromExpression<T>(NSExpression expr) where T : NSObject
         {
             if (expr == null) return default(T);
             switch (expr.ExpressionType)

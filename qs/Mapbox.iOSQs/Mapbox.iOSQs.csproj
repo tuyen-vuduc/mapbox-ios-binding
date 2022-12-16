@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Condition="EXISTS('Mapbox.iOSQs.props')" Project="Mapbox.iOSQs.props" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -100,6 +101,12 @@
     <PackageReference Include="System.Net.Http">
       <Version>4.3.4</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Build.Download">
+      <Version>0.11.4</Version>
+    </PackageReference>
+    <PackageReference Include="MapboxMapsObjC.iOS">
+      <Version>10.10.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -140,63 +147,10 @@
     <Compile Include="MapboxService.cs" />
     <Compile Include="RemoteLayer.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\libs\MapboxMobileEvents.iOS\MapboxMobileEvents.iOS.csproj">
-      <Project>{451C5BBC-A76F-4B90-B13D-394006A593FA}</Project>
-      <Name>MapboxMobileEvents.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\libs\MapboxTurf.iOS\MapboxTurf.iOS.csproj">
-      <Project>{F6367818-1DD9-425C-9D60-B0434617FBFF}</Project>
-      <Name>MapboxTurf.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\libs\MapboxCoreMaps.iOS\MapboxCoreMaps.iOS.csproj">
-      <Project>{E1105607-4EE9-4E78-AEF5-53EC6D02F081}</Project>
-      <Name>MapboxCoreMaps.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\libs\MapboxMaps.iOS\MapboxMaps.iOS.csproj">
-      <Project>{682AEE9E-B4F4-4BED-8D14-23582E4992FE}</Project>
-      <Name>MapboxMaps.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\libs\MapboxCommon.iOS\MapboxCommon.iOS.csproj">
-      <Project>{3788F231-896A-49C7-A28C-CE655F7B2A8E}</Project>
-      <Name>MapboxCommon.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\libs\MapboxMapsObjC.iOS\MapboxMapsObjC.iOS.csproj">
-      <Project>{D2089059-3E47-47A2-AAC2-E46EFACFAD84}</Project>
-      <Name>MapboxMapsObjC.iOS</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <NativeReference Include="..\..\artifacts\MapboxCommon.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-      <ForceLoad>True</ForceLoad>
-    </NativeReference>
-    <NativeReference Include="..\..\artifacts\MapboxCoreMaps.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-      <ForceLoad>True</ForceLoad>
-    </NativeReference>
-    <NativeReference Include="..\..\artifacts\MapboxMaps.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-      <ForceLoad>True</ForceLoad>
-    </NativeReference>
-    <NativeReference Include="..\..\artifacts\MapboxMobileEvents.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-      <ForceLoad>True</ForceLoad>
-    </NativeReference>
-    <NativeReference Include="..\..\artifacts\Turf.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-      <ForceLoad>True</ForceLoad>
-    </NativeReference>
-    <NativeReference Include="..\..\artifacts\MapboxMapObjC.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-      <ForceLoad>True</ForceLoad>
-    </NativeReference>
-  </ItemGroup>
+  <Target Name="DisplayMessages" AfterTargets="_CoreCompileImageAssets;">
+    <Message Text="MAPBOX_DOWNLOADS_TOKEN = $(MAPBOX_DOWNLOADS_TOKEN)" />
+    <Message Text="Project File Name = $(MSBuildProjectFile)" />
+    <Message Text="Project Extension = $(MSBuildProjectExtension)" />
+  </Target>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

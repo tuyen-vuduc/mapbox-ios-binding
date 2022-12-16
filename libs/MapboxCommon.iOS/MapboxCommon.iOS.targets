@@ -2,13 +2,14 @@
 
 <Project>
 	<PropertyGroup>
+		<_MapboxDownloadToken>$(MAPBOX_DOWNLOADS_TOKEN)</_MapboxDownloadToken>
 		<_MapboxCommonAssemblyName>MapboxCommon.iOS, Version=23.2.1, Culture=neutral, PublicKeyToken=null </_MapboxCommonAssemblyName>
 		<_MapboxMapsItemsFolder>MapboxMaps-10.10.0</_MapboxMapsItemsFolder>
 		<_MapboxMapsSDKBaseFolder>$(XamarinBuildDownloadDir)$(_MapboxMapsItemsFolder)\</_MapboxMapsSDKBaseFolder>
 	</PropertyGroup>
   <ItemGroup Condition="('$(OutputType)'!='Library' OR '$(IsAppExtension)'=='True')">
 	<XamarinBuildDownload Include="$(_MapboxMapsItemsFolder)">      
-		<Url>https://api.mapbox.com/downloads/v2/mobile-maps-ios/releases/ios/10.10.0/MapboxMaps.zip?access_token=$(MAPBOX_DOWNLOADS_TOKEN)</Url>
+		<Url>https://api.mapbox.com/downloads/v2/mobile-maps-ios/releases/ios/10.10.0/MapboxMaps.zip?access_token=$(_MapboxDownloadToken)</Url>
 		<Kind>Zip</Kind>
 	</XamarinBuildDownload>
     <NativeReference Include="$(_MapboxMapsSDKBaseFolder)artifacts\MapboxCommon.xcframework">
