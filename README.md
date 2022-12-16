@@ -65,6 +65,10 @@ Here are steps if you want to make changes and/or upgrade to the libraries
 - 7/ Run `sh build.sh` to create nuget packages
 - 8/ Commit and create a PR
 
+```
+msbuild -t:Restore,Rebuild,Pack -p:Configuration=Release,PackageOutputPath=$PWD/nugets
+```
+
 ## License
 
 Mapbox binding library for iOS itself is released under the MIT license.

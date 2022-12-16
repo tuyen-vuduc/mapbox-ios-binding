@@ -7,3 +7,4 @@ Podfile.lock
 sharpie/build
 sharpie/Pods
 ._*
+*.nupkg

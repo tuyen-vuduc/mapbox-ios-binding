@@ -11,6 +11,8 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>MapboxMobileEvents.iOS</AssemblyName>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <AssemblyVersion>1.0.10</AssemblyVersion>
+    <FileVersion>1.0.10</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +32,26 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>MapboxMobileEvents.iOS</PackageId>
+    <Title>Mapbox iOS SDK - MapboxMobileEvents</Title>
+    <Summary>C# bindings for Mapbox iOS SDK - MapboxMobileEvents</Summary>
+    <Description>C# bindings for Mapbox iOS SDK - MapboxMobileEvents</Description>
+    <Authors>tuyen</Authors>
+    <Owners>tuyen</Owners>
+    <Copyright>© tuyen-vuduc. All rights reserved.</Copyright>
+    <PackageIconUrl>https://avatars0.githubusercontent.com/u/600935</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/naxam/mapbox-ios-binding</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageVersion>1.0.10</PackageVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="MapboxMobileEvents.iOS.targets" Pack="True" PackagePath="build/MapboxMobileEvents.iOS.targets" />
+    <None Include="MapboxMobileEvents.iOS.targets" Pack="True" PackagePath="buildTransitive/MapboxMobileEvents.iOS.targets" />
+    <None Include="../../source/External-Dependency-Info.txt" Pack="True" PackagePath="THIRD-PARTY-NOTICES.txt" />
+    <None Include="../../LICENSE" Pack="True" PackagePath="" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Xamarin.iOS" />
@@ -45,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.4.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

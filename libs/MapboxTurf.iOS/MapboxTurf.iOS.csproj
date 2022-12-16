@@ -11,6 +11,8 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>MapboxTurf.iOS</AssemblyName>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <AssemblyVersion>2.6.1</AssemblyVersion>
+    <FileVersion>2.6.1</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +32,26 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>MapboxTurf.iOS</PackageId>
+    <Title>Mapbox iOS SDK - MapboxTurf</Title>
+    <Summary>C# bindings for Mapbox iOS SDK - MapboxTurf</Summary>
+    <Description>C# bindings for Mapbox iOS SDK - MapboxTurf</Description>
+    <Authors>tuyen</Authors>
+    <Owners>tuyen</Owners>
+    <Copyright>© tuyen-vuduc. All rights reserved.</Copyright>
+    <PackageIconUrl>https://avatars0.githubusercontent.com/u/600935</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/naxam/mapbox-ios-binding</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageVersion>2.6.1</PackageVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="MapboxTurf.iOS.targets" Pack="True" PackagePath="build/MapboxTurf.iOS.targets" />
+    <None Include="MapboxTurf.iOS.targets" Pack="True" PackagePath="buildTransitive/MapboxTurf.iOS.targets" />
+    <None Include="../../source/External-Dependency-Info.txt" Pack="True" PackagePath="THIRD-PARTY-NOTICES.txt" />
+    <None Include="../../LICENSE" Pack="True" PackagePath="" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Xamarin.iOS" />
@@ -47,6 +69,10 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.4.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Xamarin.Swift">
       <Version>1.0.9</Version>
     </PackageReference>

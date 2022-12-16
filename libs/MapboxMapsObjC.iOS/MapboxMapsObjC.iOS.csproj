@@ -11,6 +11,8 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>MapboxMapsObjC.iOS</AssemblyName>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <AssemblyVersion>10.10.0</AssemblyVersion>
+    <FileVersion>10.10.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +32,26 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>MapboxMapsObjC.iOS</PackageId>
+    <Title>Mapbox iOS SDK - MapboxMapsObjC</Title>
+    <Summary>C# bindings for Mapbox iOS SDK - MapboxMapsObjC</Summary>
+    <Description>C# bindings for Mapbox iOS SDK - MapboxMapsObjC</Description>
+    <Authors>tuyen</Authors>
+    <Owners>tuyen</Owners>
+    <Copyright>© tuyen-vuduc. All rights reserved.</Copyright>
+    <PackageIconUrl>https://avatars0.githubusercontent.com/u/600935</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/naxam/mapbox-ios-binding</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageVersion>10.10.0</PackageVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="MapboxMapsObjC.iOS.targets" Pack="True" PackagePath="build/MapboxMapsObjC.iOS.targets" />
+    <None Include="MapboxMapsObjC.iOS.targets" Pack="True" PackagePath="buildTransitive/MapboxMapsObjC.iOS.targets" />
+    <None Include="../../source/External-Dependency-Info.txt" Pack="True" PackagePath="THIRD-PARTY-NOTICES.txt" />
+    <None Include="../../LICENSE" Pack="True" PackagePath="" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Xamarin.iOS" />
@@ -45,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.4.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MapboxMaps.iOS\MapboxMaps.iOS.csproj">

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+	<PropertyGroup>
+		<_MapboxMapsObjCAssemblyName>MapboxMapsObjC.iOS, Version=10.10.0, Culture=neutral, PublicKeyToken=null </_MapboxMapsObjCAssemblyName>
+		<_MapboxMapsObjCItemsFolder>MapboxMapsObjC-10.10.0</_MapboxMapsObjCItemsFolder>
+		<_MapboxMapsObjCSDKBaseFolder>$(XamarinBuildDownloadDir)$(_MapboxMapsObjCItemsFolder)\</_MapboxMapsObjCSDKBaseFolder>
+	</PropertyGroup>
+  <ItemGroup Condition="('$(OutputType)'!='Library' OR '$(IsAppExtension)'=='True')">
+	<XamarinBuildDownload Include="$(_MapboxMapsObjCItemsFolder)">      
+		<Url>https://drive.google.com/uc?id=1gYkFBLDUt737UQAWqk5PijaPhvq63JOf&amp;export=download</Url>
+		<Kind>Zip</Kind>
+	</XamarinBuildDownload>
+    <NativeReference Include="$(_MapboxMapsObjCSDKBaseFolder)MapboxMapsObjC.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+    </NativeReference>
+  </ItemGroup>
+</Project>
