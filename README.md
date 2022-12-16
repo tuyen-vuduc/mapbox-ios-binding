@@ -15,6 +15,12 @@ Install-Package MapboxMapObjC.iOS
 
 - 1/ How to use: Please follow the official guide [here](https://www.mapbox.com/ios-sdk/).
 - 2/ Create `Mapbox.iOSQs.props` file from `Mapbox.iOSQs.props.template`
+```
+// It will look like this
+- Mapbox.iOSQS
+  |- Mapbox.iOSQs.csproj
+  |- Mapbox.iOSQs.props
+```
 - 3/ Replace `YOUR_MAPBOX_DOWNLOADS_TOKEN` with your real token from Mapbox
 ```
 <MAPBOX_DOWNLOADS_TOKEN>YOUR_MAPBOX_DOWNLOADS_TOKEN</MAPBOX_DOWNLOADS_TOKEN>
