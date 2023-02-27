@@ -1,6 +1,6 @@
 // This file is generated and will be overwritten automatically.
 
-#import <MapboxCommon/MBXUploadStatus.h>
+#import "MBXUploadStatus.h"
 
 @interface MBXUploadStatus ()
 - (nonnull instancetype)initWithUploadId:(uint64_t)uploadId

@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXResourceLoadErrorType_Internal.h>
+#import "MBXResourceLoadErrorType_Internal.h"
 
 NS_SWIFT_NAME(ResourceLoadError)
 __attribute__((visibility ("default")))

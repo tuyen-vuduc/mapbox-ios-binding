@@ -12,6 +12,10 @@
 		<data>
 		wSbw6ZEWwI4IDMJxXo/fU3xPLic=
 		</data>
+		<key>Headers/MBXDataRef.h</key>
+		<data>
+		RlugCkj6luxkFYUB5MuOG2zSyhg=
+		</data>
 		<key>Headers/MBXDownloadError.h</key>
 		<data>
 		0vX1V/JVobVbyi3c2TdoXFxZMwA=
@@ -46,7 +50,7 @@
 		</data>
 		<key>Headers/MBXHttpHeaders.h</key>
 		<data>
-		Oj5y2xNONF57ogc+MwmyXGOQwOA=
+		j4qhGeS1UPIax8SMOmSiT6Ishxg=
 		</data>
 		<key>Headers/MBXHttpMethod.h</key>
 		<data>
@@ -278,7 +282,7 @@
 		</data>
 		<key>Headers/MapboxCommon.h</key>
 		<data>
-		M3NgoSXq924bDShMN1I7OCIUC5w=
+		E71qfxXGCtwoVpFaKUNZUC34hsg=
 		</data>
 		<key>Headers/MapboxHttp.h</key>
 		<data>
@@ -318,7 +322,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		g4C6Xu/AomLDQXwogc0CwJTjG2o=
+		/dToHsIDTK0zhEiPtCLVV8TI2x0=
 		</data>
 		<key>Modules/MapboxCommon.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -829,6 +833,13 @@
 			mCc6z79r3kozTS0TDHasIjCqSRRmBJEyrKJBRFPw+KQ=
 			</data>
 		</dict>
+		<key>Headers/MBXDataRef.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			a0SVR2vFbAxv70BiNO6/FoGMyVGd5m1iv+78wjZ+HdQ=
+			</data>
+		</dict>
 		<key>Headers/MBXDownloadError.h</key>
 		<dict>
 			<key>hash2</key>
@@ -889,7 +900,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KAXlQW+GkN2BPTrnfFcQUi7Ki7GM2vgcCxk0l22u260=
+			l9slc3ah2wW1ZODPwDPD3VcwpeH1J5fX8Bw4BocPeHc=
 			</data>
 		</dict>
 		<key>Headers/MBXHttpMethod.h</key>
@@ -1295,7 +1306,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gwJn0p/JaboE+wek5vVmOyeTf9uGxbIOE0f7Mmm742U=
+			cvOb20kGNfXdx8hmNfMHYPdgXYEhotwrgn6i6rKQD+Y=
 			</data>
 		</dict>
 		<key>Headers/MapboxHttp.h</key>

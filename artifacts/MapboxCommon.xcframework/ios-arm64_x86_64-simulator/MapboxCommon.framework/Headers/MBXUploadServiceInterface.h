@@ -1,8 +1,8 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXResultCallback.h>
-#import <MapboxCommon/MBXUploadStatusCallback.h>
+#import "MBXResultCallback.h"
+#import "MBXUploadStatusCallback.h"
 
 @class MBXUploadOptions;
 

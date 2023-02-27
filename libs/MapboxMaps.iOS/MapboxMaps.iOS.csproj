@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <_NativeVersion>10.11.1</_NativeVersion>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{682AEE9E-B4F4-4BED-8D14-23582E4992FE}</ProjectGuid>
@@ -9,8 +12,8 @@
     <RootNamespace>MapboxMaps</RootNamespace>
     <AssemblyName>MapboxMaps.iOS</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyVersion>10.10.0</AssemblyVersion>
-    <FileVersion>10.10.0</FileVersion>
+    <AssemblyVersion>$(_NativeVersion)</AssemblyVersion>
+    <FileVersion>$(_NativeVersion)</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,9 +49,11 @@
     <PackageProjectUrl>https://github.com/naxam/mapbox-ios-binding</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageVersion>10.10.0</PackageVersion>
+    <PackageVersion>$(_NativeVersion)</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="../Mapbox.XamarinBuildDownload.targets" Pack="True" PackagePath="build/Mapbox.XamarinBuildDownload.targets" />
+    <None Include="../Mapbox.XamarinBuildDownload.targets" Pack="True" PackagePath="buildTransitive/Mapbox.XamarinBuildDownload.targets" />
     <None Include="MapboxMaps.iOS.targets" Pack="True" PackagePath="build/MapboxMaps.iOS.targets" />
     <None Include="MapboxMaps.iOS.targets" Pack="True" PackagePath="buildTransitive/MapboxMaps.iOS.targets" />
     <None Include="../../source/External-Dependency-Info.txt" Pack="True" PackagePath="THIRD-PARTY-NOTICES.txt" />

@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXConfigurationServiceGetConfigCallback_Internal.h>
+#import "MBXConfigurationServiceGetConfigCallback_Internal.h"
 
 @class MBXEventsServerOptions;
 @protocol MBXConfigurationServiceObserver;

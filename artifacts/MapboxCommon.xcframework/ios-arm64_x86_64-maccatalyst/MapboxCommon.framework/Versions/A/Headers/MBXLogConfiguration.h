@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXLoggingLevel.h>
+#import "MBXLoggingLevel.h"
 
 @protocol MBXLogWriterBackend;
 

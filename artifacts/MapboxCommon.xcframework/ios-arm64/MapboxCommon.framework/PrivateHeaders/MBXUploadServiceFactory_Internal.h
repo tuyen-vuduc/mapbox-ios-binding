@@ -1,6 +1,6 @@
 // This file is generated and will be overwritten automatically.
 
-#import <MapboxCommon/MBXUploadServiceFactory.h>
+#import "MBXUploadServiceFactory.h"
 
 @interface MBXUploadServiceFactory ()
 + (void)reset;

@@ -1,13 +1,13 @@
 // This file is generated and will be overwritten automatically.
 
-#import <MapboxCommon/MBXTileStore.h>
-#import <MapboxCommon/MBXResourceLoadProgressCallback_Internal.h>
-#import <MapboxCommon/MBXResourceLoadResultCallback_Internal.h>
-#import <MapboxCommon/MBXTileRegionBooleanCallback_Internal.h>
-#import <MapboxCommon/MBXTileRegionCallback_Internal.h>
-#import <MapboxCommon/MBXTileRegionGeometryCallback_Internal.h>
-#import <MapboxCommon/MBXTileRegionMetadataCallback_Internal.h>
-#import <MapboxCommon/MBXTileRegionsCallback_Internal.h>
+#import "MBXTileStore.h"
+#import "MBXResourceLoadProgressCallback_Internal.h"
+#import "MBXResourceLoadResultCallback_Internal.h"
+#import "MBXTileRegionBooleanCallback_Internal.h"
+#import "MBXTileRegionCallback_Internal.h"
+#import "MBXTileRegionGeometryCallback_Internal.h"
+#import "MBXTileRegionMetadataCallback_Internal.h"
+#import "MBXTileRegionsCallback_Internal.h"
 
 @interface MBXTileStore ()
 - (void)addObserverForObserver:(nonnull id<MBXTileStoreObserver>)observer NS_REFINED_FOR_SWIFT;

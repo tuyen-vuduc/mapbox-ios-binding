@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapboxCommon.iOS", "libs\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapboxMapsObjC.iOS", "libs\MapboxMapsObjC.iOS\MapboxMapsObjC.iOS.csproj", "{D2089059-3E47-47A2-AAC2-E46EFACFAD84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapbox.iOS.Turf", "Mapbox.iOS.Turf\Mapbox.iOS.Turf.csproj", "{968B8670-754D-4DBF-97C6-325DB3C401C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapboxTurf.iOS", "libs\MapboxTurf.iOS\MapboxTurf.iOS.csproj", "{968B8670-754D-4DBF-97C6-325DB3C401C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

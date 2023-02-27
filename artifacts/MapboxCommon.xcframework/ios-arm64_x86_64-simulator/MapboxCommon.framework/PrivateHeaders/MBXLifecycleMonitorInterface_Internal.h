@@ -1,8 +1,8 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXGetLifecycleMonitoringStateCallback_Internal.h>
-#import <MapboxCommon/MBXGetLifecycleStateCallback_Internal.h>
+#import "MBXGetLifecycleMonitoringStateCallback_Internal.h"
+#import "MBXGetLifecycleStateCallback_Internal.h"
 
 @protocol MBXLifecycleObserver;
 

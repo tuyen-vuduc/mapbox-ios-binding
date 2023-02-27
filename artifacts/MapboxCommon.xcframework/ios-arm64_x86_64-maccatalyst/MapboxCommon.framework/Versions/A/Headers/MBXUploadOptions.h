@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXNetworkRestriction.h>
+#import "MBXNetworkRestriction.h"
 
 /** Configuration of an upload session. */
 NS_SWIFT_NAME(UploadOptions)

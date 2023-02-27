@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXLoggingLevel.h>
+#import "MBXLoggingLevel.h"
 
 /** Interface for implementing log writing backends, e.g. for using platform specific log backends or logging to a notification service. */
 NS_SWIFT_NAME(LogWriterBackend)

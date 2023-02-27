@@ -389,6 +389,7 @@ SWIFT_CLASS("_TtC10MapboxMaps7MapView")
 
 
 
+
 /// APIs for managing map ornaments
 SWIFT_CLASS("_TtC10MapboxMaps16OrnamentsManager")
 @interface OrnamentsManager : NSObject

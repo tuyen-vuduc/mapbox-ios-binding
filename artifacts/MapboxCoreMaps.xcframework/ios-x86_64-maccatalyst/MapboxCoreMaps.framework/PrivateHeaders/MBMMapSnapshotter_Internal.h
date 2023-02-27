@@ -5,4 +5,5 @@
 
 @interface MBMMapSnapshotter ()
 - (void)startForCallback:(nonnull MBMSnapshotCompleteCallback)callback;
+- (void)reduceMemoryUse;
 @end

@@ -1,8 +1,8 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXLifecycleMonitoringState_Internal.h>
-#import <MapboxCommon/MBXLifecycleState_Internal.h>
+#import "MBXLifecycleMonitoringState_Internal.h"
+#import "MBXLifecycleState_Internal.h"
 
 NS_SWIFT_NAME(LifecycleObserver)
 @protocol MBXLifecycleObserver

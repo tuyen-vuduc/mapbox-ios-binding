@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXEventPriority_Internal.h>
+#import "MBXEventPriority_Internal.h"
 
 @class MBXDeferredDeliveryRequestOptions;
 

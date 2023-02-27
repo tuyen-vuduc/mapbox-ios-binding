@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXUploadErrorCode.h>
+#import "MBXUploadErrorCode.h"
 
 /** Structure to hold information about errors in the upload. */
 NS_SWIFT_NAME(UploadError)

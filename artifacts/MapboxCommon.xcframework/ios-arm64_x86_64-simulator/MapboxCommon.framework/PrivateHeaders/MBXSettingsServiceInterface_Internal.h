@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXOnValueChanged_Internal.h>
+#import "MBXOnValueChanged_Internal.h"
 @class MBXExpected<__covariant Value, __covariant Error>;
 
 NS_SWIFT_NAME(SettingsServiceInterface)

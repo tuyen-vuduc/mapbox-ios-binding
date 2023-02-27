@@ -1,6 +1,6 @@
 // This file is generated and will be overwritten automatically.
 
-#import <MapboxCommon/MBXLocationServiceFactory.h>
+#import "MBXLocationServiceFactory.h"
 
 @interface MBXLocationServiceFactory ()
 + (void)setUserDefinedForCustom:(nonnull id<MBXLocationService>)custom;

@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXUploadState.h>
+#import "MBXUploadState.h"
 @class MBXExpected<__covariant Value, __covariant Error>;
 
 @class MBXHttpRequestError;

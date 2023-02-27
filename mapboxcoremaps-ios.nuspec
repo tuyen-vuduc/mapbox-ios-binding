@@ -3,14 +3,14 @@
     <metadata>
         <!-- Required elements-->
         <id>MapboxCoreMaps.iOS</id>
-        <version>10.10.0</version>
+        <version>10.11.1</version>
         <authors>tuyen-vuduc</authors>
         <owners>tuyen-vuduc</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>MapboxCoreMaps iOS</title>
         <summary>Xamarin.iOS binding library for MapboxCoreMaps</summary>
         <description>Xamarin.iOS binding library for MapboxCoreMaps</description>
-        <releaseNotes>MapboxCoreMaps iOS v10.10.0</releaseNotes>
+        <releaseNotes>MapboxCoreMaps iOS v10.11.1</releaseNotes>
         <iconUrl>https://avatars0.githubusercontent.com/u/600935</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/tuyen-vuduc/mapbox-ios-binding</projectUrl>

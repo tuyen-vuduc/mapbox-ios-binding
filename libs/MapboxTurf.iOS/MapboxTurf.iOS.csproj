@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <_NativeVersion>2.6.1</_NativeVersion>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -11,8 +14,8 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>MapboxTurf.iOS</AssemblyName>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <AssemblyVersion>2.6.1</AssemblyVersion>
-    <FileVersion>2.6.1</FileVersion>
+    <AssemblyVersion>$(_NativeVersion)</AssemblyVersion>
+    <FileVersion>$(_NativeVersion)</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,9 +47,11 @@
     <PackageProjectUrl>https://github.com/naxam/mapbox-ios-binding</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageVersion>2.6.1</PackageVersion>
+    <PackageVersion>$(_NativeVersion)</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="../Mapbox.XamarinBuildDownload.targets" Pack="True" PackagePath="build/Mapbox.XamarinBuildDownload.targets" />
+    <None Include="../Mapbox.XamarinBuildDownload.targets" Pack="True" PackagePath="buildTransitive/Mapbox.XamarinBuildDownload.targets" />
     <None Include="MapboxTurf.iOS.targets" Pack="True" PackagePath="build/MapboxTurf.iOS.targets" />
     <None Include="MapboxTurf.iOS.targets" Pack="True" PackagePath="buildTransitive/MapboxTurf.iOS.targets" />
     <None Include="../../source/External-Dependency-Info.txt" Pack="True" PackagePath="THIRD-PARTY-NOTICES.txt" />

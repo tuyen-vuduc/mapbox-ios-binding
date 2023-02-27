@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXDeferredDeliveryOverflowPolicy_Internal.h>
+#import "MBXDeferredDeliveryOverflowPolicy_Internal.h"
 
 NS_SWIFT_NAME(DeferredDeliveryServiceOptions)
 __attribute__((visibility ("default")))

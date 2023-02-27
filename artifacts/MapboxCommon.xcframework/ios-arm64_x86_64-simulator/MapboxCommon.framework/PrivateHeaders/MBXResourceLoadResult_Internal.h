@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXResourceLoadStatus_Internal.h>
+#import "MBXResourceLoadStatus_Internal.h"
 
 @class MBXResourceData;
 

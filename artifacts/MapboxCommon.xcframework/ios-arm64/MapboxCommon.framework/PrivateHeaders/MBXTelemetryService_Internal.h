@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXFlushOperationResultCallback_Internal.h>
+#import "MBXFlushOperationResultCallback_Internal.h"
 
 @class MBXEventsServerOptions;
 

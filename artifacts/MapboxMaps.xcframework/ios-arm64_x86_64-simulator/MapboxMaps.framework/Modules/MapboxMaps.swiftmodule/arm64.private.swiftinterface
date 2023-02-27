@@ -18,6 +18,7 @@ import Swift
 @_exported import Turf
 import UIKit.UIGestureRecognizerSubclass
 import UIKit
+import WebKit
 import _Concurrency
 extension MapboxMaps.Expression {
   public enum Operator : Swift.String, Swift.Codable, Swift.CaseIterable {
@@ -127,6 +128,18 @@ public struct AnimationOwner : Swift.RawRepresentable, Swift.Equatable {
   public static let gestures: MapboxMaps.AnimationOwner
   public static let unspecified: MapboxMaps.AnimationOwner
 }
+extension MapboxMaps.PointAnnotation {
+  public struct Image : Swift.Hashable {
+    public var image: UIKit.UIImage
+    public var name: Swift.String
+    public init(image: UIKit.UIImage, name: Swift.String)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: MapboxMaps.PointAnnotation.Image, b: MapboxMaps.PointAnnotation.Image) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
 public protocol Annotation {
   var id: Swift.String { get }
   var geometry: MapboxMaps.Geometry { get }
@@ -226,6 +239,7 @@ public struct BackgroundLayer : MapboxMaps.Layer {
   public var backgroundOpacity: MapboxMaps.Value<Swift.Double>?
   public var backgroundOpacityTransition: MapboxMaps.StyleTransition?
   public var backgroundPattern: MapboxMaps.Value<MapboxMaps.ResolvedImage>?
+  @available(*, deprecated, message: "This property is deprecated and will be removed in the future. Setting this will have no effect.")
   public var backgroundPatternTransition: MapboxMaps.StyleTransition?
   public init(id: Swift.String)
   public func encode(to encoder: Swift.Encoder) throws
@@ -367,8 +381,8 @@ public struct CircleAnnotation : MapboxMaps.Annotation {
   public var userInfo: [Swift.String : Any]?
   public var isSelected: Swift.Bool
   public var isDraggable: Swift.Bool
-  public init(id: Swift.String = UUID().uuidString, point: Turf.Point)
-  public init(id: Swift.String = UUID().uuidString, centerCoordinate: CoreLocation.CLLocationCoordinate2D)
+  public init(id: Swift.String = UUID().uuidString, point: Turf.Point, isSelected: Swift.Bool = false, isDraggable: Swift.Bool = false)
+  public init(id: Swift.String = UUID().uuidString, centerCoordinate: CoreLocation.CLLocationCoordinate2D, isSelected: Swift.Bool = false, isDraggable: Swift.Bool = false)
   public var circleSortKey: Swift.Double? {
     get
     set
@@ -463,8 +477,9 @@ public struct CircleLayer : MapboxMaps.Layer {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
-public struct ClusterOptions {
+public struct ClusterOptions : Swift.Equatable {
   public init(circleRadius: MapboxMaps.Value<Swift.Double> = .constant(18), circleColor: MapboxMaps.Value<MapboxMaps.StyleColor> = .constant(StyleColor(.black)), textColor: MapboxMaps.Value<MapboxMaps.StyleColor> = .constant(StyleColor(.white)), textSize: MapboxMaps.Value<Swift.Double> = .constant(12), textField: MapboxMaps.Value<Swift.String> = .expression(Exp(.get) { "point_count" }), clusterRadius: Swift.Double = 50, clusterMaxZoom: Swift.Double = 14, clusterProperties: [Swift.String : MapboxMaps.Expression]? = nil)
+  public static func == (a: MapboxMaps.ClusterOptions, b: MapboxMaps.ClusterOptions) -> Swift.Bool
 }
 public class CompassDirectionFormatter {
   public enum Style : Swift.Hashable {
@@ -929,6 +944,8 @@ public struct Expression : Swift.Codable, Swift.CustomStringConvertible, Swift.E
   public init(_ op: MapboxMaps.Expression.Operator, @MapboxMaps.ExpressionArgumentBuilder content: () -> [MapboxMaps.Expression.Argument])
   public init(_ op: MapboxMaps.Expression.Operator)
   public init(operator op: MapboxMaps.Expression.Operator, arguments: [MapboxMaps.Expression.Argument])
+  public init(@MapboxMaps.ExpressionArgumentBuilder content: () -> [MapboxMaps.Expression.Argument])
+  public init(arguments: [MapboxMaps.Expression.Argument])
   public func encode(to encoder: Swift.Encoder) throws
   public var description: Swift.String {
     get
@@ -1030,13 +1047,27 @@ extension MapboxMaps.Expression {
   }
 }
 public struct FormatOptions : Swift.Codable, Swift.Equatable, MapboxMaps.ExpressionArgumentConvertible {
-  public var fontScale: Swift.Double?
-  public var textFont: [Swift.String]?
-  public var textColor: MapboxMaps.StyleColor?
+  public var fontScaleValue: MapboxMaps.Value<Swift.Double>?
+  public var fontScale: Swift.Double? {
+    get
+    set
+  }
+  public var textFontValue: MapboxMaps.Value<[Swift.String]>?
+  public var textFont: [Swift.String]? {
+    get
+    set
+  }
+  public var textColorValue: MapboxMaps.Value<MapboxMaps.StyleColor>?
+  public var textColor: MapboxMaps.StyleColor? {
+    get
+    set
+  }
   public var expressionArguments: [MapboxMaps.Expression.Argument] {
     get
   }
+  public init(fontScale: MapboxMaps.Value<Swift.Double>? = nil, textFont: MapboxMaps.Value<[Swift.String]>? = nil, textColor: MapboxMaps.Value<MapboxMaps.StyleColor>? = nil)
   public init(fontScale: Swift.Double? = nil, textFont: [Swift.String]? = nil, textColor: UIKit.UIColor? = nil)
+  public init()
   public static func == (a: MapboxMaps.FormatOptions, b: MapboxMaps.FormatOptions) -> Swift.Bool
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
@@ -1095,6 +1126,7 @@ public struct FillExtrusionLayer : MapboxMaps.Layer {
   public var fillExtrusionOpacity: MapboxMaps.Value<Swift.Double>?
   public var fillExtrusionOpacityTransition: MapboxMaps.StyleTransition?
   public var fillExtrusionPattern: MapboxMaps.Value<MapboxMaps.ResolvedImage>?
+  @available(*, deprecated, message: "This property is deprecated and will be removed in the future. Setting this will have no effect.")
   public var fillExtrusionPatternTransition: MapboxMaps.StyleTransition?
   public var fillExtrusionTranslate: MapboxMaps.Value<[Swift.Double]>?
   public var fillExtrusionTranslateTransition: MapboxMaps.StyleTransition?
@@ -1122,6 +1154,7 @@ public struct FillLayer : MapboxMaps.Layer {
   public var fillOutlineColor: MapboxMaps.Value<MapboxMaps.StyleColor>?
   public var fillOutlineColorTransition: MapboxMaps.StyleTransition?
   public var fillPattern: MapboxMaps.Value<MapboxMaps.ResolvedImage>?
+  @available(*, deprecated, message: "This property is deprecated and will be removed in the future. Setting this will have no effect.")
   public var fillPatternTransition: MapboxMaps.StyleTransition?
   public var fillTranslate: MapboxMaps.Value<[Swift.Double]>?
   public var fillTranslateTransition: MapboxMaps.StyleTransition?
@@ -1275,7 +1308,7 @@ public struct GestureOptions : Swift.Equatable {
   public var panMode: MapboxMaps.PanMode
   public var panDecelerationFactor: CoreGraphics.CGFloat
   public var focalPoint: CoreGraphics.CGPoint?
-  public init()
+  public init(panEnabled: Swift.Bool = true, pinchEnabled: Swift.Bool = true, rotateEnabled: Swift.Bool = true, simultaneousRotateAndPinchZoomEnabled: Swift.Bool = true, pinchZoomEnabled: Swift.Bool = true, pinchPanEnabled: Swift.Bool = true, pitchEnabled: Swift.Bool = true, doubleTapToZoomInEnabled: Swift.Bool = true, doubleTouchToZoomOutEnabled: Swift.Bool = true, quickZoomEnabled: Swift.Bool = true, panMode: MapboxMaps.PanMode = .horizontalAndVertical, panDecelerationFactor: CoreGraphics.CGFloat = UIScrollView.DecelerationRate.normal.rawValue, focalPoint: CoreGraphics.CGPoint? = nil)
   public static func == (a: MapboxMaps.GestureOptions, b: MapboxMaps.GestureOptions) -> Swift.Bool
 }
 public enum GestureType : Swift.Hashable, Swift.CaseIterable {
@@ -1444,6 +1477,7 @@ public struct LineLayer : MapboxMaps.Layer {
   public var lineColor: MapboxMaps.Value<MapboxMaps.StyleColor>?
   public var lineColorTransition: MapboxMaps.StyleTransition?
   public var lineDasharray: MapboxMaps.Value<[Swift.Double]>?
+  @available(*, deprecated, message: "This property is deprecated and will be removed in the future. Setting this will have no effect.")
   public var lineDasharrayTransition: MapboxMaps.StyleTransition?
   public var lineGapWidth: MapboxMaps.Value<Swift.Double>?
   public var lineGapWidthTransition: MapboxMaps.StyleTransition?
@@ -1453,6 +1487,7 @@ public struct LineLayer : MapboxMaps.Layer {
   public var lineOpacity: MapboxMaps.Value<Swift.Double>?
   public var lineOpacityTransition: MapboxMaps.StyleTransition?
   public var linePattern: MapboxMaps.Value<MapboxMaps.ResolvedImage>?
+  @available(*, deprecated, message: "This property is deprecated and will be removed in the future. Setting this will have no effect.")
   public var linePatternTransition: MapboxMaps.StyleTransition?
   public var lineTranslate: MapboxMaps.Value<[Swift.Double]>?
   public var lineTranslateTransition: MapboxMaps.StyleTransition?
@@ -1565,7 +1600,7 @@ public struct LocationOptions : Swift.Equatable {
   public var puckType: MapboxMaps.PuckType?
   public var puckBearingSource: MapboxMaps.PuckBearingSource
   public var puckBearingEnabled: Swift.Bool
-  public init()
+  public init(distanceFilter: CoreLocation.CLLocationDistance = kCLDistanceFilterNone, desiredAccuracy: CoreLocation.CLLocationAccuracy = kCLLocationAccuracyBest, activityType: CoreLocation.CLActivityType = .other, puckType: MapboxMaps.PuckType? = nil, puckBearingSource: MapboxMaps.PuckBearingSource = .heading, puckBearingEnabled: Swift.Bool = true)
   public static func == (a: MapboxMaps.LocationOptions, b: MapboxMaps.LocationOptions) -> Swift.Bool
 }
 public enum PuckBearingSource : Swift.Equatable {
@@ -2036,6 +2071,7 @@ public struct OrnamentOptions : Swift.Equatable {
   public var compass: MapboxMaps.CompassViewOptions
   public var logo: MapboxMaps.LogoViewOptions
   public var attributionButton: MapboxMaps.AttributionButtonOptions
+  public init(scaleBar: MapboxMaps.ScaleBarViewOptions = .init(), compass: MapboxMaps.CompassViewOptions = .init(), logo: MapboxMaps.LogoViewOptions = .init(), attributionButton: MapboxMaps.AttributionButtonOptions = .init())
   public static func == (a: MapboxMaps.OrnamentOptions, b: MapboxMaps.OrnamentOptions) -> Swift.Bool
 }
 public protocol OrnamentOptionsProtocol {
@@ -2047,6 +2083,7 @@ public struct ScaleBarViewOptions : MapboxMaps.OrnamentOptionsProtocol, Swift.Eq
   public var margins: CoreGraphics.CGPoint
   public var visibility: MapboxMaps.OrnamentVisibility
   public var useMetricUnits: Swift.Bool
+  public init(position: MapboxMaps.OrnamentPosition = .topLeading, margins: CoreGraphics.CGPoint = .init(x: 8.0, y: 8.0), visibility: MapboxMaps.OrnamentVisibility = .adaptive, useMetricUnits: Swift.Bool = Locale.current.usesMetricSystem)
   public static func == (a: MapboxMaps.ScaleBarViewOptions, b: MapboxMaps.ScaleBarViewOptions) -> Swift.Bool
 }
 public struct CompassViewOptions : MapboxMaps.OrnamentOptionsProtocol, Swift.Equatable {
@@ -2054,18 +2091,21 @@ public struct CompassViewOptions : MapboxMaps.OrnamentOptionsProtocol, Swift.Equ
   public var margins: CoreGraphics.CGPoint
   public var image: UIKit.UIImage?
   public var visibility: MapboxMaps.OrnamentVisibility
+  public init(position: MapboxMaps.OrnamentPosition = .topTrailing, margins: CoreGraphics.CGPoint = .init(x: 8.0, y: 8.0), image: UIKit.UIImage? = nil, visibility: MapboxMaps.OrnamentVisibility = .adaptive)
   public static func == (a: MapboxMaps.CompassViewOptions, b: MapboxMaps.CompassViewOptions) -> Swift.Bool
 }
 public struct AttributionButtonOptions : MapboxMaps.OrnamentOptionsProtocol, Swift.Equatable {
   public var position: MapboxMaps.OrnamentPosition
   public var margins: CoreGraphics.CGPoint
   @_spi(Restricted) public var visibility: MapboxMaps.OrnamentVisibility
+  public init(position: MapboxMaps.OrnamentPosition = .bottomTrailing, margins: CoreGraphics.CGPoint = .init(x: 8.0, y: 8.0))
   public static func == (a: MapboxMaps.AttributionButtonOptions, b: MapboxMaps.AttributionButtonOptions) -> Swift.Bool
 }
 public struct LogoViewOptions : MapboxMaps.OrnamentOptionsProtocol, Swift.Equatable {
   public var position: MapboxMaps.OrnamentPosition
   public var margins: CoreGraphics.CGPoint
   @_spi(Restricted) public var visibility: MapboxMaps.OrnamentVisibility
+  public init(position: MapboxMaps.OrnamentPosition = .bottomLeading, margins: CoreGraphics.CGPoint = .init(x: 8.0, y: 8.0))
   public static func == (a: MapboxMaps.LogoViewOptions, b: MapboxMaps.LogoViewOptions) -> Swift.Bool
 }
 public enum OrnamentPosition : Swift.String, Swift.Equatable {
@@ -2133,18 +2173,6 @@ public struct OverviewViewportStateOptions : Swift.Equatable {
   public init(geometry: Turf.GeometryConvertible, padding: UIKit.UIEdgeInsets = .zero, bearing: CoreLocation.CLLocationDirection? = 0, pitch: CoreGraphics.CGFloat? = 0, animationDuration: Foundation.TimeInterval = 1)
   public static func == (a: MapboxMaps.OverviewViewportStateOptions, b: MapboxMaps.OverviewViewportStateOptions) -> Swift.Bool
 }
-extension MapboxMaps.PointAnnotation {
-  public struct Image : Swift.Hashable {
-    public var image: UIKit.UIImage
-    public var name: Swift.String
-    public init(image: UIKit.UIImage, name: Swift.String)
-    public func hash(into hasher: inout Swift.Hasher)
-    public static func == (a: MapboxMaps.PointAnnotation.Image, b: MapboxMaps.PointAnnotation.Image) -> Swift.Bool
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-}
 public struct PointAnnotation : MapboxMaps.Annotation {
   public let id: Swift.String
   public var geometry: MapboxMaps.Geometry {
@@ -2154,8 +2182,8 @@ public struct PointAnnotation : MapboxMaps.Annotation {
   public var userInfo: [Swift.String : Any]?
   public var isSelected: Swift.Bool
   public var isDraggable: Swift.Bool
-  public init(id: Swift.String = UUID().uuidString, point: Turf.Point)
-  public init(id: Swift.String = UUID().uuidString, coordinate: CoreLocation.CLLocationCoordinate2D)
+  public init(id: Swift.String = UUID().uuidString, point: Turf.Point, isSelected: Swift.Bool = false, isDraggable: Swift.Bool = false)
+  public init(id: Swift.String = UUID().uuidString, coordinate: CoreLocation.CLLocationCoordinate2D, isSelected: Swift.Bool = false, isDraggable: Swift.Bool = false)
   public var iconAnchor: MapboxMaps.IconAnchor? {
     get
     set
@@ -2407,7 +2435,7 @@ public struct PolygonAnnotation : MapboxMaps.Annotation {
   public var userInfo: [Swift.String : Any]?
   public var isSelected: Swift.Bool
   public var isDraggable: Swift.Bool
-  public init(id: Swift.String = UUID().uuidString, polygon: Turf.Polygon)
+  public init(id: Swift.String = UUID().uuidString, polygon: Turf.Polygon, isSelected: Swift.Bool = false, isDraggable: Swift.Bool = false)
   public var fillSortKey: Swift.Double? {
     get
     set
@@ -2462,8 +2490,8 @@ public struct PolylineAnnotation : MapboxMaps.Annotation {
   public var userInfo: [Swift.String : Any]?
   public var isSelected: Swift.Bool
   public var isDraggable: Swift.Bool
-  public init(id: Swift.String = UUID().uuidString, lineString: Turf.LineString)
-  public init(id: Swift.String = UUID().uuidString, lineCoordinates: [CoreLocation.CLLocationCoordinate2D])
+  public init(id: Swift.String = UUID().uuidString, lineString: Turf.LineString, isSelected: Swift.Bool = false, isDraggable: Swift.Bool = false)
+  public init(id: Swift.String = UUID().uuidString, lineCoordinates: [CoreLocation.CLLocationCoordinate2D], isSelected: Swift.Bool = false, isDraggable: Swift.Bool = false)
   public var lineJoin: MapboxMaps.LineJoin? {
     get
     set
@@ -3500,6 +3528,7 @@ public protocol ViewportTransition : AnyObject {
 extension MapboxMaps.Expression.Operator : Swift.Equatable {}
 extension MapboxMaps.Expression.Operator : Swift.Hashable {}
 extension MapboxMaps.Expression.Operator : Swift.RawRepresentable {}
+extension MapboxMaps.PointAnnotationManager : MapboxMaps.AnnotationManager {}
 extension MapboxMaps.CircleAnnotationManager : MapboxMaps.AnnotationManager {}
 extension MapboxMaps.Visibility : Swift.Equatable {}
 extension MapboxMaps.Visibility : Swift.Hashable {}
@@ -3601,7 +3630,6 @@ extension MapboxMaps.OrnamentPosition : Swift.Hashable {}
 extension MapboxMaps.OrnamentPosition : Swift.RawRepresentable {}
 extension MapboxMaps.OrnamentVisibility : Swift.Hashable {}
 extension MapboxMaps.OrnamentVisibility : Swift.RawRepresentable {}
-extension MapboxMaps.PointAnnotationManager : MapboxMaps.AnnotationManager {}
 extension MapboxMaps.PolygonAnnotationManager : MapboxMaps.AnnotationManager {}
 extension MapboxMaps.PolylineAnnotationManager : MapboxMaps.AnnotationManager {}
 extension MapboxMaps.RenderMode : Swift.Equatable {}

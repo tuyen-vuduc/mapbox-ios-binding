@@ -1,6 +1,0 @@
-﻿namespace Mapbox.iOS.Turf
-{
-
-}
-
-

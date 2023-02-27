@@ -1,8 +1,8 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXLiveTrackingState.h>
-#import <MapboxCommon/MBXLocationClientStartStopCallback.h>
+#import "MBXLiveTrackingState.h"
+#import "MBXLocationClientStartStopCallback.h"
 
 @protocol MBXLiveTrackingClientObserver;
 

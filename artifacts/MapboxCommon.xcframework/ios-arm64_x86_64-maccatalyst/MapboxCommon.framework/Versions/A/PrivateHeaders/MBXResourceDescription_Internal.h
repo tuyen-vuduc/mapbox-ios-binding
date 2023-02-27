@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXTileDataDomain.h>
+#import "MBXTileDataDomain.h"
 
 NS_SWIFT_NAME(ResourceDescription)
 __attribute__((visibility ("default")))

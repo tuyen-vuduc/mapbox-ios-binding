@@ -1,9 +1,9 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXAccuracyAuthorization.h>
-#import <MapboxCommon/MBXGetLocationCallback_Internal.h>
-#import <MapboxCommon/MBXPermissionStatus.h>
+#import "MBXAccuracyAuthorization.h"
+#import "MBXGetLocationCallback_Internal.h"
+#import "MBXPermissionStatus.h"
 @class MBXExpected<__covariant Value, __covariant Error>;
 
 @class MBXLocation;

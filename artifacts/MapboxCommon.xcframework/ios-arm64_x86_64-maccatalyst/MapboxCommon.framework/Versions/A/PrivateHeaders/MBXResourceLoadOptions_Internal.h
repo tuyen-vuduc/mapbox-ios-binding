@@ -1,8 +1,8 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXNetworkRestriction.h>
-#import <MapboxCommon/MBXResourceLoadFlags_Internal.h>
+#import "MBXNetworkRestriction.h"
+#import "MBXResourceLoadFlags_Internal.h"
 
 NS_SWIFT_NAME(ResourceLoadOptions)
 __attribute__((visibility ("default")))

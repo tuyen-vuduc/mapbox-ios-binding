@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXLiveTrackingState.h>
+#import "MBXLiveTrackingState.h"
 @class MBXExpected<__covariant Value, __covariant Error>;
 
 @class MBXLocation;

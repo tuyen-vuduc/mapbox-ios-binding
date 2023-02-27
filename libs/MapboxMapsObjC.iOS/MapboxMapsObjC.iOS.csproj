@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <_NativeVersion>10.11.1</_NativeVersion>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -11,8 +14,8 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>MapboxMapsObjC.iOS</AssemblyName>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <AssemblyVersion>10.10.0</AssemblyVersion>
-    <FileVersion>10.10.0</FileVersion>
+    <AssemblyVersion>$(_NativeVersion)</AssemblyVersion>
+    <FileVersion>$(_NativeVersion)</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,7 +47,7 @@
     <PackageProjectUrl>https://github.com/naxam/mapbox-ios-binding</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageVersion>10.10.0</PackageVersion>
+    <PackageVersion>$(_NativeVersion)</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Include="MapboxMapsObjC.iOS.targets" Pack="True" PackagePath="build/MapboxMapsObjC.iOS.targets" />

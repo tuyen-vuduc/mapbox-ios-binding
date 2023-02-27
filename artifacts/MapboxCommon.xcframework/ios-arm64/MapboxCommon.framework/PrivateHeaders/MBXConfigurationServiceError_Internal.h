@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXConfigurationServiceErrorCode_Internal.h>
+#import "MBXConfigurationServiceErrorCode_Internal.h"
 
 NS_SWIFT_NAME(ConfigurationServiceError)
 __attribute__((visibility ("default")))

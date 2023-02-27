@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXTelemetryUtilsResponseCallback_Internal.h>
+#import "MBXTelemetryUtilsResponseCallback_Internal.h"
 
 NS_SWIFT_NAME(TelemetryUtils)
 __attribute__((visibility ("default")))
