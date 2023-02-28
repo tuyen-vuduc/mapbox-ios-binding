@@ -6,6 +6,7 @@ using UIKit;
 using MapboxCoreMaps;
 using MapboxMaps;
 using MapboxMapsObjC;
+using MapKit;
 
 namespace Mapbox.iOSQs
 {
@@ -55,24 +56,24 @@ namespace Mapbox.iOSQs
         {
             base.ViewDidLoad();
 
-            var myResourceOptions = new MBMResourceOptions(
-                "YOUR_MAPBOX_TOKEN", // TODO Put your token here
-                null, null, null, null);
-            var mmapOptions = new MBMCameraOptions(
-                new CLLocation(21.0278, 105.8342),
-                null, null, 11, null, null
-            );
-            var myMapInitOptions = MapInitOptionsFactory.CreateWithResourceOptions(myResourceOptions, null, mmapOptions, (string)null);
-            // Perform any additional setup after loading the view, typically from a nib.
-            var mapView = MapViewFactory.CreateWithFrame(
-                View.Bounds,
-                myMapInitOptions
-            );
+            //var myResourceOptions = new MBMResourceOptions(
+            //    "YOUR_MAPBOX_TOKEN", // TODO Put your token here
+            //    null, null, null, null);
+            //var mmapOptions = new MBMCameraOptions(
+            //    new CLLocation(21.0278, 105.8342),
+            //    null, null, 11, null, null
+            //);
+            //var myMapInitOptions = MapInitOptionsFactory.CreateWithResourceOptions(myResourceOptions, null, mmapOptions, (string)null);
+            //// Perform any additional setup after loading the view, typically from a nib.
+            //var mapView = MapViewFactory.CreateWithFrame(
+            //    View.Bounds,
+            //    myMapInitOptions
+            //);
             //mapView.Center = new CoreGraphics.CGPoint(21.0278, 105.8342);
 
-            this.View.AddSubview(mapView);
+            this.View.AddSubview(new MKMapView(View.Bounds));
 
-            mapView.Puck2D();
+            //mapView.Puck2D();
 
             //         mapView.SetCenterCoordinate(new CLLocationCoordinate2D(21.028511, 105.804817), 11, false);
 
