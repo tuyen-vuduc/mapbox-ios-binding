@@ -2,6 +2,7 @@ using CoreLocation;
 using Foundation;
 using MapboxCommon;
 using ObjCRuntime;
+using System;
 
 namespace MapboxCommon
 {
@@ -15,11 +16,11 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithData:(NSData * _Nonnull)data;
 		[Export ("initWithData:")]
-		NativeHandle Constructor (NSData data);
+		IntPtr Constructor (NSData data);
 
 		// -(instancetype _Nonnull)initWithMutableData:(NSMutableData * _Nonnull)mutableData;
 		[Export ("initWithMutableData:")]
-		NativeHandle Constructor (NSMutableData mutableData);
+		IntPtr Constructor (NSMutableData mutableData);
 
 		// -(void)withData:(MBXDataCallback _Nonnull)callback __attribute__((swift_name("withData(_:)")));
 		[Export ("withData:")]
@@ -45,7 +46,7 @@ namespace MapboxCommon
 
 		// -(instancetype _Nonnull)initWithIdentifier:(NSObject * _Nonnull)identifier geometry:(MBXGeometry * _Nonnull)geometry properties:(NSDictionary<NSString *,NSObject *> * _Nonnull)properties;
 		[Export ("initWithIdentifier:geometry:properties:")]
-		NativeHandle Constructor (NSObject identifier, MBXGeometry geometry, NSDictionary<NSString, NSObject> properties);
+		IntPtr Constructor (NSObject identifier, MBXGeometry geometry, NSDictionary<NSString, NSObject> properties);
 	}
 
 	// @interface MBXGeometry : NSObject
@@ -58,60 +59,57 @@ namespace MapboxCommon
 
 		// @property (readonly, assign) void * _Nonnull geometry;
 		[Export ("geometry", ArgumentSemantic.Assign)]
-		unsafe void* Geometry { get; }
+		unsafe IntPtr Geometry { get; }
 
 		// -(instancetype _Nonnull)initWithPoint:(NSValue * _Nonnull)location;
 		[Export ("initWithPoint:")]
-		NativeHandle Constructor (NSValue location);
+		IntPtr Constructor (NSValue location);
 
 		// -(instancetype _Nonnull)initWithLine:(NSArray<NSValue *> * _Nonnull)locations;
 		[Export ("initWithLine:")]
-		NativeHandle Constructor (NSValue[] locations);
+		IntPtr Constructor (NSValue[] locations);
 
 		// -(instancetype _Nonnull)initWithPolygon:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations;
 		[Export ("initWithPolygon:")]
-		NativeHandle Constructor (NSArray<NSValue>[] locations);
+		IntPtr Constructor (NSArray<NSValue>[] locations);
 
-		// -(instancetype _Nonnull)initWithMultiPoint:(NSArray<NSValue *> * _Nonnull)locations;
-		[Export ("initWithMultiPoint:")]
-		NativeHandle Constructor (NSValue[] locations);
+		// TODO add support method
+		// // -(instancetype _Nonnull)initWithMultiPoint:(NSArray<NSValue *> * _Nonnull)locations;
+		// [Export ("initWithMultiPoint:")]
+		// IntPtr Constructor (NSValue[] locations);
 
-		// -(instancetype _Nonnull)initWithMultiLine:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations;
-		[Export ("initWithMultiLine:")]
-		NativeHandle Constructor (NSArray<NSValue>[] locations);
+		// TODO add support method
+		// // -(instancetype _Nonnull)initWithMultiLine:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations;
+		// [Export ("initWithMultiLine:")]
+		// IntPtr Constructor (NSArray<NSValue>[] locations);
 
 		// -(instancetype _Nonnull)initWithMultiPolygon:(NSArray<NSArray<NSArray<NSValue *> *> *> * _Nonnull)locations;
 		[Export ("initWithMultiPolygon:")]
-		NativeHandle Constructor (NSArray<NSArray<NSValue>>[] locations);
+		IntPtr Constructor (NSArray<NSArray<NSValue>>[] locations);
 
 		// -(instancetype _Nonnull)initWithGeometryCollection:(NSArray<MBXGeometry *> * _Nonnull)geometries;
 		[Export ("initWithGeometryCollection:")]
-		NativeHandle Constructor (MBXGeometry[] geometries);
+		IntPtr Constructor (MBXGeometry[] geometries);
 
 		// -(NSValue * _Nullable)extractLocations;
 		[NullAllowed, Export ("extractLocations")]
-		[Verify (MethodToProperty)]
-		NSValue ExtractLocations { get; }
+		NSValue ExtractLocations ();
 
 		// -(NSArray<NSValue *> * _Nullable)extractLocationsArray;
 		[NullAllowed, Export ("extractLocationsArray")]
-		[Verify (MethodToProperty)]
-		NSValue[] ExtractLocationsArray { get; }
+		NSValue[] ExtractLocationsArray ();
 
 		// -(NSArray<NSArray<NSValue *> *> * _Nullable)extractLocations2DArray;
 		[NullAllowed, Export ("extractLocations2DArray")]
-		[Verify (MethodToProperty)]
-		NSArray<NSValue>[] ExtractLocations2DArray { get; }
+		NSArray<NSValue>[] ExtractLocations2DArray ();
 
 		// -(NSArray<NSArray<NSArray<NSValue *> *> *> * _Nullable)extractLocations3DArray;
 		[NullAllowed, Export ("extractLocations3DArray")]
-		[Verify (MethodToProperty)]
-		NSArray<NSArray<NSValue>>[] ExtractLocations3DArray { get; }
+		NSArray<NSArray<NSValue>>[] ExtractLocations3DArray();
 
 		// -(NSArray<MBXGeometry *> * _Nullable)extractGeometriesArray;
 		[NullAllowed, Export ("extractGeometriesArray")]
-		[Verify (MethodToProperty)]
-		MBXGeometry[] ExtractGeometriesArray { get; }
+		MBXGeometry[] ExtractGeometriesArray ();
 	}
 
 	// @interface MBXTilesetDescriptor : NSObject
@@ -137,7 +135,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithAppNameComponent:(NSString * _Nonnull)appNameComponent appVersionComponent:(NSString * _Nonnull)appVersionComponent appIdentifierComponent:(NSString * _Nonnull)appIdentifierComponent appBuildNumberComponent:(NSString * _Nonnull)appBuildNumberComponent osNameComponent:(NSString * _Nonnull)osNameComponent osVersionComponent:(NSString * _Nonnull)osVersionComponent sdkNameComponent:(NSString * _Nonnull)sdkNameComponent sdkVersionComponent:(NSString * _Nonnull)sdkVersionComponent sdkIdentifierComponent:(NSString * _Nonnull)sdkIdentifierComponent sdkBuildNumberComponent:(NSString * _Nonnull)sdkBuildNumberComponent;
 		[Export ("initWithAppNameComponent:appVersionComponent:appIdentifierComponent:appBuildNumberComponent:osNameComponent:osVersionComponent:sdkNameComponent:sdkVersionComponent:sdkIdentifierComponent:sdkBuildNumberComponent:")]
-		NativeHandle Constructor (string appNameComponent, string appVersionComponent, string appIdentifierComponent, string appBuildNumberComponent, string osNameComponent, string osVersionComponent, string sdkNameComponent, string sdkVersionComponent, string sdkIdentifierComponent, string sdkBuildNumberComponent);
+		IntPtr Constructor (string appNameComponent, string appVersionComponent, string appIdentifierComponent, string appBuildNumberComponent, string osNameComponent, string osVersionComponent, string sdkNameComponent, string sdkVersionComponent, string sdkIdentifierComponent, string sdkBuildNumberComponent);
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull appNameComponent;
 		[Export ("appNameComponent")]
@@ -187,11 +185,11 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithUrl:(NSString * _Nonnull)url headers:(NSDictionary<NSString *,NSString *> * _Nonnull)headers uaComponents:(MBXUAComponents * _Nonnull)uaComponents body:(NSData * _Nullable)body;
 		[Export ("initWithUrl:headers:uaComponents:body:")]
-		NativeHandle Constructor (string url, NSDictionary<NSString, NSString> headers, MBXUAComponents uaComponents, [NullAllowed] NSData body);
+		IntPtr Constructor (string url, NSDictionary<NSString, NSString> headers, MBXUAComponents uaComponents, [NullAllowed] NSData body);
 
 		// -(instancetype _Nonnull)initWithMethod:(MBXHttpMethod)method url:(NSString * _Nonnull)url headers:(NSDictionary<NSString *,NSString *> * _Nonnull)headers keepCompression:(BOOL)keepCompression timeout:(uint64_t)timeout networkRestriction:(MBXNetworkRestriction)networkRestriction uaComponents:(MBXUAComponents * _Nonnull)uaComponents body:(NSData * _Nullable)body;
 		[Export ("initWithMethod:url:headers:keepCompression:timeout:networkRestriction:uaComponents:body:")]
-		NativeHandle Constructor (MBXHttpMethod method, string url, NSDictionary<NSString, NSString> headers, bool keepCompression, ulong timeout, MBXNetworkRestriction networkRestriction, MBXUAComponents uaComponents, [NullAllowed] NSData body);
+		IntPtr Constructor (MBXHttpMethod method, string url, NSDictionary<NSString, NSString> headers, bool keepCompression, ulong timeout, MBXNetworkRestriction networkRestriction, MBXUAComponents uaComponents, [NullAllowed] NSData body);
 
 		// @property (readwrite, nonatomic) MBXHttpMethod method;
 		[Export ("method", ArgumentSemantic.Assign)]
@@ -233,7 +231,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithType:(MBXHttpRequestErrorType)type message:(NSString * _Nonnull)message;
 		[Export ("initWithType:message:")]
-		NativeHandle Constructor (MBXHttpRequestErrorType type, string message);
+		IntPtr Constructor (MBXHttpRequestErrorType type, string message);
 
 		// @property (readonly, nonatomic) MBXHttpRequestErrorType type;
 		[Export ("type")]
@@ -251,7 +249,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithHeaders:(NSDictionary<NSString *,NSString *> * _Nonnull)headers code:(int64_t)code data:(NSData * _Nonnull)data;
 		[Export ("initWithHeaders:code:data:")]
-		NativeHandle Constructor (NSDictionary<NSString, NSString> headers, long code, NSData data);
+		IntPtr Constructor (NSDictionary<NSString, NSString> headers, long code, NSData data);
 
 		// @property (readonly, copy, nonatomic) NSDictionary<NSString *,NSString *> * _Nonnull headers;
 		[Export ("headers", ArgumentSemantic.Copy)]
@@ -283,11 +281,11 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithRequest:(MBXHttpRequest * _Nonnull)request localPath:(NSString * _Nonnull)localPath;
 		[Export ("initWithRequest:localPath:")]
-		NativeHandle Constructor (MBXHttpRequest request, string localPath);
+		IntPtr Constructor (MBXHttpRequest request, string localPath);
 
 		// -(instancetype _Nonnull)initWithRequest:(MBXHttpRequest * _Nonnull)request localPath:(NSString * _Nonnull)localPath resume:(BOOL)resume;
 		[Export ("initWithRequest:localPath:resume:")]
-		NativeHandle Constructor (MBXHttpRequest request, string localPath, bool resume);
+		IntPtr Constructor (MBXHttpRequest request, string localPath, bool resume);
 
 		// @property (readwrite, nonatomic) MBXHttpRequest * _Nonnull request;
 		[Export ("request", ArgumentSemantic.Assign)]
@@ -309,7 +307,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithCode:(MBXDownloadErrorCode)code message:(NSString * _Nonnull)message;
 		[Export ("initWithCode:message:")]
-		NativeHandle Constructor (MBXDownloadErrorCode code, string message);
+		IntPtr Constructor (MBXDownloadErrorCode code, string message);
 
 		// @property (readonly, nonatomic) MBXDownloadErrorCode code;
 		[Export ("code")]
@@ -354,6 +352,8 @@ namespace MapboxCommon
 		MBXDownloadOptions DownloadOptions { get; set; }
 	}
 
+	partial interface IMBXHttpServiceInterface {}
+
 	// @interface MBXHttpServiceFactory : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -362,7 +362,7 @@ namespace MapboxCommon
 		// +(void)setUserDefinedForCustom:(id<MBXHttpServiceInterface> _Nonnull)custom;
 		[Static]
 		[Export ("setUserDefinedForCustom:")]
-		void SetUserDefinedForCustom (MBXHttpServiceInterface custom);
+		void SetUserDefinedForCustom (IMBXHttpServiceInterface custom);
 
 		// +(void)reset;
 		[Static]
@@ -372,8 +372,7 @@ namespace MapboxCommon
 		// +(id<MBXHttpServiceInterface> _Nonnull)getInstance __attribute__((ns_returns_retained));
 		[Static]
 		[Export ("getInstance")]
-		[Verify (MethodToProperty)]
-		MBXHttpServiceInterface Instance { get; }
+		IMBXHttpServiceInterface Instance { get; }
 	}
 
 	// @protocol MBXHttpServiceInterceptorInterface
@@ -413,6 +412,8 @@ namespace MapboxCommon
 	// typedef void (^MBXResultCallback)(BOOL);
 	delegate void MBXResultCallback (bool arg0);
 
+	partial interface IMBXHttpServiceInterceptorInterface {}
+
 	// @protocol MBXHttpServiceInterface
 	/*
   Check whether adding [Model] to this declaration is appropriate.
@@ -428,7 +429,7 @@ namespace MapboxCommon
 		// @required -(void)setInterceptorForInterceptor:(id<MBXHttpServiceInterceptorInterface> _Nullable)interceptor;
 		[Abstract]
 		[Export ("setInterceptorForInterceptor:")]
-		void SetInterceptorForInterceptor ([NullAllowed] MBXHttpServiceInterceptorInterface interceptor);
+		void SetInterceptorForInterceptor ([NullAllowed] IMBXHttpServiceInterceptorInterface interceptor);
 
 		// @required -(void)setMaxRequestsPerHostForMax:(uint8_t)max;
 		[Abstract]
@@ -448,7 +449,6 @@ namespace MapboxCommon
 		// @required -(BOOL)supportsKeepCompression;
 		[Abstract]
 		[Export ("supportsKeepCompression")]
-		[Verify (MethodToProperty)]
 		bool SupportsKeepCompression { get; }
 
 		// @required -(uint64_t)downloadForOptions:(MBXDownloadOptions * _Nonnull)options callback:(MBXDownloadStatusCallback _Nonnull)callback;
@@ -549,7 +549,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithLatitude:(double)latitude longitude:(double)longitude timestamp:(uint64_t)timestamp monotonicTimestamp:(NSNumber * _Nullable)monotonicTimestamp altitude:(NSNumber * _Nullable)altitude horizontalAccuracy:(NSNumber * _Nullable)horizontalAccuracy verticalAccuracy:(NSNumber * _Nullable)verticalAccuracy speed:(NSNumber * _Nullable)speed speedAccuracy:(NSNumber * _Nullable)speedAccuracy bearing:(NSNumber * _Nullable)bearing bearingAccuracy:(NSNumber * _Nullable)bearingAccuracy floor:(NSNumber * _Nullable)floor source:(NSString * _Nullable)source extra:(id _Nullable)extra;
 		[Export ("initWithLatitude:longitude:timestamp:monotonicTimestamp:altitude:horizontalAccuracy:verticalAccuracy:speed:speedAccuracy:bearing:bearingAccuracy:floor:source:extra:")]
-		NativeHandle Constructor (double latitude, double longitude, ulong timestamp, [NullAllowed] NSNumber monotonicTimestamp, [NullAllowed] NSNumber altitude, [NullAllowed] NSNumber horizontalAccuracy, [NullAllowed] NSNumber verticalAccuracy, [NullAllowed] NSNumber speed, [NullAllowed] NSNumber speedAccuracy, [NullAllowed] NSNumber bearing, [NullAllowed] NSNumber bearingAccuracy, [NullAllowed] NSNumber floor, [NullAllowed] string source, [NullAllowed] NSObject extra);
+		IntPtr Constructor (double latitude, double longitude, ulong timestamp, [NullAllowed] NSNumber monotonicTimestamp, [NullAllowed] NSNumber altitude, [NullAllowed] NSNumber horizontalAccuracy, [NullAllowed] NSNumber verticalAccuracy, [NullAllowed] NSNumber speed, [NullAllowed] NSNumber speedAccuracy, [NullAllowed] NSNumber bearing, [NullAllowed] NSNumber bearingAccuracy, [NullAllowed] NSNumber floor, [NullAllowed] string source, [NullAllowed] NSObject extra);
 
 		// @property (readonly, nonatomic) double latitude;
 		[Export ("latitude")]
@@ -615,7 +615,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithCode:(MBXLocationErrorCode)code message:(NSString * _Nonnull)message;
 		[Export ("initWithCode:message:")]
-		NativeHandle Constructor (MBXLocationErrorCode code, string message);
+		IntPtr Constructor (MBXLocationErrorCode code, string message);
 
 		// @property (readonly, nonatomic) MBXLocationErrorCode code;
 		[Export ("code")]
@@ -868,6 +868,8 @@ namespace MapboxCommon
 		string LifecycleMode { get; }
 	}
 
+	partial interface IMBXLogWriterBackend {}
+
 	// @interface MBXLogConfiguration : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -876,7 +878,7 @@ namespace MapboxCommon
 		// +(void)registerLogWriterBackendForLogWriter:(id<MBXLogWriterBackend> _Nullable)logWriter;
 		[Static]
 		[Export ("registerLogWriterBackendForLogWriter:")]
-		void RegisterLogWriterBackendForLogWriter ([NullAllowed] MBXLogWriterBackend logWriter);
+		void RegisterLogWriterBackendForLogWriter ([NullAllowed] IMBXLogWriterBackend logWriter);
 
 		// +(void)setLoggingLevelForUpTo:(NSNumber * _Nullable)upTo;
 		[Static]
@@ -886,7 +888,6 @@ namespace MapboxCommon
 		// +(NSNumber * _Nullable)getLoggingLevel __attribute__((ns_returns_retained));
 		[Static]
 		[NullAllowed, Export ("getLoggingLevel")]
-		[Verify (MethodToProperty)]
 		NSNumber LoggingLevel { get; }
 
 		// +(void)setLoggingLevelForCategory:(NSString * _Nonnull)category upTo:(NSNumber * _Nullable)upTo;
@@ -935,13 +936,11 @@ namespace MapboxCommon
 
 		// -(BOOL)isMapboxStackConnected;
 		[Export ("isMapboxStackConnected")]
-		[Verify (MethodToProperty)]
 		bool IsMapboxStackConnected { get; }
 
 		// +(MBXOfflineSwitch * _Nonnull)getInstance __attribute__((ns_returns_retained));
 		[Static]
 		[Export ("getInstance")]
-		[Verify (MethodToProperty)]
 		MBXOfflineSwitch Instance { get; }
 
 		// +(void)reset;
@@ -988,8 +987,7 @@ namespace MapboxCommon
 		// +(MBXTileStore * _Nonnull)create __attribute__((ns_returns_retained)) __attribute__((swift_private));
 		[Static]
 		[Export ("create")]
-		[Verify (MethodToProperty)]
-		MBXTileStore Create { get; }
+		MBXTileStore Create();
 
 		// -(MBXCancelable * _Nonnull)loadTileRegionForId:(NSString * _Nonnull)id loadOptions:(MBXTileRegionLoadOptions * _Nonnull)loadOptions __attribute__((ns_returns_retained)) __attribute__((swift_private));
 		[Export ("loadTileRegionForId:loadOptions:")]
@@ -1015,7 +1013,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id requiredResourceCount:(uint64_t)requiredResourceCount completedResourceCount:(uint64_t)completedResourceCount completedResourceSize:(uint64_t)completedResourceSize expires:(NSDate * _Nullable)expires;
 		[Export ("initWithId:requiredResourceCount:completedResourceCount:completedResourceSize:expires:")]
-		NativeHandle Constructor (string id, ulong requiredResourceCount, ulong completedResourceCount, ulong completedResourceSize, [NullAllowed] NSDate expires);
+		IntPtr Constructor (string id, ulong requiredResourceCount, ulong completedResourceCount, ulong completedResourceSize, [NullAllowed] NSDate expires);
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -1045,7 +1043,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithCompletedResourceCount:(uint64_t)completedResourceCount completedResourceSize:(uint64_t)completedResourceSize erroredResourceCount:(uint64_t)erroredResourceCount requiredResourceCount:(uint64_t)requiredResourceCount loadedResourceCount:(uint64_t)loadedResourceCount loadedResourceSize:(uint64_t)loadedResourceSize;
 		[Export ("initWithCompletedResourceCount:completedResourceSize:erroredResourceCount:requiredResourceCount:loadedResourceCount:loadedResourceSize:")]
-		NativeHandle Constructor (ulong completedResourceCount, ulong completedResourceSize, ulong erroredResourceCount, ulong requiredResourceCount, ulong loadedResourceCount, ulong loadedResourceSize);
+		IntPtr Constructor (ulong completedResourceCount, ulong completedResourceSize, ulong erroredResourceCount, ulong requiredResourceCount, ulong loadedResourceCount, ulong loadedResourceSize);
 
 		// @property (readonly, nonatomic) uint64_t completedResourceCount;
 		[Export ("completedResourceCount")]
@@ -1079,7 +1077,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithType:(MBXTileRegionErrorType)type message:(NSString * _Nonnull)message;
 		[Export ("initWithType:message:")]
-		NativeHandle Constructor (MBXTileRegionErrorType type, string message);
+		IntPtr Constructor (MBXTileRegionErrorType type, string message);
 
 		// @property (readonly, nonatomic) MBXTileRegionErrorType type;
 		[Export ("type")]
@@ -1097,11 +1095,11 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithGeometry:(MBXGeometry * _Nullable)geometry descriptors:(NSArray<MBXTilesetDescriptor *> * _Nullable)descriptors metadata:(id _Nullable)metadata startLocation:(CLLocation * _Nullable)startLocation averageBytesPerSecond:(NSNumber * _Nullable)averageBytesPerSecond extraOptions:(id _Nullable)extraOptions __attribute__((swift_private));
 		[Export ("initWithGeometry:descriptors:metadata:startLocation:averageBytesPerSecond:extraOptions:")]
-		NativeHandle Constructor ([NullAllowed] MBXGeometry geometry, [NullAllowed] MBXTilesetDescriptor[] descriptors, [NullAllowed] NSObject metadata, [NullAllowed] CLLocation startLocation, [NullAllowed] NSNumber averageBytesPerSecond, [NullAllowed] NSObject extraOptions);
+		IntPtr Constructor ([NullAllowed] MBXGeometry geometry, [NullAllowed] MBXTilesetDescriptor[] descriptors, [NullAllowed] NSObject metadata, [NullAllowed] CLLocation startLocation, [NullAllowed] NSNumber averageBytesPerSecond, [NullAllowed] NSObject extraOptions);
 
 		// -(instancetype _Nonnull)initWithGeometry:(MBXGeometry * _Nullable)geometry descriptors:(NSArray<MBXTilesetDescriptor *> * _Nullable)descriptors metadata:(id _Nullable)metadata acceptExpired:(BOOL)acceptExpired networkRestriction:(MBXNetworkRestriction)networkRestriction startLocation:(CLLocation * _Nullable)startLocation averageBytesPerSecond:(NSNumber * _Nullable)averageBytesPerSecond extraOptions:(id _Nullable)extraOptions __attribute__((swift_private));
 		[Export ("initWithGeometry:descriptors:metadata:acceptExpired:networkRestriction:startLocation:averageBytesPerSecond:extraOptions:")]
-		NativeHandle Constructor ([NullAllowed] MBXGeometry geometry, [NullAllowed] MBXTilesetDescriptor[] descriptors, [NullAllowed] NSObject metadata, bool acceptExpired, MBXNetworkRestriction networkRestriction, [NullAllowed] CLLocation startLocation, [NullAllowed] NSNumber averageBytesPerSecond, [NullAllowed] NSObject extraOptions);
+		IntPtr Constructor ([NullAllowed] MBXGeometry geometry, [NullAllowed] MBXTilesetDescriptor[] descriptors, [NullAllowed] NSObject metadata, bool acceptExpired, MBXNetworkRestriction networkRestriction, [NullAllowed] CLLocation startLocation, [NullAllowed] NSNumber averageBytesPerSecond, [NullAllowed] NSObject extraOptions);
 
 		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT MBXGeometry * geometry __attribute__((swift_private));
 		[Export ("geometry")]
@@ -1168,11 +1166,11 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nonnull)filePath url:(NSString * _Nonnull)url headers:(NSDictionary<NSString *,NSString *> * _Nonnull)headers metadata:(NSString * _Nonnull)metadata mediaType:(NSString * _Nonnull)mediaType;
 		[Export ("initWithFilePath:url:headers:metadata:mediaType:")]
-		NativeHandle Constructor (string filePath, string url, NSDictionary<NSString, NSString> headers, string metadata, string mediaType);
+		IntPtr Constructor (string filePath, string url, NSDictionary<NSString, NSString> headers, string metadata, string mediaType);
 
 		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nonnull)filePath url:(NSString * _Nonnull)url headers:(NSDictionary<NSString *,NSString *> * _Nonnull)headers metadata:(NSString * _Nonnull)metadata mediaType:(NSString * _Nonnull)mediaType networkRestriction:(MBXNetworkRestriction)networkRestriction timeout:(uint64_t)timeout;
 		[Export ("initWithFilePath:url:headers:metadata:mediaType:networkRestriction:timeout:")]
-		NativeHandle Constructor (string filePath, string url, NSDictionary<NSString, NSString> headers, string metadata, string mediaType, MBXNetworkRestriction networkRestriction, ulong timeout);
+		IntPtr Constructor (string filePath, string url, NSDictionary<NSString, NSString> headers, string metadata, string mediaType, MBXNetworkRestriction networkRestriction, ulong timeout);
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull filePath;
 		[Export ("filePath")]
@@ -1210,7 +1208,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithCode:(MBXUploadErrorCode)code message:(NSString * _Nonnull)message;
 		[Export ("initWithCode:message:")]
-		NativeHandle Constructor (MBXUploadErrorCode code, string message);
+		IntPtr Constructor (MBXUploadErrorCode code, string message);
 
 		// @property (readonly, nonatomic) MBXUploadErrorCode code;
 		[Export ("code")]
@@ -1259,11 +1257,13 @@ namespace MapboxCommon
 		// +(void)setUserDefinedForCustom:(id<MBXUploadServiceInterface> _Nonnull)custom;
 		[Static]
 		[Export ("setUserDefinedForCustom:")]
-		void SetUserDefinedForCustom (MBXUploadServiceInterface custom);
+		void SetUserDefinedForCustom (IMBXUploadServiceInterface custom);
 	}
 
 	// typedef void (^MBXUploadStatusCallback)(MBXUploadStatus * _Nonnull);
 	delegate void MBXUploadStatusCallback (MBXUploadStatus arg0);
+
+	partial interface IMBXUploadServiceInterface {}
 
 	// @protocol MBXUploadServiceInterface
 	/*
