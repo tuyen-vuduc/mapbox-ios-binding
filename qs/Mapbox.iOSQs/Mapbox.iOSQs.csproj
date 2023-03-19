@@ -11,6 +11,7 @@
     <RootNamespace>Mapbox.iOSQs</RootNamespace>
     <AssemblyName>Mapbox.iOSQs</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <MAPBOX_DOWNLOADS_TOKEN>sk.eyJ1IjoidHV5ZW52ZCIsImEiOiJjbGV3MGkwaDAweWd5M3hvN2N2ZXEybmdkIn0.n00bx9mNdkQ6ld1o4WG_WQ</MAPBOX_DOWNLOADS_TOKEN>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -105,6 +106,18 @@
       <Version>0.11.4</Version>
     </PackageReference>
     <PackageReference Include="MapboxMapsObjC.iOS">
+      <Version>10.11.1</Version>
+    </PackageReference>
+    <PackageReference Include="MapboxCommon.iOS">
+      <Version>23.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="MapboxTurf.iOS">
+      <Version>2.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="MapboxMobileEvents.iOS">
+      <Version>1.0.10</Version>
+    </PackageReference>
+    <PackageReference Include="MapboxMaps.iOS">
       <Version>10.11.1</Version>
     </PackageReference>
   </ItemGroup>

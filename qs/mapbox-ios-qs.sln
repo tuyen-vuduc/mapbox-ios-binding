@@ -5,8 +5,6 @@ VisualStudioVersion = 25.0.1705.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapbox.iOSQs", "Mapbox.iOSQs\Mapbox.iOSQs.csproj", "{3A2E7243-0208-4292-92B4-8C25F27B9843}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapboxQs.iOS", "MapboxQs.iOS\MapboxQs.iOS.csproj", "{09514CC6-8479-45D0-B07D-32F8EB320A21}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -23,14 +21,6 @@ Global
 		{3A2E7243-0208-4292-92B4-8C25F27B9843}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{3A2E7243-0208-4292-92B4-8C25F27B9843}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{3A2E7243-0208-4292-92B4-8C25F27B9843}.Debug|iPhone.Build.0 = Debug|iPhone
-		{09514CC6-8479-45D0-B07D-32F8EB320A21}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{09514CC6-8479-45D0-B07D-32F8EB320A21}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{09514CC6-8479-45D0-B07D-32F8EB320A21}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{09514CC6-8479-45D0-B07D-32F8EB320A21}.Release|iPhone.Build.0 = Release|Any CPU
-		{09514CC6-8479-45D0-B07D-32F8EB320A21}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{09514CC6-8479-45D0-B07D-32F8EB320A21}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{09514CC6-8479-45D0-B07D-32F8EB320A21}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{09514CC6-8479-45D0-B07D-32F8EB320A21}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

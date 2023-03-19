@@ -29,7 +29,7 @@ function bind {
 }
 
 # bind MapboxMaps MapboxMaps 0
-# bind MapboxMapsObjC MapboxMapObjC 0
+bind MapboxMapsObjC MapboxMapObjC 0
 # bind MapboxCoreMaps MapboxCoreMaps 1
 # bind MapboxMobileEvents MapboxMobileEvents 1
 # bind MapboxCommon MapboxCommon 2

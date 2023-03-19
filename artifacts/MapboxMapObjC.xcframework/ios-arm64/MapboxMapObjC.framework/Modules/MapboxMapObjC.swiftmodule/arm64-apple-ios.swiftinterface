@@ -1,20 +1,92 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios15.4 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MapboxMapObjC
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import Foundation
 @_exported import MapboxMapObjC
 import MapboxMaps
+import MapboxMobileEvents
 import Swift
 import _Concurrency
 import _StringProcessing
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class MapInitOptionsFactory : ObjectiveC.NSObject {
-  @objc public static func create(resourceOptions: MapboxCoreMaps.ResourceOptions? = nil, mapOptions: MapboxCoreMaps.MapOptions? = nil, cameraOptions: MapboxCoreMaps.CameraOptions? = nil, stylePath: Swift.String?) -> MapboxMaps.MapInitOptions
-  @objc public static func create(resourceOptions: MapboxCoreMaps.ResourceOptions? = nil, mapOptions: MapboxCoreMaps.MapOptions? = nil, cameraOptions: MapboxCoreMaps.CameraOptions? = nil, styleURI: Foundation.URL?) -> MapboxMaps.MapInitOptions
+@objc public enum MBXOrnamentVisibility : Swift.Int {
+  case adaptive
+  case hidden
+  case visible
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setTerrain(_ value: MapboxMapObjC.MBXTerrain, onError: ((Swift.Error) -> Swift.Void)?)
+}
+@objc open class MBXTerrain : ObjectiveC.NSObject {
+  public var sourceId: Swift.String
+  @objc public init(sourceId: Swift.String)
+  @objc public var exaggeration: MapboxMapObjC.MBXValue?
   @objc deinit
 }
-extension MapboxMaps.MapInitOptions {
-  @objc final public func options() -> Foundation.NSArray
+public let skyTypeMapping: [MapboxMapObjC.MBXSkyType : MapboxMaps.SkyType]
+public let mbxskyTypeMapping: [MapboxMaps.SkyType : MapboxMapObjC.MBXSkyType]
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setCamera(to cameraOptions: MapboxCoreMaps.CameraOptions)
+}
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addCustomLayer(_ id: Swift.String, layerHost: MapboxCoreMaps.CustomLayerHost, below belowLayerId: Swift.String, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addCustomLayer(_ id: Swift.String, layerHost: MapboxCoreMaps.CustomLayerHost, above aboveLayerId: Swift.String, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addCustomLayer(_ id: Swift.String, layerHost: MapboxCoreMaps.CustomLayerHost, at index: Swift.Int, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayerBelow(withProperties properties: Foundation.NSDictionary, layerId: Swift.String, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayerAbove(withProperties properties: Foundation.NSDictionary, layerId: Swift.String, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayerAt(withProperties properties: Foundation.NSDictionary, index: Swift.Int, onError: ((Swift.Error) -> Swift.Void)?)
+}
+extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func ornamentsOptionsScaleBarVisibility(_ value: MapboxMapObjC.MBXOrnamentVisibility)
+}
+@_hasMissingDesignatedInitializers @objc open class MBXCancelable : ObjectiveC.NSObject {
+  @objc deinit
+}
+extension MapboxMaps.MapView {
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapLoaded(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapLoadingError(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapIdle(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleDataLoaded(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleLoaded(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleImageMissing(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleImageRemoveUnused(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceDataLoaded(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceAdded(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceRemoved(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onRenderFrameStarted(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onRenderFrameFinished(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onEvenCameraChanged(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onResourceRequest(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.MBXCancelable
+}
+extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func locationDelegate(_ delegate: MapboxMaps.LocationPermissionsDelegate)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func locationRequestTemporaryFullAccuracyPermissions(_ customKey: Swift.String)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func puck2D(_ build: ((_ builder: MapboxMapObjC.Puck2DConfigurationBuilder) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func puckBearingSource(_ source: MapboxMapObjC.MBXPuckBearingSource)
+}
+extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func preferredFrameRateRange(_ value: QuartzCore.CAFrameRateRange)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func mapboxMapDebugOptions() -> [Foundation.NSNumber]
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func mapboxMapDebugOptions(_ value: [Foundation.NSNumber])
 }
 extension MapboxMaps.ResourceOptions {
   public init(_ objcValue: MapboxCoreMaps.ResourceOptions)
@@ -23,8 +95,681 @@ extension MapboxMaps.ResourceOptions {
   @objc public static func create(frame: CoreFoundation.CGRect, options: MapboxMaps.MapInitOptions?) -> MapboxMaps.MapView
   @objc deinit
 }
-extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLocationDelegate(_ delegate: MapboxMaps.LocationPermissionsDelegate)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func requestTemporaryFullAccuracyPermissions(_ customKey: Swift.String)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func puck2D()
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addRasterDemSource(_ id: Swift.String, configure: (MapboxMapObjC.RasterDemSourceBuilder) -> Swift.Void, onError: ((Swift.Error) -> Swift.Void)?)
 }
+@_inheritsConvenienceInitializers @objc open class RasterDemSourceBuilder : ObjectiveC.NSObject {
+  @discardableResult
+  @objc public func url(_ value: Swift.String?) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func tiles(_ value: [Swift.String]?) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func bounds(_ value: [Swift.Double]?) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func minzoom(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func maxzoom(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func tileSize(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func attribution(_ value: Swift.String?) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func encoding(_ value: MapboxMapObjC.MBXEncoding) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func volatile(_ value: Swift.Bool) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func prefetchZoomDelta(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func minimumTileUpdateInterval(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func maxOverscaleFactorForParentTiles(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func tileRequestsDelay(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
+  @discardableResult
+  @objc public func tileNetworkRequestsDelay(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addSkyLayer(_ id: Swift.String, configure: (MapboxMapObjC.SkyLayerBuilder) -> Swift.Void, onError: ((Swift.Error) -> Swift.Void)?)
+}
+@_hasMissingDesignatedInitializers @objc open class SkyLayerBuilder : ObjectiveC.NSObject {
+  @objc public func filter(_ value: MapboxMapObjC.MBXExpression?)
+  @objc public func source(_ value: Swift.String?)
+  @objc public func sourceLayer(_ value: Swift.String?)
+  @objc public func minZoom(_ value: Foundation.NSNumber?)
+  @objc public func maxZoom(_ value: Foundation.NSNumber?)
+  @objc public func visibility(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func skyAtmosphereColor(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func skyAtmosphereHaloColor(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func skyAtmosphereSun(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func skyAtmosphereSunIntensity(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func skyGradient(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func skyGradientCenter(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func skyGradientRadius(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func skyOpacity(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func skyOpacityTransition(_ value: MapboxMapObjC.MBXStyleTransition?)
+  @objc public func skyType(_ value: MapboxMapObjC.MBXValue?)
+  @objc deinit
+}
+@objc public enum MBXVisibility : Swift.Int {
+  case visible
+  case none
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXLineCap : Swift.Int {
+  case butt
+  case round
+  case square
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXLineJoin : Swift.Int {
+  case bevel
+  case round
+  case miter
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXIconAnchor : Swift.Int {
+  case center
+  case left
+  case right
+  case top
+  case bottom
+  case topLeft
+  case topRight
+  case bottomLeft
+  case bottomRight
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXIconPitchAlignment : Swift.Int {
+  case map
+  case viewport
+  case auto
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXIconRotationAlignment : Swift.Int {
+  case map
+  case viewport
+  case auto
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXIconTextFit : Swift.Int {
+  case none
+  case width
+  case height
+  case both
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXSymbolPlacement : Swift.Int {
+  case point
+  case line
+  case lineCenter
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXSymbolZOrder : Swift.Int {
+  case auto
+  case viewportY
+  case source
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXTextAnchor : Swift.Int {
+  case center
+  case left
+  case right
+  case top
+  case bottom
+  case topLeft
+  case topRight
+  case bottomLeft
+  case bottomRight
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXTextJustify : Swift.Int {
+  case auto
+  case left
+  case center
+  case right
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXTextPitchAlignment : Swift.Int {
+  case map
+  case viewport
+  case auto
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXTextRotationAlignment : Swift.Int {
+  case map
+  case viewport
+  case auto
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXTextTransform : Swift.Int {
+  case none
+  case uppercase
+  case lowercase
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXFillTranslateAnchor : Swift.Int {
+  case map
+  case viewport
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXLineTranslateAnchor : Swift.Int {
+  case map
+  case viewport
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXIconTranslateAnchor : Swift.Int {
+  case map
+  case viewport
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXTextTranslateAnchor : Swift.Int {
+  case map
+  case viewport
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXCirclePitchAlignment : Swift.Int {
+  case map
+  case viewport
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXCirclePitchScale : Swift.Int {
+  case map
+  case viewport
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXCircleTranslateAnchor : Swift.Int {
+  case map
+  case viewport
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXFillExtrusionTranslateAnchor : Swift.Int {
+  case map
+  case viewport
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXRasterResampling : Swift.Int {
+  case linear
+  case nearest
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXHillshadeIlluminationAnchor : Swift.Int {
+  case map
+  case viewport
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXSkyType : Swift.Int {
+  case gradient
+  case atmosphere
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXAnchor : Swift.Int {
+  case map
+  case viewport
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXStyleProjectionName : Swift.Int {
+  case mercator
+  case globe
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXTextWritingMode : Swift.Int {
+  case horizontal
+  case vertical
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc open class MBXResolvedImageData : ObjectiveC.NSObject {
+  final public let available: Swift.Bool
+  final public let name: Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class MBXResolvedImage : ObjectiveC.NSObject, Swift.Codable {
+  final public let available: Swift.Bool?
+  final public let name: Swift.String
+  @objc deinit
+  open func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@objc public enum MBXSourceType : Swift.Int {
+  case vector
+  case raster
+  case rasterDem
+  case geoJson
+  case image
+  case model
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightAnchor(_ value: MapboxMapObjC.MBXAnchor, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightColor(_ value: UIKit.UIColor, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightColorTransition(_ value: MapboxMapObjC.MBXStyleTransition, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightIntensity(_ value: Swift.Double, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightIntensityTransition(_ value: MapboxMapObjC.MBXStyleTransition, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightPosition(_ value: [Swift.Double], onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightPositionTransition(_ value: MapboxMapObjC.MBXStyleTransition, onError: ((Swift.Error) -> Swift.Void)?)
+}
+@objc open class MBXStyleTransition : ObjectiveC.NSObject {
+  final public let duration: Swift.Double
+  final public let delay: Swift.Double
+  @objc public init(duration: Swift.Double, delay: Swift.Double)
+  @objc deinit
+}
+@objc public enum MBXEncoding : Swift.Int {
+  case terrarium
+  case mapbox
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc open class MBXExpression : ObjectiveC.NSObject {
+  final public let `operator`: MapboxMapObjC.MBXOperator
+  final public let arguments: [Any]
+  @objc public class func create(withOperator operator: MapboxMapObjC.MBXOperator) -> MapboxMapObjC.MBXExpression
+  @objc public class func create(withOperator operator: MapboxMapObjC.MBXOperator, arguments: [Any]) -> MapboxMapObjC.MBXExpression
+  @objc deinit
+}
+@objc public enum MBXOperator : Swift.Int {
+  case subtract
+  case not
+  case neq
+  case product
+  case division
+  case mod
+  case pow
+  case sum
+  case lt
+  case lte
+  case eq
+  case gt
+  case gte
+  case abs
+  case accumulated
+  case acos
+  case all
+  case any
+  case array
+  case asin
+  case at
+  case atan
+  case boolean
+  case switchCase
+  case ceil
+  case coalesce
+  case collator
+  case concat
+  case cos
+  case distance
+  case distanceFromCenter
+  case downcase
+  case e
+  case featureState
+  case floor
+  case format
+  case geometryType
+  case get
+  case has
+  case heatmapDensity
+  case id
+  case image
+  case inExpression
+  case indexOf
+  case interpolate
+  case isSupportedScript
+  case length
+  case letExpression
+  case lineProgress
+  case literal
+  case ln
+  case ln2
+  case log10
+  case log2
+  case match
+  case max
+  case min
+  case number
+  case numberFormat
+  case objectExpression
+  case pi
+  case pitch
+  case properties
+  case resolvedLocale
+  case rgb
+  case rgba
+  case round
+  case sin
+  case skyRadialProgress
+  case slice
+  case sqrt
+  case step
+  case string
+  case tan
+  case toBoolean
+  case toColor
+  case toNumber
+  case toRgba
+  case toString
+  case typeofExpression
+  case upcase
+  case varExpression
+  case within
+  case zoom
+  case linear
+  case exponential
+  case cubicBezier
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MBXPuckBearingSource : Swift.Int {
+  case heading
+  case course
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc open class MapInitOptionsBuilder : ObjectiveC.NSObject {
+  @objc public class var defaultResourceOptions: MapboxCoreMaps.ResourceOptions {
+    @objc get
+  }
+  @objc public class func create() -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func build() -> MapboxMaps.MapInitOptions
+  @objc public func resourceOptions(_ value: MapboxCoreMaps.ResourceOptions?) -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func accessToken(_ value: Swift.String) -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func mapOptions(_ value: MapboxCoreMaps.MapOptions?) -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func cameraOptions(_ value: MapboxCoreMaps.CameraOptions?) -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func styleUriString(_ value: Swift.String) -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func styleUri(_ value: Foundation.URL) -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func styleStreets() -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func styleOutdoors() -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func styleLight() -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func styleDark() -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func styleSatellite() -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc public func styleSatelliteStreets() -> MapboxMapObjC.MapInitOptionsBuilder
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc open class Puck2DConfigurationBuilder : ObjectiveC.NSObject {
+  public static let defaultAccuracyRingColor: UIKit.UIColor
+  public static let defaultOpacity: Foundation.NSNumber
+  public func build() -> MapboxMaps.Puck2DConfiguration
+  @objc public func setPulsingBuilder(_ builder: MapboxMapObjC.Puck2DConfigurationPulsingBuilder?) -> MapboxMapObjC.Puck2DConfigurationBuilder
+  @objc public func setPulsing(_ build: (_ builder: MapboxMapObjC.Puck2DConfigurationPulsingBuilder) -> Swift.Void) -> MapboxMapObjC.Puck2DConfigurationBuilder
+  @objc public func setOpacity(_ value: Foundation.NSNumber) -> MapboxMapObjC.Puck2DConfigurationBuilder
+  @objc public func setTopImage(_ value: UIKit.UIImage?) -> MapboxMapObjC.Puck2DConfigurationBuilder
+  @objc public func setBearingImage(_ value: UIKit.UIImage?) -> MapboxMapObjC.Puck2DConfigurationBuilder
+  @objc public func setShadowImage(_ value: UIKit.UIImage?) -> MapboxMapObjC.Puck2DConfigurationBuilder
+  @objc public func setScale(_ value: Foundation.NSNumber?) -> MapboxMapObjC.Puck2DConfigurationBuilder
+  @objc public func setShowsAccuracyRing(_ value: Swift.Bool) -> MapboxMapObjC.Puck2DConfigurationBuilder
+  @objc public func setAccuracyRingColor(_ value: UIKit.UIColor?) -> MapboxMapObjC.Puck2DConfigurationBuilder
+  @objc public func setAccuracyRingBorderColor(_ value: UIKit.UIColor?) -> MapboxMapObjC.Puck2DConfigurationBuilder
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc open class Puck2DConfigurationPulsingBuilder : ObjectiveC.NSObject {
+  public func build() -> MapboxMaps.Puck2DConfiguration.Pulsing
+  public static let defaultColor: UIKit.UIColor
+  public static let defaultRadius: Foundation.NSNumber
+  @objc public func setColor(_ color: UIKit.UIColor?) -> MapboxMapObjC.Puck2DConfigurationPulsingBuilder
+  @objc public func setRadius(value: Foundation.NSNumber? = Puck2DConfigurationPulsingBuilder.defaultRadius) -> MapboxMapObjC.Puck2DConfigurationPulsingBuilder
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addFillExtrusionLayer(_ id: Swift.String, configure: (MapboxMapObjC.FillExtrusionLayerBuilder) -> Swift.Void, onError: ((Swift.Error) -> Swift.Void)?)
+}
+@_hasMissingDesignatedInitializers @objc open class FillExtrusionLayerBuilder : ObjectiveC.NSObject {
+  @objc public func filter(_ value: MapboxMapObjC.MBXExpression?)
+  @objc public func source(_ value: Swift.String?)
+  @objc public func sourceLayer(_ value: Swift.String?)
+  @objc public func minZoom(_ value: Foundation.NSNumber?)
+  @objc public func maxZoom(_ value: Foundation.NSNumber?)
+  @objc public func visibility(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func fillExtrusionAmbientOcclusionIntensity(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func fillExtrusionAmbientOcclusionIntensityTransition(_ value: MapboxMapObjC.MBXStyleTransition?)
+  @objc public func fillExtrusionAmbientOcclusionRadius(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func fillExtrusionAmbientOcclusionRadiusTransition(_ value: MapboxMapObjC.MBXStyleTransition?)
+  @objc public func fillExtrusionBase(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func fillExtrusionBaseTransition(_ value: MapboxMapObjC.MBXStyleTransition?)
+  @objc public func fillExtrusionColor(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func fillExtrusionColorTransition(_ value: MapboxMapObjC.MBXStyleTransition?)
+  @objc public func fillExtrusionHeight(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func fillExtrusionHeightTransition(_ value: MapboxMapObjC.MBXStyleTransition?)
+  @objc public func fillExtrusionOpacity(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func fillExtrusionOpacityTransition(_ value: MapboxMapObjC.MBXStyleTransition?)
+  @objc public func fillExtrusionPattern(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func fillExtrusionPatternTransition(_ value: MapboxMapObjC.MBXStyleTransition?)
+  @objc public func fillExtrusionTranslate(_ value: MapboxMapObjC.MBXValue?)
+  @objc public func fillExtrusionTranslateTransition(_ value: MapboxMapObjC.MBXStyleTransition?)
+  @objc public func fillExtrusionTranslateAnchor(_ value: MapboxMapObjC.MBXValue)
+  @objc public func fillExtrusionVerticalGradient(_ value: MapboxMapObjC.MBXValue?)
+  @objc deinit
+}
+@objc open class MBXValue : ObjectiveC.NSObject {
+  @objc public init(constant: ObjectiveC.NSObject)
+  @objc public init(expression: MapboxMapObjC.MBXExpression)
+  @objc public class func constant(_ constant: ObjectiveC.NSObject) -> MapboxMapObjC.MBXValue
+  @objc public class func expression(_ expression: MapboxMapObjC.MBXExpression) -> MapboxMapObjC.MBXValue
+  @objc deinit
+}
+extension MapboxMapObjC.MBXOrnamentVisibility : Swift.Equatable {}
+extension MapboxMapObjC.MBXOrnamentVisibility : Swift.Hashable {}
+extension MapboxMapObjC.MBXOrnamentVisibility : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXVisibility : Swift.Equatable {}
+extension MapboxMapObjC.MBXVisibility : Swift.Hashable {}
+extension MapboxMapObjC.MBXVisibility : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXLineCap : Swift.Equatable {}
+extension MapboxMapObjC.MBXLineCap : Swift.Hashable {}
+extension MapboxMapObjC.MBXLineCap : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXLineJoin : Swift.Equatable {}
+extension MapboxMapObjC.MBXLineJoin : Swift.Hashable {}
+extension MapboxMapObjC.MBXLineJoin : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXIconAnchor : Swift.Equatable {}
+extension MapboxMapObjC.MBXIconAnchor : Swift.Hashable {}
+extension MapboxMapObjC.MBXIconAnchor : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXIconPitchAlignment : Swift.Equatable {}
+extension MapboxMapObjC.MBXIconPitchAlignment : Swift.Hashable {}
+extension MapboxMapObjC.MBXIconPitchAlignment : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXIconRotationAlignment : Swift.Equatable {}
+extension MapboxMapObjC.MBXIconRotationAlignment : Swift.Hashable {}
+extension MapboxMapObjC.MBXIconRotationAlignment : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXIconTextFit : Swift.Equatable {}
+extension MapboxMapObjC.MBXIconTextFit : Swift.Hashable {}
+extension MapboxMapObjC.MBXIconTextFit : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXSymbolPlacement : Swift.Equatable {}
+extension MapboxMapObjC.MBXSymbolPlacement : Swift.Hashable {}
+extension MapboxMapObjC.MBXSymbolPlacement : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXSymbolZOrder : Swift.Equatable {}
+extension MapboxMapObjC.MBXSymbolZOrder : Swift.Hashable {}
+extension MapboxMapObjC.MBXSymbolZOrder : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXTextAnchor : Swift.Equatable {}
+extension MapboxMapObjC.MBXTextAnchor : Swift.Hashable {}
+extension MapboxMapObjC.MBXTextAnchor : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXTextJustify : Swift.Equatable {}
+extension MapboxMapObjC.MBXTextJustify : Swift.Hashable {}
+extension MapboxMapObjC.MBXTextJustify : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXTextPitchAlignment : Swift.Equatable {}
+extension MapboxMapObjC.MBXTextPitchAlignment : Swift.Hashable {}
+extension MapboxMapObjC.MBXTextPitchAlignment : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXTextRotationAlignment : Swift.Equatable {}
+extension MapboxMapObjC.MBXTextRotationAlignment : Swift.Hashable {}
+extension MapboxMapObjC.MBXTextRotationAlignment : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXTextTransform : Swift.Equatable {}
+extension MapboxMapObjC.MBXTextTransform : Swift.Hashable {}
+extension MapboxMapObjC.MBXTextTransform : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXFillTranslateAnchor : Swift.Equatable {}
+extension MapboxMapObjC.MBXFillTranslateAnchor : Swift.Hashable {}
+extension MapboxMapObjC.MBXFillTranslateAnchor : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXLineTranslateAnchor : Swift.Equatable {}
+extension MapboxMapObjC.MBXLineTranslateAnchor : Swift.Hashable {}
+extension MapboxMapObjC.MBXLineTranslateAnchor : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXIconTranslateAnchor : Swift.Equatable {}
+extension MapboxMapObjC.MBXIconTranslateAnchor : Swift.Hashable {}
+extension MapboxMapObjC.MBXIconTranslateAnchor : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXTextTranslateAnchor : Swift.Equatable {}
+extension MapboxMapObjC.MBXTextTranslateAnchor : Swift.Hashable {}
+extension MapboxMapObjC.MBXTextTranslateAnchor : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXCirclePitchAlignment : Swift.Equatable {}
+extension MapboxMapObjC.MBXCirclePitchAlignment : Swift.Hashable {}
+extension MapboxMapObjC.MBXCirclePitchAlignment : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXCirclePitchScale : Swift.Equatable {}
+extension MapboxMapObjC.MBXCirclePitchScale : Swift.Hashable {}
+extension MapboxMapObjC.MBXCirclePitchScale : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXCircleTranslateAnchor : Swift.Equatable {}
+extension MapboxMapObjC.MBXCircleTranslateAnchor : Swift.Hashable {}
+extension MapboxMapObjC.MBXCircleTranslateAnchor : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXFillExtrusionTranslateAnchor : Swift.Equatable {}
+extension MapboxMapObjC.MBXFillExtrusionTranslateAnchor : Swift.Hashable {}
+extension MapboxMapObjC.MBXFillExtrusionTranslateAnchor : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXRasterResampling : Swift.Equatable {}
+extension MapboxMapObjC.MBXRasterResampling : Swift.Hashable {}
+extension MapboxMapObjC.MBXRasterResampling : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXHillshadeIlluminationAnchor : Swift.Equatable {}
+extension MapboxMapObjC.MBXHillshadeIlluminationAnchor : Swift.Hashable {}
+extension MapboxMapObjC.MBXHillshadeIlluminationAnchor : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXSkyType : Swift.Equatable {}
+extension MapboxMapObjC.MBXSkyType : Swift.Hashable {}
+extension MapboxMapObjC.MBXSkyType : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXAnchor : Swift.Equatable {}
+extension MapboxMapObjC.MBXAnchor : Swift.Hashable {}
+extension MapboxMapObjC.MBXAnchor : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXStyleProjectionName : Swift.Equatable {}
+extension MapboxMapObjC.MBXStyleProjectionName : Swift.Hashable {}
+extension MapboxMapObjC.MBXStyleProjectionName : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXTextWritingMode : Swift.Equatable {}
+extension MapboxMapObjC.MBXTextWritingMode : Swift.Hashable {}
+extension MapboxMapObjC.MBXTextWritingMode : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXSourceType : Swift.Equatable {}
+extension MapboxMapObjC.MBXSourceType : Swift.Hashable {}
+extension MapboxMapObjC.MBXSourceType : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXEncoding : Swift.Equatable {}
+extension MapboxMapObjC.MBXEncoding : Swift.Hashable {}
+extension MapboxMapObjC.MBXEncoding : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXOperator : Swift.Equatable {}
+extension MapboxMapObjC.MBXOperator : Swift.Hashable {}
+extension MapboxMapObjC.MBXOperator : Swift.RawRepresentable {}
+extension MapboxMapObjC.MBXPuckBearingSource : Swift.Equatable {}
+extension MapboxMapObjC.MBXPuckBearingSource : Swift.Hashable {}
+extension MapboxMapObjC.MBXPuckBearingSource : Swift.RawRepresentable {}

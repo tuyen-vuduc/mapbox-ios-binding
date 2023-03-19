@@ -3,7 +3,7 @@
     <metadata>
         <!-- Required elements-->
         <id>MapboxMapsObjC.iOS</id>
-        <version>10.11.1</version>
+        <version>10.11.1.1</version>
         <authors>tuyen-vuduc</authors>
         <owners>tuyen-vuduc</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -14,7 +14,7 @@
         <iconUrl>https://avatars0.githubusercontent.com/u/600935</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/tuyen-vuduc/mapbox-ios-binding</projectUrl>
-        <copyright>Copyright (c) 2022 tuyen-vuduc</copyright>
+        <copyright>Copyright (c) 2023 tuyen-vuduc</copyright>
         <tags>Xamarin.iOS, Mapbox</tags>        
         <dependencies>
             <dependency id="MapboxCommon.iOS" version="23.2.1" />
