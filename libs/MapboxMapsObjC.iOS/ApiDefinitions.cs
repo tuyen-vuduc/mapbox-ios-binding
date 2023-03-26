@@ -217,6 +217,8 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_357
+    [Category]
+    [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_357
 	{
 		// -(void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
@@ -488,7 +490,7 @@ namespace MapboxMapsObjC
 		// +(id)createWithFrame:(CGRect)frame options:(id)options __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithFrame:options:")]
-		NSObject CreateWithFrame (CGRect frame, [NullAllowed] MapInitOptions options);
+		MapView CreateWithFrame (CGRect frame, [NullAllowed] MapInitOptions options);
 	}
 
 	// @interface MapboxMapObjC_Swift_552
