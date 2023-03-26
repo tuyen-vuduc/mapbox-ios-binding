@@ -3,63 +3,42 @@ using ObjCRuntime;
 namespace MapboxMapsObjC
 {
 	[Native]
-	public enum MBXAnchor : long
+	public enum TMBAnchor : long
 	{
 		Map = 0,
 		Viewport = 1
 	}
 
 	[Native]
-	public enum MBXCirclePitchAlignment : long
-	{
-		Map = 0,
-		Viewport = 1
-	}
-
-	[Native]
-	public enum MBXCirclePitchScale : long
-	{
-		Map = 0,
-		Viewport = 1
-	}
-
-	[Native]
-	public enum MBXCircleTranslateAnchor : long
-	{
-		Map = 0,
-		Viewport = 1
-	}
-
-	[Native]
-	public enum MBXEncoding : long
+	public enum TMBEncoding : long
 	{
 		Terrarium = 0,
 		Mapbox = 1
 	}
 
 	[Native]
-	public enum MBXFillExtrusionTranslateAnchor : long
+	public enum TMBFillExtrusionTranslateAnchor : long
 	{
 		Map = 0,
 		Viewport = 1
 	}
 
 	[Native]
-	public enum MBXFillTranslateAnchor : long
+	public enum TMBFillTranslateAnchor : long
 	{
 		Map = 0,
 		Viewport = 1
 	}
 
 	[Native]
-	public enum MBXHillshadeIlluminationAnchor : long
+	public enum TMBHillshadeIlluminationAnchor : long
 	{
 		Map = 0,
 		Viewport = 1
 	}
 
 	[Native]
-	public enum MBXIconAnchor : long
+	public enum TMBIconAnchor : long
 	{
 		Center = 0,
 		Left = 1,
@@ -73,7 +52,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXIconPitchAlignment : long
+	public enum TMBIconPitchAlignment : long
 	{
 		Map = 0,
 		Viewport = 1,
@@ -81,7 +60,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXIconRotationAlignment : long
+	public enum TMBIconRotationAlignment : long
 	{
 		Map = 0,
 		Viewport = 1,
@@ -89,7 +68,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXIconTextFit : long
+	public enum TMBIconTextFit : long
 	{
 		None = 0,
 		Width = 1,
@@ -98,14 +77,23 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXIconTranslateAnchor : long
+	public enum TMBIconTranslateAnchor : long
 	{
 		Map = 0,
 		Viewport = 1
 	}
 
 	[Native]
-	public enum MBXLineCap : long
+	public enum TMBLayerPosition : long
+	{
+		At = 0,
+		Below = 1,
+		Above = 2,
+		Unowned = 3
+	}
+
+	[Native]
+	public enum TMBLineCap : long
 	{
 		Butt = 0,
 		Round = 1,
@@ -113,7 +101,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXLineJoin : long
+	public enum TMBLineJoin : long
 	{
 		Bevel = 0,
 		Round = 1,
@@ -121,14 +109,14 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXLineTranslateAnchor : long
+	public enum TMBLineTranslateAnchor : long
 	{
 		Map = 0,
 		Viewport = 1
 	}
 
 	[Native]
-	public enum MBXOperator : long
+	public enum TMBOperator : long
 	{
 		Subtract = 0,
 		Not = 1,
@@ -220,7 +208,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXOrnamentVisibility : long
+	public enum TMBOrnamentVisibility : long
 	{
 		Adaptive = 0,
 		Hidden = 1,
@@ -228,28 +216,28 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXPuckBearingSource : long
+	public enum TMBPuckBearingSource : long
 	{
 		Heading = 0,
 		Course = 1
 	}
 
 	[Native]
-	public enum MBXRasterResampling : long
+	public enum TMBRasterResampling : long
 	{
 		Linear = 0,
 		Nearest = 1
 	}
 
 	[Native]
-	public enum MBXSkyType : long
+	public enum TMBSkyType : long
 	{
 		Gradient = 0,
 		Atmosphere = 1
 	}
 
 	[Native]
-	public enum MBXSourceType : long
+	public enum TMBSourceType : long
 	{
 		Vector = 0,
 		Raster = 1,
@@ -260,14 +248,14 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXStyleProjectionName : long
+	public enum TMBStyleProjectionName : long
 	{
 		Mercator = 0,
 		Globe = 1
 	}
 
 	[Native]
-	public enum MBXSymbolPlacement : long
+	public enum TMBSymbolPlacement : long
 	{
 		Point = 0,
 		Line = 1,
@@ -275,7 +263,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXSymbolZOrder : long
+	public enum TMBSymbolZOrder : long
 	{
 		Auto = 0,
 		ViewportY = 1,
@@ -283,7 +271,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXTextAnchor : long
+	public enum TMBTextAnchor : long
 	{
 		Center = 0,
 		Left = 1,
@@ -297,7 +285,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXTextJustify : long
+	public enum TMBTextJustify : long
 	{
 		Auto = 0,
 		Left = 1,
@@ -306,7 +294,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXTextPitchAlignment : long
+	public enum TMBTextPitchAlignment : long
 	{
 		Map = 0,
 		Viewport = 1,
@@ -314,7 +302,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXTextRotationAlignment : long
+	public enum TMBTextRotationAlignment : long
 	{
 		Map = 0,
 		Viewport = 1,
@@ -322,7 +310,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXTextTransform : long
+	public enum TMBTextTransform : long
 	{
 		None = 0,
 		Uppercase = 1,
@@ -330,23 +318,44 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum MBXTextTranslateAnchor : long
+	public enum TMBTextTranslateAnchor : long
 	{
 		Map = 0,
 		Viewport = 1
 	}
 
 	[Native]
-	public enum MBXTextWritingMode : long
+	public enum TMBTextWritingMode : long
 	{
 		Horizontal = 0,
 		Vertical = 1
 	}
 
 	[Native]
-	public enum MBXVisibility : long
+	public enum TMBVisibility : long
 	{
 		Visible = 0,
 		None = 1
+	}
+
+	[Native]
+	public enum TTMBirclePitchAlignment : long
+	{
+		Map = 0,
+		Viewport = 1
+	}
+
+	[Native]
+	public enum TTMBirclePitchScale : long
+	{
+		Map = 0,
+		Viewport = 1
+	}
+
+	[Native]
+	public enum TTMBircleTranslateAnchor : long
+	{
+		Map = 0,
+		Viewport = 1
 	}
 }

@@ -231,7 +231,10 @@ using UInt = size_t;
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import CoreFoundation;
+@import CoreLocation;
 @import Foundation;
+@import MapboxCommon;
+@import MapboxCoreMaps;
 @import MapboxMaps;
 @import ObjectiveC;
 @import QuartzCore;
@@ -255,645 +258,76 @@ using UInt = size_t;
 #endif
 
 #if defined(__OBJC__)
-
-
-@class MBXExpression;
 @class NSString;
+
+SWIFT_CLASS("_TtC13MapboxMapObjC13BuiltInStyles")
+@interface BuiltInStyles : NSObject
+/// Mapbox Streets is a general-purpose style with detailed road and transit networks.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull streets;)
++ (NSString * _Nonnull)streets SWIFT_WARN_UNUSED_RESULT;
+/// Mapbox Outdoors is a general-purpose style tailored to outdoor activities.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull outdoors;)
++ (NSString * _Nonnull)outdoors SWIFT_WARN_UNUSED_RESULT;
+/// Mapbox Light is a subtle, light-colored backdrop for data visualizations.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull light;)
++ (NSString * _Nonnull)light SWIFT_WARN_UNUSED_RESULT;
+/// Mapbox Dark is a subtle, dark-colored backdrop for data visualizations.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull dark;)
++ (NSString * _Nonnull)dark SWIFT_WARN_UNUSED_RESULT;
+/// The Mapbox Satellite style is a base-map of high-resolution satellite and aerial imagery.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull satellite;)
++ (NSString * _Nonnull)satellite SWIFT_WARN_UNUSED_RESULT;
+/// The Mapbox Satellite Streets style combines the high-resolution satellite and aerial imagery
+/// of Mapbox Satellite with unobtrusive labels and translucent roads from Mapbox Streets.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull satelliteStreets;)
++ (NSString * _Nonnull)satelliteStreets SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@class TMBExpression;
 @class NSNumber;
-@class MBXValue;
-@class MBXStyleTransition;
+@class TMBValue;
+@class TMBStyleTransition;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC25FillExtrusionLayerBuilder")
 @interface FillExtrusionLayerBuilder : NSObject
-- (void)filter:(MBXExpression * _Nullable)value;
++ (FillExtrusionLayerBuilder * _Nonnull)withId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (void)filter:(TMBExpression * _Nullable)value;
 - (void)source:(NSString * _Nullable)value;
 - (void)sourceLayer:(NSString * _Nullable)value;
 - (void)minZoom:(NSNumber * _Nullable)value;
 - (void)maxZoom:(NSNumber * _Nullable)value;
-- (void)visibility:(MBXValue * _Nullable)value;
-- (void)fillExtrusionAmbientOcclusionIntensity:(MBXValue * _Nullable)value;
-- (void)fillExtrusionAmbientOcclusionIntensityTransition:(MBXStyleTransition * _Nullable)value;
-- (void)fillExtrusionAmbientOcclusionRadius:(MBXValue * _Nullable)value;
-- (void)fillExtrusionAmbientOcclusionRadiusTransition:(MBXStyleTransition * _Nullable)value;
-- (void)fillExtrusionBase:(MBXValue * _Nullable)value;
-- (void)fillExtrusionBaseTransition:(MBXStyleTransition * _Nullable)value;
-- (void)fillExtrusionColor:(MBXValue * _Nullable)value;
-- (void)fillExtrusionColorTransition:(MBXStyleTransition * _Nullable)value;
-- (void)fillExtrusionHeight:(MBXValue * _Nullable)value;
-- (void)fillExtrusionHeightTransition:(MBXStyleTransition * _Nullable)value;
-- (void)fillExtrusionOpacity:(MBXValue * _Nullable)value;
-- (void)fillExtrusionOpacityTransition:(MBXStyleTransition * _Nullable)value;
-- (void)fillExtrusionPattern:(MBXValue * _Nullable)value;
-- (void)fillExtrusionPatternTransition:(MBXStyleTransition * _Nullable)value;
-- (void)fillExtrusionTranslate:(MBXValue * _Nullable)value;
-- (void)fillExtrusionTranslateTransition:(MBXStyleTransition * _Nullable)value;
-- (void)fillExtrusionTranslateAnchor:(MBXValue * _Nonnull)value;
-- (void)fillExtrusionVerticalGradient:(MBXValue * _Nullable)value;
+- (void)visibility:(TMBValue * _Nullable)value;
+- (void)fillExtrusionAmbientOcclusionIntensity:(TMBValue * _Nullable)value;
+- (void)fillExtrusionAmbientOcclusionIntensityTransition:(TMBStyleTransition * _Nullable)value;
+- (void)fillExtrusionAmbientOcclusionRadius:(TMBValue * _Nullable)value;
+- (void)fillExtrusionAmbientOcclusionRadiusTransition:(TMBStyleTransition * _Nullable)value;
+- (void)fillExtrusionBase:(TMBValue * _Nullable)value;
+- (void)fillExtrusionBaseTransition:(TMBStyleTransition * _Nullable)value;
+- (void)fillExtrusionColor:(TMBValue * _Nullable)value;
+- (void)fillExtrusionColorTransition:(TMBStyleTransition * _Nullable)value;
+- (void)fillExtrusionHeight:(TMBValue * _Nullable)value;
+- (void)fillExtrusionHeightTransition:(TMBStyleTransition * _Nullable)value;
+- (void)fillExtrusionOpacity:(TMBValue * _Nullable)value;
+- (void)fillExtrusionOpacityTransition:(TMBStyleTransition * _Nullable)value;
+- (void)fillExtrusionPattern:(TMBValue * _Nullable)value;
+- (void)fillExtrusionPatternTransition:(TMBStyleTransition * _Nullable)value;
+- (void)fillExtrusionTranslate:(TMBValue * _Nullable)value;
+- (void)fillExtrusionTranslateTransition:(TMBStyleTransition * _Nullable)value;
+- (void)fillExtrusionTranslateAnchor:(TMBValue * _Nonnull)value;
+- (void)fillExtrusionVerticalGradient:(TMBValue * _Nullable)value;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
-/// Whether extruded geometries are lit relative to the map or viewport.
-typedef SWIFT_ENUM(NSInteger, MBXAnchor, open) {
-/// The position of the light source is aligned to the rotation of the map.
-  MBXAnchorMap = 0,
-/// The position of the light source is aligned to the rotation of the viewport.
-  MBXAnchorViewport = 1,
-};
-
-
-SWIFT_CLASS("_TtC13MapboxMapObjC13MBXCancelable")
-@interface MBXCancelable : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-/// Orientation of circle when map is pitched.
-typedef SWIFT_ENUM(NSInteger, MBXCirclePitchAlignment, open) {
-/// The circle is aligned to the plane of the map.
-  MBXCirclePitchAlignmentMap = 0,
-/// The circle is aligned to the plane of the viewport.
-  MBXCirclePitchAlignmentViewport = 1,
-};
-
-/// Controls the scaling behavior of the circle when the map is pitched.
-typedef SWIFT_ENUM(NSInteger, MBXCirclePitchScale, open) {
-/// Circles are scaled according to their apparent distance to the camera.
-  MBXCirclePitchScaleMap = 0,
-/// Circles are not scaled.
-  MBXCirclePitchScaleViewport = 1,
-};
-
-/// Controls the frame of reference for <code>circle-translate</code>.
-typedef SWIFT_ENUM(NSInteger, MBXCircleTranslateAnchor, open) {
-/// The circle is translated relative to the map.
-  MBXCircleTranslateAnchorMap = 0,
-/// The circle is translated relative to the viewport.
-  MBXCircleTranslateAnchorViewport = 1,
-};
-
-typedef SWIFT_ENUM(NSInteger, MBXEncoding, open) {
-/// Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.
-  MBXEncodingTerrarium = 0,
-/// Mapbox Terrain RGB tiles. See https://www.mapbox.com/help/access-elevation-data/#mapbox-terrain-rgb for more info.
-  MBXEncodingMapbox = 1,
-};
-
-enum MBXOperator : NSInteger;
-
-SWIFT_CLASS("_TtC13MapboxMapObjC13MBXExpression")
-@interface MBXExpression : NSObject
-+ (MBXExpression * _Nonnull)createWithOperator:(enum MBXOperator)operator_ SWIFT_WARN_UNUSED_RESULT;
-+ (MBXExpression * _Nonnull)createWithOperator:(enum MBXOperator)operator_ arguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-/// Controls the frame of reference for <code>fill-extrusion-translate</code>.
-typedef SWIFT_ENUM(NSInteger, MBXFillExtrusionTranslateAnchor, open) {
-/// The fill extrusion is translated relative to the map.
-  MBXFillExtrusionTranslateAnchorMap = 0,
-/// The fill extrusion is translated relative to the viewport.
-  MBXFillExtrusionTranslateAnchorViewport = 1,
-};
-
-/// Controls the frame of reference for <code>fill-translate</code>.
-typedef SWIFT_ENUM(NSInteger, MBXFillTranslateAnchor, open) {
-/// The fill is translated relative to the map.
-  MBXFillTranslateAnchorMap = 0,
-/// The fill is translated relative to the viewport.
-  MBXFillTranslateAnchorViewport = 1,
-};
-
-/// Direction of light source when map is rotated.
-typedef SWIFT_ENUM(NSInteger, MBXHillshadeIlluminationAnchor, open) {
-/// The hillshade illumination is relative to the north direction.
-  MBXHillshadeIlluminationAnchorMap = 0,
-/// The hillshade illumination is relative to the top of the viewport.
-  MBXHillshadeIlluminationAnchorViewport = 1,
-};
-
-/// Part of the icon placed closest to the anchor.
-typedef SWIFT_ENUM(NSInteger, MBXIconAnchor, open) {
-/// The center of the icon is placed closest to the anchor.
-  MBXIconAnchorCenter = 0,
-/// The left side of the icon is placed closest to the anchor.
-  MBXIconAnchorLeft = 1,
-/// The right side of the icon is placed closest to the anchor.
-  MBXIconAnchorRight = 2,
-/// The top of the icon is placed closest to the anchor.
-  MBXIconAnchorTop = 3,
-/// The bottom of the icon is placed closest to the anchor.
-  MBXIconAnchorBottom = 4,
-/// The top left corner of the icon is placed closest to the anchor.
-  MBXIconAnchorTopLeft = 5,
-/// The top right corner of the icon is placed closest to the anchor.
-  MBXIconAnchorTopRight = 6,
-/// The bottom left corner of the icon is placed closest to the anchor.
-  MBXIconAnchorBottomLeft = 7,
-/// The bottom right corner of the icon is placed closest to the anchor.
-  MBXIconAnchorBottomRight = 8,
-};
-
-/// Orientation of icon when map is pitched.
-typedef SWIFT_ENUM(NSInteger, MBXIconPitchAlignment, open) {
-/// The icon is aligned to the plane of the map.
-  MBXIconPitchAlignmentMap = 0,
-/// The icon is aligned to the plane of the viewport.
-  MBXIconPitchAlignmentViewport = 1,
-/// Automatically matches the value of {@link ICON_ROTATION_ALIGNMENT}.
-  MBXIconPitchAlignmentAuto = 2,
-};
-
-/// In combination with <code>symbol-placement</code>, determines the rotation behavior of icons.
-typedef SWIFT_ENUM(NSInteger, MBXIconRotationAlignment, open) {
-/// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, aligns icons east-west. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, aligns icon x-axes with the line.
-  MBXIconRotationAlignmentMap = 0,
-/// Produces icons whose x-axes are aligned with the x-axis of the viewport, regardless of the value of {@link SYMBOL_PLACEMENT}.
-  MBXIconRotationAlignmentViewport = 1,
-/// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, this is equivalent to {@link Property#ICON_ROTATION_ALIGNMENT_VIEWPORT}. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, this is equivalent to {@link Property#ICON_ROTATION_ALIGNMENT_MAP}.
-  MBXIconRotationAlignmentAuto = 2,
-};
-
-/// Scales the icon to fit around the associated text.
-typedef SWIFT_ENUM(NSInteger, MBXIconTextFit, open) {
-/// The icon is displayed at its intrinsic aspect ratio.
-  MBXIconTextFitNone = 0,
-/// The icon is scaled in the x-dimension to fit the width of the text.
-  MBXIconTextFitWidth = 1,
-/// The icon is scaled in the y-dimension to fit the height of the text.
-  MBXIconTextFitHeight = 2,
-/// The icon is scaled in both x- and y-dimensions.
-  MBXIconTextFitBoth = 3,
-};
-
-/// Controls the frame of reference for <code>icon-translate</code>.
-typedef SWIFT_ENUM(NSInteger, MBXIconTranslateAnchor, open) {
-/// Icons are translated relative to the map.
-  MBXIconTranslateAnchorMap = 0,
-/// Icons are translated relative to the viewport.
-  MBXIconTranslateAnchorViewport = 1,
-};
-
-/// The display of line endings.
-typedef SWIFT_ENUM(NSInteger, MBXLineCap, open) {
-/// A cap with a squared-off end which is drawn to the exact endpoint of the line.
-  MBXLineCapButt = 0,
-/// A cap with a rounded end which is drawn beyond the endpoint of the line at a radius of one-half of the line’s width and centered on the endpoint of the line.
-  MBXLineCapRound = 1,
-/// A cap with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line’s width.
-  MBXLineCapSquare = 2,
-};
-
-/// The display of lines when joining.
-typedef SWIFT_ENUM(NSInteger, MBXLineJoin, open) {
-/// A join with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line’s width.
-  MBXLineJoinBevel = 0,
-/// A join with a rounded end which is drawn beyond the endpoint of the line at a radius of one-half of the line’s width and centered on the endpoint of the line.
-  MBXLineJoinRound = 1,
-/// A join with a sharp, angled corner which is drawn with the outer sides beyond the endpoint of the path until they meet.
-  MBXLineJoinMiter = 2,
-};
-
-/// Controls the frame of reference for <code>line-translate</code>.
-typedef SWIFT_ENUM(NSInteger, MBXLineTranslateAnchor, open) {
-/// The line is translated relative to the map.
-  MBXLineTranslateAnchorMap = 0,
-/// The line is translated relative to the viewport.
-  MBXLineTranslateAnchorViewport = 1,
-};
-
-typedef SWIFT_ENUM(NSInteger, MBXOperator, open) {
-/// For two inputs, returns the result of subtracting the second input from the first. For a single input, returns the result of subtracting it from 0.
-  MBXOperatorSubtract = 0,
-/// Logical negation. Returns <code>true</code> if the input is <code>false</code>, and <code>false</code> if the input is <code>true</code>.
-  MBXOperatorNot = 1,
-/// Returns <code>true</code> if the input values are not equal, <code>false</code> otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  MBXOperatorNeq = 2,
-/// Returns the product of the inputs.
-  MBXOperatorProduct = 3,
-/// Returns the result of floating point division of the first input by the second.
-  MBXOperatorDivision = 4,
-/// Returns the remainder after integer division of the first input by the second.
-  MBXOperatorMod = 5,
-/// Returns the result of raising the first input to the power specified by the second.
-  MBXOperatorPow = 6,
-/// Returns the sum of the inputs.
-  MBXOperatorSum = 7,
-/// Returns <code>true</code> if the first input is strictly less than the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  MBXOperatorLt = 8,
-/// Returns <code>true</code> if the first input is less than or equal to the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  MBXOperatorLte = 9,
-/// Returns <code>true</code> if the input values are equal, <code>false</code> otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  MBXOperatorEq = 10,
-/// Returns <code>true</code> if the first input is strictly greater than the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  MBXOperatorGt = 11,
-/// Returns <code>true</code> if the first input is greater than or equal to the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  MBXOperatorGte = 12,
-/// Returns the absolute value of the input.
-  MBXOperatorAbs = 13,
-/// Returns the value of a cluster property accumulated so far. Can only be used in the <code>clusterProperties</code> option of a clustered GeoJSON source.
-  MBXOperatorAccumulated = 14,
-/// Returns the arccosine of the input.
-  MBXOperatorAcos = 15,
-/// Returns <code>true</code> if all the inputs are <code>true</code>, <code>false</code> otherwise. The inputs are evaluated in order, and evaluation is short-circuiting: once an input expression evaluates to <code>false</code>, the result is <code>false</code> and no further input expressions are evaluated.
-  MBXOperatorAll = 16,
-/// Returns <code>true</code> if any of the inputs are <code>true</code>, <code>false</code> otherwise. The inputs are evaluated in order, and evaluation is short-circuiting: once an input expression evaluates to <code>true</code>, the result is <code>true</code> and no further input expressions are evaluated.
-  MBXOperatorAny = 17,
-/// Asserts that the input is an array (optionally with a specific item type and length).  If, when the input expression is evaluated, it is not of the asserted type, then this assertion will cause the whole expression to be aborted.
-  MBXOperatorArray = 18,
-/// Returns the arcsine of the input.
-  MBXOperatorAsin = 19,
-/// Retrieves an item from an array.
-  MBXOperatorAt = 20,
-/// Returns the arctangent of the input.
-  MBXOperatorAtan = 21,
-/// Asserts that the input value is a boolean. If multiple values are provided, each one is evaluated in order until a boolean is obtained. If none of the inputs are booleans, the expression is an error.
-  MBXOperatorBoolean = 22,
-/// Selects the first output whose corresponding test condition evaluates to true, or the fallback value otherwise.
-  MBXOperatorSwitchCase = 23,
-/// Returns the smallest integer that is greater than or equal to the input.
-  MBXOperatorCeil = 24,
-/// Evaluates each expression in turn until the first valid value is obtained. Invalid values are <code>null</code> and <a href="#types-image"><code>'image'</code></a> expressions that are unavailable in the style. If all values are invalid, <code>coalesce</code> returns the first value listed.
-  MBXOperatorCoalesce = 25,
-/// Returns a <code>collator</code> for use in locale-dependent comparison operations. The <code>case-sensitive</code> and <code>diacritic-sensitive</code> options default to <code>false</code>. The <code>locale</code> argument specifies the IETF language tag of the locale to use. If none is provided, the default locale is used. If the requested locale is not available, the <code>collator</code> will use a system-defined fallback locale. Use <code>resolved-locale</code> to test the results of locale fallback behavior.
-  MBXOperatorCollator = 26,
-/// Returns a <code>string</code> consisting of the concatenation of the inputs. Each input is converted to a string as if by <code>to-string</code>.
-  MBXOperatorConcat = 27,
-/// Returns the cosine of the input.
-  MBXOperatorCos = 28,
-/// Returns the shortest distance in meters between the evaluated feature and the input geometry. The input value can be a valid GeoJSON of type <code>Point</code>, <code>MultiPoint</code>, <code>LineString</code>, <code>MultiLineString</code>, <code>Polygon</code>, <code>MultiPolygon</code>, <code>Feature</code>, or <code>FeatureCollection</code>. Distance values returned may vary in precision due to loss in precision from encoding geometries, particularly below zoom level 13.
-  MBXOperatorDistance = 29,
-/// Returns the distance of a <code>symbol</code> instance from the center of the map. The distance is measured in pixels divided by the height of the map container. It measures 0 at the center, decreases towards the camera and increase away from the camera. For example, if the height of the map is 1000px, a value of -1 means 1000px away from the center towards the camera, and a value of 1 means a distance of 1000px away from the camera from the center. <code>["distance-from-center"]</code> may only be used in the <code>filter</code> expression for a <code>symbol</code> layer.
-  MBXOperatorDistanceFromCenter = 30,
-/// Returns the input string converted to lowercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.
-  MBXOperatorDowncase = 31,
-/// Returns the mathematical constant e.
-  MBXOperatorE = 32,
-/// Retrieves a property value from the current feature’s state. Returns <code>null</code> if the requested property is not present on the feature’s state. A feature’s state is not part of the GeoJSON or vector tile data, and must be set programmatically on each feature. Features are identified by their <code>id</code> attribute, which must be an integer or a string that can be cast to an integer. Note that [“feature-state”] can only be used with paint properties that support data-driven styling.
-  MBXOperatorFeatureState = 33,
-/// Returns the largest integer that is less than or equal to the input.
-  MBXOperatorFloor = 34,
-/// Returns a <code>formatted</code> string for displaying mixed-format text in the <code>text-field</code> property. The input may contain a string literal or expression, including an <a href="#types-image"><code>'image'</code></a> expression. Strings may be followed by a style override object that supports the following properties:
-/// <ul>
-///   <li>
-///     <code>"text-font"</code>: Overrides the font stack specified by the root layout property.
-///   </li>
-///   <li>
-///     <code>"text-color"</code>: Overrides the color specified by the root paint property.
-///   </li>
-///   <li>
-///     <code>"font-scale"</code>: Applies a scaling factor on <code>text-size</code> as specified by the root layout property.
-///   </li>
-/// </ul>
-  MBXOperatorFormat = 35,
-/// Returns the feature’s geometry type: <code>Point</code>, <code>LineString</code> or <code>Polygon</code>. <code>Multi*</code> feature types return the singular forms.
-  MBXOperatorGeometryType = 36,
-/// Retrieves a property value from the current feature’s properties, or from another object if a second argument is provided. Returns <code>null</code> if the requested property is missing.
-  MBXOperatorGet = 37,
-/// Tests for the presence of an property value in the current feature’s properties, or from another object if a second argument is provided.
-  MBXOperatorHas = 38,
-/// Returns the kernel density estimation of a pixel in a heatmap layer, which is a relative measure of how many data points are crowded around a particular pixel. Can only be used in the <code>heatmap-color</code> property.
-  MBXOperatorHeatmapDensity = 39,
-/// Returns the feature’s id, if it has one.
-  MBXOperatorId = 40,
-/// Returns a <a href="/mapbox-gl-js/style-spec/types/#resolvedimage"><code>ResolvedImage</code></a> for use in <a href="/mapbox-gl-js/style-spec/layers/#layout-symbol-icon-image"><code>icon-image</code></a>, <code>*-pattern</code> entries, and as a section in the <a href="#types-format"><code>'format'</code></a> expression. A <a href="#coalesce"><code>'coalesce'</code></a> expression containing <code>image</code> expressions will evaluate to the first listed image that is currently in the style. This validation process is synchronous and requires the image to have been added to the style before requesting it in the <code>'image'</code> argument.
-  MBXOperatorImage = 41,
-/// Determines whether an item exists in an array or a substring exists in a string. In the specific case when the second and third arguments are string literals, you must wrap at least one of them in a <a href="#types-literal"><code>literal</code></a> expression to hint correct interpretation to the <a href="#type-system">type system</a>.
-  MBXOperatorInExpression = 42,
-/// Returns the first position at which an item can be found in an array or a substring can be found in a string, or <code>-1</code> if the input cannot be found. Accepts an optional index from where to begin the search.
-  MBXOperatorIndexOf = 43,
-/// Produces continuous, smooth results by interpolating between pairs of input and output values (“stops”). The <code>input</code> may be any numeric expression (e.g., <code>["get", "population"]</code>). Stop inputs must be numeric literals in strictly ascending order. The output type must be <code>number</code>, <code>array<number></code>, or <code>color</code>.
-/// Interpolation types:
-/// <ul>
-///   <li>
-///     <code>["linear"]</code>: Interpolates linearly between the pair of stops just less than and just greater than the input.
-///   </li>
-///   <li>
-///     <code>["exponential", base]</code>: Interpolates exponentially between the stops just less than and just greater than the input. <code>base</code> controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.
-///   </li>
-///   <li>
-///     <code>["cubic-bezier", x1, y1, x2, y2]</code>: Interpolates using the cubic bezier curve defined by the given control points.
-///   </li>
-/// </ul>
-  MBXOperatorInterpolate = 44,
-/// Returns <code>true</code> if the input string is expected to render legibly. Returns <code>false</code> if the input string contains sections that cannot be rendered without potential loss of meaning (e.g. Indic scripts that require complex text shaping, or right-to-left scripts if the the <code>mapbox-gl-rtl-text</code> plugin is not in use in Mapbox GL JS).
-  MBXOperatorIsSupportedScript = 45,
-/// Returns the length of an array or string.
-  MBXOperatorLength = 46,
-/// Binds expressions to named variables, which can then be referenced in the result expression using [“var”, “variable_name”].
-  MBXOperatorLetExpression = 47,
-/// Returns the progress along a gradient line. Can only be used in the <code>line-gradient</code> property.
-  MBXOperatorLineProgress = 48,
-/// Provides a literal array or object value.
-  MBXOperatorLiteral = 49,
-/// Returns the natural logarithm of the input.
-  MBXOperatorLn = 50,
-/// Returns mathematical constant ln(2).
-  MBXOperatorLn2 = 51,
-/// Returns the base-ten logarithm of the input.
-  MBXOperatorLog10 = 52,
-/// Returns the base-two logarithm of the input.
-  MBXOperatorLog2 = 53,
-/// Selects the output for which the label value matches the input value, or the fallback value if no match is found. The input can be any expression (for example, <code>["get", "building_type"]</code>). Each label must be unique, and must be either:
-/// <ul>
-///   <li>
-///     a single literal value; or
-///   </li>
-///   <li>
-///     an array of literal values, the values of which must be all strings or all numbers (for example <code>[100, 101]</code> or <code>["c", "b"]</code>).
-///   </li>
-/// </ul>
-/// The input matches if any of the values in the array matches using strict equality, similar to the <code>"in"</code> operator.
-/// If the input type does not match the type of the labels, the result will be the fallback value.
-  MBXOperatorMatch = 54,
-/// Returns the maximum value of the inputs.
-  MBXOperatorMax = 55,
-/// Returns the minimum value of the inputs.
-  MBXOperatorMin = 56,
-/// Asserts that the input value is a number. If multiple values are provided, each one is evaluated in order until a number is obtained. If none of the inputs are numbers, the expression is an error.
-  MBXOperatorNumber = 57,
-/// Converts the input number into a string representation using the providing formatting rules. If set, the <code>locale</code> argument specifies the locale to use, as a BCP 47 language tag. If set, the <code>currency</code> argument specifies an ISO 4217 code to use for currency-style formatting. If set, the <code>unit</code> argument specifies a <a href="https://tc39.es/proposal-unified-intl-numberformat/section6/locales-currencies-tz_proposed_out.html#sec-issanctionedsimpleunitidentifier">simple ECMAScript unit</a> to use for unit-style formatting. If set, the <code>min-fraction-digits</code> and <code>max-fraction-digits</code> arguments specify the minimum and maximum number of fractional digits to include.
-  MBXOperatorNumberFormat = 58,
-/// Asserts that the input value is an object. If multiple values are provided, each one is evaluated in order until an object is obtained. If none of the inputs are objects, the expression is an error.
-  MBXOperatorObjectExpression = 59,
-/// Returns the mathematical constant pi.
-  MBXOperatorPi = 60,
-/// Returns the current pitch in degrees. <code>["pitch"]</code> may only be used in the <code>filter</code> expression for a <code>symbol</code> layer.
-  MBXOperatorPitch = 61,
-/// Returns the feature properties object.  Note that in some cases, it may be more efficient to use <code>["get", "property_name"]</code> directly.
-  MBXOperatorProperties = 62,
-/// Returns the IETF language tag of the locale being used by the provided <code>collator</code>. This can be used to determine the default system locale, or to determine if a requested locale was successfully loaded.
-  MBXOperatorResolvedLocale = 63,
-/// Creates a color value from red, green, and blue components, which must range between 0 and 255, and an alpha component of 1. If any component is out of range, the expression is an error.
-  MBXOperatorRgb = 64,
-/// Creates a color value from red, green, blue components, which must range between 0 and 255, and an alpha component which must range between 0 and 1. If any component is out of range, the expression is an error.
-  MBXOperatorRgba = 65,
-/// Rounds the input to the nearest integer. Halfway values are rounded away from zero. For example, <code>["round", -1.5]</code> evaluates to -2.
-  MBXOperatorRound = 66,
-/// Returns the sine of the input.
-  MBXOperatorSin = 67,
-/// Returns the distance of a point on the sky from the sun position. Returns 0 at sun position and 1 when the distance reaches <code>sky-gradient-radius</code>. Can only be used in the <code>sky-gradient</code> property.
-  MBXOperatorSkyRadialProgress = 68,
-/// Returns an item from an array or a substring from a string from a specified start index, or between a start index and an end index if set. The return value is inclusive of the start index but not of the end index.
-  MBXOperatorSlice = 69,
-/// Returns the square root of the input.
-  MBXOperatorSqrt = 70,
-/// Produces discrete, stepped results by evaluating a piecewise-constant function defined by pairs of input and output values (“stops”). The <code>input</code> may be any numeric expression (e.g., <code>["get", "population"]</code>). Stop inputs must be numeric literals in strictly ascending order. Returns the output value of the stop just less than the input, or the first output if the input is less than the first stop.
-  MBXOperatorStep = 71,
-/// Asserts that the input value is a string. If multiple values are provided, each one is evaluated in order until a string is obtained. If none of the inputs are strings, the expression is an error.
-  MBXOperatorString = 72,
-/// Returns the tangent of the input.
-  MBXOperatorTan = 73,
-/// Converts the input value to a boolean. The result is <code>false</code> when then input is an empty string, 0, <code>false</code>, <code>null</code>, or <code>NaN</code>; otherwise it is <code>true</code>.
-  MBXOperatorToBoolean = 74,
-/// Converts the input value to a color. If multiple values are provided, each one is evaluated in order until the first successful conversion is obtained. If none of the inputs can be converted, the expression is an error.
-  MBXOperatorToColor = 75,
-/// Converts the input value to a number, if possible. If the input is <code>null</code> or <code>false</code>, the result is 0. If the input is <code>true</code>, the result is 1. If the input is a string, it is converted to a number as specified by the <a href="https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type">“ToNumber Applied to the String Type” algorithm</a> of the ECMAScript Language Specification. If multiple values are provided, each one is evaluated in order until the first successful conversion is obtained. If none of the inputs can be converted, the expression is an error.
-  MBXOperatorToNumber = 76,
-/// Returns a four-element array containing the input color’s red, green, blue, and alpha components, in that order.
-  MBXOperatorToRgba = 77,
-/// Converts the input value to a string. If the input is <code>null</code>, the result is <code>""</code>. If the input is a <a href="#types-boolean"><code>boolean</code></a>, the result is <code>"true"</code> or <code>"false"</code>. If the input is a number, it is converted to a string as specified by the <a href="https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type">“NumberToString” algorithm</a> of the ECMAScript Language Specification. If the input is a <a href="#color"><code>color</code></a>, it is converted to a string of the form <code>"rgba(r,g,b,a)"</code>, where <code>r</code>, <code>g</code>, and <code>b</code> are numerals ranging from 0 to 255, and <code>a</code> ranges from 0 to 1. If the input is an <a href="#types-image"><code>'image'</code></a> expression, <code>'to-string'</code> returns the image name. Otherwise, the input is converted to a string in the format specified by the <a href="https://tc39.github.io/ecma262/#sec-json.stringify"><code>JSON.stringify</code></a> function of the ECMAScript Language Specification.
-  MBXOperatorToString = 78,
-/// Returns a string describing the type of the given value.
-  MBXOperatorTypeofExpression = 79,
-/// Returns the input string converted to uppercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.
-  MBXOperatorUpcase = 80,
-/// References variable bound using “let”.
-  MBXOperatorVarExpression = 81,
-/// Returns <code>true</code> if the evaluated feature is fully contained inside a boundary of the input geometry, <code>false</code> otherwise. The input value can be a valid GeoJSON of type <code>Polygon</code>, <code>MultiPolygon</code>, <code>Feature</code>, or <code>FeatureCollection</code>. Supported features for evaluation:
-/// <ul>
-///   <li>
-///     <code>Point</code>: Returns <code>false</code> if a point is on the boundary or falls outside the boundary.
-///   </li>
-///   <li>
-///     <code>LineString</code>: Returns <code>false</code> if any part of a line falls outside the boundary, the line intersects the boundary, or a line’s endpoint is on the boundary.
-///   </li>
-/// </ul>
-  MBXOperatorWithin = 82,
-/// Returns the current zoom level.  Note that in style layout and paint properties, [“zoom”] may only appear as the input to a top-level “step” or “interpolate” expression.
-  MBXOperatorZoom = 83,
-/// Interpolates linearly between the pair of stops just less than and just greater than the input
-  MBXOperatorLinear = 84,
-/// <code>["exponential", base]</code>
-/// Interpolates exponentially between the stops just less than and just
-/// greater than the input. base controls the rate at which the output increases: higher values make the output
-/// increase more towards the high end of the range.
-/// With values close to 1 the output increases linearly.
-  MBXOperatorExponential = 85,
-/// <code>["cubic-bezier", x1, y1, x2, y2]</code>
-/// Interpolates using the cubic bezier curve defined by the given control points.
-  MBXOperatorCubicBezier = 86,
-};
-
-typedef SWIFT_ENUM(NSInteger, MBXOrnamentVisibility, open) {
-  MBXOrnamentVisibilityAdaptive = 0,
-  MBXOrnamentVisibilityHidden = 1,
-  MBXOrnamentVisibilityVisible = 2,
-};
-
-typedef SWIFT_ENUM(NSInteger, MBXPuckBearingSource, open) {
-  MBXPuckBearingSourceHeading = 0,
-  MBXPuckBearingSourceCourse = 1,
-};
-
-/// The resampling/interpolation method to use for overscaling, also known as texture magnification filter
-typedef SWIFT_ENUM(NSInteger, MBXRasterResampling, open) {
-/// (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
-  MBXRasterResamplingLinear = 0,
-/// Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled
-  MBXRasterResamplingNearest = 1,
-};
-
-
-SWIFT_CLASS("_TtC13MapboxMapObjC16MBXResolvedImage")
-@interface MBXResolvedImage : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-
-SWIFT_CLASS("_TtC13MapboxMapObjC20MBXResolvedImageData")
-@interface MBXResolvedImageData : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-/// The type of the sky
-typedef SWIFT_ENUM(NSInteger, MBXSkyType, open) {
-/// Renders the sky with a gradient that can be configured with {@link SKY_GRADIENT_RADIUS} and {@link SKY_GRADIENT}.
-  MBXSkyTypeGradient = 0,
-/// Renders the sky with a simulated atmospheric scattering algorithm, the sun direction can be attached to the light position or explicitly set through {@link SKY_ATMOSPHERE_SUN}.
-  MBXSkyTypeAtmosphere = 1,
-};
-
-typedef SWIFT_ENUM(NSInteger, MBXSourceType, open) {
-/// A vector tile source.
-  MBXSourceTypeVector = 0,
-/// A raster tile source.
-  MBXSourceTypeRaster = 1,
-/// A raster DEM source.
-  MBXSourceTypeRasterDem = 2,
-/// A GeoJSON source.
-  MBXSourceTypeGeoJson = 3,
-/// An image source.
-  MBXSourceTypeImage = 4,
-/// A model source
-  MBXSourceTypeModel = 5,
-};
-
-/// The name of the projection to be used for rendering the map.
-typedef SWIFT_ENUM(NSInteger, MBXStyleProjectionName, open) {
-/// The Mercator projection is the default projection.
-  MBXStyleProjectionNameMercator = 0,
-/// A globe projection.
-  MBXStyleProjectionNameGlobe = 1,
-};
-
-
-SWIFT_CLASS("_TtC13MapboxMapObjC18MBXStyleTransition")
-@interface MBXStyleTransition : NSObject
-- (nonnull instancetype)initWithDuration:(double)duration delay:(double)delay OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-/// Label placement relative to its geometry.
-typedef SWIFT_ENUM(NSInteger, MBXSymbolPlacement, open) {
-/// The label is placed at the point where the geometry is located.
-  MBXSymbolPlacementPoint = 0,
-/// The label is placed along the line of the geometry. Can only be used on LineString and Polygon geometries.
-  MBXSymbolPlacementLine = 1,
-/// The label is placed at the center of the line of the geometry. Can only be used on LineString and Polygon geometries. Note that a single feature in a vector tile may contain multiple line geometries.
-  MBXSymbolPlacementLineCenter = 2,
-};
-
-/// Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use <code>symbol-sort-key</code>.
-typedef SWIFT_ENUM(NSInteger, MBXSymbolZOrder, open) {
-/// Sorts symbols by symbol sort key if set. Otherwise, sorts symbols by their y-position relative to the viewport if {@link ICON_ALLOW_OVERLAP} or {@link TEXT_ALLOW_OVERLAP} is set to {@link TRUE} or {@link ICON_IGNORE_PLACEMENT} or {@link TEXT_IGNORE_PLACEMENT} is {@link FALSE}.
-  MBXSymbolZOrderAuto = 0,
-/// Sorts symbols by their y-position relative to the viewport if {@link ICON_ALLOW_OVERLAP} or {@link TEXT_ALLOW_OVERLAP} is set to {@link TRUE} or {@link ICON_IGNORE_PLACEMENT} or {@link TEXT_IGNORE_PLACEMENT} is {@link FALSE}.
-  MBXSymbolZOrderViewportY = 1,
-/// Sorts symbols by symbol sort key if set. Otherwise, no sorting is applied; symbols are rendered in the same order as the source data.
-  MBXSymbolZOrderSource = 2,
-};
-
-
-SWIFT_CLASS("_TtC13MapboxMapObjC10MBXTerrain")
-@interface MBXTerrain : NSObject
-- (nonnull instancetype)initWithSourceId:(NSString * _Nonnull)sourceId OBJC_DESIGNATED_INITIALIZER;
-/// Exaggerates the elevation of the terrain by multiplying the data from the DEM with this value.
-@property (nonatomic, strong) MBXValue * _Nullable exaggeration;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-/// Part of the text placed closest to the anchor.
-typedef SWIFT_ENUM(NSInteger, MBXTextAnchor, open) {
-/// The center of the text is placed closest to the anchor.
-  MBXTextAnchorCenter = 0,
-/// The left side of the text is placed closest to the anchor.
-  MBXTextAnchorLeft = 1,
-/// The right side of the text is placed closest to the anchor.
-  MBXTextAnchorRight = 2,
-/// The top of the text is placed closest to the anchor.
-  MBXTextAnchorTop = 3,
-/// The bottom of the text is placed closest to the anchor.
-  MBXTextAnchorBottom = 4,
-/// The top left corner of the text is placed closest to the anchor.
-  MBXTextAnchorTopLeft = 5,
-/// The top right corner of the text is placed closest to the anchor.
-  MBXTextAnchorTopRight = 6,
-/// The bottom left corner of the text is placed closest to the anchor.
-  MBXTextAnchorBottomLeft = 7,
-/// The bottom right corner of the text is placed closest to the anchor.
-  MBXTextAnchorBottomRight = 8,
-};
-
-/// Text justification options.
-typedef SWIFT_ENUM(NSInteger, MBXTextJustify, open) {
-/// The text is aligned towards the anchor position.
-  MBXTextJustifyAuto = 0,
-/// The text is aligned to the left.
-  MBXTextJustifyLeft = 1,
-/// The text is centered.
-  MBXTextJustifyCenter = 2,
-/// The text is aligned to the right.
-  MBXTextJustifyRight = 3,
-};
-
-/// Orientation of text when map is pitched.
-typedef SWIFT_ENUM(NSInteger, MBXTextPitchAlignment, open) {
-/// The text is aligned to the plane of the map.
-  MBXTextPitchAlignmentMap = 0,
-/// The text is aligned to the plane of the viewport.
-  MBXTextPitchAlignmentViewport = 1,
-/// Automatically matches the value of {@link TEXT_ROTATION_ALIGNMENT}.
-  MBXTextPitchAlignmentAuto = 2,
-};
-
-/// In combination with <code>symbol-placement</code>, determines the rotation behavior of the individual glyphs forming the text.
-typedef SWIFT_ENUM(NSInteger, MBXTextRotationAlignment, open) {
-/// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, aligns text east-west. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, aligns text x-axes with the line.
-  MBXTextRotationAlignmentMap = 0,
-/// Produces glyphs whose x-axes are aligned with the x-axis of the viewport, regardless of the value of {@link SYMBOL_PLACEMENT}.
-  MBXTextRotationAlignmentViewport = 1,
-/// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, this is equivalent to {@link Property#TEXT_ROTATION_ALIGNMENT_VIEWPORT}. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, this is equivalent to {@link Property#TEXT_ROTATION_ALIGNMENT_MAP}.
-  MBXTextRotationAlignmentAuto = 2,
-};
-
-/// Specifies how to capitalize text, similar to the CSS <code>text-transform</code> property.
-typedef SWIFT_ENUM(NSInteger, MBXTextTransform, open) {
-/// The text is not altered.
-  MBXTextTransformNone = 0,
-/// Forces all letters to be displayed in uppercase.
-  MBXTextTransformUppercase = 1,
-/// Forces all letters to be displayed in lowercase.
-  MBXTextTransformLowercase = 2,
-};
-
-/// Controls the frame of reference for <code>text-translate</code>.
-typedef SWIFT_ENUM(NSInteger, MBXTextTranslateAnchor, open) {
-/// The text is translated relative to the map.
-  MBXTextTranslateAnchorMap = 0,
-/// The text is translated relative to the viewport.
-  MBXTextTranslateAnchorViewport = 1,
-};
-
-/// The property allows control over a symbol’s orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single ‘vertical’ enum value. For symbol with point placement, the order of elements in an array define priority order for the placement of an orientation variant. For symbol with line placement, the default text writing mode is either [‘horizontal’, ‘vertical’] or [‘vertical’, ‘horizontal’], the order doesn’t affect the placement.
-typedef SWIFT_ENUM(NSInteger, MBXTextWritingMode, open) {
-/// If a text’s language supports horizontal writing mode, symbols would be laid out horizontally.
-  MBXTextWritingModeHorizontal = 0,
-/// If a text’s language supports vertical writing mode, symbols would be laid out vertically.
-  MBXTextWritingModeVertical = 1,
-};
-
-
-SWIFT_CLASS("_TtC13MapboxMapObjC8MBXValue")
-@interface MBXValue : NSObject
-- (nonnull instancetype)initWithConstant:(NSObject * _Nonnull)constant OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithExpression:(MBXExpression * _Nonnull)expression OBJC_DESIGNATED_INITIALIZER;
-+ (MBXValue * _Nonnull)constant:(NSObject * _Nonnull)constant SWIFT_WARN_UNUSED_RESULT;
-+ (MBXValue * _Nonnull)expression:(MBXExpression * _Nonnull)expression SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-
-typedef SWIFT_ENUM(NSInteger, MBXVisibility, open) {
-/// The layer is shown.
-  MBXVisibilityVisible = 0,
-/// The layer is not shown.
-  MBXVisibilityNone = 1,
-};
 
 @class MBMResourceOptions;
-@class MapInitOptions;
+
+@interface MapInitOptions (SWIFT_EXTENSION(MapboxMapObjC))
+- (MBMResourceOptions * _Nonnull)resourceOptions SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class MBMMapOptions;
 @class MBMCameraOptions;
 @class NSURL;
@@ -910,35 +344,36 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MBMResourceO
 - (MapInitOptionsBuilder * _Nonnull)cameraOptions:(MBMCameraOptions * _Nullable)value SWIFT_WARN_UNUSED_RESULT;
 - (MapInitOptionsBuilder * _Nonnull)styleUriString:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 - (MapInitOptionsBuilder * _Nonnull)styleUri:(NSURL * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-/// Mapbox Streets is a general-purpose style with detailed road and transit networks.
-- (MapInitOptionsBuilder * _Nonnull)styleStreets SWIFT_WARN_UNUSED_RESULT;
-/// Mapbox Outdoors is a general-purpose style tailored to outdoor activities.
-- (MapInitOptionsBuilder * _Nonnull)styleOutdoors SWIFT_WARN_UNUSED_RESULT;
-/// Mapbox Light is a subtle, light-colored backdrop for data visualizations.
-- (MapInitOptionsBuilder * _Nonnull)styleLight SWIFT_WARN_UNUSED_RESULT;
-/// Mapbox Dark is a subtle, dark-colored backdrop for data visualizations.
-- (MapInitOptionsBuilder * _Nonnull)styleDark SWIFT_WARN_UNUSED_RESULT;
-/// The Mapbox Satellite style is a base-map of high-resolution satellite and aerial imagery.
-- (MapInitOptionsBuilder * _Nonnull)styleSatellite SWIFT_WARN_UNUSED_RESULT;
-/// The Mapbox Satellite Streets style combines the high-resolution satellite and aerial imagery
-/// of Mapbox Satellite with unobtrusive labels and translucent roads from Mapbox Streets.
-- (MapInitOptionsBuilder * _Nonnull)styleSatelliteStreets SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class TMBTerrain;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setTerrain:(MBXTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addFillExtrusionLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(FillExtrusionLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
+@end
+
+enum TMBOrnamentVisibility : NSInteger;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
+@end
+
+@class SymbolLayerBuilder;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)updateSymbolLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SymbolLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
+@class SkyLayerBuilder;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)updateSkyLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
 @class RasterDemSourceBuilder;
@@ -947,15 +382,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MBMResourceO
 - (void)addRasterDemSource:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
+@class TMBGeometry;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)ornamentsOptionsScaleBarVisibility:(enum MBXOrnamentVisibility)value;
+- (void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
-@class SkyLayerBuilder;
+@class TMBStyle;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addSkyLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)setStyle:(NSString * _Nonnull)styleUri;
+- (void)setStyleInJson:(NSString * _Nonnull)styleJson;
+- (void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
 @end
 
 
@@ -965,60 +403,75 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MBMResourceO
 - (void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
 @end
 
+enum TMBLayerPosition : NSInteger;
+@protocol MBMCustomLayerHost;
+@class NSDictionary;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)addLayerWithTarget:(NSObject * _Nonnull)target selector:(SEL _Nonnull)selector layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addLayerWithBuilder:(SWIFT_NOESCAPE id _Nonnull (^ _Nonnull)(void))builder layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id <MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addLayerWithProperties:(NSDictionary * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
 @protocol LocationPermissionsDelegate;
 @class Puck2DConfigurationBuilder;
+enum TMBPuckBearingSource : NSInteger;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (void)locationDelegate:(id <LocationPermissionsDelegate> _Nonnull)delegate;
 - (void)locationRequestTemporaryFullAccuracyPermissions:(NSString * _Nonnull)customKey;
 - (void)puck2D:(void (^ _Nullable)(Puck2DConfigurationBuilder * _Nonnull))build;
-- (void)puckBearingSource:(enum MBXPuckBearingSource)source;
+- (void)puckBearingSource:(enum TMBPuckBearingSource)source;
 @end
 
-@protocol MBMCustomLayerHost;
-@class NSDictionary;
+@class TMBPolygonAnnotationManager;
+@class TMBCircleAnnotationManager;
+@class TMBPointAnnotationManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id <MBMCustomLayerHost> _Nonnull)layerHost below:(NSString * _Nonnull)belowLayerId onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id <MBMCustomLayerHost> _Nonnull)layerHost above:(NSString * _Nonnull)aboveLayerId onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id <MBMCustomLayerHost> _Nonnull)layerHost at:(NSInteger)index onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addLayerBelowWithProperties:(NSDictionary * _Nonnull)properties layerId:(NSString * _Nonnull)layerId onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addLayerAboveWithProperties:(NSDictionary * _Nonnull)properties layerId:(NSString * _Nonnull)layerId onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addLayerAtWithProperties:(NSDictionary * _Nonnull)properties index:(NSInteger)index onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManager SWIFT_WARN_UNUSED_RESULT;
+- (TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
+- (TMBCircleAnnotationManager * _Nonnull)circleAnnotationManager SWIFT_WARN_UNUSED_RESULT;
+- (TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
+- (TMBPointAnnotationManager * _Nonnull)pointAnnotationManager SWIFT_WARN_UNUSED_RESULT;
+- (TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
 @end
 
+enum TMBAnchor : NSInteger;
 @class UIColor;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 /// Whether extruded geometries are lit relative to the map or viewport.
-- (void)lightAnchor:(enum MBXAnchor)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)lightAnchor:(enum TMBAnchor)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Color tint for lighting extruded geometries.
 - (void)lightColor:(UIColor * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Transition property for <code>color</code>
-- (void)lightColorTransition:(MBXStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)lightColorTransition:(TMBStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Intensity of lighting (on a scale from 0 to 1). Higher numbers will present as more extreme contrast.
 - (void)lightIntensity:(double)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Transition property for <code>intensity</code>
-- (void)lightIntensityTransition:(MBXStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)lightIntensityTransition:(TMBStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Position of the light source relative to lit (extruded) geometries, in [r radial coordinate, a azimuthal angle, p polar angle] where r indicates the distance from the center of the base of an object to its light, a indicates the position of the light relative to 0 degree (0 degree when <code>light.anchor</code> is set to <code>viewport</code> corresponds to the top of the viewport, or 0 degree when <code>light.anchor</code> is set to <code>map</code> corresponds to due north, and degrees proceed clockwise), and p indicates the height of the light (from 0 degree, directly above, to 180 degree, directly below).
 - (void)lightPosition:(NSArray<NSNumber *> * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Transition property for <code>position</code>
-- (void)lightPositionTransition:(MBXStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)lightPositionTransition:(TMBStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
+@class TMBCancelable;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 /// The style has been fully loaded, and the map has rendered all visible tiles.
-- (MBXCancelable * _Nonnull)onMapLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onMapLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
 /// Describes an error that has occurred while loading the Map. The <code>type</code> property defines what resource could
 /// not be loaded and the <code>message</code> property will contain a descriptive error message.
 /// In case of <code>source</code> or <code>tile</code> loading errors, <code>source-id</code> will contain the id of the source failing.
 /// In case of <code>tile</code> loading errors, <code>tile-id</code> will contain the id of the tile.
-- (MBXCancelable * _Nonnull)onMapLoadingError:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onMapLoadingError:(void (^ _Nonnull)(id _Nonnull))handler;
 /// The map has entered the idle state. The map is in the idle state when there are no ongoing transitions
 /// and the map has rendered all requested non-volatile tiles. The event will not be emitted if <code>setUserAnimationInProgress</code>
 /// and / or <code>setGestureInProgress</code> is set to <code>true</code>.
-- (MBXCancelable * _Nonnull)onMapIdle:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onMapIdle:(void (^ _Nonnull)(id _Nonnull))handler;
 /// The requested style data has been loaded. The <code>type</code> property defines what kind of style data has been loaded.
 /// Event may be emitted synchronously, for example, when <code>setStyleJSON</code> is used to load style.
 /// Based on an event data <code>type</code> property value, following use-cases may be implemented:
@@ -1034,17 +487,17 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MBMResourceO
 ///     <code>sources</code>: All sources defined by the style are loaded and their properties could be read and updated if needed.
 ///   </li>
 /// </ul>
-- (MBXCancelable * _Nonnull)onStyleDataLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onStyleDataLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
 /// The requested style has been fully loaded, including the style, specified sprite and sources’ metadata.
 /// Note: The style specified sprite would be marked as loaded even with sprite loading error (An error will be emitted via <code>.mapLoadingError</code>).
 /// Sprite loading error is not fatal and we don’t want it to block the map rendering, thus this event will still be emitted if style and sources are fully loaded.
-- (MBXCancelable * _Nonnull)onStyleLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onStyleLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
 /// A style has a missing image. This event is emitted when the map renders visible tiles and
 /// one of the required images is missing in the sprite sheet. Subscriber has to provide the missing image
 /// by calling <code>Style/addImage(_:id:sdf:contentInsets:)</code>.
-- (MBXCancelable * _Nonnull)onStyleImageMissing:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onStyleImageMissing:(void (^ _Nonnull)(id _Nonnull))handler;
 /// An image added to the style is no longer needed and can be removed using <code>Style/removeImage(withId:)</code>.
-- (MBXCancelable * _Nonnull)onStyleImageRemoveUnused:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onStyleImageRemoveUnused:(void (^ _Nonnull)(id _Nonnull))handler;
 /// A source data has been loaded.
 /// Event may be emitted synchronously in cases when source’s metadata is available when source is added to the style.
 /// The <code>id</code> property defines the source id.
@@ -1053,33 +506,33 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MBMResourceO
 /// readable and can be updated before map will start requesting data to be rendered.
 /// The <code>loaded</code> property will be set to <code>true</code> if all source’s data required for visible viewport of the map, are loaded.
 /// The <code>tile-id</code> property defines the tile id if the <code>type</code> field equals <code>tile</code>.
-- (MBXCancelable * _Nonnull)onSourceDataLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onSourceDataLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
 /// The source has been added with <code>Style/addSource(_:id:)</code> or <code>Style/addSource(withId:properties:)</code>.
 /// The event is emitted synchronously, therefore, it is possible to immediately
 /// read added source’s properties.
-- (MBXCancelable * _Nonnull)onSourceAdded:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onSourceAdded:(void (^ _Nonnull)(id _Nonnull))handler;
 /// The source has been removed with <code>Style/removeSource(withId:)</code>.
 /// The event is emitted synchronously, thus, <code>Style/allSourceIdentifiers</code> will be
 /// in sync when the observer receives the notification.
-- (MBXCancelable * _Nonnull)onSourceRemoved:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onSourceRemoved:(void (^ _Nonnull)(id _Nonnull))handler;
 /// The map finished rendering a frame.
 /// The <code>render-mode</code> property tells whether the map has all data (<code>full</code>) required to render the visible viewport.
 /// The <code>needs-repaint</code> property provides information about ongoing transitions that trigger map repaint.
 /// The <code>placement-changed</code> property tells if the symbol placement has been changed in the visible viewport.
-- (MBXCancelable * _Nonnull)onRenderFrameStarted:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onRenderFrameStarted:(void (^ _Nonnull)(id _Nonnull))handler;
 /// The camera has changed. This event is emitted whenever the visible viewport
 /// changes due to the MapView’s size changing or when the camera
 /// is modified by calling camera methods. The event is emitted synchronously,
 /// so that an updated camera state can be fetched immediately.
-- (MBXCancelable * _Nonnull)onRenderFrameFinished:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onRenderFrameFinished:(void (^ _Nonnull)(id _Nonnull))handler;
 /// The camera has changed. This event is emitted whenever the visible viewport
 /// changes due to the MapView’s size changing or when the camera
 /// is modified by calling camera methods. The event is emitted synchronously,
 /// so that an updated camera state can be fetched immediately.
-- (MBXCancelable * _Nonnull)onEvenCameraChanged:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onEvenCameraChanged:(void (^ _Nonnull)(id _Nonnull))handler;
 /// The <code>ResourceRequest</code> event allows client to observe resource requests made by a
 /// map or snapshotter.
-- (MBXCancelable * _Nonnull)onResourceRequest:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onResourceRequest:(void (^ _Nonnull)(id _Nonnull))handler;
 @end
 
 
@@ -1092,6 +545,14 @@ SWIFT_CLASS("_TtC13MapboxMapObjC14MapViewFactory")
 + (MapView * _Nonnull)createWithFrame:(CGRect)frame options:(MapInitOptions * _Nullable)options SWIFT_WARN_UNUSED_RESULT;
 @end
 
+
+@class MBMStylePackLoadOptions;
+@class MBMStylePack;
+
+@interface MBMOfflineManager (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBCancelable * _Nonnull)loadStyleWithStyleUriString:(NSString * _Nonnull)styleUriString styleLoadOptions:(MBMStylePackLoadOptions * _Nonnull)styleLoadOptions progress:(MBMStylePackLoadProgressCallback _Nonnull)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
+- (void)allStylePacks:(void (^ _Nonnull)(NSArray<MBMStylePack *> * _Nullable, NSError * _Nullable))completion;
+@end
 
 @class Puck2DConfigurationPulsingBuilder;
 @class UIImage;
@@ -1119,6 +580,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC33Puck2DConfigurationPulsingBuilder")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+enum TMBEncoding : NSInteger;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22RasterDemSourceBuilder")
 @interface RasterDemSourceBuilder : NSObject
@@ -1129,7 +591,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC22RasterDemSourceBuilder")
 - (RasterDemSourceBuilder * _Nonnull)maxzoom:(double)value;
 - (RasterDemSourceBuilder * _Nonnull)tileSize:(double)value;
 - (RasterDemSourceBuilder * _Nonnull)attribution:(NSString * _Nullable)value;
-- (RasterDemSourceBuilder * _Nonnull)encoding:(enum MBXEncoding)value;
+- (RasterDemSourceBuilder * _Nonnull)encoding:(enum TMBEncoding)value;
 - (RasterDemSourceBuilder * _Nonnull)volatile:(BOOL)value;
 - (RasterDemSourceBuilder * _Nonnull)prefetchZoomDelta:(double)value;
 - (RasterDemSourceBuilder * _Nonnull)minimumTileUpdateInterval:(double)value;
@@ -1144,24 +606,889 @@ SWIFT_CLASS("_TtC13MapboxMapObjC22RasterDemSourceBuilder")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC15SkyLayerBuilder")
 @interface SkyLayerBuilder : NSObject
-- (void)filter:(MBXExpression * _Nullable)value;
++ (SkyLayerBuilder * _Nonnull)withId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (void)filter:(TMBExpression * _Nullable)value;
 - (void)source:(NSString * _Nullable)value;
 - (void)sourceLayer:(NSString * _Nullable)value;
 - (void)minZoom:(NSNumber * _Nullable)value;
 - (void)maxZoom:(NSNumber * _Nullable)value;
-- (void)visibility:(MBXValue * _Nullable)value;
-- (void)skyAtmosphereColor:(MBXValue * _Nullable)value;
-- (void)skyAtmosphereHaloColor:(MBXValue * _Nullable)value;
-- (void)skyAtmosphereSun:(MBXValue * _Nullable)value;
-- (void)skyAtmosphereSunIntensity:(MBXValue * _Nullable)value;
-- (void)skyGradient:(MBXValue * _Nullable)value;
-- (void)skyGradientCenter:(MBXValue * _Nullable)value;
-- (void)skyGradientRadius:(MBXValue * _Nullable)value;
-- (void)skyOpacity:(MBXValue * _Nullable)value;
-- (void)skyOpacityTransition:(MBXStyleTransition * _Nullable)value;
-- (void)skyType:(MBXValue * _Nullable)value;
+- (void)visibility:(TMBValue * _Nullable)value;
+- (void)skyAtmosphereColor:(TMBValue * _Nullable)value;
+- (void)skyAtmosphereHaloColor:(TMBValue * _Nullable)value;
+- (void)skyAtmosphereSun:(TMBValue * _Nullable)value;
+- (void)skyAtmosphereSunIntensity:(TMBValue * _Nullable)value;
+- (void)skyGradient:(TMBValue * _Nullable)value;
+- (void)skyGradientCenter:(TMBValue * _Nullable)value;
+- (void)skyGradientRadius:(TMBValue * _Nullable)value;
+- (void)skyOpacity:(TMBValue * _Nullable)value;
+- (void)skyOpacityTransition:(TMBStyleTransition * _Nullable)value;
+- (void)skyType:(TMBValue * _Nullable)value;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC18SymbolLayerBuilder")
+@interface SymbolLayerBuilder : NSObject
++ (SymbolLayerBuilder * _Nonnull)withId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (void)filter:(TMBExpression * _Nullable)value;
+- (void)source:(NSString * _Nullable)value;
+- (void)sourceLayer:(NSString * _Nullable)value;
+- (void)minZoom:(NSNumber * _Nullable)value;
+- (void)maxZoom:(NSNumber * _Nullable)value;
+- (void)visibility:(TMBValue * _Nullable)value;
+- (void)iconAllowOverlap:(TMBValue * _Nullable)value;
+- (void)iconAnchor:(TMBValue * _Nullable)value;
+- (void)iconIgnorePlacement:(TMBValue * _Nullable)value;
+- (void)iconImage:(TMBValue * _Nullable)value;
+- (void)iconKeepUpright:(TMBValue * _Nullable)value;
+- (void)iconOffset:(TMBValue * _Nullable)value;
+- (void)iconOptional:(TMBValue * _Nullable)value;
+- (void)iconPadding:(TMBValue * _Nullable)value;
+- (void)iconPitchAlignment:(TMBValue * _Nullable)value;
+- (void)iconRotate:(TMBValue * _Nullable)value;
+- (void)iconRotationAlignment:(TMBValue * _Nullable)value;
+- (void)iconSize:(TMBValue * _Nullable)value;
+- (void)iconTextFit:(TMBValue * _Nullable)value;
+- (void)iconTextFitPadding:(TMBValue * _Nullable)value;
+- (void)symbolAvoidEdges:(TMBValue * _Nullable)value;
+- (void)symbolPlacement:(TMBValue * _Nullable)value;
+- (void)symbolSortKey:(TMBValue * _Nullable)value;
+- (void)symbolSpacing:(TMBValue * _Nullable)value;
+- (void)symbolZOrder:(TMBValue * _Nullable)value;
+- (void)textAllowOverlap:(TMBValue * _Nullable)value;
+- (void)textAnchor:(TMBValue * _Nullable)value;
+- (void)textField:(TMBValue * _Nullable)value;
+- (void)textFont:(TMBValue * _Nullable)value;
+- (void)textIgnorePlacement:(TMBValue * _Nullable)value;
+- (void)textJustify:(TMBValue * _Nullable)value;
+- (void)textKeepUpright:(TMBValue * _Nullable)value;
+- (void)textLetterSpacing:(TMBValue * _Nullable)value;
+- (void)textLineHeight:(TMBValue * _Nullable)value;
+- (void)textMaxAngle:(TMBValue * _Nullable)value;
+- (void)textMaxWidth:(TMBValue * _Nullable)value;
+- (void)textOffset:(TMBValue * _Nullable)value;
+- (void)textOptional:(TMBValue * _Nullable)value;
+- (void)textPadding:(TMBValue * _Nullable)value;
+- (void)textPitchAlignment:(TMBValue * _Nullable)value;
+- (void)textRadialOffset:(TMBValue * _Nullable)value;
+- (void)textRotate:(TMBValue * _Nullable)value;
+- (void)textRotationAlignment:(TMBValue * _Nullable)value;
+- (void)textSize:(TMBValue * _Nullable)value;
+- (void)textTransform:(TMBValue * _Nullable)value;
+- (void)textVariableAnchor:(TMBValue * _Nullable)value;
+- (void)textWritingMode:(TMBValue * _Nullable)value;
+- (void)iconColor:(TMBValue * _Nullable)value;
+- (void)iconColorTransition:(TMBStyleTransition * _Nullable)value;
+- (void)iconHaloBlur:(TMBValue * _Nullable)value;
+- (void)iconHaloBlurTransition:(TMBStyleTransition * _Nullable)value;
+- (void)iconHaloColor:(TMBValue * _Nullable)value;
+- (void)iconHaloColorTransition:(TMBStyleTransition * _Nullable)value;
+- (void)iconHaloWidth:(TMBValue * _Nullable)value;
+- (void)iconHaloWidthTransition:(TMBStyleTransition * _Nullable)value;
+- (void)iconOpacity:(TMBValue * _Nullable)value;
+- (void)iconOpacityTransition:(TMBStyleTransition * _Nullable)value;
+- (void)iconTranslate:(TMBValue * _Nullable)value;
+- (void)iconTranslateTransition:(TMBStyleTransition * _Nullable)value;
+- (void)iconTranslateAnchor:(TMBValue * _Nullable)value;
+- (void)textColor:(TMBValue * _Nullable)value;
+- (void)textColorTransition:(TMBStyleTransition * _Nullable)value;
+- (void)textHaloBlur:(TMBValue * _Nullable)value;
+- (void)textHaloBlurTransition:(TMBStyleTransition * _Nullable)value;
+- (void)textHaloColor:(TMBValue * _Nullable)value;
+- (void)textHaloColorTransition:(TMBStyleTransition * _Nullable)value;
+- (void)textHaloWidth:(TMBValue * _Nullable)value;
+- (void)textHaloWidthTransition:(TMBStyleTransition * _Nullable)value;
+- (void)textOpacity:(TMBValue * _Nullable)value;
+- (void)textOpacityTransition:(TMBStyleTransition * _Nullable)value;
+- (void)textTranslate:(TMBValue * _Nullable)value;
+- (void)textTranslateTransition:(TMBStyleTransition * _Nullable)value;
+- (void)textTranslateAnchor:(TMBValue * _Nullable)value;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// Whether extruded geometries are lit relative to the map or viewport.
+typedef SWIFT_ENUM(NSInteger, TMBAnchor, open) {
+/// The position of the light source is aligned to the rotation of the map.
+  TMBAnchorMap = 0,
+/// The position of the light source is aligned to the rotation of the viewport.
+  TMBAnchorViewport = 1,
+};
+
+
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC13TMBAnnotation_")
+@protocol TMBAnnotation
+/// The unique identifier of the annotation.
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+/// The geometry that is backing this annotation.
+@property (nonatomic, readonly, copy) NSString * _Nonnull geometryInJSON;
+/// Properties associated with the annotation.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
+@end
+
+@protocol TMBAnnotationManager;
+
+/// A delegate that is called when a tap is detected on an annotation (or on several of them).
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC32TMBAnnotationInteractionDelegate_")
+@protocol TMBAnnotationInteractionDelegate
+/// This method is invoked when a tap gesture is detected on an annotation
+/// \param manager The <code>AnnotationManager</code> that detected this tap gesture
+///
+/// \param annotations A list of <code>Annotations</code> that were tapped
+///
+- (void)annotationManager:(id <TMBAnnotationManager> _Nonnull)manager didDetectTappedAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+@end
+
+
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC20TMBAnnotationManager_")
+@protocol TMBAnnotationManager
+/// The id of this annotation manager.
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+/// The id of the <code>GeoJSONSource</code> that this manager is responsible for.
+@property (nonatomic, readonly, copy) NSString * _Nonnull sourceId;
+/// The id of the layer that this manager is responsible for.
+@property (nonatomic, readonly, copy) NSString * _Nonnull layerId;
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC13TMBCancelable")
+@interface TMBCancelable : NSObject
+- (void)cancel;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC19TMBCircleAnnotation")
+@interface TMBCircleAnnotation : NSObject <TMBAnnotation>
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+@property (nonatomic, readonly, copy) NSString * _Nonnull geometryInJSON;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
+@property (nonatomic, strong) UIColor * _Nullable circleColor;
+@property (nonatomic) double circleRadius;
+@property (nonatomic) BOOL isDraggable;
++ (TMBCircleAnnotation * _Nonnull)fromCenter:(CLLocationCoordinate2D)coordinate SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCircleAnnotationManager")
+@interface TMBCircleAnnotationManager : NSObject <TMBAnnotationManager>
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sourceId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull layerId;
+@property (nonatomic, copy) NSArray<TMBCircleAnnotation *> * _Nonnull annotations;
+/// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.
+/// note:
+/// This annotation manager listens to tap events via the <code>GestureManager.singleTapGestureRecognizer</code>.
+@property (nonatomic, weak) id <TMBAnnotationInteractionDelegate> _Nullable delegate;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, TMBEncoding, open) {
+/// Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.
+  TMBEncodingTerrarium = 0,
+/// Mapbox Terrain RGB tiles. See https://www.mapbox.com/help/access-elevation-data/#mapbox-terrain-rgb for more info.
+  TMBEncodingMapbox = 1,
+};
+
+enum TMBOperator : NSInteger;
+
+SWIFT_CLASS("_TtC13MapboxMapObjC13TMBExpression")
+@interface TMBExpression : NSObject
++ (TMBExpression * _Nonnull)createWithOperator:(enum TMBOperator)operator_ SWIFT_WARN_UNUSED_RESULT;
++ (TMBExpression * _Nonnull)createWithOperator:(enum TMBOperator)operator_ arguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Controls the frame of reference for <code>fill-extrusion-translate</code>.
+typedef SWIFT_ENUM(NSInteger, TMBFillExtrusionTranslateAnchor, open) {
+/// The fill extrusion is translated relative to the map.
+  TMBFillExtrusionTranslateAnchorMap = 0,
+/// The fill extrusion is translated relative to the viewport.
+  TMBFillExtrusionTranslateAnchorViewport = 1,
+};
+
+/// Controls the frame of reference for <code>fill-translate</code>.
+typedef SWIFT_ENUM(NSInteger, TMBFillTranslateAnchor, open) {
+/// The fill is translated relative to the map.
+  TMBFillTranslateAnchorMap = 0,
+/// The fill is translated relative to the viewport.
+  TMBFillTranslateAnchorViewport = 1,
+};
+
+
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC10TMBGeoData_")
+@protocol TMBGeoData
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC11TMBGeometry")
+@interface TMBGeometry : NSObject
++ (TMBGeometry * _Nonnull)fromData:(id <TMBGeoData> _Nonnull)data SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Direction of light source when map is rotated.
+typedef SWIFT_ENUM(NSInteger, TMBHillshadeIlluminationAnchor, open) {
+/// The hillshade illumination is relative to the north direction.
+  TMBHillshadeIlluminationAnchorMap = 0,
+/// The hillshade illumination is relative to the top of the viewport.
+  TMBHillshadeIlluminationAnchorViewport = 1,
+};
+
+/// Part of the icon placed closest to the anchor.
+typedef SWIFT_ENUM(NSInteger, TMBIconAnchor, open) {
+/// The center of the icon is placed closest to the anchor.
+  TMBIconAnchorCenter = 0,
+/// The left side of the icon is placed closest to the anchor.
+  TMBIconAnchorLeft = 1,
+/// The right side of the icon is placed closest to the anchor.
+  TMBIconAnchorRight = 2,
+/// The top of the icon is placed closest to the anchor.
+  TMBIconAnchorTop = 3,
+/// The bottom of the icon is placed closest to the anchor.
+  TMBIconAnchorBottom = 4,
+/// The top left corner of the icon is placed closest to the anchor.
+  TMBIconAnchorTopLeft = 5,
+/// The top right corner of the icon is placed closest to the anchor.
+  TMBIconAnchorTopRight = 6,
+/// The bottom left corner of the icon is placed closest to the anchor.
+  TMBIconAnchorBottomLeft = 7,
+/// The bottom right corner of the icon is placed closest to the anchor.
+  TMBIconAnchorBottomRight = 8,
+};
+
+/// Orientation of icon when map is pitched.
+typedef SWIFT_ENUM(NSInteger, TMBIconPitchAlignment, open) {
+/// The icon is aligned to the plane of the map.
+  TMBIconPitchAlignmentMap = 0,
+/// The icon is aligned to the plane of the viewport.
+  TMBIconPitchAlignmentViewport = 1,
+/// Automatically matches the value of {@link ICON_ROTATION_ALIGNMENT}.
+  TMBIconPitchAlignmentAuto = 2,
+};
+
+/// In combination with <code>symbol-placement</code>, determines the rotation behavior of icons.
+typedef SWIFT_ENUM(NSInteger, TMBIconRotationAlignment, open) {
+/// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, aligns icons east-west. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, aligns icon x-axes with the line.
+  TMBIconRotationAlignmentMap = 0,
+/// Produces icons whose x-axes are aligned with the x-axis of the viewport, regardless of the value of {@link SYMBOL_PLACEMENT}.
+  TMBIconRotationAlignmentViewport = 1,
+/// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, this is equivalent to {@link Property#ICON_ROTATION_ALIGNMENT_VIEWPORT}. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, this is equivalent to {@link Property#ICON_ROTATION_ALIGNMENT_MAP}.
+  TMBIconRotationAlignmentAuto = 2,
+};
+
+/// Scales the icon to fit around the associated text.
+typedef SWIFT_ENUM(NSInteger, TMBIconTextFit, open) {
+/// The icon is displayed at its intrinsic aspect ratio.
+  TMBIconTextFitNone = 0,
+/// The icon is scaled in the x-dimension to fit the width of the text.
+  TMBIconTextFitWidth = 1,
+/// The icon is scaled in the y-dimension to fit the height of the text.
+  TMBIconTextFitHeight = 2,
+/// The icon is scaled in both x- and y-dimensions.
+  TMBIconTextFitBoth = 3,
+};
+
+/// Controls the frame of reference for <code>icon-translate</code>.
+typedef SWIFT_ENUM(NSInteger, TMBIconTranslateAnchor, open) {
+/// Icons are translated relative to the map.
+  TMBIconTranslateAnchorMap = 0,
+/// Icons are translated relative to the viewport.
+  TMBIconTranslateAnchorViewport = 1,
+};
+
+typedef SWIFT_ENUM(NSInteger, TMBLayerPosition, open) {
+  TMBLayerPositionAt = 0,
+  TMBLayerPositionBelow = 1,
+  TMBLayerPositionAbove = 2,
+  TMBLayerPositionUnowned = 3,
+};
+
+/// The display of line endings.
+typedef SWIFT_ENUM(NSInteger, TMBLineCap, open) {
+/// A cap with a squared-off end which is drawn to the exact endpoint of the line.
+  TMBLineCapButt = 0,
+/// A cap with a rounded end which is drawn beyond the endpoint of the line at a radius of one-half of the line’s width and centered on the endpoint of the line.
+  TMBLineCapRound = 1,
+/// A cap with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line’s width.
+  TMBLineCapSquare = 2,
+};
+
+/// The display of lines when joining.
+typedef SWIFT_ENUM(NSInteger, TMBLineJoin, open) {
+/// A join with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line’s width.
+  TMBLineJoinBevel = 0,
+/// A join with a rounded end which is drawn beyond the endpoint of the line at a radius of one-half of the line’s width and centered on the endpoint of the line.
+  TMBLineJoinRound = 1,
+/// A join with a sharp, angled corner which is drawn with the outer sides beyond the endpoint of the path until they meet.
+  TMBLineJoinMiter = 2,
+};
+
+/// Controls the frame of reference for <code>line-translate</code>.
+typedef SWIFT_ENUM(NSInteger, TMBLineTranslateAnchor, open) {
+/// The line is translated relative to the map.
+  TMBLineTranslateAnchorMap = 0,
+/// The line is translated relative to the viewport.
+  TMBLineTranslateAnchorViewport = 1,
+};
+
+typedef SWIFT_ENUM(NSInteger, TMBOperator, open) {
+/// For two inputs, returns the result of subtracting the second input from the first. For a single input, returns the result of subtracting it from 0.
+  TMBOperatorSubtract = 0,
+/// Logical negation. Returns <code>true</code> if the input is <code>false</code>, and <code>false</code> if the input is <code>true</code>.
+  TMBOperatorNot = 1,
+/// Returns <code>true</code> if the input values are not equal, <code>false</code> otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
+  TMBOperatorNeq = 2,
+/// Returns the product of the inputs.
+  TMBOperatorProduct = 3,
+/// Returns the result of floating point division of the first input by the second.
+  TMBOperatorDivision = 4,
+/// Returns the remainder after integer division of the first input by the second.
+  TMBOperatorMod = 5,
+/// Returns the result of raising the first input to the power specified by the second.
+  TMBOperatorPow = 6,
+/// Returns the sum of the inputs.
+  TMBOperatorSum = 7,
+/// Returns <code>true</code> if the first input is strictly less than the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
+  TMBOperatorLt = 8,
+/// Returns <code>true</code> if the first input is less than or equal to the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
+  TMBOperatorLte = 9,
+/// Returns <code>true</code> if the input values are equal, <code>false</code> otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
+  TMBOperatorEq = 10,
+/// Returns <code>true</code> if the first input is strictly greater than the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
+  TMBOperatorGt = 11,
+/// Returns <code>true</code> if the first input is greater than or equal to the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
+  TMBOperatorGte = 12,
+/// Returns the absolute value of the input.
+  TMBOperatorAbs = 13,
+/// Returns the value of a cluster property accumulated so far. Can only be used in the <code>clusterProperties</code> option of a clustered GeoJSON source.
+  TMBOperatorAccumulated = 14,
+/// Returns the arccosine of the input.
+  TMBOperatorAcos = 15,
+/// Returns <code>true</code> if all the inputs are <code>true</code>, <code>false</code> otherwise. The inputs are evaluated in order, and evaluation is short-circuiting: once an input expression evaluates to <code>false</code>, the result is <code>false</code> and no further input expressions are evaluated.
+  TMBOperatorAll = 16,
+/// Returns <code>true</code> if any of the inputs are <code>true</code>, <code>false</code> otherwise. The inputs are evaluated in order, and evaluation is short-circuiting: once an input expression evaluates to <code>true</code>, the result is <code>true</code> and no further input expressions are evaluated.
+  TMBOperatorAny = 17,
+/// Asserts that the input is an array (optionally with a specific item type and length).  If, when the input expression is evaluated, it is not of the asserted type, then this assertion will cause the whole expression to be aborted.
+  TMBOperatorArray = 18,
+/// Returns the arcsine of the input.
+  TMBOperatorAsin = 19,
+/// Retrieves an item from an array.
+  TMBOperatorAt = 20,
+/// Returns the arctangent of the input.
+  TMBOperatorAtan = 21,
+/// Asserts that the input value is a boolean. If multiple values are provided, each one is evaluated in order until a boolean is obtained. If none of the inputs are booleans, the expression is an error.
+  TMBOperatorBoolean = 22,
+/// Selects the first output whose corresponding test condition evaluates to true, or the fallback value otherwise.
+  TMBOperatorSwitchCase = 23,
+/// Returns the smallest integer that is greater than or equal to the input.
+  TMBOperatorCeil = 24,
+/// Evaluates each expression in turn until the first valid value is obtained. Invalid values are <code>null</code> and <a href="#types-image"><code>'image'</code></a> expressions that are unavailable in the style. If all values are invalid, <code>coalesce</code> returns the first value listed.
+  TMBOperatorCoalesce = 25,
+/// Returns a <code>collator</code> for use in locale-dependent comparison operations. The <code>case-sensitive</code> and <code>diacritic-sensitive</code> options default to <code>false</code>. The <code>locale</code> argument specifies the IETF language tag of the locale to use. If none is provided, the default locale is used. If the requested locale is not available, the <code>collator</code> will use a system-defined fallback locale. Use <code>resolved-locale</code> to test the results of locale fallback behavior.
+  TMBOperatorCollator = 26,
+/// Returns a <code>string</code> consisting of the concatenation of the inputs. Each input is converted to a string as if by <code>to-string</code>.
+  TMBOperatorConcat = 27,
+/// Returns the cosine of the input.
+  TMBOperatorCos = 28,
+/// Returns the shortest distance in meters between the evaluated feature and the input geometry. The input value can be a valid GeoJSON of type <code>Point</code>, <code>MultiPoint</code>, <code>LineString</code>, <code>MultiLineString</code>, <code>Polygon</code>, <code>MultiPolygon</code>, <code>Feature</code>, or <code>FeatureCollection</code>. Distance values returned may vary in precision due to loss in precision from encoding geometries, particularly below zoom level 13.
+  TMBOperatorDistance = 29,
+/// Returns the distance of a <code>symbol</code> instance from the center of the map. The distance is measured in pixels divided by the height of the map container. It measures 0 at the center, decreases towards the camera and increase away from the camera. For example, if the height of the map is 1000px, a value of -1 means 1000px away from the center towards the camera, and a value of 1 means a distance of 1000px away from the camera from the center. <code>["distance-from-center"]</code> may only be used in the <code>filter</code> expression for a <code>symbol</code> layer.
+  TMBOperatorDistanceFromCenter = 30,
+/// Returns the input string converted to lowercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.
+  TMBOperatorDowncase = 31,
+/// Returns the mathematical constant e.
+  TMBOperatorE = 32,
+/// Retrieves a property value from the current feature’s state. Returns <code>null</code> if the requested property is not present on the feature’s state. A feature’s state is not part of the GeoJSON or vector tile data, and must be set programmatically on each feature. Features are identified by their <code>id</code> attribute, which must be an integer or a string that can be cast to an integer. Note that [“feature-state”] can only be used with paint properties that support data-driven styling.
+  TMBOperatorFeatureState = 33,
+/// Returns the largest integer that is less than or equal to the input.
+  TMBOperatorFloor = 34,
+/// Returns a <code>formatted</code> string for displaying mixed-format text in the <code>text-field</code> property. The input may contain a string literal or expression, including an <a href="#types-image"><code>'image'</code></a> expression. Strings may be followed by a style override object that supports the following properties:
+/// <ul>
+///   <li>
+///     <code>"text-font"</code>: Overrides the font stack specified by the root layout property.
+///   </li>
+///   <li>
+///     <code>"text-color"</code>: Overrides the color specified by the root paint property.
+///   </li>
+///   <li>
+///     <code>"font-scale"</code>: Applies a scaling factor on <code>text-size</code> as specified by the root layout property.
+///   </li>
+/// </ul>
+  TMBOperatorFormat = 35,
+/// Returns the feature’s geometry type: <code>Point</code>, <code>LineString</code> or <code>Polygon</code>. <code>Multi*</code> feature types return the singular forms.
+  TMBOperatorGeometryType = 36,
+/// Retrieves a property value from the current feature’s properties, or from another object if a second argument is provided. Returns <code>null</code> if the requested property is missing.
+  TMBOperatorGet = 37,
+/// Tests for the presence of an property value in the current feature’s properties, or from another object if a second argument is provided.
+  TMBOperatorHas = 38,
+/// Returns the kernel density estimation of a pixel in a heatmap layer, which is a relative measure of how many data points are crowded around a particular pixel. Can only be used in the <code>heatmap-color</code> property.
+  TMBOperatorHeatmapDensity = 39,
+/// Returns the feature’s id, if it has one.
+  TMBOperatorId = 40,
+/// Returns a <a href="/mapbox-gl-js/style-spec/types/#resolvedimage"><code>ResolvedImage</code></a> for use in <a href="/mapbox-gl-js/style-spec/layers/#layout-symbol-icon-image"><code>icon-image</code></a>, <code>*-pattern</code> entries, and as a section in the <a href="#types-format"><code>'format'</code></a> expression. A <a href="#coalesce"><code>'coalesce'</code></a> expression containing <code>image</code> expressions will evaluate to the first listed image that is currently in the style. This validation process is synchronous and requires the image to have been added to the style before requesting it in the <code>'image'</code> argument.
+  TMBOperatorImage = 41,
+/// Determines whether an item exists in an array or a substring exists in a string. In the specific case when the second and third arguments are string literals, you must wrap at least one of them in a <a href="#types-literal"><code>literal</code></a> expression to hint correct interpretation to the <a href="#type-system">type system</a>.
+  TMBOperatorInExpression = 42,
+/// Returns the first position at which an item can be found in an array or a substring can be found in a string, or <code>-1</code> if the input cannot be found. Accepts an optional index from where to begin the search.
+  TMBOperatorIndexOf = 43,
+/// Produces continuous, smooth results by interpolating between pairs of input and output values (“stops”). The <code>input</code> may be any numeric expression (e.g., <code>["get", "population"]</code>). Stop inputs must be numeric literals in strictly ascending order. The output type must be <code>number</code>, <code>array<number></code>, or <code>color</code>.
+/// Interpolation types:
+/// <ul>
+///   <li>
+///     <code>["linear"]</code>: Interpolates linearly between the pair of stops just less than and just greater than the input.
+///   </li>
+///   <li>
+///     <code>["exponential", base]</code>: Interpolates exponentially between the stops just less than and just greater than the input. <code>base</code> controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.
+///   </li>
+///   <li>
+///     <code>["cubic-bezier", x1, y1, x2, y2]</code>: Interpolates using the cubic bezier curve defined by the given control points.
+///   </li>
+/// </ul>
+  TMBOperatorInterpolate = 44,
+/// Returns <code>true</code> if the input string is expected to render legibly. Returns <code>false</code> if the input string contains sections that cannot be rendered without potential loss of meaning (e.g. Indic scripts that require complex text shaping, or right-to-left scripts if the the <code>mapbox-gl-rtl-text</code> plugin is not in use in Mapbox GL JS).
+  TMBOperatorIsSupportedScript = 45,
+/// Returns the length of an array or string.
+  TMBOperatorLength = 46,
+/// Binds expressions to named variables, which can then be referenced in the result expression using [“var”, “variable_name”].
+  TMBOperatorLetExpression = 47,
+/// Returns the progress along a gradient line. Can only be used in the <code>line-gradient</code> property.
+  TMBOperatorLineProgress = 48,
+/// Provides a literal array or object value.
+  TMBOperatorLiteral = 49,
+/// Returns the natural logarithm of the input.
+  TMBOperatorLn = 50,
+/// Returns mathematical constant ln(2).
+  TMBOperatorLn2 = 51,
+/// Returns the base-ten logarithm of the input.
+  TMBOperatorLog10 = 52,
+/// Returns the base-two logarithm of the input.
+  TMBOperatorLog2 = 53,
+/// Selects the output for which the label value matches the input value, or the fallback value if no match is found. The input can be any expression (for example, <code>["get", "building_type"]</code>). Each label must be unique, and must be either:
+/// <ul>
+///   <li>
+///     a single literal value; or
+///   </li>
+///   <li>
+///     an array of literal values, the values of which must be all strings or all numbers (for example <code>[100, 101]</code> or <code>["c", "b"]</code>).
+///   </li>
+/// </ul>
+/// The input matches if any of the values in the array matches using strict equality, similar to the <code>"in"</code> operator.
+/// If the input type does not match the type of the labels, the result will be the fallback value.
+  TMBOperatorMatch = 54,
+/// Returns the maximum value of the inputs.
+  TMBOperatorMax = 55,
+/// Returns the minimum value of the inputs.
+  TMBOperatorMin = 56,
+/// Asserts that the input value is a number. If multiple values are provided, each one is evaluated in order until a number is obtained. If none of the inputs are numbers, the expression is an error.
+  TMBOperatorNumber = 57,
+/// Converts the input number into a string representation using the providing formatting rules. If set, the <code>locale</code> argument specifies the locale to use, as a BCP 47 language tag. If set, the <code>currency</code> argument specifies an ISO 4217 code to use for currency-style formatting. If set, the <code>unit</code> argument specifies a <a href="https://tc39.es/proposal-unified-intl-numberformat/section6/locales-currencies-tz_proposed_out.html#sec-issanctionedsimpleunitidentifier">simple ECMAScript unit</a> to use for unit-style formatting. If set, the <code>min-fraction-digits</code> and <code>max-fraction-digits</code> arguments specify the minimum and maximum number of fractional digits to include.
+  TMBOperatorNumberFormat = 58,
+/// Asserts that the input value is an object. If multiple values are provided, each one is evaluated in order until an object is obtained. If none of the inputs are objects, the expression is an error.
+  TMBOperatorObjectExpression = 59,
+/// Returns the mathematical constant pi.
+  TMBOperatorPi = 60,
+/// Returns the current pitch in degrees. <code>["pitch"]</code> may only be used in the <code>filter</code> expression for a <code>symbol</code> layer.
+  TMBOperatorPitch = 61,
+/// Returns the feature properties object.  Note that in some cases, it may be more efficient to use <code>["get", "property_name"]</code> directly.
+  TMBOperatorProperties = 62,
+/// Returns the IETF language tag of the locale being used by the provided <code>collator</code>. This can be used to determine the default system locale, or to determine if a requested locale was successfully loaded.
+  TMBOperatorResolvedLocale = 63,
+/// Creates a color value from red, green, and blue components, which must range between 0 and 255, and an alpha component of 1. If any component is out of range, the expression is an error.
+  TMBOperatorRgb = 64,
+/// Creates a color value from red, green, blue components, which must range between 0 and 255, and an alpha component which must range between 0 and 1. If any component is out of range, the expression is an error.
+  TMBOperatorRgba = 65,
+/// Rounds the input to the nearest integer. Halfway values are rounded away from zero. For example, <code>["round", -1.5]</code> evaluates to -2.
+  TMBOperatorRound = 66,
+/// Returns the sine of the input.
+  TMBOperatorSin = 67,
+/// Returns the distance of a point on the sky from the sun position. Returns 0 at sun position and 1 when the distance reaches <code>sky-gradient-radius</code>. Can only be used in the <code>sky-gradient</code> property.
+  TMBOperatorSkyRadialProgress = 68,
+/// Returns an item from an array or a substring from a string from a specified start index, or between a start index and an end index if set. The return value is inclusive of the start index but not of the end index.
+  TMBOperatorSlice = 69,
+/// Returns the square root of the input.
+  TMBOperatorSqrt = 70,
+/// Produces discrete, stepped results by evaluating a piecewise-constant function defined by pairs of input and output values (“stops”). The <code>input</code> may be any numeric expression (e.g., <code>["get", "population"]</code>). Stop inputs must be numeric literals in strictly ascending order. Returns the output value of the stop just less than the input, or the first output if the input is less than the first stop.
+  TMBOperatorStep = 71,
+/// Asserts that the input value is a string. If multiple values are provided, each one is evaluated in order until a string is obtained. If none of the inputs are strings, the expression is an error.
+  TMBOperatorString = 72,
+/// Returns the tangent of the input.
+  TMBOperatorTan = 73,
+/// Converts the input value to a boolean. The result is <code>false</code> when then input is an empty string, 0, <code>false</code>, <code>null</code>, or <code>NaN</code>; otherwise it is <code>true</code>.
+  TMBOperatorToBoolean = 74,
+/// Converts the input value to a color. If multiple values are provided, each one is evaluated in order until the first successful conversion is obtained. If none of the inputs can be converted, the expression is an error.
+  TMBOperatorToColor = 75,
+/// Converts the input value to a number, if possible. If the input is <code>null</code> or <code>false</code>, the result is 0. If the input is <code>true</code>, the result is 1. If the input is a string, it is converted to a number as specified by the <a href="https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type">“ToNumber Applied to the String Type” algorithm</a> of the ECMAScript Language Specification. If multiple values are provided, each one is evaluated in order until the first successful conversion is obtained. If none of the inputs can be converted, the expression is an error.
+  TMBOperatorToNumber = 76,
+/// Returns a four-element array containing the input color’s red, green, blue, and alpha components, in that order.
+  TMBOperatorToRgba = 77,
+/// Converts the input value to a string. If the input is <code>null</code>, the result is <code>""</code>. If the input is a <a href="#types-boolean"><code>boolean</code></a>, the result is <code>"true"</code> or <code>"false"</code>. If the input is a number, it is converted to a string as specified by the <a href="https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type">“NumberToString” algorithm</a> of the ECMAScript Language Specification. If the input is a <a href="#color"><code>color</code></a>, it is converted to a string of the form <code>"rgba(r,g,b,a)"</code>, where <code>r</code>, <code>g</code>, and <code>b</code> are numerals ranging from 0 to 255, and <code>a</code> ranges from 0 to 1. If the input is an <a href="#types-image"><code>'image'</code></a> expression, <code>'to-string'</code> returns the image name. Otherwise, the input is converted to a string in the format specified by the <a href="https://tc39.github.io/ecma262/#sec-json.stringify"><code>JSON.stringify</code></a> function of the ECMAScript Language Specification.
+  TMBOperatorToString = 78,
+/// Returns a string describing the type of the given value.
+  TMBOperatorTypeofExpression = 79,
+/// Returns the input string converted to uppercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.
+  TMBOperatorUpcase = 80,
+/// References variable bound using “let”.
+  TMBOperatorVarExpression = 81,
+/// Returns <code>true</code> if the evaluated feature is fully contained inside a boundary of the input geometry, <code>false</code> otherwise. The input value can be a valid GeoJSON of type <code>Polygon</code>, <code>MultiPolygon</code>, <code>Feature</code>, or <code>FeatureCollection</code>. Supported features for evaluation:
+/// <ul>
+///   <li>
+///     <code>Point</code>: Returns <code>false</code> if a point is on the boundary or falls outside the boundary.
+///   </li>
+///   <li>
+///     <code>LineString</code>: Returns <code>false</code> if any part of a line falls outside the boundary, the line intersects the boundary, or a line’s endpoint is on the boundary.
+///   </li>
+/// </ul>
+  TMBOperatorWithin = 82,
+/// Returns the current zoom level.  Note that in style layout and paint properties, [“zoom”] may only appear as the input to a top-level “step” or “interpolate” expression.
+  TMBOperatorZoom = 83,
+/// Interpolates linearly between the pair of stops just less than and just greater than the input
+  TMBOperatorLinear = 84,
+/// <code>["exponential", base]</code>
+/// Interpolates exponentially between the stops just less than and just
+/// greater than the input. base controls the rate at which the output increases: higher values make the output
+/// increase more towards the high end of the range.
+/// With values close to 1 the output increases linearly.
+  TMBOperatorExponential = 85,
+/// <code>["cubic-bezier", x1, y1, x2, y2]</code>
+/// Interpolates using the cubic bezier curve defined by the given control points.
+  TMBOperatorCubicBezier = 86,
+};
+
+typedef SWIFT_ENUM(NSInteger, TMBOrnamentVisibility, open) {
+  TMBOrnamentVisibilityAdaptive = 0,
+  TMBOrnamentVisibilityHidden = 1,
+  TMBOrnamentVisibilityVisible = 2,
+};
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC8TMBPoint")
+@interface TMBPoint : NSObject <TMBGeoData>
++ (TMBPoint * _Nonnull)withCoordinates:(CLLocationCoordinate2D)coordinates SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBPointAnnotation")
+@interface TMBPointAnnotation : NSObject <TMBAnnotation>
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+@property (nonatomic, readonly, copy) NSString * _Nonnull geometryInJSON;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
+@property (nonatomic) BOOL isSelected;
+@property (nonatomic) BOOL isDraggable;
+- (void)image:(UIImage * _Nonnull)image name:(NSString * _Nonnull)name;
++ (TMBPointAnnotation * _Nonnull)fromCoordinate:(CLLocationCoordinate2D)coordinate SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC25TMBPointAnnotationManager")
+@interface TMBPointAnnotationManager : NSObject <TMBAnnotationManager>
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sourceId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull layerId;
+@property (nonatomic, copy) NSArray<TMBPointAnnotation *> * _Nonnull annotations;
+/// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.
+/// note:
+/// This annotation manager listens to tap events via the <code>GestureManager.singleTapGestureRecognizer</code>.
+@property (nonatomic, weak) id <TMBAnnotationInteractionDelegate> _Nullable delegate;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC10TMBPolygon")
+@interface TMBPolygon : NSObject
+- (nonnull instancetype)initWithOuterRingCoordinates:(NSArray<NSValue *> * _Nonnull)outerRingCoordinates innerRingCoordinates:(NSArray<NSArray<NSValue *> *> * _Nonnull)innerRingCoordinates OBJC_DESIGNATED_INITIALIZER;
++ (TMBPolygon * _Nonnull)createWithOuterRingCoordinates:(NSArray<NSValue *> * _Nonnull)outerRingCoordinates innerRingCoordinates:(NSArray<NSArray<NSValue *> *> * _Nonnull)innerRingCoordinates SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC20TMBPolygonAnnotation")
+@interface TMBPolygonAnnotation : NSObject <TMBAnnotation>
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+@property (nonatomic, readonly, copy) NSString * _Nonnull geometryInJSON;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
+@property (nonatomic, strong) UIColor * _Nullable fillColor;
+@property (nonatomic) double fillOpacity;
++ (TMBPolygonAnnotation * _Nonnull)polygon:(TMBPolygon * _Nonnull)polygon SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC27TMBPolygonAnnotationManager")
+@interface TMBPolygonAnnotationManager : NSObject <TMBAnnotationManager>
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sourceId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull layerId;
+@property (nonatomic, copy) NSArray<TMBPolygonAnnotation *> * _Nonnull annotations;
+/// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.
+/// note:
+/// This annotation manager listens to tap events via the <code>GestureManager.singleTapGestureRecognizer</code>.
+@property (nonatomic, weak) id <TMBAnnotationInteractionDelegate> _Nullable delegate;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, TMBPuckBearingSource, open) {
+  TMBPuckBearingSourceHeading = 0,
+  TMBPuckBearingSourceCourse = 1,
+};
+
+/// The resampling/interpolation method to use for overscaling, also known as texture magnification filter
+typedef SWIFT_ENUM(NSInteger, TMBRasterResampling, open) {
+/// (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
+  TMBRasterResamplingLinear = 0,
+/// Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled
+  TMBRasterResamplingNearest = 1,
+};
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC16TMBResolvedImage")
+@interface TMBResolvedImage : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@interface TMBResolvedImage (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBResolvedImage * _Nonnull)fromName:(NSString * _Nonnull)name SWIFT_WARN_UNUSED_RESULT;
++ (TMBResolvedImage * _Nonnull)fromName:(NSString * _Nonnull)name available:(BOOL)available SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC20TMBResolvedImageData")
+@interface TMBResolvedImageData : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// The type of the sky
+typedef SWIFT_ENUM(NSInteger, TMBSkyType, open) {
+/// Renders the sky with a gradient that can be configured with {@link SKY_GRADIENT_RADIUS} and {@link SKY_GRADIENT}.
+  TMBSkyTypeGradient = 0,
+/// Renders the sky with a simulated atmospheric scattering algorithm, the sun direction can be attached to the light position or explicitly set through {@link SKY_ATMOSPHERE_SUN}.
+  TMBSkyTypeAtmosphere = 1,
+};
+
+typedef SWIFT_ENUM(NSInteger, TMBSourceType, open) {
+/// A vector tile source.
+  TMBSourceTypeVector = 0,
+/// A raster tile source.
+  TMBSourceTypeRaster = 1,
+/// A raster DEM source.
+  TMBSourceTypeRasterDem = 2,
+/// A GeoJSON source.
+  TMBSourceTypeGeoJson = 3,
+/// An image source.
+  TMBSourceTypeImage = 4,
+/// A model source
+  TMBSourceTypeModel = 5,
+};
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC8TMBStyle")
+@interface TMBStyle : NSObject
+- (void)addImage:(UIImage * _Nonnull)image id:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nonnull))completion;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// The name of the projection to be used for rendering the map.
+typedef SWIFT_ENUM(NSInteger, TMBStyleProjectionName, open) {
+/// The Mercator projection is the default projection.
+  TMBStyleProjectionNameMercator = 0,
+/// A globe projection.
+  TMBStyleProjectionNameGlobe = 1,
+};
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBStyleTransition")
+@interface TMBStyleTransition : NSObject
+- (nonnull instancetype)initWithDuration:(double)duration delay:(double)delay OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Label placement relative to its geometry.
+typedef SWIFT_ENUM(NSInteger, TMBSymbolPlacement, open) {
+/// The label is placed at the point where the geometry is located.
+  TMBSymbolPlacementPoint = 0,
+/// The label is placed along the line of the geometry. Can only be used on LineString and Polygon geometries.
+  TMBSymbolPlacementLine = 1,
+/// The label is placed at the center of the line of the geometry. Can only be used on LineString and Polygon geometries. Note that a single feature in a vector tile may contain multiple line geometries.
+  TMBSymbolPlacementLineCenter = 2,
+};
+
+/// Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use <code>symbol-sort-key</code>.
+typedef SWIFT_ENUM(NSInteger, TMBSymbolZOrder, open) {
+/// Sorts symbols by symbol sort key if set. Otherwise, sorts symbols by their y-position relative to the viewport if {@link ICON_ALLOW_OVERLAP} or {@link TEXT_ALLOW_OVERLAP} is set to {@link TRUE} or {@link ICON_IGNORE_PLACEMENT} or {@link TEXT_IGNORE_PLACEMENT} is {@link FALSE}.
+  TMBSymbolZOrderAuto = 0,
+/// Sorts symbols by their y-position relative to the viewport if {@link ICON_ALLOW_OVERLAP} or {@link TEXT_ALLOW_OVERLAP} is set to {@link TRUE} or {@link ICON_IGNORE_PLACEMENT} or {@link TEXT_IGNORE_PLACEMENT} is {@link FALSE}.
+  TMBSymbolZOrderViewportY = 1,
+/// Sorts symbols by symbol sort key if set. Otherwise, no sorting is applied; symbols are rendered in the same order as the source data.
+  TMBSymbolZOrderSource = 2,
+};
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC10TMBTerrain")
+@interface TMBTerrain : NSObject
+- (nonnull instancetype)initWithSourceId:(NSString * _Nonnull)sourceId OBJC_DESIGNATED_INITIALIZER;
+/// Exaggerates the elevation of the terrain by multiplying the data from the DEM with this value.
+@property (nonatomic, strong) TMBValue * _Nullable exaggeration;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Part of the text placed closest to the anchor.
+typedef SWIFT_ENUM(NSInteger, TMBTextAnchor, open) {
+/// The center of the text is placed closest to the anchor.
+  TMBTextAnchorCenter = 0,
+/// The left side of the text is placed closest to the anchor.
+  TMBTextAnchorLeft = 1,
+/// The right side of the text is placed closest to the anchor.
+  TMBTextAnchorRight = 2,
+/// The top of the text is placed closest to the anchor.
+  TMBTextAnchorTop = 3,
+/// The bottom of the text is placed closest to the anchor.
+  TMBTextAnchorBottom = 4,
+/// The top left corner of the text is placed closest to the anchor.
+  TMBTextAnchorTopLeft = 5,
+/// The top right corner of the text is placed closest to the anchor.
+  TMBTextAnchorTopRight = 6,
+/// The bottom left corner of the text is placed closest to the anchor.
+  TMBTextAnchorBottomLeft = 7,
+/// The bottom right corner of the text is placed closest to the anchor.
+  TMBTextAnchorBottomRight = 8,
+};
+
+/// Text justification options.
+typedef SWIFT_ENUM(NSInteger, TMBTextJustify, open) {
+/// The text is aligned towards the anchor position.
+  TMBTextJustifyAuto = 0,
+/// The text is aligned to the left.
+  TMBTextJustifyLeft = 1,
+/// The text is centered.
+  TMBTextJustifyCenter = 2,
+/// The text is aligned to the right.
+  TMBTextJustifyRight = 3,
+};
+
+/// Orientation of text when map is pitched.
+typedef SWIFT_ENUM(NSInteger, TMBTextPitchAlignment, open) {
+/// The text is aligned to the plane of the map.
+  TMBTextPitchAlignmentMap = 0,
+/// The text is aligned to the plane of the viewport.
+  TMBTextPitchAlignmentViewport = 1,
+/// Automatically matches the value of {@link TEXT_ROTATION_ALIGNMENT}.
+  TMBTextPitchAlignmentAuto = 2,
+};
+
+/// In combination with <code>symbol-placement</code>, determines the rotation behavior of the individual glyphs forming the text.
+typedef SWIFT_ENUM(NSInteger, TMBTextRotationAlignment, open) {
+/// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, aligns text east-west. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, aligns text x-axes with the line.
+  TMBTextRotationAlignmentMap = 0,
+/// Produces glyphs whose x-axes are aligned with the x-axis of the viewport, regardless of the value of {@link SYMBOL_PLACEMENT}.
+  TMBTextRotationAlignmentViewport = 1,
+/// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, this is equivalent to {@link Property#TEXT_ROTATION_ALIGNMENT_VIEWPORT}. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, this is equivalent to {@link Property#TEXT_ROTATION_ALIGNMENT_MAP}.
+  TMBTextRotationAlignmentAuto = 2,
+};
+
+/// Specifies how to capitalize text, similar to the CSS <code>text-transform</code> property.
+typedef SWIFT_ENUM(NSInteger, TMBTextTransform, open) {
+/// The text is not altered.
+  TMBTextTransformNone = 0,
+/// Forces all letters to be displayed in uppercase.
+  TMBTextTransformUppercase = 1,
+/// Forces all letters to be displayed in lowercase.
+  TMBTextTransformLowercase = 2,
+};
+
+/// Controls the frame of reference for <code>text-translate</code>.
+typedef SWIFT_ENUM(NSInteger, TMBTextTranslateAnchor, open) {
+/// The text is translated relative to the map.
+  TMBTextTranslateAnchorMap = 0,
+/// The text is translated relative to the viewport.
+  TMBTextTranslateAnchorViewport = 1,
+};
+
+/// The property allows control over a symbol’s orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single ‘vertical’ enum value. For symbol with point placement, the order of elements in an array define priority order for the placement of an orientation variant. For symbol with line placement, the default text writing mode is either [‘horizontal’, ‘vertical’] or [‘vertical’, ‘horizontal’], the order doesn’t affect the placement.
+typedef SWIFT_ENUM(NSInteger, TMBTextWritingMode, open) {
+/// If a text’s language supports horizontal writing mode, symbols would be laid out horizontally.
+  TMBTextWritingModeHorizontal = 0,
+/// If a text’s language supports vertical writing mode, symbols would be laid out vertically.
+  TMBTextWritingModeVertical = 1,
+};
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
+@interface TMBValue : NSObject
+- (nonnull instancetype)initWithConstant:(NSObject * _Nonnull)constant OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithExpression:(TMBExpression * _Nonnull)expression OBJC_DESIGNATED_INITIALIZER;
++ (TMBValue * _Nonnull)constant:(NSObject * _Nonnull)constant SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)intValue:(NSInteger)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)doubleValue:(double)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)expression:(TMBExpression * _Nonnull)expression SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+typedef SWIFT_ENUM(NSInteger, TMBVisibility, open) {
+/// The layer is shown.
+  TMBVisibilityVisible = 0,
+/// The layer is not shown.
+  TMBVisibilityNone = 1,
+};
+
+/// Orientation of circle when map is pitched.
+typedef SWIFT_ENUM(NSInteger, TTMBirclePitchAlignment, open) {
+/// The circle is aligned to the plane of the map.
+  TTMBirclePitchAlignmentMap = 0,
+/// The circle is aligned to the plane of the viewport.
+  TTMBirclePitchAlignmentViewport = 1,
+};
+
+/// Controls the scaling behavior of the circle when the map is pitched.
+typedef SWIFT_ENUM(NSInteger, TTMBirclePitchScale, open) {
+/// Circles are scaled according to their apparent distance to the camera.
+  TTMBirclePitchScaleMap = 0,
+/// Circles are not scaled.
+  TTMBirclePitchScaleViewport = 1,
+};
+
+/// Controls the frame of reference for <code>circle-translate</code>.
+typedef SWIFT_ENUM(NSInteger, TTMBircleTranslateAnchor, open) {
+/// The circle is translated relative to the map.
+  TTMBircleTranslateAnchorMap = 0,
+/// The circle is translated relative to the viewport.
+  TTMBircleTranslateAnchorViewport = 1,
+};
+
+@class MBXTileRegionLoadOptions;
+@class MBXTileRegion;
+
+@interface MBXTileStore (SWIFT_EXTENSION(MapboxMapObjC))
++ (MBXTileStore * _Nonnull)getDefault SWIFT_WARN_UNUSED_RESULT;
+- (TMBCancelable * _Nonnull)loadTileRegionForId:(NSString * _Nonnull)id loadOptions:(MBXTileRegionLoadOptions * _Nonnull)loadOptions progress:(MBXTileRegionLoadProgressCallback _Nullable)progress completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
+- (void)allTileRegions:(void (^ _Nonnull)(NSArray<MBXTileRegion *> * _Nullable, NSError * _Nullable))completion;
 @end
 
 
