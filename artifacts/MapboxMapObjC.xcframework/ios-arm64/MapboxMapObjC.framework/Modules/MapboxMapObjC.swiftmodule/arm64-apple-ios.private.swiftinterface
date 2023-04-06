@@ -50,7 +50,7 @@ public let TMBskyTypeMapping: [MapboxMaps.SkyType : MapboxMapObjC.TMBSkyType]
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setCamera(to cameraOptions: MapboxCoreMaps.CameraOptions)
 }
-extension MapboxMaps.MapView {
+@objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func ornamentsOptionsScaleBarVisibility(_ value: MapboxMapObjC.TMBOrnamentVisibility)
 }
 extension MapboxMaps.MapView {
@@ -114,6 +114,9 @@ extension MapboxMaps.ResourceOptions {
 }
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addRasterDemSource(_ id: Swift.String, configure: (MapboxMapObjC.RasterDemSourceBuilder) -> Swift.Void, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addSource(_ id: Swift.String, properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeSource(_ id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func sourceExists(_ id: Swift.String) -> Swift.Bool
 }
 @_inheritsConvenienceInitializers @objc open class RasterDemSourceBuilder : ObjectiveC.NSObject {
   @discardableResult
@@ -731,10 +734,11 @@ extension MapboxMapObjC.TMBResolvedImage {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func pointAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPointAnnotationManager
 }
 @objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addPersistentLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(target: ObjectiveC.NSObject, selector: ObjectiveC.Selector, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(builder: () -> Swift.AnyObject, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addCustomLayer(_ id: Swift.String, layerHost: MapboxCoreMaps.CustomLayerHost, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(properties: Foundation.NSDictionary, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
 }
 public protocol LayerBuilder {
   associatedtype T : MapboxMaps.Layer
