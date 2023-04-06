@@ -9,7 +9,7 @@
 	</PropertyGroup>
   <ItemGroup Condition="('$(OutputType)'!='Library' OR '$(IsAppExtension)'=='True')">
 	<XamarinBuildDownload Include="$(_MapboxMapsObjCItemsFolder)">      
-		<Url>https://drive.google.com/uc?id=11w1qZ55QcYrH_XAeXepoz85oDgFFQuL4&amp;export=download</Url>
+		<Url>https://drive.google.com/uc?id=1mGBCB5u5zj-3bjThKjhgaw1lOQ_YILlJ&amp;export=download</Url>
 		<Kind>Zip</Kind>
 	</XamarinBuildDownload>
     <NativeReference Include="$(_MapboxMapsObjCSDKBaseFolder)MapboxMapObjC.xcframework">

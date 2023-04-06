@@ -27298,7 +27298,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27308,14 +27308,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onMapLoaded:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE02onC6LoadedyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE02onC6LoadedyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27342,7 +27342,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27352,14 +27352,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onMapLoadingError:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE02onC12LoadingErroryAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE02onC12LoadingErroryAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27386,7 +27386,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27396,14 +27396,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onMapIdle:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE02onC4IdleyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE02onC4IdleyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27430,7 +27430,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27440,14 +27440,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onStyleDataLoaded:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE17onStyleDataLoadedyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE17onStyleDataLoadedyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27474,7 +27474,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27484,14 +27484,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onStyleLoaded:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE13onStyleLoadedyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE13onStyleLoadedyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27518,7 +27518,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27528,14 +27528,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onStyleImageMissing:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE19onStyleImageMissingyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE19onStyleImageMissingyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27562,7 +27562,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27572,14 +27572,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onStyleImageRemoveUnused:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE24onStyleImageRemoveUnusedyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE24onStyleImageRemoveUnusedyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27606,7 +27606,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27616,14 +27616,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onSourceDataLoaded:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE18onSourceDataLoadedyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE18onSourceDataLoadedyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27650,7 +27650,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27660,14 +27660,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onSourceAdded:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE13onSourceAddedyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE13onSourceAddedyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27694,7 +27694,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27704,14 +27704,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onSourceRemoved:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE15onSourceRemovedyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE15onSourceRemovedyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27738,7 +27738,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27748,14 +27748,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onRenderFrameStarted:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE20onRenderFrameStartedyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE20onRenderFrameStartedyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27782,7 +27782,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27792,14 +27792,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onRenderFrameFinished:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE21onRenderFrameFinishedyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE21onRenderFrameFinishedyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27826,7 +27826,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27836,14 +27836,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onEvenCameraChanged:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE19onEvenCameraChangedyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE19onEvenCameraChangedyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -27870,7 +27870,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AnyObject) -> ()",
+                "printedName": "(Any) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -27880,14 +27880,14 @@
                   {
                     "kind": "TypeNominal",
                     "name": "ProtocolComposition",
-                    "printedName": "AnyObject"
+                    "printedName": "Any"
                   }
                 ]
               }
             ],
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)onResourceRequest:",
-            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE17onResourceRequestyAD13TMBCancelableCyyXlcF",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE17onResourceRequestyAD13TMBCancelableCyypcF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",
@@ -30133,7 +30133,7 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 11589,
+      "offset": 12041,
       "length": 13,
       "value": "\"MapboxMapObjC.TMBCancelable\""
     },

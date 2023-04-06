@@ -55,33 +55,33 @@ public let TMBskyTypeMapping: [MapboxMaps.SkyType : MapboxMapObjC.TMBSkyType]
 }
 extension MapboxMaps.MapView {
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapLoaded(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapLoadingError(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapLoadingError(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapIdle(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapIdle(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleDataLoaded(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleDataLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleLoaded(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleImageMissing(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleImageMissing(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleImageRemoveUnused(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleImageRemoveUnused(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceDataLoaded(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceDataLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceAdded(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceAdded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceRemoved(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceRemoved(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onRenderFrameStarted(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onRenderFrameStarted(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onRenderFrameFinished(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onRenderFrameFinished(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onEvenCameraChanged(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onEvenCameraChanged(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onResourceRequest(_ handler: @escaping (Swift.AnyObject) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func onResourceRequest(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
 }
 extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func locationDelegate(_ delegate: MapboxMaps.LocationPermissionsDelegate)
