@@ -370,23 +370,16 @@ enum TMBOrnamentVisibility : NSInteger;
 - (void)updateSymbolLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SymbolLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
+@class RasterDemSourceBuilder;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)addRasterDemSource:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
 @class SkyLayerBuilder;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (void)updateSkyLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
-@class TMBGeometry;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)preferredFrameRateRange:(CAFrameRateRange)value;
-- (NSArray<NSNumber *> * _Nonnull)mapboxMapDebugOptions SWIFT_WARN_UNUSED_RESULT;
-- (void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
 @end
 
 @class TMBStyle;
@@ -397,13 +390,11 @@ enum TMBOrnamentVisibility : NSInteger;
 - (void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
 @end
 
-@class RasterDemSourceBuilder;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addRasterDemSource:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addSource:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)removeSource:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (BOOL)sourceExists:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (void)preferredFrameRateRange:(CAFrameRateRange)value;
+- (NSArray<NSNumber *> * _Nonnull)mapboxMapDebugOptions SWIFT_WARN_UNUSED_RESULT;
+- (void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
 @end
 
 @protocol LocationPermissionsDelegate;
@@ -417,18 +408,19 @@ enum TMBPuckBearingSource : NSInteger;
 - (void)puckBearingSource:(enum TMBPuckBearingSource)source;
 @end
 
-enum TMBLayerPosition : NSInteger;
-@protocol MBMCustomLayerHost;
+@class TMBGeometry;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addLayerWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addPersistentLayerWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addLayerWithTarget:(NSObject * _Nonnull)target selector:(SEL _Nonnull)selector layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addLayerWithBuilder:(SWIFT_NOESCAPE id _Nonnull (^ _Nonnull)(void))builder layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id <MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addSource:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)removeSource:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (BOOL)sourceExists:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (void)setSourcePropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (NSDictionary<NSString *, id> * _Nonnull)getSourcePropertiesFor:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
+- (void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
 @class TMBPolygonAnnotationManager;
+enum TMBLayerPosition : NSInteger;
 @class TMBCircleAnnotationManager;
 @class TMBPointAnnotationManager;
 
@@ -445,6 +437,10 @@ enum TMBAnchor : NSInteger;
 @class UIColor;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+/// Color tint for lighting extruded geometries.
+- (void)setLightProperty:(NSString * _Nonnull)name value:(id _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+/// Color tint for lighting extruded geometries.
+- (void)setLightWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Whether extruded geometries are lit relative to the map or viewport.
 - (void)lightAnchor:(enum TMBAnchor)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Color tint for lighting extruded geometries.
@@ -459,6 +455,22 @@ enum TMBAnchor : NSInteger;
 - (void)lightPosition:(NSArray<NSNumber *> * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Transition property for <code>position</code>
 - (void)lightPositionTransition:(TMBStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
+@protocol MBMCustomLayerHost;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)addLayerWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)removeLayerWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (BOOL)isPersistentLayerWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)layerExistsWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
+- (void)setLayerPropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)updateLayerPropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (NSDictionary<NSString *, id> * _Nonnull)getLayerPropertiesFor:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
+- (void)addPersistentLayerWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addLayerWithTarget:(NSObject * _Nonnull)target selector:(SEL _Nonnull)selector layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addLayerWithBuilder:(SWIFT_NOESCAPE id _Nonnull (^ _Nonnull)(void))builder layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id <MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
 @class TMBCancelable;
@@ -1875,23 +1887,16 @@ enum TMBOrnamentVisibility : NSInteger;
 - (void)updateSymbolLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SymbolLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
+@class RasterDemSourceBuilder;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)addRasterDemSource:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
 @class SkyLayerBuilder;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (void)updateSkyLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
-@class TMBGeometry;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)preferredFrameRateRange:(CAFrameRateRange)value;
-- (NSArray<NSNumber *> * _Nonnull)mapboxMapDebugOptions SWIFT_WARN_UNUSED_RESULT;
-- (void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
 @end
 
 @class TMBStyle;
@@ -1902,13 +1907,11 @@ enum TMBOrnamentVisibility : NSInteger;
 - (void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
 @end
 
-@class RasterDemSourceBuilder;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addRasterDemSource:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addSource:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)removeSource:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (BOOL)sourceExists:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (void)preferredFrameRateRange:(CAFrameRateRange)value;
+- (NSArray<NSNumber *> * _Nonnull)mapboxMapDebugOptions SWIFT_WARN_UNUSED_RESULT;
+- (void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
 @end
 
 @protocol LocationPermissionsDelegate;
@@ -1922,18 +1925,19 @@ enum TMBPuckBearingSource : NSInteger;
 - (void)puckBearingSource:(enum TMBPuckBearingSource)source;
 @end
 
-enum TMBLayerPosition : NSInteger;
-@protocol MBMCustomLayerHost;
+@class TMBGeometry;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addLayerWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addPersistentLayerWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addLayerWithTarget:(NSObject * _Nonnull)target selector:(SEL _Nonnull)selector layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addLayerWithBuilder:(SWIFT_NOESCAPE id _Nonnull (^ _Nonnull)(void))builder layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id <MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addSource:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)removeSource:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (BOOL)sourceExists:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (void)setSourcePropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (NSDictionary<NSString *, id> * _Nonnull)getSourcePropertiesFor:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
+- (void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
 @class TMBPolygonAnnotationManager;
+enum TMBLayerPosition : NSInteger;
 @class TMBCircleAnnotationManager;
 @class TMBPointAnnotationManager;
 
@@ -1950,6 +1954,10 @@ enum TMBAnchor : NSInteger;
 @class UIColor;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+/// Color tint for lighting extruded geometries.
+- (void)setLightProperty:(NSString * _Nonnull)name value:(id _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+/// Color tint for lighting extruded geometries.
+- (void)setLightWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Whether extruded geometries are lit relative to the map or viewport.
 - (void)lightAnchor:(enum TMBAnchor)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Color tint for lighting extruded geometries.
@@ -1964,6 +1972,22 @@ enum TMBAnchor : NSInteger;
 - (void)lightPosition:(NSArray<NSNumber *> * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Transition property for <code>position</code>
 - (void)lightPositionTransition:(TMBStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
+@protocol MBMCustomLayerHost;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)addLayerWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)removeLayerWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (BOOL)isPersistentLayerWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)layerExistsWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
+- (void)setLayerPropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)updateLayerPropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (NSDictionary<NSString *, id> * _Nonnull)getLayerPropertiesFor:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
+- (void)addPersistentLayerWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addLayerWithTarget:(NSObject * _Nonnull)target selector:(SEL _Nonnull)selector layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addLayerWithBuilder:(SWIFT_NOESCAPE id _Nonnull (^ _Nonnull)(void))builder layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id <MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
 @class TMBCancelable;

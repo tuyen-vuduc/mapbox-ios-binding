@@ -251,9 +251,9 @@ namespace MapboxMapsObjC
     [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_375
 	{
-		// -(void)updateSkyLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("updateSkyLayer:configure:onError:")]
-		void UpdateSkyLayer (string id, Action<SkyLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
+		// -(void)addRasterDemSource:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("addRasterDemSource:configure:onError:")]
+		void AddRasterDemSource (string id, Action<RasterDemSourceBuilder> configure, [NullAllowed] Action<NSError> onError);
 	}
 
 	// @interface MapboxMapObjC_Swift_381
@@ -261,33 +261,15 @@ namespace MapboxMapsObjC
     [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_381
 	{
-		// -(void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("addSourceWithId:geometry:onError:")]
-		void AddSourceWithId (string id, TMBGeometry geometry, [NullAllowed] Action<NSError> onError);
+		// -(void)updateSkyLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("updateSkyLayer:configure:onError:")]
+		void UpdateSkyLayer (string id, Action<SkyLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_386
+	// @interface MapboxMapObjC_Swift_387
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_386
-	{
-		// -(void)preferredFrameRateRange:(CAFrameRateRange)value;
-		[Export ("preferredFrameRateRange:")]
-		void PreferredFrameRateRange (CAFrameRateRange value);
-
-		// -(NSArray<NSNumber *> * _Nonnull)mapboxMapDebugOptions __attribute__((warn_unused_result("")));
-		[Export ("mapboxMapDebugOptions")]
-		NSNumber[] MapboxMapDebugOptions ();
-
-		// -(void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
-		[Export ("mapboxMapDebugOptions:")]
-		void MapboxMapDebugOptions (NSNumber[] value);
-	}
-
-	// @interface MapboxMapObjC_Swift_394
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_394
+	interface MapboxMapObjC_Swift_387
 	{
 		// -(void)setStyle:(NSString * _Nonnull)styleUri;
 		[Export ("setStyle:")]
@@ -302,32 +284,27 @@ namespace MapboxMapsObjC
 		void LoadStyle (string styleUri, [NullAllowed] Action<TMBStyle, NSError> completion);
 	}
 
-	// @interface MapboxMapObjC_Swift_402
+	// @interface MapboxMapObjC_Swift_394
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_402
+	interface MapboxMapObjC_Swift_394
 	{
-		// -(void)addRasterDemSource:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("addRasterDemSource:configure:onError:")]
-		void AddRasterDemSource (string id, Action<RasterDemSourceBuilder> configure, [NullAllowed] Action<NSError> onError);
+		// -(void)preferredFrameRateRange:(CAFrameRateRange)value;
+		[Export ("preferredFrameRateRange:")]
+		void PreferredFrameRateRange (CAFrameRateRange value);
 
-		// -(void)addSource:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("addSource:properties:onError:")]
-		void AddSource (string id, NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> onError);
-
-		// -(void)removeSource:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("removeSource:onError:")]
-		void RemoveSource (string id, [NullAllowed] Action<NSError> onError);
-
-		// -(BOOL)sourceExists:(NSString * _Nonnull)id __attribute__((warn_unused_result("")));
-		[Export ("sourceExists:")]
-		bool SourceExists (string id);
+		// -(NSArray<NSNumber *> * _Nonnull)mapboxMapDebugOptions __attribute__((warn_unused_result("")));
+		[Export ("mapboxMapDebugOptions")]
+		NSNumber[] MapboxMapDebugOptions();
+		// -(void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
+		[Export ("mapboxMapDebugOptions:")]
+		void MapboxMapDebugOptions (NSNumber[] value);
 	}
 
-	// @interface MapboxMapObjC_Swift_413
+	// @interface MapboxMapObjC_Swift_404
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_413
+	interface MapboxMapObjC_Swift_404
 	{
 		// -(void)locationDelegate:(id<LocationPermissionsDelegate> _Nonnull)delegate;
 		[Export ("locationDelegate:")]
@@ -346,36 +323,40 @@ namespace MapboxMapsObjC
 		void PuckBearingSource (TMBPuckBearingSource source);
 	}
 
-	// @interface MapboxMapObjC_Swift_423
+	// @interface MapboxMapObjC_Swift_413
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_423
+	interface MapboxMapObjC_Swift_413
 	{
-		// -(void)addLayerWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("addLayerWithProperties:layerPosition:layerPositionParam:onError:")]
-		void AddLayerWithProperties (NSDictionary<NSString, NSObject> properties, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+		// -(void)addSource:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("addSource:properties:onError:")]
+		void AddSource (string id, NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> onError);
 
-		// -(void)addPersistentLayerWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("addPersistentLayerWithProperties:layerPosition:layerPositionParam:onError:")]
-		void AddPersistentLayerWithProperties (NSDictionary<NSString, NSObject> properties, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+		// -(void)removeSource:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("removeSource:onError:")]
+		void RemoveSource (string id, [NullAllowed] Action<NSError> onError);
 
-		// -(void)addLayerWithTarget:(NSObject * _Nonnull)target selector:(SEL _Nonnull)selector layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("addLayerWithTarget:selector:layerPosition:layerPositionParam:onError:")]
-		void AddLayerWithTarget (NSObject target, Selector selector, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+		// -(BOOL)sourceExists:(NSString * _Nonnull)id __attribute__((warn_unused_result("")));
+		[Export ("sourceExists:")]
+		bool SourceExists (string id);
 
-		// -(void)addLayerWithBuilder:(id  _Nonnull (^ _Nonnull)(void))builder layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("addLayerWithBuilder:layerPosition:layerPositionParam:onError:")]
-		void AddLayerWithBuilder (Func<NSObject> builder, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+		// -(void)setSourcePropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("setSourcePropertiesFor:properties:onError:")]
+		void SetSourcePropertiesFor (string id, NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> onError);
 
-		// -(void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id<MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("addCustomLayer:layerHost:layerPosition:layerPositionParam:onError:")]
-		void AddCustomLayer (string id, MBMCustomLayerHost layerHost, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+		// -(NSDictionary<NSString *,id> * _Nonnull)getSourcePropertiesFor:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError __attribute__((warn_unused_result("")));
+		[Export ("getSourcePropertiesFor:onError:")]
+		NSDictionary<NSString, NSObject> GetSourcePropertiesFor (string id, [NullAllowed] Action<NSError> onError);
+
+		// -(void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("addSourceWithId:geometry:onError:")]
+		void AddSourceWithId (string id, TMBGeometry geometry, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_435
+	// @interface MapboxMapObjC_Swift_427
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_435
+	interface MapboxMapObjC_Swift_427
 	{
 		// -(TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManager __attribute__((warn_unused_result("")));
 		[Export ("polygonAnnotationManager")]
@@ -402,11 +383,19 @@ namespace MapboxMapsObjC
 		TMBPointAnnotationManager PointAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
 	}
 
-	// @interface MapboxMapObjC_Swift_447
+	// @interface MapboxMapObjC_Swift_439
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_447
+	interface MapboxMapObjC_Swift_439
 	{
+		// -(void)setLightProperty:(NSString * _Nonnull)name value:(id _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("setLightProperty:value:onError:")]
+		void SetLightProperty (string name, NSObject value, [NullAllowed] Action<NSError> onError);
+
+		// -(void)setLightWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("setLightWithProperties:onError:")]
+		void SetLightWithProperties (NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> onError);
+
 		// -(void)lightAnchor:(enum TMBAnchor)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("lightAnchor:onError:")]
 		void LightAnchor (TMBAnchor value, [NullAllowed] Action<NSError> onError);
@@ -436,10 +425,60 @@ namespace MapboxMapsObjC
 		void LightPositionTransition (TMBStyleTransition value, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_466
+	// @interface MapboxMapObjC_Swift_462
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_466
+	interface MapboxMapObjC_Swift_462
+	{
+		// -(void)addLayerWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("addLayerWithProperties:layerPosition:layerPositionParam:onError:")]
+		void AddLayerWithProperties (NSDictionary<NSString, NSObject> properties, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+
+		// -(void)removeLayerWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("removeLayerWithId:onError:")]
+		void RemoveLayerWithId (string id, [NullAllowed] Action<NSError> onError);
+
+		// -(BOOL)isPersistentLayerWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError __attribute__((warn_unused_result("")));
+		[Export ("isPersistentLayerWithId:onError:")]
+		bool IsPersistentLayerWithId (string id, [NullAllowed] Action<NSError> onError);
+
+		// -(BOOL)layerExistsWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError __attribute__((warn_unused_result("")));
+		[Export ("layerExistsWithId:onError:")]
+		bool LayerExistsWithId (string id, [NullAllowed] Action<NSError> onError);
+
+		// -(void)setLayerPropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("setLayerPropertiesFor:properties:onError:")]
+		void SetLayerPropertiesFor (string id, NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> onError);
+
+		// -(void)updateLayerPropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("updateLayerPropertiesFor:properties:onError:")]
+		void UpdateLayerPropertiesFor (string id, NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> onError);
+
+		// -(NSDictionary<NSString *,id> * _Nonnull)getLayerPropertiesFor:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError __attribute__((warn_unused_result("")));
+		[Export ("getLayerPropertiesFor:onError:")]
+		NSDictionary<NSString, NSObject> GetLayerPropertiesFor (string id, [NullAllowed] Action<NSError> onError);
+
+		// -(void)addPersistentLayerWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("addPersistentLayerWithProperties:layerPosition:layerPositionParam:onError:")]
+		void AddPersistentLayerWithProperties (NSDictionary<NSString, NSObject> properties, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+
+		// -(void)addLayerWithTarget:(NSObject * _Nonnull)target selector:(SEL _Nonnull)selector layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("addLayerWithTarget:selector:layerPosition:layerPositionParam:onError:")]
+		void AddLayerWithTarget (NSObject target, Selector selector, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+
+		// -(void)addLayerWithBuilder:(id  _Nonnull (^ _Nonnull)(void))builder layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("addLayerWithBuilder:layerPosition:layerPositionParam:onError:")]
+		void AddLayerWithBuilder (Func<NSObject> builder, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+
+		// -(void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id<MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("addCustomLayer:layerHost:layerPosition:layerPositionParam:onError:")]
+		void AddCustomLayer (string id, MBMCustomLayerHost layerHost, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+	}
+
+	// @interface MapboxMapObjC_Swift_478
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_478
 	{
 		// -(TMBCancelable * _Nonnull)onMapLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
 		[Export ("onMapLoaded:")]
@@ -509,10 +548,10 @@ namespace MapboxMapsObjC
 		MapView CreateWithFrame (CGRect frame, [NullAllowed] MapInitOptions options);
 	}
 
-	// @interface MapboxMapObjC_Swift_555
+	// @interface MapboxMapObjC_Swift_567
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_555
+	interface MapboxMapObjC_Swift_567
 	{
 		// -(TMBCancelable * _Nonnull)loadStyleWithStyleUriString:(NSString * _Nonnull)styleUriString styleLoadOptions:(MBMStylePackLoadOptions * _Nonnull)styleLoadOptions progress:(id)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
 		[Export ("loadStyleWithStyleUriString:styleLoadOptions:progress:completion:")]
@@ -1060,7 +1099,7 @@ namespace MapboxMapsObjC
 		// @required -(void)annotationManager:(id<TMBAnnotationManager> _Nonnull)manager didDetectTappedAnnotations:(NSArray<id<TMBAnnotation>> * _Nonnull)annotations;
 		[Abstract]
 		[Export ("annotationManager:didDetectTappedAnnotations:")]
-		void DidDetectTappedAnnotations (ITMBAnnotationManager manager, NSArray[] annotations);
+		void DidDetectTappedAnnotations (ITMBAnnotationManager manager, NSArray annotations);
 	}
 
 	// @protocol TMBAnnotationManager
@@ -1193,7 +1232,9 @@ namespace MapboxMapsObjC
   the generated interface. If consumers are not supposed to implement this
   protocol, then [Model] is redundant and will generate code that will never
   be used.
-*/[Protocol (Name = "_TtP13MapboxMapObjC10TMBGeoData_")]
+*/
+	[Protocol (Name = "_TtP13MapboxMapObjC10TMBGeoData_")]
+	[BaseType(typeof(NSObject))]
 	interface TMBGeoData
 	{
 	}
@@ -1208,7 +1249,7 @@ namespace MapboxMapsObjC
 		// +(TMBGeometry * _Nonnull)fromData:(id<TMBGeoData> _Nonnull)data __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("fromData:")]
-		TMBGeometry FromData (ITMBGeoData data);
+		TMBGeometry FromData (TMBGeoData data);
 	}
 
 	// @interface TMBPoint : NSObject <TMBGeoData>
@@ -1371,10 +1412,10 @@ namespace MapboxMapsObjC
 	{
 	}
 
-	// @interface MapboxMapObjC_Swift_1271 (TMBResolvedImage)
+	// @interface MapboxMapObjC_Swift_1283 (TMBResolvedImage)
 	[Category]
 	[BaseType (typeof(TMBResolvedImage))]
-	interface TMBResolvedImage_MapboxMapObjC_Swift_1271
+	interface TMBResolvedImage_MapboxMapObjC_Swift_1283
 	{
 		// +(TMBResolvedImage * _Nonnull)fromName:(NSString * _Nonnull)name __attribute__((warn_unused_result("")));
 		[Static]
@@ -1466,15 +1507,15 @@ namespace MapboxMapsObjC
 		TMBValue Expression (TMBExpression expression);
 	}
 
-	// @interface MapboxMapObjC_Swift_1491
+	// @interface MapboxMapObjC_Swift_1503
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_1491
+	interface MapboxMapObjC_Swift_1503
 	{
 		// +(id)getDefault __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("getDefault")]
-		NSObject GetDefault();
+		MBXTileStore GetDefault();
 
 		// -(TMBCancelable * _Nonnull)loadTileRegionForId:(NSString * _Nonnull)id loadOptions:(MBXTileRegionLoadOptions * _Nonnull)loadOptions progress:(id)progress completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
 		[Export ("loadTileRegionForId:loadOptions:progress:completion:")]

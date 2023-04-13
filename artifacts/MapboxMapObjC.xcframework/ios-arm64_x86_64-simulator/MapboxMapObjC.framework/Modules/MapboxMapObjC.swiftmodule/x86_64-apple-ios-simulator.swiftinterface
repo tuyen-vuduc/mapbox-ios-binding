@@ -110,13 +110,15 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addSource(_ id: Swift.String, properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeSource(_ id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func sourceExists(_ id: Swift.String) -> Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setSourceProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func getSourceProperties(for id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?) -> [Swift.String : Any]
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addSource(id: Swift.String, geometry: MapboxMapObjC.TMBGeometry, onError: ((Swift.Error) -> Swift.Void)?)
 }
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addRasterDemSource(_ id: Swift.String, configure: (MapboxMapObjC.RasterDemSourceBuilder) -> Swift.Void, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addSource(_ id: Swift.String, properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeSource(_ id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func sourceExists(_ id: Swift.String) -> Swift.Bool
 }
 @_inheritsConvenienceInitializers @objc open class RasterDemSourceBuilder : ObjectiveC.NSObject {
   @discardableResult
@@ -735,6 +737,12 @@ extension MapboxMapObjC.TMBResolvedImage {
 }
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeLayer(id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func isPersistentLayer(id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?) -> Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func layerExists(id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?) -> Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLayerProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateLayerProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func getLayerProperties(for id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?) -> [Swift.String : Any]
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addPersistentLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(target: ObjectiveC.NSObject, selector: ObjectiveC.Selector, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(builder: () -> Swift.AnyObject, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
@@ -770,6 +778,8 @@ public protocol LayerBuilder {
   }
 }
 @objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLightProperty(_ name: Swift.String, value: Any, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLight(properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func lightAnchor(_ value: MapboxMapObjC.TMBAnchor, onError: ((Swift.Error) -> Swift.Void)?)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func lightColor(_ value: UIKit.UIColor, onError: ((Swift.Error) -> Swift.Void)?)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func lightColorTransition(_ value: MapboxMapObjC.TMBStyleTransition, onError: ((Swift.Error) -> Swift.Void)?)
