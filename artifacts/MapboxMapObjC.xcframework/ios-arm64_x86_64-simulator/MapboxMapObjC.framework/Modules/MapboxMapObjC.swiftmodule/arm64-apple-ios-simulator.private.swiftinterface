@@ -1,7 +1,8 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)
 // swift-module-flags: -target arm64-apple-ios15.4-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MapboxMapObjC
 // swift-module-flags-ignorable: -enable-bare-slash-regex
+import CoreLocation/*.CoreLocation*/
 import Foundation
 import MapboxCoreMaps
 @_exported import MapboxMapObjC
@@ -17,14 +18,14 @@ import _StringProcessing
   @objc var userInfo: [Swift.String : Any]? { get }
 }
 @objc extension MapboxCoreMaps.OfflineManager {
-  @objc dynamic public func loadStyle(styleUriString: Swift.String, styleLoadOptions: MapboxCoreMaps.StylePackLoadOptions, progress: @escaping MapboxCoreMaps.StylePackLoadProgressCallback, completion: @escaping (MapboxCoreMaps.StylePack?, Swift.Error?) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @objc dynamic public func allStylePacks(_ completion: @escaping ([MapboxCoreMaps.StylePack]?, Swift.Error?) -> Swift.Void)
+  @objc dynamic public func loadStyle(styleUriString: Swift.String, styleLoadOptions: MapboxCoreMaps.StylePackLoadOptions, progress: @escaping MapboxCoreMaps.StylePackLoadProgressCallback, completion: @escaping (MapboxCoreMaps.StylePack?, (any Swift.Error)?) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc dynamic public func allStylePacks(_ completion: @escaping ([MapboxCoreMaps.StylePack]?, (any Swift.Error)?) -> Swift.Void)
 }
 @objc extension MapboxCommon.TileStore {
   @objc dynamic public class func getDefault() -> MapboxCommon.TileStore
   @discardableResult
-  @objc dynamic public func loadTileRegion(forId id: Swift.String, loadOptions: MapboxCommon.TileRegionLoadOptions, progress: MapboxCommon.TileRegionLoadProgressCallback? = nil, completion: @escaping (MapboxCommon.TileRegion?, Swift.Error?) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @objc dynamic public func allTileRegions(_ completion: @escaping ([MapboxCommon.TileRegion]?, Swift.Error?) -> Swift.Void)
+  @objc dynamic public func loadTileRegion(forId id: Swift.String, loadOptions: MapboxCommon.TileRegionLoadOptions, progress: MapboxCommon.TileRegionLoadProgressCallback? = nil, completion: @escaping (MapboxCommon.TileRegion?, (any Swift.Error)?) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc dynamic public func allTileRegions(_ completion: @escaping ([MapboxCommon.TileRegion]?, (any Swift.Error)?) -> Swift.Void)
 }
 @objc public enum TMBOrnamentVisibility : Swift.Int {
   case adaptive
@@ -37,7 +38,7 @@ import _StringProcessing
   }
 }
 extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setTerrain(_ value: MapboxMapObjC.TMBTerrain, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setTerrain(_ value: MapboxMapObjC.TMBTerrain, onError: ((any Swift.Error) -> Swift.Void)?)
 }
 @objc open class TMBTerrain : ObjectiveC.NSObject {
   public var sourceId: Swift.String
@@ -84,7 +85,7 @@ extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func onResourceRequest(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
 }
 extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func locationDelegate(_ delegate: MapboxMaps.LocationPermissionsDelegate)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func locationDelegate(_ delegate: any MapboxMaps.LocationPermissionsDelegate)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func locationRequestTemporaryFullAccuracyPermissions(_ customKey: Swift.String)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func puck2D(_ build: ((_ builder: MapboxMapObjC.Puck2DConfigurationBuilder) -> Swift.Void)?)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func puckBearingSource(_ source: MapboxMapObjC.TMBPuckBearingSource)
@@ -102,7 +103,7 @@ extension MapboxMaps.ResourceOptions {
   public init(_ objcValue: MapboxCoreMaps.ResourceOptions)
 }
 @_hasMissingDesignatedInitializers @objc open class TMBStyle : ObjectiveC.NSObject {
-  @objc public func addImage(_ image: UIKit.UIImage, id: Swift.String, completion: ((Swift.Error) -> Swift.Void)?)
+  @objc public func addImage(_ image: UIKit.UIImage, id: Swift.String, completion: ((any Swift.Error) -> Swift.Void)?)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class MapViewFactory : ObjectiveC.NSObject {
@@ -110,15 +111,15 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addSource(_ id: Swift.String, properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeSource(_ id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addSource(_ id: Swift.String, properties: [Swift.String : Any], onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeSource(_ id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func sourceExists(_ id: Swift.String) -> Swift.Bool
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setSourceProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func getSourceProperties(for id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?) -> [Swift.String : Any]
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addSource(id: Swift.String, geometry: MapboxMapObjC.TMBGeometry, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setSourceProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func getSourceProperties(for id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?) -> [Swift.String : Any]
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addSource(id: Swift.String, geometry: MapboxMapObjC.TMBGeometry, onError: ((any Swift.Error) -> Swift.Void)?)
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addRasterDemSource(_ id: Swift.String, configure: (MapboxMapObjC.RasterDemSourceBuilder) -> Swift.Void, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addRasterDemSource(_ id: Swift.String, configure: (MapboxMapObjC.RasterDemSourceBuilder) -> Swift.Void, onError: ((any Swift.Error) -> Swift.Void)?)
 }
 @_inheritsConvenienceInitializers @objc open class RasterDemSourceBuilder : ObjectiveC.NSObject {
   @discardableResult
@@ -158,10 +159,10 @@ extension MapboxMaps.ResourceOptions {
   @objc var layerId: Swift.String { get }
 }
 @objc public protocol TMBAnnotationInteractionDelegate {
-  @objc func annotationManager(_ manager: MapboxMapObjC.TMBAnnotationManager, didDetectTappedAnnotations annotations: [MapboxMapObjC.TMBAnnotation])
+  @objc func annotationManager(_ manager: any MapboxMapObjC.TMBAnnotationManager, didDetectTappedAnnotations annotations: [any MapboxMapObjC.TMBAnnotation])
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateSkyLayer(_ id: Swift.String, configure: (MapboxMapObjC.SkyLayerBuilder) -> Swift.Void, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateSkyLayer(_ id: Swift.String, configure: (MapboxMapObjC.SkyLayerBuilder) -> Swift.Void, onError: ((any Swift.Error) -> Swift.Void)?)
 }
 @_hasMissingDesignatedInitializers @objc open class SkyLayerBuilder : ObjectiveC.NSObject, MapboxMapObjC.LayerBuilder {
   public typealias T = MapboxMaps.SkyLayer
@@ -503,25 +504,25 @@ extension MapboxMaps.ResourceOptions {
   @objc public var layerId: Swift.String {
     @objc get
   }
-  public func annotationManager(_ manager: MapboxMaps.AnnotationManager, didDetectTappedAnnotations annotations: [MapboxMaps.Annotation])
+  public func annotationManager(_ manager: any MapboxMaps.AnnotationManager, didDetectTappedAnnotations annotations: [any MapboxMaps.Annotation])
   @objc public var annotations: [MapboxMapObjC.TMBCircleAnnotation] {
     @objc get
     @objc set
   }
   final public let swiftValue: MapboxMaps.CircleAnnotationManager
-  @objc weak public var delegate: MapboxMapObjC.TMBAnnotationInteractionDelegate?
+  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)?
   public init(_ swiftValue: MapboxMaps.CircleAnnotationManager)
   @objc deinit
 }
 @objc public protocol TMBGeoData {
 }
 @_hasMissingDesignatedInitializers @objc open class TMBGeometry : ObjectiveC.NSObject {
-  final public let data: MapboxMapObjC.TMBGeoData
-  @objc public class func from(data: MapboxMapObjC.TMBGeoData) -> MapboxMapObjC.TMBGeometry
+  final public let data: any MapboxMapObjC.TMBGeoData
+  @objc public class func from(data: any MapboxMapObjC.TMBGeoData) -> MapboxMapObjC.TMBGeometry
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateSymbolLayer(_ id: Swift.String, configure: (MapboxMapObjC.SymbolLayerBuilder) -> Swift.Void, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateSymbolLayer(_ id: Swift.String, configure: (MapboxMapObjC.SymbolLayerBuilder) -> Swift.Void, onError: ((any Swift.Error) -> Swift.Void)?)
 }
 @_hasMissingDesignatedInitializers @objc open class SymbolLayerBuilder : ObjectiveC.NSObject, MapboxMapObjC.LayerBuilder {
   public typealias T = MapboxMaps.SymbolLayer
@@ -638,13 +639,13 @@ extension MapboxMaps.ResourceOptions {
   @objc public var layerId: Swift.String {
     @objc get
   }
-  public func annotationManager(_ manager: MapboxMaps.AnnotationManager, didDetectTappedAnnotations annotations: [MapboxMaps.Annotation])
+  public func annotationManager(_ manager: any MapboxMaps.AnnotationManager, didDetectTappedAnnotations annotations: [any MapboxMaps.Annotation])
   @objc public var annotations: [MapboxMapObjC.TMBPointAnnotation] {
     @objc get
     @objc set
   }
   final public let swiftValue: MapboxMaps.PointAnnotationManager
-  @objc weak public var delegate: MapboxMapObjC.TMBAnnotationInteractionDelegate?
+  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)?
   public init(_ swiftValue: MapboxMaps.PointAnnotationManager)
   @objc deinit
 }
@@ -671,8 +672,8 @@ extension MapboxMapObjC.TMBLayerPosition {
   final public let available: Swift.Bool?
   final public let name: Swift.String
   @objc deinit
-  open func encode(to encoder: Swift.Encoder) throws
-  required public init(from decoder: Swift.Decoder) throws
+  open func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
 }
 extension MapboxMapObjC.TMBResolvedImage {
   @objc dynamic public class func from(name: Swift.String) -> MapboxMapObjC.TMBResolvedImage
@@ -704,7 +705,9 @@ extension MapboxMapObjC.TMBResolvedImage {
 @objc open class TMBPolygon : ObjectiveC.NSObject {
   final public let swiftValue: Turf.Polygon
   @objc public init(outerRingCoordinates: [CoreLocation.CLLocationCoordinate2D], innerRingCoordinates: [[CoreLocation.CLLocationCoordinate2D]])
+  @objc public init(_ coordinates: [[Turf.LocationCoordinate2D]])
   @objc public class func create(outerRingCoordinates: [CoreLocation.CLLocationCoordinate2D], innerRingCoordinates: [[CoreLocation.CLLocationCoordinate2D]]) -> MapboxMapObjC.TMBPolygon
+  @objc public class func from(coordinates: [[Turf.LocationCoordinate2D]]) -> MapboxMapObjC.TMBPolygon
   @objc deinit
 }
 @objc open class TMBPolygonAnnotationManager : ObjectiveC.NSObject, MapboxMapObjC.TMBAnnotationManager, MapboxMaps.AnnotationInteractionDelegate {
@@ -717,13 +720,13 @@ extension MapboxMapObjC.TMBResolvedImage {
   @objc public var layerId: Swift.String {
     @objc get
   }
-  public func annotationManager(_ manager: MapboxMaps.AnnotationManager, didDetectTappedAnnotations annotations: [MapboxMaps.Annotation])
+  public func annotationManager(_ manager: any MapboxMaps.AnnotationManager, didDetectTappedAnnotations annotations: [any MapboxMaps.Annotation])
   @objc public var annotations: [MapboxMapObjC.TMBPolygonAnnotation] {
     @objc get
     @objc set
   }
   final public let swiftValue: MapboxMaps.PolygonAnnotationManager
-  @objc weak public var delegate: MapboxMapObjC.TMBAnnotationInteractionDelegate?
+  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)?
   public init(_ swiftValue: MapboxMaps.PolygonAnnotationManager)
   @objc deinit
 }
@@ -736,17 +739,17 @@ extension MapboxMapObjC.TMBResolvedImage {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func pointAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPointAnnotationManager
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeLayer(id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func isPersistentLayer(id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?) -> Swift.Bool
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func layerExists(id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?) -> Swift.Bool
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLayerProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateLayerProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func getLayerProperties(for id: Swift.String, onError: ((Swift.Error) -> Swift.Void)?) -> [Swift.String : Any]
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addPersistentLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(target: ObjectiveC.NSObject, selector: ObjectiveC.Selector, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(builder: () -> Swift.AnyObject, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addCustomLayer(_ id: Swift.String, layerHost: MapboxCoreMaps.CustomLayerHost, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeLayer(id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func isPersistentLayer(id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?) -> Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func layerExists(id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?) -> Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLayerProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateLayerProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func getLayerProperties(for id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?) -> [Swift.String : Any]
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addPersistentLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(target: ObjectiveC.NSObject, selector: ObjectiveC.Selector, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(builder: () -> Swift.AnyObject, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addCustomLayer(_ id: Swift.String, layerHost: any MapboxCoreMaps.CustomLayerHost, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
 }
 public protocol LayerBuilder {
   associatedtype T : MapboxMaps.Layer
@@ -778,15 +781,15 @@ public protocol LayerBuilder {
   }
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLightProperty(_ name: Swift.String, value: Any, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLight(properties: [Swift.String : Any], onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightAnchor(_ value: MapboxMapObjC.TMBAnchor, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightColor(_ value: UIKit.UIColor, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightColorTransition(_ value: MapboxMapObjC.TMBStyleTransition, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightIntensity(_ value: Swift.Double, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightIntensityTransition(_ value: MapboxMapObjC.TMBStyleTransition, onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightPosition(_ value: [Swift.Double], onError: ((Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightPositionTransition(_ value: MapboxMapObjC.TMBStyleTransition, onError: ((Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLightProperty(_ name: Swift.String, value: Any, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLight(properties: [Swift.String : Any], onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightAnchor(_ value: MapboxMapObjC.TMBAnchor, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightColor(_ value: UIKit.UIColor, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightColorTransition(_ value: MapboxMapObjC.TMBStyleTransition, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightIntensity(_ value: Swift.Double, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightIntensityTransition(_ value: MapboxMapObjC.TMBStyleTransition, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightPosition(_ value: [Swift.Double], onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightPositionTransition(_ value: MapboxMapObjC.TMBStyleTransition, onError: ((any Swift.Error) -> Swift.Void)?)
 }
 @objc open class TMBStyleTransition : ObjectiveC.NSObject {
   final public let duration: Swift.Double
@@ -797,7 +800,7 @@ public protocol LayerBuilder {
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setStyle(_ styleUri: Swift.String)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setStyle(inJson styleJson: Swift.String)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func loadStyle(_ styleUri: Swift.String, completion: ((MapboxMapObjC.TMBStyle?, Swift.Error?) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func loadStyle(_ styleUri: Swift.String, completion: ((MapboxMapObjC.TMBStyle?, (any Swift.Error)?) -> Swift.Void)?)
 }
 @objc public enum TMBEncoding : Swift.Int {
   case terrarium

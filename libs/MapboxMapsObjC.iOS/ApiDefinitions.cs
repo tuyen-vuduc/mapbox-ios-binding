@@ -1337,11 +1337,20 @@ namespace MapboxMapsObjC
 		[Export ("initWithOuterRingCoordinates:innerRingCoordinates:")]
 		[DesignatedInitializer]
 		IntPtr Constructor (NSValue[] outerRingCoordinates, NSArray<NSValue>[] innerRingCoordinates);
+		// - (nonnull instancetype)init:(NSArray<NSArray<NSValue *> *> * _Nonnull)coordinates OBJC_DESIGNATED_INITIALIZER;
+		[Export ("init:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (NSArray coordinates);
 
 		// +(TMBPolygon * _Nonnull)createWithOuterRingCoordinates:(NSArray<NSValue *> * _Nonnull)outerRingCoordinates innerRingCoordinates:(NSArray<NSArray<NSValue *> *> * _Nonnull)innerRingCoordinates __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithOuterRingCoordinates:innerRingCoordinates:")]
 		TMBPolygon CreateWithOuterRingCoordinates (NSValue[] outerRingCoordinates, NSArray<NSValue>[] innerRingCoordinates);
+
+		// + (TMBPolygon * _Nonnull)fromCoordinates:(NSArray<NSArray<NSValue *> *> * _Nonnull)coordinates SWIFT_WARN_UNUSED_RESULT;
+		[Static]
+		[Export ("fromCoordinates:")]
+		TMBPolygon FromCoordinates (NSArray coordinates);
 	}
 
 	// @interface TMBPolygonAnnotation : NSObject <TMBAnnotation>

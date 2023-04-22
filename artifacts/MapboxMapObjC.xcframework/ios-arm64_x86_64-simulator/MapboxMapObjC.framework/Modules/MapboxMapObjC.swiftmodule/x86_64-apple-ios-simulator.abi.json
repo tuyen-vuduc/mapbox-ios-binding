@@ -17282,6 +17282,50 @@
             "init_kind": "Designated"
           },
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBPolygon",
+                "printedName": "MapboxMapObjC.TMBPolygon",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygon"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[CoreLocation.CLLocationCoordinate2D]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[CoreLocation.CLLocationCoordinate2D]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CLLocationCoordinate2D",
+                        "printedName": "CoreLocation.CLLocationCoordinate2D",
+                        "usr": "c:@S@CLLocationCoordinate2D"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygon(im)init:",
+            "mangledName": "$s13MapboxMapObjC10TMBPolygonCyACSaySaySo22CLLocationCoordinate2DVGGcfc",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "create",
             "printedName": "create(outerRingCoordinates:innerRingCoordinates:)",
@@ -17335,6 +17379,52 @@
             "moduleName": "MapboxMapObjC",
             "static": true,
             "objc_name": "createWithOuterRingCoordinates:innerRingCoordinates:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "from",
+            "printedName": "from(coordinates:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBPolygon",
+                "printedName": "MapboxMapObjC.TMBPolygon",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygon"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[CoreLocation.CLLocationCoordinate2D]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[CoreLocation.CLLocationCoordinate2D]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CLLocationCoordinate2D",
+                        "printedName": "CoreLocation.CLLocationCoordinate2D",
+                        "usr": "c:@S@CLLocationCoordinate2D"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygon(cm)fromCoordinates:",
+            "mangledName": "$s13MapboxMapObjC10TMBPolygonC4from11coordinatesACSaySaySo22CLLocationCoordinate2DVGG_tFZ",
+            "moduleName": "MapboxMapObjC",
+            "static": true,
+            "objc_name": "fromCoordinates:",
             "declAttributes": [
               "AccessControl",
               "ObjC"
@@ -30809,6 +30899,104 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
+      "offset": 809,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 1602,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 2276,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 3382,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 4156,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 4825,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 5344,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 6522,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 7141,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 7753,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 8538,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 9243,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 9940,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 10449,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
+      "kind": "StringLiteral",
       "offset": 12041,
       "length": 13,
       "value": "\"MapboxMapObjC.TMBCancelable\""
@@ -30819,6 +31007,20 @@
       "offset": 36,
       "length": 8,
       "value": "\"MapboxMapObjC.TMBStyle\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewFactory.swift",
+      "kind": "StringLiteral",
+      "offset": 333,
+      "length": 40,
+      "value": "\"This initializer should not be called.\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/sources\/MapViewExtensions.Source.swift",
+      "kind": "Dictionary",
+      "offset": 1246,
+      "length": 3,
+      "value": "[]"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/layers\/SkyLayerBuilder.swift",
@@ -31712,9 +31914,51 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBPolygonAnnotation.swift",
       "kind": "StringLiteral",
-      "offset": 2332,
+      "offset": 2645,
       "length": 27,
       "value": "\"MapboxMapObjC.TMBPolygonAnnotationManager\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/MapViewExtentions.Annotations.swift",
+      "kind": "IntegerLiteral",
+      "offset": 630,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/MapViewExtentions.Annotations.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1337,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/MapViewExtentions.Annotations.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2036,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/layers\/MapViewExtensions.Layer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1013,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/layers\/MapViewExtensions.Layer.swift",
+      "kind": "Dictionary",
+      "offset": 2805,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/layers\/MapViewExtensions.Layer.swift",
+      "kind": "Dictionary",
+      "offset": 3525,
+      "length": 3,
+      "value": "[]"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/geojson\/TMBPoint.swift",
@@ -31794,6 +32038,55 @@
       "value": "5"
     },
     {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/LightBuilder.swift",
+      "kind": "StringLiteral",
+      "offset": 985,
+      "length": 8,
+      "value": "\"anchor\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/LightBuilder.swift",
+      "kind": "StringLiteral",
+      "offset": 1383,
+      "length": 7,
+      "value": "\"color\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/LightBuilder.swift",
+      "kind": "StringLiteral",
+      "offset": 1676,
+      "length": 17,
+      "value": "\"colorTransition\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/LightBuilder.swift",
+      "kind": "StringLiteral",
+      "offset": 2043,
+      "length": 11,
+      "value": "\"intensity\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/LightBuilder.swift",
+      "kind": "StringLiteral",
+      "offset": 2348,
+      "length": 21,
+      "value": "\"intensityTransition\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/LightBuilder.swift",
+      "kind": "StringLiteral",
+      "offset": 3192,
+      "length": 10,
+      "value": "\"position\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/LightBuilder.swift",
+      "kind": "StringLiteral",
+      "offset": 3495,
+      "length": 20,
+      "value": "\"positionTransition\""
+    },
+    {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/StyleTransition.swift",
       "kind": "StringLiteral",
       "offset": 36,
@@ -31801,6 +32094,20 @@
       "value": "\"MapboxMapObjC.TMBStyleTransition\""
     },
     {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/StyleTransition.swift",
+      "kind": "IntegerLiteral",
+      "offset": 627,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/StyleTransition.swift",
+      "kind": "IntegerLiteral",
+      "offset": 637,
+      "length": 1,
+      "value": "0"
+    },
+    {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Encoding.swift",
       "kind": "IntegerLiteral",
       "offset": 296,
@@ -31813,6 +32120,13 @@
       "offset": 296,
       "length": 6,
       "value": "1"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/Expression.swift",
+      "kind": "Array",
+      "offset": 556,
+      "length": 2,
+      "value": "[]"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/Expression.swift",
