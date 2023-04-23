@@ -903,17 +903,29 @@ extension MapboxMapObjC.TMBResolvedImage {
   @objc public var userInfo: [Swift.String : Any]? {
     @objc get
   }
+  public var swiftValue: MapboxMaps.PolygonAnnotation
+  public init(swiftValue: MapboxMaps.PolygonAnnotation)
+  @objc public class func polygon(_ polygon: MapboxMapObjC.TMBPolygon) -> MapboxMapObjC.TMBPolygonAnnotation
+  @objc public var fillSortKey: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
   @objc public var fillColor: UIKit.UIColor? {
     @objc get
     @objc set
   }
-  @objc public var fillOpacity: Swift.Double {
+  @objc public var fillOpacity: Foundation.NSNumber? {
     @objc get
     @objc set
   }
-  public var swiftValue: MapboxMaps.PolygonAnnotation
-  public init(swiftValue: MapboxMaps.PolygonAnnotation)
-  @objc public class func polygon(_ polygon: MapboxMapObjC.TMBPolygon) -> MapboxMapObjC.TMBPolygonAnnotation
+  @objc public var fillOutlineColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc public var fillPattern: Swift.String? {
+    @objc get
+    @objc set
+  }
   @objc deinit
 }
 @objc open class TMBPolygon : ObjectiveC.NSObject {
@@ -939,7 +951,7 @@ extension MapboxMapObjC.TMBResolvedImage {
     @objc get
     @objc set
   }
-  @objc public var fillAntialias: Swift.Bool {
+  @objc public var fillAntialias: Foundation.NSNumber? {
     @objc get
     @objc set
   }

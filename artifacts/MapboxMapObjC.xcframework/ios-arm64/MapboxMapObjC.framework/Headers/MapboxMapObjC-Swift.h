@@ -1663,9 +1663,17 @@ SWIFT_CLASS("_TtC13MapboxMapObjC20TMBPolygonAnnotation")
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
 @property (nonatomic, readonly, copy) NSString * _Nonnull geometryInJSON;
 @property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
-@property (nonatomic, strong) UIColor * _Nullable fillColor;
-@property (nonatomic) double fillOpacity;
 + (TMBPolygonAnnotation * _Nonnull)polygon:(TMBPolygon * _Nonnull)polygon SWIFT_WARN_UNUSED_RESULT;
+/// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
+@property (nonatomic, strong) NSNumber * _Nullable fillSortKey;
+/// The color of the filled part of this layer. This color can be specified as <code>rgba</code> with an alpha component and the color’s opacity will not affect the opacity of the 1px stroke, if it is used.
+@property (nonatomic, strong) UIColor * _Nullable fillColor;
+/// The opacity of the entire fill layer. In contrast to the <code>fill-color</code>, this value will also affect the 1px stroke around the fill, if the stroke is used.
+@property (nonatomic, strong) NSNumber * _Nullable fillOpacity;
+/// The outline color of the fill. Matches the value of <code>fill-color</code> if unspecified.
+@property (nonatomic, strong) UIColor * _Nullable fillOutlineColor;
+/// Name of image in sprite to use for drawing image fills. For seamless patterns, image width and height must be a factor of two (2, 4, 8, …, 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
+@property (nonatomic, copy) NSString * _Nullable fillPattern;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1678,7 +1686,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC27TMBPolygonAnnotationManager")
 @property (nonatomic, readonly, copy) NSString * _Nonnull layerId;
 @property (nonatomic, copy) NSArray<TMBPolygonAnnotation *> * _Nonnull annotations;
 /// Whether or not the fill should be antialiased.
-@property (nonatomic) BOOL fillAntialias;
+@property (nonatomic, strong) NSNumber * _Nullable fillAntialias;
 /// The geometry’s offset. Values are [x, y] where negatives indicate left and up, respectively.
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nullable fillTranslate;
 /// Controls the frame of reference for <code>fill-translate</code>.

@@ -2535,18 +2535,30 @@ namespace MapboxMapsObjC
 		[NullAllowed, Export ("userInfo", ArgumentSemantic.Copy)]
 		NSDictionary<NSString, NSObject> UserInfo { get; }
 
-		// @property (nonatomic, strong) UIColor * _Nullable fillColor;
-		[NullAllowed, Export ("fillColor", ArgumentSemantic.Strong)]
-		UIColor FillColor { get; set; }
-
-		// @property (nonatomic) double fillOpacity;
-		[Export ("fillOpacity")]
-		double FillOpacity { get; set; }
-
 		// +(TMBPolygonAnnotation * _Nonnull)polygon:(TMBPolygon * _Nonnull)polygon __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("polygon:")]
 		TMBPolygonAnnotation Polygon (TMBPolygon polygon);
+		// /// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
+		// @property (nonatomic, strong) NSNumber * _Nullable fillSortKey;
+		[NullAllowed, Export ("fillSortKey", ArgumentSemantic.Strong)]
+		NSNumber FillSortKey { get; set; }
+		// /// The color of the filled part of this layer. This color can be specified as <code>rgba</code> with an alpha component and the color’s opacity will not affect the opacity of the 1px stroke, if it is used.
+		// @property (nonatomic, strong) UIColor * _Nullable fillColor;
+		[NullAllowed, Export ("fillColor", ArgumentSemantic.Strong)]
+		UIColor FillColor { get; set; }
+		// /// The opacity of the entire fill layer. In contrast to the <code>fill-color</code>, this value will also affect the 1px stroke around the fill, if the stroke is used.
+		// @property (nonatomic, strong) NSNumber * _Nullable fillOpacity;
+		[NullAllowed, Export ("fillOpacity", ArgumentSemantic.Strong)]
+		NSNumber FillOpacity { get; set; }
+		// /// The outline color of the fill. Matches the value of <code>fill-color</code> if unspecified.
+		// @property (nonatomic, strong) UIColor * _Nullable fillOutlineColor;
+		[NullAllowed, Export ("fillOutlineColor", ArgumentSemantic.Strong)]
+		UIColor FillOutlineColor { get; set; }
+		// /// Name of image in sprite to use for drawing image fills. For seamless patterns, image width and height must be a factor of two (2, 4, 8, …, 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
+		// @property (nonatomic, copy) NSString * _Nullable fillPattern;
+		[NullAllowed, Export ("fillPattern", ArgumentSemantic.Copy)]
+		string FillPattern { get; set; }
 	}
 
 	// @interface TMBPolygonAnnotationManager : NSObject <TMBAnnotationManager>
@@ -2571,8 +2583,8 @@ namespace MapboxMapsObjC
 		TMBPolygonAnnotation[] Annotations { get; set; }
 
 		// @property (nonatomic) BOOL fillAntialias;
-		[Export ("fillAntialias")]
-		bool FillAntialias { get; set; }
+		[NullAllowed, Export ("fillAntialias")]
+		NSNumber FillAntialias { get; set; }
 
 		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable fillTranslate;
 		[NullAllowed, Export ("fillTranslate", ArgumentSemantic.Copy)]

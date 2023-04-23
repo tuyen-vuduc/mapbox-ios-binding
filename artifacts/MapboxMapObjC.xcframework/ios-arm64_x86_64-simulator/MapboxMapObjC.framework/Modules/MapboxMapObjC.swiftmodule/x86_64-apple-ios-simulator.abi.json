@@ -26260,206 +26260,6 @@
           },
           {
             "kind": "Var",
-            "name": "fillColor",
-            "printedName": "fillColor",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "UIKit.UIColor?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "UIColor",
-                    "printedName": "UIKit.UIColor",
-                    "usr": "c:objc(cs)UIColor"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(py)fillColor",
-            "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC9fillColorSo7UIColorCSgvp",
-            "moduleName": "MapboxMapObjC",
-            "declAttributes": [
-              "AccessControl",
-              "ObjC"
-            ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "UIKit.UIColor?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "UIColor",
-                        "printedName": "UIKit.UIColor",
-                        "usr": "c:objc(cs)UIColor"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)fillColor",
-                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC9fillColorSo7UIColorCSgvg",
-                "moduleName": "MapboxMapObjC",
-                "declAttributes": [
-                  "ObjC"
-                ],
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "UIKit.UIColor?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "UIColor",
-                        "printedName": "UIKit.UIColor",
-                        "usr": "c:objc(cs)UIColor"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)setFillColor:",
-                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC9fillColorSo7UIColorCSgvs",
-                "moduleName": "MapboxMapObjC",
-                "declAttributes": [
-                  "ObjC"
-                ],
-                "accessorKind": "set"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Modify",
-                "printedName": "Modify()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC20TMBPolygonAnnotationC9fillColorSo7UIColorCSgvM",
-                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC9fillColorSo7UIColorCSgvM",
-                "moduleName": "MapboxMapObjC",
-                "implicit": true,
-                "accessorKind": "_modify"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "fillOpacity",
-            "printedName": "fillOpacity",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Double",
-                "printedName": "Swift.Double",
-                "usr": "s:Sd"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(py)fillOpacity",
-            "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillOpacitySdvp",
-            "moduleName": "MapboxMapObjC",
-            "declAttributes": [
-              "AccessControl",
-              "ObjC"
-            ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Double",
-                    "printedName": "Swift.Double",
-                    "usr": "s:Sd"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)fillOpacity",
-                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillOpacitySdvg",
-                "moduleName": "MapboxMapObjC",
-                "declAttributes": [
-                  "ObjC"
-                ],
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Double",
-                    "printedName": "Swift.Double",
-                    "usr": "s:Sd"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)setFillOpacity:",
-                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillOpacitySdvs",
-                "moduleName": "MapboxMapObjC",
-                "declAttributes": [
-                  "ObjC"
-                ],
-                "accessorKind": "set"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Modify",
-                "printedName": "Modify()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC20TMBPolygonAnnotationC11fillOpacitySdvM",
-                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillOpacitySdvM",
-                "moduleName": "MapboxMapObjC",
-                "implicit": true,
-                "accessorKind": "_modify"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
             "name": "swiftValue",
             "printedName": "swiftValue",
             "children": [
@@ -26598,6 +26398,571 @@
               "ObjC"
             ],
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "fillSortKey",
+            "printedName": "fillSortKey",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSNumber?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSNumber",
+                    "printedName": "Foundation.NSNumber",
+                    "usr": "c:objc(cs)NSNumber"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(py)fillSortKey",
+            "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillSortKeySo8NSNumberCSgvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.NSNumber?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSNumber",
+                        "printedName": "Foundation.NSNumber",
+                        "usr": "c:objc(cs)NSNumber"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)fillSortKey",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillSortKeySo8NSNumberCSgvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.NSNumber?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSNumber",
+                        "printedName": "Foundation.NSNumber",
+                        "usr": "c:objc(cs)NSNumber"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)setFillSortKey:",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillSortKeySo8NSNumberCSgvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC20TMBPolygonAnnotationC11fillSortKeySo8NSNumberCSgvM",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillSortKeySo8NSNumberCSgvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fillColor",
+            "printedName": "fillColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(py)fillColor",
+            "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC9fillColorSo7UIColorCSgvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)fillColor",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC9fillColorSo7UIColorCSgvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)setFillColor:",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC9fillColorSo7UIColorCSgvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC20TMBPolygonAnnotationC9fillColorSo7UIColorCSgvM",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC9fillColorSo7UIColorCSgvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fillOpacity",
+            "printedName": "fillOpacity",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSNumber?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSNumber",
+                    "printedName": "Foundation.NSNumber",
+                    "usr": "c:objc(cs)NSNumber"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(py)fillOpacity",
+            "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillOpacitySo8NSNumberCSgvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.NSNumber?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSNumber",
+                        "printedName": "Foundation.NSNumber",
+                        "usr": "c:objc(cs)NSNumber"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)fillOpacity",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillOpacitySo8NSNumberCSgvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.NSNumber?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSNumber",
+                        "printedName": "Foundation.NSNumber",
+                        "usr": "c:objc(cs)NSNumber"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)setFillOpacity:",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillOpacitySo8NSNumberCSgvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC20TMBPolygonAnnotationC11fillOpacitySo8NSNumberCSgvM",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillOpacitySo8NSNumberCSgvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fillOutlineColor",
+            "printedName": "fillOutlineColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(py)fillOutlineColor",
+            "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC16fillOutlineColorSo7UIColorCSgvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)fillOutlineColor",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC16fillOutlineColorSo7UIColorCSgvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)setFillOutlineColor:",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC16fillOutlineColorSo7UIColorCSgvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC20TMBPolygonAnnotationC16fillOutlineColorSo7UIColorCSgvM",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC16fillOutlineColorSo7UIColorCSgvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fillPattern",
+            "printedName": "fillPattern",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(py)fillPattern",
+            "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillPatternSSSgvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)fillPattern",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillPatternSSSgvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotation(im)setFillPattern:",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillPatternSSSgvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC20TMBPolygonAnnotationC11fillPatternSSSgvM",
+                "mangledName": "$s13MapboxMapObjC20TMBPolygonAnnotationC11fillPatternSSSgvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
           },
           {
             "kind": "Constructor",
@@ -27355,14 +27720,22 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
+                "name": "Optional",
+                "printedName": "Foundation.NSNumber?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSNumber",
+                    "printedName": "Foundation.NSNumber",
+                    "usr": "c:objc(cs)NSNumber"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
             "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotationManager(py)fillAntialias",
-            "mangledName": "$s13MapboxMapObjC27TMBPolygonAnnotationManagerC13fillAntialiasSbvp",
+            "mangledName": "$s13MapboxMapObjC27TMBPolygonAnnotationManagerC13fillAntialiasSo8NSNumberCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
@@ -27377,14 +27750,22 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
+                    "name": "Optional",
+                    "printedName": "Foundation.NSNumber?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSNumber",
+                        "printedName": "Foundation.NSNumber",
+                        "usr": "c:objc(cs)NSNumber"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotationManager(im)fillAntialias",
-                "mangledName": "$s13MapboxMapObjC27TMBPolygonAnnotationManagerC13fillAntialiasSbvg",
+                "mangledName": "$s13MapboxMapObjC27TMBPolygonAnnotationManagerC13fillAntialiasSo8NSNumberCSgvg",
                 "moduleName": "MapboxMapObjC",
                 "declAttributes": [
                   "ObjC"
@@ -27403,14 +27784,22 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
+                    "name": "Optional",
+                    "printedName": "Foundation.NSNumber?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSNumber",
+                        "printedName": "Foundation.NSNumber",
+                        "usr": "c:objc(cs)NSNumber"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPolygonAnnotationManager(im)setFillAntialias:",
-                "mangledName": "$s13MapboxMapObjC27TMBPolygonAnnotationManagerC13fillAntialiasSbvs",
+                "mangledName": "$s13MapboxMapObjC27TMBPolygonAnnotationManagerC13fillAntialiasSo8NSNumberCSgvs",
                 "moduleName": "MapboxMapObjC",
                 "declAttributes": [
                   "ObjC"
@@ -27429,8 +27818,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC27TMBPolygonAnnotationManagerC13fillAntialiasSbvM",
-                "mangledName": "$s13MapboxMapObjC27TMBPolygonAnnotationManagerC13fillAntialiasSbvM",
+                "usr": "s:13MapboxMapObjC27TMBPolygonAnnotationManagerC13fillAntialiasSo8NSNumberCSgvM",
+                "mangledName": "$s13MapboxMapObjC27TMBPolygonAnnotationManagerC13fillAntialiasSo8NSNumberCSgvM",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -45821,21 +46210,14 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBPolygonAnnotation.swift",
       "kind": "StringLiteral",
-      "offset": 1531,
+      "offset": 3848,
       "length": 10,
       "value": "\"MapboxMapObjC.TMBPolygon\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBPolygonAnnotation.swift",
-      "kind": "BooleanLiteral",
-      "offset": 4168,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBPolygonAnnotation.swift",
       "kind": "StringLiteral",
-      "offset": 2645,
+      "offset": 4962,
       "length": 27,
       "value": "\"MapboxMapObjC.TMBPolygonAnnotationManager\""
     },
