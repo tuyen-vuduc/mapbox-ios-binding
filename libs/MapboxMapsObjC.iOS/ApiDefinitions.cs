@@ -153,10 +153,10 @@ namespace MapboxMapsObjC
 		void FillExtrusionVerticalGradient ([NullAllowed] TMBValue value);
 	}
 
-	// @interface MapboxMapObjC_Swift_327
+	// @interface MapboxMapObjC_Swift_357
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_327
+	interface MapboxMapObjC_Swift_357
 	{
 		// -(MBMResourceOptions * _Nonnull)resourceOptions __attribute__((warn_unused_result("")));
 		[Export ("resourceOptions")]
@@ -206,70 +206,88 @@ namespace MapboxMapsObjC
 		MapInitOptionsBuilder StyleUri (NSUrl value);
 	}
 
-	// @interface MapboxMapObjC_Swift_352
+	// @interface MapboxMapObjC_Swift_382
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_352
-	{
-		// -(void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("setTerrain:onError:")]
-		void SetTerrain (TMBTerrain value, [NullAllowed] Action<NSError> onError);
-	}
-
-	// @interface MapboxMapObjC_Swift_357
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_357
-	{
-		// -(void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
-		[Export ("setCameraTo:")]
-		void SetCameraTo (MBMCameraOptions cameraOptions);
-	}
-
-	// @interface MapboxMapObjC_Swift_363
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_363
-	{
-		// -(void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
-		[Export ("ornamentsOptionsScaleBarVisibility:")]
-		void OrnamentsOptionsScaleBarVisibility (TMBOrnamentVisibility value);
-	}
-
-	// @interface MapboxMapObjC_Swift_369
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_369
+	interface MapboxMapObjC_Swift_382
 	{
 		// -(void)updateSymbolLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SymbolLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("updateSymbolLayer:configure:onError:")]
 		void UpdateSymbolLayer (string id, Action<SymbolLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_375
+	// @interface MapboxMapObjC_Swift_388
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_375
-	{
-		// -(void)addRasterDemSource:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("addRasterDemSource:configure:onError:")]
-		void AddRasterDemSource (string id, Action<RasterDemSourceBuilder> configure, [NullAllowed] Action<NSError> onError);
-	}
-
-	// @interface MapboxMapObjC_Swift_381
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_381
+	interface MapboxMapObjC_Swift_388
 	{
 		// -(void)updateSkyLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("updateSkyLayer:configure:onError:")]
 		void UpdateSkyLayer (string id, Action<SkyLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_387
+	// @interface MapboxMapObjC_Swift_394
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_387
+	interface MapboxMapObjC_Swift_394
+	{
+		// -(void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("setTerrain:onError:")]
+		void SetTerrain (TMBTerrain value, [NullAllowed] Action<NSError> onError);
+	}
+
+	// @interface MapboxMapObjC_Swift_400
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_400
+	{
+		// -(void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
+		[Export ("ornamentsOptionsScaleBarVisibility:")]
+		void OrnamentsOptionsScaleBarVisibility (TMBOrnamentVisibility value);
+	}
+
+	// @interface MapboxMapObjC_Swift_406
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_406
+	{
+		// -(void)addRasterDemSource:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("addRasterDemSource:configure:onError:")]
+		void AddRasterDemSource (string id, Action<RasterDemSourceBuilder> configure, [NullAllowed] Action<NSError> onError);
+	}
+
+	// @interface MapboxMapObjC_Swift_411
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_411
+	{
+		// -(void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
+		[Export ("setCameraTo:")]
+		void SetCameraTo (MBMCameraOptions cameraOptions);
+	}
+
+	// @interface MapboxMapObjC_Swift_416
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_416
+	{
+		// -(void)preferredFrameRateRange:(CAFrameRateRange)value;
+		[Export ("preferredFrameRateRange:")]
+		void PreferredFrameRateRange (CAFrameRateRange value);
+
+		// -(NSArray<NSNumber *> * _Nonnull)mapboxMapDebugOptions __attribute__((warn_unused_result("")));
+		[Export ("mapboxMapDebugOptions")]
+		NSNumber[] MapboxMapDebugOptions();
+
+		// -(void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
+		[Export ("mapboxMapDebugOptions:")]
+		void MapboxMapDebugOptions (NSNumber[] value);
+	}
+
+	// @interface MapboxMapObjC_Swift_424
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_424
 	{
 		// -(void)setStyle:(NSString * _Nonnull)styleUri;
 		[Export ("setStyle:")]
@@ -284,27 +302,10 @@ namespace MapboxMapsObjC
 		void LoadStyle (string styleUri, [NullAllowed] Action<TMBStyle, NSError> completion);
 	}
 
-	// @interface MapboxMapObjC_Swift_394
+	// @interface MapboxMapObjC_Swift_434
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_394
-	{
-		// -(void)preferredFrameRateRange:(CAFrameRateRange)value;
-		[Export ("preferredFrameRateRange:")]
-		void PreferredFrameRateRange (CAFrameRateRange value);
-
-		// -(NSArray<NSNumber *> * _Nonnull)mapboxMapDebugOptions __attribute__((warn_unused_result("")));
-		[Export ("mapboxMapDebugOptions")]
-		NSNumber[] MapboxMapDebugOptions();
-		// -(void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
-		[Export ("mapboxMapDebugOptions:")]
-		void MapboxMapDebugOptions (NSNumber[] value);
-	}
-
-	// @interface MapboxMapObjC_Swift_404
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_404
+	interface MapboxMapObjC_Swift_434
 	{
 		// -(void)locationDelegate:(id<LocationPermissionsDelegate> _Nonnull)delegate;
 		[Export ("locationDelegate:")]
@@ -323,10 +324,32 @@ namespace MapboxMapsObjC
 		void PuckBearingSource (TMBPuckBearingSource source);
 	}
 
-	// @interface MapboxMapObjC_Swift_413
+	// @interface MapboxMapObjC_Swift_447
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_413
+	interface MapboxMapObjC_Swift_447
+	{
+		// -(TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
+		[Export ("polygonAnnotationManagerWithId:layerPosition:layerPositionParam:")]
+		TMBPolygonAnnotationManager PolygonAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
+
+		// -(TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
+		[Export ("circleAnnotationManagerWithId:layerPosition:layerPositionParam:")]
+		TMBCircleAnnotationManager CircleAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
+
+		// -(TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
+		[Export ("pointAnnotationManagerWithId:layerPosition:layerPositionParam:")]
+		TMBPointAnnotationManager PointAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
+
+		// -(TMBPolylineAnnotationManager * _Nonnull)polylineAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
+		[Export ("polylineAnnotationManagerWithId:layerPosition:layerPositionParam:")]
+		TMBPolylineAnnotationManager PolylineAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
+	}
+
+	// @interface MapboxMapObjC_Swift_456
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_456
 	{
 		// -(void)addSource:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("addSource:properties:onError:")]
@@ -353,40 +376,10 @@ namespace MapboxMapsObjC
 		void AddSourceWithId (string id, TMBGeometry geometry, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_427
+	// @interface MapboxMapObjC_Swift_468
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_427
-	{
-		// -(TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManager __attribute__((warn_unused_result("")));
-		[Export ("polygonAnnotationManager")]
-		TMBPolygonAnnotationManager PolygonAnnotationManager ();
-
-		// -(TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
-		[Export ("polygonAnnotationManagerWithId:layerPosition:layerPositionParam:")]
-		TMBPolygonAnnotationManager PolygonAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
-
-		// -(TMBCircleAnnotationManager * _Nonnull)circleAnnotationManager __attribute__((warn_unused_result("")));
-		[Export ("circleAnnotationManager")]
-		TMBCircleAnnotationManager CircleAnnotationManager();
-
-		// -(TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
-		[Export ("circleAnnotationManagerWithId:layerPosition:layerPositionParam:")]
-		TMBCircleAnnotationManager CircleAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
-
-		// -(TMBPointAnnotationManager * _Nonnull)pointAnnotationManager __attribute__((warn_unused_result("")));
-		[Export ("pointAnnotationManager")]
-		TMBPointAnnotationManager PointAnnotationManager();
-
-		// -(TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
-		[Export ("pointAnnotationManagerWithId:layerPosition:layerPositionParam:")]
-		TMBPointAnnotationManager PointAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
-	}
-
-	// @interface MapboxMapObjC_Swift_439
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_439
+	interface MapboxMapObjC_Swift_468
 	{
 		// -(void)setLightProperty:(NSString * _Nonnull)name value:(id _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("setLightProperty:value:onError:")]
@@ -396,7 +389,7 @@ namespace MapboxMapsObjC
 		[Export ("setLightWithProperties:onError:")]
 		void SetLightWithProperties (NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> onError);
 
-		// -(void)lightAnchor:(enum TMBAnchor)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		// -(void)lightAnchor:(TMBAnchor * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("lightAnchor:onError:")]
 		void LightAnchor (TMBAnchor value, [NullAllowed] Action<NSError> onError);
 
@@ -425,10 +418,10 @@ namespace MapboxMapsObjC
 		void LightPositionTransition (TMBStyleTransition value, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_462
+	// @interface MapboxMapObjC_Swift_491
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_462
+	interface MapboxMapObjC_Swift_491
 	{
 		// -(void)addLayerWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("addLayerWithProperties:layerPosition:layerPositionParam:onError:")]
@@ -472,13 +465,13 @@ namespace MapboxMapsObjC
 
 		// -(void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id<MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("addCustomLayer:layerHost:layerPosition:layerPositionParam:onError:")]
-		void AddCustomLayer (string id, MBMCustomLayerHost layerHost, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+		void AddCustomLayer (string id, IMBMCustomLayerHost layerHost, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_478
+	// @interface MapboxMapObjC_Swift_507
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_478
+	interface MapboxMapObjC_Swift_507
 	{
 		// -(TMBCancelable * _Nonnull)onMapLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
 		[Export ("onMapLoaded:")]
@@ -548,10 +541,21 @@ namespace MapboxMapsObjC
 		MapView CreateWithFrame (CGRect frame, [NullAllowed] MapInitOptions options);
 	}
 
-	// @interface MapboxMapObjC_Swift_567
+	// @protocol NamedString
+	[Protocol (Name = "_TtP13MapboxMapObjC11NamedString_"), Model]
+    [BaseType(typeof(NSObject))]
+	interface NamedString
+	{
+		// @required -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Abstract]
+		[Export ("stringValue")]
+		string StringValue { get; }
+	}
+
+	// @interface MapboxMapObjC_Swift_601
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_567
+	interface MapboxMapObjC_Swift_601
 	{
 		// -(TMBCancelable * _Nonnull)loadStyleWithStyleUriString:(NSString * _Nonnull)styleUriString styleLoadOptions:(MBMStylePackLoadOptions * _Nonnull)styleLoadOptions progress:(id)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
 		[Export ("loadStyleWithStyleUriString:styleLoadOptions:progress:completion:")]
@@ -652,9 +656,9 @@ namespace MapboxMapsObjC
 		[Export ("attribution:")]
 		RasterDemSourceBuilder Attribution ([NullAllowed] string value);
 
-		// -(RasterDemSourceBuilder * _Nonnull)encoding:(enum TMBEncoding)value;
+		// -(RasterDemSourceBuilder * _Nonnull)encoding:(TMBEncoding * _Nullable)value;
 		[Export ("encoding:")]
-		RasterDemSourceBuilder Encoding (TMBEncoding value);
+		RasterDemSourceBuilder Encoding ([NullAllowed] TMBEncoding value);
 
 		// -(RasterDemSourceBuilder * _Nonnull)volatile:(BOOL)value;
 		[Export ("volatile:")]
@@ -1059,16 +1063,29 @@ namespace MapboxMapsObjC
 		void TextTranslateAnchor ([NullAllowed] TMBValue value);
 	}
 
+	// @interface TMBAnchor : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC9TMBAnchor")]
+	[DisableDefaultCtor]
+	interface TMBAnchor : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBAnchor * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBAnchor Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBAnchor * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBAnchor Viewport { get; }
+	}
+
 	// @protocol TMBAnnotation
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/[Protocol (Name = "_TtP13MapboxMapObjC13TMBAnnotation_")]
+	[Protocol (Name = "_TtP13MapboxMapObjC13TMBAnnotation_"), Model]
+	[BaseType(typeof(NSObject))]
 	interface TMBAnnotation
 	{
 		// @required @property (readonly, copy, nonatomic) NSString * _Nonnull id;
@@ -1103,16 +1120,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @protocol TMBAnnotationManager
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/
-	[Protocol (Name = "_TtP13MapboxMapObjC20TMBAnnotationManager_")]
+	[Protocol (Name = "_TtP13MapboxMapObjC20TMBAnnotationManager_"), Model]
 	[BaseType(typeof(NSObject))]
 	interface TMBAnnotationManager
 	{
@@ -1159,13 +1167,9 @@ namespace MapboxMapsObjC
 		[NullAllowed, Export ("userInfo", ArgumentSemantic.Copy)]
 		NSDictionary<NSString, NSObject> UserInfo { get; }
 
-		// @property (nonatomic, strong) UIColor * _Nullable circleColor;
-		[NullAllowed, Export ("circleColor", ArgumentSemantic.Strong)]
-		UIColor CircleColor { get; set; }
-
-		// @property (nonatomic) double circleRadius;
-		[Export ("circleRadius")]
-		double CircleRadius { get; set; }
+		// @property (nonatomic) BOOL isSelected;
+		[Export ("isSelected")]
+		bool IsSelected { get; set; }
 
 		// @property (nonatomic) BOOL isDraggable;
 		[Export ("isDraggable")]
@@ -1175,6 +1179,38 @@ namespace MapboxMapsObjC
 		[Static]
 		[Export ("fromCenter:")]
 		TMBCircleAnnotation FromCenter (CLLocationCoordinate2D coordinate);
+
+		// @property (nonatomic, strong) NSNumber * _Nullable circleSortKey;
+		[NullAllowed, Export ("circleSortKey", ArgumentSemantic.Strong)]
+		NSNumber CircleSortKey { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable circleBlur;
+		[NullAllowed, Export ("circleBlur", ArgumentSemantic.Strong)]
+		NSNumber CircleBlur { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nullable circleColor;
+		[NullAllowed, Export ("circleColor", ArgumentSemantic.Strong)]
+		UIColor CircleColor { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable circleOpacity;
+		[NullAllowed, Export ("circleOpacity", ArgumentSemantic.Strong)]
+		NSNumber CircleOpacity { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable circleRadius;
+		[NullAllowed, Export ("circleRadius", ArgumentSemantic.Strong)]
+		NSNumber CircleRadius { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nullable circleStrokeColor;
+		[NullAllowed, Export ("circleStrokeColor", ArgumentSemantic.Strong)]
+		UIColor CircleStrokeColor { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable circleStrokeOpacity;
+		[NullAllowed, Export ("circleStrokeOpacity", ArgumentSemantic.Strong)]
+		NSNumber CircleStrokeOpacity { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable circleStrokeWidth;
+		[NullAllowed, Export ("circleStrokeWidth", ArgumentSemantic.Strong)]
+		NSNumber CircleStrokeWidth { get; set; }
 	}
 
 	// @interface TMBCircleAnnotationManager : NSObject <TMBAnnotationManager>
@@ -1205,6 +1241,102 @@ namespace MapboxMapsObjC
 		// @property (nonatomic, weak) id<TMBAnnotationInteractionDelegate> _Nullable delegate;
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
 		NSObject WeakDelegate { get; set; }
+
+		// @property (nonatomic, strong) TMBCirclePitchAlignment * _Nullable circlePitchAlignment;
+		[NullAllowed, Export ("circlePitchAlignment", ArgumentSemantic.Strong)]
+		TMBCirclePitchAlignment CirclePitchAlignment { get; set; }
+
+		// @property (nonatomic, strong) TMBCirclePitchScale * _Nullable circlePitchScale;
+		[NullAllowed, Export ("circlePitchScale", ArgumentSemantic.Strong)]
+		TMBCirclePitchScale CirclePitchScale { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable circleTranslate;
+		[NullAllowed, Export ("circleTranslate", ArgumentSemantic.Copy)]
+		NSNumber[] CircleTranslate { get; set; }
+
+		// @property (nonatomic, strong) TMBCircleTranslateAnchor * _Nullable circleTranslateAnchor;
+		[NullAllowed, Export ("circleTranslateAnchor", ArgumentSemantic.Strong)]
+		TMBCircleTranslateAnchor CircleTranslateAnchor { get; set; }
+	}
+
+	// @interface TMBCirclePitchAlignment : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC23TMBCirclePitchAlignment")]
+	[DisableDefaultCtor]
+	interface TMBCirclePitchAlignment : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBCirclePitchAlignment * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBCirclePitchAlignment Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBCirclePitchAlignment * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBCirclePitchAlignment Viewport { get; }
+	}
+
+	// @interface TMBCirclePitchScale : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC19TMBCirclePitchScale")]
+	[DisableDefaultCtor]
+	interface TMBCirclePitchScale : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBCirclePitchScale * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBCirclePitchScale Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBCirclePitchScale * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBCirclePitchScale Viewport { get; }
+	}
+
+	// @interface TMBCircleTranslateAnchor : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC24TMBCircleTranslateAnchor")]
+	[DisableDefaultCtor]
+	interface TMBCircleTranslateAnchor : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBCircleTranslateAnchor * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBCircleTranslateAnchor Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBCircleTranslateAnchor * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBCircleTranslateAnchor Viewport { get; }
+	}
+
+	// @interface TMBEncoding : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC11TMBEncoding")]
+	[DisableDefaultCtor]
+	interface TMBEncoding : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBEncoding * _Nonnull terrarium;
+		[Static]
+		[Export ("terrarium", ArgumentSemantic.Strong)]
+		TMBEncoding Terrarium { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBEncoding * _Nonnull mapbox;
+		[Static]
+		[Export ("mapbox", ArgumentSemantic.Strong)]
+		TMBEncoding Mapbox { get; }
 	}
 
 	// @interface TMBExpression : NSObject
@@ -1212,27 +1344,58 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBExpression
 	{
-		// +(TMBExpression * _Nonnull)createWithOperator:(enum TMBOperator)operator_ __attribute__((warn_unused_result("")));
+		// +(TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithOperator:")]
 		TMBExpression CreateWithOperator (TMBOperator operator_);
 
-		// +(TMBExpression * _Nonnull)createWithOperator:(enum TMBOperator)operator_ arguments:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
+		// +(TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ arguments:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithOperator:arguments:")]
 		TMBExpression CreateWithOperator (TMBOperator operator_, NSObject[] arguments);
 	}
 
+	// @interface TMBFillExtrusionTranslateAnchor : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC31TMBFillExtrusionTranslateAnchor")]
+	[DisableDefaultCtor]
+	interface TMBFillExtrusionTranslateAnchor : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBFillExtrusionTranslateAnchor * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBFillExtrusionTranslateAnchor Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBFillExtrusionTranslateAnchor * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBFillExtrusionTranslateAnchor Viewport { get; }
+	}
+
+	// @interface TMBFillTranslateAnchor : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC22TMBFillTranslateAnchor")]
+	[DisableDefaultCtor]
+	interface TMBFillTranslateAnchor : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBFillTranslateAnchor * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBFillTranslateAnchor Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBFillTranslateAnchor * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBFillTranslateAnchor Viewport { get; }
+	}
+
 	// @protocol TMBGeoData
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/
 	[Protocol (Name = "_TtP13MapboxMapObjC10TMBGeoData_")]
 	[BaseType(typeof(NSObject))]
 	interface TMBGeoData
@@ -1249,7 +1412,697 @@ namespace MapboxMapsObjC
 		// +(TMBGeometry * _Nonnull)fromData:(id<TMBGeoData> _Nonnull)data __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("fromData:")]
-		TMBGeometry FromData (TMBGeoData data);
+		TMBGeometry FromData (ITMBGeoData data);
+	}
+
+	// @interface TMBHillshadeIlluminationAnchor : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC30TMBHillshadeIlluminationAnchor")]
+	[DisableDefaultCtor]
+	interface TMBHillshadeIlluminationAnchor : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBHillshadeIlluminationAnchor * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBHillshadeIlluminationAnchor Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBHillshadeIlluminationAnchor * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBHillshadeIlluminationAnchor Viewport { get; }
+	}
+
+	// @interface TMBIconAnchor : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC13TMBIconAnchor")]
+	[DisableDefaultCtor]
+	interface TMBIconAnchor : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconAnchor * _Nonnull center;
+		[Static]
+		[Export ("center", ArgumentSemantic.Strong)]
+		TMBIconAnchor Center { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconAnchor * _Nonnull left;
+		[Static]
+		[Export ("left", ArgumentSemantic.Strong)]
+		TMBIconAnchor Left { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconAnchor * _Nonnull right;
+		[Static]
+		[Export ("right", ArgumentSemantic.Strong)]
+		TMBIconAnchor Right { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconAnchor * _Nonnull top;
+		[Static]
+		[Export ("top", ArgumentSemantic.Strong)]
+		TMBIconAnchor Top { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconAnchor * _Nonnull bottom;
+		[Static]
+		[Export ("bottom", ArgumentSemantic.Strong)]
+		TMBIconAnchor Bottom { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconAnchor * _Nonnull topLeft;
+		[Static]
+		[Export ("topLeft", ArgumentSemantic.Strong)]
+		TMBIconAnchor TopLeft { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconAnchor * _Nonnull topRight;
+		[Static]
+		[Export ("topRight", ArgumentSemantic.Strong)]
+		TMBIconAnchor TopRight { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconAnchor * _Nonnull bottomLeft;
+		[Static]
+		[Export ("bottomLeft", ArgumentSemantic.Strong)]
+		TMBIconAnchor BottomLeft { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconAnchor * _Nonnull bottomRight;
+		[Static]
+		[Export ("bottomRight", ArgumentSemantic.Strong)]
+		TMBIconAnchor BottomRight { get; }
+	}
+
+	// @interface TMBIconPitchAlignment : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC21TMBIconPitchAlignment")]
+	[DisableDefaultCtor]
+	interface TMBIconPitchAlignment : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconPitchAlignment * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBIconPitchAlignment Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconPitchAlignment * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBIconPitchAlignment Viewport { get; }
+
+		// @property (readonly, getter = auto, nonatomic, strong, class) TMBIconPitchAlignment * _Nonnull auto_;
+		[Static]
+		[Export ("auto_", ArgumentSemantic.Strong)]
+		TMBIconPitchAlignment Auto_ { [Bind ("auto")] get; }
+	}
+
+	// @interface TMBIconRotationAlignment : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC24TMBIconRotationAlignment")]
+	[DisableDefaultCtor]
+	interface TMBIconRotationAlignment : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconRotationAlignment * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBIconRotationAlignment Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconRotationAlignment * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBIconRotationAlignment Viewport { get; }
+
+		// @property (readonly, getter = auto, nonatomic, strong, class) TMBIconRotationAlignment * _Nonnull auto_;
+		[Static]
+		[Export ("auto_", ArgumentSemantic.Strong)]
+		TMBIconRotationAlignment Auto_ { [Bind ("auto")] get; }
+	}
+
+	// @interface TMBIconTextFit : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC14TMBIconTextFit")]
+	[DisableDefaultCtor]
+	interface TMBIconTextFit : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconTextFit * _Nonnull none;
+		[Static]
+		[Export ("none", ArgumentSemantic.Strong)]
+		TMBIconTextFit None { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconTextFit * _Nonnull width;
+		[Static]
+		[Export ("width", ArgumentSemantic.Strong)]
+		TMBIconTextFit Width { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconTextFit * _Nonnull height;
+		[Static]
+		[Export ("height", ArgumentSemantic.Strong)]
+		TMBIconTextFit Height { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconTextFit * _Nonnull both;
+		[Static]
+		[Export ("both", ArgumentSemantic.Strong)]
+		TMBIconTextFit Both { get; }
+	}
+
+	// @interface TMBIconTranslateAnchor : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC22TMBIconTranslateAnchor")]
+	[DisableDefaultCtor]
+	interface TMBIconTranslateAnchor : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconTranslateAnchor * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBIconTranslateAnchor Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBIconTranslateAnchor * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBIconTranslateAnchor Viewport { get; }
+	}
+
+	// @interface TMBLineCap : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC10TMBLineCap")]
+	[DisableDefaultCtor]
+	interface TMBLineCap : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBLineCap * _Nonnull butt;
+		[Static]
+		[Export ("butt", ArgumentSemantic.Strong)]
+		TMBLineCap Butt { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBLineCap * _Nonnull round;
+		[Static]
+		[Export ("round", ArgumentSemantic.Strong)]
+		TMBLineCap Round { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBLineCap * _Nonnull square;
+		[Static]
+		[Export ("square", ArgumentSemantic.Strong)]
+		TMBLineCap Square { get; }
+	}
+
+	// @interface TMBLineJoin : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC11TMBLineJoin")]
+	[DisableDefaultCtor]
+	interface TMBLineJoin : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBLineJoin * _Nonnull bevel;
+		[Static]
+		[Export ("bevel", ArgumentSemantic.Strong)]
+		TMBLineJoin Bevel { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBLineJoin * _Nonnull round;
+		[Static]
+		[Export ("round", ArgumentSemantic.Strong)]
+		TMBLineJoin Round { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBLineJoin * _Nonnull miter;
+		[Static]
+		[Export ("miter", ArgumentSemantic.Strong)]
+		TMBLineJoin Miter { get; }
+	}
+
+	// @interface TMBLineTranslateAnchor : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC22TMBLineTranslateAnchor")]
+	[DisableDefaultCtor]
+	interface TMBLineTranslateAnchor : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBFillTranslateAnchor * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBFillTranslateAnchor Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBFillTranslateAnchor * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBFillTranslateAnchor Viewport { get; }
+	}
+
+	// @interface TMBOperator : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC11TMBOperator")]
+	[DisableDefaultCtor]
+	interface TMBOperator : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull subtract;
+		[Static]
+		[Export ("subtract", ArgumentSemantic.Strong)]
+		TMBOperator Subtract { get; }
+
+		// @property (readonly, getter = not, nonatomic, strong, class) TMBOperator * _Nonnull not_;
+		[Static]
+		[Export ("not_", ArgumentSemantic.Strong)]
+		TMBOperator Not_ { [Bind ("not")] get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull neq;
+		[Static]
+		[Export ("neq", ArgumentSemantic.Strong)]
+		TMBOperator Neq { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull product;
+		[Static]
+		[Export ("product", ArgumentSemantic.Strong)]
+		TMBOperator Product { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull division;
+		[Static]
+		[Export ("division", ArgumentSemantic.Strong)]
+		TMBOperator Division { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull mod;
+		[Static]
+		[Export ("mod", ArgumentSemantic.Strong)]
+		TMBOperator Mod { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull pow;
+		[Static]
+		[Export ("pow", ArgumentSemantic.Strong)]
+		TMBOperator Pow { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull sum;
+		[Static]
+		[Export ("sum", ArgumentSemantic.Strong)]
+		TMBOperator Sum { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull lt;
+		[Static]
+		[Export ("lt", ArgumentSemantic.Strong)]
+		TMBOperator Lt { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull lte;
+		[Static]
+		[Export ("lte", ArgumentSemantic.Strong)]
+		TMBOperator Lte { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull eq;
+		[Static]
+		[Export ("eq", ArgumentSemantic.Strong)]
+		TMBOperator Eq { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull gt;
+		[Static]
+		[Export ("gt", ArgumentSemantic.Strong)]
+		TMBOperator Gt { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull gte;
+		[Static]
+		[Export ("gte", ArgumentSemantic.Strong)]
+		TMBOperator Gte { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull abs;
+		[Static]
+		[Export ("abs", ArgumentSemantic.Strong)]
+		TMBOperator Abs { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull accumulated;
+		[Static]
+		[Export ("accumulated", ArgumentSemantic.Strong)]
+		TMBOperator Accumulated { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull acos;
+		[Static]
+		[Export ("acos", ArgumentSemantic.Strong)]
+		TMBOperator Acos { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull all;
+		[Static]
+		[Export ("all", ArgumentSemantic.Strong)]
+		TMBOperator All { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull any;
+		[Static]
+		[Export ("any", ArgumentSemantic.Strong)]
+		TMBOperator Any { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull array;
+		[Static]
+		[Export ("array", ArgumentSemantic.Strong)]
+		TMBOperator Array { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull asin;
+		[Static]
+		[Export ("asin", ArgumentSemantic.Strong)]
+		TMBOperator Asin { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull at;
+		[Static]
+		[Export ("at", ArgumentSemantic.Strong)]
+		TMBOperator At { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull atan;
+		[Static]
+		[Export ("atan", ArgumentSemantic.Strong)]
+		TMBOperator Atan { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull boolean;
+		[Static]
+		[Export ("boolean", ArgumentSemantic.Strong)]
+		TMBOperator Boolean { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull switchCase;
+		[Static]
+		[Export ("switchCase", ArgumentSemantic.Strong)]
+		TMBOperator SwitchCase { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull ceil;
+		[Static]
+		[Export ("ceil", ArgumentSemantic.Strong)]
+		TMBOperator Ceil { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull coalesce;
+		[Static]
+		[Export ("coalesce", ArgumentSemantic.Strong)]
+		TMBOperator Coalesce { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull collator;
+		[Static]
+		[Export ("collator", ArgumentSemantic.Strong)]
+		TMBOperator Collator { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull concat;
+		[Static]
+		[Export ("concat", ArgumentSemantic.Strong)]
+		TMBOperator Concat { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull cos;
+		[Static]
+		[Export ("cos", ArgumentSemantic.Strong)]
+		TMBOperator Cos { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull distance;
+		[Static]
+		[Export ("distance", ArgumentSemantic.Strong)]
+		TMBOperator Distance { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull distanceFromCenter;
+		[Static]
+		[Export ("distanceFromCenter", ArgumentSemantic.Strong)]
+		TMBOperator DistanceFromCenter { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull downcase;
+		[Static]
+		[Export ("downcase", ArgumentSemantic.Strong)]
+		TMBOperator Downcase { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull e;
+		[Static]
+		[Export ("e", ArgumentSemantic.Strong)]
+		TMBOperator E { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull featureState;
+		[Static]
+		[Export ("featureState", ArgumentSemantic.Strong)]
+		TMBOperator FeatureState { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull floor;
+		[Static]
+		[Export ("floor", ArgumentSemantic.Strong)]
+		TMBOperator Floor { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull format;
+		[Static]
+		[Export ("format", ArgumentSemantic.Strong)]
+		TMBOperator Format { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull geometryType;
+		[Static]
+		[Export ("geometryType", ArgumentSemantic.Strong)]
+		TMBOperator GeometryType { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull get;
+		[Static]
+		[Export ("get", ArgumentSemantic.Strong)]
+		TMBOperator Get { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull has;
+		[Static]
+		[Export ("has", ArgumentSemantic.Strong)]
+		TMBOperator Has { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull heatmapDensity;
+		[Static]
+		[Export ("heatmapDensity", ArgumentSemantic.Strong)]
+		TMBOperator HeatmapDensity { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull id;
+		[Static]
+		[Export ("id", ArgumentSemantic.Strong)]
+		TMBOperator Id { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull image;
+		[Static]
+		[Export ("image", ArgumentSemantic.Strong)]
+		TMBOperator Image { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull inExpression;
+		[Static]
+		[Export ("inExpression", ArgumentSemantic.Strong)]
+		TMBOperator InExpression { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull indexOf;
+		[Static]
+		[Export ("indexOf", ArgumentSemantic.Strong)]
+		TMBOperator IndexOf { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull interpolate;
+		[Static]
+		[Export ("interpolate", ArgumentSemantic.Strong)]
+		TMBOperator Interpolate { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull isSupportedScript;
+		[Static]
+		[Export ("isSupportedScript", ArgumentSemantic.Strong)]
+		TMBOperator IsSupportedScript { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull length;
+		[Static]
+		[Export ("length", ArgumentSemantic.Strong)]
+		TMBOperator Length { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull letExpression;
+		[Static]
+		[Export ("letExpression", ArgumentSemantic.Strong)]
+		TMBOperator LetExpression { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull lineProgress;
+		[Static]
+		[Export ("lineProgress", ArgumentSemantic.Strong)]
+		TMBOperator LineProgress { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull literal;
+		[Static]
+		[Export ("literal", ArgumentSemantic.Strong)]
+		TMBOperator Literal { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull ln;
+		[Static]
+		[Export ("ln", ArgumentSemantic.Strong)]
+		TMBOperator Ln { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull ln2;
+		[Static]
+		[Export ("ln2", ArgumentSemantic.Strong)]
+		TMBOperator Ln2 { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull log10;
+		[Static]
+		[Export ("log10", ArgumentSemantic.Strong)]
+		TMBOperator Log10 { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull log2;
+		[Static]
+		[Export ("log2", ArgumentSemantic.Strong)]
+		TMBOperator Log2 { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull match;
+		[Static]
+		[Export ("match", ArgumentSemantic.Strong)]
+		TMBOperator Match { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull max;
+		[Static]
+		[Export ("max", ArgumentSemantic.Strong)]
+		TMBOperator Max { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull min;
+		[Static]
+		[Export ("min", ArgumentSemantic.Strong)]
+		TMBOperator Min { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull number;
+		[Static]
+		[Export ("number", ArgumentSemantic.Strong)]
+		TMBOperator Number { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull numberFormat;
+		[Static]
+		[Export ("numberFormat", ArgumentSemantic.Strong)]
+		TMBOperator NumberFormat { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull objectExpression;
+		[Static]
+		[Export ("objectExpression", ArgumentSemantic.Strong)]
+		TMBOperator ObjectExpression { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull pi;
+		[Static]
+		[Export ("pi", ArgumentSemantic.Strong)]
+		TMBOperator Pi { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull pitch;
+		[Static]
+		[Export ("pitch", ArgumentSemantic.Strong)]
+		TMBOperator Pitch { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull properties;
+		[Static]
+		[Export ("properties", ArgumentSemantic.Strong)]
+		TMBOperator Properties { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull resolvedLocale;
+		[Static]
+		[Export ("resolvedLocale", ArgumentSemantic.Strong)]
+		TMBOperator ResolvedLocale { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull rgb;
+		[Static]
+		[Export ("rgb", ArgumentSemantic.Strong)]
+		TMBOperator Rgb { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull rgba;
+		[Static]
+		[Export ("rgba", ArgumentSemantic.Strong)]
+		TMBOperator Rgba { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull round;
+		[Static]
+		[Export ("round", ArgumentSemantic.Strong)]
+		TMBOperator Round { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull sin;
+		[Static]
+		[Export ("sin", ArgumentSemantic.Strong)]
+		TMBOperator Sin { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull skyRadialProgress;
+		[Static]
+		[Export ("skyRadialProgress", ArgumentSemantic.Strong)]
+		TMBOperator SkyRadialProgress { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull slice;
+		[Static]
+		[Export ("slice", ArgumentSemantic.Strong)]
+		TMBOperator Slice { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull sqrt;
+		[Static]
+		[Export ("sqrt", ArgumentSemantic.Strong)]
+		TMBOperator Sqrt { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull step;
+		[Static]
+		[Export ("step", ArgumentSemantic.Strong)]
+		TMBOperator Step { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull string;
+		[Static]
+		[Export ("string", ArgumentSemantic.Strong)]
+		TMBOperator String { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull tan;
+		[Static]
+		[Export ("tan", ArgumentSemantic.Strong)]
+		TMBOperator Tan { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull toBoolean;
+		[Static]
+		[Export ("toBoolean", ArgumentSemantic.Strong)]
+		TMBOperator ToBoolean { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull toColor;
+		[Static]
+		[Export ("toColor", ArgumentSemantic.Strong)]
+		TMBOperator ToColor { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull toNumber;
+		[Static]
+		[Export ("toNumber", ArgumentSemantic.Strong)]
+		TMBOperator ToNumber { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull toRgba;
+		[Static]
+		[Export ("toRgba", ArgumentSemantic.Strong)]
+		TMBOperator ToRgba { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull toString;
+		[Static]
+		[Export ("toString", ArgumentSemantic.Strong)]
+		TMBOperator ToString { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull typeofExpression;
+		[Static]
+		[Export ("typeofExpression", ArgumentSemantic.Strong)]
+		TMBOperator TypeofExpression { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull upcase;
+		[Static]
+		[Export ("upcase", ArgumentSemantic.Strong)]
+		TMBOperator Upcase { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull varExpression;
+		[Static]
+		[Export ("varExpression", ArgumentSemantic.Strong)]
+		TMBOperator VarExpression { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull within;
+		[Static]
+		[Export ("within", ArgumentSemantic.Strong)]
+		TMBOperator Within { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull zoom;
+		[Static]
+		[Export ("zoom", ArgumentSemantic.Strong)]
+		TMBOperator Zoom { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull linear;
+		[Static]
+		[Export ("linear", ArgumentSemantic.Strong)]
+		TMBOperator Linear { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull exponential;
+		[Static]
+		[Export ("exponential", ArgumentSemantic.Strong)]
+		TMBOperator Exponential { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBOperator * _Nonnull cubicBezier;
+		[Static]
+		[Export ("cubicBezier", ArgumentSemantic.Strong)]
+		TMBOperator CubicBezier { get; }
 	}
 
 	// @interface TMBPoint : NSObject <TMBGeoData>
@@ -1296,6 +2149,114 @@ namespace MapboxMapsObjC
 		[Static]
 		[Export ("fromCoordinate:")]
 		TMBPointAnnotation FromCoordinate (CLLocationCoordinate2D coordinate);
+
+		// @property (nonatomic, strong) TMBIconAnchor * _Nullable iconAnchor;
+		[NullAllowed, Export ("iconAnchor", ArgumentSemantic.Strong)]
+		TMBIconAnchor IconAnchor { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable iconImage;
+		[NullAllowed, Export ("iconImage")]
+		string IconImage { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable iconOffset;
+		[NullAllowed, Export ("iconOffset", ArgumentSemantic.Copy)]
+		NSNumber[] IconOffset { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable iconRotate;
+		[NullAllowed, Export ("iconRotate", ArgumentSemantic.Strong)]
+		NSNumber IconRotate { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable iconSize;
+		[NullAllowed, Export ("iconSize", ArgumentSemantic.Strong)]
+		NSNumber IconSize { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable symbolSortKey;
+		[NullAllowed, Export ("symbolSortKey", ArgumentSemantic.Strong)]
+		NSNumber SymbolSortKey { get; set; }
+
+		// @property (nonatomic, strong) TMBTextAnchor * _Nullable textAnchor;
+		[NullAllowed, Export ("textAnchor", ArgumentSemantic.Strong)]
+		TMBTextAnchor TextAnchor { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable textField;
+		[NullAllowed, Export ("textField")]
+		string TextField { get; set; }
+
+		// @property (nonatomic, strong) TMBTextJustify * _Nullable textJustify;
+		[NullAllowed, Export ("textJustify", ArgumentSemantic.Strong)]
+		TMBTextJustify TextJustify { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textLetterSpacing;
+		[NullAllowed, Export ("textLetterSpacing", ArgumentSemantic.Strong)]
+		NSNumber TextLetterSpacing { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textLineHeight;
+		[NullAllowed, Export ("textLineHeight", ArgumentSemantic.Strong)]
+		NSNumber TextLineHeight { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textMaxWidth;
+		[NullAllowed, Export ("textMaxWidth", ArgumentSemantic.Strong)]
+		NSNumber TextMaxWidth { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable textOffset;
+		[NullAllowed, Export ("textOffset", ArgumentSemantic.Copy)]
+		NSNumber[] TextOffset { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textRadialOffset;
+		[NullAllowed, Export ("textRadialOffset", ArgumentSemantic.Strong)]
+		NSNumber TextRadialOffset { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textRotate;
+		[NullAllowed, Export ("textRotate", ArgumentSemantic.Strong)]
+		NSNumber TextRotate { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textSize;
+		[NullAllowed, Export ("textSize", ArgumentSemantic.Strong)]
+		NSNumber TextSize { get; set; }
+
+		// @property (nonatomic, strong) TMBTextTransform * _Nullable textTransform;
+		[NullAllowed, Export ("textTransform", ArgumentSemantic.Strong)]
+		TMBTextTransform TextTransform { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nullable iconColor;
+		[NullAllowed, Export ("iconColor", ArgumentSemantic.Strong)]
+		UIColor IconColor { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable iconHaloBlur;
+		[NullAllowed, Export ("iconHaloBlur", ArgumentSemantic.Strong)]
+		NSNumber IconHaloBlur { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nullable iconHaloColor;
+		[NullAllowed, Export ("iconHaloColor", ArgumentSemantic.Strong)]
+		UIColor IconHaloColor { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable iconHaloWidth;
+		[NullAllowed, Export ("iconHaloWidth", ArgumentSemantic.Strong)]
+		NSNumber IconHaloWidth { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable iconOpacity;
+		[NullAllowed, Export ("iconOpacity", ArgumentSemantic.Strong)]
+		NSNumber IconOpacity { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nullable textColor;
+		[NullAllowed, Export ("textColor", ArgumentSemantic.Strong)]
+		UIColor TextColor { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textHaloBlur;
+		[NullAllowed, Export ("textHaloBlur", ArgumentSemantic.Strong)]
+		NSNumber TextHaloBlur { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nullable textHaloColor;
+		[NullAllowed, Export ("textHaloColor", ArgumentSemantic.Strong)]
+		UIColor TextHaloColor { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textHaloWidth;
+		[NullAllowed, Export ("textHaloWidth", ArgumentSemantic.Strong)]
+		NSNumber TextHaloWidth { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textOpacity;
+		[NullAllowed, Export ("textOpacity", ArgumentSemantic.Strong)]
+		NSNumber TextOpacity { get; set; }
 	}
 
 	// @interface TMBPointAnnotationManager : NSObject <TMBAnnotationManager>
@@ -1326,6 +2287,122 @@ namespace MapboxMapsObjC
 		// @property (nonatomic, weak) id<TMBAnnotationInteractionDelegate> _Nullable delegate;
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
 		NSObject WeakDelegate { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable iconAllowOverlap;
+		[NullAllowed, Export ("iconAllowOverlap", ArgumentSemantic.Strong)]
+		NSNumber IconAllowOverlap { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable iconIgnorePlacement;
+		[NullAllowed, Export ("iconIgnorePlacement", ArgumentSemantic.Strong)]
+		NSNumber IconIgnorePlacement { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable iconKeepUpright;
+		[NullAllowed, Export ("iconKeepUpright", ArgumentSemantic.Strong)]
+		NSNumber IconKeepUpright { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable iconOptional;
+		[NullAllowed, Export ("iconOptional", ArgumentSemantic.Strong)]
+		NSNumber IconOptional { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable iconPadding;
+		[NullAllowed, Export ("iconPadding", ArgumentSemantic.Strong)]
+		NSNumber IconPadding { get; set; }
+
+		// @property (nonatomic, strong) TMBIconPitchAlignment * _Nullable iconPitchAlignment;
+		[NullAllowed, Export ("iconPitchAlignment", ArgumentSemantic.Strong)]
+		TMBIconPitchAlignment IconPitchAlignment { get; set; }
+
+		// @property (nonatomic, strong) TMBIconRotationAlignment * _Nullable iconRotationAlignment;
+		[NullAllowed, Export ("iconRotationAlignment", ArgumentSemantic.Strong)]
+		TMBIconRotationAlignment IconRotationAlignment { get; set; }
+
+		// @property (nonatomic, strong) TMBIconTextFit * _Nullable iconTextFit;
+		[NullAllowed, Export ("iconTextFit", ArgumentSemantic.Strong)]
+		TMBIconTextFit IconTextFit { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable iconTextFitPadding;
+		[NullAllowed, Export ("iconTextFitPadding", ArgumentSemantic.Copy)]
+		NSNumber[] IconTextFitPadding { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable symbolAvoidEdges;
+		[NullAllowed, Export ("symbolAvoidEdges", ArgumentSemantic.Strong)]
+		NSNumber SymbolAvoidEdges { get; set; }
+
+		// @property (nonatomic, strong) TMBSymbolPlacement * _Nullable symbolPlacement;
+		[NullAllowed, Export ("symbolPlacement", ArgumentSemantic.Strong)]
+		TMBSymbolPlacement SymbolPlacement { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable symbolSpacing;
+		[NullAllowed, Export ("symbolSpacing", ArgumentSemantic.Strong)]
+		NSNumber SymbolSpacing { get; set; }
+
+		// @property (nonatomic, strong) TMBSymbolZOrder * _Nullable symbolZOrder;
+		[NullAllowed, Export ("symbolZOrder", ArgumentSemantic.Strong)]
+		TMBSymbolZOrder SymbolZOrder { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textAllowOverlap;
+		[NullAllowed, Export ("textAllowOverlap", ArgumentSemantic.Strong)]
+		NSNumber TextAllowOverlap { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSString *> * _Nullable textFont;
+		[NullAllowed, Export ("textFont", ArgumentSemantic.Copy)]
+		string[] TextFont { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textIgnorePlacement;
+		[NullAllowed, Export ("textIgnorePlacement", ArgumentSemantic.Strong)]
+		NSNumber TextIgnorePlacement { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textKeepUpright;
+		[NullAllowed, Export ("textKeepUpright", ArgumentSemantic.Strong)]
+		NSNumber TextKeepUpright { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textMaxAngle;
+		[NullAllowed, Export ("textMaxAngle", ArgumentSemantic.Strong)]
+		NSNumber TextMaxAngle { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textOptional;
+		[NullAllowed, Export ("textOptional", ArgumentSemantic.Strong)]
+		NSNumber TextOptional { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable textPadding;
+		[NullAllowed, Export ("textPadding", ArgumentSemantic.Strong)]
+		NSNumber TextPadding { get; set; }
+
+		// @property (nonatomic, strong) TMBTextPitchAlignment * _Nullable textPitchAlignment;
+		[NullAllowed, Export ("textPitchAlignment", ArgumentSemantic.Strong)]
+		TMBTextPitchAlignment TextPitchAlignment { get; set; }
+
+		// @property (nonatomic, strong) TMBTextRotationAlignment * _Nullable textRotationAlignment;
+		[NullAllowed, Export ("textRotationAlignment", ArgumentSemantic.Strong)]
+		TMBTextRotationAlignment TextRotationAlignment { get; set; }
+
+		// @property (copy, nonatomic) NSArray<TMBTextAnchor *> * _Nullable textVariableAnchor;
+		[NullAllowed, Export ("textVariableAnchor", ArgumentSemantic.Copy)]
+		TMBTextAnchor[] TextVariableAnchor { get; set; }
+
+		// @property (copy, nonatomic) NSArray<TMBTextWritingMode *> * _Nullable textWritingMode;
+		[NullAllowed, Export ("textWritingMode", ArgumentSemantic.Copy)]
+		TMBTextWritingMode[] TextWritingMode { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable iconTranslate;
+		[NullAllowed, Export ("iconTranslate", ArgumentSemantic.Copy)]
+		NSNumber[] IconTranslate { get; set; }
+
+		// @property (nonatomic, strong) TMBIconTranslateAnchor * _Nullable iconTranslateAnchor;
+		[NullAllowed, Export ("iconTranslateAnchor", ArgumentSemantic.Strong)]
+		TMBIconTranslateAnchor IconTranslateAnchor { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable textTranslate;
+		[NullAllowed, Export ("textTranslate", ArgumentSemantic.Copy)]
+		NSNumber[] TextTranslate { get; set; }
+
+		// @property (nonatomic, strong) TMBTextTranslateAnchor * _Nullable textTranslateAnchor;
+		[NullAllowed, Export ("textTranslateAnchor", ArgumentSemantic.Strong)]
+		TMBTextTranslateAnchor TextTranslateAnchor { get; set; }
+
+		// @property (nonatomic, strong) SWIFT_DEPRECATED_MSG("text-line-height property is now data driven, use `PointAnnotation.textLineHeight` instead.") NSNumber * textLineHeight __attribute__((deprecated("text-line-height property is now data driven, use `PointAnnotation.textLineHeight` instead.")));
+		[Export ("textLineHeight", ArgumentSemantic.Strong)]
+		NSNumber TextLineHeight { get; set; }
 	}
 
 	// @interface TMBPolygon : NSObject
@@ -1337,7 +2414,8 @@ namespace MapboxMapsObjC
 		[Export ("initWithOuterRingCoordinates:innerRingCoordinates:")]
 		[DesignatedInitializer]
 		IntPtr Constructor (NSValue[] outerRingCoordinates, NSArray<NSValue>[] innerRingCoordinates);
-		// - (nonnull instancetype)init:(NSArray<NSArray<NSValue *> *> * _Nonnull)coordinates OBJC_DESIGNATED_INITIALIZER;
+
+		// -(instancetype _Nonnull)init:(NSArray<NSArray<NSValue *> *> * _Nonnull)coordinates __attribute__((objc_designated_initializer));
 		[Export ("init:")]
 		[DesignatedInitializer]
 		IntPtr Constructor (NSArray coordinates);
@@ -1347,7 +2425,7 @@ namespace MapboxMapsObjC
 		[Export ("createWithOuterRingCoordinates:innerRingCoordinates:")]
 		TMBPolygon CreateWithOuterRingCoordinates (NSValue[] outerRingCoordinates, NSArray<NSValue>[] innerRingCoordinates);
 
-		// + (TMBPolygon * _Nonnull)fromCoordinates:(NSArray<NSArray<NSValue *> *> * _Nonnull)coordinates SWIFT_WARN_UNUSED_RESULT;
+		// +(TMBPolygon * _Nonnull)fromCoordinates:(NSArray<NSArray<NSValue *> *> * _Nonnull)coordinates __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("fromCoordinates:")]
 		TMBPolygon FromCoordinates (NSArray coordinates);
@@ -1405,13 +2483,170 @@ namespace MapboxMapsObjC
 		[Export ("annotations", ArgumentSemantic.Copy)]
 		TMBPolygonAnnotation[] Annotations { get; set; }
 
+		// @property (nonatomic) BOOL fillAntialias;
+		[Export ("fillAntialias")]
+		bool FillAntialias { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable fillTranslate;
+		[NullAllowed, Export ("fillTranslate", ArgumentSemantic.Copy)]
+		NSNumber[] FillTranslate { get; set; }
+
+		// @property (nonatomic, strong) TMBFillTranslateAnchor * _Nullable fillTranslateAnchor;
+		[NullAllowed, Export ("fillTranslateAnchor", ArgumentSemantic.Strong)]
+		TMBFillTranslateAnchor FillTranslateAnchor { get; set; }
+
 		[Wrap ("WeakDelegate")]
 		[NullAllowed]
-		TMBAnnotationInteractionDelegate Delegate { get; set; }
+		ITMBAnnotationInteractionDelegate Delegate { get; set; }
 
 		// @property (nonatomic, weak) id<TMBAnnotationInteractionDelegate> _Nullable delegate;
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
 		NSObject WeakDelegate { get; set; }
+	}
+
+	// @interface TMBPolylineAnnotation : NSObject <TMBAnnotation>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC21TMBPolylineAnnotation")]
+	[DisableDefaultCtor]
+	interface TMBPolylineAnnotation : TMBAnnotation
+	{
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull id;
+		[Export ("id")]
+		string Id { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull geometryInJSON;
+		[Export ("geometryInJSON")]
+		string GeometryInJSON { get; }
+
+		// @property (readonly, copy, nonatomic) NSDictionary<NSString *,id> * _Nullable userInfo;
+		[NullAllowed, Export ("userInfo", ArgumentSemantic.Copy)]
+		NSDictionary<NSString, NSObject> UserInfo { get; }
+
+		// @property (nonatomic) BOOL isSelected;
+		[Export ("isSelected")]
+		bool IsSelected { get; set; }
+
+		// @property (nonatomic) BOOL isDraggable;
+		[Export ("isDraggable")]
+		bool IsDraggable { get; set; }
+
+		// +(TMBPolylineAnnotation * _Nonnull)fromId:(NSString * _Nonnull)id coordinates:(NSArray<NSValue *> * _Nonnull)coordinates isSelected:(BOOL)isSelected isDraggable:(BOOL)isDraggable __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("fromId:coordinates:isSelected:isDraggable:")]
+		TMBPolylineAnnotation FromId (string id, NSValue[] coordinates, bool isSelected, bool isDraggable);
+
+		// @property (nonatomic, strong) TMBLineJoin * _Nullable lineJoin;
+		[NullAllowed, Export ("lineJoin", ArgumentSemantic.Strong)]
+		TMBLineJoin LineJoin { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable lineSortKey;
+		[NullAllowed, Export ("lineSortKey", ArgumentSemantic.Strong)]
+		NSNumber LineSortKey { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable lineBlur;
+		[NullAllowed, Export ("lineBlur", ArgumentSemantic.Strong)]
+		NSNumber LineBlur { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nullable lineColor;
+		[NullAllowed, Export ("lineColor", ArgumentSemantic.Strong)]
+		UIColor LineColor { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable lineGapWidth;
+		[NullAllowed, Export ("lineGapWidth", ArgumentSemantic.Strong)]
+		NSNumber LineGapWidth { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable lineOffset;
+		[NullAllowed, Export ("lineOffset", ArgumentSemantic.Strong)]
+		NSNumber LineOffset { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable lineOpacity;
+		[NullAllowed, Export ("lineOpacity", ArgumentSemantic.Strong)]
+		NSNumber LineOpacity { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable linePattern;
+		[NullAllowed, Export ("linePattern")]
+		string LinePattern { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable lineWidth;
+		[NullAllowed, Export ("lineWidth", ArgumentSemantic.Strong)]
+		NSNumber LineWidth { get; set; }
+	}
+
+	// @interface TMBPolylineAnnotationManager : NSObject <TMBAnnotationManager>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC28TMBPolylineAnnotationManager")]
+	[DisableDefaultCtor]
+	interface TMBPolylineAnnotationManager : TMBAnnotationManager
+	{
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull id;
+		[Export ("id")]
+		string Id { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
+		[Export ("sourceId")]
+		string SourceId { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull layerId;
+		[Export ("layerId")]
+		string LayerId { get; }
+
+		// @property (copy, nonatomic) NSArray<TMBPolylineAnnotation *> * _Nonnull annotations;
+		[Export ("annotations", ArgumentSemantic.Copy)]
+		TMBPolylineAnnotation[] Annotations { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		[NullAllowed]
+		ITMBAnnotationInteractionDelegate Delegate { get; set; }
+
+		// @property (nonatomic, weak) id<TMBAnnotationInteractionDelegate> _Nullable delegate;
+		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
+		NSObject WeakDelegate { get; set; }
+
+		// @property (nonatomic, strong) TMBLineCap * _Nullable lineCap;
+		[NullAllowed, Export ("lineCap", ArgumentSemantic.Strong)]
+		TMBLineCap LineCap { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable lineMiterLimit;
+		[NullAllowed, Export ("lineMiterLimit", ArgumentSemantic.Strong)]
+		NSNumber LineMiterLimit { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable lineRoundLimit;
+		[NullAllowed, Export ("lineRoundLimit", ArgumentSemantic.Strong)]
+		NSNumber LineRoundLimit { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable lineDasharray;
+		[NullAllowed, Export ("lineDasharray", ArgumentSemantic.Copy)]
+		NSNumber[] LineDasharray { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable lineTranslate;
+		[NullAllowed, Export ("lineTranslate", ArgumentSemantic.Copy)]
+		NSNumber[] LineTranslate { get; set; }
+
+		// @property (nonatomic, strong) TMBLineTranslateAnchor * _Nullable lineTranslateAnchor;
+		[NullAllowed, Export ("lineTranslateAnchor", ArgumentSemantic.Strong)]
+		TMBLineTranslateAnchor LineTranslateAnchor { get; set; }
+
+		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable lineTrimOffset;
+		[NullAllowed, Export ("lineTrimOffset", ArgumentSemantic.Copy)]
+		NSNumber[] LineTrimOffset { get; set; }
+	}
+
+	// @interface TMBRasterResampling : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC19TMBRasterResampling")]
+	[DisableDefaultCtor]
+	interface TMBRasterResampling : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBRasterResampling * _Nonnull linear;
+		[Static]
+		[Export ("linear", ArgumentSemantic.Strong)]
+		TMBRasterResampling Linear { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBRasterResampling * _Nonnull nearest;
+		[Static]
+		[Export ("nearest", ArgumentSemantic.Strong)]
+		TMBRasterResampling Nearest { get; }
 	}
 
 	// @interface TMBResolvedImage : NSObject
@@ -1421,10 +2656,10 @@ namespace MapboxMapsObjC
 	{
 	}
 
-	// @interface MapboxMapObjC_Swift_1283 (TMBResolvedImage)
+	// @interface MapboxMapObjC_Swift_1764 (TMBResolvedImage)
 	[Category]
 	[BaseType (typeof(TMBResolvedImage))]
-	interface TMBResolvedImage_MapboxMapObjC_Swift_1283
+	interface TMBResolvedImage_MapboxMapObjC_Swift_1764
 	{
 		// +(TMBResolvedImage * _Nonnull)fromName:(NSString * _Nonnull)name __attribute__((warn_unused_result("")));
 		[Static]
@@ -1444,6 +2679,86 @@ namespace MapboxMapsObjC
 	{
 	}
 
+	// @interface TMBScheme : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC9TMBScheme")]
+	[DisableDefaultCtor]
+	interface TMBScheme : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBScheme * _Nonnull xyz;
+		[Static]
+		[Export ("xyz", ArgumentSemantic.Strong)]
+		TMBScheme Xyz { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBScheme * _Nonnull tms;
+		[Static]
+		[Export ("tms", ArgumentSemantic.Strong)]
+		TMBScheme Tms { get; }
+	}
+
+	// @interface TMBSkyType : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC10TMBSkyType")]
+	[DisableDefaultCtor]
+	interface TMBSkyType : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSkyType * _Nonnull gradient;
+		[Static]
+		[Export ("gradient", ArgumentSemantic.Strong)]
+		TMBSkyType Gradient { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSkyType * _Nonnull atmosphere;
+		[Static]
+		[Export ("atmosphere", ArgumentSemantic.Strong)]
+		TMBSkyType Atmosphere { get; }
+	}
+
+	// @interface TMBSourceType : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC13TMBSourceType")]
+	[DisableDefaultCtor]
+	interface TMBSourceType : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSourceType * _Nonnull vector;
+		[Static]
+		[Export ("vector", ArgumentSemantic.Strong)]
+		TMBSourceType Vector { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSourceType * _Nonnull raster;
+		[Static]
+		[Export ("raster", ArgumentSemantic.Strong)]
+		TMBSourceType Raster { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSourceType * _Nonnull rasterDem;
+		[Static]
+		[Export ("rasterDem", ArgumentSemantic.Strong)]
+		TMBSourceType RasterDem { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSourceType * _Nonnull geoJson;
+		[Static]
+		[Export ("geoJson", ArgumentSemantic.Strong)]
+		TMBSourceType GeoJson { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSourceType * _Nonnull image;
+		[Static]
+		[Export ("image", ArgumentSemantic.Strong)]
+		TMBSourceType Image { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSourceType * _Nonnull model;
+		[Static]
+		[Export ("model", ArgumentSemantic.Strong)]
+		TMBSourceType Model { get; }
+	}
+
 	// @interface TMBStyle : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC8TMBStyle")]
 	[DisableDefaultCtor]
@@ -1452,6 +2767,26 @@ namespace MapboxMapsObjC
 		// -(void)addImage:(UIImage * _Nonnull)image id:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nonnull))completion;
 		[Export ("addImage:id:completion:")]
 		void AddImage (UIImage image, string id, [NullAllowed] Action<NSError> completion);
+	}
+
+	// @interface TMBStyleProjectionName : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC22TMBStyleProjectionName")]
+	[DisableDefaultCtor]
+	interface TMBStyleProjectionName : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBStyleProjectionName * _Nonnull mercator;
+		[Static]
+		[Export ("mercator", ArgumentSemantic.Strong)]
+		TMBStyleProjectionName Mercator { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBStyleProjectionName * _Nonnull globe;
+		[Static]
+		[Export ("globe", ArgumentSemantic.Strong)]
+		TMBStyleProjectionName Globe { get; }
 	}
 
 	// @interface TMBStyleTransition : NSObject
@@ -1463,6 +2798,56 @@ namespace MapboxMapsObjC
 		[Export ("initWithDuration:delay:")]
 		[DesignatedInitializer]
 		IntPtr Constructor (double duration, double delay);
+	}
+
+	// @interface TMBSymbolPlacement : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC18TMBSymbolPlacement")]
+	[DisableDefaultCtor]
+	interface TMBSymbolPlacement : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSymbolPlacement * _Nonnull point;
+		[Static]
+		[Export ("point", ArgumentSemantic.Strong)]
+		TMBSymbolPlacement Point { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSymbolPlacement * _Nonnull line;
+		[Static]
+		[Export ("line", ArgumentSemantic.Strong)]
+		TMBSymbolPlacement Line { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSymbolPlacement * _Nonnull lineCenter;
+		[Static]
+		[Export ("lineCenter", ArgumentSemantic.Strong)]
+		TMBSymbolPlacement LineCenter { get; }
+	}
+
+	// @interface TMBSymbolZOrder : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC15TMBSymbolZOrder")]
+	[DisableDefaultCtor]
+	interface TMBSymbolZOrder : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, getter = auto, nonatomic, strong, class) TMBSymbolZOrder * _Nonnull auto_;
+		[Static]
+		[Export ("auto_", ArgumentSemantic.Strong)]
+		TMBSymbolZOrder Auto_ { [Bind ("auto")] get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSymbolZOrder * _Nonnull viewportY;
+		[Static]
+		[Export ("viewportY", ArgumentSemantic.Strong)]
+		TMBSymbolZOrder ViewportY { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBSymbolZOrder * _Nonnull source;
+		[Static]
+		[Export ("source", ArgumentSemantic.Strong)]
+		TMBSymbolZOrder Source { get; }
 	}
 
 	// @interface TMBTerrain : NSObject
@@ -1478,6 +2863,206 @@ namespace MapboxMapsObjC
 		// @property (nonatomic, strong) TMBValue * _Nullable exaggeration;
 		[NullAllowed, Export ("exaggeration", ArgumentSemantic.Strong)]
 		TMBValue Exaggeration { get; set; }
+	}
+
+	// @interface TMBTextAnchor : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC13TMBTextAnchor")]
+	[DisableDefaultCtor]
+	interface TMBTextAnchor : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextAnchor * _Nonnull center;
+		[Static]
+		[Export ("center", ArgumentSemantic.Strong)]
+		TMBTextAnchor Center { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextAnchor * _Nonnull left;
+		[Static]
+		[Export ("left", ArgumentSemantic.Strong)]
+		TMBTextAnchor Left { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextAnchor * _Nonnull right;
+		[Static]
+		[Export ("right", ArgumentSemantic.Strong)]
+		TMBTextAnchor Right { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextAnchor * _Nonnull top;
+		[Static]
+		[Export ("top", ArgumentSemantic.Strong)]
+		TMBTextAnchor Top { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextAnchor * _Nonnull bottom;
+		[Static]
+		[Export ("bottom", ArgumentSemantic.Strong)]
+		TMBTextAnchor Bottom { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextAnchor * _Nonnull topLeft;
+		[Static]
+		[Export ("topLeft", ArgumentSemantic.Strong)]
+		TMBTextAnchor TopLeft { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextAnchor * _Nonnull topRight;
+		[Static]
+		[Export ("topRight", ArgumentSemantic.Strong)]
+		TMBTextAnchor TopRight { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextAnchor * _Nonnull bottomLeft;
+		[Static]
+		[Export ("bottomLeft", ArgumentSemantic.Strong)]
+		TMBTextAnchor BottomLeft { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextAnchor * _Nonnull bottomRight;
+		[Static]
+		[Export ("bottomRight", ArgumentSemantic.Strong)]
+		TMBTextAnchor BottomRight { get; }
+	}
+
+	// @interface TMBTextJustify : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC14TMBTextJustify")]
+	[DisableDefaultCtor]
+	interface TMBTextJustify : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, getter = auto, nonatomic, strong, class) TMBTextJustify * _Nonnull auto_;
+		[Static]
+		[Export ("auto_", ArgumentSemantic.Strong)]
+		TMBTextJustify Auto_ { [Bind ("auto")] get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextJustify * _Nonnull left;
+		[Static]
+		[Export ("left", ArgumentSemantic.Strong)]
+		TMBTextJustify Left { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextJustify * _Nonnull center;
+		[Static]
+		[Export ("center", ArgumentSemantic.Strong)]
+		TMBTextJustify Center { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextJustify * _Nonnull right;
+		[Static]
+		[Export ("right", ArgumentSemantic.Strong)]
+		TMBTextJustify Right { get; }
+	}
+
+	// @interface TMBTextPitchAlignment : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC21TMBTextPitchAlignment")]
+	[DisableDefaultCtor]
+	interface TMBTextPitchAlignment : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextPitchAlignment * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBTextPitchAlignment Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextPitchAlignment * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBTextPitchAlignment Viewport { get; }
+
+		// @property (readonly, getter = auto, nonatomic, strong, class) TMBTextPitchAlignment * _Nonnull auto_;
+		[Static]
+		[Export ("auto_", ArgumentSemantic.Strong)]
+		TMBTextPitchAlignment Auto_ { [Bind ("auto")] get; }
+	}
+
+	// @interface TMBTextRotationAlignment : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC24TMBTextRotationAlignment")]
+	[DisableDefaultCtor]
+	interface TMBTextRotationAlignment : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextRotationAlignment * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBTextRotationAlignment Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextRotationAlignment * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBTextRotationAlignment Viewport { get; }
+
+		// @property (readonly, getter = auto, nonatomic, strong, class) TMBTextRotationAlignment * _Nonnull auto_;
+		[Static]
+		[Export ("auto_", ArgumentSemantic.Strong)]
+		TMBTextRotationAlignment Auto_ { [Bind ("auto")] get; }
+	}
+
+	// @interface TMBTextTransform : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC16TMBTextTransform")]
+	[DisableDefaultCtor]
+	interface TMBTextTransform : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextTransform * _Nonnull none;
+		[Static]
+		[Export ("none", ArgumentSemantic.Strong)]
+		TMBTextTransform None { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextTransform * _Nonnull uppercase;
+		[Static]
+		[Export ("uppercase", ArgumentSemantic.Strong)]
+		TMBTextTransform Uppercase { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextTransform * _Nonnull lowercase;
+		[Static]
+		[Export ("lowercase", ArgumentSemantic.Strong)]
+		TMBTextTransform Lowercase { get; }
+	}
+
+	// @interface TMBTextTranslateAnchor : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC22TMBTextTranslateAnchor")]
+	[DisableDefaultCtor]
+	interface TMBTextTranslateAnchor : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextTranslateAnchor * _Nonnull map;
+		[Static]
+		[Export ("map", ArgumentSemantic.Strong)]
+		TMBTextTranslateAnchor Map { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextTranslateAnchor * _Nonnull viewport;
+		[Static]
+		[Export ("viewport", ArgumentSemantic.Strong)]
+		TMBTextTranslateAnchor Viewport { get; }
+	}
+
+	// @interface TMBTextWritingMode : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC18TMBTextWritingMode")]
+	[DisableDefaultCtor]
+	interface TMBTextWritingMode : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextWritingMode * _Nonnull horizontal;
+		[Static]
+		[Export ("horizontal", ArgumentSemantic.Strong)]
+		TMBTextWritingMode Horizontal { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBTextWritingMode * _Nonnull vertical;
+		[Static]
+		[Export ("vertical", ArgumentSemantic.Strong)]
+		TMBTextWritingMode Vertical { get; }
 	}
 
 	// @interface TMBValue : NSObject
@@ -1516,10 +3101,30 @@ namespace MapboxMapsObjC
 		TMBValue Expression (TMBExpression expression);
 	}
 
-	// @interface MapboxMapObjC_Swift_1503
+	// @interface TMBVisibility : NSObject <NamedString>
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC13TMBVisibility")]
+	[DisableDefaultCtor]
+	interface TMBVisibility : NamedString
+	{
+		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBVisibility * _Nonnull visible;
+		[Static]
+		[Export ("visible", ArgumentSemantic.Strong)]
+		TMBVisibility Visible { get; }
+
+		// @property (readonly, nonatomic, strong, class) TMBVisibility * _Nonnull none;
+		[Static]
+		[Export ("none", ArgumentSemantic.Strong)]
+		TMBVisibility None { get; }
+	}
+
+	// @interface MapboxMapObjC_Swift_2072
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_1503
+	interface MapboxMapObjC_Swift_2072
 	{
 		// +(id)getDefault __attribute__((warn_unused_result("")));
 		[Static]

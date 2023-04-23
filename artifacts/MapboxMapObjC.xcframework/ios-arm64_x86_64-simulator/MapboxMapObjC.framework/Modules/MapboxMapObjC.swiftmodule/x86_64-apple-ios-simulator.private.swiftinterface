@@ -27,6 +27,9 @@ import _StringProcessing
   @objc dynamic public func loadTileRegion(forId id: Swift.String, loadOptions: MapboxCommon.TileRegionLoadOptions, progress: MapboxCommon.TileRegionLoadProgressCallback? = nil, completion: @escaping (MapboxCommon.TileRegion?, (any Swift.Error)?) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @objc dynamic public func allTileRegions(_ completion: @escaping ([MapboxCommon.TileRegion]?, (any Swift.Error)?) -> Swift.Void)
 }
+@objc public protocol NamedString {
+  @objc func stringValue() -> Swift.String
+}
 @objc public enum TMBOrnamentVisibility : Swift.Int {
   case adaptive
   case hidden
@@ -46,8 +49,6 @@ extension MapboxMaps.MapView {
   @objc public var exaggeration: MapboxMapObjC.TMBValue?
   @objc deinit
 }
-public let skyTypeMapping: [MapboxMapObjC.TMBSkyType : MapboxMaps.SkyType]
-public let TMBskyTypeMapping: [MapboxMaps.SkyType : MapboxMapObjC.TMBSkyType]
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setCamera(to cameraOptions: MapboxCoreMaps.CameraOptions)
 }
@@ -137,7 +138,7 @@ extension MapboxMaps.ResourceOptions {
   @discardableResult
   @objc public func attribution(_ value: Swift.String?) -> MapboxMapObjC.RasterDemSourceBuilder
   @discardableResult
-  @objc public func encoding(_ value: MapboxMapObjC.TMBEncoding) -> MapboxMapObjC.RasterDemSourceBuilder
+  @objc public func encoding(_ value: MapboxMapObjC.TMBEncoding?) -> MapboxMapObjC.RasterDemSourceBuilder
   @discardableResult
   @objc public func volatile(_ value: Swift.Bool) -> MapboxMapObjC.RasterDemSourceBuilder
   @discardableResult
@@ -188,284 +189,200 @@ extension MapboxMaps.ResourceOptions {
   @objc public func skyType(_ value: MapboxMapObjC.TMBValue?)
   @objc deinit
 }
-@objc public enum TMBVisibility : Swift.Int {
-  case visible
-  case none
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBVisibility : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let visible: MapboxMapObjC.TMBVisibility
+  @objc public static let none: MapboxMapObjC.TMBVisibility
+  @objc deinit
 }
-@objc public enum TMBLineCap : Swift.Int {
-  case butt
-  case round
-  case square
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBLineCap : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let butt: MapboxMapObjC.TMBLineCap
+  @objc public static let round: MapboxMapObjC.TMBLineCap
+  @objc public static let square: MapboxMapObjC.TMBLineCap
+  @objc deinit
 }
-@objc public enum TMBLineJoin : Swift.Int {
-  case bevel
-  case round
-  case miter
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBLineJoin : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let bevel: MapboxMapObjC.TMBLineJoin
+  @objc public static let round: MapboxMapObjC.TMBLineJoin
+  @objc public static let miter: MapboxMapObjC.TMBLineJoin
+  @objc deinit
 }
-@objc public enum TMBIconAnchor : Swift.Int {
-  case center
-  case left
-  case right
-  case top
-  case bottom
-  case topLeft
-  case topRight
-  case bottomLeft
-  case bottomRight
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBIconAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let center: MapboxMapObjC.TMBIconAnchor
+  @objc public static let left: MapboxMapObjC.TMBIconAnchor
+  @objc public static let right: MapboxMapObjC.TMBIconAnchor
+  @objc public static let top: MapboxMapObjC.TMBIconAnchor
+  @objc public static let bottom: MapboxMapObjC.TMBIconAnchor
+  @objc public static let topLeft: MapboxMapObjC.TMBIconAnchor
+  @objc public static let topRight: MapboxMapObjC.TMBIconAnchor
+  @objc public static let bottomLeft: MapboxMapObjC.TMBIconAnchor
+  @objc public static let bottomRight: MapboxMapObjC.TMBIconAnchor
+  @objc deinit
 }
-@objc public enum TMBIconPitchAlignment : Swift.Int {
-  case map
-  case viewport
-  case auto
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBIconPitchAlignment : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBIconPitchAlignment
+  @objc public static let viewport: MapboxMapObjC.TMBIconPitchAlignment
+  @objc public static let auto: MapboxMapObjC.TMBIconPitchAlignment
+  @objc deinit
 }
-@objc public enum TMBIconRotationAlignment : Swift.Int {
-  case map
-  case viewport
-  case auto
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBIconRotationAlignment : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBIconRotationAlignment
+  @objc public static let viewport: MapboxMapObjC.TMBIconRotationAlignment
+  @objc public static let auto: MapboxMapObjC.TMBIconRotationAlignment
+  @objc deinit
 }
-@objc public enum TMBIconTextFit : Swift.Int {
-  case none
-  case width
-  case height
-  case both
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBIconTextFit : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let none: MapboxMapObjC.TMBIconTextFit
+  @objc public static let width: MapboxMapObjC.TMBIconTextFit
+  @objc public static let height: MapboxMapObjC.TMBIconTextFit
+  @objc public static let both: MapboxMapObjC.TMBIconTextFit
+  @objc deinit
 }
-@objc public enum TMBSymbolPlacement : Swift.Int {
-  case point
-  case line
-  case lineCenter
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBSymbolPlacement : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let point: MapboxMapObjC.TMBSymbolPlacement
+  @objc public static let line: MapboxMapObjC.TMBSymbolPlacement
+  @objc public static let lineCenter: MapboxMapObjC.TMBSymbolPlacement
+  @objc deinit
 }
-@objc public enum TMBSymbolZOrder : Swift.Int {
-  case auto
-  case viewportY
-  case source
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBSymbolZOrder : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let auto: MapboxMapObjC.TMBSymbolZOrder
+  @objc public static let viewportY: MapboxMapObjC.TMBSymbolZOrder
+  @objc public static let source: MapboxMapObjC.TMBSymbolZOrder
+  @objc deinit
 }
-@objc public enum TMBTextAnchor : Swift.Int {
-  case center
-  case left
-  case right
-  case top
-  case bottom
-  case topLeft
-  case topRight
-  case bottomLeft
-  case bottomRight
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBTextAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let center: MapboxMapObjC.TMBTextAnchor
+  @objc public static let left: MapboxMapObjC.TMBTextAnchor
+  @objc public static let right: MapboxMapObjC.TMBTextAnchor
+  @objc public static let top: MapboxMapObjC.TMBTextAnchor
+  @objc public static let bottom: MapboxMapObjC.TMBTextAnchor
+  @objc public static let topLeft: MapboxMapObjC.TMBTextAnchor
+  @objc public static let topRight: MapboxMapObjC.TMBTextAnchor
+  @objc public static let bottomLeft: MapboxMapObjC.TMBTextAnchor
+  @objc public static let bottomRight: MapboxMapObjC.TMBTextAnchor
+  @objc deinit
 }
-@objc public enum TMBTextJustify : Swift.Int {
-  case auto
-  case left
-  case center
-  case right
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBTextJustify : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let auto: MapboxMapObjC.TMBTextJustify
+  @objc public static let left: MapboxMapObjC.TMBTextJustify
+  @objc public static let center: MapboxMapObjC.TMBTextJustify
+  @objc public static let right: MapboxMapObjC.TMBTextJustify
+  @objc deinit
 }
-@objc public enum TMBTextPitchAlignment : Swift.Int {
-  case map
-  case viewport
-  case auto
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBTextPitchAlignment : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBTextPitchAlignment
+  @objc public static let viewport: MapboxMapObjC.TMBTextPitchAlignment
+  @objc public static let auto: MapboxMapObjC.TMBTextPitchAlignment
+  @objc deinit
 }
-@objc public enum TMBTextRotationAlignment : Swift.Int {
-  case map
-  case viewport
-  case auto
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBTextRotationAlignment : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBTextRotationAlignment
+  @objc public static let viewport: MapboxMapObjC.TMBTextRotationAlignment
+  @objc public static let auto: MapboxMapObjC.TMBTextRotationAlignment
+  @objc deinit
 }
-@objc public enum TMBTextTransform : Swift.Int {
-  case none
-  case uppercase
-  case lowercase
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBTextTransform : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let none: MapboxMapObjC.TMBTextTransform
+  @objc public static let uppercase: MapboxMapObjC.TMBTextTransform
+  @objc public static let lowercase: MapboxMapObjC.TMBTextTransform
+  @objc deinit
 }
-@objc public enum TMBFillTranslateAnchor : Swift.Int {
-  case map
-  case viewport
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBFillTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBFillTranslateAnchor
+  @objc public static let viewport: MapboxMapObjC.TMBFillTranslateAnchor
+  @objc deinit
 }
-@objc public enum TMBLineTranslateAnchor : Swift.Int {
-  case map
-  case viewport
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBLineTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBFillTranslateAnchor
+  @objc public static let viewport: MapboxMapObjC.TMBFillTranslateAnchor
+  @objc deinit
 }
-@objc public enum TMBIconTranslateAnchor : Swift.Int {
-  case map
-  case viewport
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBIconTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBIconTranslateAnchor
+  @objc public static let viewport: MapboxMapObjC.TMBIconTranslateAnchor
+  @objc deinit
 }
-@objc public enum TMBTextTranslateAnchor : Swift.Int {
-  case map
-  case viewport
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBTextTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBTextTranslateAnchor
+  @objc public static let viewport: MapboxMapObjC.TMBTextTranslateAnchor
+  @objc deinit
 }
-@objc public enum TTMBirclePitchAlignment : Swift.Int {
-  case map
-  case viewport
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBCirclePitchAlignment : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBCirclePitchAlignment
+  @objc public static let viewport: MapboxMapObjC.TMBCirclePitchAlignment
+  @objc deinit
 }
-@objc public enum TTMBirclePitchScale : Swift.Int {
-  case map
-  case viewport
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBCirclePitchScale : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBCirclePitchScale
+  @objc public static let viewport: MapboxMapObjC.TMBCirclePitchScale
+  @objc deinit
 }
-@objc public enum TTMBircleTranslateAnchor : Swift.Int {
-  case map
-  case viewport
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBCircleTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBCircleTranslateAnchor
+  @objc public static let viewport: MapboxMapObjC.TMBCircleTranslateAnchor
+  @objc deinit
 }
-@objc public enum TMBFillExtrusionTranslateAnchor : Swift.Int {
-  case map
-  case viewport
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBFillExtrusionTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBFillExtrusionTranslateAnchor
+  @objc public static let viewport: MapboxMapObjC.TMBFillExtrusionTranslateAnchor
+  @objc deinit
 }
-@objc public enum TMBRasterResampling : Swift.Int {
-  case linear
-  case nearest
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBRasterResampling : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let linear: MapboxMapObjC.TMBRasterResampling
+  @objc public static let nearest: MapboxMapObjC.TMBRasterResampling
+  @objc deinit
 }
-@objc public enum TMBHillshadeIlluminationAnchor : Swift.Int {
-  case map
-  case viewport
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBHillshadeIlluminationAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBHillshadeIlluminationAnchor
+  @objc public static let viewport: MapboxMapObjC.TMBHillshadeIlluminationAnchor
+  @objc deinit
 }
-@objc public enum TMBSkyType : Swift.Int {
-  case gradient
-  case atmosphere
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBSkyType : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let gradient: MapboxMapObjC.TMBSkyType
+  @objc public static let atmosphere: MapboxMapObjC.TMBSkyType
+  @objc deinit
 }
-@objc public enum TMBAnchor : Swift.Int {
-  case map
-  case viewport
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let map: MapboxMapObjC.TMBAnchor
+  @objc public static let viewport: MapboxMapObjC.TMBAnchor
+  @objc deinit
 }
-@objc public enum TMBStyleProjectionName : Swift.Int {
-  case mercator
-  case globe
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBStyleProjectionName : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let mercator: MapboxMapObjC.TMBStyleProjectionName
+  @objc public static let globe: MapboxMapObjC.TMBStyleProjectionName
+  @objc deinit
 }
-@objc public enum TMBTextWritingMode : Swift.Int {
-  case horizontal
-  case vertical
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBTextWritingMode : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let horizontal: MapboxMapObjC.TMBTextWritingMode
+  @objc public static let vertical: MapboxMapObjC.TMBTextWritingMode
+  @objc deinit
 }
 @objc open class TMBCircleAnnotation : ObjectiveC.NSObject, MapboxMapObjC.TMBAnnotation {
   @objc public var id: Swift.String {
@@ -477,11 +394,7 @@ extension MapboxMaps.ResourceOptions {
   @objc public var userInfo: [Swift.String : Any]? {
     @objc get
   }
-  @objc public var circleColor: UIKit.UIColor? {
-    @objc get
-    @objc set
-  }
-  @objc public var circleRadius: Swift.Double {
+  @objc public var isSelected: Swift.Bool {
     @objc get
     @objc set
   }
@@ -492,6 +405,38 @@ extension MapboxMaps.ResourceOptions {
   public var swiftValue: MapboxMaps.CircleAnnotation
   public init(swiftValue: MapboxMaps.CircleAnnotation)
   @objc public class func from(center coordinate: Turf.LocationCoordinate2D) -> MapboxMapObjC.TMBCircleAnnotation
+  @objc public var circleSortKey: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var circleBlur: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var circleColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc public var circleOpacity: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var circleRadius: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var circleStrokeColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc public var circleStrokeOpacity: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var circleStrokeWidth: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
   @objc deinit
 }
 @objc open class TMBCircleAnnotationManager : ObjectiveC.NSObject, MapboxMapObjC.TMBAnnotationManager, MapboxMaps.AnnotationInteractionDelegate {
@@ -512,6 +457,22 @@ extension MapboxMaps.ResourceOptions {
   final public let swiftValue: MapboxMaps.CircleAnnotationManager
   @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)?
   public init(_ swiftValue: MapboxMaps.CircleAnnotationManager)
+  @objc public var circlePitchAlignment: MapboxMapObjC.TMBCirclePitchAlignment? {
+    @objc get
+    @objc set
+  }
+  @objc public var circlePitchScale: MapboxMapObjC.TMBCirclePitchScale? {
+    @objc get
+    @objc set
+  }
+  @objc public var circleTranslate: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public var circleTranslateAnchor: MapboxMapObjC.TMBCircleTranslateAnchor? {
+    @objc get
+    @objc set
+  }
   @objc deinit
 }
 @objc public protocol TMBGeoData {
@@ -627,6 +588,114 @@ extension MapboxMaps.ResourceOptions {
   public var swiftValue: MapboxMaps.PointAnnotation
   public init(swiftValue: MapboxMaps.PointAnnotation)
   @objc public class func from(coordinate: Turf.LocationCoordinate2D) -> MapboxMapObjC.TMBPointAnnotation
+  @objc public var iconAnchor: MapboxMapObjC.TMBIconAnchor? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconImage: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconOffset: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconRotate: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconSize: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var symbolSortKey: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textAnchor: MapboxMapObjC.TMBTextAnchor? {
+    @objc get
+    @objc set
+  }
+  @objc public var textField: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc public var textJustify: MapboxMapObjC.TMBTextJustify? {
+    @objc get
+    @objc set
+  }
+  @objc public var textLetterSpacing: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textLineHeight: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textMaxWidth: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textOffset: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public var textRadialOffset: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textRotate: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textSize: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textTransform: MapboxMapObjC.TMBTextTransform? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconHaloBlur: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconHaloColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconHaloWidth: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconOpacity: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc public var textHaloBlur: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textHaloColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc public var textHaloWidth: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textOpacity: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
   @objc deinit
 }
 @objc open class TMBPointAnnotationManager : ObjectiveC.NSObject, MapboxMapObjC.TMBAnnotationManager, MapboxMaps.AnnotationInteractionDelegate {
@@ -647,6 +716,123 @@ extension MapboxMaps.ResourceOptions {
   final public let swiftValue: MapboxMaps.PointAnnotationManager
   @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)?
   public init(_ swiftValue: MapboxMaps.PointAnnotationManager)
+  @objc public var iconAllowOverlap: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconIgnorePlacement: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconKeepUpright: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconOptional: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconPadding: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconPitchAlignment: MapboxMapObjC.TMBIconPitchAlignment? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconRotationAlignment: MapboxMapObjC.TMBIconRotationAlignment? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconTextFit: MapboxMapObjC.TMBIconTextFit? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconTextFitPadding: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public var symbolAvoidEdges: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var symbolPlacement: MapboxMapObjC.TMBSymbolPlacement? {
+    @objc get
+    @objc set
+  }
+  @objc public var symbolSpacing: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var symbolZOrder: MapboxMapObjC.TMBSymbolZOrder? {
+    @objc get
+    @objc set
+  }
+  @objc public var textAllowOverlap: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textFont: [Swift.String]? {
+    @objc get
+    @objc set
+  }
+  @objc public var textIgnorePlacement: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textKeepUpright: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textMaxAngle: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textOptional: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textPadding: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textPitchAlignment: MapboxMapObjC.TMBTextPitchAlignment? {
+    @objc get
+    @objc set
+  }
+  @objc public var textRotationAlignment: MapboxMapObjC.TMBTextRotationAlignment? {
+    @objc get
+    @objc set
+  }
+  @objc public var textVariableAnchor: [MapboxMapObjC.TMBTextAnchor]? {
+    @objc get
+    @objc set
+  }
+  @objc public var textWritingMode: [MapboxMapObjC.TMBTextWritingMode]? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconTranslate: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public var iconTranslateAnchor: MapboxMapObjC.TMBIconTranslateAnchor? {
+    @objc get
+    @objc set
+  }
+  @objc public var textTranslate: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public var textTranslateAnchor: MapboxMapObjC.TMBTextTranslateAnchor? {
+    @objc get
+    @objc set
+  }
+  @available(*, deprecated, message: "text-line-height property is now data driven, use `PointAnnotation.textLineHeight` instead.")
+  @objc public var textLineHeight: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
   @objc deinit
 }
 @objc public enum TMBLayerPosition : Swift.Int {
@@ -725,18 +911,28 @@ extension MapboxMapObjC.TMBResolvedImage {
     @objc get
     @objc set
   }
+  @objc public var fillAntialias: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var fillTranslate: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public var fillTranslateAnchor: MapboxMapObjC.TMBFillTranslateAnchor? {
+    @objc get
+    @objc set
+  }
   final public let swiftValue: MapboxMaps.PolygonAnnotationManager
   @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)?
   public init(_ swiftValue: MapboxMaps.PolygonAnnotationManager)
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func polygonAnnotationManager() -> MapboxMapObjC.TMBPolygonAnnotationManager
   @objc @_Concurrency.MainActor(unsafe) dynamic public func polygonAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPolygonAnnotationManager
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func circleAnnotationManager() -> MapboxMapObjC.TMBCircleAnnotationManager
   @objc @_Concurrency.MainActor(unsafe) dynamic public func circleAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBCircleAnnotationManager
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func pointAnnotationManager() -> MapboxMapObjC.TMBPointAnnotationManager
   @objc @_Concurrency.MainActor(unsafe) dynamic public func pointAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPointAnnotationManager
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func polylineAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPolylineAnnotationManager
 }
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
@@ -767,18 +963,15 @@ public protocol LayerBuilder {
   @objc public class func with(coordinates: Turf.LocationCoordinate2D) -> MapboxMapObjC.TMBPoint
   @objc deinit
 }
-@objc public enum TMBSourceType : Swift.Int {
-  case vector
-  case raster
-  case rasterDem
-  case geoJson
-  case image
-  case model
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBSourceType : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let vector: MapboxMapObjC.TMBSourceType
+  @objc public static let raster: MapboxMapObjC.TMBSourceType
+  @objc public static let rasterDem: MapboxMapObjC.TMBSourceType
+  @objc public static let geoJson: MapboxMapObjC.TMBSourceType
+  @objc public static let image: MapboxMapObjC.TMBSourceType
+  @objc public static let model: MapboxMapObjC.TMBSourceType
+  @objc deinit
 }
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setLightProperty(_ name: Swift.String, value: Any, onError: ((any Swift.Error) -> Swift.Void)?)
@@ -802,14 +995,17 @@ public protocol LayerBuilder {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setStyle(inJson styleJson: Swift.String)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func loadStyle(_ styleUri: Swift.String, completion: ((MapboxMapObjC.TMBStyle?, (any Swift.Error)?) -> Swift.Void)?)
 }
-@objc public enum TMBEncoding : Swift.Int {
-  case terrarium
-  case mapbox
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@_hasMissingDesignatedInitializers @objc open class TMBScheme : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let xyz: MapboxMapObjC.TMBScheme
+  @objc public static let tms: MapboxMapObjC.TMBScheme
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBEncoding : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let terrarium: MapboxMapObjC.TMBEncoding
+  @objc public static let mapbox: MapboxMapObjC.TMBEncoding
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBExpression : ObjectiveC.NSObject {
   final public let `operator`: MapboxMapObjC.TMBOperator
@@ -818,99 +1014,203 @@ public protocol LayerBuilder {
   @objc public class func create(withOperator operator: MapboxMapObjC.TMBOperator, arguments: [Any]) -> MapboxMapObjC.TMBExpression
   @objc deinit
 }
-@objc public enum TMBOperator : Swift.Int {
-  case subtract
-  case not
-  case neq
-  case product
-  case division
-  case mod
-  case pow
-  case sum
-  case lt
-  case lte
-  case eq
-  case gt
-  case gte
-  case abs
-  case accumulated
-  case acos
-  case all
-  case any
-  case array
-  case asin
-  case at
-  case atan
-  case boolean
-  case switchCase
-  case ceil
-  case coalesce
-  case collator
-  case concat
-  case cos
-  case distance
-  case distanceFromCenter
-  case downcase
-  case e
-  case featureState
-  case floor
-  case format
-  case geometryType
-  case get
-  case has
-  case heatmapDensity
-  case id
-  case image
-  case inExpression
-  case indexOf
-  case interpolate
-  case isSupportedScript
-  case length
-  case letExpression
-  case lineProgress
-  case literal
-  case ln
-  case ln2
-  case log10
-  case log2
-  case match
-  case max
-  case min
-  case number
-  case numberFormat
-  case objectExpression
-  case pi
-  case pitch
-  case properties
-  case resolvedLocale
-  case rgb
-  case rgba
-  case round
-  case sin
-  case skyRadialProgress
-  case slice
-  case sqrt
-  case step
-  case string
-  case tan
-  case toBoolean
-  case toColor
-  case toNumber
-  case toRgba
-  case toString
-  case typeofExpression
-  case upcase
-  case varExpression
-  case within
-  case zoom
-  case linear
-  case exponential
-  case cubicBezier
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
+@objc open class TMBPolylineAnnotation : ObjectiveC.NSObject, MapboxMapObjC.TMBAnnotation {
+  @objc public var id: Swift.String {
+    @objc get
   }
+  @objc public var geometryInJSON: Swift.String {
+    @objc get
+  }
+  @objc public var userInfo: [Swift.String : Any]? {
+    @objc get
+  }
+  @objc public var isSelected: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var isDraggable: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  public var swiftValue: MapboxMaps.PolylineAnnotation
+  public init(swiftValue: MapboxMaps.PolylineAnnotation)
+  @objc public class func from(id: Swift.String = UUID().uuidString, coordinates: [Turf.LocationCoordinate2D], isSelected: Swift.Bool = false, isDraggable: Swift.Bool = false) -> MapboxMapObjC.TMBPolylineAnnotation
+  @objc public var lineJoin: MapboxMapObjC.TMBLineJoin? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineSortKey: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineBlur: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineGapWidth: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineOffset: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineOpacity: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var linePattern: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineWidth: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc open class TMBPolylineAnnotationManager : ObjectiveC.NSObject, MapboxMapObjC.TMBAnnotationManager, MapboxMaps.AnnotationInteractionDelegate {
+  @objc public var id: Swift.String {
+    @objc get
+  }
+  @objc public var sourceId: Swift.String {
+    @objc get
+  }
+  @objc public var layerId: Swift.String {
+    @objc get
+  }
+  public func annotationManager(_ manager: any MapboxMaps.AnnotationManager, didDetectTappedAnnotations annotations: [any MapboxMaps.Annotation])
+  @objc public var annotations: [MapboxMapObjC.TMBPolylineAnnotation] {
+    @objc get
+    @objc set
+  }
+  final public let swiftValue: MapboxMaps.PolylineAnnotationManager
+  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)?
+  public init(_ swiftValue: MapboxMaps.PolylineAnnotationManager)
+  @objc public var lineCap: MapboxMapObjC.TMBLineCap? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineMiterLimit: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineRoundLimit: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineDasharray: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineTranslate: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineTranslateAnchor: MapboxMapObjC.TMBLineTranslateAnchor? {
+    @objc get
+    @objc set
+  }
+  @objc public var lineTrimOffset: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBOperator : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public static let subtract: MapboxMapObjC.TMBOperator
+  @objc public static let not: MapboxMapObjC.TMBOperator
+  @objc public static let neq: MapboxMapObjC.TMBOperator
+  @objc public static let product: MapboxMapObjC.TMBOperator
+  @objc public static let division: MapboxMapObjC.TMBOperator
+  @objc public static let mod: MapboxMapObjC.TMBOperator
+  @objc public static let pow: MapboxMapObjC.TMBOperator
+  @objc public static let sum: MapboxMapObjC.TMBOperator
+  @objc public static let lt: MapboxMapObjC.TMBOperator
+  @objc public static let lte: MapboxMapObjC.TMBOperator
+  @objc public static let eq: MapboxMapObjC.TMBOperator
+  @objc public static let gt: MapboxMapObjC.TMBOperator
+  @objc public static let gte: MapboxMapObjC.TMBOperator
+  @objc public static let abs: MapboxMapObjC.TMBOperator
+  @objc public static let accumulated: MapboxMapObjC.TMBOperator
+  @objc public static let acos: MapboxMapObjC.TMBOperator
+  @objc public static let all: MapboxMapObjC.TMBOperator
+  @objc public static let any: MapboxMapObjC.TMBOperator
+  @objc public static let array: MapboxMapObjC.TMBOperator
+  @objc public static let asin: MapboxMapObjC.TMBOperator
+  @objc public static let at: MapboxMapObjC.TMBOperator
+  @objc public static let atan: MapboxMapObjC.TMBOperator
+  @objc public static let boolean: MapboxMapObjC.TMBOperator
+  @objc public static let switchCase: MapboxMapObjC.TMBOperator
+  @objc public static let ceil: MapboxMapObjC.TMBOperator
+  @objc public static let coalesce: MapboxMapObjC.TMBOperator
+  @objc public static let collator: MapboxMapObjC.TMBOperator
+  @objc public static let concat: MapboxMapObjC.TMBOperator
+  @objc public static let cos: MapboxMapObjC.TMBOperator
+  @objc public static let distance: MapboxMapObjC.TMBOperator
+  @objc public static let distanceFromCenter: MapboxMapObjC.TMBOperator
+  @objc public static let downcase: MapboxMapObjC.TMBOperator
+  @objc public static let e: MapboxMapObjC.TMBOperator
+  @objc public static let featureState: MapboxMapObjC.TMBOperator
+  @objc public static let floor: MapboxMapObjC.TMBOperator
+  @objc public static let format: MapboxMapObjC.TMBOperator
+  @objc public static let geometryType: MapboxMapObjC.TMBOperator
+  @objc public static let get: MapboxMapObjC.TMBOperator
+  @objc public static let has: MapboxMapObjC.TMBOperator
+  @objc public static let heatmapDensity: MapboxMapObjC.TMBOperator
+  @objc public static let id: MapboxMapObjC.TMBOperator
+  @objc public static let image: MapboxMapObjC.TMBOperator
+  @objc public static let inExpression: MapboxMapObjC.TMBOperator
+  @objc public static let indexOf: MapboxMapObjC.TMBOperator
+  @objc public static let interpolate: MapboxMapObjC.TMBOperator
+  @objc public static let isSupportedScript: MapboxMapObjC.TMBOperator
+  @objc public static let length: MapboxMapObjC.TMBOperator
+  @objc public static let letExpression: MapboxMapObjC.TMBOperator
+  @objc public static let lineProgress: MapboxMapObjC.TMBOperator
+  @objc public static let literal: MapboxMapObjC.TMBOperator
+  @objc public static let ln: MapboxMapObjC.TMBOperator
+  @objc public static let ln2: MapboxMapObjC.TMBOperator
+  @objc public static let log10: MapboxMapObjC.TMBOperator
+  @objc public static let log2: MapboxMapObjC.TMBOperator
+  @objc public static let match: MapboxMapObjC.TMBOperator
+  @objc public static let max: MapboxMapObjC.TMBOperator
+  @objc public static let min: MapboxMapObjC.TMBOperator
+  @objc public static let number: MapboxMapObjC.TMBOperator
+  @objc public static let numberFormat: MapboxMapObjC.TMBOperator
+  @objc public static let objectExpression: MapboxMapObjC.TMBOperator
+  @objc public static let pi: MapboxMapObjC.TMBOperator
+  @objc public static let pitch: MapboxMapObjC.TMBOperator
+  @objc public static let properties: MapboxMapObjC.TMBOperator
+  @objc public static let resolvedLocale: MapboxMapObjC.TMBOperator
+  @objc public static let rgb: MapboxMapObjC.TMBOperator
+  @objc public static let rgba: MapboxMapObjC.TMBOperator
+  @objc public static let round: MapboxMapObjC.TMBOperator
+  @objc public static let sin: MapboxMapObjC.TMBOperator
+  @objc public static let skyRadialProgress: MapboxMapObjC.TMBOperator
+  @objc public static let slice: MapboxMapObjC.TMBOperator
+  @objc public static let sqrt: MapboxMapObjC.TMBOperator
+  @objc public static let step: MapboxMapObjC.TMBOperator
+  @objc public static let string: MapboxMapObjC.TMBOperator
+  @objc public static let tan: MapboxMapObjC.TMBOperator
+  @objc public static let toBoolean: MapboxMapObjC.TMBOperator
+  @objc public static let toColor: MapboxMapObjC.TMBOperator
+  @objc public static let toNumber: MapboxMapObjC.TMBOperator
+  @objc public static let toRgba: MapboxMapObjC.TMBOperator
+  @objc public static let toString: MapboxMapObjC.TMBOperator
+  @objc public static let typeofExpression: MapboxMapObjC.TMBOperator
+  @objc public static let upcase: MapboxMapObjC.TMBOperator
+  @objc public static let varExpression: MapboxMapObjC.TMBOperator
+  @objc public static let within: MapboxMapObjC.TMBOperator
+  @objc public static let zoom: MapboxMapObjC.TMBOperator
+  @objc public static let linear: MapboxMapObjC.TMBOperator
+  @objc public static let exponential: MapboxMapObjC.TMBOperator
+  @objc public static let cubicBezier: MapboxMapObjC.TMBOperator
+  @objc deinit
 }
 @objc public enum TMBPuckBearingSource : Swift.Int {
   case heading
@@ -1031,102 +1331,9 @@ public protocol LayerBuilder {
 extension MapboxMapObjC.TMBOrnamentVisibility : Swift.Equatable {}
 extension MapboxMapObjC.TMBOrnamentVisibility : Swift.Hashable {}
 extension MapboxMapObjC.TMBOrnamentVisibility : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBVisibility : Swift.Equatable {}
-extension MapboxMapObjC.TMBVisibility : Swift.Hashable {}
-extension MapboxMapObjC.TMBVisibility : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBLineCap : Swift.Equatable {}
-extension MapboxMapObjC.TMBLineCap : Swift.Hashable {}
-extension MapboxMapObjC.TMBLineCap : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBLineJoin : Swift.Equatable {}
-extension MapboxMapObjC.TMBLineJoin : Swift.Hashable {}
-extension MapboxMapObjC.TMBLineJoin : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBIconAnchor : Swift.Equatable {}
-extension MapboxMapObjC.TMBIconAnchor : Swift.Hashable {}
-extension MapboxMapObjC.TMBIconAnchor : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBIconPitchAlignment : Swift.Equatable {}
-extension MapboxMapObjC.TMBIconPitchAlignment : Swift.Hashable {}
-extension MapboxMapObjC.TMBIconPitchAlignment : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBIconRotationAlignment : Swift.Equatable {}
-extension MapboxMapObjC.TMBIconRotationAlignment : Swift.Hashable {}
-extension MapboxMapObjC.TMBIconRotationAlignment : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBIconTextFit : Swift.Equatable {}
-extension MapboxMapObjC.TMBIconTextFit : Swift.Hashable {}
-extension MapboxMapObjC.TMBIconTextFit : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBSymbolPlacement : Swift.Equatable {}
-extension MapboxMapObjC.TMBSymbolPlacement : Swift.Hashable {}
-extension MapboxMapObjC.TMBSymbolPlacement : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBSymbolZOrder : Swift.Equatable {}
-extension MapboxMapObjC.TMBSymbolZOrder : Swift.Hashable {}
-extension MapboxMapObjC.TMBSymbolZOrder : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBTextAnchor : Swift.Equatable {}
-extension MapboxMapObjC.TMBTextAnchor : Swift.Hashable {}
-extension MapboxMapObjC.TMBTextAnchor : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBTextJustify : Swift.Equatable {}
-extension MapboxMapObjC.TMBTextJustify : Swift.Hashable {}
-extension MapboxMapObjC.TMBTextJustify : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBTextPitchAlignment : Swift.Equatable {}
-extension MapboxMapObjC.TMBTextPitchAlignment : Swift.Hashable {}
-extension MapboxMapObjC.TMBTextPitchAlignment : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBTextRotationAlignment : Swift.Equatable {}
-extension MapboxMapObjC.TMBTextRotationAlignment : Swift.Hashable {}
-extension MapboxMapObjC.TMBTextRotationAlignment : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBTextTransform : Swift.Equatable {}
-extension MapboxMapObjC.TMBTextTransform : Swift.Hashable {}
-extension MapboxMapObjC.TMBTextTransform : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBFillTranslateAnchor : Swift.Equatable {}
-extension MapboxMapObjC.TMBFillTranslateAnchor : Swift.Hashable {}
-extension MapboxMapObjC.TMBFillTranslateAnchor : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBLineTranslateAnchor : Swift.Equatable {}
-extension MapboxMapObjC.TMBLineTranslateAnchor : Swift.Hashable {}
-extension MapboxMapObjC.TMBLineTranslateAnchor : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBIconTranslateAnchor : Swift.Equatable {}
-extension MapboxMapObjC.TMBIconTranslateAnchor : Swift.Hashable {}
-extension MapboxMapObjC.TMBIconTranslateAnchor : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBTextTranslateAnchor : Swift.Equatable {}
-extension MapboxMapObjC.TMBTextTranslateAnchor : Swift.Hashable {}
-extension MapboxMapObjC.TMBTextTranslateAnchor : Swift.RawRepresentable {}
-extension MapboxMapObjC.TTMBirclePitchAlignment : Swift.Equatable {}
-extension MapboxMapObjC.TTMBirclePitchAlignment : Swift.Hashable {}
-extension MapboxMapObjC.TTMBirclePitchAlignment : Swift.RawRepresentable {}
-extension MapboxMapObjC.TTMBirclePitchScale : Swift.Equatable {}
-extension MapboxMapObjC.TTMBirclePitchScale : Swift.Hashable {}
-extension MapboxMapObjC.TTMBirclePitchScale : Swift.RawRepresentable {}
-extension MapboxMapObjC.TTMBircleTranslateAnchor : Swift.Equatable {}
-extension MapboxMapObjC.TTMBircleTranslateAnchor : Swift.Hashable {}
-extension MapboxMapObjC.TTMBircleTranslateAnchor : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBFillExtrusionTranslateAnchor : Swift.Equatable {}
-extension MapboxMapObjC.TMBFillExtrusionTranslateAnchor : Swift.Hashable {}
-extension MapboxMapObjC.TMBFillExtrusionTranslateAnchor : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBRasterResampling : Swift.Equatable {}
-extension MapboxMapObjC.TMBRasterResampling : Swift.Hashable {}
-extension MapboxMapObjC.TMBRasterResampling : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBHillshadeIlluminationAnchor : Swift.Equatable {}
-extension MapboxMapObjC.TMBHillshadeIlluminationAnchor : Swift.Hashable {}
-extension MapboxMapObjC.TMBHillshadeIlluminationAnchor : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBSkyType : Swift.Equatable {}
-extension MapboxMapObjC.TMBSkyType : Swift.Hashable {}
-extension MapboxMapObjC.TMBSkyType : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBAnchor : Swift.Equatable {}
-extension MapboxMapObjC.TMBAnchor : Swift.Hashable {}
-extension MapboxMapObjC.TMBAnchor : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBStyleProjectionName : Swift.Equatable {}
-extension MapboxMapObjC.TMBStyleProjectionName : Swift.Hashable {}
-extension MapboxMapObjC.TMBStyleProjectionName : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBTextWritingMode : Swift.Equatable {}
-extension MapboxMapObjC.TMBTextWritingMode : Swift.Hashable {}
-extension MapboxMapObjC.TMBTextWritingMode : Swift.RawRepresentable {}
 extension MapboxMapObjC.TMBLayerPosition : Swift.Equatable {}
 extension MapboxMapObjC.TMBLayerPosition : Swift.Hashable {}
 extension MapboxMapObjC.TMBLayerPosition : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBSourceType : Swift.Equatable {}
-extension MapboxMapObjC.TMBSourceType : Swift.Hashable {}
-extension MapboxMapObjC.TMBSourceType : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBEncoding : Swift.Equatable {}
-extension MapboxMapObjC.TMBEncoding : Swift.Hashable {}
-extension MapboxMapObjC.TMBEncoding : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBOperator : Swift.Equatable {}
-extension MapboxMapObjC.TMBOperator : Swift.Hashable {}
-extension MapboxMapObjC.TMBOperator : Swift.RawRepresentable {}
 extension MapboxMapObjC.TMBPuckBearingSource : Swift.Equatable {}
 extension MapboxMapObjC.TMBPuckBearingSource : Swift.Hashable {}
 extension MapboxMapObjC.TMBPuckBearingSource : Swift.RawRepresentable {}

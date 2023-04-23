@@ -377,33 +377,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MBMResourceO
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class TMBTerrain;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
-@end
-
-enum TMBOrnamentVisibility : NSInteger;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
-@end
-
 @class SymbolLayerBuilder;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (void)updateSymbolLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SymbolLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
-@class RasterDemSourceBuilder;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addRasterDemSource:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
 @class SkyLayerBuilder;
@@ -412,12 +389,27 @@ enum TMBOrnamentVisibility : NSInteger;
 - (void)updateSkyLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
-@class TMBStyle;
+@class TMBTerrain;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setStyle:(NSString * _Nonnull)styleUri;
-- (void)setStyleInJson:(NSString * _Nonnull)styleJson;
-- (void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
+- (void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
+enum TMBOrnamentVisibility : NSInteger;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
+@end
+
+@class RasterDemSourceBuilder;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)addRasterDemSource:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
 @end
 
 
@@ -425,6 +417,14 @@ enum TMBOrnamentVisibility : NSInteger;
 - (void)preferredFrameRateRange:(CAFrameRateRange)value;
 - (NSArray<NSNumber *> * _Nonnull)mapboxMapDebugOptions SWIFT_WARN_UNUSED_RESULT;
 - (void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
+@end
+
+@class TMBStyle;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)setStyle:(NSString * _Nonnull)styleUri;
+- (void)setStyleInJson:(NSString * _Nonnull)styleJson;
+- (void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
 @end
 
 @protocol LocationPermissionsDelegate;
@@ -438,6 +438,19 @@ enum TMBPuckBearingSource : NSInteger;
 - (void)puckBearingSource:(enum TMBPuckBearingSource)source;
 @end
 
+enum TMBLayerPosition : NSInteger;
+@class TMBPolygonAnnotationManager;
+@class TMBCircleAnnotationManager;
+@class TMBPointAnnotationManager;
+@class TMBPolylineAnnotationManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
+- (TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
+- (TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
+- (TMBPolylineAnnotationManager * _Nonnull)polylineAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class TMBGeometry;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
@@ -449,21 +462,7 @@ enum TMBPuckBearingSource : NSInteger;
 - (void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
-@class TMBPolygonAnnotationManager;
-enum TMBLayerPosition : NSInteger;
-@class TMBCircleAnnotationManager;
-@class TMBPointAnnotationManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManager SWIFT_WARN_UNUSED_RESULT;
-- (TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
-- (TMBCircleAnnotationManager * _Nonnull)circleAnnotationManager SWIFT_WARN_UNUSED_RESULT;
-- (TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
-- (TMBPointAnnotationManager * _Nonnull)pointAnnotationManager SWIFT_WARN_UNUSED_RESULT;
-- (TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
-@end
-
-enum TMBAnchor : NSInteger;
+@class TMBAnchor;
 @class UIColor;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
@@ -472,7 +471,7 @@ enum TMBAnchor : NSInteger;
 /// Color tint for lighting extruded geometries.
 - (void)setLightWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Whether extruded geometries are lit relative to the map or viewport.
-- (void)lightAnchor:(enum TMBAnchor)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)lightAnchor:(TMBAnchor * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Color tint for lighting extruded geometries.
 - (void)lightColor:(UIColor * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Transition property for <code>color</code>
@@ -591,6 +590,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC14MapViewFactory")
 @end
 
 
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC11NamedString_")
+@protocol NamedString
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class MBMStylePackLoadOptions;
 @class MBMStylePack;
 
@@ -625,7 +629,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC33Puck2DConfigurationPulsingBuilder")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-enum TMBEncoding : NSInteger;
+@class TMBEncoding;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22RasterDemSourceBuilder")
 @interface RasterDemSourceBuilder : NSObject
@@ -636,7 +640,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC22RasterDemSourceBuilder")
 - (RasterDemSourceBuilder * _Nonnull)maxzoom:(double)value;
 - (RasterDemSourceBuilder * _Nonnull)tileSize:(double)value;
 - (RasterDemSourceBuilder * _Nonnull)attribution:(NSString * _Nullable)value;
-- (RasterDemSourceBuilder * _Nonnull)encoding:(enum TMBEncoding)value;
+- (RasterDemSourceBuilder * _Nonnull)encoding:(TMBEncoding * _Nullable)value;
 - (RasterDemSourceBuilder * _Nonnull)volatile:(BOOL)value;
 - (RasterDemSourceBuilder * _Nonnull)prefetchZoomDelta:(double)value;
 - (RasterDemSourceBuilder * _Nonnull)minimumTileUpdateInterval:(double)value;
@@ -753,13 +757,19 @@ SWIFT_CLASS("_TtC13MapboxMapObjC18SymbolLayerBuilder")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-/// Whether extruded geometries are lit relative to the map or viewport.
-typedef SWIFT_ENUM(NSInteger, TMBAnchor, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC9TMBAnchor")
+@interface TMBAnchor : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The position of the light source is aligned to the rotation of the map.
-  TMBAnchorMap = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBAnchor * _Nonnull map;)
++ (TMBAnchor * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
 /// The position of the light source is aligned to the rotation of the viewport.
-  TMBAnchorViewport = 1,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBAnchor * _Nonnull viewport;)
++ (TMBAnchor * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 SWIFT_PROTOCOL("_TtP13MapboxMapObjC13TMBAnnotation_")
@@ -810,14 +820,32 @@ SWIFT_CLASS("_TtC13MapboxMapObjC19TMBCircleAnnotation")
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
 @property (nonatomic, readonly, copy) NSString * _Nonnull geometryInJSON;
 @property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
-@property (nonatomic, strong) UIColor * _Nullable circleColor;
-@property (nonatomic) double circleRadius;
+@property (nonatomic) BOOL isSelected;
 @property (nonatomic) BOOL isDraggable;
 + (TMBCircleAnnotation * _Nonnull)fromCenter:(CLLocationCoordinate2D)coordinate SWIFT_WARN_UNUSED_RESULT;
+/// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
+@property (nonatomic, strong) NSNumber * _Nullable circleSortKey;
+/// Amount to blur the circle. 1 blurs the circle such that only the centerpoint is full opacity.
+@property (nonatomic, strong) NSNumber * _Nullable circleBlur;
+/// The fill color of the circle.
+@property (nonatomic, strong) UIColor * _Nullable circleColor;
+/// The opacity at which the circle will be drawn.
+@property (nonatomic, strong) NSNumber * _Nullable circleOpacity;
+/// Circle radius.
+@property (nonatomic, strong) NSNumber * _Nullable circleRadius;
+/// The stroke color of the circle.
+@property (nonatomic, strong) UIColor * _Nullable circleStrokeColor;
+/// The opacity of the circle’s stroke.
+@property (nonatomic, strong) NSNumber * _Nullable circleStrokeOpacity;
+/// The width of the circle’s stroke. Strokes are placed outside of the <code>circle-radius</code>.
+@property (nonatomic, strong) NSNumber * _Nullable circleStrokeWidth;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBCirclePitchAlignment;
+@class TMBCirclePitchScale;
+@class TMBCircleTranslateAnchor;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCircleAnnotationManager")
 @interface TMBCircleAnnotationManager : NSObject <TMBAnnotationManager>
@@ -829,43 +857,112 @@ SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCircleAnnotationManager")
 /// note:
 /// This annotation manager listens to tap events via the <code>GestureManager.singleTapGestureRecognizer</code>.
 @property (nonatomic, weak) id <TMBAnnotationInteractionDelegate> _Nullable delegate;
+/// Orientation of circle when map is pitched.
+@property (nonatomic, strong) TMBCirclePitchAlignment * _Nullable circlePitchAlignment;
+/// Controls the scaling behavior of the circle when the map is pitched.
+@property (nonatomic, strong) TMBCirclePitchScale * _Nullable circlePitchScale;
+/// The geometry’s offset. Values are [x, y] where negatives indicate left and up, respectively.
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable circleTranslate;
+/// Controls the frame of reference for <code>circle-translate</code>.
+@property (nonatomic, strong) TMBCircleTranslateAnchor * _Nullable circleTranslateAnchor;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, TMBEncoding, open) {
-/// Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.
-  TMBEncodingTerrarium = 0,
-/// Mapbox Terrain RGB tiles. See https://www.mapbox.com/help/access-elevation-data/#mapbox-terrain-rgb for more info.
-  TMBEncodingMapbox = 1,
-};
 
-enum TMBOperator : NSInteger;
+SWIFT_CLASS("_TtC13MapboxMapObjC23TMBCirclePitchAlignment")
+@interface TMBCirclePitchAlignment : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+/// The circle is aligned to the plane of the map.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePitchAlignment * _Nonnull map;)
++ (TMBCirclePitchAlignment * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
+/// The circle is aligned to the plane of the viewport.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePitchAlignment * _Nonnull viewport;)
++ (TMBCirclePitchAlignment * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC19TMBCirclePitchScale")
+@interface TMBCirclePitchScale : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+/// Circles are scaled according to their apparent distance to the camera.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePitchScale * _Nonnull map;)
++ (TMBCirclePitchScale * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
+/// Circles are not scaled.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePitchScale * _Nonnull viewport;)
++ (TMBCirclePitchScale * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC24TMBCircleTranslateAnchor")
+@interface TMBCircleTranslateAnchor : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+/// The circle is translated relative to the map.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTranslateAnchor * _Nonnull map;)
++ (TMBCircleTranslateAnchor * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
+/// The circle is translated relative to the viewport.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTranslateAnchor * _Nonnull viewport;)
++ (TMBCircleTranslateAnchor * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC11TMBEncoding")
+@interface TMBEncoding : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+/// Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBEncoding * _Nonnull terrarium;)
++ (TMBEncoding * _Nonnull)terrarium SWIFT_WARN_UNUSED_RESULT;
+/// Mapbox Terrain RGB tiles. See https://www.mapbox.com/help/access-elevation-data/#mapbox-terrain-rgb for more info.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBEncoding * _Nonnull mapbox;)
++ (TMBEncoding * _Nonnull)mapbox SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class TMBOperator;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBExpression")
 @interface TMBExpression : NSObject
-+ (TMBExpression * _Nonnull)createWithOperator:(enum TMBOperator)operator_ SWIFT_WARN_UNUSED_RESULT;
-+ (TMBExpression * _Nonnull)createWithOperator:(enum TMBOperator)operator_ arguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
++ (TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ SWIFT_WARN_UNUSED_RESULT;
++ (TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ arguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
-/// Controls the frame of reference for <code>fill-extrusion-translate</code>.
-typedef SWIFT_ENUM(NSInteger, TMBFillExtrusionTranslateAnchor, open) {
-/// The fill extrusion is translated relative to the map.
-  TMBFillExtrusionTranslateAnchorMap = 0,
-/// The fill extrusion is translated relative to the viewport.
-  TMBFillExtrusionTranslateAnchorViewport = 1,
-};
 
-/// Controls the frame of reference for <code>fill-translate</code>.
-typedef SWIFT_ENUM(NSInteger, TMBFillTranslateAnchor, open) {
+SWIFT_CLASS("_TtC13MapboxMapObjC31TMBFillExtrusionTranslateAnchor")
+@interface TMBFillExtrusionTranslateAnchor : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+/// The fill extrusion is translated relative to the map.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillExtrusionTranslateAnchor * _Nonnull map;)
++ (TMBFillExtrusionTranslateAnchor * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
+/// The fill extrusion is translated relative to the viewport.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillExtrusionTranslateAnchor * _Nonnull viewport;)
++ (TMBFillExtrusionTranslateAnchor * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC22TMBFillTranslateAnchor")
+@interface TMBFillTranslateAnchor : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The fill is translated relative to the map.
-  TMBFillTranslateAnchorMap = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTranslateAnchor * _Nonnull map;)
++ (TMBFillTranslateAnchor * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
 /// The fill is translated relative to the viewport.
-  TMBFillTranslateAnchorViewport = 1,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTranslateAnchor * _Nonnull viewport;)
++ (TMBFillTranslateAnchor * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 SWIFT_PROTOCOL("_TtP13MapboxMapObjC10TMBGeoData_")
@@ -881,75 +978,122 @@ SWIFT_CLASS("_TtC13MapboxMapObjC11TMBGeometry")
 @end
 
 
-/// Direction of light source when map is rotated.
-typedef SWIFT_ENUM(NSInteger, TMBHillshadeIlluminationAnchor, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC30TMBHillshadeIlluminationAnchor")
+@interface TMBHillshadeIlluminationAnchor : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The hillshade illumination is relative to the north direction.
-  TMBHillshadeIlluminationAnchorMap = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBHillshadeIlluminationAnchor * _Nonnull map;)
++ (TMBHillshadeIlluminationAnchor * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
 /// The hillshade illumination is relative to the top of the viewport.
-  TMBHillshadeIlluminationAnchorViewport = 1,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBHillshadeIlluminationAnchor * _Nonnull viewport;)
++ (TMBHillshadeIlluminationAnchor * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// Part of the icon placed closest to the anchor.
-typedef SWIFT_ENUM(NSInteger, TMBIconAnchor, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC13TMBIconAnchor")
+@interface TMBIconAnchor : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The center of the icon is placed closest to the anchor.
-  TMBIconAnchorCenter = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAnchor * _Nonnull center;)
++ (TMBIconAnchor * _Nonnull)center SWIFT_WARN_UNUSED_RESULT;
 /// The left side of the icon is placed closest to the anchor.
-  TMBIconAnchorLeft = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAnchor * _Nonnull left;)
++ (TMBIconAnchor * _Nonnull)left SWIFT_WARN_UNUSED_RESULT;
 /// The right side of the icon is placed closest to the anchor.
-  TMBIconAnchorRight = 2,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAnchor * _Nonnull right;)
++ (TMBIconAnchor * _Nonnull)right SWIFT_WARN_UNUSED_RESULT;
 /// The top of the icon is placed closest to the anchor.
-  TMBIconAnchorTop = 3,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAnchor * _Nonnull top;)
++ (TMBIconAnchor * _Nonnull)top SWIFT_WARN_UNUSED_RESULT;
 /// The bottom of the icon is placed closest to the anchor.
-  TMBIconAnchorBottom = 4,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAnchor * _Nonnull bottom;)
++ (TMBIconAnchor * _Nonnull)bottom SWIFT_WARN_UNUSED_RESULT;
 /// The top left corner of the icon is placed closest to the anchor.
-  TMBIconAnchorTopLeft = 5,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAnchor * _Nonnull topLeft;)
++ (TMBIconAnchor * _Nonnull)topLeft SWIFT_WARN_UNUSED_RESULT;
 /// The top right corner of the icon is placed closest to the anchor.
-  TMBIconAnchorTopRight = 6,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAnchor * _Nonnull topRight;)
++ (TMBIconAnchor * _Nonnull)topRight SWIFT_WARN_UNUSED_RESULT;
 /// The bottom left corner of the icon is placed closest to the anchor.
-  TMBIconAnchorBottomLeft = 7,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAnchor * _Nonnull bottomLeft;)
++ (TMBIconAnchor * _Nonnull)bottomLeft SWIFT_WARN_UNUSED_RESULT;
 /// The bottom right corner of the icon is placed closest to the anchor.
-  TMBIconAnchorBottomRight = 8,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAnchor * _Nonnull bottomRight;)
++ (TMBIconAnchor * _Nonnull)bottomRight SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// Orientation of icon when map is pitched.
-typedef SWIFT_ENUM(NSInteger, TMBIconPitchAlignment, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC21TMBIconPitchAlignment")
+@interface TMBIconPitchAlignment : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The icon is aligned to the plane of the map.
-  TMBIconPitchAlignmentMap = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconPitchAlignment * _Nonnull map;)
++ (TMBIconPitchAlignment * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
 /// The icon is aligned to the plane of the viewport.
-  TMBIconPitchAlignmentViewport = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconPitchAlignment * _Nonnull viewport;)
++ (TMBIconPitchAlignment * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
 /// Automatically matches the value of {@link ICON_ROTATION_ALIGNMENT}.
-  TMBIconPitchAlignmentAuto = 2,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto) TMBIconPitchAlignment * _Nonnull auto_;)
++ (TMBIconPitchAlignment * _Nonnull)auto SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// In combination with <code>symbol-placement</code>, determines the rotation behavior of icons.
-typedef SWIFT_ENUM(NSInteger, TMBIconRotationAlignment, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC24TMBIconRotationAlignment")
+@interface TMBIconRotationAlignment : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, aligns icons east-west. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, aligns icon x-axes with the line.
-  TMBIconRotationAlignmentMap = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconRotationAlignment * _Nonnull map;)
++ (TMBIconRotationAlignment * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
 /// Produces icons whose x-axes are aligned with the x-axis of the viewport, regardless of the value of {@link SYMBOL_PLACEMENT}.
-  TMBIconRotationAlignmentViewport = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconRotationAlignment * _Nonnull viewport;)
++ (TMBIconRotationAlignment * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
 /// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, this is equivalent to {@link Property#ICON_ROTATION_ALIGNMENT_VIEWPORT}. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, this is equivalent to {@link Property#ICON_ROTATION_ALIGNMENT_MAP}.
-  TMBIconRotationAlignmentAuto = 2,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto) TMBIconRotationAlignment * _Nonnull auto_;)
++ (TMBIconRotationAlignment * _Nonnull)auto SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// Scales the icon to fit around the associated text.
-typedef SWIFT_ENUM(NSInteger, TMBIconTextFit, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC14TMBIconTextFit")
+@interface TMBIconTextFit : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The icon is displayed at its intrinsic aspect ratio.
-  TMBIconTextFitNone = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTextFit * _Nonnull none;)
++ (TMBIconTextFit * _Nonnull)none SWIFT_WARN_UNUSED_RESULT;
 /// The icon is scaled in the x-dimension to fit the width of the text.
-  TMBIconTextFitWidth = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTextFit * _Nonnull width;)
++ (TMBIconTextFit * _Nonnull)width SWIFT_WARN_UNUSED_RESULT;
 /// The icon is scaled in the y-dimension to fit the height of the text.
-  TMBIconTextFitHeight = 2,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTextFit * _Nonnull height;)
++ (TMBIconTextFit * _Nonnull)height SWIFT_WARN_UNUSED_RESULT;
 /// The icon is scaled in both x- and y-dimensions.
-  TMBIconTextFitBoth = 3,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTextFit * _Nonnull both;)
++ (TMBIconTextFit * _Nonnull)both SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// Controls the frame of reference for <code>icon-translate</code>.
-typedef SWIFT_ENUM(NSInteger, TMBIconTranslateAnchor, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC22TMBIconTranslateAnchor")
+@interface TMBIconTranslateAnchor : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Icons are translated relative to the map.
-  TMBIconTranslateAnchorMap = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTranslateAnchor * _Nonnull map;)
++ (TMBIconTranslateAnchor * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
 /// Icons are translated relative to the viewport.
-  TMBIconTranslateAnchorViewport = 1,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTranslateAnchor * _Nonnull viewport;)
++ (TMBIconTranslateAnchor * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 typedef SWIFT_ENUM(NSInteger, TMBLayerPosition, open) {
   TMBLayerPositionAt = 0,
@@ -958,105 +1102,163 @@ typedef SWIFT_ENUM(NSInteger, TMBLayerPosition, open) {
   TMBLayerPositionUnowned = 3,
 };
 
-/// The display of line endings.
-typedef SWIFT_ENUM(NSInteger, TMBLineCap, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC10TMBLineCap")
+@interface TMBLineCap : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// A cap with a squared-off end which is drawn to the exact endpoint of the line.
-  TMBLineCapButt = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineCap * _Nonnull butt;)
++ (TMBLineCap * _Nonnull)butt SWIFT_WARN_UNUSED_RESULT;
 /// A cap with a rounded end which is drawn beyond the endpoint of the line at a radius of one-half of the line’s width and centered on the endpoint of the line.
-  TMBLineCapRound = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineCap * _Nonnull round;)
++ (TMBLineCap * _Nonnull)round SWIFT_WARN_UNUSED_RESULT;
 /// A cap with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line’s width.
-  TMBLineCapSquare = 2,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineCap * _Nonnull square;)
++ (TMBLineCap * _Nonnull)square SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// The display of lines when joining.
-typedef SWIFT_ENUM(NSInteger, TMBLineJoin, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC11TMBLineJoin")
+@interface TMBLineJoin : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// A join with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line’s width.
-  TMBLineJoinBevel = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineJoin * _Nonnull bevel;)
++ (TMBLineJoin * _Nonnull)bevel SWIFT_WARN_UNUSED_RESULT;
 /// A join with a rounded end which is drawn beyond the endpoint of the line at a radius of one-half of the line’s width and centered on the endpoint of the line.
-  TMBLineJoinRound = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineJoin * _Nonnull round;)
++ (TMBLineJoin * _Nonnull)round SWIFT_WARN_UNUSED_RESULT;
 /// A join with a sharp, angled corner which is drawn with the outer sides beyond the endpoint of the path until they meet.
-  TMBLineJoinMiter = 2,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineJoin * _Nonnull miter;)
++ (TMBLineJoin * _Nonnull)miter SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// Controls the frame of reference for <code>line-translate</code>.
-typedef SWIFT_ENUM(NSInteger, TMBLineTranslateAnchor, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC22TMBLineTranslateAnchor")
+@interface TMBLineTranslateAnchor : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The line is translated relative to the map.
-  TMBLineTranslateAnchorMap = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTranslateAnchor * _Nonnull map;)
++ (TMBFillTranslateAnchor * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
 /// The line is translated relative to the viewport.
-  TMBLineTranslateAnchorViewport = 1,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTranslateAnchor * _Nonnull viewport;)
++ (TMBFillTranslateAnchor * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-typedef SWIFT_ENUM(NSInteger, TMBOperator, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC11TMBOperator")
+@interface TMBOperator : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// For two inputs, returns the result of subtracting the second input from the first. For a single input, returns the result of subtracting it from 0.
-  TMBOperatorSubtract = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull subtract;)
++ (TMBOperator * _Nonnull)subtract SWIFT_WARN_UNUSED_RESULT;
 /// Logical negation. Returns <code>true</code> if the input is <code>false</code>, and <code>false</code> if the input is <code>true</code>.
-  TMBOperatorNot = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=not) TMBOperator * _Nonnull not_;)
++ (TMBOperator * _Nonnull)not SWIFT_WARN_UNUSED_RESULT;
 /// Returns <code>true</code> if the input values are not equal, <code>false</code> otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  TMBOperatorNeq = 2,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull neq;)
++ (TMBOperator * _Nonnull)neq SWIFT_WARN_UNUSED_RESULT;
 /// Returns the product of the inputs.
-  TMBOperatorProduct = 3,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull product;)
++ (TMBOperator * _Nonnull)product SWIFT_WARN_UNUSED_RESULT;
 /// Returns the result of floating point division of the first input by the second.
-  TMBOperatorDivision = 4,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull division;)
++ (TMBOperator * _Nonnull)division SWIFT_WARN_UNUSED_RESULT;
 /// Returns the remainder after integer division of the first input by the second.
-  TMBOperatorMod = 5,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull mod;)
++ (TMBOperator * _Nonnull)mod SWIFT_WARN_UNUSED_RESULT;
 /// Returns the result of raising the first input to the power specified by the second.
-  TMBOperatorPow = 6,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull pow;)
++ (TMBOperator * _Nonnull)pow SWIFT_WARN_UNUSED_RESULT;
 /// Returns the sum of the inputs.
-  TMBOperatorSum = 7,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull sum;)
++ (TMBOperator * _Nonnull)sum SWIFT_WARN_UNUSED_RESULT;
 /// Returns <code>true</code> if the first input is strictly less than the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  TMBOperatorLt = 8,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull lt;)
++ (TMBOperator * _Nonnull)lt SWIFT_WARN_UNUSED_RESULT;
 /// Returns <code>true</code> if the first input is less than or equal to the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  TMBOperatorLte = 9,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull lte;)
++ (TMBOperator * _Nonnull)lte SWIFT_WARN_UNUSED_RESULT;
 /// Returns <code>true</code> if the input values are equal, <code>false</code> otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  TMBOperatorEq = 10,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull eq;)
++ (TMBOperator * _Nonnull)eq SWIFT_WARN_UNUSED_RESULT;
 /// Returns <code>true</code> if the first input is strictly greater than the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  TMBOperatorGt = 11,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull gt;)
++ (TMBOperator * _Nonnull)gt SWIFT_WARN_UNUSED_RESULT;
 /// Returns <code>true</code> if the first input is greater than or equal to the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.
-  TMBOperatorGte = 12,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull gte;)
++ (TMBOperator * _Nonnull)gte SWIFT_WARN_UNUSED_RESULT;
 /// Returns the absolute value of the input.
-  TMBOperatorAbs = 13,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull abs;)
++ (TMBOperator * _Nonnull)abs SWIFT_WARN_UNUSED_RESULT;
 /// Returns the value of a cluster property accumulated so far. Can only be used in the <code>clusterProperties</code> option of a clustered GeoJSON source.
-  TMBOperatorAccumulated = 14,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull accumulated;)
++ (TMBOperator * _Nonnull)accumulated SWIFT_WARN_UNUSED_RESULT;
 /// Returns the arccosine of the input.
-  TMBOperatorAcos = 15,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull acos;)
++ (TMBOperator * _Nonnull)acos SWIFT_WARN_UNUSED_RESULT;
 /// Returns <code>true</code> if all the inputs are <code>true</code>, <code>false</code> otherwise. The inputs are evaluated in order, and evaluation is short-circuiting: once an input expression evaluates to <code>false</code>, the result is <code>false</code> and no further input expressions are evaluated.
-  TMBOperatorAll = 16,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull all;)
++ (TMBOperator * _Nonnull)all SWIFT_WARN_UNUSED_RESULT;
 /// Returns <code>true</code> if any of the inputs are <code>true</code>, <code>false</code> otherwise. The inputs are evaluated in order, and evaluation is short-circuiting: once an input expression evaluates to <code>true</code>, the result is <code>true</code> and no further input expressions are evaluated.
-  TMBOperatorAny = 17,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull any;)
++ (TMBOperator * _Nonnull)any SWIFT_WARN_UNUSED_RESULT;
 /// Asserts that the input is an array (optionally with a specific item type and length).  If, when the input expression is evaluated, it is not of the asserted type, then this assertion will cause the whole expression to be aborted.
-  TMBOperatorArray = 18,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull array;)
++ (TMBOperator * _Nonnull)array SWIFT_WARN_UNUSED_RESULT;
 /// Returns the arcsine of the input.
-  TMBOperatorAsin = 19,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull asin;)
++ (TMBOperator * _Nonnull)asin SWIFT_WARN_UNUSED_RESULT;
 /// Retrieves an item from an array.
-  TMBOperatorAt = 20,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull at;)
++ (TMBOperator * _Nonnull)at SWIFT_WARN_UNUSED_RESULT;
 /// Returns the arctangent of the input.
-  TMBOperatorAtan = 21,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull atan;)
++ (TMBOperator * _Nonnull)atan SWIFT_WARN_UNUSED_RESULT;
 /// Asserts that the input value is a boolean. If multiple values are provided, each one is evaluated in order until a boolean is obtained. If none of the inputs are booleans, the expression is an error.
-  TMBOperatorBoolean = 22,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull boolean;)
++ (TMBOperator * _Nonnull)boolean SWIFT_WARN_UNUSED_RESULT;
 /// Selects the first output whose corresponding test condition evaluates to true, or the fallback value otherwise.
-  TMBOperatorSwitchCase = 23,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull switchCase;)
++ (TMBOperator * _Nonnull)switchCase SWIFT_WARN_UNUSED_RESULT;
 /// Returns the smallest integer that is greater than or equal to the input.
-  TMBOperatorCeil = 24,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull ceil;)
++ (TMBOperator * _Nonnull)ceil SWIFT_WARN_UNUSED_RESULT;
 /// Evaluates each expression in turn until the first valid value is obtained. Invalid values are <code>null</code> and <a href="#types-image"><code>'image'</code></a> expressions that are unavailable in the style. If all values are invalid, <code>coalesce</code> returns the first value listed.
-  TMBOperatorCoalesce = 25,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull coalesce;)
++ (TMBOperator * _Nonnull)coalesce SWIFT_WARN_UNUSED_RESULT;
 /// Returns a <code>collator</code> for use in locale-dependent comparison operations. The <code>case-sensitive</code> and <code>diacritic-sensitive</code> options default to <code>false</code>. The <code>locale</code> argument specifies the IETF language tag of the locale to use. If none is provided, the default locale is used. If the requested locale is not available, the <code>collator</code> will use a system-defined fallback locale. Use <code>resolved-locale</code> to test the results of locale fallback behavior.
-  TMBOperatorCollator = 26,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull collator;)
++ (TMBOperator * _Nonnull)collator SWIFT_WARN_UNUSED_RESULT;
 /// Returns a <code>string</code> consisting of the concatenation of the inputs. Each input is converted to a string as if by <code>to-string</code>.
-  TMBOperatorConcat = 27,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull concat;)
++ (TMBOperator * _Nonnull)concat SWIFT_WARN_UNUSED_RESULT;
 /// Returns the cosine of the input.
-  TMBOperatorCos = 28,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull cos;)
++ (TMBOperator * _Nonnull)cos SWIFT_WARN_UNUSED_RESULT;
 /// Returns the shortest distance in meters between the evaluated feature and the input geometry. The input value can be a valid GeoJSON of type <code>Point</code>, <code>MultiPoint</code>, <code>LineString</code>, <code>MultiLineString</code>, <code>Polygon</code>, <code>MultiPolygon</code>, <code>Feature</code>, or <code>FeatureCollection</code>. Distance values returned may vary in precision due to loss in precision from encoding geometries, particularly below zoom level 13.
-  TMBOperatorDistance = 29,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull distance;)
++ (TMBOperator * _Nonnull)distance SWIFT_WARN_UNUSED_RESULT;
 /// Returns the distance of a <code>symbol</code> instance from the center of the map. The distance is measured in pixels divided by the height of the map container. It measures 0 at the center, decreases towards the camera and increase away from the camera. For example, if the height of the map is 1000px, a value of -1 means 1000px away from the center towards the camera, and a value of 1 means a distance of 1000px away from the camera from the center. <code>["distance-from-center"]</code> may only be used in the <code>filter</code> expression for a <code>symbol</code> layer.
-  TMBOperatorDistanceFromCenter = 30,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull distanceFromCenter;)
++ (TMBOperator * _Nonnull)distanceFromCenter SWIFT_WARN_UNUSED_RESULT;
 /// Returns the input string converted to lowercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.
-  TMBOperatorDowncase = 31,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull downcase;)
++ (TMBOperator * _Nonnull)downcase SWIFT_WARN_UNUSED_RESULT;
 /// Returns the mathematical constant e.
-  TMBOperatorE = 32,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull e;)
++ (TMBOperator * _Nonnull)e SWIFT_WARN_UNUSED_RESULT;
 /// Retrieves a property value from the current feature’s state. Returns <code>null</code> if the requested property is not present on the feature’s state. A feature’s state is not part of the GeoJSON or vector tile data, and must be set programmatically on each feature. Features are identified by their <code>id</code> attribute, which must be an integer or a string that can be cast to an integer. Note that [“feature-state”] can only be used with paint properties that support data-driven styling.
-  TMBOperatorFeatureState = 33,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull featureState;)
++ (TMBOperator * _Nonnull)featureState SWIFT_WARN_UNUSED_RESULT;
 /// Returns the largest integer that is less than or equal to the input.
-  TMBOperatorFloor = 34,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull floor;)
++ (TMBOperator * _Nonnull)floor SWIFT_WARN_UNUSED_RESULT;
 /// Returns a <code>formatted</code> string for displaying mixed-format text in the <code>text-field</code> property. The input may contain a string literal or expression, including an <a href="#types-image"><code>'image'</code></a> expression. Strings may be followed by a style override object that supports the following properties:
 /// <ul>
 ///   <li>
@@ -1069,23 +1271,32 @@ typedef SWIFT_ENUM(NSInteger, TMBOperator, open) {
 ///     <code>"font-scale"</code>: Applies a scaling factor on <code>text-size</code> as specified by the root layout property.
 ///   </li>
 /// </ul>
-  TMBOperatorFormat = 35,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull format;)
++ (TMBOperator * _Nonnull)format SWIFT_WARN_UNUSED_RESULT;
 /// Returns the feature’s geometry type: <code>Point</code>, <code>LineString</code> or <code>Polygon</code>. <code>Multi*</code> feature types return the singular forms.
-  TMBOperatorGeometryType = 36,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull geometryType;)
++ (TMBOperator * _Nonnull)geometryType SWIFT_WARN_UNUSED_RESULT;
 /// Retrieves a property value from the current feature’s properties, or from another object if a second argument is provided. Returns <code>null</code> if the requested property is missing.
-  TMBOperatorGet = 37,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull get;)
++ (TMBOperator * _Nonnull)get SWIFT_WARN_UNUSED_RESULT;
 /// Tests for the presence of an property value in the current feature’s properties, or from another object if a second argument is provided.
-  TMBOperatorHas = 38,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull has;)
++ (TMBOperator * _Nonnull)has SWIFT_WARN_UNUSED_RESULT;
 /// Returns the kernel density estimation of a pixel in a heatmap layer, which is a relative measure of how many data points are crowded around a particular pixel. Can only be used in the <code>heatmap-color</code> property.
-  TMBOperatorHeatmapDensity = 39,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull heatmapDensity;)
++ (TMBOperator * _Nonnull)heatmapDensity SWIFT_WARN_UNUSED_RESULT;
 /// Returns the feature’s id, if it has one.
-  TMBOperatorId = 40,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull id;)
++ (TMBOperator * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
 /// Returns a <a href="/mapbox-gl-js/style-spec/types/#resolvedimage"><code>ResolvedImage</code></a> for use in <a href="/mapbox-gl-js/style-spec/layers/#layout-symbol-icon-image"><code>icon-image</code></a>, <code>*-pattern</code> entries, and as a section in the <a href="#types-format"><code>'format'</code></a> expression. A <a href="#coalesce"><code>'coalesce'</code></a> expression containing <code>image</code> expressions will evaluate to the first listed image that is currently in the style. This validation process is synchronous and requires the image to have been added to the style before requesting it in the <code>'image'</code> argument.
-  TMBOperatorImage = 41,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull image;)
++ (TMBOperator * _Nonnull)image SWIFT_WARN_UNUSED_RESULT;
 /// Determines whether an item exists in an array or a substring exists in a string. In the specific case when the second and third arguments are string literals, you must wrap at least one of them in a <a href="#types-literal"><code>literal</code></a> expression to hint correct interpretation to the <a href="#type-system">type system</a>.
-  TMBOperatorInExpression = 42,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull inExpression;)
++ (TMBOperator * _Nonnull)inExpression SWIFT_WARN_UNUSED_RESULT;
 /// Returns the first position at which an item can be found in an array or a substring can be found in a string, or <code>-1</code> if the input cannot be found. Accepts an optional index from where to begin the search.
-  TMBOperatorIndexOf = 43,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull indexOf;)
++ (TMBOperator * _Nonnull)indexOf SWIFT_WARN_UNUSED_RESULT;
 /// Produces continuous, smooth results by interpolating between pairs of input and output values (“stops”). The <code>input</code> may be any numeric expression (e.g., <code>["get", "population"]</code>). Stop inputs must be numeric literals in strictly ascending order. The output type must be <code>number</code>, <code>array<number></code>, or <code>color</code>.
 /// Interpolation types:
 /// <ul>
@@ -1099,25 +1310,35 @@ typedef SWIFT_ENUM(NSInteger, TMBOperator, open) {
 ///     <code>["cubic-bezier", x1, y1, x2, y2]</code>: Interpolates using the cubic bezier curve defined by the given control points.
 ///   </li>
 /// </ul>
-  TMBOperatorInterpolate = 44,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull interpolate;)
++ (TMBOperator * _Nonnull)interpolate SWIFT_WARN_UNUSED_RESULT;
 /// Returns <code>true</code> if the input string is expected to render legibly. Returns <code>false</code> if the input string contains sections that cannot be rendered without potential loss of meaning (e.g. Indic scripts that require complex text shaping, or right-to-left scripts if the the <code>mapbox-gl-rtl-text</code> plugin is not in use in Mapbox GL JS).
-  TMBOperatorIsSupportedScript = 45,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull isSupportedScript;)
++ (TMBOperator * _Nonnull)isSupportedScript SWIFT_WARN_UNUSED_RESULT;
 /// Returns the length of an array or string.
-  TMBOperatorLength = 46,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull length;)
++ (TMBOperator * _Nonnull)length SWIFT_WARN_UNUSED_RESULT;
 /// Binds expressions to named variables, which can then be referenced in the result expression using [“var”, “variable_name”].
-  TMBOperatorLetExpression = 47,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull letExpression;)
++ (TMBOperator * _Nonnull)letExpression SWIFT_WARN_UNUSED_RESULT;
 /// Returns the progress along a gradient line. Can only be used in the <code>line-gradient</code> property.
-  TMBOperatorLineProgress = 48,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull lineProgress;)
++ (TMBOperator * _Nonnull)lineProgress SWIFT_WARN_UNUSED_RESULT;
 /// Provides a literal array or object value.
-  TMBOperatorLiteral = 49,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull literal;)
++ (TMBOperator * _Nonnull)literal SWIFT_WARN_UNUSED_RESULT;
 /// Returns the natural logarithm of the input.
-  TMBOperatorLn = 50,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull ln;)
++ (TMBOperator * _Nonnull)ln SWIFT_WARN_UNUSED_RESULT;
 /// Returns mathematical constant ln(2).
-  TMBOperatorLn2 = 51,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull ln2;)
++ (TMBOperator * _Nonnull)ln2 SWIFT_WARN_UNUSED_RESULT;
 /// Returns the base-ten logarithm of the input.
-  TMBOperatorLog10 = 52,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull log10;)
++ (TMBOperator * _Nonnull)log10 SWIFT_WARN_UNUSED_RESULT;
 /// Returns the base-two logarithm of the input.
-  TMBOperatorLog2 = 53,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull log2;)
++ (TMBOperator * _Nonnull)log2 SWIFT_WARN_UNUSED_RESULT;
 /// Selects the output for which the label value matches the input value, or the fallback value if no match is found. The input can be any expression (for example, <code>["get", "building_type"]</code>). Each label must be unique, and must be either:
 /// <ul>
 ///   <li>
@@ -1129,61 +1350,89 @@ typedef SWIFT_ENUM(NSInteger, TMBOperator, open) {
 /// </ul>
 /// The input matches if any of the values in the array matches using strict equality, similar to the <code>"in"</code> operator.
 /// If the input type does not match the type of the labels, the result will be the fallback value.
-  TMBOperatorMatch = 54,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull match;)
++ (TMBOperator * _Nonnull)match SWIFT_WARN_UNUSED_RESULT;
 /// Returns the maximum value of the inputs.
-  TMBOperatorMax = 55,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull max;)
++ (TMBOperator * _Nonnull)max SWIFT_WARN_UNUSED_RESULT;
 /// Returns the minimum value of the inputs.
-  TMBOperatorMin = 56,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull min;)
++ (TMBOperator * _Nonnull)min SWIFT_WARN_UNUSED_RESULT;
 /// Asserts that the input value is a number. If multiple values are provided, each one is evaluated in order until a number is obtained. If none of the inputs are numbers, the expression is an error.
-  TMBOperatorNumber = 57,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull number;)
++ (TMBOperator * _Nonnull)number SWIFT_WARN_UNUSED_RESULT;
 /// Converts the input number into a string representation using the providing formatting rules. If set, the <code>locale</code> argument specifies the locale to use, as a BCP 47 language tag. If set, the <code>currency</code> argument specifies an ISO 4217 code to use for currency-style formatting. If set, the <code>unit</code> argument specifies a <a href="https://tc39.es/proposal-unified-intl-numberformat/section6/locales-currencies-tz_proposed_out.html#sec-issanctionedsimpleunitidentifier">simple ECMAScript unit</a> to use for unit-style formatting. If set, the <code>min-fraction-digits</code> and <code>max-fraction-digits</code> arguments specify the minimum and maximum number of fractional digits to include.
-  TMBOperatorNumberFormat = 58,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull numberFormat;)
++ (TMBOperator * _Nonnull)numberFormat SWIFT_WARN_UNUSED_RESULT;
 /// Asserts that the input value is an object. If multiple values are provided, each one is evaluated in order until an object is obtained. If none of the inputs are objects, the expression is an error.
-  TMBOperatorObjectExpression = 59,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull objectExpression;)
++ (TMBOperator * _Nonnull)objectExpression SWIFT_WARN_UNUSED_RESULT;
 /// Returns the mathematical constant pi.
-  TMBOperatorPi = 60,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull pi;)
++ (TMBOperator * _Nonnull)pi SWIFT_WARN_UNUSED_RESULT;
 /// Returns the current pitch in degrees. <code>["pitch"]</code> may only be used in the <code>filter</code> expression for a <code>symbol</code> layer.
-  TMBOperatorPitch = 61,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull pitch;)
++ (TMBOperator * _Nonnull)pitch SWIFT_WARN_UNUSED_RESULT;
 /// Returns the feature properties object.  Note that in some cases, it may be more efficient to use <code>["get", "property_name"]</code> directly.
-  TMBOperatorProperties = 62,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull properties;)
++ (TMBOperator * _Nonnull)properties SWIFT_WARN_UNUSED_RESULT;
 /// Returns the IETF language tag of the locale being used by the provided <code>collator</code>. This can be used to determine the default system locale, or to determine if a requested locale was successfully loaded.
-  TMBOperatorResolvedLocale = 63,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull resolvedLocale;)
++ (TMBOperator * _Nonnull)resolvedLocale SWIFT_WARN_UNUSED_RESULT;
 /// Creates a color value from red, green, and blue components, which must range between 0 and 255, and an alpha component of 1. If any component is out of range, the expression is an error.
-  TMBOperatorRgb = 64,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull rgb;)
++ (TMBOperator * _Nonnull)rgb SWIFT_WARN_UNUSED_RESULT;
 /// Creates a color value from red, green, blue components, which must range between 0 and 255, and an alpha component which must range between 0 and 1. If any component is out of range, the expression is an error.
-  TMBOperatorRgba = 65,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull rgba;)
++ (TMBOperator * _Nonnull)rgba SWIFT_WARN_UNUSED_RESULT;
 /// Rounds the input to the nearest integer. Halfway values are rounded away from zero. For example, <code>["round", -1.5]</code> evaluates to -2.
-  TMBOperatorRound = 66,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull round;)
++ (TMBOperator * _Nonnull)round SWIFT_WARN_UNUSED_RESULT;
 /// Returns the sine of the input.
-  TMBOperatorSin = 67,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull sin;)
++ (TMBOperator * _Nonnull)sin SWIFT_WARN_UNUSED_RESULT;
 /// Returns the distance of a point on the sky from the sun position. Returns 0 at sun position and 1 when the distance reaches <code>sky-gradient-radius</code>. Can only be used in the <code>sky-gradient</code> property.
-  TMBOperatorSkyRadialProgress = 68,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull skyRadialProgress;)
++ (TMBOperator * _Nonnull)skyRadialProgress SWIFT_WARN_UNUSED_RESULT;
 /// Returns an item from an array or a substring from a string from a specified start index, or between a start index and an end index if set. The return value is inclusive of the start index but not of the end index.
-  TMBOperatorSlice = 69,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull slice;)
++ (TMBOperator * _Nonnull)slice SWIFT_WARN_UNUSED_RESULT;
 /// Returns the square root of the input.
-  TMBOperatorSqrt = 70,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull sqrt;)
++ (TMBOperator * _Nonnull)sqrt SWIFT_WARN_UNUSED_RESULT;
 /// Produces discrete, stepped results by evaluating a piecewise-constant function defined by pairs of input and output values (“stops”). The <code>input</code> may be any numeric expression (e.g., <code>["get", "population"]</code>). Stop inputs must be numeric literals in strictly ascending order. Returns the output value of the stop just less than the input, or the first output if the input is less than the first stop.
-  TMBOperatorStep = 71,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull step;)
++ (TMBOperator * _Nonnull)step SWIFT_WARN_UNUSED_RESULT;
 /// Asserts that the input value is a string. If multiple values are provided, each one is evaluated in order until a string is obtained. If none of the inputs are strings, the expression is an error.
-  TMBOperatorString = 72,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull string;)
++ (TMBOperator * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
 /// Returns the tangent of the input.
-  TMBOperatorTan = 73,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull tan;)
++ (TMBOperator * _Nonnull)tan SWIFT_WARN_UNUSED_RESULT;
 /// Converts the input value to a boolean. The result is <code>false</code> when then input is an empty string, 0, <code>false</code>, <code>null</code>, or <code>NaN</code>; otherwise it is <code>true</code>.
-  TMBOperatorToBoolean = 74,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull toBoolean;)
++ (TMBOperator * _Nonnull)toBoolean SWIFT_WARN_UNUSED_RESULT;
 /// Converts the input value to a color. If multiple values are provided, each one is evaluated in order until the first successful conversion is obtained. If none of the inputs can be converted, the expression is an error.
-  TMBOperatorToColor = 75,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull toColor;)
++ (TMBOperator * _Nonnull)toColor SWIFT_WARN_UNUSED_RESULT;
 /// Converts the input value to a number, if possible. If the input is <code>null</code> or <code>false</code>, the result is 0. If the input is <code>true</code>, the result is 1. If the input is a string, it is converted to a number as specified by the <a href="https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type">“ToNumber Applied to the String Type” algorithm</a> of the ECMAScript Language Specification. If multiple values are provided, each one is evaluated in order until the first successful conversion is obtained. If none of the inputs can be converted, the expression is an error.
-  TMBOperatorToNumber = 76,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull toNumber;)
++ (TMBOperator * _Nonnull)toNumber SWIFT_WARN_UNUSED_RESULT;
 /// Returns a four-element array containing the input color’s red, green, blue, and alpha components, in that order.
-  TMBOperatorToRgba = 77,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull toRgba;)
++ (TMBOperator * _Nonnull)toRgba SWIFT_WARN_UNUSED_RESULT;
 /// Converts the input value to a string. If the input is <code>null</code>, the result is <code>""</code>. If the input is a <a href="#types-boolean"><code>boolean</code></a>, the result is <code>"true"</code> or <code>"false"</code>. If the input is a number, it is converted to a string as specified by the <a href="https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type">“NumberToString” algorithm</a> of the ECMAScript Language Specification. If the input is a <a href="#color"><code>color</code></a>, it is converted to a string of the form <code>"rgba(r,g,b,a)"</code>, where <code>r</code>, <code>g</code>, and <code>b</code> are numerals ranging from 0 to 255, and <code>a</code> ranges from 0 to 1. If the input is an <a href="#types-image"><code>'image'</code></a> expression, <code>'to-string'</code> returns the image name. Otherwise, the input is converted to a string in the format specified by the <a href="https://tc39.github.io/ecma262/#sec-json.stringify"><code>JSON.stringify</code></a> function of the ECMAScript Language Specification.
-  TMBOperatorToString = 78,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull toString;)
++ (TMBOperator * _Nonnull)toString SWIFT_WARN_UNUSED_RESULT;
 /// Returns a string describing the type of the given value.
-  TMBOperatorTypeofExpression = 79,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull typeofExpression;)
++ (TMBOperator * _Nonnull)typeofExpression SWIFT_WARN_UNUSED_RESULT;
 /// Returns the input string converted to uppercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.
-  TMBOperatorUpcase = 80,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull upcase;)
++ (TMBOperator * _Nonnull)upcase SWIFT_WARN_UNUSED_RESULT;
 /// References variable bound using “let”.
-  TMBOperatorVarExpression = 81,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull varExpression;)
++ (TMBOperator * _Nonnull)varExpression SWIFT_WARN_UNUSED_RESULT;
 /// Returns <code>true</code> if the evaluated feature is fully contained inside a boundary of the input geometry, <code>false</code> otherwise. The input value can be a valid GeoJSON of type <code>Polygon</code>, <code>MultiPolygon</code>, <code>Feature</code>, or <code>FeatureCollection</code>. Supported features for evaluation:
 /// <ul>
 ///   <li>
@@ -1193,21 +1442,28 @@ typedef SWIFT_ENUM(NSInteger, TMBOperator, open) {
 ///     <code>LineString</code>: Returns <code>false</code> if any part of a line falls outside the boundary, the line intersects the boundary, or a line’s endpoint is on the boundary.
 ///   </li>
 /// </ul>
-  TMBOperatorWithin = 82,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull within;)
++ (TMBOperator * _Nonnull)within SWIFT_WARN_UNUSED_RESULT;
 /// Returns the current zoom level.  Note that in style layout and paint properties, [“zoom”] may only appear as the input to a top-level “step” or “interpolate” expression.
-  TMBOperatorZoom = 83,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull zoom;)
++ (TMBOperator * _Nonnull)zoom SWIFT_WARN_UNUSED_RESULT;
 /// Interpolates linearly between the pair of stops just less than and just greater than the input
-  TMBOperatorLinear = 84,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull linear;)
++ (TMBOperator * _Nonnull)linear SWIFT_WARN_UNUSED_RESULT;
 /// <code>["exponential", base]</code>
 /// Interpolates exponentially between the stops just less than and just
 /// greater than the input. base controls the rate at which the output increases: higher values make the output
 /// increase more towards the high end of the range.
 /// With values close to 1 the output increases linearly.
-  TMBOperatorExponential = 85,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull exponential;)
++ (TMBOperator * _Nonnull)exponential SWIFT_WARN_UNUSED_RESULT;
 /// <code>["cubic-bezier", x1, y1, x2, y2]</code>
 /// Interpolates using the cubic bezier curve defined by the given control points.
-  TMBOperatorCubicBezier = 86,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull cubicBezier;)
++ (TMBOperator * _Nonnull)cubicBezier SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 typedef SWIFT_ENUM(NSInteger, TMBOrnamentVisibility, open) {
   TMBOrnamentVisibilityAdaptive = 0,
@@ -1223,6 +1479,9 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBPoint")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBTextAnchor;
+@class TMBTextJustify;
+@class TMBTextTransform;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBPointAnnotation")
 @interface TMBPointAnnotation : NSObject <TMBAnnotation>
@@ -1233,10 +1492,70 @@ SWIFT_CLASS("_TtC13MapboxMapObjC18TMBPointAnnotation")
 @property (nonatomic) BOOL isDraggable;
 - (void)image:(UIImage * _Nonnull)image name:(NSString * _Nonnull)name;
 + (TMBPointAnnotation * _Nonnull)fromCoordinate:(CLLocationCoordinate2D)coordinate SWIFT_WARN_UNUSED_RESULT;
+/// Part of the icon placed closest to the anchor.
+@property (nonatomic, strong) TMBIconAnchor * _Nullable iconAnchor;
+/// Name of image in sprite to use for drawing an image background.
+@property (nonatomic, copy) NSString * _Nullable iconImage;
+/// Offset distance of icon from its anchor. Positive values indicate right and down, while negative values indicate left and up. Each component is multiplied by the value of <code>icon-size</code> to obtain the final offset in pixels. When combined with <code>icon-rotate</code> the offset will be as if the rotated direction was up.
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable iconOffset;
+/// Rotates the icon clockwise.
+@property (nonatomic, strong) NSNumber * _Nullable iconRotate;
+/// Scales the original size of the icon by the provided factor. The new pixel size of the image will be the original pixel size multiplied by <code>icon-size</code>. 1 is the original size; 3 triples the size of the image.
+@property (nonatomic, strong) NSNumber * _Nullable iconSize;
+/// Sorts features in ascending order based on this value. Features with lower sort keys are drawn and placed first.  When <code>icon-allow-overlap</code> or <code>text-allow-overlap</code> is <code>false</code>, features with a lower sort key will have priority during placement. When <code>icon-allow-overlap</code> or <code>text-allow-overlap</code> is set to <code>true</code>, features with a higher sort key will overlap over features with a lower sort key.
+@property (nonatomic, strong) NSNumber * _Nullable symbolSortKey;
+/// Part of the text placed closest to the anchor.
+@property (nonatomic, strong) TMBTextAnchor * _Nullable textAnchor;
+/// Value to use for a text label. If a plain <code>string</code> is provided, it will be treated as a <code>formatted</code> with default/inherited formatting options. SDF images are not supported in formatted text and will be ignored.
+@property (nonatomic, copy) NSString * _Nullable textField;
+/// Text justification options.
+@property (nonatomic, strong) TMBTextJustify * _Nullable textJustify;
+/// Text tracking amount.
+@property (nonatomic, strong) NSNumber * _Nullable textLetterSpacing;
+/// Text leading value for multi-line text.
+@property (nonatomic, strong) NSNumber * _Nullable textLineHeight;
+/// The maximum line width for text wrapping.
+@property (nonatomic, strong) NSNumber * _Nullable textMaxWidth;
+/// Offset distance of text from its anchor. Positive values indicate right and down, while negative values indicate left and up. If used with text-variable-anchor, input values will be taken as absolute values. Offsets along the x- and y-axis will be applied automatically based on the anchor position.
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable textOffset;
+/// Radial offset of text, in the direction of the symbol’s anchor. Useful in combination with <code>text-variable-anchor</code>, which defaults to using the two-dimensional <code>text-offset</code> if present.
+@property (nonatomic, strong) NSNumber * _Nullable textRadialOffset;
+/// Rotates the text clockwise.
+@property (nonatomic, strong) NSNumber * _Nullable textRotate;
+/// Font size.
+@property (nonatomic, strong) NSNumber * _Nullable textSize;
+/// Specifies how to capitalize text, similar to the CSS <code>text-transform</code> property.
+@property (nonatomic, strong) TMBTextTransform * _Nullable textTransform;
+/// The color of the icon. This can only be used with <a href="/help/troubleshooting/using-recolorable-images-in-mapbox-maps/">SDF icons</a>.
+@property (nonatomic, strong) UIColor * _Nullable iconColor;
+/// Fade out the halo towards the outside.
+@property (nonatomic, strong) NSNumber * _Nullable iconHaloBlur;
+/// The color of the icon’s halo. Icon halos can only be used with <a href="/help/troubleshooting/using-recolorable-images-in-mapbox-maps/">SDF icons</a>.
+@property (nonatomic, strong) UIColor * _Nullable iconHaloColor;
+/// Distance of halo to the icon outline.
+@property (nonatomic, strong) NSNumber * _Nullable iconHaloWidth;
+/// The opacity at which the icon will be drawn.
+@property (nonatomic, strong) NSNumber * _Nullable iconOpacity;
+/// The color with which the text will be drawn.
+@property (nonatomic, strong) UIColor * _Nullable textColor;
+/// The halo’s fadeout distance towards the outside.
+@property (nonatomic, strong) NSNumber * _Nullable textHaloBlur;
+/// The color of the text’s halo, which helps it stand out from backgrounds.
+@property (nonatomic, strong) UIColor * _Nullable textHaloColor;
+/// Distance of halo to the font outline. Max text halo width is 1/4 of the font-size.
+@property (nonatomic, strong) NSNumber * _Nullable textHaloWidth;
+/// The opacity at which the text will be drawn.
+@property (nonatomic, strong) NSNumber * _Nullable textOpacity;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBSymbolPlacement;
+@class TMBSymbolZOrder;
+@class TMBTextPitchAlignment;
+@class TMBTextRotationAlignment;
+@class TMBTextWritingMode;
+@class TMBTextTranslateAnchor;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC25TMBPointAnnotationManager")
 @interface TMBPointAnnotationManager : NSObject <TMBAnnotationManager>
@@ -1248,6 +1567,64 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25TMBPointAnnotationManager")
 /// note:
 /// This annotation manager listens to tap events via the <code>GestureManager.singleTapGestureRecognizer</code>.
 @property (nonatomic, weak) id <TMBAnnotationInteractionDelegate> _Nullable delegate;
+/// If true, the icon will be visible even if it collides with other previously drawn symbols.
+@property (nonatomic, strong) NSNumber * _Nullable iconAllowOverlap;
+/// If true, other symbols can be visible even if they collide with the icon.
+@property (nonatomic, strong) NSNumber * _Nullable iconIgnorePlacement;
+/// If true, the icon may be flipped to prevent it from being rendered upside-down.
+@property (nonatomic, strong) NSNumber * _Nullable iconKeepUpright;
+/// If true, text will display without their corresponding icons when the icon collides with other symbols and the text does not.
+@property (nonatomic, strong) NSNumber * _Nullable iconOptional;
+/// Size of the additional area around the icon bounding box used for detecting symbol collisions.
+@property (nonatomic, strong) NSNumber * _Nullable iconPadding;
+/// Orientation of icon when map is pitched.
+@property (nonatomic, strong) TMBIconPitchAlignment * _Nullable iconPitchAlignment;
+/// In combination with <code>symbol-placement</code>, determines the rotation behavior of icons.
+@property (nonatomic, strong) TMBIconRotationAlignment * _Nullable iconRotationAlignment;
+/// Scales the icon to fit around the associated text.
+@property (nonatomic, strong) TMBIconTextFit * _Nullable iconTextFit;
+/// Size of the additional area added to dimensions determined by <code>icon-text-fit</code>, in clockwise order: top, right, bottom, left.
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable iconTextFitPadding;
+/// If true, the symbols will not cross tile edges to avoid mutual collisions. Recommended in layers that don’t have enough padding in the vector tile to prevent collisions, or if it is a point symbol layer placed after a line symbol layer. When using a client that supports global collision detection, like Mapbox GL JS version 0.42.0 or greater, enabling this property is not needed to prevent clipped labels at tile boundaries.
+@property (nonatomic, strong) NSNumber * _Nullable symbolAvoidEdges;
+/// Label placement relative to its geometry.
+@property (nonatomic, strong) TMBSymbolPlacement * _Nullable symbolPlacement;
+/// Distance between two symbol anchors.
+@property (nonatomic, strong) NSNumber * _Nullable symbolSpacing;
+/// Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use <code>symbol-sort-key</code>.
+@property (nonatomic, strong) TMBSymbolZOrder * _Nullable symbolZOrder;
+/// If true, the text will be visible even if it collides with other previously drawn symbols.
+@property (nonatomic, strong) NSNumber * _Nullable textAllowOverlap;
+/// Font stack to use for displaying text.
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable textFont;
+/// If true, other symbols can be visible even if they collide with the text.
+@property (nonatomic, strong) NSNumber * _Nullable textIgnorePlacement;
+/// If true, the text may be flipped vertically to prevent it from being rendered upside-down.
+@property (nonatomic, strong) NSNumber * _Nullable textKeepUpright;
+/// Maximum angle change between adjacent characters.
+@property (nonatomic, strong) NSNumber * _Nullable textMaxAngle;
+/// If true, icons will display without their corresponding text when the text collides with other symbols and the icon does not.
+@property (nonatomic, strong) NSNumber * _Nullable textOptional;
+/// Size of the additional area around the text bounding box used for detecting symbol collisions.
+@property (nonatomic, strong) NSNumber * _Nullable textPadding;
+/// Orientation of text when map is pitched.
+@property (nonatomic, strong) TMBTextPitchAlignment * _Nullable textPitchAlignment;
+/// In combination with <code>symbol-placement</code>, determines the rotation behavior of the individual glyphs forming the text.
+@property (nonatomic, strong) TMBTextRotationAlignment * _Nullable textRotationAlignment;
+/// To increase the chance of placing high-priority labels on the map, you can provide an array of <code>text-anchor</code> locations: the renderer will attempt to place the label at each location, in order, before moving onto the next label. Use <code>text-justify: auto</code> to choose justification based on anchor position. To apply an offset, use the <code>text-radial-offset</code> or the two-dimensional <code>text-offset</code>.
+@property (nonatomic, copy) NSArray<TMBTextAnchor *> * _Nullable textVariableAnchor;
+/// The property allows control over a symbol’s orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single ‘vertical’ enum value. For symbol with point placement, the order of elements in an array define priority order for the placement of an orientation variant. For symbol with line placement, the default text writing mode is either [‘horizontal’, ‘vertical’] or [‘vertical’, ‘horizontal’], the order doesn’t affect the placement.
+@property (nonatomic, copy) NSArray<TMBTextWritingMode *> * _Nullable textWritingMode;
+/// Distance that the icon’s anchor is moved from its original placement. Positive values indicate right and down, while negative values indicate left and up.
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable iconTranslate;
+/// Controls the frame of reference for <code>icon-translate</code>.
+@property (nonatomic, strong) TMBIconTranslateAnchor * _Nullable iconTranslateAnchor;
+/// Distance that the text’s anchor is moved from its original placement. Positive values indicate right and down, while negative values indicate left and up.
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable textTranslate;
+/// Controls the frame of reference for <code>text-translate</code>.
+@property (nonatomic, strong) TMBTextTranslateAnchor * _Nullable textTranslateAnchor;
+/// Text leading value for multi-line text.
+@property (nonatomic, strong) NSNumber * _Nullable textLineHeight SWIFT_DEPRECATED_MSG("text-line-height property is now data driven, use `PointAnnotation.textLineHeight` instead.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1283,10 +1660,76 @@ SWIFT_CLASS("_TtC13MapboxMapObjC27TMBPolygonAnnotationManager")
 @property (nonatomic, readonly, copy) NSString * _Nonnull sourceId;
 @property (nonatomic, readonly, copy) NSString * _Nonnull layerId;
 @property (nonatomic, copy) NSArray<TMBPolygonAnnotation *> * _Nonnull annotations;
+/// Whether or not the fill should be antialiased.
+@property (nonatomic) BOOL fillAntialias;
+/// The geometry’s offset. Values are [x, y] where negatives indicate left and up, respectively.
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable fillTranslate;
+/// Controls the frame of reference for <code>fill-translate</code>.
+@property (nonatomic, strong) TMBFillTranslateAnchor * _Nullable fillTranslateAnchor;
 /// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.
 /// note:
 /// This annotation manager listens to tap events via the <code>GestureManager.singleTapGestureRecognizer</code>.
 @property (nonatomic, weak) id <TMBAnnotationInteractionDelegate> _Nullable delegate;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC21TMBPolylineAnnotation")
+@interface TMBPolylineAnnotation : NSObject <TMBAnnotation>
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+@property (nonatomic, readonly, copy) NSString * _Nonnull geometryInJSON;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
+@property (nonatomic) BOOL isSelected;
+@property (nonatomic) BOOL isDraggable;
++ (TMBPolylineAnnotation * _Nonnull)fromId:(NSString * _Nonnull)id coordinates:(NSArray<NSValue *> * _Nonnull)coordinates isSelected:(BOOL)isSelected isDraggable:(BOOL)isDraggable SWIFT_WARN_UNUSED_RESULT;
+/// The display of lines when joining.
+@property (nonatomic, strong) TMBLineJoin * _Nullable lineJoin;
+/// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
+@property (nonatomic, strong) NSNumber * _Nullable lineSortKey;
+/// Blur applied to the line, in pixels.
+@property (nonatomic, strong) NSNumber * _Nullable lineBlur;
+/// The color with which the line will be drawn.
+@property (nonatomic, strong) UIColor * _Nullable lineColor;
+/// Draws a line casing outside of a line’s actual path. Value indicates the width of the inner gap.
+@property (nonatomic, strong) NSNumber * _Nullable lineGapWidth;
+/// The line’s offset. For linear features, a positive value offsets the line to the right, relative to the direction of the line, and a negative value to the left. For polygon features, a positive value results in an inset, and a negative value results in an outset.
+@property (nonatomic, strong) NSNumber * _Nullable lineOffset;
+/// The opacity at which the line will be drawn.
+@property (nonatomic, strong) NSNumber * _Nullable lineOpacity;
+/// Name of image in sprite to use for drawing image lines. For seamless patterns, image width must be a factor of two (2, 4, 8, …, 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
+@property (nonatomic, copy) NSString * _Nullable linePattern;
+/// Stroke thickness.
+@property (nonatomic, strong) NSNumber * _Nullable lineWidth;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC28TMBPolylineAnnotationManager")
+@interface TMBPolylineAnnotationManager : NSObject <TMBAnnotationManager>
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+@property (nonatomic, readonly, copy) NSString * _Nonnull sourceId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull layerId;
+@property (nonatomic, copy) NSArray<TMBPolylineAnnotation *> * _Nonnull annotations;
+/// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.
+/// note:
+/// This annotation manager listens to tap events via the <code>GestureManager.singleTapGestureRecognizer</code>.
+@property (nonatomic, weak) id <TMBAnnotationInteractionDelegate> _Nullable delegate;
+/// The display of line endings.
+@property (nonatomic, strong) TMBLineCap * _Nullable lineCap;
+/// Used to automatically convert miter joins to bevel joins for sharp angles.
+@property (nonatomic, strong) NSNumber * _Nullable lineMiterLimit;
+/// Used to automatically convert round joins to miter joins for shallow angles.
+@property (nonatomic, strong) NSNumber * _Nullable lineRoundLimit;
+/// Specifies the lengths of the alternating dashes and gaps that form the dash pattern. The lengths are later scaled by the line width. To convert a dash length to pixels, multiply the length by the current line width. Note that GeoJSON sources with <code>lineMetrics: true</code> specified won’t render dashed lines to the expected scale. Also note that zoom-dependent expressions will be evaluated only at integer zoom levels.
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable lineDasharray;
+/// The geometry’s offset. Values are [x, y] where negatives indicate left and up, respectively.
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable lineTranslate;
+/// Controls the frame of reference for <code>line-translate</code>.
+@property (nonatomic, strong) TMBLineTranslateAnchor * _Nullable lineTranslateAnchor;
+/// The line part between [trim-start, trim-end] will be marked as transparent to make a route vanishing effect. The line trim-off offset is based on the whole line range [0.0, 1.0].
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable lineTrimOffset;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1296,13 +1739,19 @@ typedef SWIFT_ENUM(NSInteger, TMBPuckBearingSource, open) {
   TMBPuckBearingSourceCourse = 1,
 };
 
-/// The resampling/interpolation method to use for overscaling, also known as texture magnification filter
-typedef SWIFT_ENUM(NSInteger, TMBRasterResampling, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC19TMBRasterResampling")
+@interface TMBRasterResampling : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
-  TMBRasterResamplingLinear = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBRasterResampling * _Nonnull linear;)
++ (TMBRasterResampling * _Nonnull)linear SWIFT_WARN_UNUSED_RESULT;
 /// Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled
-  TMBRasterResamplingNearest = 1,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBRasterResampling * _Nonnull nearest;)
++ (TMBRasterResampling * _Nonnull)nearest SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC16TMBResolvedImage")
@@ -1324,28 +1773,59 @@ SWIFT_CLASS("_TtC13MapboxMapObjC20TMBResolvedImageData")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-/// The type of the sky
-typedef SWIFT_ENUM(NSInteger, TMBSkyType, open) {
-/// Renders the sky with a gradient that can be configured with {@link SKY_GRADIENT_RADIUS} and {@link SKY_GRADIENT}.
-  TMBSkyTypeGradient = 0,
-/// Renders the sky with a simulated atmospheric scattering algorithm, the sun direction can be attached to the light position or explicitly set through {@link SKY_ATMOSPHERE_SUN}.
-  TMBSkyTypeAtmosphere = 1,
-};
 
-typedef SWIFT_ENUM(NSInteger, TMBSourceType, open) {
+SWIFT_CLASS("_TtC13MapboxMapObjC9TMBScheme")
+@interface TMBScheme : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+/// Slippy map tilenames scheme.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBScheme * _Nonnull xyz;)
++ (TMBScheme * _Nonnull)xyz SWIFT_WARN_UNUSED_RESULT;
+/// OSGeo spec scheme.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBScheme * _Nonnull tms;)
++ (TMBScheme * _Nonnull)tms SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC10TMBSkyType")
+@interface TMBSkyType : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+/// Renders the sky with a gradient that can be configured with {@link SKY_GRADIENT_RADIUS} and {@link SKY_GRADIENT}.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSkyType * _Nonnull gradient;)
++ (TMBSkyType * _Nonnull)gradient SWIFT_WARN_UNUSED_RESULT;
+/// Renders the sky with a simulated atmospheric scattering algorithm, the sun direction can be attached to the light position or explicitly set through {@link SKY_ATMOSPHERE_SUN}.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSkyType * _Nonnull atmosphere;)
++ (TMBSkyType * _Nonnull)atmosphere SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC13TMBSourceType")
+@interface TMBSourceType : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// A vector tile source.
-  TMBSourceTypeVector = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceType * _Nonnull vector;)
++ (TMBSourceType * _Nonnull)vector SWIFT_WARN_UNUSED_RESULT;
 /// A raster tile source.
-  TMBSourceTypeRaster = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceType * _Nonnull raster;)
++ (TMBSourceType * _Nonnull)raster SWIFT_WARN_UNUSED_RESULT;
 /// A raster DEM source.
-  TMBSourceTypeRasterDem = 2,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceType * _Nonnull rasterDem;)
++ (TMBSourceType * _Nonnull)rasterDem SWIFT_WARN_UNUSED_RESULT;
 /// A GeoJSON source.
-  TMBSourceTypeGeoJson = 3,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceType * _Nonnull geoJson;)
++ (TMBSourceType * _Nonnull)geoJson SWIFT_WARN_UNUSED_RESULT;
 /// An image source.
-  TMBSourceTypeImage = 4,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceType * _Nonnull image;)
++ (TMBSourceType * _Nonnull)image SWIFT_WARN_UNUSED_RESULT;
 /// A model source
-  TMBSourceTypeModel = 5,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceType * _Nonnull model;)
++ (TMBSourceType * _Nonnull)model SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC8TMBStyle")
@@ -1355,13 +1835,19 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBStyle")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-/// The name of the projection to be used for rendering the map.
-typedef SWIFT_ENUM(NSInteger, TMBStyleProjectionName, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC22TMBStyleProjectionName")
+@interface TMBStyleProjectionName : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The Mercator projection is the default projection.
-  TMBStyleProjectionNameMercator = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBStyleProjectionName * _Nonnull mercator;)
++ (TMBStyleProjectionName * _Nonnull)mercator SWIFT_WARN_UNUSED_RESULT;
 /// A globe projection.
-  TMBStyleProjectionNameGlobe = 1,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBStyleProjectionName * _Nonnull globe;)
++ (TMBStyleProjectionName * _Nonnull)globe SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBStyleTransition")
@@ -1372,25 +1858,39 @@ SWIFT_CLASS("_TtC13MapboxMapObjC18TMBStyleTransition")
 @end
 
 
-/// Label placement relative to its geometry.
-typedef SWIFT_ENUM(NSInteger, TMBSymbolPlacement, open) {
-/// The label is placed at the point where the geometry is located.
-  TMBSymbolPlacementPoint = 0,
-/// The label is placed along the line of the geometry. Can only be used on LineString and Polygon geometries.
-  TMBSymbolPlacementLine = 1,
-/// The label is placed at the center of the line of the geometry. Can only be used on LineString and Polygon geometries. Note that a single feature in a vector tile may contain multiple line geometries.
-  TMBSymbolPlacementLineCenter = 2,
-};
 
-/// Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use <code>symbol-sort-key</code>.
-typedef SWIFT_ENUM(NSInteger, TMBSymbolZOrder, open) {
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBSymbolPlacement")
+@interface TMBSymbolPlacement : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+/// The label is placed at the point where the geometry is located.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolPlacement * _Nonnull point;)
++ (TMBSymbolPlacement * _Nonnull)point SWIFT_WARN_UNUSED_RESULT;
+/// The label is placed along the line of the geometry. Can only be used on LineString and Polygon geometries.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolPlacement * _Nonnull line;)
++ (TMBSymbolPlacement * _Nonnull)line SWIFT_WARN_UNUSED_RESULT;
+/// The label is placed at the center of the line of the geometry. Can only be used on LineString and Polygon geometries. Note that a single feature in a vector tile may contain multiple line geometries.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolPlacement * _Nonnull lineCenter;)
++ (TMBSymbolPlacement * _Nonnull)lineCenter SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC15TMBSymbolZOrder")
+@interface TMBSymbolZOrder : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Sorts symbols by symbol sort key if set. Otherwise, sorts symbols by their y-position relative to the viewport if {@link ICON_ALLOW_OVERLAP} or {@link TEXT_ALLOW_OVERLAP} is set to {@link TRUE} or {@link ICON_IGNORE_PLACEMENT} or {@link TEXT_IGNORE_PLACEMENT} is {@link FALSE}.
-  TMBSymbolZOrderAuto = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto) TMBSymbolZOrder * _Nonnull auto_;)
++ (TMBSymbolZOrder * _Nonnull)auto SWIFT_WARN_UNUSED_RESULT;
 /// Sorts symbols by their y-position relative to the viewport if {@link ICON_ALLOW_OVERLAP} or {@link TEXT_ALLOW_OVERLAP} is set to {@link TRUE} or {@link ICON_IGNORE_PLACEMENT} or {@link TEXT_IGNORE_PLACEMENT} is {@link FALSE}.
-  TMBSymbolZOrderViewportY = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolZOrder * _Nonnull viewportY;)
++ (TMBSymbolZOrder * _Nonnull)viewportY SWIFT_WARN_UNUSED_RESULT;
 /// Sorts symbols by symbol sort key if set. Otherwise, no sorting is applied; symbols are rendered in the same order as the source data.
-  TMBSymbolZOrderSource = 2,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolZOrder * _Nonnull source;)
++ (TMBSymbolZOrder * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC10TMBTerrain")
@@ -1403,85 +1903,139 @@ SWIFT_CLASS("_TtC13MapboxMapObjC10TMBTerrain")
 @end
 
 
-/// Part of the text placed closest to the anchor.
-typedef SWIFT_ENUM(NSInteger, TMBTextAnchor, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC13TMBTextAnchor")
+@interface TMBTextAnchor : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The center of the text is placed closest to the anchor.
-  TMBTextAnchorCenter = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAnchor * _Nonnull center;)
++ (TMBTextAnchor * _Nonnull)center SWIFT_WARN_UNUSED_RESULT;
 /// The left side of the text is placed closest to the anchor.
-  TMBTextAnchorLeft = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAnchor * _Nonnull left;)
++ (TMBTextAnchor * _Nonnull)left SWIFT_WARN_UNUSED_RESULT;
 /// The right side of the text is placed closest to the anchor.
-  TMBTextAnchorRight = 2,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAnchor * _Nonnull right;)
++ (TMBTextAnchor * _Nonnull)right SWIFT_WARN_UNUSED_RESULT;
 /// The top of the text is placed closest to the anchor.
-  TMBTextAnchorTop = 3,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAnchor * _Nonnull top;)
++ (TMBTextAnchor * _Nonnull)top SWIFT_WARN_UNUSED_RESULT;
 /// The bottom of the text is placed closest to the anchor.
-  TMBTextAnchorBottom = 4,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAnchor * _Nonnull bottom;)
++ (TMBTextAnchor * _Nonnull)bottom SWIFT_WARN_UNUSED_RESULT;
 /// The top left corner of the text is placed closest to the anchor.
-  TMBTextAnchorTopLeft = 5,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAnchor * _Nonnull topLeft;)
++ (TMBTextAnchor * _Nonnull)topLeft SWIFT_WARN_UNUSED_RESULT;
 /// The top right corner of the text is placed closest to the anchor.
-  TMBTextAnchorTopRight = 6,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAnchor * _Nonnull topRight;)
++ (TMBTextAnchor * _Nonnull)topRight SWIFT_WARN_UNUSED_RESULT;
 /// The bottom left corner of the text is placed closest to the anchor.
-  TMBTextAnchorBottomLeft = 7,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAnchor * _Nonnull bottomLeft;)
++ (TMBTextAnchor * _Nonnull)bottomLeft SWIFT_WARN_UNUSED_RESULT;
 /// The bottom right corner of the text is placed closest to the anchor.
-  TMBTextAnchorBottomRight = 8,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAnchor * _Nonnull bottomRight;)
++ (TMBTextAnchor * _Nonnull)bottomRight SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// Text justification options.
-typedef SWIFT_ENUM(NSInteger, TMBTextJustify, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC14TMBTextJustify")
+@interface TMBTextJustify : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is aligned towards the anchor position.
-  TMBTextJustifyAuto = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto) TMBTextJustify * _Nonnull auto_;)
++ (TMBTextJustify * _Nonnull)auto SWIFT_WARN_UNUSED_RESULT;
 /// The text is aligned to the left.
-  TMBTextJustifyLeft = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextJustify * _Nonnull left;)
++ (TMBTextJustify * _Nonnull)left SWIFT_WARN_UNUSED_RESULT;
 /// The text is centered.
-  TMBTextJustifyCenter = 2,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextJustify * _Nonnull center;)
++ (TMBTextJustify * _Nonnull)center SWIFT_WARN_UNUSED_RESULT;
 /// The text is aligned to the right.
-  TMBTextJustifyRight = 3,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextJustify * _Nonnull right;)
++ (TMBTextJustify * _Nonnull)right SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// Orientation of text when map is pitched.
-typedef SWIFT_ENUM(NSInteger, TMBTextPitchAlignment, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC21TMBTextPitchAlignment")
+@interface TMBTextPitchAlignment : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is aligned to the plane of the map.
-  TMBTextPitchAlignmentMap = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextPitchAlignment * _Nonnull map;)
++ (TMBTextPitchAlignment * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
 /// The text is aligned to the plane of the viewport.
-  TMBTextPitchAlignmentViewport = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextPitchAlignment * _Nonnull viewport;)
++ (TMBTextPitchAlignment * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
 /// Automatically matches the value of {@link TEXT_ROTATION_ALIGNMENT}.
-  TMBTextPitchAlignmentAuto = 2,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto) TMBTextPitchAlignment * _Nonnull auto_;)
++ (TMBTextPitchAlignment * _Nonnull)auto SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// In combination with <code>symbol-placement</code>, determines the rotation behavior of the individual glyphs forming the text.
-typedef SWIFT_ENUM(NSInteger, TMBTextRotationAlignment, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC24TMBTextRotationAlignment")
+@interface TMBTextRotationAlignment : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, aligns text east-west. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, aligns text x-axes with the line.
-  TMBTextRotationAlignmentMap = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextRotationAlignment * _Nonnull map;)
++ (TMBTextRotationAlignment * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
 /// Produces glyphs whose x-axes are aligned with the x-axis of the viewport, regardless of the value of {@link SYMBOL_PLACEMENT}.
-  TMBTextRotationAlignmentViewport = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextRotationAlignment * _Nonnull viewport;)
++ (TMBTextRotationAlignment * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
 /// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, this is equivalent to {@link Property#TEXT_ROTATION_ALIGNMENT_VIEWPORT}. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, this is equivalent to {@link Property#TEXT_ROTATION_ALIGNMENT_MAP}.
-  TMBTextRotationAlignmentAuto = 2,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto) TMBTextRotationAlignment * _Nonnull auto_;)
++ (TMBTextRotationAlignment * _Nonnull)auto SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// Specifies how to capitalize text, similar to the CSS <code>text-transform</code> property.
-typedef SWIFT_ENUM(NSInteger, TMBTextTransform, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC16TMBTextTransform")
+@interface TMBTextTransform : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is not altered.
-  TMBTextTransformNone = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTransform * _Nonnull none;)
++ (TMBTextTransform * _Nonnull)none SWIFT_WARN_UNUSED_RESULT;
 /// Forces all letters to be displayed in uppercase.
-  TMBTextTransformUppercase = 1,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTransform * _Nonnull uppercase;)
++ (TMBTextTransform * _Nonnull)uppercase SWIFT_WARN_UNUSED_RESULT;
 /// Forces all letters to be displayed in lowercase.
-  TMBTextTransformLowercase = 2,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTransform * _Nonnull lowercase;)
++ (TMBTextTransform * _Nonnull)lowercase SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// Controls the frame of reference for <code>text-translate</code>.
-typedef SWIFT_ENUM(NSInteger, TMBTextTranslateAnchor, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC22TMBTextTranslateAnchor")
+@interface TMBTextTranslateAnchor : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is translated relative to the map.
-  TMBTextTranslateAnchorMap = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTranslateAnchor * _Nonnull map;)
++ (TMBTextTranslateAnchor * _Nonnull)map SWIFT_WARN_UNUSED_RESULT;
 /// The text is translated relative to the viewport.
-  TMBTextTranslateAnchorViewport = 1,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTranslateAnchor * _Nonnull viewport;)
++ (TMBTextTranslateAnchor * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
-/// The property allows control over a symbol’s orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single ‘vertical’ enum value. For symbol with point placement, the order of elements in an array define priority order for the placement of an orientation variant. For symbol with line placement, the default text writing mode is either [‘horizontal’, ‘vertical’] or [‘vertical’, ‘horizontal’], the order doesn’t affect the placement.
-typedef SWIFT_ENUM(NSInteger, TMBTextWritingMode, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBTextWritingMode")
+@interface TMBTextWritingMode : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// If a text’s language supports horizontal writing mode, symbols would be laid out horizontally.
-  TMBTextWritingModeHorizontal = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextWritingMode * _Nonnull horizontal;)
++ (TMBTextWritingMode * _Nonnull)horizontal SWIFT_WARN_UNUSED_RESULT;
 /// If a text’s language supports vertical writing mode, symbols would be laid out vertically.
-  TMBTextWritingModeVertical = 1,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextWritingMode * _Nonnull vertical;)
++ (TMBTextWritingMode * _Nonnull)vertical SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
@@ -1498,36 +2052,19 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 
-typedef SWIFT_ENUM(NSInteger, TMBVisibility, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC13TMBVisibility")
+@interface TMBVisibility : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The layer is shown.
-  TMBVisibilityVisible = 0,
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBVisibility * _Nonnull visible;)
++ (TMBVisibility * _Nonnull)visible SWIFT_WARN_UNUSED_RESULT;
 /// The layer is not shown.
-  TMBVisibilityNone = 1,
-};
-
-/// Orientation of circle when map is pitched.
-typedef SWIFT_ENUM(NSInteger, TTMBirclePitchAlignment, open) {
-/// The circle is aligned to the plane of the map.
-  TTMBirclePitchAlignmentMap = 0,
-/// The circle is aligned to the plane of the viewport.
-  TTMBirclePitchAlignmentViewport = 1,
-};
-
-/// Controls the scaling behavior of the circle when the map is pitched.
-typedef SWIFT_ENUM(NSInteger, TTMBirclePitchScale, open) {
-/// Circles are scaled according to their apparent distance to the camera.
-  TTMBirclePitchScaleMap = 0,
-/// Circles are not scaled.
-  TTMBirclePitchScaleViewport = 1,
-};
-
-/// Controls the frame of reference for <code>circle-translate</code>.
-typedef SWIFT_ENUM(NSInteger, TTMBircleTranslateAnchor, open) {
-/// The circle is translated relative to the map.
-  TTMBircleTranslateAnchorMap = 0,
-/// The circle is translated relative to the viewport.
-  TTMBircleTranslateAnchorViewport = 1,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBVisibility * _Nonnull none;)
++ (TMBVisibility * _Nonnull)none SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 @class MBXTileRegionLoadOptions;
 @class MBXTileRegion;

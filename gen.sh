@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export SDK=iphoneos16.2
+export SDK=iphoneos16.4
 
 function bind {
     echo "$1 artifacts/$2.xcframework/ios-arm64/$2.framework/Headers/"
