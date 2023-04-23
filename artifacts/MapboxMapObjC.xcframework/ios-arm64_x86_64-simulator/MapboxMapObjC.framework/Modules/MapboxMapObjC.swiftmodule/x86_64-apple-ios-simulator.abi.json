@@ -2974,6 +2974,35 @@
         "printedName": "TMBVisibility",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBVisibility",
+                "printedName": "MapboxMapObjC.TMBVisibility",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBVisibility"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBVisibility(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC13TMBVisibilityC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -3209,6 +3238,35 @@
         "name": "TMBLineCap",
         "printedName": "TMBLineCap",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBLineCap",
+                "printedName": "MapboxMapObjC.TMBLineCap",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLineCap"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLineCap(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC10TMBLineCapC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -3500,6 +3558,35 @@
         "printedName": "TMBLineJoin",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBLineJoin",
+                "printedName": "MapboxMapObjC.TMBLineJoin",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLineJoin"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLineJoin(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC11TMBLineJoinC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -3789,6 +3876,35 @@
         "name": "TMBIconAnchor",
         "printedName": "TMBIconAnchor",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBIconAnchor",
+                "printedName": "MapboxMapObjC.TMBIconAnchor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBIconAnchor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBIconAnchor(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC13TMBIconAnchorC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -4404,6 +4520,35 @@
         "printedName": "TMBIconPitchAlignment",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBIconPitchAlignment",
+                "printedName": "MapboxMapObjC.TMBIconPitchAlignment",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBIconPitchAlignment"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBIconPitchAlignment(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC21TMBIconPitchAlignmentC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -4694,6 +4839,35 @@
         "printedName": "TMBIconRotationAlignment",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBIconRotationAlignment",
+                "printedName": "MapboxMapObjC.TMBIconRotationAlignment",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBIconRotationAlignment"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBIconRotationAlignment(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC24TMBIconRotationAlignmentC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -4983,6 +5157,35 @@
         "name": "TMBIconTextFit",
         "printedName": "TMBIconTextFit",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBIconTextFit",
+                "printedName": "MapboxMapObjC.TMBIconTextFit",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBIconTextFit"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBIconTextFit(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC14TMBIconTextFitC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -5328,6 +5531,35 @@
         "printedName": "TMBSymbolPlacement",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBSymbolPlacement",
+                "printedName": "MapboxMapObjC.TMBSymbolPlacement",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSymbolPlacement"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSymbolPlacement(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC18TMBSymbolPlacementC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -5618,6 +5850,35 @@
         "printedName": "TMBSymbolZOrder",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBSymbolZOrder",
+                "printedName": "MapboxMapObjC.TMBSymbolZOrder",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSymbolZOrder"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSymbolZOrder(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC15TMBSymbolZOrderC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -5907,6 +6168,35 @@
         "name": "TMBTextAnchor",
         "printedName": "TMBTextAnchor",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBTextAnchor",
+                "printedName": "MapboxMapObjC.TMBTextAnchor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextAnchor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextAnchor(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC13TMBTextAnchorC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -6522,6 +6812,35 @@
         "printedName": "TMBTextJustify",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBTextJustify",
+                "printedName": "MapboxMapObjC.TMBTextJustify",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextJustify"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextJustify(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC14TMBTextJustifyC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -6866,6 +7185,35 @@
         "printedName": "TMBTextPitchAlignment",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBTextPitchAlignment",
+                "printedName": "MapboxMapObjC.TMBTextPitchAlignment",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextPitchAlignment"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextPitchAlignment(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC21TMBTextPitchAlignmentC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -7155,6 +7503,35 @@
         "name": "TMBTextRotationAlignment",
         "printedName": "TMBTextRotationAlignment",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBTextRotationAlignment",
+                "printedName": "MapboxMapObjC.TMBTextRotationAlignment",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextRotationAlignment"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextRotationAlignment(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC24TMBTextRotationAlignmentC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -7446,6 +7823,35 @@
         "printedName": "TMBTextTransform",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBTextTransform",
+                "printedName": "MapboxMapObjC.TMBTextTransform",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextTransform"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextTransform(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC16TMBTextTransformC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -7736,6 +8142,35 @@
         "printedName": "TMBFillTranslateAnchor",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBFillTranslateAnchor",
+                "printedName": "MapboxMapObjC.TMBFillTranslateAnchor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBFillTranslateAnchor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBFillTranslateAnchor(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC22TMBFillTranslateAnchorC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -7971,6 +8406,35 @@
         "name": "TMBLineTranslateAnchor",
         "printedName": "TMBLineTranslateAnchor",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBLineTranslateAnchor",
+                "printedName": "MapboxMapObjC.TMBLineTranslateAnchor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLineTranslateAnchor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLineTranslateAnchor(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC22TMBLineTranslateAnchorC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -8208,6 +8672,35 @@
         "printedName": "TMBIconTranslateAnchor",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBIconTranslateAnchor",
+                "printedName": "MapboxMapObjC.TMBIconTranslateAnchor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBIconTranslateAnchor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBIconTranslateAnchor(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC22TMBIconTranslateAnchorC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -8443,6 +8936,35 @@
         "name": "TMBTextTranslateAnchor",
         "printedName": "TMBTextTranslateAnchor",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBTextTranslateAnchor",
+                "printedName": "MapboxMapObjC.TMBTextTranslateAnchor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextTranslateAnchor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextTranslateAnchor(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC22TMBTextTranslateAnchorC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -8680,6 +9202,35 @@
         "printedName": "TMBCirclePitchAlignment",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBCirclePitchAlignment",
+                "printedName": "MapboxMapObjC.TMBCirclePitchAlignment",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCirclePitchAlignment"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCirclePitchAlignment(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC23TMBCirclePitchAlignmentC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -8915,6 +9466,35 @@
         "name": "TMBCirclePitchScale",
         "printedName": "TMBCirclePitchScale",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBCirclePitchScale",
+                "printedName": "MapboxMapObjC.TMBCirclePitchScale",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCirclePitchScale"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCirclePitchScale(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC19TMBCirclePitchScaleC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -9152,6 +9732,35 @@
         "printedName": "TMBCircleTranslateAnchor",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBCircleTranslateAnchor",
+                "printedName": "MapboxMapObjC.TMBCircleTranslateAnchor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCircleTranslateAnchor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCircleTranslateAnchor(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC24TMBCircleTranslateAnchorC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -9387,6 +9996,35 @@
         "name": "TMBFillExtrusionTranslateAnchor",
         "printedName": "TMBFillExtrusionTranslateAnchor",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBFillExtrusionTranslateAnchor",
+                "printedName": "MapboxMapObjC.TMBFillExtrusionTranslateAnchor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBFillExtrusionTranslateAnchor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBFillExtrusionTranslateAnchor(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC31TMBFillExtrusionTranslateAnchorC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -9624,6 +10262,35 @@
         "printedName": "TMBRasterResampling",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBRasterResampling",
+                "printedName": "MapboxMapObjC.TMBRasterResampling",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBRasterResampling"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBRasterResampling(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC19TMBRasterResamplingC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -9859,6 +10526,35 @@
         "name": "TMBHillshadeIlluminationAnchor",
         "printedName": "TMBHillshadeIlluminationAnchor",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBHillshadeIlluminationAnchor",
+                "printedName": "MapboxMapObjC.TMBHillshadeIlluminationAnchor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBHillshadeIlluminationAnchor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBHillshadeIlluminationAnchor(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC30TMBHillshadeIlluminationAnchorC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -10096,6 +10792,35 @@
         "printedName": "TMBSkyType",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBSkyType",
+                "printedName": "MapboxMapObjC.TMBSkyType",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSkyType"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSkyType(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC10TMBSkyTypeC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -10331,6 +11056,35 @@
         "name": "TMBAnchor",
         "printedName": "TMBAnchor",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBAnchor",
+                "printedName": "MapboxMapObjC.TMBAnchor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAnchor"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAnchor(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC9TMBAnchorC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -10568,6 +11322,35 @@
         "printedName": "TMBStyleProjectionName",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBStyleProjectionName",
+                "printedName": "MapboxMapObjC.TMBStyleProjectionName",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyleProjectionName"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyleProjectionName(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC22TMBStyleProjectionNameC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -10803,6 +11586,35 @@
         "name": "TMBTextWritingMode",
         "printedName": "TMBTextWritingMode",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBTextWritingMode",
+                "printedName": "MapboxMapObjC.TMBTextWritingMode",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextWritingMode"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTextWritingMode(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC18TMBTextWritingModeC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -27644,6 +28456,35 @@
         "printedName": "TMBSourceType",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBSourceType",
+                "printedName": "MapboxMapObjC.TMBSourceType",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSourceType"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSourceType(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC13TMBSourceTypeC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -28364,6 +29205,35 @@
         "printedName": "TMBScheme",
         "children": [
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBScheme",
+                "printedName": "MapboxMapObjC.TMBScheme",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBScheme"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBScheme(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC9TMBSchemeC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
+          {
             "kind": "Function",
             "name": "stringValue",
             "printedName": "stringValue()",
@@ -28599,6 +29469,35 @@
         "name": "TMBEncoding",
         "printedName": "TMBEncoding",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBEncoding",
+                "printedName": "MapboxMapObjC.TMBEncoding",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBEncoding"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBEncoding(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC11TMBEncodingC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -32238,6 +33137,35 @@
         "name": "TMBOperator",
         "printedName": "TMBOperator",
         "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(value:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBOperator",
+                "printedName": "MapboxMapObjC.TMBOperator",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBOperator"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBOperator(im)initWithValue:",
+            "mangledName": "$s13MapboxMapObjC11TMBOperatorC5valueACSS_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithValue:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "init_kind": "Designated"
+          },
           {
             "kind": "Function",
             "name": "stringValue",
@@ -44599,189 +45527,189 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 873,
+      "offset": 950,
       "length": 10,
       "value": "\"MapboxMapObjC.TMBLineCap\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 1964,
+      "offset": 2118,
       "length": 11,
       "value": "\"MapboxMapObjC.TMBLineJoin\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 3128,
+      "offset": 3359,
       "length": 13,
       "value": "\"MapboxMapObjC.TMBIconAnchor\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 5070,
+      "offset": 5378,
       "length": 21,
       "value": "\"MapboxMapObjC.TMBIconPitchAlignment\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 6175,
+      "offset": 6560,
       "length": 24,
       "value": "\"MapboxMapObjC.TMBIconRotationAlignment\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 7820,
+      "offset": 8282,
       "length": 14,
       "value": "\"MapboxMapObjC.TMBIconTextFit\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 8956,
+      "offset": 9495,
       "length": 18,
       "value": "\"MapboxMapObjC.TMBSymbolPlacement\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 10381,
+      "offset": 10997,
       "length": 15,
       "value": "\"MapboxMapObjC.TMBSymbolZOrder\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 11828,
+      "offset": 12521,
       "length": 13,
       "value": "\"MapboxMapObjC.TMBTextAnchor\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 13728,
+      "offset": 14498,
       "length": 14,
       "value": "\"MapboxMapObjC.TMBTextJustify\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 14776,
+      "offset": 15623,
       "length": 21,
       "value": "\"MapboxMapObjC.TMBTextPitchAlignment\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 15914,
+      "offset": 16838,
       "length": 24,
       "value": "\"MapboxMapObjC.TMBTextRotationAlignment\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 17595,
+      "offset": 18596,
       "length": 16,
       "value": "\"MapboxMapObjC.TMBTextTransform\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 18587,
+      "offset": 19665,
       "length": 22,
       "value": "\"MapboxMapObjC.TMBFillTranslateAnchor\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 19487,
+      "offset": 20642,
       "length": 22,
       "value": "\"MapboxMapObjC.TMBLineTranslateAnchor\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 20387,
+      "offset": 21619,
       "length": 22,
       "value": "\"MapboxMapObjC.TMBIconTranslateAnchor\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 21283,
+      "offset": 22592,
       "length": 22,
       "value": "\"MapboxMapObjC.TMBTextTranslateAnchor\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 22176,
+      "offset": 23562,
       "length": 23,
       "value": "\"MapboxMapObjC.TMBCirclePitchAlignment\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 23093,
+      "offset": 24556,
       "length": 19,
       "value": "\"MapboxMapObjC.TMBCirclePitchScale\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 23981,
+      "offset": 25521,
       "length": 24,
       "value": "\"MapboxMapObjC.TMBCircleTranslateAnchor\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 24948,
+      "offset": 26565,
       "length": 31,
       "value": "\"MapboxMapObjC.TMBFillExtrusionTranslateAnchor\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 25976,
+      "offset": 27670,
       "length": 19,
       "value": "\"MapboxMapObjC.TMBRasterResampling\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 27100,
+      "offset": 28871,
       "length": 30,
       "value": "\"MapboxMapObjC.TMBHillshadeIlluminationAnchor\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 28018,
+      "offset": 29866,
       "length": 10,
       "value": "\"MapboxMapObjC.TMBSkyType\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 28995,
+      "offset": 30920,
       "length": 9,
       "value": "\"MapboxMapObjC.TMBAnchor\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 29837,
+      "offset": 31839,
       "length": 22,
       "value": "\"MapboxMapObjC.TMBStyleProjectionName\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 31294,
+      "offset": 33373,
       "length": 18,
       "value": "\"MapboxMapObjC.TMBTextWritingMode\""
     },
@@ -45054,7 +45982,7 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/SourceProperties.swift",
       "kind": "StringLiteral",
-      "offset": 993,
+      "offset": 1069,
       "length": 11,
       "value": "\"MapboxMapObjC.TMBEncoding\""
     },

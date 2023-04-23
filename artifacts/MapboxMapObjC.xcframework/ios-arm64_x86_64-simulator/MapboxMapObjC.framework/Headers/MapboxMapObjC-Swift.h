@@ -760,6 +760,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC18SymbolLayerBuilder")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC9TMBAnchor")
 @interface TMBAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The position of the light source is aligned to the rotation of the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBAnchor * _Nonnull map;)
@@ -872,6 +873,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCircleAnnotationManager")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC23TMBCirclePitchAlignment")
 @interface TMBCirclePitchAlignment : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The circle is aligned to the plane of the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePitchAlignment * _Nonnull map;)
@@ -886,6 +888,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePit
 
 SWIFT_CLASS("_TtC13MapboxMapObjC19TMBCirclePitchScale")
 @interface TMBCirclePitchScale : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Circles are scaled according to their apparent distance to the camera.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePitchScale * _Nonnull map;)
@@ -900,6 +903,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePit
 
 SWIFT_CLASS("_TtC13MapboxMapObjC24TMBCircleTranslateAnchor")
 @interface TMBCircleTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The circle is translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTranslateAnchor * _Nonnull map;)
@@ -914,6 +918,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTra
 
 SWIFT_CLASS("_TtC13MapboxMapObjC11TMBEncoding")
 @interface TMBEncoding : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBEncoding * _Nonnull terrarium;)
@@ -939,6 +944,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC13TMBExpression")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC31TMBFillExtrusionTranslateAnchor")
 @interface TMBFillExtrusionTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The fill extrusion is translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillExtrusionTranslateAnchor * _Nonnull map;)
@@ -953,6 +959,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillExtru
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22TMBFillTranslateAnchor")
 @interface TMBFillTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The fill is translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTranslateAnchor * _Nonnull map;)
@@ -981,6 +988,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC11TMBGeometry")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC30TMBHillshadeIlluminationAnchor")
 @interface TMBHillshadeIlluminationAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The hillshade illumination is relative to the north direction.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBHillshadeIlluminationAnchor * _Nonnull map;)
@@ -995,6 +1003,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBHillshade
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBIconAnchor")
 @interface TMBIconAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The center of the icon is placed closest to the anchor.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAnchor * _Nonnull center;)
@@ -1030,6 +1039,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAncho
 
 SWIFT_CLASS("_TtC13MapboxMapObjC21TMBIconPitchAlignment")
 @interface TMBIconPitchAlignment : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The icon is aligned to the plane of the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconPitchAlignment * _Nonnull map;)
@@ -1047,6 +1057,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto)
 
 SWIFT_CLASS("_TtC13MapboxMapObjC24TMBIconRotationAlignment")
 @interface TMBIconRotationAlignment : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, aligns icons east-west. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, aligns icon x-axes with the line.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconRotationAlignment * _Nonnull map;)
@@ -1064,6 +1075,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto)
 
 SWIFT_CLASS("_TtC13MapboxMapObjC14TMBIconTextFit")
 @interface TMBIconTextFit : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The icon is displayed at its intrinsic aspect ratio.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTextFit * _Nonnull none;)
@@ -1084,6 +1096,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTextF
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22TMBIconTranslateAnchor")
 @interface TMBIconTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Icons are translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTranslateAnchor * _Nonnull map;)
@@ -1105,6 +1118,7 @@ typedef SWIFT_ENUM(NSInteger, TMBLayerPosition, open) {
 
 SWIFT_CLASS("_TtC13MapboxMapObjC10TMBLineCap")
 @interface TMBLineCap : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// A cap with a squared-off end which is drawn to the exact endpoint of the line.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineCap * _Nonnull butt;)
@@ -1122,6 +1136,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineCap *
 
 SWIFT_CLASS("_TtC13MapboxMapObjC11TMBLineJoin")
 @interface TMBLineJoin : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// A join with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line’s width.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineJoin * _Nonnull bevel;)
@@ -1139,6 +1154,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineJoin 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22TMBLineTranslateAnchor")
 @interface TMBLineTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The line is translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTranslateAnchor * _Nonnull map;)
@@ -1153,6 +1169,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTrans
 
 SWIFT_CLASS("_TtC13MapboxMapObjC11TMBOperator")
 @interface TMBOperator : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// For two inputs, returns the result of subtracting the second input from the first. For a single input, returns the result of subtracting it from 0.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull subtract;)
@@ -1742,6 +1759,7 @@ typedef SWIFT_ENUM(NSInteger, TMBPuckBearingSource, open) {
 
 SWIFT_CLASS("_TtC13MapboxMapObjC19TMBRasterResampling")
 @interface TMBRasterResampling : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBRasterResampling * _Nonnull linear;)
@@ -1776,6 +1794,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC20TMBResolvedImageData")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC9TMBScheme")
 @interface TMBScheme : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Slippy map tilenames scheme.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBScheme * _Nonnull xyz;)
@@ -1790,6 +1809,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBScheme * 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC10TMBSkyType")
 @interface TMBSkyType : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Renders the sky with a gradient that can be configured with {@link SKY_GRADIENT_RADIUS} and {@link SKY_GRADIENT}.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSkyType * _Nonnull gradient;)
@@ -1804,6 +1824,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSkyType *
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBSourceType")
 @interface TMBSourceType : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// A vector tile source.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceType * _Nonnull vector;)
@@ -1838,6 +1859,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBStyle")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22TMBStyleProjectionName")
 @interface TMBStyleProjectionName : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The Mercator projection is the default projection.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBStyleProjectionName * _Nonnull mercator;)
@@ -1861,6 +1883,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC18TMBStyleTransition")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBSymbolPlacement")
 @interface TMBSymbolPlacement : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The label is placed at the point where the geometry is located.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolPlacement * _Nonnull point;)
@@ -1878,6 +1901,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolPla
 
 SWIFT_CLASS("_TtC13MapboxMapObjC15TMBSymbolZOrder")
 @interface TMBSymbolZOrder : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Sorts symbols by symbol sort key if set. Otherwise, sorts symbols by their y-position relative to the viewport if {@link ICON_ALLOW_OVERLAP} or {@link TEXT_ALLOW_OVERLAP} is set to {@link TRUE} or {@link ICON_IGNORE_PLACEMENT} or {@link TEXT_IGNORE_PLACEMENT} is {@link FALSE}.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto) TMBSymbolZOrder * _Nonnull auto_;)
@@ -1906,6 +1930,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC10TMBTerrain")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBTextAnchor")
 @interface TMBTextAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The center of the text is placed closest to the anchor.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAnchor * _Nonnull center;)
@@ -1941,6 +1966,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAncho
 
 SWIFT_CLASS("_TtC13MapboxMapObjC14TMBTextJustify")
 @interface TMBTextJustify : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is aligned towards the anchor position.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto) TMBTextJustify * _Nonnull auto_;)
@@ -1961,6 +1987,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextJusti
 
 SWIFT_CLASS("_TtC13MapboxMapObjC21TMBTextPitchAlignment")
 @interface TMBTextPitchAlignment : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is aligned to the plane of the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextPitchAlignment * _Nonnull map;)
@@ -1978,6 +2005,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto)
 
 SWIFT_CLASS("_TtC13MapboxMapObjC24TMBTextRotationAlignment")
 @interface TMBTextRotationAlignment : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, aligns text east-west. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, aligns text x-axes with the line.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextRotationAlignment * _Nonnull map;)
@@ -1995,6 +2023,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto)
 
 SWIFT_CLASS("_TtC13MapboxMapObjC16TMBTextTransform")
 @interface TMBTextTransform : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is not altered.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTransform * _Nonnull none;)
@@ -2012,6 +2041,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTrans
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22TMBTextTranslateAnchor")
 @interface TMBTextTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTranslateAnchor * _Nonnull map;)
@@ -2026,6 +2056,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTrans
 
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBTextWritingMode")
 @interface TMBTextWritingMode : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// If a text’s language supports horizontal writing mode, symbols would be laid out horizontally.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextWritingMode * _Nonnull horizontal;)
@@ -2055,6 +2086,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBVisibility")
 @interface TMBVisibility : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The layer is shown.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBVisibility * _Nonnull visible;)
@@ -2846,6 +2878,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC18SymbolLayerBuilder")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC9TMBAnchor")
 @interface TMBAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The position of the light source is aligned to the rotation of the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBAnchor * _Nonnull map;)
@@ -2958,6 +2991,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCircleAnnotationManager")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC23TMBCirclePitchAlignment")
 @interface TMBCirclePitchAlignment : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The circle is aligned to the plane of the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePitchAlignment * _Nonnull map;)
@@ -2972,6 +3006,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePit
 
 SWIFT_CLASS("_TtC13MapboxMapObjC19TMBCirclePitchScale")
 @interface TMBCirclePitchScale : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Circles are scaled according to their apparent distance to the camera.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePitchScale * _Nonnull map;)
@@ -2986,6 +3021,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCirclePit
 
 SWIFT_CLASS("_TtC13MapboxMapObjC24TMBCircleTranslateAnchor")
 @interface TMBCircleTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The circle is translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTranslateAnchor * _Nonnull map;)
@@ -3000,6 +3036,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTra
 
 SWIFT_CLASS("_TtC13MapboxMapObjC11TMBEncoding")
 @interface TMBEncoding : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBEncoding * _Nonnull terrarium;)
@@ -3025,6 +3062,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC13TMBExpression")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC31TMBFillExtrusionTranslateAnchor")
 @interface TMBFillExtrusionTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The fill extrusion is translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillExtrusionTranslateAnchor * _Nonnull map;)
@@ -3039,6 +3077,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillExtru
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22TMBFillTranslateAnchor")
 @interface TMBFillTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The fill is translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTranslateAnchor * _Nonnull map;)
@@ -3067,6 +3106,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC11TMBGeometry")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC30TMBHillshadeIlluminationAnchor")
 @interface TMBHillshadeIlluminationAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The hillshade illumination is relative to the north direction.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBHillshadeIlluminationAnchor * _Nonnull map;)
@@ -3081,6 +3121,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBHillshade
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBIconAnchor")
 @interface TMBIconAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The center of the icon is placed closest to the anchor.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAnchor * _Nonnull center;)
@@ -3116,6 +3157,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconAncho
 
 SWIFT_CLASS("_TtC13MapboxMapObjC21TMBIconPitchAlignment")
 @interface TMBIconPitchAlignment : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The icon is aligned to the plane of the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconPitchAlignment * _Nonnull map;)
@@ -3133,6 +3175,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto)
 
 SWIFT_CLASS("_TtC13MapboxMapObjC24TMBIconRotationAlignment")
 @interface TMBIconRotationAlignment : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, aligns icons east-west. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, aligns icon x-axes with the line.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconRotationAlignment * _Nonnull map;)
@@ -3150,6 +3193,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto)
 
 SWIFT_CLASS("_TtC13MapboxMapObjC14TMBIconTextFit")
 @interface TMBIconTextFit : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The icon is displayed at its intrinsic aspect ratio.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTextFit * _Nonnull none;)
@@ -3170,6 +3214,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTextF
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22TMBIconTranslateAnchor")
 @interface TMBIconTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Icons are translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTranslateAnchor * _Nonnull map;)
@@ -3191,6 +3236,7 @@ typedef SWIFT_ENUM(NSInteger, TMBLayerPosition, open) {
 
 SWIFT_CLASS("_TtC13MapboxMapObjC10TMBLineCap")
 @interface TMBLineCap : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// A cap with a squared-off end which is drawn to the exact endpoint of the line.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineCap * _Nonnull butt;)
@@ -3208,6 +3254,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineCap *
 
 SWIFT_CLASS("_TtC13MapboxMapObjC11TMBLineJoin")
 @interface TMBLineJoin : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// A join with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line’s width.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineJoin * _Nonnull bevel;)
@@ -3225,6 +3272,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineJoin 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22TMBLineTranslateAnchor")
 @interface TMBLineTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The line is translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTranslateAnchor * _Nonnull map;)
@@ -3239,6 +3287,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTrans
 
 SWIFT_CLASS("_TtC13MapboxMapObjC11TMBOperator")
 @interface TMBOperator : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// For two inputs, returns the result of subtracting the second input from the first. For a single input, returns the result of subtracting it from 0.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator * _Nonnull subtract;)
@@ -3828,6 +3877,7 @@ typedef SWIFT_ENUM(NSInteger, TMBPuckBearingSource, open) {
 
 SWIFT_CLASS("_TtC13MapboxMapObjC19TMBRasterResampling")
 @interface TMBRasterResampling : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBRasterResampling * _Nonnull linear;)
@@ -3862,6 +3912,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC20TMBResolvedImageData")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC9TMBScheme")
 @interface TMBScheme : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Slippy map tilenames scheme.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBScheme * _Nonnull xyz;)
@@ -3876,6 +3927,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBScheme * 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC10TMBSkyType")
 @interface TMBSkyType : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Renders the sky with a gradient that can be configured with {@link SKY_GRADIENT_RADIUS} and {@link SKY_GRADIENT}.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSkyType * _Nonnull gradient;)
@@ -3890,6 +3942,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSkyType *
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBSourceType")
 @interface TMBSourceType : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// A vector tile source.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceType * _Nonnull vector;)
@@ -3924,6 +3977,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBStyle")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22TMBStyleProjectionName")
 @interface TMBStyleProjectionName : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The Mercator projection is the default projection.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBStyleProjectionName * _Nonnull mercator;)
@@ -3947,6 +4001,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC18TMBStyleTransition")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBSymbolPlacement")
 @interface TMBSymbolPlacement : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The label is placed at the point where the geometry is located.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolPlacement * _Nonnull point;)
@@ -3964,6 +4019,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolPla
 
 SWIFT_CLASS("_TtC13MapboxMapObjC15TMBSymbolZOrder")
 @interface TMBSymbolZOrder : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// Sorts symbols by symbol sort key if set. Otherwise, sorts symbols by their y-position relative to the viewport if {@link ICON_ALLOW_OVERLAP} or {@link TEXT_ALLOW_OVERLAP} is set to {@link TRUE} or {@link ICON_IGNORE_PLACEMENT} or {@link TEXT_IGNORE_PLACEMENT} is {@link FALSE}.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto) TMBSymbolZOrder * _Nonnull auto_;)
@@ -3992,6 +4048,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC10TMBTerrain")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBTextAnchor")
 @interface TMBTextAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The center of the text is placed closest to the anchor.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAnchor * _Nonnull center;)
@@ -4027,6 +4084,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextAncho
 
 SWIFT_CLASS("_TtC13MapboxMapObjC14TMBTextJustify")
 @interface TMBTextJustify : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is aligned towards the anchor position.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto) TMBTextJustify * _Nonnull auto_;)
@@ -4047,6 +4105,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextJusti
 
 SWIFT_CLASS("_TtC13MapboxMapObjC21TMBTextPitchAlignment")
 @interface TMBTextPitchAlignment : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is aligned to the plane of the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextPitchAlignment * _Nonnull map;)
@@ -4064,6 +4123,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto)
 
 SWIFT_CLASS("_TtC13MapboxMapObjC24TMBTextRotationAlignment")
 @interface TMBTextRotationAlignment : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_POINT}, aligns text east-west. When {@link SYMBOL_PLACEMENT} is set to {@link Property#SYMBOL_PLACEMENT_LINE} or {@link Property#SYMBOL_PLACEMENT_LINE_CENTER}, aligns text x-axes with the line.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextRotationAlignment * _Nonnull map;)
@@ -4081,6 +4141,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=auto)
 
 SWIFT_CLASS("_TtC13MapboxMapObjC16TMBTextTransform")
 @interface TMBTextTransform : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is not altered.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTransform * _Nonnull none;)
@@ -4098,6 +4159,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTrans
 
 SWIFT_CLASS("_TtC13MapboxMapObjC22TMBTextTranslateAnchor")
 @interface TMBTextTranslateAnchor : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The text is translated relative to the map.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTranslateAnchor * _Nonnull map;)
@@ -4112,6 +4174,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextTrans
 
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBTextWritingMode")
 @interface TMBTextWritingMode : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// If a text’s language supports horizontal writing mode, symbols would be laid out horizontally.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextWritingMode * _Nonnull horizontal;)
@@ -4141,6 +4204,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBVisibility")
 @interface TMBVisibility : NSObject <NamedString>
+- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// The layer is shown.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBVisibility * _Nonnull visible;)

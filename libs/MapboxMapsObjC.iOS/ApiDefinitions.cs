@@ -541,6 +541,8 @@ namespace MapboxMapsObjC
 		MapView CreateWithFrame (CGRect frame, [NullAllowed] MapInitOptions options);
 	}
 
+	partial interface INamedString {}
+
 	// @protocol NamedString
 	[Protocol (Name = "_TtP13MapboxMapObjC11NamedString_"), Model]
     [BaseType(typeof(NSObject))]
@@ -1068,6 +1070,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBAnchor : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1264,6 +1271,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBCirclePitchAlignment : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1284,6 +1296,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBCirclePitchScale : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1304,6 +1321,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBCircleTranslateAnchor : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1324,6 +1346,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBEncoding : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1352,7 +1379,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ arguments:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithOperator:arguments:")]
-		TMBExpression CreateWithOperator (TMBOperator operator_, NSObject[] arguments);
+		TMBExpression CreateWithOperator (TMBOperator operator_, NSArray arguments);
 	}
 
 	// @interface TMBFillExtrusionTranslateAnchor : NSObject <NamedString>
@@ -1360,6 +1387,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBFillExtrusionTranslateAnchor : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1380,6 +1412,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBFillTranslateAnchor : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1420,6 +1457,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBHillshadeIlluminationAnchor : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1440,6 +1482,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBIconAnchor : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1495,6 +1542,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBIconPitchAlignment : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1520,6 +1572,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBIconRotationAlignment : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1545,6 +1602,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBIconTextFit : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1575,6 +1637,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBIconTranslateAnchor : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1595,6 +1662,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBLineCap : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1620,6 +1692,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBLineJoin : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1645,6 +1722,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBLineTranslateAnchor : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -1665,6 +1747,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBOperator : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2634,6 +2721,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBRasterResampling : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2656,10 +2748,10 @@ namespace MapboxMapsObjC
 	{
 	}
 
-	// @interface MapboxMapObjC_Swift_1764 (TMBResolvedImage)
+	// @interface MapboxMapObjC_Swift_1782 (TMBResolvedImage)
 	[Category]
 	[BaseType (typeof(TMBResolvedImage))]
-	interface TMBResolvedImage_MapboxMapObjC_Swift_1764
+	interface TMBResolvedImage_MapboxMapObjC_Swift_1782
 	{
 		// +(TMBResolvedImage * _Nonnull)fromName:(NSString * _Nonnull)name __attribute__((warn_unused_result("")));
 		[Static]
@@ -2684,6 +2776,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBScheme : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2704,6 +2801,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBSkyType : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2724,6 +2826,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBSourceType : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2774,6 +2881,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBStyleProjectionName : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2805,6 +2917,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBSymbolPlacement : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2830,6 +2947,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBSymbolZOrder : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2870,6 +2992,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBTextAnchor : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2925,6 +3052,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBTextJustify : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2932,7 +3064,7 @@ namespace MapboxMapsObjC
 		// @property (readonly, getter = auto, nonatomic, strong, class) TMBTextJustify * _Nonnull auto_;
 		[Static]
 		[Export ("auto_", ArgumentSemantic.Strong)]
-		TMBTextJustify Auto_ { [Bind ("auto")] get; }
+		TMBTextJustify Auto { [Bind ("auto")] get; }
 
 		// @property (readonly, nonatomic, strong, class) TMBTextJustify * _Nonnull left;
 		[Static]
@@ -2955,6 +3087,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBTextPitchAlignment : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2972,7 +3109,7 @@ namespace MapboxMapsObjC
 		// @property (readonly, getter = auto, nonatomic, strong, class) TMBTextPitchAlignment * _Nonnull auto_;
 		[Static]
 		[Export ("auto_", ArgumentSemantic.Strong)]
-		TMBTextPitchAlignment Auto_ { [Bind ("auto")] get; }
+		TMBTextPitchAlignment Auto { [Bind ("auto")] get; }
 	}
 
 	// @interface TMBTextRotationAlignment : NSObject <NamedString>
@@ -2980,6 +3117,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBTextRotationAlignment : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -2997,7 +3139,7 @@ namespace MapboxMapsObjC
 		// @property (readonly, getter = auto, nonatomic, strong, class) TMBTextRotationAlignment * _Nonnull auto_;
 		[Static]
 		[Export ("auto_", ArgumentSemantic.Strong)]
-		TMBTextRotationAlignment Auto_ { [Bind ("auto")] get; }
+		TMBTextRotationAlignment Auto { [Bind ("auto")] get; }
 	}
 
 	// @interface TMBTextTransform : NSObject <NamedString>
@@ -3005,6 +3147,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBTextTransform : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -3030,6 +3177,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBTextTranslateAnchor : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -3050,6 +3202,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBTextWritingMode : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -3106,6 +3263,11 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBVisibility : NamedString
 	{
+		// -(instancetype _Nonnull)initWithValue:(NSString * _Nonnull)value __attribute__((objc_designated_initializer));
+		[Export ("initWithValue:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (string value);
+
 		// -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Export ("stringValue")]
 		string StringValue { get; }
@@ -3121,10 +3283,10 @@ namespace MapboxMapsObjC
 		TMBVisibility None { get; }
 	}
 
-	// @interface MapboxMapObjC_Swift_2072
+	// @interface MapboxMapObjC_Swift_2104
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_2072
+	interface MapboxMapObjC_Swift_2104
 	{
 		// +(id)getDefault __attribute__((warn_unused_result("")));
 		[Static]

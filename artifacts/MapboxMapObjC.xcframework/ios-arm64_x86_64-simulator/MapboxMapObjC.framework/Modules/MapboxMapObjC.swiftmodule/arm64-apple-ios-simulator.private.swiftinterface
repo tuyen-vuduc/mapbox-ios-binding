@@ -190,12 +190,14 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBVisibility : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let visible: MapboxMapObjC.TMBVisibility
   @objc public static let none: MapboxMapObjC.TMBVisibility
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBLineCap : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let butt: MapboxMapObjC.TMBLineCap
   @objc public static let round: MapboxMapObjC.TMBLineCap
@@ -203,6 +205,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBLineJoin : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let bevel: MapboxMapObjC.TMBLineJoin
   @objc public static let round: MapboxMapObjC.TMBLineJoin
@@ -210,6 +213,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBIconAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let center: MapboxMapObjC.TMBIconAnchor
   @objc public static let left: MapboxMapObjC.TMBIconAnchor
@@ -223,6 +227,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBIconPitchAlignment : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBIconPitchAlignment
   @objc public static let viewport: MapboxMapObjC.TMBIconPitchAlignment
@@ -230,6 +235,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBIconRotationAlignment : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBIconRotationAlignment
   @objc public static let viewport: MapboxMapObjC.TMBIconRotationAlignment
@@ -237,6 +243,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBIconTextFit : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let none: MapboxMapObjC.TMBIconTextFit
   @objc public static let width: MapboxMapObjC.TMBIconTextFit
@@ -245,6 +252,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBSymbolPlacement : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let point: MapboxMapObjC.TMBSymbolPlacement
   @objc public static let line: MapboxMapObjC.TMBSymbolPlacement
@@ -252,6 +260,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBSymbolZOrder : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let auto: MapboxMapObjC.TMBSymbolZOrder
   @objc public static let viewportY: MapboxMapObjC.TMBSymbolZOrder
@@ -259,6 +268,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBTextAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let center: MapboxMapObjC.TMBTextAnchor
   @objc public static let left: MapboxMapObjC.TMBTextAnchor
@@ -272,6 +282,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBTextJustify : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let auto: MapboxMapObjC.TMBTextJustify
   @objc public static let left: MapboxMapObjC.TMBTextJustify
@@ -280,6 +291,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBTextPitchAlignment : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBTextPitchAlignment
   @objc public static let viewport: MapboxMapObjC.TMBTextPitchAlignment
@@ -287,6 +299,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBTextRotationAlignment : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBTextRotationAlignment
   @objc public static let viewport: MapboxMapObjC.TMBTextRotationAlignment
@@ -294,6 +307,7 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBTextTransform : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let none: MapboxMapObjC.TMBTextTransform
   @objc public static let uppercase: MapboxMapObjC.TMBTextTransform
@@ -301,84 +315,98 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBFillTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBFillTranslateAnchor
   @objc public static let viewport: MapboxMapObjC.TMBFillTranslateAnchor
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBLineTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBFillTranslateAnchor
   @objc public static let viewport: MapboxMapObjC.TMBFillTranslateAnchor
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBIconTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBIconTranslateAnchor
   @objc public static let viewport: MapboxMapObjC.TMBIconTranslateAnchor
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBTextTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBTextTranslateAnchor
   @objc public static let viewport: MapboxMapObjC.TMBTextTranslateAnchor
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBCirclePitchAlignment : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBCirclePitchAlignment
   @objc public static let viewport: MapboxMapObjC.TMBCirclePitchAlignment
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBCirclePitchScale : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBCirclePitchScale
   @objc public static let viewport: MapboxMapObjC.TMBCirclePitchScale
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBCircleTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBCircleTranslateAnchor
   @objc public static let viewport: MapboxMapObjC.TMBCircleTranslateAnchor
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBFillExtrusionTranslateAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBFillExtrusionTranslateAnchor
   @objc public static let viewport: MapboxMapObjC.TMBFillExtrusionTranslateAnchor
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBRasterResampling : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let linear: MapboxMapObjC.TMBRasterResampling
   @objc public static let nearest: MapboxMapObjC.TMBRasterResampling
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBHillshadeIlluminationAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBHillshadeIlluminationAnchor
   @objc public static let viewport: MapboxMapObjC.TMBHillshadeIlluminationAnchor
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBSkyType : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let gradient: MapboxMapObjC.TMBSkyType
   @objc public static let atmosphere: MapboxMapObjC.TMBSkyType
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBAnchor : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let map: MapboxMapObjC.TMBAnchor
   @objc public static let viewport: MapboxMapObjC.TMBAnchor
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBStyleProjectionName : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let mercator: MapboxMapObjC.TMBStyleProjectionName
   @objc public static let globe: MapboxMapObjC.TMBStyleProjectionName
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBTextWritingMode : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let horizontal: MapboxMapObjC.TMBTextWritingMode
   @objc public static let vertical: MapboxMapObjC.TMBTextWritingMode
@@ -964,6 +992,7 @@ public protocol LayerBuilder {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBSourceType : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let vector: MapboxMapObjC.TMBSourceType
   @objc public static let raster: MapboxMapObjC.TMBSourceType
@@ -996,12 +1025,14 @@ public protocol LayerBuilder {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func loadStyle(_ styleUri: Swift.String, completion: ((MapboxMapObjC.TMBStyle?, (any Swift.Error)?) -> Swift.Void)?)
 }
 @_hasMissingDesignatedInitializers @objc open class TMBScheme : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let xyz: MapboxMapObjC.TMBScheme
   @objc public static let tms: MapboxMapObjC.TMBScheme
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBEncoding : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let terrarium: MapboxMapObjC.TMBEncoding
   @objc public static let mapbox: MapboxMapObjC.TMBEncoding
@@ -1122,6 +1153,7 @@ public protocol LayerBuilder {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBOperator : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public init(value: Swift.String)
   @objc public func stringValue() -> Swift.String
   @objc public static let subtract: MapboxMapObjC.TMBOperator
   @objc public static let not: MapboxMapObjC.TMBOperator
