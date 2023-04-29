@@ -155,7 +155,7 @@ namespace MapboxMapsObjC
 
 	// @interface MapboxMapObjC_Swift_357
     [Category]
-    [BaseType(typeof(MapView))]
+    [BaseType(typeof(MapInitOptions))]
 	interface MapboxMapObjC_Swift_357
 	{
 		// -(MBMResourceOptions * _Nonnull)resourceOptions __attribute__((warn_unused_result("")));
@@ -556,12 +556,12 @@ namespace MapboxMapsObjC
 
 	// @interface MapboxMapObjC_Swift_601
     [Category]
-    [BaseType(typeof(MapView))]
+    [BaseType(typeof(MBMOfflineManager))]
 	interface MapboxMapObjC_Swift_601
 	{
-		// -(TMBCancelable * _Nonnull)loadStyleWithStyleUriString:(NSString * _Nonnull)styleUriString styleLoadOptions:(MBMStylePackLoadOptions * _Nonnull)styleLoadOptions progress:(id)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
+		// -(TMBCancelable * _Nonnull)loadStyleWithStyleUriString:(NSString * _Nonnull)styleUriString styleLoadOptions:(MBMStylePackLoadOptions * _Nonnull)styleLoadOptions progress:(StylePackLoadProgressCallback)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
 		[Export ("loadStyleWithStyleUriString:styleLoadOptions:progress:completion:")]
-		TMBCancelable LoadStyleWithStyleUriString (string styleUriString, MBMStylePackLoadOptions styleLoadOptions, NSObject progress, Action<MBMStylePack, NSError> completion);
+		TMBCancelable LoadStyleWithStyleUriString (string styleUriString, MBMStylePackLoadOptions styleLoadOptions, Action<MBMStylePackLoadProgress> progress, Action<MBMStylePack, NSError> completion);
 
 		// -(void)allStylePacks:(void (^ _Nonnull)(NSArray<MBMStylePack *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("allStylePacks:")]
