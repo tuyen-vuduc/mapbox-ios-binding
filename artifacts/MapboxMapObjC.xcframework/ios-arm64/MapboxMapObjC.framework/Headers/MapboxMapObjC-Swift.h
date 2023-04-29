@@ -352,6 +352,22 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25FillExtrusionLayerBuilder")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class NSValue;
+@class MBXGeometry;
+
+SWIFT_CLASS("_TtC13MapboxMapObjC14GeometryHelper")
+@interface GeometryHelper : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
++ (MBXGeometry * _Nonnull)createPoint:(NSValue * _Nonnull)location SWIFT_WARN_UNUSED_RESULT;
++ (MBXGeometry * _Nonnull)createLine:(NSArray<NSValue *> * _Nonnull)locations SWIFT_WARN_UNUSED_RESULT;
++ (MBXGeometry * _Nonnull)createMultiLine:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations SWIFT_WARN_UNUSED_RESULT;
++ (MBXGeometry * _Nonnull)createMultiPoint:(NSArray<NSValue *> * _Nonnull)locations SWIFT_WARN_UNUSED_RESULT;
++ (MBXGeometry * _Nonnull)createMultiPolygon:(NSArray<NSArray<NSArray<NSValue *> *> *> * _Nonnull)locations SWIFT_WARN_UNUSED_RESULT;
++ (MBXGeometry * _Nonnull)createPolygon:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations SWIFT_WARN_UNUSED_RESULT;
++ (MBXGeometry * _Nonnull)create:(NSArray<MBXGeometry *> * _Nonnull)items SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class MBMResourceOptions;
 
 @interface MapInitOptions (SWIFT_EXTENSION(MapboxMapObjC))
@@ -395,10 +411,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MBMResourceO
 - (void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
-enum TMBOrnamentVisibility : NSInteger;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
+- (void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
 @end
 
 @class RasterDemSourceBuilder;
@@ -407,9 +422,10 @@ enum TMBOrnamentVisibility : NSInteger;
 - (void)addRasterDemSource:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
+enum TMBOrnamentVisibility : NSInteger;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
+- (void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
 @end
 
 
@@ -427,17 +443,6 @@ enum TMBOrnamentVisibility : NSInteger;
 - (void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
 @end
 
-@protocol LocationPermissionsDelegate;
-@class Puck2DConfigurationBuilder;
-enum TMBPuckBearingSource : NSInteger;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)locationDelegate:(id <LocationPermissionsDelegate> _Nonnull)delegate;
-- (void)locationRequestTemporaryFullAccuracyPermissions:(NSString * _Nonnull)customKey;
-- (void)puck2D:(void (^ _Nullable)(Puck2DConfigurationBuilder * _Nonnull))build;
-- (void)puckBearingSource:(enum TMBPuckBearingSource)source;
-@end
-
 enum TMBLayerPosition : NSInteger;
 @class TMBPolygonAnnotationManager;
 @class TMBCircleAnnotationManager;
@@ -449,6 +454,17 @@ enum TMBLayerPosition : NSInteger;
 - (TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
 - (TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
 - (TMBPolylineAnnotationManager * _Nonnull)polylineAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@protocol LocationPermissionsDelegate;
+@class Puck2DConfigurationBuilder;
+enum TMBPuckBearingSource : NSInteger;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)locationDelegate:(id <LocationPermissionsDelegate> _Nonnull)delegate;
+- (void)locationRequestTemporaryFullAccuracyPermissions:(NSString * _Nonnull)customKey;
+- (void)puck2D:(void (^ _Nullable)(Puck2DConfigurationBuilder * _Nonnull))build;
+- (void)puckBearingSource:(enum TMBPuckBearingSource)source;
 @end
 
 @class TMBGeometry;

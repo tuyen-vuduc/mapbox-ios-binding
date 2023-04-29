@@ -153,10 +153,51 @@ namespace MapboxMapsObjC
 		void FillExtrusionVerticalGradient ([NullAllowed] TMBValue value);
 	}
 
-	// @interface MapboxMapObjC_Swift_357
+	// @interface GeometryHelper : NSObject
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC14GeometryHelper")]
+	[DisableDefaultCtor]
+	interface GeometryHelper
+	{
+		// +(id)createPoint:(NSValue * _Nonnull)location __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("createPoint:")]
+		MBXGeometry CreatePoint (NSValue location);
+
+		// +(id)createLine:(NSArray<NSValue *> * _Nonnull)locations __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("createLine:")]
+		MBXGeometry CreateLine (NSValue[] locations);
+
+		// +(id)createMultiLine:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("createMultiLine:")]
+		MBXGeometry CreateMultiLine (NSArray locations);
+
+		// +(id)createMultiPoint:(NSArray<NSValue *> * _Nonnull)locations __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("createMultiPoint:")]
+		MBXGeometry CreateMultiPoint (NSValue[] locations);
+
+		// +(id)createMultiPolygon:(NSArray<NSArray<NSArray<NSValue *> *> *> * _Nonnull)locations __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("createMultiPolygon:")]
+		MBXGeometry CreateMultiPolygon (NSArray locations);
+
+		// +(id)createPolygon:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("createPolygon:")]
+		MBXGeometry CreatePolygon (NSArray locations);
+
+		// +(id)create:(NSArray * _Nonnull)items __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("create:")]
+		MBXGeometry Create (MBXGeometry[] items);
+	}
+
+	// @interface MapboxMapObjC_Swift_369
     [Category]
     [BaseType(typeof(MapInitOptions))]
-	interface MapboxMapObjC_Swift_357
+	interface MapboxMapObjC_Swift_369
 	{
 		// -(MBMResourceOptions * _Nonnull)resourceOptions __attribute__((warn_unused_result("")));
 		[Export ("resourceOptions")]
@@ -206,34 +247,14 @@ namespace MapboxMapsObjC
 		MapInitOptionsBuilder StyleUri (NSUrl value);
 	}
 
-	// @interface MapboxMapObjC_Swift_382
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_382
-	{
-		// -(void)updateSymbolLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SymbolLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("updateSymbolLayer:configure:onError:")]
-		void UpdateSymbolLayer (string id, Action<SymbolLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
-	}
-
-	// @interface MapboxMapObjC_Swift_388
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_388
-	{
-		// -(void)updateSkyLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("updateSkyLayer:configure:onError:")]
-		void UpdateSkyLayer (string id, Action<SkyLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
-	}
-
 	// @interface MapboxMapObjC_Swift_394
     [Category]
     [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_394
 	{
-		// -(void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("setTerrain:onError:")]
-		void SetTerrain (TMBTerrain value, [NullAllowed] Action<NSError> onError);
+		// -(void)updateSymbolLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SymbolLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("updateSymbolLayer:configure:onError:")]
+		void UpdateSymbolLayer (string id, Action<SymbolLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
 	}
 
 	// @interface MapboxMapObjC_Swift_400
@@ -241,9 +262,9 @@ namespace MapboxMapsObjC
     [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_400
 	{
-		// -(void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
-		[Export ("ornamentsOptionsScaleBarVisibility:")]
-		void OrnamentsOptionsScaleBarVisibility (TMBOrnamentVisibility value);
+		// -(void)updateSkyLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("updateSkyLayer:configure:onError:")]
+		void UpdateSkyLayer (string id, Action<SkyLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
 	}
 
 	// @interface MapboxMapObjC_Swift_406
@@ -251,9 +272,9 @@ namespace MapboxMapsObjC
     [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_406
 	{
-		// -(void)addRasterDemSource:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("addRasterDemSource:configure:onError:")]
-		void AddRasterDemSource (string id, Action<RasterDemSourceBuilder> configure, [NullAllowed] Action<NSError> onError);
+		// -(void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("setTerrain:onError:")]
+		void SetTerrain (TMBTerrain value, [NullAllowed] Action<NSError> onError);
 	}
 
 	// @interface MapboxMapObjC_Swift_411
@@ -266,10 +287,30 @@ namespace MapboxMapsObjC
 		void SetCameraTo (MBMCameraOptions cameraOptions);
 	}
 
-	// @interface MapboxMapObjC_Swift_416
+	// @interface MapboxMapObjC_Swift_417
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_416
+	interface MapboxMapObjC_Swift_417
+	{
+		// -(void)addRasterDemSource:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("addRasterDemSource:configure:onError:")]
+		void AddRasterDemSource (string id, Action<RasterDemSourceBuilder> configure, [NullAllowed] Action<NSError> onError);
+	}
+
+	// @interface MapboxMapObjC_Swift_423
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_423
+	{
+		// -(void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
+		[Export ("ornamentsOptionsScaleBarVisibility:")]
+		void OrnamentsOptionsScaleBarVisibility (TMBOrnamentVisibility value);
+	}
+
+	// @interface MapboxMapObjC_Swift_428
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_428
 	{
 		// -(void)preferredFrameRateRange:(CAFrameRateRange)value;
 		[Export ("preferredFrameRateRange:")]
@@ -284,10 +325,10 @@ namespace MapboxMapsObjC
 		void MapboxMapDebugOptions (NSNumber[] value);
 	}
 
-	// @interface MapboxMapObjC_Swift_424
+	// @interface MapboxMapObjC_Swift_436
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_424
+	interface MapboxMapObjC_Swift_436
 	{
 		// -(void)setStyle:(NSString * _Nonnull)styleUri;
 		[Export ("setStyle:")]
@@ -302,32 +343,10 @@ namespace MapboxMapsObjC
 		void LoadStyle (string styleUri, [NullAllowed] Action<TMBStyle, NSError> completion);
 	}
 
-	// @interface MapboxMapObjC_Swift_434
+	// @interface MapboxMapObjC_Swift_448
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_434
-	{
-		// -(void)locationDelegate:(id<LocationPermissionsDelegate> _Nonnull)delegate;
-		[Export ("locationDelegate:")]
-		void LocationDelegate (ILocationPermissionsDelegate @delegate);
-
-		// -(void)locationRequestTemporaryFullAccuracyPermissions:(NSString * _Nonnull)customKey;
-		[Export ("locationRequestTemporaryFullAccuracyPermissions:")]
-		void LocationRequestTemporaryFullAccuracyPermissions (string customKey);
-
-		// -(void)puck2D:(void (^ _Nullable)(Puck2DConfigurationBuilder * _Nonnull))build;
-		[Export ("puck2D:")]
-		void Puck2D ([NullAllowed] Action<Puck2DConfigurationBuilder> build);
-
-		// -(void)puckBearingSource:(enum TMBPuckBearingSource)source;
-		[Export ("puckBearingSource:")]
-		void PuckBearingSource (TMBPuckBearingSource source);
-	}
-
-	// @interface MapboxMapObjC_Swift_447
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_447
+	interface MapboxMapObjC_Swift_448
 	{
 		// -(TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
 		[Export ("polygonAnnotationManagerWithId:layerPosition:layerPositionParam:")]
@@ -346,10 +365,32 @@ namespace MapboxMapsObjC
 		TMBPolylineAnnotationManager PolylineAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
 	}
 
-	// @interface MapboxMapObjC_Swift_456
+	// @interface MapboxMapObjC_Swift_459
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_456
+	interface MapboxMapObjC_Swift_459
+	{
+		// -(void)locationDelegate:(id<LocationPermissionsDelegate> _Nonnull)delegate;
+		[Export ("locationDelegate:")]
+		void LocationDelegate (ILocationPermissionsDelegate @delegate);
+
+		// -(void)locationRequestTemporaryFullAccuracyPermissions:(NSString * _Nonnull)customKey;
+		[Export ("locationRequestTemporaryFullAccuracyPermissions:")]
+		void LocationRequestTemporaryFullAccuracyPermissions (string customKey);
+
+		// -(void)puck2D:(void (^ _Nullable)(Puck2DConfigurationBuilder * _Nonnull))build;
+		[Export ("puck2D:")]
+		void Puck2D ([NullAllowed] Action<Puck2DConfigurationBuilder> build);
+
+		// -(void)puckBearingSource:(enum TMBPuckBearingSource)source;
+		[Export ("puckBearingSource:")]
+		void PuckBearingSource (TMBPuckBearingSource source);
+	}
+
+	// @interface MapboxMapObjC_Swift_468
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_468
 	{
 		// -(void)addSource:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("addSource:properties:onError:")]
@@ -376,10 +417,10 @@ namespace MapboxMapsObjC
 		void AddSourceWithId (string id, TMBGeometry geometry, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_468
+	// @interface MapboxMapObjC_Swift_480
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_468
+	interface MapboxMapObjC_Swift_480
 	{
 		// -(void)setLightProperty:(NSString * _Nonnull)name value:(id _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("setLightProperty:value:onError:")]
@@ -418,10 +459,10 @@ namespace MapboxMapsObjC
 		void LightPositionTransition (TMBStyleTransition value, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_491
+	// @interface MapboxMapObjC_Swift_503
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_491
+	interface MapboxMapObjC_Swift_503
 	{
 		// -(void)addLayerWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("addLayerWithProperties:layerPosition:layerPositionParam:onError:")]
@@ -468,10 +509,10 @@ namespace MapboxMapsObjC
 		void AddCustomLayer (string id, IMBMCustomLayerHost layerHost, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_507
+	// @interface MapboxMapObjC_Swift_519
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_507
+	interface MapboxMapObjC_Swift_519
 	{
 		// -(TMBCancelable * _Nonnull)onMapLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
 		[Export ("onMapLoaded:")]
@@ -554,10 +595,10 @@ namespace MapboxMapsObjC
 		string StringValue { get; }
 	}
 
-	// @interface MapboxMapObjC_Swift_601
+	// @interface MapboxMapObjC_Swift_613
     [Category]
     [BaseType(typeof(MBMOfflineManager))]
-	interface MapboxMapObjC_Swift_601
+	interface MapboxMapObjC_Swift_613
 	{
 		// -(TMBCancelable * _Nonnull)loadStyleWithStyleUriString:(NSString * _Nonnull)styleUriString styleLoadOptions:(MBMStylePackLoadOptions * _Nonnull)styleLoadOptions progress:(StylePackLoadProgressCallback)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
 		[Export ("loadStyleWithStyleUriString:styleLoadOptions:progress:completion:")]
@@ -2539,25 +2580,25 @@ namespace MapboxMapsObjC
 		[Static]
 		[Export ("polygon:")]
 		TMBPolygonAnnotation Polygon (TMBPolygon polygon);
-		// /// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
+
 		// @property (nonatomic, strong) NSNumber * _Nullable fillSortKey;
 		[NullAllowed, Export ("fillSortKey", ArgumentSemantic.Strong)]
 		NSNumber FillSortKey { get; set; }
-		// /// The color of the filled part of this layer. This color can be specified as <code>rgba</code> with an alpha component and the color’s opacity will not affect the opacity of the 1px stroke, if it is used.
+
 		// @property (nonatomic, strong) UIColor * _Nullable fillColor;
 		[NullAllowed, Export ("fillColor", ArgumentSemantic.Strong)]
 		UIColor FillColor { get; set; }
-		// /// The opacity of the entire fill layer. In contrast to the <code>fill-color</code>, this value will also affect the 1px stroke around the fill, if the stroke is used.
+
 		// @property (nonatomic, strong) NSNumber * _Nullable fillOpacity;
 		[NullAllowed, Export ("fillOpacity", ArgumentSemantic.Strong)]
 		NSNumber FillOpacity { get; set; }
-		// /// The outline color of the fill. Matches the value of <code>fill-color</code> if unspecified.
+
 		// @property (nonatomic, strong) UIColor * _Nullable fillOutlineColor;
 		[NullAllowed, Export ("fillOutlineColor", ArgumentSemantic.Strong)]
 		UIColor FillOutlineColor { get; set; }
-		// /// Name of image in sprite to use for drawing image fills. For seamless patterns, image width and height must be a factor of two (2, 4, 8, …, 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
-		// @property (nonatomic, copy) NSString * _Nullable fillPattern;
-		[NullAllowed, Export ("fillPattern", ArgumentSemantic.Copy)]
+
+		// @property (copy, nonatomic) NSString * _Nullable fillPattern;
+		[NullAllowed, Export ("fillPattern")]
 		string FillPattern { get; set; }
 	}
 
@@ -2760,10 +2801,10 @@ namespace MapboxMapsObjC
 	{
 	}
 
-	// @interface MapboxMapObjC_Swift_1782 (TMBResolvedImage)
+	// @interface MapboxMapObjC_Swift_1802 (TMBResolvedImage)
 	[Category]
 	[BaseType (typeof(TMBResolvedImage))]
-	interface TMBResolvedImage_MapboxMapObjC_Swift_1782
+	interface TMBResolvedImage_MapboxMapObjC_Swift_1802
 	{
 		// +(TMBResolvedImage * _Nonnull)fromName:(NSString * _Nonnull)name __attribute__((warn_unused_result("")));
 		[Static]
@@ -3295,10 +3336,10 @@ namespace MapboxMapsObjC
 		TMBVisibility None { get; }
 	}
 
-	// @interface MapboxMapObjC_Swift_2104
+	// @interface MapboxMapObjC_Swift_2124
     [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_2104
+    [BaseType(typeof(MBXTileStore))]
+	interface MapboxMapObjC_Swift_2124
 	{
 		// +(id)getDefault __attribute__((warn_unused_result("")));
 		[Static]
@@ -3307,7 +3348,7 @@ namespace MapboxMapsObjC
 
 		// -(TMBCancelable * _Nonnull)loadTileRegionForId:(NSString * _Nonnull)id loadOptions:(MBXTileRegionLoadOptions * _Nonnull)loadOptions progress:(id)progress completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
 		[Export ("loadTileRegionForId:loadOptions:progress:completion:")]
-		TMBCancelable LoadTileRegionForId (string id, MBXTileRegionLoadOptions loadOptions, NSObject progress, Action<MBXTileRegion, NSError> completion);
+		TMBCancelable LoadTileRegionForId (string id, MBXTileRegionLoadOptions loadOptions, Action<MBXTileRegionLoadProgress> progress, Action<MBXTileRegion, NSError> completion);
 
 		// -(void)allTileRegions:(void (^ _Nonnull)(NSArray<MBXTileRegion *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("allTileRegions:")]

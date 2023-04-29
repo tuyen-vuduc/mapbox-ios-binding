@@ -28377,6 +28377,369 @@
       },
       {
         "kind": "Import",
+        "name": "MapboxCommon",
+        "printedName": "MapboxCommon",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GeometryHelper",
+        "printedName": "GeometryHelper",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "createPoint",
+            "printedName": "createPoint(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Geometry",
+                "printedName": "MapboxCommon.Geometry",
+                "usr": "c:objc(cs)MBXGeometry"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSValue",
+                "printedName": "Foundation.NSValue",
+                "usr": "c:objc(cs)NSValue"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)GeometryHelper(cm)createPoint:",
+            "mangledName": "$s13MapboxMapObjC14GeometryHelperC11createPointySo11MBXGeometryCSo7NSValueCFZ",
+            "moduleName": "MapboxMapObjC",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "createLine",
+            "printedName": "createLine(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Geometry",
+                "printedName": "MapboxCommon.Geometry",
+                "usr": "c:objc(cs)MBXGeometry"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Foundation.NSValue]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSValue",
+                    "printedName": "Foundation.NSValue",
+                    "usr": "c:objc(cs)NSValue"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)GeometryHelper(cm)createLine:",
+            "mangledName": "$s13MapboxMapObjC14GeometryHelperC10createLineySo11MBXGeometryCSaySo7NSValueCGFZ",
+            "moduleName": "MapboxMapObjC",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "createMultiLine",
+            "printedName": "createMultiLine(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Geometry",
+                "printedName": "MapboxCommon.Geometry",
+                "usr": "c:objc(cs)MBXGeometry"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[Foundation.NSValue]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Foundation.NSValue]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSValue",
+                        "printedName": "Foundation.NSValue",
+                        "usr": "c:objc(cs)NSValue"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)GeometryHelper(cm)createMultiLine:",
+            "mangledName": "$s13MapboxMapObjC14GeometryHelperC15createMultiLineySo11MBXGeometryCSaySaySo7NSValueCGGFZ",
+            "moduleName": "MapboxMapObjC",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "createMultiPoint",
+            "printedName": "createMultiPoint(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Geometry",
+                "printedName": "MapboxCommon.Geometry",
+                "usr": "c:objc(cs)MBXGeometry"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Foundation.NSValue]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSValue",
+                    "printedName": "Foundation.NSValue",
+                    "usr": "c:objc(cs)NSValue"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)GeometryHelper(cm)createMultiPoint:",
+            "mangledName": "$s13MapboxMapObjC14GeometryHelperC16createMultiPointySo11MBXGeometryCSaySo7NSValueCGFZ",
+            "moduleName": "MapboxMapObjC",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "createMultiPolygon",
+            "printedName": "createMultiPolygon(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Geometry",
+                "printedName": "MapboxCommon.Geometry",
+                "usr": "c:objc(cs)MBXGeometry"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[[Foundation.NSValue]]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[[Foundation.NSValue]]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[Foundation.NSValue]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "NSValue",
+                            "printedName": "Foundation.NSValue",
+                            "usr": "c:objc(cs)NSValue"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)GeometryHelper(cm)createMultiPolygon:",
+            "mangledName": "$s13MapboxMapObjC14GeometryHelperC18createMultiPolygonySo11MBXGeometryCSaySaySaySo7NSValueCGGGFZ",
+            "moduleName": "MapboxMapObjC",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "createPolygon",
+            "printedName": "createPolygon(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Geometry",
+                "printedName": "MapboxCommon.Geometry",
+                "usr": "c:objc(cs)MBXGeometry"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[Foundation.NSValue]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Foundation.NSValue]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSValue",
+                        "printedName": "Foundation.NSValue",
+                        "usr": "c:objc(cs)NSValue"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)GeometryHelper(cm)createPolygon:",
+            "mangledName": "$s13MapboxMapObjC14GeometryHelperC13createPolygonySo11MBXGeometryCSaySaySo7NSValueCGGFZ",
+            "moduleName": "MapboxMapObjC",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "create",
+            "printedName": "create(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Geometry",
+                "printedName": "MapboxCommon.Geometry",
+                "usr": "c:objc(cs)MBXGeometry"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[MapboxCommon.Geometry]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Geometry",
+                    "printedName": "MapboxCommon.Geometry",
+                    "usr": "c:objc(cs)MBXGeometry"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)GeometryHelper(cm)create:",
+            "mangledName": "$s13MapboxMapObjC14GeometryHelperC6createySo11MBXGeometryCSayAFGFZ",
+            "moduleName": "MapboxMapObjC",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@MapboxMapObjC@objc(cs)GeometryHelper",
+        "mangledName": "$s13MapboxMapObjC14GeometryHelperC",
+        "moduleName": "MapboxMapObjC",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "MapboxMaps",
         "printedName": "MapboxMaps",
         "declKind": "Import",

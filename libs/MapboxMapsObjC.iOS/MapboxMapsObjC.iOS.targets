@@ -8,8 +8,8 @@
 		<_MapboxMapsObjCSDKBaseFolder>$(XamarinBuildDownloadDir)$(_MapboxMapsObjCItemsFolder)\</_MapboxMapsObjCSDKBaseFolder>
 	</PropertyGroup>
   <ItemGroup Condition="('$(OutputType)'!='Library' OR '$(IsAppExtension)'=='True')">
-	<XamarinBuildDownload Include="$(_MapboxMapsObjCItemsFolder)">      
-		<Url>https://drive.google.com/uc?id=1pI9n6ZZbZtihIPzqkmWbrDUkNbKWDPe7&amp;export=download</Url>
+	<XamarinBuildDownload Include="$(_MapboxMapsObjCItemsFolder)">
+		<Url>https://drive.google.com/uc?id=1J-s808oIHqEi5Hr6Z7wMzn2LhFI7cw7T&amp;export=download</Url>
 		<Kind>Zip</Kind>
 	</XamarinBuildDownload>
     <NativeReference Include="$(_MapboxMapsObjCSDKBaseFolder)MapboxMapObjC.xcframework">

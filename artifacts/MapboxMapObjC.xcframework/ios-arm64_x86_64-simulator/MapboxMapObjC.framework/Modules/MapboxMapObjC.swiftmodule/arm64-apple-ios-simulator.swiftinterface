@@ -4,6 +4,7 @@
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import CoreLocation/*.CoreLocation*/
 import Foundation
+import MapboxCommon
 import MapboxCoreMaps
 @_exported import MapboxMapObjC
 import MapboxMaps
@@ -973,6 +974,16 @@ extension MapboxMapObjC.TMBResolvedImage {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func circleAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBCircleAnnotationManager
   @objc @_Concurrency.MainActor(unsafe) dynamic public func pointAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPointAnnotationManager
   @objc @_Concurrency.MainActor(unsafe) dynamic public func polylineAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPolylineAnnotationManager
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class GeometryHelper : ObjectiveC.NSObject {
+  @objc public class func createPoint(_ location: Foundation.NSValue) -> MapboxCommon.Geometry
+  @objc public class func createLine(_ locations: [Foundation.NSValue]) -> MapboxCommon.Geometry
+  @objc public class func createMultiLine(_ locations: [[Foundation.NSValue]]) -> MapboxCommon.Geometry
+  @objc public class func createMultiPoint(_ locations: [Foundation.NSValue]) -> MapboxCommon.Geometry
+  @objc public class func createMultiPolygon(_ locations: [[[Foundation.NSValue]]]) -> MapboxCommon.Geometry
+  @objc public class func createPolygon(_ locations: [[Foundation.NSValue]]) -> MapboxCommon.Geometry
+  @objc public class func create(_ items: [MapboxCommon.Geometry]) -> MapboxCommon.Geometry
+  @objc deinit
 }
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
