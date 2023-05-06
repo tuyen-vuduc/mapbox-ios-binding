@@ -341,6 +341,18 @@ namespace MapboxMapsObjC
 		// -(void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
 		[Export ("loadStyle:completion:")]
 		void LoadStyle (string styleUri, [NullAllowed] Action<TMBStyle, NSError> completion);
+
+		// - (void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		[Export ("addImageWithId:image:sdf:contentInsets:completion:")]
+		void AddImageWithId (string id, UIImage image, bool sdf, UIEdgeInsets contentInsets, [NullAllowed] Action<NSError> completion);
+
+		// - (void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		[Export ("removeImageWithId:completion:")]
+		void RemoveImageWithId (string id, [NullAllowed] Action<NSError> completion);
+
+		// - (BOOL)imageExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+		[Export ("imageExistsWithId:")]
+		bool ImageExistsWithId (string id);
 	}
 
 	// @interface MapboxMapObjC_Swift_448
@@ -2924,9 +2936,17 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBStyle
 	{
-		// -(void)addImage:(UIImage * _Nonnull)image id:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nonnull))completion;
-		[Export ("addImage:id:completion:")]
-		void AddImage (UIImage image, string id, [NullAllowed] Action<NSError> completion);
+		// - (void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		[Export ("addImageWithId:image:sdf:contentInsets:completion:")]
+		void AddImageWithId (string id, UIImage image, bool sdf, UIEdgeInsets contentInsets, [NullAllowed] Action<NSError> completion);
+
+		// - (void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		[Export ("removeImageWithId:completion:")]
+		void RemoveImageWithId (string id, [NullAllowed] Action<NSError> completion);
+
+		// - (BOOL)imageExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+		[Export ("imageExistsWithId:")]
+		bool ImageExistsWithId (string id);
 	}
 
 	// @interface TMBStyleProjectionName : NSObject <NamedString>

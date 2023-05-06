@@ -268,6 +268,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import MapboxMaps;
 @import ObjectiveC;
 @import QuartzCore;
+@import UIKit;
 #endif
 
 #endif
@@ -435,14 +436,6 @@ enum TMBOrnamentVisibility : NSInteger;
 - (void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
 @end
 
-@class TMBStyle;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setStyle:(NSString * _Nonnull)styleUri;
-- (void)setStyleInJson:(NSString * _Nonnull)styleJson;
-- (void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
-@end
-
 enum TMBLayerPosition : NSInteger;
 @class TMBPolygonAnnotationManager;
 @class TMBCircleAnnotationManager;
@@ -465,6 +458,18 @@ enum TMBPuckBearingSource : NSInteger;
 - (void)locationRequestTemporaryFullAccuracyPermissions:(NSString * _Nonnull)customKey;
 - (void)puck2D:(void (^ _Nullable)(Puck2DConfigurationBuilder * _Nonnull))build;
 - (void)puckBearingSource:(enum TMBPuckBearingSource)source;
+@end
+
+@class TMBStyle;
+@class UIImage;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)setStyle:(NSString * _Nonnull)styleUri;
+- (void)setStyleInJson:(NSString * _Nonnull)styleJson;
+- (void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
+- (void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (BOOL)imageExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class TMBGeometry;
@@ -620,7 +625,6 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC11NamedString_")
 @end
 
 @class Puck2DConfigurationPulsingBuilder;
-@class UIImage;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC26Puck2DConfigurationBuilder")
 @interface Puck2DConfigurationBuilder : NSObject
@@ -1875,7 +1879,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceTyp
 
 SWIFT_CLASS("_TtC13MapboxMapObjC8TMBStyle")
 @interface TMBStyle : NSObject
-- (void)addImage:(UIImage * _Nonnull)image id:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nonnull))completion;
+- (void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (BOOL)imageExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2410,6 +2416,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import MapboxMaps;
 @import ObjectiveC;
 @import QuartzCore;
+@import UIKit;
 #endif
 
 #endif
@@ -2577,14 +2584,6 @@ enum TMBOrnamentVisibility : NSInteger;
 - (void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
 @end
 
-@class TMBStyle;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setStyle:(NSString * _Nonnull)styleUri;
-- (void)setStyleInJson:(NSString * _Nonnull)styleJson;
-- (void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
-@end
-
 enum TMBLayerPosition : NSInteger;
 @class TMBPolygonAnnotationManager;
 @class TMBCircleAnnotationManager;
@@ -2607,6 +2606,18 @@ enum TMBPuckBearingSource : NSInteger;
 - (void)locationRequestTemporaryFullAccuracyPermissions:(NSString * _Nonnull)customKey;
 - (void)puck2D:(void (^ _Nullable)(Puck2DConfigurationBuilder * _Nonnull))build;
 - (void)puckBearingSource:(enum TMBPuckBearingSource)source;
+@end
+
+@class TMBStyle;
+@class UIImage;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)setStyle:(NSString * _Nonnull)styleUri;
+- (void)setStyleInJson:(NSString * _Nonnull)styleJson;
+- (void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
+- (void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (BOOL)imageExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class TMBGeometry;
@@ -2762,7 +2773,6 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC11NamedString_")
 @end
 
 @class Puck2DConfigurationPulsingBuilder;
-@class UIImage;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC26Puck2DConfigurationBuilder")
 @interface Puck2DConfigurationBuilder : NSObject
@@ -4017,7 +4027,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceTyp
 
 SWIFT_CLASS("_TtC13MapboxMapObjC8TMBStyle")
 @interface TMBStyle : NSObject
-- (void)addImage:(UIImage * _Nonnull)image id:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nonnull))completion;
+- (void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (BOOL)imageExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

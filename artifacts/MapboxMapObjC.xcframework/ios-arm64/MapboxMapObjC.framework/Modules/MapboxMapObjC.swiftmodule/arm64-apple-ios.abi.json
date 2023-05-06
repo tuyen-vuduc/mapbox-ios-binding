@@ -1030,7 +1030,7 @@
           {
             "kind": "Function",
             "name": "addImage",
-            "printedName": "addImage(_:id:completion:)",
+            "printedName": "addImage(id:image:sdf:contentInsets:completion:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1039,9 +1039,85 @@
               },
               {
                 "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
                 "name": "UIImage",
                 "printedName": "UIKit.UIImage",
                 "usr": "c:objc(cs)UIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIEdgeInsets",
+                "printedName": "UIKit.UIEdgeInsets",
+                "hasDefaultArg": true,
+                "usr": "c:@S@UIEdgeInsets"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Error?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyle(im)addImageWithId:image:sdf:contentInsets:completion:",
+            "mangledName": "$s13MapboxMapObjC8TMBStyleC8addImage2id5image3sdf13contentInsets10completionySS_So7UIImageCSbSo06UIEdgeK0Vys5Error_pSgcSgtF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "addImageWithId:image:sdf:contentInsets:completion:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeImage",
+            "printedName": "removeImage(id:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
               },
               {
                 "kind": "TypeNominal",
@@ -1052,12 +1128,12 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "((Swift.Error) -> ())?",
+                "printedName": "((Swift.Error?) -> ())?",
                 "children": [
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "(Swift.Error) -> ()",
+                    "printedName": "(Swift.Error?) -> ()",
                     "children": [
                       {
                         "kind": "TypeNominal",
@@ -1066,9 +1142,17 @@
                       },
                       {
                         "kind": "TypeNominal",
-                        "name": "Error",
-                        "printedName": "Swift.Error",
-                        "usr": "s:s5ErrorP"
+                        "name": "Optional",
+                        "printedName": "Swift.Error?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
                       }
                     ]
                   }
@@ -1077,9 +1161,39 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyle(im)addImage:id:completion:",
-            "mangledName": "$s13MapboxMapObjC8TMBStyleC8addImage_2id10completionySo7UIImageC_SSys5Error_pcSgtF",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyle(im)removeImageWithId:completion:",
+            "mangledName": "$s13MapboxMapObjC8TMBStyleC11removeImage2id10completionySS_ys5Error_pSgcSgtF",
             "moduleName": "MapboxMapObjC",
+            "objc_name": "removeImageWithId:completion:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "imageExists",
+            "printedName": "imageExists(id:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyle(im)imageExistsWithId:",
+            "mangledName": "$s13MapboxMapObjC8TMBStyleC11imageExists2idSbSS_tF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "imageExistsWithId:",
             "declAttributes": [
               "AccessControl",
               "ObjC"
@@ -45851,6 +45965,188 @@
             ],
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addImage",
+            "printedName": "addImage(id:image:sdf:contentInsets:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIEdgeInsets",
+                "printedName": "UIKit.UIEdgeInsets",
+                "hasDefaultArg": true,
+                "usr": "c:@S@UIEdgeInsets"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Error?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)addImageWithId:image:sdf:contentInsets:completion:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE8addImage2id5image3sdf13contentInsets10completionySS_So7UIImageCSbSo06UIEdgeL0Vys5Error_pSgcSgtF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "addImageWithId:image:sdf:contentInsets:completion:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeImage",
+            "printedName": "removeImage(id:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Error?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)removeImageWithId:completion:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE11removeImage2id10completionySS_ys5Error_pSgcSgtF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "removeImageWithId:completion:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "imageExists",
+            "printedName": "imageExists(id:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)imageExistsWithId:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE11imageExists2idSbSS_tF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "imageExistsWithId:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Class",
@@ -46240,6 +46536,13 @@
       "offset": 12041,
       "length": 13,
       "value": "\"MapboxMapObjC.TMBCancelable\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/TMBStyle.swift",
+      "kind": "BooleanLiteral",
+      "offset": 242,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/TMBStyle.swift",
@@ -46716,6 +47019,13 @@
       "offset": 637,
       "length": 1,
       "value": "0"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/MapViewExtensions.Style.swift",
+      "kind": "BooleanLiteral",
+      "offset": 956,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/SourceProperties.swift",

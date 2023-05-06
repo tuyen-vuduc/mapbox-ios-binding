@@ -105,7 +105,9 @@ extension MapboxMaps.ResourceOptions {
   public init(_ objcValue: MapboxCoreMaps.ResourceOptions)
 }
 @_hasMissingDesignatedInitializers @objc open class TMBStyle : ObjectiveC.NSObject {
-  @objc public func addImage(_ image: UIKit.UIImage, id: Swift.String, completion: ((any Swift.Error) -> Swift.Void)?)
+  @objc public func addImage(id: Swift.String, image: UIKit.UIImage, sdf: Swift.Bool = false, contentInsets: UIKit.UIEdgeInsets = .zero, completion: (((any Swift.Error)?) -> Swift.Void)?)
+  @objc public func removeImage(id: Swift.String, completion: (((any Swift.Error)?) -> Swift.Void)?)
+  @objc public func imageExists(id: Swift.String) -> Swift.Bool
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class MapViewFactory : ObjectiveC.NSObject {
@@ -1046,6 +1048,9 @@ public protocol LayerBuilder {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setStyle(_ styleUri: Swift.String)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setStyle(inJson styleJson: Swift.String)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func loadStyle(_ styleUri: Swift.String, completion: ((MapboxMapObjC.TMBStyle?, (any Swift.Error)?) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addImage(id: Swift.String, image: UIKit.UIImage, sdf: Swift.Bool = false, contentInsets: UIKit.UIEdgeInsets = .zero, completion: (((any Swift.Error)?) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeImage(id: Swift.String, completion: (((any Swift.Error)?) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func imageExists(id: Swift.String) -> Swift.Bool
 }
 @_hasMissingDesignatedInitializers @objc open class TMBScheme : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
   @objc public init(value: Swift.String)
