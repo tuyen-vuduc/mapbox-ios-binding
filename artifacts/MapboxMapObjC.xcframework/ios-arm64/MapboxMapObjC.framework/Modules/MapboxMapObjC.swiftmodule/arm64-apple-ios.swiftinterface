@@ -121,6 +121,8 @@ extension MapboxMaps.ResourceOptions {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setSourceProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((any Swift.Error) -> Swift.Void)?)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func getSourceProperties(for id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?) -> [Swift.String : Any]
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addSource(id: Swift.String, geometry: MapboxMapObjC.TMBGeometry, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func addGeoJSONSource(id: Swift.String, properties: [Swift.String : Any], geojson: Swift.String, onComplete: (((any Swift.Error)?) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateGeoJSONSource(id: Swift.String, geojson: Swift.String, onComplete: (((any Swift.Error)?) -> Swift.Void)?)
 }
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func addRasterDemSource(_ id: Swift.String, configure: (MapboxMapObjC.RasterDemSourceBuilder) -> Swift.Void, onError: ((any Swift.Error) -> Swift.Void)?)

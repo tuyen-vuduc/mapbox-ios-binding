@@ -481,6 +481,8 @@ enum TMBPuckBearingSource : NSInteger;
 - (void)setSourcePropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 - (NSDictionary<NSString *, id> * _Nonnull)getSourcePropertiesFor:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
 - (void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addGeoJSONSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
+- (void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
 @end
 
 @class TMBAnchor;
@@ -2629,6 +2631,8 @@ enum TMBPuckBearingSource : NSInteger;
 - (void)setSourcePropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 - (NSDictionary<NSString *, id> * _Nonnull)getSourcePropertiesFor:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
 - (void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (void)addGeoJSONSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
+- (void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
 @end
 
 @class TMBAnchor;

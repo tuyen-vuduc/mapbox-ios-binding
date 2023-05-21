@@ -427,6 +427,14 @@ namespace MapboxMapsObjC
 		// -(void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("addSourceWithId:geometry:onError:")]
 		void AddSourceWithId (string id, TMBGeometry geometry, [NullAllowed] Action<NSError> onError);
+
+		// - (void)addGeoJSONSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
+		[Export ("addGeoJSONSourceWithId:properties:geojson:onComplete:")]
+		void AddGeoJSONSourceWithId (string id, NSDictionary<NSString, NSObject> properties, string geojson, [NullAllowed] Action<NSError> onComplete);
+
+		// - (void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
+		[Export ("updateGeoJSONSourceWithId:geojson:onComplete:")]
+		void UpdateGeoJSONSourceWithId (string id, string geojson, [NullAllowed] Action<NSError> onComplete);
 	}
 
 	// @interface MapboxMapObjC_Swift_480
