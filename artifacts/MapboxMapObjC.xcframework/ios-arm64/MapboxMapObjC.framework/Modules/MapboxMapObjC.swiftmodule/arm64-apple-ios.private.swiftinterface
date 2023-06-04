@@ -11,6 +11,7 @@ import MapboxMaps
 import MapboxMobileEvents
 import Swift
 import Turf
+import UIKit
 import _Concurrency
 import _StringProcessing
 @objc public protocol TMBAnnotation {
@@ -112,6 +113,19 @@ extension MapboxMaps.ResourceOptions {
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class MapViewFactory : ObjectiveC.NSObject {
   @objc public static func create(frame: CoreFoundation.CGRect, options: MapboxMaps.MapInitOptions?) -> MapboxMaps.MapView
+  @objc deinit
+}
+@objc open class TMBClusterOptions : ObjectiveC.NSObject {
+  @objc public var circleRadius: MapboxMapObjC.TMBValue
+  @objc public var circleColor: MapboxMapObjC.TMBValue
+  @objc public var textColor: MapboxMapObjC.TMBValue
+  @objc public var textSize: MapboxMapObjC.TMBValue
+  @objc public var textField: MapboxMapObjC.TMBValue
+  @objc public var clusterRadius: Swift.Double
+  @objc public var clusterMaxZoom: Swift.Double
+  @objc public var clusterProperties: [Swift.String : MapboxMapObjC.TMBExpression]?
+  @objc public init(circleRadius: MapboxMapObjC.TMBValue, circleColor: MapboxMapObjC.TMBValue, textColor: MapboxMapObjC.TMBValue, textSize: MapboxMapObjC.TMBValue, textField: MapboxMapObjC.TMBValue, clusterRadius: Swift.Double = 50, clusterMaxZoom: Swift.Double = 14, clusterProperties: [Swift.String : MapboxMapObjC.TMBExpression]? = nil)
+  @objc public class func defaultValue() -> MapboxMapObjC.TMBClusterOptions
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {
@@ -976,7 +990,7 @@ extension MapboxMapObjC.TMBResolvedImage {
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func polygonAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPolygonAnnotationManager
   @objc @_Concurrency.MainActor(unsafe) dynamic public func circleAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBCircleAnnotationManager
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func pointAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPointAnnotationManager
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func pointAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?, clusterOptions: MapboxMapObjC.TMBClusterOptions?) -> MapboxMapObjC.TMBPointAnnotationManager
   @objc @_Concurrency.MainActor(unsafe) dynamic public func polylineAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPolylineAnnotationManager
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class GeometryHelper : ObjectiveC.NSObject {
@@ -1069,10 +1083,11 @@ public protocol LayerBuilder {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBExpression : ObjectiveC.NSObject {
-  final public let `operator`: MapboxMapObjC.TMBOperator
+  final public let `operator`: MapboxMapObjC.TMBOperator?
   final public let arguments: [Any]
   @objc public class func create(withOperator operator: MapboxMapObjC.TMBOperator) -> MapboxMapObjC.TMBExpression
   @objc public class func create(withOperator operator: MapboxMapObjC.TMBOperator, arguments: [Any]) -> MapboxMapObjC.TMBExpression
+  @objc public class func create(arguments: [Any]) -> MapboxMapObjC.TMBExpression
   @objc deinit
 }
 @objc open class TMBPolylineAnnotation : ObjectiveC.NSObject, MapboxMapObjC.TMBAnnotation {

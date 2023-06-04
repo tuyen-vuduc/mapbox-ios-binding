@@ -439,13 +439,14 @@ enum TMBOrnamentVisibility : NSInteger;
 enum TMBLayerPosition : NSInteger;
 @class TMBPolygonAnnotationManager;
 @class TMBCircleAnnotationManager;
+@class TMBClusterOptions;
 @class TMBPointAnnotationManager;
 @class TMBPolylineAnnotationManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
 - (TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
-- (TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
+- (TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam clusterOptions:(TMBClusterOptions * _Nullable)clusterOptions SWIFT_WARN_UNUSED_RESULT;
 - (TMBPolylineAnnotationManager * _Nonnull)polylineAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -938,6 +939,65 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTra
 @end
 
 
+SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
+@interface TMBClusterOptions : NSObject
+/// The circle radius of the cluster items, 18 by default. Units in pixels.
+@property (nonatomic, strong) TMBValue * _Nonnull circleRadius;
+/// The circle color, black by default.
+@property (nonatomic, strong) TMBValue * _Nonnull circleColor;
+/// The text color of cluster item, white by default
+@property (nonatomic, strong) TMBValue * _Nonnull textColor;
+/// The text size of cluster item, 12 by default. Units in pixels.
+@property (nonatomic, strong) TMBValue * _Nonnull textSize;
+/// Value to use for a text label of the cluster. <code>get("point_count")</code> by default which
+/// will show the count of points in the cluster
+@property (nonatomic, strong) TMBValue * _Nonnull textField;
+/// Radius of each cluster if clustering is enabled. A value of 512 indicates a radius equal
+/// to the width of a tile, 50 by default. Value must be greater than or equal to 0.
+@property (nonatomic) double clusterRadius;
+/// Max zoom on which to cluster points if clustering is enabled. Defaults to one zoom less
+/// than maxzoom (so that last zoom features are not clustered). Clusters are re-evaluated at integer zoom
+/// levels so setting clusterMaxZoom to 14 means the clusters will be displayed until z15.
+@property (nonatomic) double clusterMaxZoom;
+/// An object defining custom properties on the generated clusters if clustering is enabled, aggregating values from
+/// clustered points. Has the form <code>{"property_name": [operator, map_expression]}</code>.
+/// <code>operator</code> is any expression function that accepts at
+/// least 2 operands (e.g. <code>"+"</code> or <code>"max"</code>) — it accumulates the property value from clusters/points the
+/// cluster contains; <code>map_expression</code> produces the value of a single point. Example:
+/// <code>Expression</code> syntax:
+/// \code
+/// let expression = Exp(.sum) {
+///     Exp(.get) { "scalerank" }
+/// }
+/// clusterProperties: ["sum": expression]
+///
+/// \endcodeJSON syntax:
+/// <code>{"sum": ["+", ["get", "scalerank"]]}</code>
+/// For more advanced use cases, in place of <code>operator</code>, you can use a custom reduce expression that references a special <code>["accumulated"]</code> value. Example:
+/// <code>Expression</code> syntax:
+/// \code
+/// let expression = Exp {
+///     Exp(.sum) {
+///         Exp(.accumulated)
+///         Exp(.get) { "sum" }
+///     }
+///     Exp(.get) { "scalerank" }
+/// }
+/// clusterProperties: ["sum": expression]
+///
+/// \endcodeJSON syntax:
+/// <code>{"sum": [["+", ["accumulated"], ["get", "sum"]], ["get", "scalerank"]]}</code>
+@property (nonatomic, copy) NSDictionary<NSString *, TMBExpression *> * _Nullable clusterProperties;
+/// Define a set of cluster options to determine how to cluster annotations.
+/// Providing clusterOptions when initializing a <code>PointAnnotationManager</code>
+/// will turn on clustering for that <code>PointAnnotationManager</code>.
+- (nonnull instancetype)initWithCircleRadius:(TMBValue * _Nonnull)circleRadius circleColor:(TMBValue * _Nonnull)circleColor textColor:(TMBValue * _Nonnull)textColor textSize:(TMBValue * _Nonnull)textSize textField:(TMBValue * _Nonnull)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *, TMBExpression *> * _Nullable)clusterProperties OBJC_DESIGNATED_INITIALIZER;
++ (TMBClusterOptions * _Nonnull)defaultValue SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtC13MapboxMapObjC11TMBEncoding")
 @interface TMBEncoding : NSObject <NamedString>
 - (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
@@ -958,6 +1018,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC13TMBExpression")
 @interface TMBExpression : NSObject
 + (TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ SWIFT_WARN_UNUSED_RESULT;
 + (TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ arguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
++ (TMBExpression * _Nonnull)createWithArguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2589,13 +2650,14 @@ enum TMBOrnamentVisibility : NSInteger;
 enum TMBLayerPosition : NSInteger;
 @class TMBPolygonAnnotationManager;
 @class TMBCircleAnnotationManager;
+@class TMBClusterOptions;
 @class TMBPointAnnotationManager;
 @class TMBPolylineAnnotationManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
 - (TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
-- (TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
+- (TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam clusterOptions:(TMBClusterOptions * _Nullable)clusterOptions SWIFT_WARN_UNUSED_RESULT;
 - (TMBPolylineAnnotationManager * _Nonnull)polylineAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -3088,6 +3150,65 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTra
 @end
 
 
+SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
+@interface TMBClusterOptions : NSObject
+/// The circle radius of the cluster items, 18 by default. Units in pixels.
+@property (nonatomic, strong) TMBValue * _Nonnull circleRadius;
+/// The circle color, black by default.
+@property (nonatomic, strong) TMBValue * _Nonnull circleColor;
+/// The text color of cluster item, white by default
+@property (nonatomic, strong) TMBValue * _Nonnull textColor;
+/// The text size of cluster item, 12 by default. Units in pixels.
+@property (nonatomic, strong) TMBValue * _Nonnull textSize;
+/// Value to use for a text label of the cluster. <code>get("point_count")</code> by default which
+/// will show the count of points in the cluster
+@property (nonatomic, strong) TMBValue * _Nonnull textField;
+/// Radius of each cluster if clustering is enabled. A value of 512 indicates a radius equal
+/// to the width of a tile, 50 by default. Value must be greater than or equal to 0.
+@property (nonatomic) double clusterRadius;
+/// Max zoom on which to cluster points if clustering is enabled. Defaults to one zoom less
+/// than maxzoom (so that last zoom features are not clustered). Clusters are re-evaluated at integer zoom
+/// levels so setting clusterMaxZoom to 14 means the clusters will be displayed until z15.
+@property (nonatomic) double clusterMaxZoom;
+/// An object defining custom properties on the generated clusters if clustering is enabled, aggregating values from
+/// clustered points. Has the form <code>{"property_name": [operator, map_expression]}</code>.
+/// <code>operator</code> is any expression function that accepts at
+/// least 2 operands (e.g. <code>"+"</code> or <code>"max"</code>) — it accumulates the property value from clusters/points the
+/// cluster contains; <code>map_expression</code> produces the value of a single point. Example:
+/// <code>Expression</code> syntax:
+/// \code
+/// let expression = Exp(.sum) {
+///     Exp(.get) { "scalerank" }
+/// }
+/// clusterProperties: ["sum": expression]
+///
+/// \endcodeJSON syntax:
+/// <code>{"sum": ["+", ["get", "scalerank"]]}</code>
+/// For more advanced use cases, in place of <code>operator</code>, you can use a custom reduce expression that references a special <code>["accumulated"]</code> value. Example:
+/// <code>Expression</code> syntax:
+/// \code
+/// let expression = Exp {
+///     Exp(.sum) {
+///         Exp(.accumulated)
+///         Exp(.get) { "sum" }
+///     }
+///     Exp(.get) { "scalerank" }
+/// }
+/// clusterProperties: ["sum": expression]
+///
+/// \endcodeJSON syntax:
+/// <code>{"sum": [["+", ["accumulated"], ["get", "sum"]], ["get", "scalerank"]]}</code>
+@property (nonatomic, copy) NSDictionary<NSString *, TMBExpression *> * _Nullable clusterProperties;
+/// Define a set of cluster options to determine how to cluster annotations.
+/// Providing clusterOptions when initializing a <code>PointAnnotationManager</code>
+/// will turn on clustering for that <code>PointAnnotationManager</code>.
+- (nonnull instancetype)initWithCircleRadius:(TMBValue * _Nonnull)circleRadius circleColor:(TMBValue * _Nonnull)circleColor textColor:(TMBValue * _Nonnull)textColor textSize:(TMBValue * _Nonnull)textSize textField:(TMBValue * _Nonnull)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *, TMBExpression *> * _Nullable)clusterProperties OBJC_DESIGNATED_INITIALIZER;
++ (TMBClusterOptions * _Nonnull)defaultValue SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtC13MapboxMapObjC11TMBEncoding")
 @interface TMBEncoding : NSObject <NamedString>
 - (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
@@ -3108,6 +3229,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC13TMBExpression")
 @interface TMBExpression : NSObject
 + (TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ SWIFT_WARN_UNUSED_RESULT;
 + (TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ arguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
++ (TMBExpression * _Nonnull)createWithArguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
