@@ -992,7 +992,6 @@ SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
 /// Providing clusterOptions when initializing a <code>PointAnnotationManager</code>
 /// will turn on clustering for that <code>PointAnnotationManager</code>.
 - (nonnull instancetype)initWithCircleRadius:(TMBValue * _Nonnull)circleRadius circleColor:(TMBValue * _Nonnull)circleColor textColor:(TMBValue * _Nonnull)textColor textSize:(TMBValue * _Nonnull)textSize textField:(TMBValue * _Nonnull)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *, TMBExpression *> * _Nullable)clusterProperties OBJC_DESIGNATED_INITIALIZER;
-+ (TMBClusterOptions * _Nonnull)defaultValue SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1016,6 +1015,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBEncoding 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBExpression")
 @interface TMBExpression : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+@property (nonatomic, readonly, copy) NSString * _Nonnull debugDescription;
 + (TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ SWIFT_WARN_UNUSED_RESULT;
 + (TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ arguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
 + (TMBExpression * _Nonnull)createWithArguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
@@ -2170,6 +2171,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 + (TMBValue * _Nonnull)intValue:(NSInteger)value SWIFT_WARN_UNUSED_RESULT;
 + (TMBValue * _Nonnull)doubleValue:(double)value SWIFT_WARN_UNUSED_RESULT;
 + (TMBValue * _Nonnull)expression:(TMBExpression * _Nonnull)expression SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSString * _Nonnull debugDescription;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

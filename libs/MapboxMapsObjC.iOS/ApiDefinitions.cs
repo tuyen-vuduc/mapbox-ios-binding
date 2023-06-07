@@ -1412,7 +1412,7 @@ namespace MapboxMapsObjC
 		// - (nonnull instancetype)initWithCircleRadius:(TMBValue * _Nonnull)circleRadius circleColor:(TMBValue * _Nonnull)circleColor textColor:(TMBValue * _Nonnull)textColor textSize:(TMBValue * _Nonnull)textSize textField:(TMBValue * _Nonnull)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *, TMBExpression *> * _Nullable)clusterProperties OBJC_DESIGNATED_INITIALIZER;
 		[Export ("initWithCircleRadius:circleColor:textColor:textSize:textField:clusterRadius:clusterMaxZoom:clusterProperties:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBValue circleRadius, TMBValue circleColor, TMBValue textSize, TMBValue textField, double clusterRadius, double clusterMaxZoom, [NullAllowed] NSDictionary clusterProperties);
+		IntPtr Constructor (TMBValue circleRadius, TMBValue circleColor, TMBValue textColor, TMBValue textSize, TMBValue textField, double clusterRadius, double clusterMaxZoom, [NullAllowed] NSDictionary clusterProperties);
 
 		// /// The circle radius of the cluster items, 18 by default. Units in pixels.
 		// @property (nonatomic, strong) TMBValue * _Nonnull circleRadius;
@@ -1484,11 +1484,6 @@ namespace MapboxMapsObjC
 		// @property (nonatomic, copy) NSDictionary<NSString *, TMBExpression *> * _Nullable clusterProperties;
 		[Export ("clusterProperties", ArgumentSemantic.Copy)]
 		NSDictionary ClusterProperties { get; set; }
-
-		// + (TMBClusterOptions * _Nonnull)defaultValue SWIFT_WARN_UNUSED_RESULT;
-		[Static]
-		[Export ("defaultValue")]
-		TMBClusterOptions Default { get; }
 	}
 
 	// @interface TMBEncoding : NSObject <NamedString>

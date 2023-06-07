@@ -125,7 +125,6 @@ extension MapboxMaps.ResourceOptions {
   @objc public var clusterMaxZoom: Swift.Double
   @objc public var clusterProperties: [Swift.String : MapboxMapObjC.TMBExpression]?
   @objc public init(circleRadius: MapboxMapObjC.TMBValue, circleColor: MapboxMapObjC.TMBValue, textColor: MapboxMapObjC.TMBValue, textSize: MapboxMapObjC.TMBValue, textField: MapboxMapObjC.TMBValue, clusterRadius: Swift.Double = 50, clusterMaxZoom: Swift.Double = 14, clusterProperties: [Swift.String : MapboxMapObjC.TMBExpression]? = nil)
-  @objc public class func defaultValue() -> MapboxMapObjC.TMBClusterOptions
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {
@@ -1085,6 +1084,12 @@ public protocol LayerBuilder {
 @_hasMissingDesignatedInitializers @objc open class TMBExpression : ObjectiveC.NSObject {
   final public let `operator`: MapboxMapObjC.TMBOperator?
   final public let arguments: [Any]
+  @objc override dynamic open var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic open var debugDescription: Swift.String {
+    @objc get
+  }
   @objc public class func create(withOperator operator: MapboxMapObjC.TMBOperator) -> MapboxMapObjC.TMBExpression
   @objc public class func create(withOperator operator: MapboxMapObjC.TMBOperator, arguments: [Any]) -> MapboxMapObjC.TMBExpression
   @objc public class func create(arguments: [Any]) -> MapboxMapObjC.TMBExpression
@@ -1381,6 +1386,9 @@ public protocol LayerBuilder {
   @objc public class func intValue(_ value: Swift.Int) -> MapboxMapObjC.TMBValue
   @objc public class func doubleValue(_ value: Swift.Double) -> MapboxMapObjC.TMBValue
   @objc public class func expression(_ expression: MapboxMapObjC.TMBExpression) -> MapboxMapObjC.TMBValue
+  @objc override dynamic open var debugDescription: Swift.String {
+    @objc get
+  }
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc open class BuiltInStyles : ObjectiveC.NSObject {

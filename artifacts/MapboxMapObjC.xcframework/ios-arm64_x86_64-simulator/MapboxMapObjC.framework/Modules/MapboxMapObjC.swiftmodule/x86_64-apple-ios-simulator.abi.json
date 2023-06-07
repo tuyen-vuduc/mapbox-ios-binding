@@ -2380,29 +2380,6 @@
             "init_kind": "Designated"
           },
           {
-            "kind": "Function",
-            "name": "defaultValue",
-            "printedName": "defaultValue()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "TMBClusterOptions",
-                "printedName": "MapboxMapObjC.TMBClusterOptions",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(cm)defaultValue",
-            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC12defaultValueACyFZ",
-            "moduleName": "MapboxMapObjC",
-            "static": true,
-            "declAttributes": [
-              "AccessControl",
-              "ObjC"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -31795,6 +31772,112 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "description",
+            "printedName": "description",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBExpression(py)description",
+            "mangledName": "$s13MapboxMapObjC13TMBExpressionC11descriptionSSvp",
+            "moduleName": "MapboxMapObjC",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "description",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl",
+              "Override"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBExpression(im)description",
+                "mangledName": "$s13MapboxMapObjC13TMBExpressionC11descriptionSSvg",
+                "moduleName": "MapboxMapObjC",
+                "overriding": true,
+                "isOpen": true,
+                "objc_name": "description",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "debugDescription",
+            "printedName": "debugDescription",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBExpression(py)debugDescription",
+            "mangledName": "$s13MapboxMapObjC13TMBExpressionC16debugDescriptionSSvp",
+            "moduleName": "MapboxMapObjC",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "debugDescription",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl",
+              "Override"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBExpression(im)debugDescription",
+                "mangledName": "$s13MapboxMapObjC13TMBExpressionC16debugDescriptionSSvg",
+                "moduleName": "MapboxMapObjC",
+                "overriding": true,
+                "isOpen": true,
+                "objc_name": "debugDescription",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "create",
             "printedName": "create(withOperator:)",
@@ -42714,6 +42797,59 @@
             "funcSelfKind": "NonMutating"
           },
           {
+            "kind": "Var",
+            "name": "debugDescription",
+            "printedName": "debugDescription",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue(py)debugDescription",
+            "mangledName": "$s13MapboxMapObjC8TMBValueC16debugDescriptionSSvp",
+            "moduleName": "MapboxMapObjC",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "debugDescription",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl",
+              "Override"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue(im)debugDescription",
+                "mangledName": "$s13MapboxMapObjC8TMBValueC16debugDescriptionSSvg",
+                "moduleName": "MapboxMapObjC",
+                "overriding": true,
+                "isOpen": true,
+                "objc_name": "debugDescription",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -47713,7 +47849,7 @@
       "value": "2"
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/Terrain.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBTerrain.swift",
       "kind": "StringLiteral",
       "offset": 335,
       "length": 10,
@@ -47862,21 +47998,21 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBClusterOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 3888,
+      "offset": 3857,
       "length": 2,
       "value": "18"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBClusterOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 4069,
+      "offset": 4079,
       "length": 2,
       "value": "12"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBClusterOptions.swift",
       "kind": "StringLiteral",
-      "offset": 4169,
+      "offset": 4153,
       "length": 13,
       "value": "\"point_count\""
     },
@@ -48196,14 +48332,14 @@
       "value": "3"
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/ResolvedImageData.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBResolvedImage.swift",
       "kind": "StringLiteral",
       "offset": 36,
       "length": 20,
       "value": "\"MapboxMapObjC.TMBResolvedImageData\""
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/ResolvedImageData.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBResolvedImage.swift",
       "kind": "StringLiteral",
       "offset": 262,
       "length": 16,
@@ -48343,21 +48479,21 @@
       "value": "\"positionTransition\""
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/StyleTransition.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBStyleTransition.swift",
       "kind": "StringLiteral",
       "offset": 36,
       "length": 18,
       "value": "\"MapboxMapObjC.TMBStyleTransition\""
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/StyleTransition.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBStyleTransition.swift",
       "kind": "IntegerLiteral",
       "offset": 627,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/StyleTransition.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBStyleTransition.swift",
       "kind": "IntegerLiteral",
       "offset": 637,
       "length": 1,
@@ -48385,14 +48521,28 @@
       "value": "\"MapboxMapObjC.TMBEncoding\""
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/Expression.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBExpression.swift",
+      "kind": "IntegerLiteral",
+      "offset": 672,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBExpression.swift",
+      "kind": "IntegerLiteral",
+      "offset": 907,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBExpression.swift",
       "kind": "Array",
-      "offset": 660,
+      "offset": 1138,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/Expression.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBExpression.swift",
       "kind": "StringLiteral",
       "offset": 36,
       "length": 13,
@@ -48532,7 +48682,14 @@
       "value": "\"MapboxMapObjC.FillExtrusionLayerBuilder\""
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/Value.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBValue.swift",
+      "kind": "StringLiteral",
+      "offset": 1023,
+      "length": 10,
+      "value": "\"<<NULL>>\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBValue.swift",
       "kind": "StringLiteral",
       "offset": 36,
       "length": 8,
