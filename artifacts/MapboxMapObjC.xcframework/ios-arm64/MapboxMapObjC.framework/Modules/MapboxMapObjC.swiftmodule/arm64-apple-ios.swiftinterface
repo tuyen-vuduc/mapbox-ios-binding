@@ -116,15 +116,15 @@ extension MapboxMaps.ResourceOptions {
   @objc deinit
 }
 @objc open class TMBClusterOptions : ObjectiveC.NSObject {
-  @objc public var circleRadius: MapboxMapObjC.TMBValue
-  @objc public var circleColor: MapboxMapObjC.TMBValue
-  @objc public var textColor: MapboxMapObjC.TMBValue
-  @objc public var textSize: MapboxMapObjC.TMBValue
-  @objc public var textField: MapboxMapObjC.TMBValue
+  @objc public var circleRadius: MapboxMapObjC.TMBValue?
+  @objc public var circleColor: MapboxMapObjC.TMBValue?
+  @objc public var textColor: MapboxMapObjC.TMBValue?
+  @objc public var textSize: MapboxMapObjC.TMBValue?
+  @objc public var textField: MapboxMapObjC.TMBValue?
   @objc public var clusterRadius: Swift.Double
   @objc public var clusterMaxZoom: Swift.Double
   @objc public var clusterProperties: [Swift.String : MapboxMapObjC.TMBExpression]?
-  @objc public init(circleRadius: MapboxMapObjC.TMBValue, circleColor: MapboxMapObjC.TMBValue, textColor: MapboxMapObjC.TMBValue, textSize: MapboxMapObjC.TMBValue, textField: MapboxMapObjC.TMBValue, clusterRadius: Swift.Double = 50, clusterMaxZoom: Swift.Double = 14, clusterProperties: [Swift.String : MapboxMapObjC.TMBExpression]? = nil)
+  @objc public init(circleRadius: MapboxMapObjC.TMBValue?, circleColor: MapboxMapObjC.TMBValue?, textColor: MapboxMapObjC.TMBValue?, textSize: MapboxMapObjC.TMBValue?, textField: MapboxMapObjC.TMBValue?, clusterRadius: Swift.Double = 50, clusterMaxZoom: Swift.Double = 14, clusterProperties: [Swift.String : MapboxMapObjC.TMBExpression]? = nil)
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {

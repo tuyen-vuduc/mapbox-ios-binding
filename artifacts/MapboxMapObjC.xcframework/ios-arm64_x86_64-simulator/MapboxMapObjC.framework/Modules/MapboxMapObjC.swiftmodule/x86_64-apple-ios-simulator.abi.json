@@ -1478,16 +1478,25 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "TMBValue",
-                "printedName": "MapboxMapObjC.TMBValue",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBValue",
+                    "printedName": "MapboxMapObjC.TMBValue",
+                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
             "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(py)circleRadius",
-            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC12circleRadiusAA8TMBValueCvp",
+            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC12circleRadiusAA8TMBValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
+              "HasInitialValue",
               "HasStorage",
               "AccessControl",
               "ObjC",
@@ -1502,14 +1511,22 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "TMBValue",
-                    "printedName": "MapboxMapObjC.TMBValue",
-                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBValue",
+                        "printedName": "MapboxMapObjC.TMBValue",
+                        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(im)circleRadius",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC12circleRadiusAA8TMBValueCvg",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC12circleRadiusAA8TMBValueCSgvg",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "declAttributes": [
@@ -1529,14 +1546,22 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "TMBValue",
-                    "printedName": "MapboxMapObjC.TMBValue",
-                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBValue",
+                        "printedName": "MapboxMapObjC.TMBValue",
+                        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(im)setCircleRadius:",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC12circleRadiusAA8TMBValueCvs",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC12circleRadiusAA8TMBValueCSgvs",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "declAttributes": [
@@ -1556,8 +1581,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC17TMBClusterOptionsC12circleRadiusAA8TMBValueCvM",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC12circleRadiusAA8TMBValueCvM",
+                "usr": "s:13MapboxMapObjC17TMBClusterOptionsC12circleRadiusAA8TMBValueCSgvM",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC12circleRadiusAA8TMBValueCSgvM",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -1571,16 +1596,25 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "TMBValue",
-                "printedName": "MapboxMapObjC.TMBValue",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBValue",
+                    "printedName": "MapboxMapObjC.TMBValue",
+                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
             "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(py)circleColor",
-            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC11circleColorAA8TMBValueCvp",
+            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC11circleColorAA8TMBValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
+              "HasInitialValue",
               "HasStorage",
               "AccessControl",
               "ObjC",
@@ -1595,14 +1629,22 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "TMBValue",
-                    "printedName": "MapboxMapObjC.TMBValue",
-                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBValue",
+                        "printedName": "MapboxMapObjC.TMBValue",
+                        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(im)circleColor",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC11circleColorAA8TMBValueCvg",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC11circleColorAA8TMBValueCSgvg",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "declAttributes": [
@@ -1622,14 +1664,22 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "TMBValue",
-                    "printedName": "MapboxMapObjC.TMBValue",
-                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBValue",
+                        "printedName": "MapboxMapObjC.TMBValue",
+                        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(im)setCircleColor:",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC11circleColorAA8TMBValueCvs",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC11circleColorAA8TMBValueCSgvs",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "declAttributes": [
@@ -1649,8 +1699,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC17TMBClusterOptionsC11circleColorAA8TMBValueCvM",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC11circleColorAA8TMBValueCvM",
+                "usr": "s:13MapboxMapObjC17TMBClusterOptionsC11circleColorAA8TMBValueCSgvM",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC11circleColorAA8TMBValueCSgvM",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -1664,16 +1714,25 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "TMBValue",
-                "printedName": "MapboxMapObjC.TMBValue",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBValue",
+                    "printedName": "MapboxMapObjC.TMBValue",
+                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
             "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(py)textColor",
-            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textColorAA8TMBValueCvp",
+            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textColorAA8TMBValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
+              "HasInitialValue",
               "HasStorage",
               "AccessControl",
               "ObjC",
@@ -1688,14 +1747,22 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "TMBValue",
-                    "printedName": "MapboxMapObjC.TMBValue",
-                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBValue",
+                        "printedName": "MapboxMapObjC.TMBValue",
+                        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(im)textColor",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textColorAA8TMBValueCvg",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textColorAA8TMBValueCSgvg",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "declAttributes": [
@@ -1715,14 +1782,22 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "TMBValue",
-                    "printedName": "MapboxMapObjC.TMBValue",
-                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBValue",
+                        "printedName": "MapboxMapObjC.TMBValue",
+                        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(im)setTextColor:",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textColorAA8TMBValueCvs",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textColorAA8TMBValueCSgvs",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "declAttributes": [
@@ -1742,8 +1817,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC17TMBClusterOptionsC9textColorAA8TMBValueCvM",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textColorAA8TMBValueCvM",
+                "usr": "s:13MapboxMapObjC17TMBClusterOptionsC9textColorAA8TMBValueCSgvM",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textColorAA8TMBValueCSgvM",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -1757,16 +1832,25 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "TMBValue",
-                "printedName": "MapboxMapObjC.TMBValue",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBValue",
+                    "printedName": "MapboxMapObjC.TMBValue",
+                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
             "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(py)textSize",
-            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC8textSizeAA8TMBValueCvp",
+            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC8textSizeAA8TMBValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
+              "HasInitialValue",
               "HasStorage",
               "AccessControl",
               "ObjC",
@@ -1781,14 +1865,22 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "TMBValue",
-                    "printedName": "MapboxMapObjC.TMBValue",
-                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBValue",
+                        "printedName": "MapboxMapObjC.TMBValue",
+                        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(im)textSize",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC8textSizeAA8TMBValueCvg",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC8textSizeAA8TMBValueCSgvg",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "declAttributes": [
@@ -1808,14 +1900,22 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "TMBValue",
-                    "printedName": "MapboxMapObjC.TMBValue",
-                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBValue",
+                        "printedName": "MapboxMapObjC.TMBValue",
+                        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(im)setTextSize:",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC8textSizeAA8TMBValueCvs",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC8textSizeAA8TMBValueCSgvs",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "declAttributes": [
@@ -1835,8 +1935,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC17TMBClusterOptionsC8textSizeAA8TMBValueCvM",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC8textSizeAA8TMBValueCvM",
+                "usr": "s:13MapboxMapObjC17TMBClusterOptionsC8textSizeAA8TMBValueCSgvM",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC8textSizeAA8TMBValueCSgvM",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -1850,16 +1950,25 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "TMBValue",
-                "printedName": "MapboxMapObjC.TMBValue",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBValue",
+                    "printedName": "MapboxMapObjC.TMBValue",
+                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
             "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(py)textField",
-            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textFieldAA8TMBValueCvp",
+            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textFieldAA8TMBValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
+              "HasInitialValue",
               "HasStorage",
               "AccessControl",
               "ObjC",
@@ -1874,14 +1983,22 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "TMBValue",
-                    "printedName": "MapboxMapObjC.TMBValue",
-                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBValue",
+                        "printedName": "MapboxMapObjC.TMBValue",
+                        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(im)textField",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textFieldAA8TMBValueCvg",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textFieldAA8TMBValueCSgvg",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "declAttributes": [
@@ -1901,14 +2018,22 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "TMBValue",
-                    "printedName": "MapboxMapObjC.TMBValue",
-                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBValue",
+                        "printedName": "MapboxMapObjC.TMBValue",
+                        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
                 "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(im)setTextField:",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textFieldAA8TMBValueCvs",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textFieldAA8TMBValueCSgvs",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "declAttributes": [
@@ -1928,8 +2053,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC17TMBClusterOptionsC9textFieldAA8TMBValueCvM",
-                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textFieldAA8TMBValueCvM",
+                "usr": "s:13MapboxMapObjC17TMBClusterOptionsC9textFieldAA8TMBValueCSgvM",
+                "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC9textFieldAA8TMBValueCSgvM",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -2295,33 +2420,73 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "TMBValue",
-                "printedName": "MapboxMapObjC.TMBValue",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBValue",
+                    "printedName": "MapboxMapObjC.TMBValue",
+                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                  }
+                ],
+                "usr": "s:Sq"
               },
               {
                 "kind": "TypeNominal",
-                "name": "TMBValue",
-                "printedName": "MapboxMapObjC.TMBValue",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBValue",
+                    "printedName": "MapboxMapObjC.TMBValue",
+                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                  }
+                ],
+                "usr": "s:Sq"
               },
               {
                 "kind": "TypeNominal",
-                "name": "TMBValue",
-                "printedName": "MapboxMapObjC.TMBValue",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBValue",
+                    "printedName": "MapboxMapObjC.TMBValue",
+                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                  }
+                ],
+                "usr": "s:Sq"
               },
               {
                 "kind": "TypeNominal",
-                "name": "TMBValue",
-                "printedName": "MapboxMapObjC.TMBValue",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBValue",
+                    "printedName": "MapboxMapObjC.TMBValue",
+                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                  }
+                ],
+                "usr": "s:Sq"
               },
               {
                 "kind": "TypeNominal",
-                "name": "TMBValue",
-                "printedName": "MapboxMapObjC.TMBValue",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBValue",
+                    "printedName": "MapboxMapObjC.TMBValue",
+                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBValue"
+                  }
+                ],
+                "usr": "s:Sq"
               },
               {
                 "kind": "TypeNominal",
@@ -2369,7 +2534,7 @@
             ],
             "declKind": "Constructor",
             "usr": "c:@M@MapboxMapObjC@objc(cs)TMBClusterOptions(im)initWithCircleRadius:circleColor:textColor:textSize:textField:clusterRadius:clusterMaxZoom:clusterProperties:",
-            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC12circleRadius0F5Color04textH00I4Size0I5Field07clusterG00L7MaxZoom0L10PropertiesAcA8TMBValueC_A4MS2dSDySSAA13TMBExpressionCGSgtcfc",
+            "mangledName": "$s13MapboxMapObjC17TMBClusterOptionsC12circleRadius0F5Color04textH00I4Size0I5Field07clusterG00L7MaxZoom0L10PropertiesAcA8TMBValueCSg_A4NS2dSDySSAA13TMBExpressionCGSgtcfc",
             "moduleName": "MapboxMapObjC",
             "objc_name": "initWithCircleRadius:circleColor:textColor:textSize:textField:clusterRadius:clusterMaxZoom:clusterProperties:",
             "declAttributes": [
@@ -47984,35 +48149,35 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBClusterOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 3272,
+      "offset": 3282,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBClusterOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 3317,
+      "offset": 3327,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBClusterOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 3857,
+      "offset": 3868,
       "length": 2,
       "value": "18"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBClusterOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 4079,
+      "offset": 4093,
       "length": 2,
       "value": "12"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/annotations\/TMBClusterOptions.swift",
       "kind": "StringLiteral",
-      "offset": 4153,
+      "offset": 4168,
       "length": 13,
       "value": "\"point_count\""
     },

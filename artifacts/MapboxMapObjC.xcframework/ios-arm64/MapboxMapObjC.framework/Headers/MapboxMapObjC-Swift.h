@@ -942,16 +942,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTra
 SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
 @interface TMBClusterOptions : NSObject
 /// The circle radius of the cluster items, 18 by default. Units in pixels.
-@property (nonatomic, strong) TMBValue * _Nonnull circleRadius;
+@property (nonatomic, strong) TMBValue * _Nullable circleRadius;
 /// The circle color, black by default.
-@property (nonatomic, strong) TMBValue * _Nonnull circleColor;
+@property (nonatomic, strong) TMBValue * _Nullable circleColor;
 /// The text color of cluster item, white by default
-@property (nonatomic, strong) TMBValue * _Nonnull textColor;
+@property (nonatomic, strong) TMBValue * _Nullable textColor;
 /// The text size of cluster item, 12 by default. Units in pixels.
-@property (nonatomic, strong) TMBValue * _Nonnull textSize;
+@property (nonatomic, strong) TMBValue * _Nullable textSize;
 /// Value to use for a text label of the cluster. <code>get("point_count")</code> by default which
 /// will show the count of points in the cluster
-@property (nonatomic, strong) TMBValue * _Nonnull textField;
+@property (nonatomic, strong) TMBValue * _Nullable textField;
 /// Radius of each cluster if clustering is enabled. A value of 512 indicates a radius equal
 /// to the width of a tile, 50 by default. Value must be greater than or equal to 0.
 @property (nonatomic) double clusterRadius;
@@ -991,7 +991,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
 /// Define a set of cluster options to determine how to cluster annotations.
 /// Providing clusterOptions when initializing a <code>PointAnnotationManager</code>
 /// will turn on clustering for that <code>PointAnnotationManager</code>.
-- (nonnull instancetype)initWithCircleRadius:(TMBValue * _Nonnull)circleRadius circleColor:(TMBValue * _Nonnull)circleColor textColor:(TMBValue * _Nonnull)textColor textSize:(TMBValue * _Nonnull)textSize textField:(TMBValue * _Nonnull)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *, TMBExpression *> * _Nullable)clusterProperties OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCircleRadius:(TMBValue * _Nullable)circleRadius circleColor:(TMBValue * _Nullable)circleColor textColor:(TMBValue * _Nullable)textColor textSize:(TMBValue * _Nullable)textSize textField:(TMBValue * _Nullable)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *, TMBExpression *> * _Nullable)clusterProperties OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

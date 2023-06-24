@@ -1412,32 +1412,32 @@ namespace MapboxMapsObjC
 		// - (nonnull instancetype)initWithCircleRadius:(TMBValue * _Nonnull)circleRadius circleColor:(TMBValue * _Nonnull)circleColor textColor:(TMBValue * _Nonnull)textColor textSize:(TMBValue * _Nonnull)textSize textField:(TMBValue * _Nonnull)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *, TMBExpression *> * _Nullable)clusterProperties OBJC_DESIGNATED_INITIALIZER;
 		[Export ("initWithCircleRadius:circleColor:textColor:textSize:textField:clusterRadius:clusterMaxZoom:clusterProperties:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBValue circleRadius, TMBValue circleColor, TMBValue textColor, TMBValue textSize, TMBValue textField, double clusterRadius, double clusterMaxZoom, [NullAllowed] NSDictionary clusterProperties);
+		IntPtr Constructor ([NullAllowed] TMBValue circleRadius, [NullAllowed] TMBValue circleColor, [NullAllowed] TMBValue textColor, [NullAllowed] TMBValue textSize, [NullAllowed] TMBValue textField, double clusterRadius, double clusterMaxZoom, [NullAllowed] NSDictionary<NSString, TMBExpression> clusterProperties);
 
 		// /// The circle radius of the cluster items, 18 by default. Units in pixels.
 		// @property (nonatomic, strong) TMBValue * _Nonnull circleRadius;
-		[Export ("circleRadius", ArgumentSemantic.Strong)]
+		[NullAllowed, Export ("circleRadius", ArgumentSemantic.Strong)]
 		TMBValue CircleRadius { get; set; }
 
 		// /// The circle color, black by default.
 		// @property (nonatomic, strong) TMBValue * _Nonnull circleColor;
-		[Export ("circleColor", ArgumentSemantic.Strong)]
+		[NullAllowed, Export ("circleColor", ArgumentSemantic.Strong)]
 		TMBValue CircleColor { get; set; }
 
 		// /// The text color of cluster item, white by default
 		// @property (nonatomic, strong) TMBValue * _Nonnull textColor;
-		[Export ("textColor", ArgumentSemantic.Strong)]
+		[NullAllowed, Export ("textColor", ArgumentSemantic.Strong)]
 		TMBValue TextColor { get; set; }
 
 		// /// The text size of cluster item, 12 by default. Units in pixels.
 		// @property (nonatomic, strong) TMBValue * _Nonnull textSize;
-		[Export ("textSize", ArgumentSemantic.Strong)]
+		[NullAllowed, Export ("textSize", ArgumentSemantic.Strong)]
 		TMBValue TextSize { get; set; }
 
 		// /// Value to use for a text label of the cluster. <code>get("point_count")</code> by default which
 		// /// will show the count of points in the cluster
 		// @property (nonatomic, strong) TMBValue * _Nonnull textField;
-		[Export ("textField", ArgumentSemantic.Strong)]
+		[NullAllowed, Export ("textField", ArgumentSemantic.Strong)]
 		TMBValue TextField { get; set; }
 
 		// /// Radius of each cluster if clustering is enabled. A value of 512 indicates a radius equal
@@ -1482,7 +1482,7 @@ namespace MapboxMapsObjC
 		// /// \endcodeJSON syntax:
 		// /// <code>{"sum": [["+", ["accumulated"], ["get", "sum"]], ["get", "scalerank"]]}</code>
 		// @property (nonatomic, copy) NSDictionary<NSString *, TMBExpression *> * _Nullable clusterProperties;
-		[Export ("clusterProperties", ArgumentSemantic.Copy)]
+		[NullAllowed, Export ("clusterProperties", ArgumentSemantic.Copy)]
 		NSDictionary ClusterProperties { get; set; }
 	}
 
@@ -1514,7 +1514,7 @@ namespace MapboxMapsObjC
 	// @interface TMBExpression : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC13TMBExpression")]
 	[DisableDefaultCtor]
-	interface TMBExpression
+	interface TMBExpression : INativeObject
 	{
 		// +(TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ __attribute__((warn_unused_result("")));
 		[Static]
@@ -2781,7 +2781,7 @@ namespace MapboxMapsObjC
 		// +(TMBPolylineAnnotation * _Nonnull)fromId:(NSString * _Nonnull)id coordinates:(NSArray<NSValue *> * _Nonnull)coordinates isSelected:(BOOL)isSelected isDraggable:(BOOL)isDraggable __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("fromId:coordinates:isSelected:isDraggable:")]
-		TMBPolylineAnnotation FromId (string id, NSValue[] coordinates, bool isSelected, bool isDraggable);
+		TMBPolylineAnnotation FromId (string id, NSArray coordinates, bool isSelected, bool isDraggable);
 
 		// @property (nonatomic, strong) TMBLineJoin * _Nullable lineJoin;
 		[NullAllowed, Export ("lineJoin", ArgumentSemantic.Strong)]
