@@ -285,6 +285,14 @@ namespace MapboxMapsObjC
 		// -(void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
 		[Export ("setCameraTo:")]
 		void SetCameraTo (MBMCameraOptions cameraOptions);
+
+		// - (CLLocationCoordinate2D)coordinateFromScreenPosition:(CGPoint)point SWIFT_WARN_UNUSED_RESULT;
+		[Export ("coordinateFromScreenPosition:")]
+		CLLocationCoordinate2D CoordinateFromScreenPosition (CGPoint point);
+
+		// - (NSArray<NSValue *> * _Nonnull)coordinateFromScreenPositions:(NSArray<NSValue *> * _Nonnull)point SWIFT_WARN_UNUSED_RESULT;
+		[Export ("coordinateFromScreenPositions:")]
+		NSArray CoordinateFromScreenPositions (NSArray point);
 	}
 
 	// @interface MapboxMapObjC_Swift_417

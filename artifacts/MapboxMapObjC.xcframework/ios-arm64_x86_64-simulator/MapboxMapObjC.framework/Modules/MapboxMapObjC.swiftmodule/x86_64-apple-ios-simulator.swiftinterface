@@ -53,6 +53,8 @@ extension MapboxMaps.MapView {
 }
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setCamera(to cameraOptions: MapboxCoreMaps.CameraOptions)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func coordinateFromScreenPosition(_ point: CoreFoundation.CGPoint) -> CoreLocation.CLLocationCoordinate2D
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func coordinateFromScreenPositions(_ point: [CoreFoundation.CGPoint]) -> [CoreLocation.CLLocationCoordinate2D]
 }
 @objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func ornamentsOptionsScaleBarVisibility(_ value: MapboxMapObjC.TMBOrnamentVisibility)

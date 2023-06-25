@@ -412,11 +412,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MBMResourceO
 - (void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
-@end
-
 @class RasterDemSourceBuilder;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
@@ -427,6 +422,13 @@ enum TMBOrnamentVisibility : NSInteger;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
+@end
+
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
+- (CLLocationCoordinate2D)coordinateFromScreenPosition:(CGPoint)point SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<NSValue *> * _Nonnull)coordinateFromScreenPositions:(NSArray<NSValue *> * _Nonnull)point SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
