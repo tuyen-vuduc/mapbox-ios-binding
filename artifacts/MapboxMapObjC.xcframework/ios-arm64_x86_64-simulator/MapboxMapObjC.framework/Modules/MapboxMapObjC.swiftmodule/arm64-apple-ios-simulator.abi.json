@@ -883,6 +883,13 @@
         "moduleName": "MapboxMapObjC"
       },
       {
+        "kind": "Import",
+        "name": "Turf",
+        "printedName": "Turf",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
         "kind": "TypeDecl",
         "name": "TMBCancelable",
         "printedName": "TMBCancelable",
@@ -31251,6 +31258,27 @@
       },
       {
         "kind": "Import",
+        "name": "Turf",
+        "printedName": "Turf",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "Import",
+        "name": "MapboxMaps",
+        "printedName": "MapboxMaps",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "Import",
+        "name": "MapboxCommon",
+        "printedName": "MapboxCommon",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -44097,6 +44125,576 @@
           },
           {
             "kind": "Function",
+            "name": "queryRenderedFeatures",
+            "printedName": "queryRenderedFeatures(within:options:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBCancelable",
+                "printedName": "MapboxMapObjC.TMBCancelable",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCancelable"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[CoreFoundation.CGPoint]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.RenderedQueryOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RenderedQueryOptions",
+                    "printedName": "MapboxCoreMaps.RenderedQueryOptions",
+                    "usr": "c:objc(cs)MBMRenderedQueryOptions"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(([MapboxCoreMaps.QueriedFeature]?, Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "([MapboxCoreMaps.QueriedFeature]?, Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "([MapboxCoreMaps.QueriedFeature]?, Swift.Error?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "[MapboxCoreMaps.QueriedFeature]?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Array",
+                                "printedName": "[MapboxCoreMaps.QueriedFeature]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "QueriedFeature",
+                                    "printedName": "MapboxCoreMaps.QueriedFeature",
+                                    "usr": "c:objc(cs)MBMQueriedFeature"
+                                  }
+                                ],
+                                "usr": "s:Sa"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.Error?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Error",
+                                "printedName": "Swift.Error",
+                                "usr": "s:s5ErrorP"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)queryRenderedFeaturesWithin:options:completion:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE21queryRenderedFeatures6within7options10completionAD13TMBCancelableCSaySo7CGPointVG_So23MBMRenderedQueryOptionsCSgySaySo17MBMQueriedFeatureCGSg_s5Error_pSgtcSgtF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "queryRenderedFeaturesWithin:options:completion:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "queryRenderedFeatures",
+            "printedName": "queryRenderedFeatures(in:options:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBCancelable",
+                "printedName": "MapboxMapObjC.TMBCancelable",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCancelable"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.RenderedQueryOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RenderedQueryOptions",
+                    "printedName": "MapboxCoreMaps.RenderedQueryOptions",
+                    "usr": "c:objc(cs)MBMRenderedQueryOptions"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(([MapboxCoreMaps.QueriedFeature]?, Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "([MapboxCoreMaps.QueriedFeature]?, Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "([MapboxCoreMaps.QueriedFeature]?, Swift.Error?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "[MapboxCoreMaps.QueriedFeature]?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Array",
+                                "printedName": "[MapboxCoreMaps.QueriedFeature]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "QueriedFeature",
+                                    "printedName": "MapboxCoreMaps.QueriedFeature",
+                                    "usr": "c:objc(cs)MBMQueriedFeature"
+                                  }
+                                ],
+                                "usr": "s:Sa"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.Error?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Error",
+                                "printedName": "Swift.Error",
+                                "usr": "s:s5ErrorP"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)queryRenderedFeaturesIn:options:completion:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE21queryRenderedFeatures2in7options10completionAD13TMBCancelableCSo6CGRectV_So23MBMRenderedQueryOptionsCSgySaySo17MBMQueriedFeatureCGSg_s5Error_pSgtcSgtF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "queryRenderedFeaturesIn:options:completion:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "queryRenderedFeatures",
+            "printedName": "queryRenderedFeatures(with:options:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBCancelable",
+                "printedName": "MapboxMapObjC.TMBCancelable",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCancelable"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.RenderedQueryOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RenderedQueryOptions",
+                    "printedName": "MapboxCoreMaps.RenderedQueryOptions",
+                    "usr": "c:objc(cs)MBMRenderedQueryOptions"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(([MapboxCoreMaps.QueriedFeature]?, Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "([MapboxCoreMaps.QueriedFeature]?, Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "([MapboxCoreMaps.QueriedFeature]?, Swift.Error?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "[MapboxCoreMaps.QueriedFeature]?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Array",
+                                "printedName": "[MapboxCoreMaps.QueriedFeature]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "QueriedFeature",
+                                    "printedName": "MapboxCoreMaps.QueriedFeature",
+                                    "usr": "c:objc(cs)MBMQueriedFeature"
+                                  }
+                                ],
+                                "usr": "s:Sa"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.Error?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Error",
+                                "printedName": "Swift.Error",
+                                "usr": "s:s5ErrorP"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)queryRenderedFeaturesWith:options:completion:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE21queryRenderedFeatures4with7options10completionAD13TMBCancelableCSo7CGPointV_So23MBMRenderedQueryOptionsCSgySaySo17MBMQueriedFeatureCGSg_s5Error_pSgtcSgtF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "queryRenderedFeaturesWith:options:completion:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "querySourceFeatures",
+            "printedName": "querySourceFeatures(for:options:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SourceQueryOptions",
+                "printedName": "MapboxCoreMaps.SourceQueryOptions",
+                "usr": "c:objc(cs)MBMSourceQueryOptions"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(([MapboxCoreMaps.QueriedFeature]?, Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "([MapboxCoreMaps.QueriedFeature]?, Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "([MapboxCoreMaps.QueriedFeature]?, Swift.Error?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "[MapboxCoreMaps.QueriedFeature]?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Array",
+                                "printedName": "[MapboxCoreMaps.QueriedFeature]",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "QueriedFeature",
+                                    "printedName": "MapboxCoreMaps.QueriedFeature",
+                                    "usr": "c:objc(cs)MBMQueriedFeature"
+                                  }
+                                ],
+                                "usr": "s:Sa"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.Error?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Error",
+                                "printedName": "Swift.Error",
+                                "usr": "s:s5ErrorP"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)querySourceFeaturesFor:options:completion:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE19querySourceFeatures3for7options10completionySS_So21MBMSourceQueryOptionsCySaySo17MBMQueriedFeatureCGSg_s5Error_pSgtcSgtF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "querySourceFeaturesFor:options:completion:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "queryFeatureExtension",
+            "printedName": "queryFeatureExtension(for:feature:extension:extensionField:args:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Feature",
+                "printedName": "MapboxCommon.Feature",
+                "usr": "c:objc(cs)MBXFeature"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((MapboxCoreMaps.FeatureExtensionValue?, Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(MapboxCoreMaps.FeatureExtensionValue?, Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(MapboxCoreMaps.FeatureExtensionValue?, Swift.Error?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "MapboxCoreMaps.FeatureExtensionValue?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "FeatureExtensionValue",
+                                "printedName": "MapboxCoreMaps.FeatureExtensionValue",
+                                "usr": "c:objc(cs)MBMFeatureExtensionValue"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.Error?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Error",
+                                "printedName": "Swift.Error",
+                                "usr": "s:s5ErrorP"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)queryFeatureExtensionFor:feature:extension:extensionField:args:completion:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE21queryFeatureExtension3for7feature9extension0K5Field4args10completionySS_So10MBXFeatureCS2SSDySSypGSgySo010MBMFeatureH5ValueCSg_s5Error_pSgtcSgtF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "queryFeatureExtensionFor:feature:extension:extensionField:args:completion:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "setCamera",
             "printedName": "setCamera(to:)",
             "children": [
@@ -48101,105 +48699,105 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 1113,
+      "offset": 4671,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 1906,
+      "offset": 5464,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 2580,
+      "offset": 6138,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 3686,
+      "offset": 7244,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 4460,
+      "offset": 8018,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 5129,
+      "offset": 8687,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 5648,
+      "offset": 9206,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 6826,
+      "offset": 10384,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 7445,
+      "offset": 11003,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 8057,
+      "offset": 11615,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 8842,
+      "offset": 12400,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 9547,
+      "offset": 13105,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 10244,
+      "offset": 13802,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 10753,
+      "offset": 14311,
       "length": 6,
       "value": "\"name\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/MapViewExtensions.swift",
       "kind": "StringLiteral",
-      "offset": 12345,
+      "offset": 15903,
       "length": 13,
       "value": "\"MapboxMapObjC.TMBCancelable\""
     },

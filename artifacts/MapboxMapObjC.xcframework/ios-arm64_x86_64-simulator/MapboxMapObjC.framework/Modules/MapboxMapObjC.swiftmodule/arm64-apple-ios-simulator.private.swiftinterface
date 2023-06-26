@@ -52,6 +52,13 @@ extension MapboxMaps.MapView {
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func queryRenderedFeatures(within shape: [CoreFoundation.CGPoint], options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func queryRenderedFeatures(in rect: CoreFoundation.CGRect, options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func queryRenderedFeatures(with point: CoreFoundation.CGPoint, options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?) -> MapboxMapObjC.TMBCancelable
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func querySourceFeatures(for sourceId: Swift.String, options: MapboxCoreMaps.SourceQueryOptions, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func queryFeatureExtension(for sourceId: Swift.String, feature: MapboxCommon.Feature, extension: Swift.String, extensionField: Swift.String, args: [Swift.String : Any]? = nil, completion: ((MapboxCoreMaps.FeatureExtensionValue?, (any Swift.Error)?) -> Swift.Void)?)
+}
+@objc extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setCamera(to cameraOptions: MapboxCoreMaps.CameraOptions)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func coordinateFromScreenPosition(_ point: CoreFoundation.CGPoint) -> CoreLocation.CLLocationCoordinate2D
   @objc @_Concurrency.MainActor(unsafe) dynamic public func coordinateFromScreenPositions(_ point: [CoreFoundation.CGPoint]) -> [CoreLocation.CLLocationCoordinate2D]

@@ -3479,4 +3479,30 @@ namespace MapboxMapsObjC
 		[Export ("allTileRegions:")]
 		void AllTileRegions (Action<NSArray<MBXTileRegion>, NSError> completion);
 	}
+
+	// @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_21241
+	{
+		// - (TMBCancelable * _Nonnull)queryRenderedFeaturesWithin:(NSArray<NSValue *> * _Nonnull)shape options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
+		[Export ("queryRenderedFeaturesWithin:options:completion:")]
+		TMBCancelable QueryRenderedFeaturesWithin (NSArray shape, MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
+
+		// - (TMBCancelable * _Nonnull)queryRenderedFeaturesIn:(CGRect)rect options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
+		[Export ("queryRenderedFeaturesIn:options:completion:")]
+		TMBCancelable QueryRenderedFeaturesIn (CGRect rect, MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
+
+		// - (TMBCancelable * _Nonnull)queryRenderedFeaturesWith:(CGPoint)point options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
+		[Export ("queryRenderedFeaturesWith:options:completion:")]
+		TMBCancelable QueryRenderedFeaturesWith (CGPoint point, MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
+
+		//- (void)querySourceFeaturesFor:(NSString * _Nonnull)sourceId options:(MBMSourceQueryOptions * _Nonnull)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
+		[Export ("querySourceFeaturesFor:options:completion:")]
+		void QuerySourceFeaturesFor (string sourceId, MBMSourceQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
+
+		// - (void)queryFeatureExtensionFor:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature extension:(NSString * _Nonnull)extension extensionField:(NSString * _Nonnull)extensionField args:(NSDictionary<NSString *, id> * _Nullable)args completion:(void (^ _Nullable)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
+		[Export ("queryFeatureExtensionFor:feature:extension:extensionField:args:completion:")]
+		void QueryFeatureExtensionFor (string sourceId, MBXFeature feature, string extension, string extensionField, [NullAllowed] NSDictionary args, [NullAllowed] Action<MBMFeatureExtensionValue, NSError> completion);
+	}
 }
