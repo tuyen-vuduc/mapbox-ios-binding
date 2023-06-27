@@ -1030,6 +1030,27 @@
         "moduleName": "MapboxMapObjC"
       },
       {
+        "kind": "Import",
+        "name": "MapboxCoreMaps",
+        "printedName": "MapboxCoreMaps",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "Import",
+        "name": "MapboxMaps",
+        "printedName": "MapboxMaps",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
         "kind": "TypeDecl",
         "name": "TMBStyle",
         "printedName": "TMBStyle",
@@ -45679,6 +45700,417 @@
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)mapboxMapDebugOptions:",
             "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE06mapboxC12DebugOptionsyySaySo8NSNumberCGF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "options",
+            "printedName": "options(forAnnotationId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.ViewAnnotationOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ViewAnnotationOptions",
+                    "printedName": "MapboxCoreMaps.ViewAnnotationOptions",
+                    "usr": "c:objc(cs)MBMViewAnnotationOptions"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)optionsForAnnotationId:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE7options15forAnnotationIdSo07MBMViewH7OptionsCSgSS_tF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "optionsForAnnotationId:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "options",
+            "printedName": "options(forAnnotationView:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.ViewAnnotationOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ViewAnnotationOptions",
+                    "printedName": "MapboxCoreMaps.ViewAnnotationOptions",
+                    "usr": "c:objc(cs)MBMViewAnnotationOptions"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIView",
+                "printedName": "UIKit.UIView",
+                "usr": "c:objc(cs)UIView"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)optionsForAnnotationView:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE7options013forAnnotationD0So07MBMViewH7OptionsCSgSo6UIViewC_tF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "optionsForAnnotationView:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "view",
+            "printedName": "view(forAnnotationId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIView",
+                    "printedName": "UIKit.UIView",
+                    "usr": "c:objc(cs)UIView"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)viewForAnnotationId:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE4view15forAnnotationIdSo6UIViewCSgSS_tF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "viewForAnnotationId:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "view",
+            "printedName": "view(forAnnotationFeatureId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIView",
+                    "printedName": "UIKit.UIView",
+                    "usr": "c:objc(cs)UIView"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)viewForAnnotationFeatureId:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE4view22forAnnotationFeatureIdSo6UIViewCSgSS_tF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "viewForAnnotationFeatureId:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "options",
+            "printedName": "options(forAnnotationFeatureId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxCoreMaps.ViewAnnotationOptions?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ViewAnnotationOptions",
+                    "printedName": "MapboxCoreMaps.ViewAnnotationOptions",
+                    "usr": "c:objc(cs)MBMViewAnnotationOptions"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)optionsForAnnotationFeatureId:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE7options22forAnnotationFeatureIdSo07MBMViewH7OptionsCSgSS_tF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "optionsForAnnotationFeatureId:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "add",
+            "printedName": "add(viewAnnotation:id:options:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIView",
+                "printedName": "UIKit.UIView",
+                "usr": "c:objc(cs)UIView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ViewAnnotationOptions",
+                "printedName": "MapboxCoreMaps.ViewAnnotationOptions",
+                "usr": "c:objc(cs)MBMViewAnnotationOptions"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Error?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)addWithViewAnnotation:id:options:completion:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE3add14viewAnnotation2id7options10completionySo6UIViewC_SSSgSo07MBMViewH7OptionsCys5Error_pSgcSgtF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "addWithViewAnnotation:id:options:completion:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "update",
+            "printedName": "update(viewAnnotation:options:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIView",
+                "printedName": "UIKit.UIView",
+                "usr": "c:objc(cs)UIView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ViewAnnotationOptions",
+                "printedName": "MapboxCoreMaps.ViewAnnotationOptions",
+                "usr": "c:objc(cs)MBMViewAnnotationOptions"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Error?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)updateWithViewAnnotation:options:completion:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE6update14viewAnnotation7options10completionySo6UIViewC_So07MBMViewH7OptionsCys5Error_pSgcSgtF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "updateWithViewAnnotation:options:completion:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "remove",
+            "printedName": "remove(viewAnnotation:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIView",
+                "printedName": "UIKit.UIView",
+                "usr": "c:objc(cs)UIView"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)removeWithViewAnnotation:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE6remove14viewAnnotationySo6UIViewC_tF",
+            "moduleName": "MapboxMapObjC",
+            "objc_name": "removeWithViewAnnotation:",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeAllViewAnnotations",
+            "printedName": "removeAllViewAnnotations()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)removeAllViewAnnotations",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE09removeAllD11AnnotationsyyF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",

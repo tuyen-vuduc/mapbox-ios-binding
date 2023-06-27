@@ -353,6 +353,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25FillExtrusionLayerBuilder")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
 @class NSValue;
 @class MBXGeometry;
 
@@ -501,6 +502,21 @@ enum TMBLayerPosition : NSInteger;
 - (void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 - (void)addGeoJSONSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
 - (void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
+@end
+
+@class MBMViewAnnotationOptions;
+@class UIView;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationView:(UIView * _Nonnull)view SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nullable)viewForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nullable)viewForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (void)addWithViewAnnotation:(UIView * _Nonnull)viewAnnotation id:(NSString * _Nullable)id options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)updateWithViewAnnotation:(UIView * _Nonnull)viewAnnotation options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)removeWithViewAnnotation:(UIView * _Nonnull)viewAnnotation;
+- (void)removeAllViewAnnotations;
 @end
 
 @class TMBAnchor;
@@ -2218,6 +2234,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBVisibilit
 - (TMBCancelable * _Nonnull)loadTileRegionForId:(NSString * _Nonnull)id loadOptions:(MBXTileRegionLoadOptions * _Nonnull)loadOptions progress:(MBXTileRegionLoadProgressCallback _Nullable)progress completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
 - (void)allTileRegions:(void (^ _Nonnull)(NSArray<MBXTileRegion *> * _Nullable, NSError * _Nullable))completion;
 @end
+
 
 
 #endif
@@ -2583,6 +2600,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25FillExtrusionLayerBuilder")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
 @class NSValue;
 @class MBXGeometry;
 
@@ -2731,6 +2749,21 @@ enum TMBLayerPosition : NSInteger;
 - (void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 - (void)addGeoJSONSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
 - (void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
+@end
+
+@class MBMViewAnnotationOptions;
+@class UIView;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationView:(UIView * _Nonnull)view SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nullable)viewForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nullable)viewForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (void)addWithViewAnnotation:(UIView * _Nonnull)viewAnnotation id:(NSString * _Nullable)id options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)updateWithViewAnnotation:(UIView * _Nonnull)viewAnnotation options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)removeWithViewAnnotation:(UIView * _Nonnull)viewAnnotation;
+- (void)removeAllViewAnnotations;
 @end
 
 @class TMBAnchor;
@@ -4448,6 +4481,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBVisibilit
 - (TMBCancelable * _Nonnull)loadTileRegionForId:(NSString * _Nonnull)id loadOptions:(MBXTileRegionLoadOptions * _Nonnull)loadOptions progress:(MBXTileRegionLoadProgressCallback _Nullable)progress completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
 - (void)allTileRegions:(void (^ _Nonnull)(NSArray<MBXTileRegion *> * _Nullable, NSError * _Nullable))completion;
 @end
+
 
 
 #endif

@@ -114,6 +114,17 @@ extension MapboxMaps.MapView {
 extension MapboxMaps.ResourceOptions {
   public init(_ objcValue: MapboxCoreMaps.ResourceOptions)
 }
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func options(forAnnotationId id: Swift.String) -> MapboxCoreMaps.ViewAnnotationOptions?
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func options(forAnnotationView view: UIKit.UIView) -> MapboxCoreMaps.ViewAnnotationOptions?
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func view(forAnnotationId id: Swift.String) -> UIKit.UIView?
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func view(forAnnotationFeatureId id: Swift.String) -> UIKit.UIView?
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func options(forAnnotationFeatureId id: Swift.String) -> MapboxCoreMaps.ViewAnnotationOptions?
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func add(viewAnnotation: UIKit.UIView, id: Swift.String?, options: MapboxCoreMaps.ViewAnnotationOptions, completion: (((any Swift.Error)?) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func update(viewAnnotation: UIKit.UIView, options: MapboxCoreMaps.ViewAnnotationOptions, completion: (((any Swift.Error)?) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func remove(viewAnnotation: UIKit.UIView)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeAllViewAnnotations()
+}
 @_hasMissingDesignatedInitializers @objc open class TMBStyle : ObjectiveC.NSObject {
   @objc public func addImage(id: Swift.String, image: UIKit.UIImage, sdf: Swift.Bool = false, contentInsets: UIKit.UIEdgeInsets = .zero, completion: (((any Swift.Error)?) -> Swift.Void)?)
   @objc public func removeImage(id: Swift.String, completion: (((any Swift.Error)?) -> Swift.Void)?)

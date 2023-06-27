@@ -3505,4 +3505,50 @@ namespace MapboxMapsObjC
 		[Export ("queryFeatureExtensionFor:feature:extension:extensionField:args:completion:")]
 		void QueryFeatureExtensionFor (string sourceId, MBXFeature feature, string extension, string extensionField, [NullAllowed] NSDictionary args, [NullAllowed] Action<MBMFeatureExtensionValue, NSError> completion);
 	}
+	// @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_21242
+	{
+		// - (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+		[Export ("optionsForAnnotationId:")]
+		[return: NullAllowed]
+		MBMViewAnnotationOptions OptionsForAnnotationId (string id);
+
+		// - (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationView:(UIView * _Nonnull)view SWIFT_WARN_UNUSED_RESULT;
+		[Export ("optionsForAnnotationView:")]
+		[return: NullAllowed]
+		MBMViewAnnotationOptions OptionsForAnnotationView (UIView view);
+		
+		// - (UIView * _Nullable)viewForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+		[Export ("viewForAnnotationId:")]
+		[return: NullAllowed]
+		UIView ViewForAnnotationId (string id);
+		
+		// - (UIView * _Nullable)viewForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+		[Export ("viewForAnnotationFeatureId:")]
+		[return: NullAllowed]
+		UIView ViewForAnnotationFeatureId (string featureId);
+		
+		// - (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+		[Export ("optionsForAnnotationFeatureId:")]
+		[return: NullAllowed]
+		MBMViewAnnotationOptions OptionsForAnnotationFeatureId (string featureId);
+		
+		// - (void)addWithViewAnnotation:(UIView * _Nonnull)viewAnnotation id:(NSString * _Nullable)id options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		[Export ("addWithViewAnnotation:id:options:completion:")]
+		void AddViewAnnotation (UIView annotationView, [NullAllowed]string id, MBMViewAnnotationOptions options, [NullAllowed] Action<NSError> completion);
+		
+		// - (void)updateWithViewAnnotation:(UIView * _Nonnull)viewAnnotation options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		[Export ("updateWithViewAnnotation:options:completion:")]
+		void UpdateViewAnnotation (UIView annotationView, MBMViewAnnotationOptions options, [NullAllowed] Action<NSError> completion);
+		
+		// - (void)removeWithViewAnnotation:(UIView * _Nonnull)viewAnnotation;
+		[Export ("removeWithViewAnnotation:")]
+		void removeViewAnnotation (UIView annotationView);
+		
+		// - (void)removeAllViewAnnotations;
+		[Export ("removeAllViewAnnotations")]
+		void removeAllViewAnnotations ();
+	}
 }
