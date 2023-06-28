@@ -42,6 +42,126 @@ import _StringProcessing
     get
   }
 }
+@objc public enum TMBPanMode : Swift.Int {
+  case horizontal
+  case vertical
+  case horizontalAndVertical
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc open class TMBGestureOptions : ObjectiveC.NSObject {
+  @objc public var panEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var pinchEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var rotateEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var simultaneousRotateAndPinchZoomEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var pinchZoomEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var pinchPanEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var pitchEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var doubleTapToZoomInEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var doubleTouchToZoomOutEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var quickZoomEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var panMode: MapboxMapObjC.TMBPanMode {
+    @objc get
+    @objc set
+  }
+  @objc public var panDecelerationFactor: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc public var focalPoint: Foundation.NSValue? {
+    @objc get
+    @objc set
+  }
+  public init(_ swiftValue: MapboxMaps.GestureOptions)
+  @objc deinit
+}
+@objc public enum TMBGestureType : Swift.Int {
+  case pan
+  case pinch
+  case pitch
+  case doubleTapToZoomIn
+  case doubleTouchToZoomOut
+  case quickZoom
+  case singleTap
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol TMBGestureManagerDelegate {
+  @objc func gestureManager(didBegin gestureType: MapboxMapObjC.TMBGestureType)
+  @objc func gestureManager(didEnd gestureType: MapboxMapObjC.TMBGestureType, willAnimate: Swift.Bool)
+  @objc func gestureManager(didEndAnimatingFor gestureType: MapboxMapObjC.TMBGestureType)
+}
+@_hasMissingDesignatedInitializers @objc open class TMBGestureManager : ObjectiveC.NSObject, MapboxMaps.GestureManagerDelegate {
+  @objc weak public var delegate: (any MapboxMapObjC.TMBGestureManagerDelegate)?
+  @objc public func gestureOptions() -> MapboxMapObjC.TMBGestureOptions
+  @objc public var panGestureRecognizer: UIKit.UIGestureRecognizer {
+    @objc get
+  }
+  @objc public var pinchGestureRecognizer: UIKit.UIGestureRecognizer {
+    @objc get
+  }
+  @objc public var rotateGestureRecognizer: UIKit.UIGestureRecognizer {
+    @objc get
+  }
+  @objc public var pitchGestureRecognizer: UIKit.UIGestureRecognizer {
+    @objc get
+  }
+  @objc public var doubleTapToZoomInGestureRecognizer: UIKit.UIGestureRecognizer {
+    @objc get
+  }
+  @objc public var doubleTouchToZoomOutGestureRecognizer: UIKit.UIGestureRecognizer {
+    @objc get
+  }
+  @objc public var quickZoomGestureRecognizer: UIKit.UIGestureRecognizer {
+    @objc get
+  }
+  @objc public var singleTapGestureRecognizer: UIKit.UIGestureRecognizer {
+    @objc get
+  }
+  public func gestureManager(_ gestureManager: MapboxMaps.GestureManager, didBegin gestureType: MapboxMaps.GestureType)
+  public func gestureManager(_ gestureManager: MapboxMaps.GestureManager, didEnd gestureType: MapboxMaps.GestureType, willAnimate: Swift.Bool)
+  public func gestureManager(_ gestureManager: MapboxMaps.GestureManager, didEndAnimatingFor gestureType: MapboxMaps.GestureType)
+  @objc deinit
+}
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func gestureManager() -> MapboxMapObjC.TMBGestureManager
+}
 extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func setTerrain(_ value: MapboxMapObjC.TMBTerrain, onError: ((any Swift.Error) -> Swift.Void)?)
 }
@@ -1436,6 +1556,12 @@ public protocol LayerBuilder {
 extension MapboxMapObjC.TMBOrnamentVisibility : Swift.Equatable {}
 extension MapboxMapObjC.TMBOrnamentVisibility : Swift.Hashable {}
 extension MapboxMapObjC.TMBOrnamentVisibility : Swift.RawRepresentable {}
+extension MapboxMapObjC.TMBPanMode : Swift.Equatable {}
+extension MapboxMapObjC.TMBPanMode : Swift.Hashable {}
+extension MapboxMapObjC.TMBPanMode : Swift.RawRepresentable {}
+extension MapboxMapObjC.TMBGestureType : Swift.Equatable {}
+extension MapboxMapObjC.TMBGestureType : Swift.Hashable {}
+extension MapboxMapObjC.TMBGestureType : Swift.RawRepresentable {}
 extension MapboxMapObjC.TMBLayerPosition : Swift.Equatable {}
 extension MapboxMapObjC.TMBLayerPosition : Swift.Hashable {}
 extension MapboxMapObjC.TMBLayerPosition : Swift.RawRepresentable {}

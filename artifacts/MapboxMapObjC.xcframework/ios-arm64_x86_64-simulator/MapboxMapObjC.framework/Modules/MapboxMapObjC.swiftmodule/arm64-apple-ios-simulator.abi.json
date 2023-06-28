@@ -541,6 +541,2811 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "TMBPanMode",
+        "printedName": "TMBPanMode",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "horizontal",
+            "printedName": "horizontal",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MapboxMapObjC.TMBPanMode.Type) -> MapboxMapObjC.TMBPanMode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBPanMode",
+                    "printedName": "MapboxMapObjC.TMBPanMode",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBPanMode"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MapboxMapObjC.TMBPanMode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBPanMode",
+                        "printedName": "MapboxMapObjC.TMBPanMode",
+                        "usr": "c:@M@MapboxMapObjC@E@TMBPanMode"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@MapboxMapObjC@E@TMBPanMode@TMBPanModeHorizontal",
+            "mangledName": "$s13MapboxMapObjC10TMBPanModeO10horizontalyA2CmF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 0
+          },
+          {
+            "kind": "Var",
+            "name": "vertical",
+            "printedName": "vertical",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MapboxMapObjC.TMBPanMode.Type) -> MapboxMapObjC.TMBPanMode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBPanMode",
+                    "printedName": "MapboxMapObjC.TMBPanMode",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBPanMode"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MapboxMapObjC.TMBPanMode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBPanMode",
+                        "printedName": "MapboxMapObjC.TMBPanMode",
+                        "usr": "c:@M@MapboxMapObjC@E@TMBPanMode"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@MapboxMapObjC@E@TMBPanMode@TMBPanModeVertical",
+            "mangledName": "$s13MapboxMapObjC10TMBPanModeO8verticalyA2CmF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 1
+          },
+          {
+            "kind": "Var",
+            "name": "horizontalAndVertical",
+            "printedName": "horizontalAndVertical",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MapboxMapObjC.TMBPanMode.Type) -> MapboxMapObjC.TMBPanMode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBPanMode",
+                    "printedName": "MapboxMapObjC.TMBPanMode",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBPanMode"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MapboxMapObjC.TMBPanMode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBPanMode",
+                        "printedName": "MapboxMapObjC.TMBPanMode",
+                        "usr": "c:@M@MapboxMapObjC@E@TMBPanMode"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@MapboxMapObjC@E@TMBPanMode@TMBPanModeHorizontalAndVertical",
+            "mangledName": "$s13MapboxMapObjC10TMBPanModeO21horizontalAndVerticalyA2CmF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 2
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBPanMode?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBPanMode",
+                    "printedName": "MapboxMapObjC.TMBPanMode",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBPanMode"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:13MapboxMapObjC10TMBPanModeO8rawValueACSgSi_tcfc",
+            "mangledName": "$s13MapboxMapObjC10TMBPanModeO8rawValueACSgSi_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13MapboxMapObjC10TMBPanModeO8rawValueSivp",
+            "mangledName": "$s13MapboxMapObjC10TMBPanModeO8rawValueSivp",
+            "moduleName": "MapboxMapObjC",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC10TMBPanModeO8rawValueSivg",
+                "mangledName": "$s13MapboxMapObjC10TMBPanModeO8rawValueSivg",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "c:@M@MapboxMapObjC@E@TMBPanMode",
+        "mangledName": "$s13MapboxMapObjC10TMBPanModeO",
+        "moduleName": "MapboxMapObjC",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "Int",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TMBGestureOptions",
+        "printedName": "TMBGestureOptions",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "panEnabled",
+            "printedName": "panEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)panEnabled",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC10panEnabledSbvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)panEnabled",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC10panEnabledSbvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setPanEnabled:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC10panEnabledSbvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC10panEnabledSbvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC10panEnabledSbvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pinchEnabled",
+            "printedName": "pinchEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)pinchEnabled",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC12pinchEnabledSbvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)pinchEnabled",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC12pinchEnabledSbvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setPinchEnabled:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC12pinchEnabledSbvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC12pinchEnabledSbvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC12pinchEnabledSbvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "rotateEnabled",
+            "printedName": "rotateEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)rotateEnabled",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC13rotateEnabledSbvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)rotateEnabled",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC13rotateEnabledSbvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setRotateEnabled:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC13rotateEnabledSbvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC13rotateEnabledSbvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC13rotateEnabledSbvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "simultaneousRotateAndPinchZoomEnabled",
+            "printedName": "simultaneousRotateAndPinchZoomEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)simultaneousRotateAndPinchZoomEnabled",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC37simultaneousRotateAndPinchZoomEnabledSbvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)simultaneousRotateAndPinchZoomEnabled",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC37simultaneousRotateAndPinchZoomEnabledSbvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setSimultaneousRotateAndPinchZoomEnabled:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC37simultaneousRotateAndPinchZoomEnabledSbvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC37simultaneousRotateAndPinchZoomEnabledSbvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC37simultaneousRotateAndPinchZoomEnabledSbvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pinchZoomEnabled",
+            "printedName": "pinchZoomEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)pinchZoomEnabled",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC16pinchZoomEnabledSbvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)pinchZoomEnabled",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC16pinchZoomEnabledSbvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setPinchZoomEnabled:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC16pinchZoomEnabledSbvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC16pinchZoomEnabledSbvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC16pinchZoomEnabledSbvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pinchPanEnabled",
+            "printedName": "pinchPanEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)pinchPanEnabled",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC15pinchPanEnabledSbvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)pinchPanEnabled",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC15pinchPanEnabledSbvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setPinchPanEnabled:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC15pinchPanEnabledSbvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC15pinchPanEnabledSbvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC15pinchPanEnabledSbvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pitchEnabled",
+            "printedName": "pitchEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)pitchEnabled",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC12pitchEnabledSbvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)pitchEnabled",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC12pitchEnabledSbvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setPitchEnabled:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC12pitchEnabledSbvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC12pitchEnabledSbvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC12pitchEnabledSbvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "doubleTapToZoomInEnabled",
+            "printedName": "doubleTapToZoomInEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)doubleTapToZoomInEnabled",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC24doubleTapToZoomInEnabledSbvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)doubleTapToZoomInEnabled",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC24doubleTapToZoomInEnabledSbvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setDoubleTapToZoomInEnabled:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC24doubleTapToZoomInEnabledSbvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC24doubleTapToZoomInEnabledSbvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC24doubleTapToZoomInEnabledSbvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "doubleTouchToZoomOutEnabled",
+            "printedName": "doubleTouchToZoomOutEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)doubleTouchToZoomOutEnabled",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC27doubleTouchToZoomOutEnabledSbvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)doubleTouchToZoomOutEnabled",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC27doubleTouchToZoomOutEnabledSbvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setDoubleTouchToZoomOutEnabled:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC27doubleTouchToZoomOutEnabledSbvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC27doubleTouchToZoomOutEnabledSbvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC27doubleTouchToZoomOutEnabledSbvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "quickZoomEnabled",
+            "printedName": "quickZoomEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)quickZoomEnabled",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC16quickZoomEnabledSbvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)quickZoomEnabled",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC16quickZoomEnabledSbvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setQuickZoomEnabled:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC16quickZoomEnabledSbvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC16quickZoomEnabledSbvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC16quickZoomEnabledSbvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "panMode",
+            "printedName": "panMode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBPanMode",
+                "printedName": "MapboxMapObjC.TMBPanMode",
+                "usr": "c:@M@MapboxMapObjC@E@TMBPanMode"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)panMode",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC7panModeAA06TMBPanG0Ovp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBPanMode",
+                    "printedName": "MapboxMapObjC.TMBPanMode",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBPanMode"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)panMode",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC7panModeAA06TMBPanG0Ovg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBPanMode",
+                    "printedName": "MapboxMapObjC.TMBPanMode",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBPanMode"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setPanMode:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC7panModeAA06TMBPanG0Ovs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC7panModeAA06TMBPanG0OvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC7panModeAA06TMBPanG0OvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "panDecelerationFactor",
+            "printedName": "panDecelerationFactor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)panDecelerationFactor",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC21panDecelerationFactor12CoreGraphics7CGFloatVvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)panDecelerationFactor",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC21panDecelerationFactor12CoreGraphics7CGFloatVvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setPanDecelerationFactor:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC21panDecelerationFactor12CoreGraphics7CGFloatVvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC21panDecelerationFactor14CoreFoundation7CGFloatVvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC21panDecelerationFactor12CoreGraphics7CGFloatVvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "focalPoint",
+            "printedName": "focalPoint",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSValue",
+                    "printedName": "Foundation.NSValue",
+                    "usr": "c:objc(cs)NSValue"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(py)focalPoint",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC10focalPointSo7NSValueCSgvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.NSValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSValue",
+                        "printedName": "Foundation.NSValue",
+                        "usr": "c:objc(cs)NSValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)focalPoint",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC10focalPointSo7NSValueCSgvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.NSValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSValue",
+                        "printedName": "Foundation.NSValue",
+                        "usr": "c:objc(cs)NSValue"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)setFocalPoint:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC10focalPointSo7NSValueCSgvs",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureOptionsC10focalPointSo7NSValueCSgvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC10focalPointSo7NSValueCSgvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBGestureOptions",
+                "printedName": "MapboxMapObjC.TMBGestureOptions",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GestureOptions",
+                "printedName": "MapboxMaps.GestureOptions",
+                "usr": "s:10MapboxMaps14GestureOptionsV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:13MapboxMapObjC17TMBGestureOptionsCyAC0A4Maps07GestureE0Vcfc",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsCyAC0A4Maps07GestureE0Vcfc",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBGestureOptions",
+                "printedName": "MapboxMapObjC.TMBGestureOptions",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions(im)init",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsCACycfc",
+            "moduleName": "MapboxMapObjC",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions",
+        "mangledName": "$s13MapboxMapObjC17TMBGestureOptionsC",
+        "moduleName": "MapboxMapObjC",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TMBGestureType",
+        "printedName": "TMBGestureType",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "pan",
+            "printedName": "pan",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MapboxMapObjC.TMBGestureType.Type) -> MapboxMapObjC.TMBGestureType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBGestureType",
+                    "printedName": "MapboxMapObjC.TMBGestureType",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MapboxMapObjC.TMBGestureType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBGestureType",
+                        "printedName": "MapboxMapObjC.TMBGestureType",
+                        "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@MapboxMapObjC@E@TMBGestureType@TMBGestureTypePan",
+            "mangledName": "$s13MapboxMapObjC14TMBGestureTypeO3panyA2CmF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 0
+          },
+          {
+            "kind": "Var",
+            "name": "pinch",
+            "printedName": "pinch",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MapboxMapObjC.TMBGestureType.Type) -> MapboxMapObjC.TMBGestureType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBGestureType",
+                    "printedName": "MapboxMapObjC.TMBGestureType",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MapboxMapObjC.TMBGestureType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBGestureType",
+                        "printedName": "MapboxMapObjC.TMBGestureType",
+                        "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@MapboxMapObjC@E@TMBGestureType@TMBGestureTypePinch",
+            "mangledName": "$s13MapboxMapObjC14TMBGestureTypeO5pinchyA2CmF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 1
+          },
+          {
+            "kind": "Var",
+            "name": "pitch",
+            "printedName": "pitch",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MapboxMapObjC.TMBGestureType.Type) -> MapboxMapObjC.TMBGestureType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBGestureType",
+                    "printedName": "MapboxMapObjC.TMBGestureType",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MapboxMapObjC.TMBGestureType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBGestureType",
+                        "printedName": "MapboxMapObjC.TMBGestureType",
+                        "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@MapboxMapObjC@E@TMBGestureType@TMBGestureTypePitch",
+            "mangledName": "$s13MapboxMapObjC14TMBGestureTypeO5pitchyA2CmF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 2
+          },
+          {
+            "kind": "Var",
+            "name": "doubleTapToZoomIn",
+            "printedName": "doubleTapToZoomIn",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MapboxMapObjC.TMBGestureType.Type) -> MapboxMapObjC.TMBGestureType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBGestureType",
+                    "printedName": "MapboxMapObjC.TMBGestureType",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MapboxMapObjC.TMBGestureType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBGestureType",
+                        "printedName": "MapboxMapObjC.TMBGestureType",
+                        "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@MapboxMapObjC@E@TMBGestureType@TMBGestureTypeDoubleTapToZoomIn",
+            "mangledName": "$s13MapboxMapObjC14TMBGestureTypeO17doubleTapToZoomInyA2CmF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 3
+          },
+          {
+            "kind": "Var",
+            "name": "doubleTouchToZoomOut",
+            "printedName": "doubleTouchToZoomOut",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MapboxMapObjC.TMBGestureType.Type) -> MapboxMapObjC.TMBGestureType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBGestureType",
+                    "printedName": "MapboxMapObjC.TMBGestureType",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MapboxMapObjC.TMBGestureType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBGestureType",
+                        "printedName": "MapboxMapObjC.TMBGestureType",
+                        "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@MapboxMapObjC@E@TMBGestureType@TMBGestureTypeDoubleTouchToZoomOut",
+            "mangledName": "$s13MapboxMapObjC14TMBGestureTypeO20doubleTouchToZoomOutyA2CmF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 4
+          },
+          {
+            "kind": "Var",
+            "name": "quickZoom",
+            "printedName": "quickZoom",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MapboxMapObjC.TMBGestureType.Type) -> MapboxMapObjC.TMBGestureType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBGestureType",
+                    "printedName": "MapboxMapObjC.TMBGestureType",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MapboxMapObjC.TMBGestureType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBGestureType",
+                        "printedName": "MapboxMapObjC.TMBGestureType",
+                        "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@MapboxMapObjC@E@TMBGestureType@TMBGestureTypeQuickZoom",
+            "mangledName": "$s13MapboxMapObjC14TMBGestureTypeO9quickZoomyA2CmF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 5
+          },
+          {
+            "kind": "Var",
+            "name": "singleTap",
+            "printedName": "singleTap",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(MapboxMapObjC.TMBGestureType.Type) -> MapboxMapObjC.TMBGestureType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBGestureType",
+                    "printedName": "MapboxMapObjC.TMBGestureType",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "MapboxMapObjC.TMBGestureType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBGestureType",
+                        "printedName": "MapboxMapObjC.TMBGestureType",
+                        "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@MapboxMapObjC@E@TMBGestureType@TMBGestureTypeSingleTap",
+            "mangledName": "$s13MapboxMapObjC14TMBGestureTypeO9singleTapyA2CmF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 6
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "MapboxMapObjC.TMBGestureType?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBGestureType",
+                    "printedName": "MapboxMapObjC.TMBGestureType",
+                    "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:13MapboxMapObjC14TMBGestureTypeO8rawValueACSgSi_tcfc",
+            "mangledName": "$s13MapboxMapObjC14TMBGestureTypeO8rawValueACSgSi_tcfc",
+            "moduleName": "MapboxMapObjC",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13MapboxMapObjC14TMBGestureTypeO8rawValueSivp",
+            "mangledName": "$s13MapboxMapObjC14TMBGestureTypeO8rawValueSivp",
+            "moduleName": "MapboxMapObjC",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC14TMBGestureTypeO8rawValueSivg",
+                "mangledName": "$s13MapboxMapObjC14TMBGestureTypeO8rawValueSivg",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "c:@M@MapboxMapObjC@E@TMBGestureType",
+        "mangledName": "$s13MapboxMapObjC14TMBGestureTypeO",
+        "moduleName": "MapboxMapObjC",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "enumRawTypeName": "Int",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TMBGestureManagerDelegate",
+        "printedName": "TMBGestureManagerDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "gestureManager",
+            "printedName": "gestureManager(didBegin:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TMBGestureType",
+                "printedName": "MapboxMapObjC.TMBGestureType",
+                "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(pl)TMBGestureManagerDelegate(im)gestureManagerWithDidBegin:",
+            "mangledName": "$s13MapboxMapObjC25TMBGestureManagerDelegateP07gestureE08didBeginyAA0D4TypeO_tF",
+            "moduleName": "MapboxMapObjC",
+            "genericSig": "<τ_0_0 where τ_0_0 : MapboxMapObjC.TMBGestureManagerDelegate>",
+            "sugared_genericSig": "<Self where Self : MapboxMapObjC.TMBGestureManagerDelegate>",
+            "protocolReq": true,
+            "objc_name": "gestureManagerWithDidBegin:",
+            "declAttributes": [
+              "ObjC",
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "gestureManager",
+            "printedName": "gestureManager(didEnd:willAnimate:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TMBGestureType",
+                "printedName": "MapboxMapObjC.TMBGestureType",
+                "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(pl)TMBGestureManagerDelegate(im)gestureManagerWithDidEnd:willAnimate:",
+            "mangledName": "$s13MapboxMapObjC25TMBGestureManagerDelegateP07gestureE06didEnd11willAnimateyAA0D4TypeO_SbtF",
+            "moduleName": "MapboxMapObjC",
+            "genericSig": "<τ_0_0 where τ_0_0 : MapboxMapObjC.TMBGestureManagerDelegate>",
+            "sugared_genericSig": "<Self where Self : MapboxMapObjC.TMBGestureManagerDelegate>",
+            "protocolReq": true,
+            "objc_name": "gestureManagerWithDidEnd:willAnimate:",
+            "declAttributes": [
+              "ObjC",
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "gestureManager",
+            "printedName": "gestureManager(didEndAnimatingFor:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TMBGestureType",
+                "printedName": "MapboxMapObjC.TMBGestureType",
+                "usr": "c:@M@MapboxMapObjC@E@TMBGestureType"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(pl)TMBGestureManagerDelegate(im)gestureManagerWithDidEndAnimatingFor:",
+            "mangledName": "$s13MapboxMapObjC25TMBGestureManagerDelegateP07gestureE018didEndAnimatingForyAA0D4TypeO_tF",
+            "moduleName": "MapboxMapObjC",
+            "genericSig": "<τ_0_0 where τ_0_0 : MapboxMapObjC.TMBGestureManagerDelegate>",
+            "sugared_genericSig": "<Self where Self : MapboxMapObjC.TMBGestureManagerDelegate>",
+            "protocolReq": true,
+            "objc_name": "gestureManagerWithDidEndAnimatingFor:",
+            "declAttributes": [
+              "ObjC",
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "c:@M@MapboxMapObjC@objc(pl)TMBGestureManagerDelegate",
+        "mangledName": "$s13MapboxMapObjC25TMBGestureManagerDelegateP",
+        "moduleName": "MapboxMapObjC",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TMBGestureManager",
+        "printedName": "TMBGestureManager",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "delegate",
+            "printedName": "delegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WeakStorage",
+                "printedName": "MapboxMapObjC.TMBGestureManagerDelegate?"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(py)delegate",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC8delegateAA0dE8Delegate_pSgvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "ReferenceOwnership",
+              "AccessControl",
+              "ObjC"
+            ],
+            "ownership": 1,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBGestureManagerDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBGestureManagerDelegate",
+                        "printedName": "MapboxMapObjC.TMBGestureManagerDelegate",
+                        "usr": "c:@M@MapboxMapObjC@objc(pl)TMBGestureManagerDelegate"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)delegate",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC8delegateAA0dE8Delegate_pSgvg",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "MapboxMapObjC.TMBGestureManagerDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TMBGestureManagerDelegate",
+                        "printedName": "MapboxMapObjC.TMBGestureManagerDelegate",
+                        "usr": "c:@M@MapboxMapObjC@objc(pl)TMBGestureManagerDelegate"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)setDelegate:",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC8delegateAA0dE8Delegate_pSgvs",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13MapboxMapObjC17TMBGestureManagerC8delegateAA0dE8Delegate_pSgvM",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC8delegateAA0dE8Delegate_pSgvM",
+                "moduleName": "MapboxMapObjC",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "gestureOptions",
+            "printedName": "gestureOptions()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBGestureOptions",
+                "printedName": "MapboxMapObjC.TMBGestureOptions",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureOptions"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)gestureOptions",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC14gestureOptionsAA0dG0CyF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "panGestureRecognizer",
+            "printedName": "panGestureRecognizer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIGestureRecognizer",
+                "printedName": "UIKit.UIGestureRecognizer",
+                "usr": "c:objc(cs)UIGestureRecognizer"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(py)panGestureRecognizer",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC20panGestureRecognizerSo09UIGestureH0Cvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIGestureRecognizer",
+                    "printedName": "UIKit.UIGestureRecognizer",
+                    "usr": "c:objc(cs)UIGestureRecognizer"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)panGestureRecognizer",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC20panGestureRecognizerSo09UIGestureH0Cvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pinchGestureRecognizer",
+            "printedName": "pinchGestureRecognizer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIGestureRecognizer",
+                "printedName": "UIKit.UIGestureRecognizer",
+                "usr": "c:objc(cs)UIGestureRecognizer"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(py)pinchGestureRecognizer",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC22pinchGestureRecognizerSo09UIGestureH0Cvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIGestureRecognizer",
+                    "printedName": "UIKit.UIGestureRecognizer",
+                    "usr": "c:objc(cs)UIGestureRecognizer"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)pinchGestureRecognizer",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC22pinchGestureRecognizerSo09UIGestureH0Cvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "rotateGestureRecognizer",
+            "printedName": "rotateGestureRecognizer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIGestureRecognizer",
+                "printedName": "UIKit.UIGestureRecognizer",
+                "usr": "c:objc(cs)UIGestureRecognizer"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(py)rotateGestureRecognizer",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC23rotateGestureRecognizerSo09UIGestureH0Cvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIGestureRecognizer",
+                    "printedName": "UIKit.UIGestureRecognizer",
+                    "usr": "c:objc(cs)UIGestureRecognizer"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)rotateGestureRecognizer",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC23rotateGestureRecognizerSo09UIGestureH0Cvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pitchGestureRecognizer",
+            "printedName": "pitchGestureRecognizer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIGestureRecognizer",
+                "printedName": "UIKit.UIGestureRecognizer",
+                "usr": "c:objc(cs)UIGestureRecognizer"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(py)pitchGestureRecognizer",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC22pitchGestureRecognizerSo09UIGestureH0Cvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIGestureRecognizer",
+                    "printedName": "UIKit.UIGestureRecognizer",
+                    "usr": "c:objc(cs)UIGestureRecognizer"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)pitchGestureRecognizer",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC22pitchGestureRecognizerSo09UIGestureH0Cvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "doubleTapToZoomInGestureRecognizer",
+            "printedName": "doubleTapToZoomInGestureRecognizer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIGestureRecognizer",
+                "printedName": "UIKit.UIGestureRecognizer",
+                "usr": "c:objc(cs)UIGestureRecognizer"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(py)doubleTapToZoomInGestureRecognizer",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC34doubleTapToZoomInGestureRecognizerSo09UIGestureL0Cvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIGestureRecognizer",
+                    "printedName": "UIKit.UIGestureRecognizer",
+                    "usr": "c:objc(cs)UIGestureRecognizer"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)doubleTapToZoomInGestureRecognizer",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC34doubleTapToZoomInGestureRecognizerSo09UIGestureL0Cvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "doubleTouchToZoomOutGestureRecognizer",
+            "printedName": "doubleTouchToZoomOutGestureRecognizer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIGestureRecognizer",
+                "printedName": "UIKit.UIGestureRecognizer",
+                "usr": "c:objc(cs)UIGestureRecognizer"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(py)doubleTouchToZoomOutGestureRecognizer",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC37doubleTouchToZoomOutGestureRecognizerSo09UIGestureL0Cvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIGestureRecognizer",
+                    "printedName": "UIKit.UIGestureRecognizer",
+                    "usr": "c:objc(cs)UIGestureRecognizer"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)doubleTouchToZoomOutGestureRecognizer",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC37doubleTouchToZoomOutGestureRecognizerSo09UIGestureL0Cvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "quickZoomGestureRecognizer",
+            "printedName": "quickZoomGestureRecognizer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIGestureRecognizer",
+                "printedName": "UIKit.UIGestureRecognizer",
+                "usr": "c:objc(cs)UIGestureRecognizer"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(py)quickZoomGestureRecognizer",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC26quickZoomGestureRecognizerSo09UIGestureI0Cvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIGestureRecognizer",
+                    "printedName": "UIKit.UIGestureRecognizer",
+                    "usr": "c:objc(cs)UIGestureRecognizer"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)quickZoomGestureRecognizer",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC26quickZoomGestureRecognizerSo09UIGestureI0Cvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "singleTapGestureRecognizer",
+            "printedName": "singleTapGestureRecognizer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIGestureRecognizer",
+                "printedName": "UIKit.UIGestureRecognizer",
+                "usr": "c:objc(cs)UIGestureRecognizer"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(py)singleTapGestureRecognizer",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC26singleTapGestureRecognizerSo09UIGestureI0Cvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIGestureRecognizer",
+                    "printedName": "UIKit.UIGestureRecognizer",
+                    "usr": "c:objc(cs)UIGestureRecognizer"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)singleTapGestureRecognizer",
+                "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC26singleTapGestureRecognizerSo09UIGestureI0Cvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "gestureManager",
+            "printedName": "gestureManager(_:didBegin:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GestureManager",
+                "printedName": "MapboxMaps.GestureManager",
+                "usr": "s:10MapboxMaps14GestureManagerC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GestureType",
+                "printedName": "MapboxMaps.GestureType",
+                "usr": "s:10MapboxMaps11GestureTypeO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13MapboxMapObjC17TMBGestureManagerC07gestureE0_8didBeginy0A4Maps07GestureE0C_AF0J4TypeOtF",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC07gestureE0_8didBeginy0A4Maps07GestureE0C_AF0J4TypeOtF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "gestureManager",
+            "printedName": "gestureManager(_:didEnd:willAnimate:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GestureManager",
+                "printedName": "MapboxMaps.GestureManager",
+                "usr": "s:10MapboxMaps14GestureManagerC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GestureType",
+                "printedName": "MapboxMaps.GestureType",
+                "usr": "s:10MapboxMaps11GestureTypeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13MapboxMapObjC17TMBGestureManagerC07gestureE0_6didEnd11willAnimatey0A4Maps07GestureE0C_AG0L4TypeOSbtF",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC07gestureE0_6didEnd11willAnimatey0A4Maps07GestureE0C_AG0L4TypeOSbtF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "gestureManager",
+            "printedName": "gestureManager(_:didEndAnimatingFor:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GestureManager",
+                "printedName": "MapboxMaps.GestureManager",
+                "usr": "s:10MapboxMaps14GestureManagerC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GestureType",
+                "printedName": "MapboxMaps.GestureType",
+                "usr": "s:10MapboxMaps11GestureTypeO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13MapboxMapObjC17TMBGestureManagerC07gestureE0_18didEndAnimatingFory0A4Maps07GestureE0C_AF0L4TypeOtF",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC07gestureE0_18didEndAnimatingFory0A4Maps07GestureE0C_AF0L4TypeOtF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBGestureManager",
+                "printedName": "MapboxMapObjC.TMBGestureManager",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager(im)init",
+            "mangledName": "$s13MapboxMapObjC17TMBGestureManagerCACycfc",
+            "moduleName": "MapboxMapObjC",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager",
+        "mangledName": "$s13MapboxMapObjC17TMBGestureManagerC",
+        "moduleName": "MapboxMapObjC",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "GestureManagerDelegate",
+            "printedName": "GestureManagerDelegate",
+            "usr": "s:10MapboxMaps22GestureManagerDelegateP",
+            "mangledName": "$s10MapboxMaps22GestureManagerDelegateP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "MapboxMaps",
+        "printedName": "MapboxMaps",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
+        "kind": "TypeDecl",
         "name": "TMBTerrain",
         "printedName": "TMBTerrain",
         "children": [
@@ -44090,6 +46895,31 @@
         "children": [
           {
             "kind": "Function",
+            "name": "gestureManager",
+            "printedName": "gestureManager()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBGestureManager",
+                "printedName": "MapboxMapObjC.TMBGestureManager",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBGestureManager"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)gestureManager",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE14gestureManagerAD010TMBGestureG0CyF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "setTerrain",
             "printedName": "setTerrain(_:onError:)",
             "children": [
@@ -49120,6 +51950,132 @@
       "offset": 110,
       "length": 7,
       "value": "2"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 364,
+      "length": 8,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 442,
+      "length": 21,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 364,
+      "length": 8,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 442,
+      "length": 21,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "StringLiteral",
+      "offset": 1113,
+      "length": 17,
+      "value": "\"MapboxMapObjC.TMBGestureOptions\""
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6647,
+      "length": 5,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6689,
+      "length": 5,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6747,
+      "length": 17,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6820,
+      "length": 20,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6882,
+      "length": 9,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6933,
+      "length": 9,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6647,
+      "length": 5,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6689,
+      "length": 5,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6747,
+      "length": 17,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6820,
+      "length": 20,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6882,
+      "length": 9,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6933,
+      "length": 9,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBGestureOptions.swift",
+      "kind": "StringLiteral",
+      "offset": 7611,
+      "length": 17,
+      "value": "\"MapboxMapObjC.TMBGestureManager\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBTerrain.swift",

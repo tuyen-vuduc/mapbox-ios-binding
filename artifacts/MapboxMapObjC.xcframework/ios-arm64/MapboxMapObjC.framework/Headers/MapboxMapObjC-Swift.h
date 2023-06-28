@@ -395,6 +395,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MBMResourceO
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class TMBGestureManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBGestureManager * _Nonnull)gestureManager SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class SkyLayerBuilder;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)updateSkyLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
 @class TMBTerrain;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
@@ -411,12 +423,6 @@ enum TMBOrnamentVisibility : NSInteger;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (void)addRasterDemSource:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
-@class SkyLayerBuilder;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)updateSkyLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 @end
 
 @class SymbolLayerBuilder;
@@ -504,21 +510,6 @@ enum TMBLayerPosition : NSInteger;
 - (void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
 @end
 
-@class MBMViewAnnotationOptions;
-@class UIView;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationView:(UIView * _Nonnull)view SWIFT_WARN_UNUSED_RESULT;
-- (UIView * _Nullable)viewForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (UIView * _Nullable)viewForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (void)addWithViewAnnotation:(UIView * _Nonnull)viewAnnotation id:(NSString * _Nullable)id options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-- (void)updateWithViewAnnotation:(UIView * _Nonnull)viewAnnotation options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-- (void)removeWithViewAnnotation:(UIView * _Nonnull)viewAnnotation;
-- (void)removeAllViewAnnotations;
-@end
-
 @class TMBAnchor;
 @class UIColor;
 
@@ -541,6 +532,21 @@ enum TMBLayerPosition : NSInteger;
 - (void)lightPosition:(NSArray<NSNumber *> * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 /// Transition property for <code>position</code>
 - (void)lightPositionTransition:(TMBStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
+@class MBMViewAnnotationOptions;
+@class UIView;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationView:(UIView * _Nonnull)view SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nullable)viewForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nullable)viewForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (void)addWithViewAnnotation:(UIView * _Nonnull)viewAnnotation id:(NSString * _Nullable)id options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)updateWithViewAnnotation:(UIView * _Nonnull)viewAnnotation options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)removeWithViewAnnotation:(UIView * _Nonnull)viewAnnotation;
+- (void)removeAllViewAnnotations;
 @end
 
 @protocol MBMCustomLayerHost;
@@ -1102,6 +1108,118 @@ SWIFT_CLASS("_TtC13MapboxMapObjC11TMBGeometry")
 @end
 
 
+@protocol TMBGestureManagerDelegate;
+@class TMBGestureOptions;
+@class UIGestureRecognizer;
+
+SWIFT_CLASS("_TtC13MapboxMapObjC17TMBGestureManager")
+@interface TMBGestureManager : NSObject
+@property (nonatomic, weak) id <TMBGestureManagerDelegate> _Nullable delegate;
+- (TMBGestureOptions * _Nonnull)gestureOptions SWIFT_WARN_UNUSED_RESULT;
+/// The gesture recognizer for the pan gesture
+@property (nonatomic, readonly, strong) UIGestureRecognizer * _Nonnull panGestureRecognizer;
+/// The gesture recognizer for the “pinch to zoom” gesture
+@property (nonatomic, readonly, strong) UIGestureRecognizer * _Nonnull pinchGestureRecognizer;
+/// The gesture recognizer for the rotate gesture
+@property (nonatomic, readonly, strong) UIGestureRecognizer * _Nonnull rotateGestureRecognizer;
+/// The gesture recognizer for the pitch gesture
+@property (nonatomic, readonly, strong) UIGestureRecognizer * _Nonnull pitchGestureRecognizer;
+/// The gesture recognizer for the “double tap to zoom in” gesture
+@property (nonatomic, readonly, strong) UIGestureRecognizer * _Nonnull doubleTapToZoomInGestureRecognizer;
+/// The gesture recognizer for the “double touch to zoom out” gesture
+@property (nonatomic, readonly, strong) UIGestureRecognizer * _Nonnull doubleTouchToZoomOutGestureRecognizer;
+/// The gesture recognizer for the quickZoom gesture
+@property (nonatomic, readonly, strong) UIGestureRecognizer * _Nonnull quickZoomGestureRecognizer;
+/// The gesture recognizer for the single tap gesture
+/// note:
+/// The single tap gesture recognizer is primarily used to route tap events to the
+/// <code>*AnnotationManager</code>s. You can add a target-action pair to this gesture recognizer
+/// to be notified when a single tap occurs on the map.
+@property (nonatomic, readonly, strong) UIGestureRecognizer * _Nonnull singleTapGestureRecognizer;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum TMBGestureType : NSInteger;
+
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC25TMBGestureManagerDelegate_")
+@protocol TMBGestureManagerDelegate
+/// Informs the delegate that a gesture has begun.
+- (void)gestureManagerWithDidBegin:(enum TMBGestureType)gestureType;
+/// Informs the delegate that a gesture has ended and whether there will be additional animations after the gesture
+/// has completed. Does not indicate whether gesture-based animations have completed.
+- (void)gestureManagerWithDidEnd:(enum TMBGestureType)gestureType willAnimate:(BOOL)willAnimate;
+/// Informs the delegate that animations triggered due to a gesture have ended.
+- (void)gestureManagerWithDidEndAnimatingFor:(enum TMBGestureType)gestureType;
+@end
+
+enum TMBPanMode : NSInteger;
+
+/// Configuration options for the built-in gestures
+SWIFT_CLASS("_TtC13MapboxMapObjC17TMBGestureOptions")
+@interface TMBGestureOptions : NSObject
+/// Whether the single-touch pan gesture is enabled.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL panEnabled;
+/// Whether the pinch gesture is enabled. Allows panning, rotating, and zooming.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL pinchEnabled;
+/// Whether rotation gesture is enabled.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL rotateEnabled;
+/// Whether rotation is enabled for the pinch to zoom gesture.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL simultaneousRotateAndPinchZoomEnabled;
+/// Whether zoom is enabled for the pinch gesture.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL pinchZoomEnabled;
+/// Whether pan is enabled for the pinch gesture.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL pinchPanEnabled;
+/// Whether the pitch gesture is enabled.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL pitchEnabled;
+/// Whether double tapping the map with one touch results in a zoom-in animation.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL doubleTapToZoomInEnabled;
+/// Whether single tapping the map with two touches results in a zoom-out animation.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL doubleTouchToZoomOutEnabled;
+/// Whether the quick zoom gesture is enabled.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL quickZoomEnabled;
+/// Configures the directions in which the map is allowed to move during a pan gesture.
+/// Defaults to <code>PanMode.horizontalAndVertical</code>. Called <code>scrollMode</code> in
+/// the Android SDK for consistency with platform conventions.
+@property (nonatomic) enum TMBPanMode panMode;
+/// A constant factor that determines how quickly pan deceleration animations happen.
+/// Multiplied with the velocity vector once per millisecond during deceleration animations.
+/// Defaults to <code>UIScrollView.DecelerationRate.normal.rawValue</code>
+@property (nonatomic) CGFloat panDecelerationFactor;
+/// By default, gestures rotate and zoom around the center of the gesture. Set this property to rotate and zoom around a fixed point instead.
+/// This property will be ignored by the pinch gesture if <code>GestureOptions/pinchPanEnabled</code> is set to <code>true</code>.
+@property (nonatomic, strong) NSValue * _Nullable focalPoint;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, TMBGestureType, open) {
+/// The pan gesture
+  TMBGestureTypePan = 0,
+/// The pinch gesture
+  TMBGestureTypePinch = 1,
+/// The pitch gesture
+  TMBGestureTypePitch = 2,
+/// The double tap to zoom in gesture
+  TMBGestureTypeDoubleTapToZoomIn = 3,
+/// The double touch to zoom out gesture
+  TMBGestureTypeDoubleTouchToZoomOut = 4,
+/// The quick zoom gesture
+  TMBGestureTypeQuickZoom = 5,
+/// The single tap gesture
+  TMBGestureTypeSingleTap = 6,
+};
+
 
 SWIFT_CLASS("_TtC13MapboxMapObjC30TMBHillshadeIlluminationAnchor")
 @interface TMBHillshadeIlluminationAnchor : NSObject <NamedString>
@@ -1603,6 +1721,18 @@ typedef SWIFT_ENUM(NSInteger, TMBOrnamentVisibility, open) {
   TMBOrnamentVisibilityAdaptive = 0,
   TMBOrnamentVisibilityHidden = 1,
   TMBOrnamentVisibilityVisible = 2,
+};
+
+/// Options used to configure the direction in which the map is allowed to move
+/// during a pan gesture. Called <code>ScrollMode</code> in the Android SDK for
+/// consistency with platform conventions.
+typedef SWIFT_ENUM(NSInteger, TMBPanMode, open) {
+/// The map may only move horizontally.
+  TMBPanModeHorizontal = 0,
+/// The map may only move vertically.
+  TMBPanModeVertical = 1,
+/// The map may move both horizontally and vertically.
+  TMBPanModeHorizontalAndVertical = 2,
 };
 
 

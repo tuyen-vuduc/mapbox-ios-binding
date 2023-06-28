@@ -158,46 +158,46 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface GeometryHelper
 	{
-		// +(id)createPoint:(NSValue * _Nonnull)location __attribute__((warn_unused_result("")));
+		// +(MBXGeometry * _Nonnull)createPoint:(NSValue * _Nonnull)location __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createPoint:")]
 		MBXGeometry CreatePoint (NSValue location);
 
-		// +(id)createLine:(NSArray<NSValue *> * _Nonnull)locations __attribute__((warn_unused_result("")));
+		// +(MBXGeometry * _Nonnull)createLine:(NSArray<NSValue *> * _Nonnull)locations __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createLine:")]
 		MBXGeometry CreateLine (NSValue[] locations);
 
-		// +(id)createMultiLine:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations __attribute__((warn_unused_result("")));
+		// +(MBXGeometry * _Nonnull)createMultiLine:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createMultiLine:")]
 		MBXGeometry CreateMultiLine (NSArray locations);
 
-		// +(id)createMultiPoint:(NSArray<NSValue *> * _Nonnull)locations __attribute__((warn_unused_result("")));
+		// +(MBXGeometry * _Nonnull)createMultiPoint:(NSArray<NSValue *> * _Nonnull)locations __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createMultiPoint:")]
 		MBXGeometry CreateMultiPoint (NSValue[] locations);
 
-		// +(id)createMultiPolygon:(NSArray<NSArray<NSArray<NSValue *> *> *> * _Nonnull)locations __attribute__((warn_unused_result("")));
+		// +(MBXGeometry * _Nonnull)createMultiPolygon:(NSArray<NSArray<NSArray<NSValue *> *> *> * _Nonnull)locations __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createMultiPolygon:")]
 		MBXGeometry CreateMultiPolygon (NSArray locations);
 
-		// +(id)createPolygon:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations __attribute__((warn_unused_result("")));
+		// +(MBXGeometry * _Nonnull)createPolygon:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createPolygon:")]
 		MBXGeometry CreatePolygon (NSArray locations);
 
-		// +(id)create:(NSArray * _Nonnull)items __attribute__((warn_unused_result("")));
+		// +(MBXGeometry * _Nonnull)create:(NSArray<MBXGeometry *> * _Nonnull)items __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("create:")]
 		MBXGeometry Create (MBXGeometry[] items);
 	}
 
-	// @interface MapboxMapObjC_Swift_369
+	// @interface MapboxMapObjC_Swift_375
     [Category]
     [BaseType(typeof(MapInitOptions))]
-	interface MapboxMapObjC_Swift_369
+	interface MapboxMapObjC_Swift_375
 	{
 		// -(MBMResourceOptions * _Nonnull)resourceOptions __attribute__((warn_unused_result("")));
 		[Export ("resourceOptions")]
@@ -247,24 +247,14 @@ namespace MapboxMapsObjC
 		MapInitOptionsBuilder StyleUri (NSUrl value);
 	}
 
-	// @interface MapboxMapObjC_Swift_394
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_394
-	{
-		// -(void)updateSymbolLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SymbolLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("updateSymbolLayer:configure:onError:")]
-		void UpdateSymbolLayer (string id, Action<SymbolLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
-	}
-
 	// @interface MapboxMapObjC_Swift_400
     [Category]
     [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_400
 	{
-		// -(void)updateSkyLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("updateSkyLayer:configure:onError:")]
-		void UpdateSkyLayer (string id, Action<SkyLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
+		// -(TMBGestureManager * _Nonnull)gestureManager __attribute__((warn_unused_result("")));
+		[Export ("gestureManager")]
+		TMBGestureManager GestureManager();
 	}
 
 	// @interface MapboxMapObjC_Swift_406
@@ -272,53 +262,55 @@ namespace MapboxMapsObjC
     [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_406
 	{
+		// -(void)updateSkyLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("updateSkyLayer:configure:onError:")]
+		void UpdateSkyLayer (string id, Action<SkyLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
+	}
+
+	// @interface MapboxMapObjC_Swift_412
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_412
+	{
 		// -(void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("setTerrain:onError:")]
 		void SetTerrain (TMBTerrain value, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_411
+	// @interface MapboxMapObjC_Swift_418
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_411
-	{
-		// -(void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
-		[Export ("setCameraTo:")]
-		void SetCameraTo (MBMCameraOptions cameraOptions);
-
-		// - (CLLocationCoordinate2D)coordinateFromScreenPosition:(CGPoint)point SWIFT_WARN_UNUSED_RESULT;
-		[Export ("coordinateFromScreenPosition:")]
-		CLLocationCoordinate2D CoordinateFromScreenPosition (CGPoint point);
-
-		// - (NSArray<NSValue *> * _Nonnull)coordinateFromScreenPositions:(NSArray<NSValue *> * _Nonnull)point SWIFT_WARN_UNUSED_RESULT;
-		[Export ("coordinateFromScreenPositions:")]
-		NSArray CoordinateFromScreenPositions (NSArray point);
-	}
-
-	// @interface MapboxMapObjC_Swift_417
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_417
-	{
-		// -(void)addRasterDemSource:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-		[Export ("addRasterDemSource:configure:onError:")]
-		void AddRasterDemSource (string id, Action<RasterDemSourceBuilder> configure, [NullAllowed] Action<NSError> onError);
-	}
-
-	// @interface MapboxMapObjC_Swift_423
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_423
+	interface MapboxMapObjC_Swift_418
 	{
 		// -(void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
 		[Export ("ornamentsOptionsScaleBarVisibility:")]
 		void OrnamentsOptionsScaleBarVisibility (TMBOrnamentVisibility value);
 	}
 
-	// @interface MapboxMapObjC_Swift_428
+	// @interface MapboxMapObjC_Swift_424
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_428
+	interface MapboxMapObjC_Swift_424
+	{
+		// -(void)addRasterDemSource:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("addRasterDemSource:configure:onError:")]
+		void AddRasterDemSource (string id, Action<RasterDemSourceBuilder> configure, [NullAllowed] Action<NSError> onError);
+	}
+
+	// @interface MapboxMapObjC_Swift_430
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_430
+	{
+		// -(void)updateSymbolLayer:(NSString * _Nonnull)id configure:(void (^ _Nonnull)(SymbolLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+		[Export ("updateSymbolLayer:configure:onError:")]
+		void UpdateSymbolLayer (string id, Action<SymbolLayerBuilder> configure, [NullAllowed] Action<NSError> onError);
+	}
+
+	// @interface MapboxMapObjC_Swift_435
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_435
 	{
 		// -(void)preferredFrameRateRange:(CAFrameRateRange)value;
 		[Export ("preferredFrameRateRange:")]
@@ -333,62 +325,28 @@ namespace MapboxMapsObjC
 		void MapboxMapDebugOptions (NSNumber[] value);
 	}
 
-	// @interface MapboxMapObjC_Swift_436
+	// @interface MapboxMapObjC_Swift_442
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_436
+	interface MapboxMapObjC_Swift_442
 	{
-		// -(void)setStyle:(NSString * _Nonnull)styleUri;
-		[Export ("setStyle:")]
-		void SetStyle (string styleUri);
+		// -(void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
+		[Export ("setCameraTo:")]
+		void SetCameraTo (MBMCameraOptions cameraOptions);
 
-		// -(void)setStyleInJson:(NSString * _Nonnull)styleJson;
-		[Export ("setStyleInJson:")]
-		void SetStyleInJson (string styleJson);
+		// -(CLLocationCoordinate2D)coordinateFromScreenPosition:(CGPoint)point __attribute__((warn_unused_result("")));
+		[Export ("coordinateFromScreenPosition:")]
+		CLLocationCoordinate2D CoordinateFromScreenPosition (CGPoint point);
 
-		// -(void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
-		[Export ("loadStyle:completion:")]
-		void LoadStyle (string styleUri, [NullAllowed] Action<TMBStyle, NSError> completion);
-
-		// - (void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-		[Export ("addImageWithId:image:sdf:contentInsets:completion:")]
-		void AddImageWithId (string id, UIImage image, bool sdf, UIEdgeInsets contentInsets, [NullAllowed] Action<NSError> completion);
-
-		// - (void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-		[Export ("removeImageWithId:completion:")]
-		void RemoveImageWithId (string id, [NullAllowed] Action<NSError> completion);
-
-		// - (BOOL)imageExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-		[Export ("imageExistsWithId:")]
-		bool ImageExistsWithId (string id);
+		// -(NSArray<NSValue *> * _Nonnull)coordinateFromScreenPositions:(NSArray<NSValue *> * _Nonnull)point __attribute__((warn_unused_result("")));
+		[Export ("coordinateFromScreenPositions:")]
+        NSArray CoordinateFromScreenPositions (NSArray point);
 	}
 
-	// @interface MapboxMapObjC_Swift_448
+	// @interface MapboxMapObjC_Swift_452
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_448
-	{
-		// -(TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
-		[Export ("polygonAnnotationManagerWithId:layerPosition:layerPositionParam:")]
-		TMBPolygonAnnotationManager PolygonAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
-
-		// -(TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
-		[Export ("circleAnnotationManagerWithId:layerPosition:layerPositionParam:")]
-		TMBCircleAnnotationManager CircleAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
-
-		// - (TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam clusterOptions:(TMBClusterOptions * _Nullable)clusterOptions SWIFT_WARN_UNUSED_RESULT;
-		[Export ("pointAnnotationManagerWithId:layerPosition:layerPositionParam:clusterOptions:")]
-		TMBPointAnnotationManager PointAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] TMBClusterOptions clusterOptions);
-
-		// -(TMBPolylineAnnotationManager * _Nonnull)polylineAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
-		[Export ("polylineAnnotationManagerWithId:layerPosition:layerPositionParam:")]
-		TMBPolylineAnnotationManager PolylineAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
-	}
-
-	// @interface MapboxMapObjC_Swift_459
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_459
+	interface MapboxMapObjC_Swift_452
 	{
 		// -(void)locationDelegate:(id<LocationPermissionsDelegate> _Nonnull)delegate;
 		[Export ("locationDelegate:")]
@@ -407,10 +365,88 @@ namespace MapboxMapsObjC
 		void PuckBearingSource (TMBPuckBearingSource source);
 	}
 
-	// @interface MapboxMapObjC_Swift_468
+	// @interface MapboxMapObjC_Swift_466
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_468
+	interface MapboxMapObjC_Swift_466
+	{
+		// -(TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
+		[Export ("polygonAnnotationManagerWithId:layerPosition:layerPositionParam:")]
+		TMBPolygonAnnotationManager PolygonAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
+
+		// -(TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
+		[Export ("circleAnnotationManagerWithId:layerPosition:layerPositionParam:")]
+		TMBCircleAnnotationManager CircleAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
+
+		// -(TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam clusterOptions:(TMBClusterOptions * _Nullable)clusterOptions __attribute__((warn_unused_result("")));
+		[Export ("pointAnnotationManagerWithId:layerPosition:layerPositionParam:clusterOptions:")]
+		TMBPointAnnotationManager PointAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] TMBClusterOptions clusterOptions);
+
+		// -(TMBPolylineAnnotationManager * _Nonnull)polylineAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam __attribute__((warn_unused_result("")));
+		[Export ("polylineAnnotationManagerWithId:layerPosition:layerPositionParam:")]
+		TMBPolylineAnnotationManager PolylineAnnotationManagerWithId ([NullAllowed] string id, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam);
+	}
+
+	// @interface MapboxMapObjC_Swift_480
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_480
+	{
+		// -(TMBCancelable * _Nonnull)queryRenderedFeaturesWithin:(NSArray<NSValue *> * _Nonnull)shape options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
+		[Export ("queryRenderedFeaturesWithin:options:completion:")]
+		TMBCancelable QueryRenderedFeaturesWithin (NSArray shape, [NullAllowed] MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
+
+		// -(TMBCancelable * _Nonnull)queryRenderedFeaturesIn:(CGRect)rect options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
+		[Export ("queryRenderedFeaturesIn:options:completion:")]
+		TMBCancelable QueryRenderedFeaturesIn (CGRect rect, [NullAllowed] MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
+
+		// -(TMBCancelable * _Nonnull)queryRenderedFeaturesWith:(CGPoint)point options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
+		[Export ("queryRenderedFeaturesWith:options:completion:")]
+		TMBCancelable QueryRenderedFeaturesWith (CGPoint point, [NullAllowed] MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
+
+		// -(void)querySourceFeaturesFor:(NSString * _Nonnull)sourceId options:(MBMSourceQueryOptions * _Nonnull)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
+		[Export ("querySourceFeaturesFor:options:completion:")]
+		void QuerySourceFeaturesFor (string sourceId, MBMSourceQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
+
+		// -(void)queryFeatureExtensionFor:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature extension:(NSString * _Nonnull)extension extensionField:(NSString * _Nonnull)extensionField args:(NSDictionary<NSString *,id> * _Nullable)args completion:(void (^ _Nullable)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
+		[Export ("queryFeatureExtensionFor:feature:extension:extensionField:args:completion:")]
+		void QueryFeatureExtensionFor (string sourceId, MBXFeature feature, string extension, string extensionField, [NullAllowed] NSDictionary<NSString, NSObject> args, [NullAllowed] Action<MBMFeatureExtensionValue, NSError> completion);
+	}
+
+	// @interface MapboxMapObjC_Swift_491
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_491
+	{
+		// -(void)setStyle:(NSString * _Nonnull)styleUri;
+		[Export ("setStyle:")]
+		void SetStyle (string styleUri);
+
+		// -(void)setStyleInJson:(NSString * _Nonnull)styleJson;
+		[Export ("setStyleInJson:")]
+		void SetStyleInJson (string styleJson);
+
+		// -(void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
+		[Export ("loadStyle:completion:")]
+		void LoadStyle (string styleUri, [NullAllowed] Action<TMBStyle, NSError> completion);
+
+		// -(void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		[Export ("addImageWithId:image:sdf:contentInsets:completion:")]
+		void AddImageWithId (string id, UIImage image, bool sdf, UIEdgeInsets contentInsets, [NullAllowed] Action<NSError> completion);
+
+		// -(void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		[Export ("removeImageWithId:completion:")]
+		void RemoveImageWithId (string id, [NullAllowed] Action<NSError> completion);
+
+		// -(BOOL)imageExistsWithId:(NSString * _Nonnull)id __attribute__((warn_unused_result("")));
+		[Export ("imageExistsWithId:")]
+		bool ImageExistsWithId (string id);
+	}
+
+	// @interface MapboxMapObjC_Swift_502
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_502
 	{
 		// -(void)addSource:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("addSource:properties:onError:")]
@@ -436,19 +472,19 @@ namespace MapboxMapsObjC
 		[Export ("addSourceWithId:geometry:onError:")]
 		void AddSourceWithId (string id, TMBGeometry geometry, [NullAllowed] Action<NSError> onError);
 
-		// - (void)addGeoJSONSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
+		// -(void)addGeoJSONSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
 		[Export ("addGeoJSONSourceWithId:properties:geojson:onComplete:")]
 		void AddGeoJSONSourceWithId (string id, NSDictionary<NSString, NSObject> properties, string geojson, [NullAllowed] Action<NSError> onComplete);
 
-		// - (void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
+		// -(void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
 		[Export ("updateGeoJSONSourceWithId:geojson:onComplete:")]
 		void UpdateGeoJSONSourceWithId (string id, string geojson, [NullAllowed] Action<NSError> onComplete);
 	}
 
-	// @interface MapboxMapObjC_Swift_480
+	// @interface MapboxMapObjC_Swift_516
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_480
+	interface MapboxMapObjC_Swift_516
 	{
 		// -(void)setLightProperty:(NSString * _Nonnull)name value:(id _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("setLightProperty:value:onError:")]
@@ -487,10 +523,57 @@ namespace MapboxMapsObjC
 		void LightPositionTransition (TMBStyleTransition value, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_503
+	// @interface MapboxMapObjC_Swift_540
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_503
+	interface MapboxMapObjC_Swift_540
+	{
+		// -(MBMViewAnnotationOptions * _Nullable)optionsForAnnotationId:(NSString * _Nonnull)id __attribute__((warn_unused_result("")));
+		[Export ("optionsForAnnotationId:")]
+		[return: NullAllowed]
+		MBMViewAnnotationOptions OptionsForAnnotationId (string id);
+
+		// -(MBMViewAnnotationOptions * _Nullable)optionsForAnnotationView:(UIView * _Nonnull)view __attribute__((warn_unused_result("")));
+		[Export ("optionsForAnnotationView:")]
+		[return: NullAllowed]
+		MBMViewAnnotationOptions OptionsForAnnotationView (UIView view);
+
+		// -(UIView * _Nullable)viewForAnnotationId:(NSString * _Nonnull)id __attribute__((warn_unused_result("")));
+		[Export ("viewForAnnotationId:")]
+		[return: NullAllowed]
+		UIView ViewForAnnotationId (string id);
+
+		// -(UIView * _Nullable)viewForAnnotationFeatureId:(NSString * _Nonnull)id __attribute__((warn_unused_result("")));
+		[Export ("viewForAnnotationFeatureId:")]
+		[return: NullAllowed]
+		UIView ViewForAnnotationFeatureId (string id);
+
+		// -(MBMViewAnnotationOptions * _Nullable)optionsForAnnotationFeatureId:(NSString * _Nonnull)id __attribute__((warn_unused_result("")));
+		[Export ("optionsForAnnotationFeatureId:")]
+		[return: NullAllowed]
+		MBMViewAnnotationOptions OptionsForAnnotationFeatureId (string id);
+
+		// -(void)addWithViewAnnotation:(UIView * _Nonnull)viewAnnotation id:(NSString * _Nullable)id options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		[Export ("addWithViewAnnotation:id:options:completion:")]
+		void AddWithViewAnnotation (UIView viewAnnotation, [NullAllowed] string id, MBMViewAnnotationOptions options, [NullAllowed] Action<NSError> completion);
+
+		// -(void)updateWithViewAnnotation:(UIView * _Nonnull)viewAnnotation options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		[Export ("updateWithViewAnnotation:options:completion:")]
+		void UpdateWithViewAnnotation (UIView viewAnnotation, MBMViewAnnotationOptions options, [NullAllowed] Action<NSError> completion);
+
+		// -(void)removeWithViewAnnotation:(UIView * _Nonnull)viewAnnotation;
+		[Export ("removeWithViewAnnotation:")]
+		void RemoveWithViewAnnotation (UIView viewAnnotation);
+
+		// -(void)removeAllViewAnnotations;
+		[Export ("removeAllViewAnnotations")]
+		void RemoveAllViewAnnotations ();
+	}
+
+	// @interface MapboxMapObjC_Swift_554
+    [Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_554
 	{
 		// -(void)addLayerWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("addLayerWithProperties:layerPosition:layerPositionParam:onError:")]
@@ -534,13 +617,13 @@ namespace MapboxMapsObjC
 
 		// -(void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id<MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
 		[Export ("addCustomLayer:layerHost:layerPosition:layerPositionParam:onError:")]
-		void AddCustomLayer (string id, IMBMCustomLayerHost layerHost, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
+		void AddCustomLayer (string id, MBMCustomLayerHost layerHost, TMBLayerPosition layerPosition, [NullAllowed] NSObject layerPositionParam, [NullAllowed] Action<NSError> onError);
 	}
 
-	// @interface MapboxMapObjC_Swift_519
+	// @interface MapboxMapObjC_Swift_569
     [Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_519
+	interface MapboxMapObjC_Swift_569
 	{
 		// -(TMBCancelable * _Nonnull)onMapLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
 		[Export ("onMapLoaded:")]
@@ -613,6 +696,15 @@ namespace MapboxMapsObjC
 	partial interface INamedString {}
 
 	// @protocol NamedString
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/
 	[Protocol (Name = "_TtP13MapboxMapObjC11NamedString_"), Model]
     [BaseType(typeof(NSObject))]
 	interface NamedString
@@ -623,12 +715,12 @@ namespace MapboxMapsObjC
 		string StringValue { get; }
 	}
 
-	// @interface MapboxMapObjC_Swift_613
+	// @interface MapboxMapObjC_Swift_664
     [Category]
     [BaseType(typeof(MBMOfflineManager))]
-	interface MapboxMapObjC_Swift_613
+	interface MapboxMapObjC_Swift_664
 	{
-		// -(TMBCancelable * _Nonnull)loadStyleWithStyleUriString:(NSString * _Nonnull)styleUriString styleLoadOptions:(MBMStylePackLoadOptions * _Nonnull)styleLoadOptions progress:(StylePackLoadProgressCallback)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
+		// -(TMBCancelable * _Nonnull)loadStyleWithStyleUriString:(NSString * _Nonnull)styleUriString styleLoadOptions:(MBMStylePackLoadOptions * _Nonnull)styleLoadOptions progress:(id)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
 		[Export ("loadStyleWithStyleUriString:styleLoadOptions:progress:completion:")]
 		TMBCancelable LoadStyleWithStyleUriString (string styleUriString, MBMStylePackLoadOptions styleLoadOptions, Action<MBMStylePackLoadProgress> progress, Action<MBMStylePack, NSError> completion);
 
@@ -1160,8 +1252,17 @@ namespace MapboxMapsObjC
 	}
 
 	// @protocol TMBAnnotation
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/
 	[Protocol (Name = "_TtP13MapboxMapObjC13TMBAnnotation_"), Model]
-	[BaseType(typeof(NSObject))]
+    [BaseType(typeof(NSObject))]
 	interface TMBAnnotation
 	{
 		// @required @property (readonly, copy, nonatomic) NSString * _Nonnull id;
@@ -1180,6 +1281,8 @@ namespace MapboxMapsObjC
 		NSDictionary<NSString, NSObject> UserInfo { get; }
 	}
 
+	partial interface ITMBAnnotation { }
+
 	partial interface ITMBAnnotationManager { }
 
 	partial interface ITMBAnnotationInteractionDelegate { }
@@ -1196,8 +1299,15 @@ namespace MapboxMapsObjC
 	}
 
 	// @protocol TMBAnnotationManager
-	[Protocol (Name = "_TtP13MapboxMapObjC20TMBAnnotationManager_"), Model]
-	[BaseType(typeof(NSObject))]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/[Protocol (Name = "_TtP13MapboxMapObjC20TMBAnnotationManager_")]
 	interface TMBAnnotationManager
 	{
 		// @required @property (readonly, copy, nonatomic) NSString * _Nonnull id;
@@ -1412,86 +1522,45 @@ namespace MapboxMapsObjC
 
 	// @interface TMBClusterOptions : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC17TMBClusterOptions")]
+	[DisableDefaultCtor]
 	interface TMBClusterOptions
 	{
-		// /// Define a set of cluster options to determine how to cluster annotations.
-		// /// Providing clusterOptions when initializing a <code>PointAnnotationManager</code>
-		// /// will turn on clustering for that <code>PointAnnotationManager</code>.
-		// - (nonnull instancetype)initWithCircleRadius:(TMBValue * _Nonnull)circleRadius circleColor:(TMBValue * _Nonnull)circleColor textColor:(TMBValue * _Nonnull)textColor textSize:(TMBValue * _Nonnull)textSize textField:(TMBValue * _Nonnull)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *, TMBExpression *> * _Nullable)clusterProperties OBJC_DESIGNATED_INITIALIZER;
-		[Export ("initWithCircleRadius:circleColor:textColor:textSize:textField:clusterRadius:clusterMaxZoom:clusterProperties:")]
-		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] TMBValue circleRadius, [NullAllowed] TMBValue circleColor, [NullAllowed] TMBValue textColor, [NullAllowed] TMBValue textSize, [NullAllowed] TMBValue textField, double clusterRadius, double clusterMaxZoom, [NullAllowed] NSDictionary<NSString, TMBExpression> clusterProperties);
-
-		// /// The circle radius of the cluster items, 18 by default. Units in pixels.
-		// @property (nonatomic, strong) TMBValue * _Nonnull circleRadius;
+		// @property (nonatomic, strong) TMBValue * _Nullable circleRadius;
 		[NullAllowed, Export ("circleRadius", ArgumentSemantic.Strong)]
 		TMBValue CircleRadius { get; set; }
 
-		// /// The circle color, black by default.
-		// @property (nonatomic, strong) TMBValue * _Nonnull circleColor;
+		// @property (nonatomic, strong) TMBValue * _Nullable circleColor;
 		[NullAllowed, Export ("circleColor", ArgumentSemantic.Strong)]
 		TMBValue CircleColor { get; set; }
 
-		// /// The text color of cluster item, white by default
-		// @property (nonatomic, strong) TMBValue * _Nonnull textColor;
+		// @property (nonatomic, strong) TMBValue * _Nullable textColor;
 		[NullAllowed, Export ("textColor", ArgumentSemantic.Strong)]
 		TMBValue TextColor { get; set; }
 
-		// /// The text size of cluster item, 12 by default. Units in pixels.
-		// @property (nonatomic, strong) TMBValue * _Nonnull textSize;
+		// @property (nonatomic, strong) TMBValue * _Nullable textSize;
 		[NullAllowed, Export ("textSize", ArgumentSemantic.Strong)]
 		TMBValue TextSize { get; set; }
 
-		// /// Value to use for a text label of the cluster. <code>get("point_count")</code> by default which
-		// /// will show the count of points in the cluster
-		// @property (nonatomic, strong) TMBValue * _Nonnull textField;
+		// @property (nonatomic, strong) TMBValue * _Nullable textField;
 		[NullAllowed, Export ("textField", ArgumentSemantic.Strong)]
 		TMBValue TextField { get; set; }
 
-		// /// Radius of each cluster if clustering is enabled. A value of 512 indicates a radius equal
-		// /// to the width of a tile, 50 by default. Value must be greater than or equal to 0.
 		// @property (nonatomic) double clusterRadius;
-		[Export ("clusterRadius", ArgumentSemantic.Strong)]
+		[Export ("clusterRadius")]
 		double ClusterRadius { get; set; }
 
-		// /// Max zoom on which to cluster points if clustering is enabled. Defaults to one zoom less
-		// /// than maxzoom (so that last zoom features are not clustered). Clusters are re-evaluated at integer zoom
-		// /// levels so setting clusterMaxZoom to 14 means the clusters will be displayed until z15.
 		// @property (nonatomic) double clusterMaxZoom;
-		[Export ("clusterMaxZoom", ArgumentSemantic.Strong)]
+		[Export ("clusterMaxZoom")]
 		double ClusterMaxZoom { get; set; }
 
-		// /// An object defining custom properties on the generated clusters if clustering is enabled, aggregating values from
-		// /// clustered points. Has the form <code>{"property_name": [operator, map_expression]}</code>.
-		// /// <code>operator</code> is any expression function that accepts at
-		// /// least 2 operands (e.g. <code>"+"</code> or <code>"max"</code>) — it accumulates the property value from clusters/points the
-		// /// cluster contains; <code>map_expression</code> produces the value of a single point. Example:
-		// /// <code>Expression</code> syntax:
-		// /// \code
-		// /// let expression = Exp(.sum) {
-		// ///     Exp(.get) { "scalerank" }
-		// /// }
-		// /// clusterProperties: ["sum": expression]
-		// ///
-		// /// \endcodeJSON syntax:
-		// /// <code>{"sum": ["+", ["get", "scalerank"]]}</code>
-		// /// For more advanced use cases, in place of <code>operator</code>, you can use a custom reduce expression that references a special <code>["accumulated"]</code> value. Example:
-		// /// <code>Expression</code> syntax:
-		// /// \code
-		// /// let expression = Exp {
-		// ///     Exp(.sum) {
-		// ///         Exp(.accumulated)
-		// ///         Exp(.get) { "sum" }
-		// ///     }
-		// ///     Exp(.get) { "scalerank" }
-		// /// }
-		// /// clusterProperties: ["sum": expression]
-		// ///
-		// /// \endcodeJSON syntax:
-		// /// <code>{"sum": [["+", ["accumulated"], ["get", "sum"]], ["get", "scalerank"]]}</code>
-		// @property (nonatomic, copy) NSDictionary<NSString *, TMBExpression *> * _Nullable clusterProperties;
+		// @property (copy, nonatomic) NSDictionary<NSString *,TMBExpression *> * _Nullable clusterProperties;
 		[NullAllowed, Export ("clusterProperties", ArgumentSemantic.Copy)]
-		NSDictionary ClusterProperties { get; set; }
+		NSDictionary<NSString, TMBExpression> ClusterProperties { get; set; }
+
+		// -(instancetype _Nonnull)initWithCircleRadius:(TMBValue * _Nullable)circleRadius circleColor:(TMBValue * _Nullable)circleColor textColor:(TMBValue * _Nullable)textColor textSize:(TMBValue * _Nullable)textSize textField:(TMBValue * _Nullable)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *,TMBExpression *> * _Nullable)clusterProperties __attribute__((objc_designated_initializer));
+		[Export ("initWithCircleRadius:circleColor:textColor:textSize:textField:clusterRadius:clusterMaxZoom:clusterProperties:")]
+		[DesignatedInitializer]
+		IntPtr Constructor ([NullAllowed] TMBValue circleRadius, [NullAllowed] TMBValue circleColor, [NullAllowed] TMBValue textColor, [NullAllowed] TMBValue textSize, [NullAllowed] TMBValue textField, double clusterRadius, double clusterMaxZoom, [NullAllowed] NSDictionary<NSString, TMBExpression> clusterProperties);
 	}
 
 	// @interface TMBEncoding : NSObject <NamedString>
@@ -1524,6 +1593,14 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBExpression : INativeObject
 	{
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull description;
+		[Export ("description")]
+		string Description { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull debugDescription;
+		[Export ("debugDescription")]
+		string DebugDescription { get; }
+
 		// +(TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithOperator:")]
@@ -1532,12 +1609,12 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ arguments:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithOperator:arguments:")]
-		TMBExpression CreateWithOperator (TMBOperator operator_, NSArray arguments);
+		TMBExpression CreateWithOperator (TMBOperator operator_, NSObject[] arguments);
 
-		// + (TMBExpression * _Nonnull)createWithArguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
+		// +(TMBExpression * _Nonnull)createWithArguments:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithArguments:")]
-		TMBExpression CreateWithArguments (NSArray arguments);
+		TMBExpression CreateWithArguments (NSObject[] arguments);
 	}
 
 	// @interface TMBFillExtrusionTranslateAnchor : NSObject <NamedString>
@@ -1591,7 +1668,16 @@ namespace MapboxMapsObjC
 	}
 
 	// @protocol TMBGeoData
-	[Protocol (Name = "_TtP13MapboxMapObjC10TMBGeoData_")]
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/
+	[Protocol (Name = "_TtP13MapboxMapObjC10TMBGeoData_"), Model]
 	[BaseType(typeof(NSObject))]
 	interface TMBGeoData
 	{
@@ -1608,6 +1694,137 @@ namespace MapboxMapsObjC
 		[Static]
 		[Export ("fromData:")]
 		TMBGeometry FromData (ITMBGeoData data);
+	}
+
+	// @interface TMBGestureManager : NSObject
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC17TMBGestureManager")]
+	[DisableDefaultCtor]
+	interface TMBGestureManager
+	{
+		[Wrap ("WeakDelegate")]
+		[NullAllowed]
+		ITMBGestureManagerDelegate Delegate { get; set; }
+
+		// @property (nonatomic, weak) id<TMBGestureManagerDelegate> _Nullable delegate;
+		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
+		NSObject WeakDelegate { get; set; }
+
+		// -(TMBGestureOptions * _Nonnull)gestureOptions __attribute__((warn_unused_result("")));
+		[Export ("gestureOptions")]
+		TMBGestureOptions GestureOptions();
+
+		// @property (readonly, nonatomic, strong) UIGestureRecognizer * _Nonnull panGestureRecognizer;
+		[Export ("panGestureRecognizer", ArgumentSemantic.Strong)]
+		UIGestureRecognizer PanGestureRecognizer { get; }
+
+		// @property (readonly, nonatomic, strong) UIGestureRecognizer * _Nonnull pinchGestureRecognizer;
+		[Export ("pinchGestureRecognizer", ArgumentSemantic.Strong)]
+		UIGestureRecognizer PinchGestureRecognizer { get; }
+
+		// @property (readonly, nonatomic, strong) UIGestureRecognizer * _Nonnull rotateGestureRecognizer;
+		[Export ("rotateGestureRecognizer", ArgumentSemantic.Strong)]
+		UIGestureRecognizer RotateGestureRecognizer { get; }
+
+		// @property (readonly, nonatomic, strong) UIGestureRecognizer * _Nonnull pitchGestureRecognizer;
+		[Export ("pitchGestureRecognizer", ArgumentSemantic.Strong)]
+		UIGestureRecognizer PitchGestureRecognizer { get; }
+
+		// @property (readonly, nonatomic, strong) UIGestureRecognizer * _Nonnull doubleTapToZoomInGestureRecognizer;
+		[Export ("doubleTapToZoomInGestureRecognizer", ArgumentSemantic.Strong)]
+		UIGestureRecognizer DoubleTapToZoomInGestureRecognizer { get; }
+
+		// @property (readonly, nonatomic, strong) UIGestureRecognizer * _Nonnull doubleTouchToZoomOutGestureRecognizer;
+		[Export ("doubleTouchToZoomOutGestureRecognizer", ArgumentSemantic.Strong)]
+		UIGestureRecognizer DoubleTouchToZoomOutGestureRecognizer { get; }
+
+		// @property (readonly, nonatomic, strong) UIGestureRecognizer * _Nonnull quickZoomGestureRecognizer;
+		[Export ("quickZoomGestureRecognizer", ArgumentSemantic.Strong)]
+		UIGestureRecognizer QuickZoomGestureRecognizer { get; }
+
+		// @property (readonly, nonatomic, strong) UIGestureRecognizer * _Nonnull singleTapGestureRecognizer;
+		[Export ("singleTapGestureRecognizer", ArgumentSemantic.Strong)]
+		UIGestureRecognizer SingleTapGestureRecognizer { get; }
+	}
+
+	partial interface ITMBGestureManagerDelegate { }
+
+	// @protocol TMBGestureManagerDelegate
+	[Protocol (Name = "_TtP13MapboxMapObjC25TMBGestureManagerDelegate_"), Model]
+	[BaseType (typeof (NSObject))]
+	interface TMBGestureManagerDelegate
+	{
+		// @required -(void)gestureManagerWithDidBegin:(enum TMBGestureType)gestureType;
+		[Abstract]
+		[Export ("gestureManagerWithDidBegin:")]
+		void GestureManagerWithDidBegin (TMBGestureType gestureType);
+
+		// @required -(void)gestureManagerWithDidEnd:(enum TMBGestureType)gestureType willAnimate:(BOOL)willAnimate;
+		[Abstract]
+		[Export ("gestureManagerWithDidEnd:willAnimate:")]
+		void GestureManagerWithDidEnd (TMBGestureType gestureType, bool willAnimate);
+
+		// @required -(void)gestureManagerWithDidEndAnimatingFor:(enum TMBGestureType)gestureType;
+		[Abstract]
+		[Export ("gestureManagerWithDidEndAnimatingFor:")]
+		void GestureManagerWithDidEndAnimatingFor (TMBGestureType gestureType);
+	}
+
+	// @interface TMBGestureOptions : NSObject
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC17TMBGestureOptions")]
+	[DisableDefaultCtor]
+	interface TMBGestureOptions
+	{
+		// @property (nonatomic) BOOL panEnabled;
+		[Export ("panEnabled")]
+		bool PanEnabled { get; set; }
+
+		// @property (nonatomic) BOOL pinchEnabled;
+		[Export ("pinchEnabled")]
+		bool PinchEnabled { get; set; }
+
+		// @property (nonatomic) BOOL rotateEnabled;
+		[Export ("rotateEnabled")]
+		bool RotateEnabled { get; set; }
+
+		// @property (nonatomic) BOOL simultaneousRotateAndPinchZoomEnabled;
+		[Export ("simultaneousRotateAndPinchZoomEnabled")]
+		bool SimultaneousRotateAndPinchZoomEnabled { get; set; }
+
+		// @property (nonatomic) BOOL pinchZoomEnabled;
+		[Export ("pinchZoomEnabled")]
+		bool PinchZoomEnabled { get; set; }
+
+		// @property (nonatomic) BOOL pinchPanEnabled;
+		[Export ("pinchPanEnabled")]
+		bool PinchPanEnabled { get; set; }
+
+		// @property (nonatomic) BOOL pitchEnabled;
+		[Export ("pitchEnabled")]
+		bool PitchEnabled { get; set; }
+
+		// @property (nonatomic) BOOL doubleTapToZoomInEnabled;
+		[Export ("doubleTapToZoomInEnabled")]
+		bool DoubleTapToZoomInEnabled { get; set; }
+
+		// @property (nonatomic) BOOL doubleTouchToZoomOutEnabled;
+		[Export ("doubleTouchToZoomOutEnabled")]
+		bool DoubleTouchToZoomOutEnabled { get; set; }
+
+		// @property (nonatomic) BOOL quickZoomEnabled;
+		[Export ("quickZoomEnabled")]
+		bool QuickZoomEnabled { get; set; }
+
+		// @property (nonatomic) enum TMBPanMode panMode;
+		[Export ("panMode", ArgumentSemantic.Assign)]
+		TMBPanMode PanMode { get; set; }
+
+		// @property (nonatomic) CGFloat panDecelerationFactor;
+		[Export ("panDecelerationFactor")]
+		nfloat PanDecelerationFactor { get; set; }
+
+		// @property (nonatomic, strong) NSValue * _Nullable focalPoint;
+		[NullAllowed, Export ("focalPoint", ArgumentSemantic.Strong)]
+		NSValue FocalPoint { get; set; }
 	}
 
 	// @interface TMBHillshadeIlluminationAnchor : NSObject <NamedString>
@@ -2740,8 +2957,8 @@ namespace MapboxMapsObjC
 		[Export ("annotations", ArgumentSemantic.Copy)]
 		TMBPolygonAnnotation[] Annotations { get; set; }
 
-		// @property (nonatomic) BOOL fillAntialias;
-		[NullAllowed, Export ("fillAntialias")]
+		// @property (nonatomic, strong) NSNumber * _Nullable fillAntialias;
+		[NullAllowed, Export ("fillAntialias", ArgumentSemantic.Strong)]
 		NSNumber FillAntialias { get; set; }
 
 		// @property (copy, nonatomic) NSArray<NSNumber *> * _Nullable fillTranslate;
@@ -2918,10 +3135,10 @@ namespace MapboxMapsObjC
 	{
 	}
 
-	// @interface MapboxMapObjC_Swift_1802 (TMBResolvedImage)
+	// @interface MapboxMapObjC_Swift_2037 (TMBResolvedImage)
 	[Category]
 	[BaseType (typeof(TMBResolvedImage))]
-	interface TMBResolvedImage_MapboxMapObjC_Swift_1802
+	interface TMBResolvedImage_MapboxMapObjC_Swift_2037
 	{
 		// +(TMBResolvedImage * _Nonnull)fromName:(NSString * _Nonnull)name __attribute__((warn_unused_result("")));
 		[Static]
@@ -3041,15 +3258,15 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBStyle
 	{
-		// - (void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		// -(void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("addImageWithId:image:sdf:contentInsets:completion:")]
 		void AddImageWithId (string id, UIImage image, bool sdf, UIEdgeInsets contentInsets, [NullAllowed] Action<NSError> completion);
 
-		// - (void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		// -(void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("removeImageWithId:completion:")]
 		void RemoveImageWithId (string id, [NullAllowed] Action<NSError> completion);
 
-		// - (BOOL)imageExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+		// -(BOOL)imageExistsWithId:(NSString * _Nonnull)id __attribute__((warn_unused_result("")));
 		[Export ("imageExistsWithId:")]
 		bool ImageExistsWithId (string id);
 	}
@@ -3434,6 +3651,10 @@ namespace MapboxMapsObjC
 		[Static]
 		[Export ("expression:")]
 		TMBValue Expression (TMBExpression expression);
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull debugDescription;
+		[Export ("debugDescription")]
+		string DebugDescription { get; }
 	}
 
 	// @interface TMBVisibility : NSObject <NamedString>
@@ -3461,10 +3682,10 @@ namespace MapboxMapsObjC
 		TMBVisibility None { get; }
 	}
 
-	// @interface MapboxMapObjC_Swift_2124
+	// @interface MapboxMapObjC_Swift_2362
     [Category]
     [BaseType(typeof(MBXTileStore))]
-	interface MapboxMapObjC_Swift_2124
+	interface MapboxMapObjC_Swift_2362
 	{
 		// +(id)getDefault __attribute__((warn_unused_result("")));
 		[Static]
@@ -3478,77 +3699,5 @@ namespace MapboxMapsObjC
 		// -(void)allTileRegions:(void (^ _Nonnull)(NSArray<MBXTileRegion *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("allTileRegions:")]
 		void AllTileRegions (Action<NSArray<MBXTileRegion>, NSError> completion);
-	}
-
-	// @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_21241
-	{
-		// - (TMBCancelable * _Nonnull)queryRenderedFeaturesWithin:(NSArray<NSValue *> * _Nonnull)shape options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
-		[Export ("queryRenderedFeaturesWithin:options:completion:")]
-		TMBCancelable QueryRenderedFeaturesWithin (NSArray shape, MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
-
-		// - (TMBCancelable * _Nonnull)queryRenderedFeaturesIn:(CGRect)rect options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
-		[Export ("queryRenderedFeaturesIn:options:completion:")]
-		TMBCancelable QueryRenderedFeaturesIn (CGRect rect, MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
-
-		// - (TMBCancelable * _Nonnull)queryRenderedFeaturesWith:(CGPoint)point options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
-		[Export ("queryRenderedFeaturesWith:options:completion:")]
-		TMBCancelable QueryRenderedFeaturesWith (CGPoint point, MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
-
-		//- (void)querySourceFeaturesFor:(NSString * _Nonnull)sourceId options:(MBMSourceQueryOptions * _Nonnull)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
-		[Export ("querySourceFeaturesFor:options:completion:")]
-		void QuerySourceFeaturesFor (string sourceId, MBMSourceQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
-
-		// - (void)queryFeatureExtensionFor:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature extension:(NSString * _Nonnull)extension extensionField:(NSString * _Nonnull)extensionField args:(NSDictionary<NSString *, id> * _Nullable)args completion:(void (^ _Nullable)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
-		[Export ("queryFeatureExtensionFor:feature:extension:extensionField:args:completion:")]
-		void QueryFeatureExtensionFor (string sourceId, MBXFeature feature, string extension, string extensionField, [NullAllowed] NSDictionary args, [NullAllowed] Action<MBMFeatureExtensionValue, NSError> completion);
-	}
-	// @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_21242
-	{
-		// - (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-		[Export ("optionsForAnnotationId:")]
-		[return: NullAllowed]
-		MBMViewAnnotationOptions OptionsForAnnotationId (string id);
-
-		// - (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationView:(UIView * _Nonnull)view SWIFT_WARN_UNUSED_RESULT;
-		[Export ("optionsForAnnotationView:")]
-		[return: NullAllowed]
-		MBMViewAnnotationOptions OptionsForAnnotationView (UIView view);
-		
-		// - (UIView * _Nullable)viewForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-		[Export ("viewForAnnotationId:")]
-		[return: NullAllowed]
-		UIView ViewForAnnotationId (string id);
-		
-		// - (UIView * _Nullable)viewForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-		[Export ("viewForAnnotationFeatureId:")]
-		[return: NullAllowed]
-		UIView ViewForAnnotationFeatureId (string featureId);
-		
-		// - (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-		[Export ("optionsForAnnotationFeatureId:")]
-		[return: NullAllowed]
-		MBMViewAnnotationOptions OptionsForAnnotationFeatureId (string featureId);
-		
-		// - (void)addWithViewAnnotation:(UIView * _Nonnull)viewAnnotation id:(NSString * _Nullable)id options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-		[Export ("addWithViewAnnotation:id:options:completion:")]
-		void AddViewAnnotation (UIView annotationView, [NullAllowed]string id, MBMViewAnnotationOptions options, [NullAllowed] Action<NSError> completion);
-		
-		// - (void)updateWithViewAnnotation:(UIView * _Nonnull)viewAnnotation options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-		[Export ("updateWithViewAnnotation:options:completion:")]
-		void UpdateViewAnnotation (UIView annotationView, MBMViewAnnotationOptions options, [NullAllowed] Action<NSError> completion);
-		
-		// - (void)removeWithViewAnnotation:(UIView * _Nonnull)viewAnnotation;
-		[Export ("removeWithViewAnnotation:")]
-		void removeViewAnnotation (UIView annotationView);
-		
-		// - (void)removeAllViewAnnotations;
-		[Export ("removeAllViewAnnotations")]
-		void removeAllViewAnnotations ();
 	}
 }
