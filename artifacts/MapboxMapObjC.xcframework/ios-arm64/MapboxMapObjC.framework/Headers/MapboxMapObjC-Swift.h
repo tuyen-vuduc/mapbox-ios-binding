@@ -317,6 +317,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 
 
+
 @class TMBExpression;
 @class NSNumber;
 @class TMBValue;
@@ -401,22 +402,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MBMResourceO
 - (TMBGestureManager * _Nonnull)gestureManager SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class SkyLayerBuilder;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)updateSkyLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
 @class TMBTerrain;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
-enum TMBOrnamentVisibility : NSInteger;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
 @end
 
 @class RasterDemSourceBuilder;
@@ -429,6 +418,24 @@ enum TMBOrnamentVisibility : NSInteger;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (void)updateSymbolLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SymbolLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
+@class SkyLayerBuilder;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)updateSkyLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+@end
+
+@class MBMCameraBoundsOptions;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)setCameraBounds:(MBMCameraBoundsOptions * _Nonnull)bounds completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+@end
+
+enum TMBOrnamentVisibility : NSInteger;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
 @end
 
 
@@ -445,17 +452,6 @@ enum TMBOrnamentVisibility : NSInteger;
 - (NSArray<NSValue *> * _Nonnull)coordinateFromScreenPositions:(NSArray<NSValue *> * _Nonnull)point SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@protocol LocationPermissionsDelegate;
-@class Puck2DConfigurationBuilder;
-enum TMBPuckBearingSource : NSInteger;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)locationDelegate:(id <LocationPermissionsDelegate> _Nonnull)delegate;
-- (void)locationRequestTemporaryFullAccuracyPermissions:(NSString * _Nonnull)customKey;
-- (void)puck2D:(void (^ _Nullable)(Puck2DConfigurationBuilder * _Nonnull))build;
-- (void)puckBearingSource:(enum TMBPuckBearingSource)source;
-@end
-
 enum TMBLayerPosition : NSInteger;
 @class TMBPolygonAnnotationManager;
 @class TMBCircleAnnotationManager;
@@ -468,6 +464,17 @@ enum TMBLayerPosition : NSInteger;
 - (TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
 - (TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam clusterOptions:(TMBClusterOptions * _Nullable)clusterOptions SWIFT_WARN_UNUSED_RESULT;
 - (TMBPolylineAnnotationManager * _Nonnull)polylineAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@protocol LocationPermissionsDelegate;
+@class Puck2DConfigurationBuilder;
+enum TMBPuckBearingSource : NSInteger;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)locationDelegate:(id <LocationPermissionsDelegate> _Nonnull)delegate;
+- (void)locationRequestTemporaryFullAccuracyPermissions:(NSString * _Nonnull)customKey;
+- (void)puck2D:(void (^ _Nullable)(Puck2DConfigurationBuilder * _Nonnull))build;
+- (void)puckBearingSource:(enum TMBPuckBearingSource)source;
 @end
 
 @class MBMRenderedQueryOptions;

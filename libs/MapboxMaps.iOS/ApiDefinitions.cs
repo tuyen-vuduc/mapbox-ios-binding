@@ -63,7 +63,9 @@ namespace MapboxMaps
   the generated interface. If consumers are not supposed to implement this
   protocol, then [Model] is redundant and will generate code that will never
   be used.
-*/[Protocol (Name = "_TtP10MapboxMaps16LocationConsumer_")]
+*/
+	[Protocol (Name = "_TtP10MapboxMaps16LocationConsumer_"), Model]
+	[BaseType (typeof(NSObject))]
 	interface LocationConsumer
 	{
 		// @required -(void)locationUpdateWithNewLocation:(Location * _Nonnull)newLocation;

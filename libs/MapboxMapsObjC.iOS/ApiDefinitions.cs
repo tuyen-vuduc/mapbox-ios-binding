@@ -392,6 +392,10 @@ namespace MapboxMapsObjC
     [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_480
 	{
+		// - (void)setCameraBounds:(MBMCameraBoundsOptions * _Nonnull)bounds completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		[Export ("setCameraBounds:completion:")]
+		TMBCancelable SetCameraBounds (MBMCameraBoundsOptions bounds, [NullAllowed] Action<NSError> completion);
+
 		// -(TMBCancelable * _Nonnull)queryRenderedFeaturesWithin:(NSArray<NSValue *> * _Nonnull)shape options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
 		[Export ("queryRenderedFeaturesWithin:options:completion:")]
 		TMBCancelable QueryRenderedFeaturesWithin (NSArray shape, [NullAllowed] MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);

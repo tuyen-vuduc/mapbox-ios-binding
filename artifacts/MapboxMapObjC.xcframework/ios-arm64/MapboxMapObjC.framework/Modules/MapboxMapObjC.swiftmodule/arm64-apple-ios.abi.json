@@ -16002,6 +16002,13 @@
         "moduleName": "MapboxMapObjC"
       },
       {
+        "kind": "Import",
+        "name": "MapboxMaps",
+        "printedName": "MapboxMaps",
+        "declKind": "Import",
+        "moduleName": "MapboxMapObjC"
+      },
+      {
         "kind": "TypeDecl",
         "name": "TMBCircleAnnotation",
         "printedName": "TMBCircleAnnotation",
@@ -49628,6 +49635,70 @@
             "declKind": "Func",
             "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)updateSkyLayer:configure:onError:",
             "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE14updateSkyLayer_9configure7onErrorySS_yAD0gH7BuilderCXEys0K0_pcSgtF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setCameraBounds",
+            "printedName": "setCameraBounds(_:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CameraBoundsOptions",
+                "printedName": "MapboxCoreMaps.CameraBoundsOptions",
+                "usr": "c:objc(cs)MBMCameraBoundsOptions"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Error?) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Error?) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Error?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@MapboxMapObjC@MapboxMaps@objc(cs)MapView(im)setCameraBounds:completion:",
+            "mangledName": "$s10MapboxMaps7MapViewC0aC4ObjCE15setCameraBounds_10completionySo09MBMCameraH7OptionsC_ys5Error_pSgcSgtF",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "Dynamic",

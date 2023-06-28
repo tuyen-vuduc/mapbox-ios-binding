@@ -570,6 +570,9 @@ extension MapboxMaps.ResourceOptions {
   @objc public static let vertical: MapboxMapObjC.TMBTextWritingMode
   @objc deinit
 }
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setCameraBounds(_ bounds: MapboxCoreMaps.CameraBoundsOptions, completion: (((any Swift.Error)?) -> Swift.Void)?)
+}
 @objc open class TMBCircleAnnotation : ObjectiveC.NSObject, MapboxMapObjC.TMBAnnotation {
   @objc public var id: Swift.String {
     @objc get
