@@ -95,28 +95,23 @@ namespace MapboxMapsObjC
 	{
 		// -(MBMResourceOptions * _Nonnull)getResourceOptions __attribute__((warn_unused_result("")));
 		[Export ("getResourceOptions")]
-		[Verify (MethodToProperty)]
-		MBMResourceOptions ResourceOptions { get; }
+		MBMResourceOptions ResourceOptions();
 
 		// -(MBMMapOptions * _Nonnull)getMapOptions __attribute__((warn_unused_result("")));
 		[Export ("getMapOptions")]
-		[Verify (MethodToProperty)]
-		MBMMapOptions MapOptions { get; }
+		MBMMapOptions MapOptions();
 
 		// -(NSString * _Nullable)getStyleURI __attribute__((warn_unused_result("")));
 		[NullAllowed, Export ("getStyleURI")]
-		[Verify (MethodToProperty)]
-		string StyleURI { get; }
+		string StyleURI();
 
 		// -(NSString * _Nullable)getStyleJSON __attribute__((warn_unused_result("")));
 		[NullAllowed, Export ("getStyleJSON")]
-		[Verify (MethodToProperty)]
-		string StyleJSON { get; }
+		string StyleJSON();
 
 		// -(MBMCameraOptions * _Nullable)getCameraOptions __attribute__((warn_unused_result("")));
 		[NullAllowed, Export ("getCameraOptions")]
-		[Verify (MethodToProperty)]
-		MBMCameraOptions CameraOptions { get; }
+		MBMCameraOptions CameraOptions();
 	}
 
 	// @interface MapInitOptionsBuilder : NSObject
@@ -209,7 +204,6 @@ namespace MapboxMapsObjC
 	{
 		// -(TMBViewAnnotationManager * _Nonnull)viewAnnotations __attribute__((warn_unused_result("")));
 		[Export ("viewAnnotations")]
-		[Verify (MethodToProperty)]
 		TMBViewAnnotationManager ViewAnnotations();
 	}
 
@@ -224,9 +218,9 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_432
-	interface MapboxMapObjC_Swift_432
     [Category]
     [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_432
 	{
 		// -(TMBMapboxMap * _Nonnull)mapboxMap __attribute__((warn_unused_result("")));
 		[Export ("mapboxMap")]
@@ -240,7 +234,6 @@ namespace MapboxMapsObjC
 	{
 		// -(TMBAnnotationOrchestrator * _Nonnull)annotations __attribute__((warn_unused_result("")));
 		[Export ("annotations")]
-		[Verify (MethodToProperty)]
 		TMBAnnotationOrchestrator Annotations();
 	}
 
@@ -507,6 +500,53 @@ namespace MapboxMapsObjC
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC13TMBAtmosphere")]
 	interface TMBAtmosphere
 	{
+		// @property (nonatomic, strong) TMBValue * _Nullable color;
+		[NullAllowed, Export ("color", ArgumentSemantic.Strong)]
+		TMBValue Color { get; set; }
+
+		// @property (nonatomic, strong) TMBStyleTransition * _Nullable colorTransition;
+		[NullAllowed, Export ("colorTransition", ArgumentSemantic.Strong)]
+		TMBStyleTransition ColorTransition { get; set; }
+
+		// @property (nonatomic, strong) TMBValue * _Nullable highColor;
+		[NullAllowed, Export ("highColor", ArgumentSemantic.Strong)]
+		TMBValue HighColor { get; set; }
+
+		// @property (nonatomic, strong) TMBStyleTransition * _Nullable highColorTransition;
+		[NullAllowed, Export ("highColorTransition", ArgumentSemantic.Strong)]
+		TMBStyleTransition HighColorTransition { get; set; }
+
+		// @property (nonatomic, strong) TMBValue * _Nullable horizonBlend;
+		[NullAllowed, Export ("horizonBlend", ArgumentSemantic.Strong)]
+		TMBValue HorizonBlend { get; set; }
+
+		// @property (nonatomic, strong) TMBStyleTransition * _Nullable horizonBlendTransition;
+		[NullAllowed, Export ("horizonBlendTransition", ArgumentSemantic.Strong)]
+		TMBStyleTransition HorizonBlendTransition { get; set; }
+
+		// @property (nonatomic, strong) TMBValue * _Nullable range;
+		[NullAllowed, Export ("range", ArgumentSemantic.Strong)]
+		TMBValue Range { get; set; }
+
+		// @property (nonatomic, strong) TMBStyleTransition * _Nullable rangeTransition;
+		[NullAllowed, Export ("rangeTransition", ArgumentSemantic.Strong)]
+		TMBStyleTransition RangeTransition { get; set; }
+
+		// @property (nonatomic, strong) TMBValue * _Nullable spaceColor;
+		[NullAllowed, Export ("spaceColor", ArgumentSemantic.Strong)]
+		TMBValue SpaceColor { get; set; }
+
+		// @property (nonatomic, strong) TMBStyleTransition * _Nullable spaceColorTransition;
+		[NullAllowed, Export ("spaceColorTransition", ArgumentSemantic.Strong)]
+		TMBStyleTransition SpaceColorTransition { get; set; }
+
+		// @property (nonatomic, strong) TMBValue * _Nullable starIntensity;
+		[NullAllowed, Export ("starIntensity", ArgumentSemantic.Strong)]
+		TMBValue StarIntensity { get; set; }
+
+		// @property (nonatomic, strong) TMBStyleTransition * _Nullable starIntensityTransition;
+		[NullAllowed, Export ("starIntensityTransition", ArgumentSemantic.Strong)]
+		TMBStyleTransition StarIntensityTransition { get; set; }
 	}
 
 	// @interface TMBAttributionButtonOptions : NSObject
@@ -514,6 +554,13 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBAttributionButtonOptions
 	{
+		// @property (nonatomic) enum TMBOrnamentPosition position;
+		[Export ("position", ArgumentSemantic.Assign)]
+		TMBOrnamentPosition Position { get; set; }
+
+		// @property (nonatomic) CGPoint margins;
+		[Export ("margins", ArgumentSemantic.Assign)]
+		CGPoint Margins { get; set; }
 	}
 
 	// @protocol TMBAttributionURLOpener
@@ -581,6 +628,13 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBCameraAnimator
 	{
+		// @property (readonly, nonatomic) UIViewAnimatingState state;
+		[Export ("state")]
+		UIViewAnimatingState State { get; }
+
+		// -(void)cancel;
+		[Export ("cancel")]
+		void Cancel ();
 	}
 
 	// @interface TMBCameraTransition : NSObject
@@ -588,6 +642,33 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBCameraTransition
 	{
+		// @property (readonly, nonatomic, strong) TMBCameraTransitionChange * _Nonnull center;
+		[Export ("center", ArgumentSemantic.Strong)]
+		TMBCameraTransitionChange Center { get; }
+
+		// @property (readonly, nonatomic, strong) TMBCameraTransitionChange * _Nonnull zoom;
+		[Export ("zoom", ArgumentSemantic.Strong)]
+		TMBCameraTransitionChange Zoom { get; }
+
+		// @property (readonly, nonatomic, strong) TMBCameraTransitionChange * _Nonnull padding;
+		[Export ("padding", ArgumentSemantic.Strong)]
+		TMBCameraTransitionChange Padding { get; }
+
+		// @property (readonly, nonatomic, strong) TMBCameraTransitionChange * _Nonnull anchor;
+		[Export ("anchor", ArgumentSemantic.Strong)]
+		TMBCameraTransitionChange Anchor { get; }
+
+		// @property (readonly, nonatomic, strong) TMBCameraTransitionChange * _Nonnull bearing;
+		[Export ("bearing", ArgumentSemantic.Strong)]
+		TMBCameraTransitionChange Bearing { get; }
+
+		// @property (nonatomic) BOOL shouldOptimizeBearingPath;
+		[Export ("shouldOptimizeBearingPath")]
+		bool ShouldOptimizeBearingPath { get; set; }
+
+		// @property (readonly, nonatomic, strong) TMBCameraTransitionChange * _Nonnull pitch;
+		[Export ("pitch", ArgumentSemantic.Strong)]
+		TMBCameraTransitionChange Pitch { get; }
 	}
 
 	// @interface TMBCameraTransitionChange : NSObject
@@ -595,6 +676,13 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBCameraTransitionChange
 	{
+		// @property (nonatomic, strong) NSValue * _Nonnull fromValue;
+		[Export ("fromValue", ArgumentSemantic.Strong)]
+		NSValue FromValue { get; set; }
+
+		// @property (nonatomic, strong) NSValue * _Nullable toValue;
+		[NullAllowed, Export ("toValue", ArgumentSemantic.Strong)]
+		NSValue ToValue { get; set; }
 	}
 
 	// @interface TMBCancelable : NSObject
@@ -839,6 +927,22 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBCollatorOptions
 	{
+		// @property (nonatomic, strong) NSNumber * _Nullable caseSensitive;
+		[NullAllowed, Export ("caseSensitive", ArgumentSemantic.Strong)]
+		NSNumber CaseSensitive { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable diacriticSensitive;
+		[NullAllowed, Export ("diacriticSensitive", ArgumentSemantic.Strong)]
+		NSNumber DiacriticSensitive { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable locale;
+		[NullAllowed, Export ("locale")]
+		string Locale { get; set; }
+
+		// -(instancetype _Nonnull)initWithCaseSensitive:(NSNumber * _Nullable)caseSensitive diacriticSensitive:(NSNumber * _Nullable)diacriticSensitive locale:(NSString * _Nullable)locale __attribute__((objc_designated_initializer));
+		[Export ("initWithCaseSensitive:diacriticSensitive:locale:")]
+		[DesignatedInitializer]
+		IntPtr Constructor ([NullAllowed] NSNumber caseSensitive, [NullAllowed] NSNumber diacriticSensitive, [NullAllowed] string locale);
 	}
 
 	// @interface TMBCompassViewOptions : NSObject
@@ -846,6 +950,21 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBCompassViewOptions
 	{
+		// @property (nonatomic) enum TMBOrnamentPosition position;
+		[Export ("position", ArgumentSemantic.Assign)]
+		TMBOrnamentPosition Position { get; set; }
+
+		// @property (nonatomic) CGPoint margins;
+		[Export ("margins", ArgumentSemantic.Assign)]
+		CGPoint Margins { get; set; }
+
+		// @property (nonatomic, strong) UIImage * _Nullable image;
+		[NullAllowed, Export ("image", ArgumentSemantic.Strong)]
+		UIImage Image { get; set; }
+
+		// @property (nonatomic) enum TMBOrnamentVisibility visibility;
+		[Export ("visibility", ArgumentSemantic.Assign)]
+		TMBOrnamentVisibility Visibility { get; set; }
 	}
 
 	// @interface TMBDefaultViewportTransition : NSObject
@@ -876,10 +995,10 @@ namespace MapboxMapsObjC
 		TMBCancelable Completion (TMBViewportState toState, Action<bool> completion);
 	}
 
-	// @interface MapboxMapObjC_Swift_1046 (TMBDefaultViewportTransition) <TMBViewportTransition>
+	// @interface MapboxMapObjC_Swift_1121 (TMBDefaultViewportTransition) <TMBViewportTransition>
 	[Category]
 	[BaseType (typeof(TMBDefaultViewportTransition))]
-	interface TMBDefaultViewportTransition_MapboxMapObjC_Swift_1046 : ITMBViewportTransition
+	interface TMBDefaultViewportTransition_MapboxMapObjC_Swift_1121 : TMBViewportTransition
 	{
 		// -(TMBCancelable * _Nonnull)runTo:(id<TMBViewportState> _Nonnull)toState completion:(void (^ _Nonnull)(BOOL))completion __attribute__((warn_unused_result("")));
 		[Export ("runTo:completion:")]
@@ -929,7 +1048,7 @@ namespace MapboxMapsObjC
 	// @interface TMBExpression : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC13TMBExpression")]
 	[DisableDefaultCtor]
-	interface TMBExpression : INativeObject
+	interface TMBExpression
 	{
 		// +(TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ __attribute__((warn_unused_result("")));
 		[Static]
@@ -959,6 +1078,21 @@ namespace MapboxMapsObjC
 		// @property (readonly, nonatomic) id _Nonnull options;
 		[Export ("options")]
 		NSObject Options { get; }
+
+		// +(TMBExpressionOptions * _Nonnull)formatWithOptions:(TMBFormatOptions * _Nonnull)options __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("formatWithOptions:")]
+		TMBExpressionOptions FormatWithOptions (TMBFormatOptions options);
+
+		// +(TMBExpressionOptions * _Nonnull)numberFormatWithOptions:(TMBNumberFormatOptions * _Nonnull)options __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("numberFormatWithOptions:")]
+		TMBExpressionOptions NumberFormatWithOptions (TMBNumberFormatOptions options);
+
+		// +(TMBExpressionOptions * _Nonnull)collatorWithOptions:(TMBCollatorOptions * _Nonnull)options __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("collatorWithOptions:")]
+		TMBExpressionOptions CollatorWithOptions (TMBCollatorOptions options);
 	}
 
 	// @interface TMBFillExtrusionTranslateAnchor : NSObject <NamedString>
@@ -1016,6 +1150,9 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBFollowPuckViewportState
 	{
+		// @property (nonatomic, strong) TMBFollowPuckViewportStateOptions * _Nonnull options;
+		[Export ("options", ArgumentSemantic.Strong)]
+		TMBFollowPuckViewportStateOptions Options { get; set; }
 	}
 
 	// @protocol TMBViewportState
@@ -1051,10 +1188,10 @@ namespace MapboxMapsObjC
 		void StopUpdatingCamera ();
 	}
 
-	// @interface MapboxMapObjC_Swift_1211 (TMBFollowPuckViewportState) <TMBViewportState>
+	// @interface MapboxMapObjC_Swift_1294 (TMBFollowPuckViewportState) <TMBViewportState>
 	[Category]
 	[BaseType (typeof(TMBFollowPuckViewportState))]
-	interface TMBFollowPuckViewportState_MapboxMapObjC_Swift_1211 : ITMBViewportState
+	interface TMBFollowPuckViewportState_MapboxMapObjC_Swift_1294 : TMBViewportState
 	{
 		// -(TMBCancelable * _Nonnull)observeDataSourceWith:(BOOL (^ _Nonnull)(MBMCameraOptions * _Nonnull))handler __attribute__((warn_unused_result("")));
 		[Export ("observeDataSourceWith:")]
@@ -1074,6 +1211,15 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBFollowPuckViewportStateBearing
 	{
+		// @property (readonly, nonatomic, strong) NSNumber * _Nullable bearing;
+		[NullAllowed, Export ("bearing", ArgumentSemantic.Strong)]
+		NSNumber Bearing { get; }
+
+		// +(TMBFollowPuckViewportStateBearing * _Nonnull)constant:(CLLocationDirection)bearing __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("constant:")]
+		TMBFollowPuckViewportStateBearing Constant (double bearing);
+
 		// @property (readonly, nonatomic, strong, class) TMBFollowPuckViewportStateBearing * _Nonnull heading;
 		[Static]
 		[Export ("heading", ArgumentSemantic.Strong)]
@@ -1694,10 +1840,10 @@ namespace MapboxMapsObjC
 		void RequestTemporaryFullAccuracyPermissionsWithPurposeKey (string purposeKey);
 	}
 
-	// @interface MapboxMapObjC_Swift_1737 (TMBLocationManager)
+	// @interface MapboxMapObjC_Swift_1824 (TMBLocationManager)
 	[Category]
 	[BaseType (typeof(TMBLocationManager))]
-	interface TMBLocationManager_MapboxMapObjC_Swift_1737
+	interface TMBLocationManager_MapboxMapObjC_Swift_1824
 	{
 		// -(BOOL)locationManagerShouldDisplayHeadingCalibration:(LocationManager * _Nonnull)locationManager __attribute__((warn_unused_result("")));
 		[Export ("locationManagerShouldDisplayHeadingCalibration:")]
@@ -1893,6 +2039,13 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBLogoViewOptions
 	{
+		// @property (nonatomic) enum TMBOrnamentPosition position;
+		[Export ("position", ArgumentSemantic.Assign)]
+		TMBOrnamentPosition Position { get; set; }
+
+		// @property (nonatomic) CGPoint margins;
+		[Export ("margins", ArgumentSemantic.Assign)]
+		CGPoint Margins { get; set; }
 	}
 
 	// @interface TMBMapboxMap : NSObject
@@ -2051,20 +2204,20 @@ namespace MapboxMapsObjC
 		void EndGesture ();
 	}
 
-	// @interface MapboxMapObjC_Swift_2221 (TMBMapboxMap)
+	// @interface MapboxMapObjC_Swift_2307 (TMBMapboxMap)
 	[Category]
 	[BaseType (typeof(TMBMapboxMap))]
-	interface TMBMapboxMap_MapboxMapObjC_Swift_2221
+	interface TMBMapboxMap_MapboxMapObjC_Swift_2307
 	{
 		// -(void)clearDataWithCompletion:(void (^ _Nonnull)(NSError * _Nullable))completion;
 		[Export ("clearDataWithCompletion:")]
 		void ClearDataWithCompletion (Action<NSError> completion);
 	}
 
-	// @interface MapboxMapObjC_Swift_2236 (TMBMapboxMap)
+	// @interface MapboxMapObjC_Swift_2322 (TMBMapboxMap)
 	[Category]
 	[BaseType (typeof(TMBMapboxMap))]
-	interface TMBMapboxMap_MapboxMapObjC_Swift_2236
+	interface TMBMapboxMap_MapboxMapObjC_Swift_2322
 	{
 		// -(void)subscribe:(id<MBMObserver> _Nonnull)observer events:(NSArray<NSString *> * _Nonnull)events;
 		[Export ("subscribe:events:")]
@@ -2075,10 +2228,10 @@ namespace MapboxMapsObjC
 		void Unsubscribe (MBMObserver observer, string[] events);
 	}
 
-	// @interface MapboxMapObjC_Swift_2262 (TMBMapboxMap)
+	// @interface MapboxMapObjC_Swift_2348 (TMBMapboxMap)
 	[Category]
 	[BaseType (typeof(TMBMapboxMap))]
-	interface TMBMapboxMap_MapboxMapObjC_Swift_2262
+	interface TMBMapboxMap_MapboxMapObjC_Swift_2348
 	{
 		// -(void)setFeatureStateWithSourceId:(NSString * _Nonnull)sourceId sourceLayerId:(NSString * _Nullable)sourceLayerId featureId:(NSString * _Nonnull)featureId state:(NSDictionary<NSString *,id> * _Nonnull)state;
 		[Export ("setFeatureStateWithSourceId:sourceLayerId:featureId:state:")]
@@ -2093,10 +2246,10 @@ namespace MapboxMapsObjC
 		void RemoveFeatureStateWithSourceId (string sourceId, [NullAllowed] string sourceLayerId, string featureId, [NullAllowed] string stateKey);
 	}
 
-	// @interface MapboxMapObjC_Swift_2304 (TMBMapboxMap)
+	// @interface MapboxMapObjC_Swift_2390 (TMBMapboxMap)
 	[Category]
 	[BaseType (typeof(TMBMapboxMap))]
-	interface TMBMapboxMap_MapboxMapObjC_Swift_2304
+	interface TMBMapboxMap_MapboxMapObjC_Swift_2390
 	{
 		// -(TMBCancelable * _Nonnull)queryRenderedFeaturesWithShape:(NSArray<NSValue *> * _Nonnull)shape options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("queryRenderedFeaturesWithShape:options:completion:")]
@@ -2131,10 +2284,10 @@ namespace MapboxMapsObjC
 		void GetGeoJsonClusterExpansionZoomForSourceId (string sourceId, MBXFeature feature, Action<MBMFeatureExtensionValue, NSError> completion);
 	}
 
-	// @interface MapboxMapObjC_Swift_2397 (TMBMapboxMap)
+	// @interface MapboxMapObjC_Swift_2483 (TMBMapboxMap)
 	[Category]
 	[BaseType (typeof(TMBMapboxMap))]
-	interface TMBMapboxMap_MapboxMapObjC_Swift_2397
+	interface TMBMapboxMap_MapboxMapObjC_Swift_2483
 	{
 		// -(TMBCancelable * _Nonnull)onMapLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
 		[Export ("onMapLoaded:")]
@@ -2726,12 +2879,15 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBOverviewViewportState
 	{
+		// @property (nonatomic, strong) TMBOverviewViewportStateOptions * _Nonnull options;
+		[Export ("options", ArgumentSemantic.Strong)]
+		TMBOverviewViewportStateOptions Options { get; set; }
 	}
 
-	// @interface MapboxMapObjC_Swift_2890 (TMBOverviewViewportState) <TMBViewportState>
+	// @interface MapboxMapObjC_Swift_2983 (TMBOverviewViewportState) <TMBViewportState>
 	[Category]
 	[BaseType (typeof(TMBOverviewViewportState))]
-	interface TMBOverviewViewportState_MapboxMapObjC_Swift_2890 : ITMBViewportState
+	interface TMBOverviewViewportState_MapboxMapObjC_Swift_2983 : ITMBViewportState
 	{
 		// -(TMBCancelable * _Nonnull)observeDataSourceWith:(BOOL (^ _Nonnull)(MBMCameraOptions * _Nonnull))handler __attribute__((warn_unused_result("")));
 		[Export ("observeDataSourceWith:")]
@@ -3364,6 +3520,21 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBPuck2DConfigurationPulsing
 	{
+		// @property (nonatomic) BOOL isEnabled;
+		[Export ("isEnabled")]
+		bool IsEnabled { get; set; }
+
+		// @property (nonatomic, strong) UIColor * _Nonnull color;
+		[Export ("color", ArgumentSemantic.Strong)]
+		UIColor Color { get; set; }
+
+		// @property (nonatomic) enum TMBPuck2DConfigurationPulsingRadius radius;
+		[Export ("radius", ArgumentSemantic.Assign)]
+		TMBPuck2DConfigurationPulsingRadius Radius { get; set; }
+
+		// @property (nonatomic) double radiusValue;
+		[Export ("radiusValue")]
+		double RadiusValue { get; set; }
 	}
 
 	// @interface TMBPuck3DConfiguration : NSObject
@@ -3425,10 +3596,10 @@ namespace MapboxMapsObjC
 	{
 	}
 
-	// @interface MapboxMapObjC_Swift_3346 (TMBResolvedImage)
+	// @interface MapboxMapObjC_Swift_3446 (TMBResolvedImage)
 	[Category]
 	[BaseType (typeof(TMBResolvedImage))]
-	interface TMBResolvedImage_MapboxMapObjC_Swift_3346
+	interface TMBResolvedImage_MapboxMapObjC_Swift_3446
 	{
 		// +(TMBResolvedImage * _Nonnull)fromName:(NSString * _Nonnull)name __attribute__((warn_unused_result("")));
 		[Static]
@@ -3549,6 +3720,9 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBSource
 	{
+		// @property (readonly, nonatomic, strong) TMBSourceType * _Nonnull type;
+		[Export ("type", ArgumentSemantic.Strong)]
+		TMBSourceType Type { get; }
 	}
 
 	// @interface TMBSourceInfo : NSObject
@@ -3556,6 +3730,13 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBSourceInfo
 	{
+		// @property (copy, nonatomic) NSString * _Nonnull id;
+		[Export ("id")]
+		string Id { get; set; }
+
+		// @property (nonatomic, strong) TMBSourceType * _Nonnull type;
+		[Export ("type", ArgumentSemantic.Strong)]
+		TMBSourceType Type { get; set; }
 	}
 
 	// @interface TMBSourceType : NSObject <NamedString>
@@ -3871,10 +4052,10 @@ namespace MapboxMapsObjC
 		void InvalidateCustomGeometrySourceRegionForSourceId (string sourceId, MBMCoordinateBounds bounds, [NullAllowed] Action<NSError> completion);
 	}
 
-	// @interface MapboxMapObjC_Swift_4208 (TMBStyle)
+	// @interface MapboxMapObjC_Swift_4315 (TMBStyle)
 	[Category]
 	[BaseType (typeof(TMBStyle))]
-	interface TMBStyle_MapboxMapObjC_Swift_4208
+	interface TMBStyle_MapboxMapObjC_Swift_4315
 	{
 		// -(void)addGeoJSONSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
 		[Export ("addGeoJSONSourceWithId:properties:geojson:onComplete:")]
@@ -3885,10 +4066,10 @@ namespace MapboxMapsObjC
 		void UpdateGeoJSONSourceWithId (string id, string geojson, [NullAllowed] Action<NSError> onComplete);
 	}
 
-	// @interface MapboxMapObjC_Swift_4215 (TMBStyle)
+	// @interface MapboxMapObjC_Swift_4322 (TMBStyle)
 	[Category]
 	[BaseType (typeof(TMBStyle))]
-	interface TMBStyle_MapboxMapObjC_Swift_4215
+	interface TMBStyle_MapboxMapObjC_Swift_4322
 	{
 		// -(void)setProjection:(TMBStyleProjection * _Nonnull)projection completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("setProjection:completion:")]
@@ -3904,6 +4085,10 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBStyleProjection
 	{
+		// @property (nonatomic, strong) TMBStyleProjectionName * _Nonnull name;
+		[Export ("name", ArgumentSemantic.Strong)]
+		TMBStyleProjectionName Name { get; set; }
+
 		// -(instancetype _Nonnull)initWithName:(TMBStyleProjectionName * _Nonnull)name __attribute__((objc_designated_initializer));
 		[Export ("initWithName:")]
 		[DesignatedInitializer]
@@ -3940,6 +4125,14 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBStyleTransition
 	{
+		// @property (nonatomic) double duration;
+		[Export ("duration")]
+		double Duration { get; set; }
+
+		// @property (nonatomic) double delay;
+		[Export ("delay")]
+		double Delay { get; set; }
+
 		// -(instancetype _Nonnull)initWithDuration:(double)duration delay:(double)delay __attribute__((objc_designated_initializer));
 		[Export ("initWithDuration:delay:")]
 		[DesignatedInitializer]
@@ -4016,6 +4209,10 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBTerrain
 	{
+		// @property (copy, nonatomic) NSString * _Nonnull sourceId;
+		[Export ("sourceId")]
+		string SourceId { get; set; }
+
 		// @property (nonatomic, strong) TMBValue * _Nullable exaggeration;
 		[NullAllowed, Export ("exaggeration", ArgumentSemantic.Strong)]
 		TMBValue Exaggeration { get; set; }
@@ -4533,10 +4730,10 @@ namespace MapboxMapsObjC
 		TMBVisibility None { get; }
 	}
 
-	// @interface MapboxMapObjC_Swift_4733
+	// @interface MapboxMapObjC_Swift_4847
     [Category]
     [BaseType(typeof(MBXTileStore))]
-	interface MapboxMapObjC_Swift_4733
+	interface MapboxMapObjC_Swift_4847
 	{
 		// +(id)getDefault __attribute__((warn_unused_result("")));
 		[Static]

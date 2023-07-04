@@ -87,11 +87,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC5colorAA8TMBValueCSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)color",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC5colorAA8TMBValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -116,9 +117,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC5colorAA8TMBValueCSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)color",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC5colorAA8TMBValueCSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -147,9 +151,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC5colorAA8TMBValueCSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setColor:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC5colorAA8TMBValueCSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -193,11 +200,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC15colorTransitionAA08TMBStyleF0CSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)colorTransition",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC15colorTransitionAA08TMBStyleF0CSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -222,9 +230,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC15colorTransitionAA08TMBStyleF0CSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)colorTransition",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC15colorTransitionAA08TMBStyleF0CSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -253,9 +264,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC15colorTransitionAA08TMBStyleF0CSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setColorTransition:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC15colorTransitionAA08TMBStyleF0CSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -299,11 +313,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC9highColorAA8TMBValueCSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)highColor",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC9highColorAA8TMBValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -328,9 +343,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC9highColorAA8TMBValueCSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)highColor",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC9highColorAA8TMBValueCSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -359,9 +377,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC9highColorAA8TMBValueCSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setHighColor:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC9highColorAA8TMBValueCSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -405,11 +426,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC19highColorTransitionAA08TMBStyleG0CSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)highColorTransition",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC19highColorTransitionAA08TMBStyleG0CSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -434,9 +456,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC19highColorTransitionAA08TMBStyleG0CSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)highColorTransition",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC19highColorTransitionAA08TMBStyleG0CSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -465,9 +490,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC19highColorTransitionAA08TMBStyleG0CSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setHighColorTransition:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC19highColorTransitionAA08TMBStyleG0CSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -511,11 +539,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC12horizonBlendAA8TMBValueCSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)horizonBlend",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC12horizonBlendAA8TMBValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -540,9 +569,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC12horizonBlendAA8TMBValueCSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)horizonBlend",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC12horizonBlendAA8TMBValueCSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -571,9 +603,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC12horizonBlendAA8TMBValueCSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setHorizonBlend:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC12horizonBlendAA8TMBValueCSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -617,11 +652,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC22horizonBlendTransitionAA08TMBStyleG0CSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)horizonBlendTransition",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC22horizonBlendTransitionAA08TMBStyleG0CSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -646,9 +682,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC22horizonBlendTransitionAA08TMBStyleG0CSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)horizonBlendTransition",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC22horizonBlendTransitionAA08TMBStyleG0CSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -677,9 +716,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC22horizonBlendTransitionAA08TMBStyleG0CSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setHorizonBlendTransition:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC22horizonBlendTransitionAA08TMBStyleG0CSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -723,11 +765,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC5rangeAA8TMBValueCSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)range",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC5rangeAA8TMBValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -752,9 +795,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC5rangeAA8TMBValueCSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)range",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC5rangeAA8TMBValueCSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -783,9 +829,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC5rangeAA8TMBValueCSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setRange:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC5rangeAA8TMBValueCSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -829,11 +878,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC15rangeTransitionAA08TMBStyleF0CSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)rangeTransition",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC15rangeTransitionAA08TMBStyleF0CSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -858,9 +908,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC15rangeTransitionAA08TMBStyleF0CSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)rangeTransition",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC15rangeTransitionAA08TMBStyleF0CSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -889,9 +942,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC15rangeTransitionAA08TMBStyleF0CSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setRangeTransition:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC15rangeTransitionAA08TMBStyleF0CSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -935,11 +991,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC10spaceColorAA8TMBValueCSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)spaceColor",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC10spaceColorAA8TMBValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -964,9 +1021,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC10spaceColorAA8TMBValueCSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)spaceColor",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC10spaceColorAA8TMBValueCSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -995,9 +1055,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC10spaceColorAA8TMBValueCSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setSpaceColor:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC10spaceColorAA8TMBValueCSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -1041,11 +1104,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC20spaceColorTransitionAA08TMBStyleG0CSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)spaceColorTransition",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC20spaceColorTransitionAA08TMBStyleG0CSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -1070,9 +1134,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC20spaceColorTransitionAA08TMBStyleG0CSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)spaceColorTransition",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC20spaceColorTransitionAA08TMBStyleG0CSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -1101,9 +1168,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC20spaceColorTransitionAA08TMBStyleG0CSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setSpaceColorTransition:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC20spaceColorTransitionAA08TMBStyleG0CSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -1147,11 +1217,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC13starIntensityAA8TMBValueCSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)starIntensity",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC13starIntensityAA8TMBValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -1176,9 +1247,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC13starIntensityAA8TMBValueCSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)starIntensity",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC13starIntensityAA8TMBValueCSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -1207,9 +1281,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC13starIntensityAA8TMBValueCSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setStarIntensity:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC13starIntensityAA8TMBValueCSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -1253,11 +1330,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBAtmosphereC23starIntensityTransitionAA08TMBStyleG0CSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(py)starIntensityTransition",
             "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC23starIntensityTransitionAA08TMBStyleG0CSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -1282,9 +1360,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC23starIntensityTransitionAA08TMBStyleG0CSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)starIntensityTransition",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC23starIntensityTransitionAA08TMBStyleG0CSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -1313,9 +1394,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBAtmosphereC23starIntensityTransitionAA08TMBStyleG0CSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAtmosphere(im)setStarIntensityTransition:",
                 "mangledName": "$s13MapboxMapObjC13TMBAtmosphereC23starIntensityTransitionAA08TMBStyleG0CSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -6262,11 +6346,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC9isEnabledSbvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(py)isEnabled",
             "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC9isEnabledSbvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -6283,9 +6368,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC9isEnabledSbvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(im)isEnabled",
                 "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC9isEnabledSbvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -6306,9 +6394,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC9isEnabledSbvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(im)setIsEnabled:",
                 "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC9isEnabledSbvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -6344,11 +6435,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC5colorSo7UIColorCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(py)color",
             "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC5colorSo7UIColorCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -6365,9 +6457,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC5colorSo7UIColorCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(im)color",
                 "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC5colorSo7UIColorCvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -6388,9 +6483,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC5colorSo7UIColorCvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(im)setColor:",
                 "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC5colorSo7UIColorCvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -6426,11 +6524,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC6radiusAA0deF6RadiusOvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(py)radius",
             "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC6radiusAA0deF6RadiusOvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -6447,9 +6546,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC6radiusAA0deF6RadiusOvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(im)radius",
                 "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC6radiusAA0deF6RadiusOvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -6470,9 +6572,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC6radiusAA0deF6RadiusOvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(im)setRadius:",
                 "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC6radiusAA0deF6RadiusOvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -6508,11 +6613,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC11radiusValueSdvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(py)radiusValue",
             "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC11radiusValueSdvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
-              "AccessControl"
+              "AccessControl",
+              "ObjC"
             ],
             "accessors": [
               {
@@ -6528,9 +6634,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC11radiusValueSdvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(im)radiusValue",
                 "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC11radiusValueSdvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -6551,9 +6660,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC29TMBPuck2DConfigurationPulsingC11radiusValueSdvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBPuck2DConfigurationPulsing(im)setRadiusValue:",
                 "mangledName": "$s13MapboxMapObjC29TMBPuck2DConfigurationPulsingC11radiusValueSdvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -10873,11 +10985,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC10TMBTerrainC8sourceIdSSvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTerrain(py)sourceId",
             "mangledName": "$s13MapboxMapObjC10TMBTerrainC8sourceIdSSvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
-              "AccessControl"
+              "AccessControl",
+              "ObjC"
             ],
             "accessors": [
               {
@@ -10893,9 +11006,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC10TMBTerrainC8sourceIdSSvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTerrain(im)sourceId",
                 "mangledName": "$s13MapboxMapObjC10TMBTerrainC8sourceIdSSvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -10916,9 +11032,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC10TMBTerrainC8sourceIdSSvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBTerrain(im)setSourceId:",
                 "mangledName": "$s13MapboxMapObjC10TMBTerrainC8sourceIdSSvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -11405,271 +11524,6 @@
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
             "mangledName": "$ss28CustomDebugStringConvertibleP"
-          }
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "MapboxMaps",
-        "printedName": "MapboxMaps",
-        "declKind": "Import",
-        "moduleName": "MapboxMapObjC"
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "TMBMapView",
-        "printedName": "TMBMapView",
-        "children": [
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(frame:mapInitOptions:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "TMBMapView",
-                "printedName": "MapboxMapObjC.TMBMapView",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBMapView"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CGRect",
-                "printedName": "CoreFoundation.CGRect",
-                "usr": "c:@S@CGRect"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "MapInitOptions",
-                "printedName": "MapboxMaps.MapInitOptions",
-                "hasDefaultArg": true,
-                "usr": "c:@M@MapboxMaps@objc(cs)MapInitOptions"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:13MapboxMapObjC10TMBMapViewC5frame14mapInitOptionsACSo6CGRectV_0A4Maps0bhI0Ctcfc",
-            "mangledName": "$s13MapboxMapObjC10TMBMapViewC5frame14mapInitOptionsACSo6CGRectV_0A4Maps0bhI0Ctcfc",
-            "moduleName": "MapboxMapObjC",
-            "overriding": true,
-            "implicit": true,
-            "declAttributes": [
-              "Custom",
-              "Override",
-              "Available"
-            ],
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(frame:mapInitOptions:orientationProvider:urlOpener:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "TMBMapView",
-                "printedName": "MapboxMapObjC.TMBMapView",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBMapView"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CGRect",
-                "printedName": "CoreFoundation.CGRect",
-                "usr": "c:@S@CGRect"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "MapInitOptions",
-                "printedName": "MapboxMaps.MapInitOptions",
-                "hasDefaultArg": true,
-                "usr": "c:@M@MapboxMaps@objc(cs)MapInitOptions"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "InterfaceOrientationProvider",
-                "printedName": "MapboxMaps.InterfaceOrientationProvider",
-                "usr": "s:10MapboxMaps28InterfaceOrientationProviderP"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "AttributionURLOpener",
-                "printedName": "MapboxMaps.AttributionURLOpener",
-                "usr": "s:10MapboxMaps20AttributionURLOpenerP"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:13MapboxMapObjC10TMBMapViewC5frame14mapInitOptions19orientationProvider9urlOpenerACSo6CGRectV_0A4Maps0bhI0CAJ020InterfaceOrientationK0_pAJ20AttributionURLOpener_ptcfc",
-            "mangledName": "$s13MapboxMapObjC10TMBMapViewC5frame14mapInitOptions19orientationProvider9urlOpenerACSo6CGRectV_0A4Maps0bhI0CAJ020InterfaceOrientationK0_pAJ20AttributionURLOpener_ptcfc",
-            "moduleName": "MapboxMapObjC",
-            "deprecated": true,
-            "overriding": true,
-            "implicit": true,
-            "declAttributes": [
-              "Custom",
-              "Override",
-              "Available"
-            ],
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(frame:mapInitOptions:urlOpener:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "TMBMapView",
-                "printedName": "MapboxMapObjC.TMBMapView",
-                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBMapView"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CGRect",
-                "printedName": "CoreFoundation.CGRect",
-                "usr": "c:@S@CGRect"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "MapInitOptions",
-                "printedName": "MapboxMaps.MapInitOptions",
-                "hasDefaultArg": true,
-                "usr": "c:@M@MapboxMaps@objc(cs)MapInitOptions"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "AttributionURLOpener",
-                "printedName": "MapboxMaps.AttributionURLOpener",
-                "usr": "s:10MapboxMaps20AttributionURLOpenerP"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:13MapboxMapObjC10TMBMapViewC5frame14mapInitOptions9urlOpenerACSo6CGRectV_0A4Maps0bhI0CAI20AttributionURLOpener_ptcfc",
-            "mangledName": "$s13MapboxMapObjC10TMBMapViewC5frame14mapInitOptions9urlOpenerACSo6CGRectV_0A4Maps0bhI0CAI20AttributionURLOpener_ptcfc",
-            "moduleName": "MapboxMapObjC",
-            "overriding": true,
-            "implicit": true,
-            "intro_iOS": "13.0",
-            "declAttributes": [
-              "Custom",
-              "Override",
-              "Available"
-            ],
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(coder:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "MapboxMapObjC.TMBMapView?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "TMBMapView",
-                    "printedName": "MapboxMapObjC.TMBMapView",
-                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBMapView"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "NSCoder",
-                "printedName": "Foundation.NSCoder",
-                "usr": "c:objc(cs)NSCoder"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBMapView(im)initWithCoder:",
-            "mangledName": "$s13MapboxMapObjC10TMBMapViewC5coderACSgSo7NSCoderC_tcfc",
-            "moduleName": "MapboxMapObjC",
-            "overriding": true,
-            "implicit": true,
-            "objc_name": "initWithCoder:",
-            "declAttributes": [
-              "Dynamic",
-              "ObjC",
-              "Custom",
-              "Required",
-              "Available"
-            ],
-            "init_kind": "Designated"
-          }
-        ],
-        "declKind": "Class",
-        "usr": "c:@M@MapboxMapObjC@objc(cs)TMBMapView",
-        "mangledName": "$s13MapboxMapObjC10TMBMapViewC",
-        "moduleName": "MapboxMapObjC",
-        "isOpen": true,
-        "declAttributes": [
-          "Custom",
-          "AccessControl",
-          "ObjC"
-        ],
-        "superclassUsr": "c:@M@MapboxMaps@objc(cs)MapView",
-        "superclassNames": [
-          "MapboxMaps.MapView",
-          "UIKit.UIView",
-          "UIKit.UIResponder",
-          "ObjectiveC.NSObject"
-        ],
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_KeyValueCodingAndObservingPublishing",
-            "printedName": "_KeyValueCodingAndObservingPublishing",
-            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
-            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_KeyValueCodingAndObserving",
-            "printedName": "_KeyValueCodingAndObserving",
-            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
-            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomStringConvertible",
-            "printedName": "CustomStringConvertible",
-            "usr": "s:s23CustomStringConvertibleP",
-            "mangledName": "$ss23CustomStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomDebugStringConvertible",
-            "printedName": "CustomDebugStringConvertible",
-            "usr": "s:s28CustomDebugStringConvertibleP",
-            "mangledName": "$ss28CustomDebugStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "__DefaultCustomPlaygroundQuickLookable",
-            "printedName": "__DefaultCustomPlaygroundQuickLookable",
-            "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
-            "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
           }
         ]
       },
@@ -30920,13 +30774,15 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:13MapboxMapObjC20TMBExpressionOptionsC6format7optionsAcA09TMBFormatE0C_tFZ",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBExpressionOptions(cm)formatWithOptions:",
             "mangledName": "$s13MapboxMapObjC20TMBExpressionOptionsC6format7optionsAcA09TMBFormatE0C_tFZ",
             "moduleName": "MapboxMapObjC",
             "static": true,
+            "objc_name": "formatWithOptions:",
             "declAttributes": [
               "Final",
-              "AccessControl"
+              "AccessControl",
+              "ObjC"
             ],
             "funcSelfKind": "NonMutating"
           },
@@ -30949,13 +30805,15 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:13MapboxMapObjC20TMBExpressionOptionsC12numberFormat7optionsAcA09TMBNumbergE0C_tFZ",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBExpressionOptions(cm)numberFormatWithOptions:",
             "mangledName": "$s13MapboxMapObjC20TMBExpressionOptionsC12numberFormat7optionsAcA09TMBNumbergE0C_tFZ",
             "moduleName": "MapboxMapObjC",
             "static": true,
+            "objc_name": "numberFormatWithOptions:",
             "declAttributes": [
               "Final",
-              "AccessControl"
+              "AccessControl",
+              "ObjC"
             ],
             "funcSelfKind": "NonMutating"
           },
@@ -30978,13 +30836,15 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:13MapboxMapObjC20TMBExpressionOptionsC8collator7optionsAcA011TMBCollatorE0C_tFZ",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBExpressionOptions(cm)collatorWithOptions:",
             "mangledName": "$s13MapboxMapObjC20TMBExpressionOptionsC8collator7optionsAcA011TMBCollatorE0C_tFZ",
             "moduleName": "MapboxMapObjC",
             "static": true,
+            "objc_name": "collatorWithOptions:",
             "declAttributes": [
               "Final",
-              "AccessControl"
+              "AccessControl",
+              "ObjC"
             ],
             "funcSelfKind": "NonMutating"
           },
@@ -33127,11 +32987,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC18TMBCollatorOptionsC13caseSensitiveSo8NSNumberCSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCollatorOptions(py)caseSensitive",
             "mangledName": "$s13MapboxMapObjC18TMBCollatorOptionsC13caseSensitiveSo8NSNumberCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -33156,9 +33017,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBCollatorOptionsC13caseSensitiveSo8NSNumberCSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCollatorOptions(im)caseSensitive",
                 "mangledName": "$s13MapboxMapObjC18TMBCollatorOptionsC13caseSensitiveSo8NSNumberCSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -33187,9 +33051,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBCollatorOptionsC13caseSensitiveSo8NSNumberCSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCollatorOptions(im)setCaseSensitive:",
                 "mangledName": "$s13MapboxMapObjC18TMBCollatorOptionsC13caseSensitiveSo8NSNumberCSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -33233,11 +33100,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC18TMBCollatorOptionsC18diacriticSensitiveSo8NSNumberCSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCollatorOptions(py)diacriticSensitive",
             "mangledName": "$s13MapboxMapObjC18TMBCollatorOptionsC18diacriticSensitiveSo8NSNumberCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -33262,9 +33130,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBCollatorOptionsC18diacriticSensitiveSo8NSNumberCSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCollatorOptions(im)diacriticSensitive",
                 "mangledName": "$s13MapboxMapObjC18TMBCollatorOptionsC18diacriticSensitiveSo8NSNumberCSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -33293,9 +33164,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBCollatorOptionsC18diacriticSensitiveSo8NSNumberCSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCollatorOptions(im)setDiacriticSensitive:",
                 "mangledName": "$s13MapboxMapObjC18TMBCollatorOptionsC18diacriticSensitiveSo8NSNumberCSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -33339,11 +33213,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC18TMBCollatorOptionsC6localeSSSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCollatorOptions(py)locale",
             "mangledName": "$s13MapboxMapObjC18TMBCollatorOptionsC6localeSSSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -33368,9 +33243,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBCollatorOptionsC6localeSSSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCollatorOptions(im)locale",
                 "mangledName": "$s13MapboxMapObjC18TMBCollatorOptionsC6localeSSSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -33399,9 +33277,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBCollatorOptionsC6localeSSSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCollatorOptions(im)setLocale:",
                 "mangledName": "$s13MapboxMapObjC18TMBCollatorOptionsC6localeSSSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -33494,13 +33375,13 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "Swift.Bool?",
+                "printedName": "Foundation.NSNumber?",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
+                    "name": "NSNumber",
+                    "printedName": "Foundation.NSNumber",
+                    "usr": "c:objc(cs)NSNumber"
                   }
                 ],
                 "usr": "s:Sq"
@@ -33508,13 +33389,13 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "Swift.Bool?",
+                "printedName": "Foundation.NSNumber?",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
+                    "name": "NSNumber",
+                    "printedName": "Foundation.NSNumber",
+                    "usr": "c:objc(cs)NSNumber"
                   }
                 ],
                 "usr": "s:Sq"
@@ -33535,11 +33416,13 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:13MapboxMapObjC18TMBCollatorOptionsC13caseSensitive09diacriticG06localeACSbSg_AGSSSgtcfc",
-            "mangledName": "$s13MapboxMapObjC18TMBCollatorOptionsC13caseSensitive09diacriticG06localeACSbSg_AGSSSgtcfc",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCollatorOptions(im)initWithCaseSensitive:diacriticSensitive:locale:",
+            "mangledName": "$s13MapboxMapObjC18TMBCollatorOptionsC13caseSensitive09diacriticG06localeACSo8NSNumberCSg_AISSSgtcfc",
             "moduleName": "MapboxMapObjC",
+            "objc_name": "initWithCaseSensitive:diacriticSensitive:locale:",
             "declAttributes": [
-              "AccessControl"
+              "AccessControl",
+              "ObjC"
             ],
             "init_kind": "Designated"
           },
@@ -37821,6 +37704,71 @@
         "printedName": "TMBCameraAnimator",
         "children": [
           {
+            "kind": "Var",
+            "name": "state",
+            "printedName": "state",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewAnimatingState",
+                "printedName": "UIKit.UIViewAnimatingState",
+                "usr": "c:@E@UIViewAnimatingState"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraAnimator(py)state",
+            "mangledName": "$s13MapboxMapObjC17TMBCameraAnimatorC5stateSo20UIViewAnimatingStateVvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewAnimatingState",
+                    "printedName": "UIKit.UIViewAnimatingState",
+                    "usr": "c:@E@UIViewAnimatingState"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraAnimator(im)state",
+                "mangledName": "$s13MapboxMapObjC17TMBCameraAnimatorC5stateSo20UIViewAnimatingStateVvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "cancel",
+            "printedName": "cancel()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraAnimator(im)cancel",
+            "mangledName": "$s13MapboxMapObjC17TMBCameraAnimatorC6cancelyyF",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -38193,11 +38141,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC19TMBCameraTransitionC6centerAA0dE6ChangeCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(py)center",
             "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC6centerAA0dE6ChangeCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -38214,9 +38163,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC19TMBCameraTransitionC6centerAA0dE6ChangeCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(im)center",
                 "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC6centerAA0dE6ChangeCvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               }
             ]
@@ -38234,11 +38186,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC19TMBCameraTransitionC4zoomAA0dE6ChangeCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(py)zoom",
             "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC4zoomAA0dE6ChangeCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -38255,9 +38208,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC19TMBCameraTransitionC4zoomAA0dE6ChangeCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(im)zoom",
                 "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC4zoomAA0dE6ChangeCvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               }
             ]
@@ -38275,11 +38231,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC19TMBCameraTransitionC7paddingAA0dE6ChangeCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(py)padding",
             "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC7paddingAA0dE6ChangeCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -38296,9 +38253,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC19TMBCameraTransitionC7paddingAA0dE6ChangeCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(im)padding",
                 "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC7paddingAA0dE6ChangeCvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               }
             ]
@@ -38316,11 +38276,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC19TMBCameraTransitionC6anchorAA0dE6ChangeCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(py)anchor",
             "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC6anchorAA0dE6ChangeCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -38337,9 +38298,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC19TMBCameraTransitionC6anchorAA0dE6ChangeCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(im)anchor",
                 "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC6anchorAA0dE6ChangeCvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               }
             ]
@@ -38357,11 +38321,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC19TMBCameraTransitionC7bearingAA0dE6ChangeCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(py)bearing",
             "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC7bearingAA0dE6ChangeCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -38378,9 +38343,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC19TMBCameraTransitionC7bearingAA0dE6ChangeCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(im)bearing",
                 "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC7bearingAA0dE6ChangeCvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               }
             ]
@@ -38398,11 +38366,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC19TMBCameraTransitionC25shouldOptimizeBearingPathSbvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(py)shouldOptimizeBearingPath",
             "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC25shouldOptimizeBearingPathSbvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -38419,9 +38388,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC19TMBCameraTransitionC25shouldOptimizeBearingPathSbvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(im)shouldOptimizeBearingPath",
                 "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC25shouldOptimizeBearingPathSbvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -38442,9 +38414,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC19TMBCameraTransitionC25shouldOptimizeBearingPathSbvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(im)setShouldOptimizeBearingPath:",
                 "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC25shouldOptimizeBearingPathSbvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -38480,11 +38455,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC19TMBCameraTransitionC5pitchAA0dE6ChangeCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(py)pitch",
             "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC5pitchAA0dE6ChangeCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -38501,9 +38477,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC19TMBCameraTransitionC5pitchAA0dE6ChangeCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransition(im)pitch",
                 "mangledName": "$s13MapboxMapObjC19TMBCameraTransitionC5pitchAA0dE6ChangeCvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               }
             ]
@@ -38620,12 +38599,13 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC25TMBCameraTransitionChangeC9fromValueSo7NSValueCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransitionChange(py)fromValue",
             "mangledName": "$s13MapboxMapObjC25TMBCameraTransitionChangeC9fromValueSo7NSValueCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "HasStorage",
-              "AccessControl"
+              "AccessControl",
+              "ObjC"
             ],
             "hasStorage": true,
             "accessors": [
@@ -38642,10 +38622,13 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC25TMBCameraTransitionChangeC9fromValueSo7NSValueCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransitionChange(im)fromValue",
                 "mangledName": "$s13MapboxMapObjC25TMBCameraTransitionChangeC9fromValueSo7NSValueCvg",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -38666,10 +38649,13 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC25TMBCameraTransitionChangeC9fromValueSo7NSValueCvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransitionChange(im)setFromValue:",
                 "mangledName": "$s13MapboxMapObjC25TMBCameraTransitionChangeC9fromValueSo7NSValueCvs",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -38713,13 +38699,14 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC25TMBCameraTransitionChangeC7toValueSo7NSValueCSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransitionChange(py)toValue",
             "mangledName": "$s13MapboxMapObjC25TMBCameraTransitionChangeC7toValueSo7NSValueCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "HasInitialValue",
               "HasStorage",
-              "AccessControl"
+              "AccessControl",
+              "ObjC"
             ],
             "hasStorage": true,
             "accessors": [
@@ -38744,10 +38731,13 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC25TMBCameraTransitionChangeC7toValueSo7NSValueCSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransitionChange(im)toValue",
                 "mangledName": "$s13MapboxMapObjC25TMBCameraTransitionChangeC7toValueSo7NSValueCSgvg",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -38776,10 +38766,13 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC25TMBCameraTransitionChangeC7toValueSo7NSValueCSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCameraTransitionChange(im)setToValue:",
                 "mangledName": "$s13MapboxMapObjC25TMBCameraTransitionChangeC7toValueSo7NSValueCSgvs",
                 "moduleName": "MapboxMapObjC",
                 "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -51707,11 +51700,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC18TMBStyleTransitionC8durationSdvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyleTransition(py)duration",
             "mangledName": "$s13MapboxMapObjC18TMBStyleTransitionC8durationSdvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -51728,9 +51722,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBStyleTransitionC8durationSdvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyleTransition(im)duration",
                 "mangledName": "$s13MapboxMapObjC18TMBStyleTransitionC8durationSdvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -51751,9 +51748,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBStyleTransitionC8durationSdvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyleTransition(im)setDuration:",
                 "mangledName": "$s13MapboxMapObjC18TMBStyleTransitionC8durationSdvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -51789,11 +51789,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC18TMBStyleTransitionC5delaySdvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyleTransition(py)delay",
             "mangledName": "$s13MapboxMapObjC18TMBStyleTransitionC5delaySdvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -51810,9 +51811,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBStyleTransitionC5delaySdvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyleTransition(im)delay",
                 "mangledName": "$s13MapboxMapObjC18TMBStyleTransitionC5delaySdvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -51833,9 +51837,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBStyleTransitionC5delaySdvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyleTransition(im)setDelay:",
                 "mangledName": "$s13MapboxMapObjC18TMBStyleTransitionC5delaySdvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -53730,6 +53737,51 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TMBSourceType",
+                "printedName": "MapboxMapObjC.TMBSourceType",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSourceType"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSource(py)type",
+            "mangledName": "$s13MapboxMapObjC9TMBSourceC4typeAA0D4TypeCvp",
+            "moduleName": "MapboxMapObjC",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TMBSourceType",
+                    "printedName": "MapboxMapObjC.TMBSourceType",
+                    "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSourceType"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSource(im)type",
+                "mangledName": "$s13MapboxMapObjC9TMBSourceC4typeAA0D4TypeCvg",
+                "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -53880,11 +53932,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBSourceInfoC2idSSvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSourceInfo(py)id",
             "mangledName": "$s13MapboxMapObjC13TMBSourceInfoC2idSSvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -53901,9 +53954,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBSourceInfoC2idSSvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSourceInfo(im)id",
                 "mangledName": "$s13MapboxMapObjC13TMBSourceInfoC2idSSvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -53924,9 +53980,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBSourceInfoC2idSSvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSourceInfo(im)setId:",
                 "mangledName": "$s13MapboxMapObjC13TMBSourceInfoC2idSSvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -53962,11 +54021,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC13TMBSourceInfoC4typeAA0D4TypeCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSourceInfo(py)type",
             "mangledName": "$s13MapboxMapObjC13TMBSourceInfoC4typeAA0D4TypeCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -53983,9 +54043,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBSourceInfoC4typeAA0D4TypeCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSourceInfo(im)type",
                 "mangledName": "$s13MapboxMapObjC13TMBSourceInfoC4typeAA0D4TypeCvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -54006,9 +54069,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC13TMBSourceInfoC4typeAA0D4TypeCvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBSourceInfo(im)setType:",
                 "mangledName": "$s13MapboxMapObjC13TMBSourceInfoC4typeAA0D4TypeCvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -54737,11 +54803,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC18TMBStyleProjectionC4nameAA0dE4NameCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyleProjection(py)name",
             "mangledName": "$s13MapboxMapObjC18TMBStyleProjectionC4nameAA0dE4NameCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -54758,9 +54825,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBStyleProjectionC4nameAA0dE4NameCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyleProjection(im)name",
                 "mangledName": "$s13MapboxMapObjC18TMBStyleProjectionC4nameAA0dE4NameCvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -54781,9 +54851,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBStyleProjectionC4nameAA0dE4NameCvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBStyleProjection(im)setName:",
                 "mangledName": "$s13MapboxMapObjC18TMBStyleProjectionC4nameAA0dE4NameCvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -65772,11 +65845,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC8positionAA19TMBOrnamentPositionOvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(py)position",
             "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC8positionAA19TMBOrnamentPositionOvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -65793,9 +65867,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC8positionAA19TMBOrnamentPositionOvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(im)position",
                 "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC8positionAA19TMBOrnamentPositionOvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -65816,9 +65893,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC8positionAA19TMBOrnamentPositionOvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(im)setPosition:",
                 "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC8positionAA19TMBOrnamentPositionOvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -65854,11 +65934,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC7marginsSo7CGPointVvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(py)margins",
             "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC7marginsSo7CGPointVvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -65875,9 +65956,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC7marginsSo7CGPointVvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(im)margins",
                 "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC7marginsSo7CGPointVvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -65898,9 +65982,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC7marginsSo7CGPointVvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(im)setMargins:",
                 "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC7marginsSo7CGPointVvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -65944,11 +66031,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC5imageSo7UIImageCSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(py)image",
             "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC5imageSo7UIImageCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -65973,9 +66061,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC5imageSo7UIImageCSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(im)image",
                 "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC5imageSo7UIImageCSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -66004,9 +66095,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC5imageSo7UIImageCSgvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(im)setImage:",
                 "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC5imageSo7UIImageCSgvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -66042,11 +66136,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC10visibilityAA21TMBOrnamentVisibilityOvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(py)visibility",
             "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC10visibilityAA21TMBOrnamentVisibilityOvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -66063,9 +66158,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC10visibilityAA21TMBOrnamentVisibilityOvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(im)visibility",
                 "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC10visibilityAA21TMBOrnamentVisibilityOvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -66086,9 +66184,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC21TMBCompassViewOptionsC10visibilityAA21TMBOrnamentVisibilityOvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBCompassViewOptions(im)setVisibility:",
                 "mangledName": "$s13MapboxMapObjC21TMBCompassViewOptionsC10visibilityAA21TMBOrnamentVisibilityOvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -66263,11 +66364,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC18TMBLogoViewOptionsC8positionAA19TMBOrnamentPositionOvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLogoViewOptions(py)position",
             "mangledName": "$s13MapboxMapObjC18TMBLogoViewOptionsC8positionAA19TMBOrnamentPositionOvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -66284,9 +66386,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBLogoViewOptionsC8positionAA19TMBOrnamentPositionOvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLogoViewOptions(im)position",
                 "mangledName": "$s13MapboxMapObjC18TMBLogoViewOptionsC8positionAA19TMBOrnamentPositionOvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -66307,9 +66412,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBLogoViewOptionsC8positionAA19TMBOrnamentPositionOvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLogoViewOptions(im)setPosition:",
                 "mangledName": "$s13MapboxMapObjC18TMBLogoViewOptionsC8positionAA19TMBOrnamentPositionOvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -66345,11 +66453,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC18TMBLogoViewOptionsC7marginsSo7CGPointVvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLogoViewOptions(py)margins",
             "mangledName": "$s13MapboxMapObjC18TMBLogoViewOptionsC7marginsSo7CGPointVvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -66366,9 +66475,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBLogoViewOptionsC7marginsSo7CGPointVvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLogoViewOptions(im)margins",
                 "mangledName": "$s13MapboxMapObjC18TMBLogoViewOptionsC7marginsSo7CGPointVvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -66389,9 +66501,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC18TMBLogoViewOptionsC7marginsSo7CGPointVvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBLogoViewOptions(im)setMargins:",
                 "mangledName": "$s13MapboxMapObjC18TMBLogoViewOptionsC7marginsSo7CGPointVvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -66566,11 +66681,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC27TMBAttributionButtonOptionsC8positionAA19TMBOrnamentPositionOvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAttributionButtonOptions(py)position",
             "mangledName": "$s13MapboxMapObjC27TMBAttributionButtonOptionsC8positionAA19TMBOrnamentPositionOvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -66587,9 +66703,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC27TMBAttributionButtonOptionsC8positionAA19TMBOrnamentPositionOvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAttributionButtonOptions(im)position",
                 "mangledName": "$s13MapboxMapObjC27TMBAttributionButtonOptionsC8positionAA19TMBOrnamentPositionOvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -66610,9 +66729,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC27TMBAttributionButtonOptionsC8positionAA19TMBOrnamentPositionOvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAttributionButtonOptions(im)setPosition:",
                 "mangledName": "$s13MapboxMapObjC27TMBAttributionButtonOptionsC8positionAA19TMBOrnamentPositionOvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -66648,11 +66770,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC27TMBAttributionButtonOptionsC7marginsSo7CGPointVvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAttributionButtonOptions(py)margins",
             "mangledName": "$s13MapboxMapObjC27TMBAttributionButtonOptionsC7marginsSo7CGPointVvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -66669,9 +66792,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC27TMBAttributionButtonOptionsC7marginsSo7CGPointVvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAttributionButtonOptions(im)margins",
                 "mangledName": "$s13MapboxMapObjC27TMBAttributionButtonOptionsC7marginsSo7CGPointVvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -66692,9 +66818,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC27TMBAttributionButtonOptionsC7marginsSo7CGPointVvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBAttributionButtonOptions(im)setMargins:",
                 "mangledName": "$s13MapboxMapObjC27TMBAttributionButtonOptionsC7marginsSo7CGPointVvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -70419,24 +70548,25 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "Swift.Double?",
+                "printedName": "Foundation.NSNumber?",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Double",
-                    "printedName": "Swift.Double",
-                    "usr": "s:Sd"
+                    "name": "NSNumber",
+                    "printedName": "Foundation.NSNumber",
+                    "usr": "c:objc(cs)NSNumber"
                   }
                 ],
                 "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC33TMBFollowPuckViewportStateBearingC7bearingSdSgvp",
-            "mangledName": "$s13MapboxMapObjC33TMBFollowPuckViewportStateBearingC7bearingSdSgvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBFollowPuckViewportStateBearing(py)bearing",
+            "mangledName": "$s13MapboxMapObjC33TMBFollowPuckViewportStateBearingC7bearingSo8NSNumberCSgvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
-              "AccessControl"
+              "AccessControl",
+              "ObjC"
             ],
             "accessors": [
               {
@@ -70447,22 +70577,25 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Swift.Double?",
+                    "printedName": "Foundation.NSNumber?",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "Double",
-                        "printedName": "Swift.Double",
-                        "usr": "s:Sd"
+                        "name": "NSNumber",
+                        "printedName": "Foundation.NSNumber",
+                        "usr": "c:objc(cs)NSNumber"
                       }
                     ],
                     "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC33TMBFollowPuckViewportStateBearingC7bearingSdSgvg",
-                "mangledName": "$s13MapboxMapObjC33TMBFollowPuckViewportStateBearingC7bearingSdSgvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBFollowPuckViewportStateBearing(im)bearing",
+                "mangledName": "$s13MapboxMapObjC33TMBFollowPuckViewportStateBearingC7bearingSo8NSNumberCSgvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               }
             ]
@@ -70486,13 +70619,14 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:13MapboxMapObjC33TMBFollowPuckViewportStateBearingC8constantyACSdFZ",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBFollowPuckViewportStateBearing(cm)constant:",
             "mangledName": "$s13MapboxMapObjC33TMBFollowPuckViewportStateBearingC8constantyACSdFZ",
             "moduleName": "MapboxMapObjC",
             "static": true,
             "declAttributes": [
               "Final",
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "funcSelfKind": "NonMutating"
@@ -70717,11 +70851,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC26TMBFollowPuckViewportStateC7optionsAA0defG7OptionsCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBFollowPuckViewportState(py)options",
             "mangledName": "$s13MapboxMapObjC26TMBFollowPuckViewportStateC7optionsAA0defG7OptionsCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -70738,9 +70873,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC26TMBFollowPuckViewportStateC7optionsAA0defG7OptionsCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBFollowPuckViewportState(im)options",
                 "mangledName": "$s13MapboxMapObjC26TMBFollowPuckViewportStateC7optionsAA0defG7OptionsCvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -70761,9 +70899,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC26TMBFollowPuckViewportStateC7optionsAA0defG7OptionsCvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBFollowPuckViewportState(im)setOptions:",
                 "mangledName": "$s13MapboxMapObjC26TMBFollowPuckViewportStateC7optionsAA0defG7OptionsCvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -71743,11 +71884,12 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:13MapboxMapObjC24TMBOverviewViewportStateC7optionsAA0deF7OptionsCvp",
+            "usr": "c:@M@MapboxMapObjC@objc(cs)TMBOverviewViewportState(py)options",
             "mangledName": "$s13MapboxMapObjC24TMBOverviewViewportStateC7optionsAA0deF7OptionsCvp",
             "moduleName": "MapboxMapObjC",
             "declAttributes": [
               "AccessControl",
+              "ObjC",
               "RawDocComment"
             ],
             "accessors": [
@@ -71764,9 +71906,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC24TMBOverviewViewportStateC7optionsAA0deF7OptionsCvg",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBOverviewViewportState(im)options",
                 "mangledName": "$s13MapboxMapObjC24TMBOverviewViewportStateC7optionsAA0deF7OptionsCvg",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "get"
               },
               {
@@ -71787,9 +71932,12 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13MapboxMapObjC24TMBOverviewViewportStateC7optionsAA0deF7OptionsCvs",
+                "usr": "c:@M@MapboxMapObjC@objc(cs)TMBOverviewViewportState(im)setOptions:",
                 "mangledName": "$s13MapboxMapObjC24TMBOverviewViewportStateC7optionsAA0deF7OptionsCvs",
                 "moduleName": "MapboxMapObjC",
+                "declAttributes": [
+                  "ObjC"
+                ],
                 "accessorKind": "set"
               },
               {
@@ -75466,14 +75614,14 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBLocationManager.swift",
       "kind": "StringLiteral",
-      "offset": 31019,
+      "offset": 31043,
       "length": 22,
       "value": "\"MapboxMapObjC.TMBPuck3DConfiguration\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBLocationManager.swift",
       "kind": "StringLiteral",
-      "offset": 34365,
+      "offset": 34389,
       "length": 8,
       "value": "\"MapboxMapObjC.TMBModel\""
     },
@@ -76131,7 +76279,7 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Common.swift",
       "kind": "StringLiteral",
-      "offset": 33374,
+      "offset": 33379,
       "length": 18,
       "value": "\"MapboxMapObjC.TMBTextWritingMode\""
     },
@@ -76145,49 +76293,49 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBExpressionOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 1099,
+      "offset": 1117,
       "length": 12,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBExpressionOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 1121,
+      "offset": 1139,
       "length": 8,
       "value": "2"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBExpressionOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 1099,
+      "offset": 1117,
       "length": 12,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBExpressionOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 1121,
+      "offset": 1139,
       "length": 8,
       "value": "2"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBExpressionOptions.swift",
       "kind": "StringLiteral",
-      "offset": 1150,
+      "offset": 1168,
       "length": 16,
       "value": "\"MapboxMapObjC.TMBFormatOptions\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBExpressionOptions.swift",
       "kind": "StringLiteral",
-      "offset": 3659,
+      "offset": 3677,
       "length": 22,
       "value": "\"MapboxMapObjC.TMBNumberFormatOptions\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBExpressionOptions.swift",
       "kind": "StringLiteral",
-      "offset": 5458,
+      "offset": 5476,
       "length": 18,
       "value": "\"MapboxMapObjC.TMBCollatorOptions\""
     },
@@ -76222,49 +76370,49 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBCameraAnimationsManager.swift",
       "kind": "StringLiteral",
-      "offset": 10065,
+      "offset": 10071,
       "length": 26,
       "value": "\"com.mapbox.maps.gestures\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBCameraAnimationsManager.swift",
       "kind": "StringLiteral",
-      "offset": 10164,
+      "offset": 10170,
       "length": 29,
       "value": "\"com.mapbox.maps.unspecified\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBCameraAnimationsManager.swift",
       "kind": "StringLiteral",
-      "offset": 10274,
+      "offset": 10280,
       "length": 41,
       "value": "\"com.mapbox.maps.cameraAnimationsManager\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBCameraAnimationsManager.swift",
       "kind": "StringLiteral",
-      "offset": 10398,
+      "offset": 10404,
       "length": 44,
       "value": "\"com.mapbox.maps.viewport.defaultTransition\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBCameraAnimationsManager.swift",
       "kind": "StringLiteral",
-      "offset": 9667,
+      "offset": 9673,
       "length": 17,
       "value": "\"MapboxMapObjC.TMBAnimationOwner\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBCameraAnimationsManager.swift",
       "kind": "StringLiteral",
-      "offset": 10534,
+      "offset": 10540,
       "length": 19,
       "value": "\"MapboxMapObjC.TMBCameraTransition\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBCameraAnimationsManager.swift",
       "kind": "StringLiteral",
-      "offset": 12400,
+      "offset": 12448,
       "length": 25,
       "value": "\"MapboxMapObjC.TMBCameraTransitionChange\""
     },
@@ -76397,14 +76545,14 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/TMBStyleTransition.swift",
       "kind": "IntegerLiteral",
-      "offset": 919,
+      "offset": 931,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/styles\/TMBStyleTransition.swift",
       "kind": "IntegerLiteral",
-      "offset": 929,
+      "offset": 941,
       "length": 1,
       "value": "0"
     },
@@ -76481,19 +76629,19 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/sources\/TMBSource.swift",
       "kind": "StringLiteral",
-      "offset": 397,
+      "offset": 404,
       "length": 13,
       "value": "\"MapboxMapObjC.TMBSourceInfo\""
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/SourceProperties.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/TMBScheme.swift",
       "kind": "StringLiteral",
       "offset": 296,
       "length": 9,
       "value": "\"MapboxMapObjC.TMBScheme\""
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/SourceProperties.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/TMBScheme.swift",
       "kind": "StringLiteral",
       "offset": 1069,
       "length": 11,
@@ -76542,7 +76690,7 @@
       "value": "\"MapboxMapObjC.TMBPolylineAnnotationManager\""
     },
     {
-      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/Operator.swift",
+      "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/enums\/TMBOperator.swift",
       "kind": "StringLiteral",
       "offset": 146,
       "length": 11,
@@ -76705,14 +76853,14 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBOrnamentsManager.swift",
       "kind": "StringLiteral",
-      "offset": 9607,
+      "offset": 9631,
       "length": 18,
       "value": "\"MapboxMapObjC.TMBLogoViewOptions\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBOrnamentsManager.swift",
       "kind": "StringLiteral",
-      "offset": 10540,
+      "offset": 10576,
       "length": 27,
       "value": "\"MapboxMapObjC.TMBAttributionButtonOptions\""
     },
@@ -76866,70 +77014,70 @@
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBViewport.swift",
       "kind": "StringLiteral",
-      "offset": 29937,
+      "offset": 29960,
       "length": 26,
       "value": "\"MapboxMapObjC.TMBFollowPuckViewportState\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBViewport.swift",
       "kind": "IntegerLiteral",
-      "offset": 33667,
+      "offset": 33714,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBViewport.swift",
       "kind": "IntegerLiteral",
-      "offset": 33697,
+      "offset": 33744,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBViewport.swift",
       "kind": "IntegerLiteral",
-      "offset": 33742,
+      "offset": 33789,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBViewport.swift",
       "kind": "StringLiteral",
-      "offset": 31020,
+      "offset": 31067,
       "length": 31,
       "value": "\"MapboxMapObjC.TMBOverviewViewportStateOptions\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBViewport.swift",
       "kind": "StringLiteral",
-      "offset": 34262,
+      "offset": 34309,
       "length": 24,
       "value": "\"MapboxMapObjC.TMBOverviewViewportState\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBViewport.swift",
       "kind": "FloatLiteral",
-      "offset": 36398,
+      "offset": 36469,
       "length": 3,
       "value": "3.5"
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBViewport.swift",
       "kind": "StringLiteral",
-      "offset": 35721,
+      "offset": 35792,
       "length": 35,
       "value": "\"MapboxMapObjC.TMBDefaultViewportTransitionOptions\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBViewport.swift",
       "kind": "StringLiteral",
-      "offset": 36667,
+      "offset": 36738,
       "length": 28,
       "value": "\"MapboxMapObjC.TMBDefaultViewportTransition\""
     },
     {
       "filePath": "\/Volumes\/ws\/qs\/mapbox-ios-objective-c\/MapboxMapObjC\/TMBViewport.swift",
       "kind": "StringLiteral",
-      "offset": 37852,
+      "offset": 37935,
       "length": 30,
       "value": "\"MapboxMapObjC.TMBImmediateViewportTransition\""
     },

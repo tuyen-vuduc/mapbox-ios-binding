@@ -624,19 +624,52 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25TMBAnnotationOrchestrator")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBValue;
+@class TMBStyleTransition;
 
 /// A style’s fog property is a global effect that improves depth perception by fading out distant objects.
 /// seealso:
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/fog/">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBAtmosphere")
 @interface TMBAtmosphere : NSObject
+/// The color of the atmosphere region immediately below the horizon and within the <code>range</code> and above the horizon and within <code>horizon-blend</code>. Using opacity is recommended only for smoothly transitioning fog on/off as anything less than 100% opacity results in more tiles loaded and drawn.
+@property (nonatomic, strong) TMBValue * _Nullable color;
+/// Transition property for <code>color</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable colorTransition;
+/// The color of the atmosphere region above the horizon, <code>high-color</code> extends further above the horizon than the <code>color</code> property and its spread can be controlled with <code>horizon-blend</code>. The opacity can be set to <code>0</code> to remove the high atmosphere color contribution.
+@property (nonatomic, strong) TMBValue * _Nullable highColor;
+/// Transition property for <code>highColor</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable highColorTransition;
+/// Horizon blend applies a smooth fade from the color of the atmosphere to the color of space. A value of zero leaves a sharp transition from atmosphere to space. Increasing the value blends the color of atmosphere into increasingly high angles of the sky.
+@property (nonatomic, strong) TMBValue * _Nullable horizonBlend;
+/// Transition property for <code>horizonBlend</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable horizonBlendTransition;
+/// The start and end distance range in which fog fades from fully transparent to fully opaque. The distance to the point at the center of the map is defined as zero, so that negative range values are closer to the camera, and positive values are farther away.
+@property (nonatomic, strong) TMBValue * _Nullable range;
+/// Transition property for <code>range</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable rangeTransition;
+/// The color of the region above the horizon and after the end of the <code>horizon-blend</code> contribution. The opacity can be set to <code>0</code> to have a transparent background.
+@property (nonatomic, strong) TMBValue * _Nullable spaceColor;
+/// Transition property for <code>spaceColor</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable spaceColorTransition;
+/// A value controlling the star intensity where <code>0</code> will show no stars and <code>1</code> will show stars at their maximum intensity.
+@property (nonatomic, strong) TMBValue * _Nullable starIntensity;
+/// Transition property for <code>starIntensity</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable starIntensityTransition;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+enum TMBOrnamentPosition : NSInteger;
 
 /// Used to configure position, margin, and visibility for the map’s attribution button.
 SWIFT_CLASS("_TtC13MapboxMapObjC27TMBAttributionButtonOptions")
 @interface TMBAttributionButtonOptions : NSObject
+/// The position of the attribution button.
+/// The default value for this property is <code>.bottomTrailing</code>.
+@property (nonatomic) enum TMBOrnamentPosition position;
+/// The margins of the attribution button.
+/// The default value for this property is <code>CGPoint(x: 8.0, y: 8.0)</code>.
+@property (nonatomic) CGPoint margins;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -783,14 +816,33 @@ SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCameraAnimationsManager")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC17TMBCameraAnimator")
 @interface TMBCameraAnimator : NSObject
+@property (nonatomic, readonly) UIViewAnimatingState state;
+- (void)cancel;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBCameraTransitionChange;
 
 /// Structure used to represent a desired change to the map’s camera
 SWIFT_CLASS("_TtC13MapboxMapObjC19TMBCameraTransition")
 @interface TMBCameraTransition : NSObject
+/// Represents a change to the center coordinate of the map.
+/// NOTE: Setting the <code>toValue</code> of <code>center</code> overrides any <code>anchor</code> animations
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull center;
+/// Represents a change to the zoom of the map.
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull zoom;
+/// Represents a change to the padding of the map.
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull padding;
+/// Represents a change to the anchor of the map
+/// NOTE: Incompatible with concurrent center animations
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull anchor;
+/// Represents a change to the bearing of the map.
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull bearing;
+/// Ensures that bearing transitions are optimized to take the shortest path. Defaults to <code>true</code>.
+@property (nonatomic) BOOL shouldOptimizeBearingPath;
+/// Represents a change to the pitch of the map.
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull pitch;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -799,6 +851,8 @@ SWIFT_CLASS("_TtC13MapboxMapObjC19TMBCameraTransition")
 /// Generic struct used to represent a change in a value from a starting point (i.e. <code>fromValue</code>) to an end point (i.e. <code>toValue</code>).
 SWIFT_CLASS("_TtC13MapboxMapObjC25TMBCameraTransitionChange")
 @interface TMBCameraTransitionChange : NSObject
+@property (nonatomic, strong) NSValue * _Nonnull fromValue;
+@property (nonatomic, strong) NSValue * _Nullable toValue;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -912,7 +966,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTra
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class TMBValue;
 @class TMBExpression;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
@@ -975,13 +1028,35 @@ SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBCollatorOptions")
 @interface TMBCollatorOptions : NSObject
+/// Whether comparison option is case sensitive.
+@property (nonatomic, strong) NSNumber * _Nullable caseSensitive;
+/// Whether the comparison operation is diacritic sensitive
+@property (nonatomic, strong) NSNumber * _Nullable diacriticSensitive;
+/// The locale argument specifies the IETF language tag of the locale to use.
+/// If none is provided, the default locale is used.
+@property (nonatomic, copy) NSString * _Nullable locale;
+- (nonnull instancetype)initWithCaseSensitive:(NSNumber * _Nullable)caseSensitive diacriticSensitive:(NSNumber * _Nullable)diacriticSensitive locale:(NSString * _Nullable)locale OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class UIImage;
+enum TMBOrnamentVisibility : NSInteger;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC21TMBCompassViewOptions")
 @interface TMBCompassViewOptions : NSObject
+/// The position of the compass view.
+/// The default value for this property is <code>.topTrailing</code>.
+@property (nonatomic) enum TMBOrnamentPosition position;
+/// The margins of the compass view.
+/// The default value for this property is <code>CGPoint(x: 8.0, y: 8.0)</code>.
+@property (nonatomic) CGPoint margins;
+/// The image used for displaying the compass.
+/// The default value for this property is nil, default compass image will be drawn.
+@property (nonatomic, strong) UIImage * _Nullable image;
+/// The visibility of the compass view.
+/// The default value for this property is <code>.adaptive</code>.
+@property (nonatomic) enum TMBOrnamentVisibility visibility;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1088,11 +1163,16 @@ SWIFT_CLASS("_TtC13MapboxMapObjC13TMBExpression")
 @end
 
 enum TMBExpressionOptionsType : NSInteger;
+@class TMBFormatOptions;
+@class TMBNumberFormatOptions;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC20TMBExpressionOptions")
 @interface TMBExpressionOptions : NSObject
 @property (nonatomic, readonly) enum TMBExpressionOptionsType type;
 @property (nonatomic, readonly) id _Nonnull options;
++ (TMBExpressionOptions * _Nonnull)formatWithOptions:(TMBFormatOptions * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
++ (TMBExpressionOptions * _Nonnull)numberFormatWithOptions:(TMBNumberFormatOptions * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
++ (TMBExpressionOptions * _Nonnull)collatorWithOptions:(TMBCollatorOptions * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1133,6 +1213,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTrans
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBFollowPuckViewportStateOptions;
 
 /// A <code>ViewportState</code> implementation that tracks the location puck (to show a puck, use
 /// <code>LocationOptions/puckType</code>)
@@ -1140,6 +1221,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTrans
 /// class.
 SWIFT_CLASS("_TtC13MapboxMapObjC26TMBFollowPuckViewportState")
 @interface TMBFollowPuckViewportState : NSObject
+/// Configuration options for this state.
+@property (nonatomic, strong) TMBFollowPuckViewportStateOptions * _Nonnull options;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1221,6 +1304,11 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC16TMBViewportState_")
 /// <code>LocationOptions/puckBearingSource</code>
 SWIFT_CLASS("_TtC13MapboxMapObjC33TMBFollowPuckViewportStateBearing")
 @interface TMBFollowPuckViewportStateBearing : NSObject
+@property (nonatomic, readonly, strong) NSNumber * _Nullable bearing;
+/// <code>FollowPuckViewportState</code> sets <code>CameraOptions/bearing</code> to a constant value.
+/// \param bearing the constant value that should be used to set the camera bearing.
+///
++ (TMBFollowPuckViewportStateBearing * _Nonnull)constant:(CLLocationDirection)bearing SWIFT_WARN_UNUSED_RESULT;
 /// <code>FollowPuckViewportState</code> sets <code>CameraOptions/bearing</code> based on the current
 /// heading.
 /// seealso:
@@ -1614,7 +1702,6 @@ typedef SWIFT_ENUM(NSInteger, TMBLayerType, open) {
   TMBLayerTypeSky = 10,
 };
 
-@class TMBStyleTransition;
 
 /// The global light source.
 /// seealso:
@@ -1897,15 +1984,14 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC27TMBLocationProviderDelegate_")
 /// Used to configure position, margin, and visibility for the map’s logo view.
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBLogoViewOptions")
 @interface TMBLogoViewOptions : NSObject
+/// The position of the logo view.
+/// The default value for this property is <code>.bottomLeading</code>.
+@property (nonatomic) enum TMBOrnamentPosition position;
+/// The margins of the logo view.
+/// The default value for this property is <code>CGPoint(x: 8.0, y: 8.0)</code>.
+@property (nonatomic) CGPoint margins;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class NSCoder;
-
-SWIFT_RESILIENT_CLASS("_TtC13MapboxMapObjC10TMBMapView")
-@interface TMBMapView : MapView
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios_app_extension,unavailable);
 @end
 
 @class TMBStyle;
@@ -2875,6 +2961,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC19TMBOrnamentsManager")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBOverviewViewportStateOptions;
 
 /// A <code>ViewportState</code> implementation that shows an overview of the geometry specified by its
 /// <code>OverviewViewportStateOptions/geometry</code>.
@@ -2882,6 +2969,12 @@ SWIFT_CLASS("_TtC13MapboxMapObjC19TMBOrnamentsManager")
 /// class.
 SWIFT_CLASS("_TtC13MapboxMapObjC24TMBOverviewViewportState")
 @interface TMBOverviewViewportState : NSObject
+/// Configuration options.
+/// When set, the viewport reframes the geometry using the new options and updates its camera with
+/// an <code>CameraAnimationsManager/ease(to:duration:curve:completion:)</code>
+/// animation with a linear timing curve and duration specified by the new value’s
+/// <code>OverviewViewportStateOptions/animationDuration</code>.
+@property (nonatomic, strong) TMBOverviewViewportStateOptions * _Nonnull options;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2938,7 +3031,6 @@ typedef SWIFT_ENUM(NSInteger, TMBPanMode, open) {
   TMBPanModeHorizontalAndVertical = 2,
 };
 
-@class UIImage;
 @class TMBTextAnchor;
 @class TMBTextJustify;
 @class TMBTextTransform;
@@ -3261,10 +3353,18 @@ SWIFT_CLASS("_TtC13MapboxMapObjC22TMBPuck2DConfiguration")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+enum TMBPuck2DConfigurationPulsingRadius : NSInteger;
 
 /// The configration parameters for sonar-like pulsing circle animation shown around the 2D puck.
 SWIFT_CLASS("_TtC13MapboxMapObjC29TMBPuck2DConfigurationPulsing")
 @interface TMBPuck2DConfigurationPulsing : NSObject
+/// Flag determining whether the pulsing circle animation. <code>true</code> by default.
+@property (nonatomic) BOOL isEnabled;
+/// The color of the pulsing circle.
+@property (nonatomic, strong) UIColor * _Nonnull color;
+/// The radius of the pulsing circle.
+@property (nonatomic) enum TMBPuck2DConfigurationPulsingRadius radius;
+@property (nonatomic) double radiusValue;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -3456,9 +3556,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSkyType *
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBSourceType;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC9TMBSource")
 @interface TMBSource : NSObject
+/// Rendering type of this source.
+@property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -3467,6 +3570,10 @@ SWIFT_CLASS("_TtC13MapboxMapObjC9TMBSource")
 /// Information about a layer
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBSourceInfo")
 @interface TMBSourceInfo : NSObject
+/// The identifier of the layer
+@property (nonatomic, copy) NSString * _Nonnull id;
+/// The type of the layer
+@property (nonatomic, strong) TMBSourceType * _Nonnull type;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -4229,6 +4336,8 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBStyle")
 /// Describes the projection used to render the map.
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBStyleProjection")
 @interface TMBStyleProjection : NSObject
+/// The name of the projection.
+@property (nonatomic, strong) TMBStyleProjectionName * _Nonnull name;
 /// Initializes a projection
 - (nonnull instancetype)initWithName:(TMBStyleProjectionName * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -4253,6 +4362,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBStyleProj
 
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBStyleTransition")
 @interface TMBStyleTransition : NSObject
+/// Time allotted for transitions to complete in seconds.
+@property (nonatomic) double duration;
+/// Length of time before a transition begins in seconds.
+@property (nonatomic) double delay;
 - (nonnull instancetype)initWithDuration:(double)duration delay:(double)delay OBJC_DESIGNATED_INITIALIZER;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBStyleTransition * _Nonnull zero;)
 + (TMBStyleTransition * _Nonnull)zero SWIFT_WARN_UNUSED_RESULT;
@@ -4299,6 +4412,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolZOr
 
 SWIFT_CLASS("_TtC13MapboxMapObjC10TMBTerrain")
 @interface TMBTerrain : NSObject
+@property (nonatomic, copy) NSString * _Nonnull sourceId;
 /// Exaggerates the elevation of the terrain by multiplying the data from the DEM with this value.
 @property (nonatomic, strong) TMBValue * _Nullable exaggeration;
 - (nonnull instancetype)initWithSourceId:(NSString * _Nonnull)sourceId OBJC_DESIGNATED_INITIALIZER;
@@ -5372,19 +5486,52 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25TMBAnnotationOrchestrator")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBValue;
+@class TMBStyleTransition;
 
 /// A style’s fog property is a global effect that improves depth perception by fading out distant objects.
 /// seealso:
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/fog/">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBAtmosphere")
 @interface TMBAtmosphere : NSObject
+/// The color of the atmosphere region immediately below the horizon and within the <code>range</code> and above the horizon and within <code>horizon-blend</code>. Using opacity is recommended only for smoothly transitioning fog on/off as anything less than 100% opacity results in more tiles loaded and drawn.
+@property (nonatomic, strong) TMBValue * _Nullable color;
+/// Transition property for <code>color</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable colorTransition;
+/// The color of the atmosphere region above the horizon, <code>high-color</code> extends further above the horizon than the <code>color</code> property and its spread can be controlled with <code>horizon-blend</code>. The opacity can be set to <code>0</code> to remove the high atmosphere color contribution.
+@property (nonatomic, strong) TMBValue * _Nullable highColor;
+/// Transition property for <code>highColor</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable highColorTransition;
+/// Horizon blend applies a smooth fade from the color of the atmosphere to the color of space. A value of zero leaves a sharp transition from atmosphere to space. Increasing the value blends the color of atmosphere into increasingly high angles of the sky.
+@property (nonatomic, strong) TMBValue * _Nullable horizonBlend;
+/// Transition property for <code>horizonBlend</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable horizonBlendTransition;
+/// The start and end distance range in which fog fades from fully transparent to fully opaque. The distance to the point at the center of the map is defined as zero, so that negative range values are closer to the camera, and positive values are farther away.
+@property (nonatomic, strong) TMBValue * _Nullable range;
+/// Transition property for <code>range</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable rangeTransition;
+/// The color of the region above the horizon and after the end of the <code>horizon-blend</code> contribution. The opacity can be set to <code>0</code> to have a transparent background.
+@property (nonatomic, strong) TMBValue * _Nullable spaceColor;
+/// Transition property for <code>spaceColor</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable spaceColorTransition;
+/// A value controlling the star intensity where <code>0</code> will show no stars and <code>1</code> will show stars at their maximum intensity.
+@property (nonatomic, strong) TMBValue * _Nullable starIntensity;
+/// Transition property for <code>starIntensity</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable starIntensityTransition;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+enum TMBOrnamentPosition : NSInteger;
 
 /// Used to configure position, margin, and visibility for the map’s attribution button.
 SWIFT_CLASS("_TtC13MapboxMapObjC27TMBAttributionButtonOptions")
 @interface TMBAttributionButtonOptions : NSObject
+/// The position of the attribution button.
+/// The default value for this property is <code>.bottomTrailing</code>.
+@property (nonatomic) enum TMBOrnamentPosition position;
+/// The margins of the attribution button.
+/// The default value for this property is <code>CGPoint(x: 8.0, y: 8.0)</code>.
+@property (nonatomic) CGPoint margins;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -5531,14 +5678,33 @@ SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCameraAnimationsManager")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC17TMBCameraAnimator")
 @interface TMBCameraAnimator : NSObject
+@property (nonatomic, readonly) UIViewAnimatingState state;
+- (void)cancel;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBCameraTransitionChange;
 
 /// Structure used to represent a desired change to the map’s camera
 SWIFT_CLASS("_TtC13MapboxMapObjC19TMBCameraTransition")
 @interface TMBCameraTransition : NSObject
+/// Represents a change to the center coordinate of the map.
+/// NOTE: Setting the <code>toValue</code> of <code>center</code> overrides any <code>anchor</code> animations
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull center;
+/// Represents a change to the zoom of the map.
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull zoom;
+/// Represents a change to the padding of the map.
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull padding;
+/// Represents a change to the anchor of the map
+/// NOTE: Incompatible with concurrent center animations
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull anchor;
+/// Represents a change to the bearing of the map.
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull bearing;
+/// Ensures that bearing transitions are optimized to take the shortest path. Defaults to <code>true</code>.
+@property (nonatomic) BOOL shouldOptimizeBearingPath;
+/// Represents a change to the pitch of the map.
+@property (nonatomic, readonly, strong) TMBCameraTransitionChange * _Nonnull pitch;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -5547,6 +5713,8 @@ SWIFT_CLASS("_TtC13MapboxMapObjC19TMBCameraTransition")
 /// Generic struct used to represent a change in a value from a starting point (i.e. <code>fromValue</code>) to an end point (i.e. <code>toValue</code>).
 SWIFT_CLASS("_TtC13MapboxMapObjC25TMBCameraTransitionChange")
 @interface TMBCameraTransitionChange : NSObject
+@property (nonatomic, strong) NSValue * _Nonnull fromValue;
+@property (nonatomic, strong) NSValue * _Nullable toValue;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -5660,7 +5828,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTra
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class TMBValue;
 @class TMBExpression;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
@@ -5723,13 +5890,35 @@ SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
 
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBCollatorOptions")
 @interface TMBCollatorOptions : NSObject
+/// Whether comparison option is case sensitive.
+@property (nonatomic, strong) NSNumber * _Nullable caseSensitive;
+/// Whether the comparison operation is diacritic sensitive
+@property (nonatomic, strong) NSNumber * _Nullable diacriticSensitive;
+/// The locale argument specifies the IETF language tag of the locale to use.
+/// If none is provided, the default locale is used.
+@property (nonatomic, copy) NSString * _Nullable locale;
+- (nonnull instancetype)initWithCaseSensitive:(NSNumber * _Nullable)caseSensitive diacriticSensitive:(NSNumber * _Nullable)diacriticSensitive locale:(NSString * _Nullable)locale OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class UIImage;
+enum TMBOrnamentVisibility : NSInteger;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC21TMBCompassViewOptions")
 @interface TMBCompassViewOptions : NSObject
+/// The position of the compass view.
+/// The default value for this property is <code>.topTrailing</code>.
+@property (nonatomic) enum TMBOrnamentPosition position;
+/// The margins of the compass view.
+/// The default value for this property is <code>CGPoint(x: 8.0, y: 8.0)</code>.
+@property (nonatomic) CGPoint margins;
+/// The image used for displaying the compass.
+/// The default value for this property is nil, default compass image will be drawn.
+@property (nonatomic, strong) UIImage * _Nullable image;
+/// The visibility of the compass view.
+/// The default value for this property is <code>.adaptive</code>.
+@property (nonatomic) enum TMBOrnamentVisibility visibility;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -5836,11 +6025,16 @@ SWIFT_CLASS("_TtC13MapboxMapObjC13TMBExpression")
 @end
 
 enum TMBExpressionOptionsType : NSInteger;
+@class TMBFormatOptions;
+@class TMBNumberFormatOptions;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC20TMBExpressionOptions")
 @interface TMBExpressionOptions : NSObject
 @property (nonatomic, readonly) enum TMBExpressionOptionsType type;
 @property (nonatomic, readonly) id _Nonnull options;
++ (TMBExpressionOptions * _Nonnull)formatWithOptions:(TMBFormatOptions * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
++ (TMBExpressionOptions * _Nonnull)numberFormatWithOptions:(TMBNumberFormatOptions * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
++ (TMBExpressionOptions * _Nonnull)collatorWithOptions:(TMBCollatorOptions * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -5881,6 +6075,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTrans
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBFollowPuckViewportStateOptions;
 
 /// A <code>ViewportState</code> implementation that tracks the location puck (to show a puck, use
 /// <code>LocationOptions/puckType</code>)
@@ -5888,6 +6083,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTrans
 /// class.
 SWIFT_CLASS("_TtC13MapboxMapObjC26TMBFollowPuckViewportState")
 @interface TMBFollowPuckViewportState : NSObject
+/// Configuration options for this state.
+@property (nonatomic, strong) TMBFollowPuckViewportStateOptions * _Nonnull options;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -5969,6 +6166,11 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC16TMBViewportState_")
 /// <code>LocationOptions/puckBearingSource</code>
 SWIFT_CLASS("_TtC13MapboxMapObjC33TMBFollowPuckViewportStateBearing")
 @interface TMBFollowPuckViewportStateBearing : NSObject
+@property (nonatomic, readonly, strong) NSNumber * _Nullable bearing;
+/// <code>FollowPuckViewportState</code> sets <code>CameraOptions/bearing</code> to a constant value.
+/// \param bearing the constant value that should be used to set the camera bearing.
+///
++ (TMBFollowPuckViewportStateBearing * _Nonnull)constant:(CLLocationDirection)bearing SWIFT_WARN_UNUSED_RESULT;
 /// <code>FollowPuckViewportState</code> sets <code>CameraOptions/bearing</code> based on the current
 /// heading.
 /// seealso:
@@ -6362,7 +6564,6 @@ typedef SWIFT_ENUM(NSInteger, TMBLayerType, open) {
   TMBLayerTypeSky = 10,
 };
 
-@class TMBStyleTransition;
 
 /// The global light source.
 /// seealso:
@@ -6645,15 +6846,14 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC27TMBLocationProviderDelegate_")
 /// Used to configure position, margin, and visibility for the map’s logo view.
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBLogoViewOptions")
 @interface TMBLogoViewOptions : NSObject
+/// The position of the logo view.
+/// The default value for this property is <code>.bottomLeading</code>.
+@property (nonatomic) enum TMBOrnamentPosition position;
+/// The margins of the logo view.
+/// The default value for this property is <code>CGPoint(x: 8.0, y: 8.0)</code>.
+@property (nonatomic) CGPoint margins;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class NSCoder;
-
-SWIFT_RESILIENT_CLASS("_TtC13MapboxMapObjC10TMBMapView")
-@interface TMBMapView : MapView
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios_app_extension,unavailable);
 @end
 
 @class TMBStyle;
@@ -7623,6 +7823,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC19TMBOrnamentsManager")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBOverviewViewportStateOptions;
 
 /// A <code>ViewportState</code> implementation that shows an overview of the geometry specified by its
 /// <code>OverviewViewportStateOptions/geometry</code>.
@@ -7630,6 +7831,12 @@ SWIFT_CLASS("_TtC13MapboxMapObjC19TMBOrnamentsManager")
 /// class.
 SWIFT_CLASS("_TtC13MapboxMapObjC24TMBOverviewViewportState")
 @interface TMBOverviewViewportState : NSObject
+/// Configuration options.
+/// When set, the viewport reframes the geometry using the new options and updates its camera with
+/// an <code>CameraAnimationsManager/ease(to:duration:curve:completion:)</code>
+/// animation with a linear timing curve and duration specified by the new value’s
+/// <code>OverviewViewportStateOptions/animationDuration</code>.
+@property (nonatomic, strong) TMBOverviewViewportStateOptions * _Nonnull options;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -7686,7 +7893,6 @@ typedef SWIFT_ENUM(NSInteger, TMBPanMode, open) {
   TMBPanModeHorizontalAndVertical = 2,
 };
 
-@class UIImage;
 @class TMBTextAnchor;
 @class TMBTextJustify;
 @class TMBTextTransform;
@@ -8009,10 +8215,18 @@ SWIFT_CLASS("_TtC13MapboxMapObjC22TMBPuck2DConfiguration")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+enum TMBPuck2DConfigurationPulsingRadius : NSInteger;
 
 /// The configration parameters for sonar-like pulsing circle animation shown around the 2D puck.
 SWIFT_CLASS("_TtC13MapboxMapObjC29TMBPuck2DConfigurationPulsing")
 @interface TMBPuck2DConfigurationPulsing : NSObject
+/// Flag determining whether the pulsing circle animation. <code>true</code> by default.
+@property (nonatomic) BOOL isEnabled;
+/// The color of the pulsing circle.
+@property (nonatomic, strong) UIColor * _Nonnull color;
+/// The radius of the pulsing circle.
+@property (nonatomic) enum TMBPuck2DConfigurationPulsingRadius radius;
+@property (nonatomic) double radiusValue;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -8204,9 +8418,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSkyType *
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBSourceType;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC9TMBSource")
 @interface TMBSource : NSObject
+/// Rendering type of this source.
+@property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -8215,6 +8432,10 @@ SWIFT_CLASS("_TtC13MapboxMapObjC9TMBSource")
 /// Information about a layer
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBSourceInfo")
 @interface TMBSourceInfo : NSObject
+/// The identifier of the layer
+@property (nonatomic, copy) NSString * _Nonnull id;
+/// The type of the layer
+@property (nonatomic, strong) TMBSourceType * _Nonnull type;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -8977,6 +9198,8 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBStyle")
 /// Describes the projection used to render the map.
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBStyleProjection")
 @interface TMBStyleProjection : NSObject
+/// The name of the projection.
+@property (nonatomic, strong) TMBStyleProjectionName * _Nonnull name;
 /// Initializes a projection
 - (nonnull instancetype)initWithName:(TMBStyleProjectionName * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -9001,6 +9224,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBStyleProj
 
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBStyleTransition")
 @interface TMBStyleTransition : NSObject
+/// Time allotted for transitions to complete in seconds.
+@property (nonatomic) double duration;
+/// Length of time before a transition begins in seconds.
+@property (nonatomic) double delay;
 - (nonnull instancetype)initWithDuration:(double)duration delay:(double)delay OBJC_DESIGNATED_INITIALIZER;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBStyleTransition * _Nonnull zero;)
 + (TMBStyleTransition * _Nonnull)zero SWIFT_WARN_UNUSED_RESULT;
@@ -9047,6 +9274,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolZOr
 
 SWIFT_CLASS("_TtC13MapboxMapObjC10TMBTerrain")
 @interface TMBTerrain : NSObject
+@property (nonatomic, copy) NSString * _Nonnull sourceId;
 /// Exaggerates the elevation of the terrain by multiplying the data from the DEM with this value.
 @property (nonatomic, strong) TMBValue * _Nullable exaggeration;
 - (nonnull instancetype)initWithSourceId:(NSString * _Nonnull)sourceId OBJC_DESIGNATED_INITIALIZER;

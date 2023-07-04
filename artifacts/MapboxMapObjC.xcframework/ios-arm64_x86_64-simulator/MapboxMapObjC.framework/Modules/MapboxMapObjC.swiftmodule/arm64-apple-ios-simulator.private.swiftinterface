@@ -17,53 +17,53 @@ import _StringProcessing
   public var rawValue: MapboxMaps.Atmosphere {
     get
   }
-  public var color: MapboxMapObjC.TMBValue? {
-    get
-    set
+  @objc public var color: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
   }
-  public var colorTransition: MapboxMapObjC.TMBStyleTransition? {
-    get
-    set
+  @objc public var colorTransition: MapboxMapObjC.TMBStyleTransition? {
+    @objc get
+    @objc set
   }
-  public var highColor: MapboxMapObjC.TMBValue? {
-    get
-    set
+  @objc public var highColor: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
   }
-  public var highColorTransition: MapboxMapObjC.TMBStyleTransition? {
-    get
-    set
+  @objc public var highColorTransition: MapboxMapObjC.TMBStyleTransition? {
+    @objc get
+    @objc set
   }
-  public var horizonBlend: MapboxMapObjC.TMBValue? {
-    get
-    set
+  @objc public var horizonBlend: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
   }
-  public var horizonBlendTransition: MapboxMapObjC.TMBStyleTransition? {
-    get
-    set
+  @objc public var horizonBlendTransition: MapboxMapObjC.TMBStyleTransition? {
+    @objc get
+    @objc set
   }
-  public var range: MapboxMapObjC.TMBValue? {
-    get
-    set
+  @objc public var range: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
   }
-  public var rangeTransition: MapboxMapObjC.TMBStyleTransition? {
-    get
-    set
+  @objc public var rangeTransition: MapboxMapObjC.TMBStyleTransition? {
+    @objc get
+    @objc set
   }
-  public var spaceColor: MapboxMapObjC.TMBValue? {
-    get
-    set
+  @objc public var spaceColor: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
   }
-  public var spaceColorTransition: MapboxMapObjC.TMBStyleTransition? {
-    get
-    set
+  @objc public var spaceColorTransition: MapboxMapObjC.TMBStyleTransition? {
+    @objc get
+    @objc set
   }
-  public var starIntensity: MapboxMapObjC.TMBValue? {
-    get
-    set
+  @objc public var starIntensity: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
   }
-  public var starIntensityTransition: MapboxMapObjC.TMBStyleTransition? {
-    get
-    set
+  @objc public var starIntensityTransition: MapboxMapObjC.TMBStyleTransition? {
+    @objc get
+    @objc set
   }
   @objc override dynamic public init()
   @objc deinit
@@ -257,21 +257,21 @@ extension MapboxMapObjC.TMBLocationManager : MapboxMaps.LocationPermissionsDeleg
   public static var `default`: MapboxMapObjC.TMBPuck2DConfigurationPulsing {
     get
   }
-  public var isEnabled: Swift.Bool {
-    get
-    set
+  @objc public var isEnabled: Swift.Bool {
+    @objc get
+    @objc set
   }
-  public var color: UIKit.UIColor {
-    get
-    set
+  @objc public var color: UIKit.UIColor {
+    @objc get
+    @objc set
   }
-  public var radius: MapboxMapObjC.TMBPuck2DConfigurationPulsingRadius {
-    get
-    set
+  @objc public var radius: MapboxMapObjC.TMBPuck2DConfigurationPulsingRadius {
+    @objc get
+    @objc set
   }
-  public var radiusValue: Swift.Double {
-    get
-    set
+  @objc public var radiusValue: Swift.Double {
+    @objc get
+    @objc set
   }
   public var rawValue: MapboxMaps.Puck2DConfiguration.Pulsing {
     get
@@ -447,9 +447,9 @@ extension MapboxMapObjC.TMBLocationManager : MapboxMaps.LocationPermissionsDeleg
   public var rawValue: MapboxMaps.Terrain {
     get
   }
-  public var sourceId: Swift.String {
-    get
-    set
+  @objc public var sourceId: Swift.String {
+    @objc get
+    @objc set
   }
   @objc public var exaggeration: MapboxMapObjC.TMBValue? {
     @objc get
@@ -479,17 +479,6 @@ extension MapboxMapObjC.TMBLocationManager : MapboxMaps.LocationPermissionsDeleg
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class MapViewFactory : ObjectiveC.NSObject {
   @objc public static func create(frame: CoreFoundation.CGRect, options: MapboxMaps.MapInitOptions?) -> MapboxMaps.MapView
   @objc public static func create(frame: CoreFoundation.CGRect, mapInitOptions: MapboxMaps.MapInitOptions = MapInitOptions(), urlOpener: any MapboxMapObjC.TMBAttributionURLOpener) -> MapboxMaps.MapView
-  @objc deinit
-}
-@objc @_Concurrency.MainActor(unsafe) open class TMBMapView : MapboxMaps.MapView {
-  @available(iOSApplicationExtension, unavailable)
-  @_Concurrency.MainActor(unsafe) override public init(frame: CoreFoundation.CGRect, mapInitOptions: MapboxMaps.MapInitOptions = super)
-  @available(iOS, deprecated: 13)
-  @_Concurrency.MainActor(unsafe) override public init(frame: CoreFoundation.CGRect, mapInitOptions: MapboxMaps.MapInitOptions = super, orientationProvider: any MapboxMaps.InterfaceOrientationProvider, urlOpener: any MapboxMaps.AttributionURLOpener)
-  @available(iOS 13.0, *)
-  @_Concurrency.MainActor(unsafe) override public init(frame: CoreFoundation.CGRect, mapInitOptions: MapboxMaps.MapInitOptions = super, urlOpener: any MapboxMaps.AttributionURLOpener)
-  @available(iOSApplicationExtension, unavailable)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 extension MapboxMaps.ResourceOptions {
@@ -970,9 +959,9 @@ extension MapboxMapObjC.TMBMapboxMap {
   @objc final public let type: MapboxMapObjC.TMBExpressionOptionsType
   @objc final public let options: Any
   final public let arguments: [MapboxMaps.Expression.Argument]
-  public static func format(options: MapboxMapObjC.TMBFormatOptions) -> MapboxMapObjC.TMBExpressionOptions
-  public static func numberFormat(options: MapboxMapObjC.TMBNumberFormatOptions) -> MapboxMapObjC.TMBExpressionOptions
-  public static func collator(options: MapboxMapObjC.TMBCollatorOptions) -> MapboxMapObjC.TMBExpressionOptions
+  @objc public static func format(options: MapboxMapObjC.TMBFormatOptions) -> MapboxMapObjC.TMBExpressionOptions
+  @objc public static func numberFormat(options: MapboxMapObjC.TMBNumberFormatOptions) -> MapboxMapObjC.TMBExpressionOptions
+  @objc public static func collator(options: MapboxMapObjC.TMBCollatorOptions) -> MapboxMapObjC.TMBExpressionOptions
   @objc deinit
 }
 @objc public enum TMBExpressionOptionsType : Swift.Int {
@@ -1050,22 +1039,22 @@ extension MapboxMapObjC.TMBMapboxMap {
   public var rawValue: MapboxMaps.CollatorOptions {
     get
   }
-  public var caseSensitive: Foundation.NSNumber? {
-    get
-    set
+  @objc public var caseSensitive: Foundation.NSNumber? {
+    @objc get
+    @objc set
   }
-  public var diacriticSensitive: Foundation.NSNumber? {
-    get
-    set
+  @objc public var diacriticSensitive: Foundation.NSNumber? {
+    @objc get
+    @objc set
   }
-  public var locale: Swift.String? {
-    get
-    set
+  @objc public var locale: Swift.String? {
+    @objc get
+    @objc set
   }
   public var expressionArguments: [MapboxMaps.Expression.Argument] {
     get
   }
-  public init(caseSensitive: Swift.Bool?, diacriticSensitive: Swift.Bool?, locale: Swift.String?)
+  @objc public init(caseSensitive: Foundation.NSNumber?, diacriticSensitive: Foundation.NSNumber?, locale: Swift.String?)
   @objc deinit
 }
 @objc open class TMBCircleAnnotation : ObjectiveC.NSObject, MapboxMapObjC.TMBAnnotation {
@@ -1216,6 +1205,10 @@ extension MapboxMapObjC.TMBMapboxMap {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBCameraAnimator : ObjectiveC.NSObject {
+  @objc public var state: UIKit.UIViewAnimatingState {
+    @objc get
+  }
+  @objc public func cancel()
   @objc deinit
 }
 @objc open class TMBAnimationOwner : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
@@ -1226,33 +1219,33 @@ extension MapboxMapObjC.TMBMapboxMap {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBCameraTransition : ObjectiveC.NSObject {
-  public var center: MapboxMapObjC.TMBCameraTransitionChange {
-    get
+  @objc public var center: MapboxMapObjC.TMBCameraTransitionChange {
+    @objc get
   }
-  public var zoom: MapboxMapObjC.TMBCameraTransitionChange {
-    get
+  @objc public var zoom: MapboxMapObjC.TMBCameraTransitionChange {
+    @objc get
   }
-  public var padding: MapboxMapObjC.TMBCameraTransitionChange {
-    get
+  @objc public var padding: MapboxMapObjC.TMBCameraTransitionChange {
+    @objc get
   }
-  public var anchor: MapboxMapObjC.TMBCameraTransitionChange {
-    get
+  @objc public var anchor: MapboxMapObjC.TMBCameraTransitionChange {
+    @objc get
   }
-  public var bearing: MapboxMapObjC.TMBCameraTransitionChange {
-    get
+  @objc public var bearing: MapboxMapObjC.TMBCameraTransitionChange {
+    @objc get
   }
-  public var shouldOptimizeBearingPath: Swift.Bool {
-    get
-    set
+  @objc public var shouldOptimizeBearingPath: Swift.Bool {
+    @objc get
+    @objc set
   }
-  public var pitch: MapboxMapObjC.TMBCameraTransitionChange {
-    get
+  @objc public var pitch: MapboxMapObjC.TMBCameraTransitionChange {
+    @objc get
   }
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBCameraTransitionChange : ObjectiveC.NSObject {
-  public var fromValue: Foundation.NSValue
-  public var toValue: Foundation.NSValue?
+  @objc public var fromValue: Foundation.NSValue
+  @objc public var toValue: Foundation.NSValue?
   public static func fromChange(_ change: MapboxMaps.CameraTransition.Change<CoreLocation.CLLocationCoordinate2D>) -> MapboxMapObjC.TMBCameraTransitionChange
   public static func fromCoordinate(_ change: MapboxMaps.CameraTransition.Change<CoreLocation.CLLocationCoordinate2D>) -> MapboxMapObjC.TMBCameraTransitionChange
   public static func fromEdgeInsets(_ change: MapboxMaps.CameraTransition.Change<UIKit.UIEdgeInsets>) -> MapboxMapObjC.TMBCameraTransitionChange
@@ -1691,13 +1684,13 @@ extension MapboxMapObjC.TMBResolvedImage {
   public var rawValue: MapboxMaps.StyleTransition {
     get
   }
-  public var duration: Swift.Double {
-    get
-    set
+  @objc public var duration: Swift.Double {
+    @objc get
+    @objc set
   }
-  public var delay: Swift.Double {
-    get
-    set
+  @objc public var delay: Swift.Double {
+    @objc get
+    @objc set
   }
   @objc public init(duration: Swift.Double, delay: Swift.Double)
   @objc public class var zero: MapboxMapObjC.TMBStyleTransition {
@@ -1770,19 +1763,22 @@ extension MapboxMapObjC.TMBResolvedImage {
   public var rawValue: any MapboxMaps.Source {
     get
   }
+  @objc public var type: MapboxMapObjC.TMBSourceType {
+    @objc get
+  }
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBSourceInfo : ObjectiveC.NSObject {
   public var rawValue: MapboxMaps.SourceInfo {
     get
   }
-  public var id: Swift.String {
-    get
-    set
+  @objc public var id: Swift.String {
+    @objc get
+    @objc set
   }
-  public var type: MapboxMapObjC.TMBSourceType {
-    get
-    set
+  @objc public var type: MapboxMapObjC.TMBSourceType {
+    @objc get
+    @objc set
   }
   @objc deinit
 }
@@ -1804,9 +1800,9 @@ extension MapboxMapObjC.TMBResolvedImage {
   public var rawValue: MapboxMaps.StyleProjection {
     get
   }
-  public var name: MapboxMapObjC.TMBStyleProjectionName {
-    get
-    set
+  @objc public var name: MapboxMapObjC.TMBStyleProjectionName {
+    @objc get
+    @objc set
   }
   @objc public init(name: MapboxMapObjC.TMBStyleProjectionName)
   @objc deinit
@@ -2138,21 +2134,21 @@ extension MapboxMapObjC.TMBResolvedImage {
   public var swiftValue: MapboxMaps.CompassViewOptions {
     get
   }
-  public var position: MapboxMapObjC.TMBOrnamentPosition {
-    get
-    set
+  @objc public var position: MapboxMapObjC.TMBOrnamentPosition {
+    @objc get
+    @objc set
   }
-  public var margins: CoreFoundation.CGPoint {
-    get
-    set
+  @objc public var margins: CoreFoundation.CGPoint {
+    @objc get
+    @objc set
   }
-  public var image: UIKit.UIImage? {
-    get
-    set
+  @objc public var image: UIKit.UIImage? {
+    @objc get
+    @objc set
   }
-  public var visibility: MapboxMapObjC.TMBOrnamentVisibility {
-    get
-    set
+  @objc public var visibility: MapboxMapObjC.TMBOrnamentVisibility {
+    @objc get
+    @objc set
   }
   @objc deinit
 }
@@ -2160,13 +2156,13 @@ extension MapboxMapObjC.TMBResolvedImage {
   public var swiftValue: MapboxMaps.LogoViewOptions {
     get
   }
-  public var position: MapboxMapObjC.TMBOrnamentPosition {
-    get
-    set
+  @objc public var position: MapboxMapObjC.TMBOrnamentPosition {
+    @objc get
+    @objc set
   }
-  public var margins: CoreFoundation.CGPoint {
-    get
-    set
+  @objc public var margins: CoreFoundation.CGPoint {
+    @objc get
+    @objc set
   }
   @objc deinit
 }
@@ -2174,13 +2170,13 @@ extension MapboxMapObjC.TMBResolvedImage {
   public var swiftValue: MapboxMaps.AttributionButtonOptions {
     get
   }
-  public var position: MapboxMapObjC.TMBOrnamentPosition {
-    get
-    set
+  @objc public var position: MapboxMapObjC.TMBOrnamentPosition {
+    @objc get
+    @objc set
   }
-  public var margins: CoreFoundation.CGPoint {
-    get
-    set
+  @objc public var margins: CoreFoundation.CGPoint {
+    @objc get
+    @objc set
   }
   @objc deinit
 }
@@ -2329,18 +2325,18 @@ extension MapboxMapObjC.TMBResolvedImage {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBFollowPuckViewportStateBearing : ObjectiveC.NSObject {
-  public var bearing: CoreLocation.CLLocationDirection? {
-    get
+  @objc public var bearing: Foundation.NSNumber? {
+    @objc get
   }
-  public static func constant(_ bearing: CoreLocation.CLLocationDirection) -> MapboxMapObjC.TMBFollowPuckViewportStateBearing
+  @objc public static func constant(_ bearing: CoreLocation.CLLocationDirection) -> MapboxMapObjC.TMBFollowPuckViewportStateBearing
   @objc public static let heading: MapboxMapObjC.TMBFollowPuckViewportStateBearing
   @objc public static let course: MapboxMapObjC.TMBFollowPuckViewportStateBearing
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBFollowPuckViewportState : ObjectiveC.NSObject {
-  public var options: MapboxMapObjC.TMBFollowPuckViewportStateOptions {
-    get
-    set
+  @objc public var options: MapboxMapObjC.TMBFollowPuckViewportStateOptions {
+    @objc get
+    @objc set
   }
   @objc deinit
 }
@@ -2380,9 +2376,9 @@ extension MapboxMapObjC.TMBFollowPuckViewportState : MapboxMapObjC.TMBViewportSt
   public var rawValue: MapboxMaps.OverviewViewportState {
     get
   }
-  public var options: MapboxMapObjC.TMBOverviewViewportStateOptions {
-    get
-    set
+  @objc public var options: MapboxMapObjC.TMBOverviewViewportStateOptions {
+    @objc get
+    @objc set
   }
   @objc deinit
 }
@@ -2412,7 +2408,7 @@ extension MapboxMapObjC.TMBOverviewViewportState : MapboxMapObjC.TMBViewportStat
   }
   @objc deinit
 }
-extension MapboxMapObjC.TMBDefaultViewportTransition : MapboxMapObjC.TMBViewportTransition {
+@objc extension MapboxMapObjC.TMBDefaultViewportTransition : MapboxMapObjC.TMBViewportTransition {
   @objc dynamic public func run(to toState: any MapboxMapObjC.TMBViewportState, completion: @escaping (Swift.Bool) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
 }
 @_hasMissingDesignatedInitializers @objc open class TMBImmediateViewportTransition : ObjectiveC.NSObject, MapboxMapObjC.TMBViewportTransition {
