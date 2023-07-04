@@ -318,41 +318,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 
 
-@class TMBExpression;
-@class NSNumber;
-@class TMBValue;
-@class TMBStyleTransition;
 
-SWIFT_CLASS("_TtC13MapboxMapObjC25FillExtrusionLayerBuilder")
-@interface FillExtrusionLayerBuilder : NSObject
-+ (FillExtrusionLayerBuilder * _Nonnull)withId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (void)filter:(TMBExpression * _Nullable)value;
-- (void)source:(NSString * _Nullable)value;
-- (void)sourceLayer:(NSString * _Nullable)value;
-- (void)minZoom:(NSNumber * _Nullable)value;
-- (void)maxZoom:(NSNumber * _Nullable)value;
-- (void)visibility:(TMBValue * _Nullable)value;
-- (void)fillExtrusionAmbientOcclusionIntensity:(TMBValue * _Nullable)value;
-- (void)fillExtrusionAmbientOcclusionIntensityTransition:(TMBStyleTransition * _Nullable)value;
-- (void)fillExtrusionAmbientOcclusionRadius:(TMBValue * _Nullable)value;
-- (void)fillExtrusionAmbientOcclusionRadiusTransition:(TMBStyleTransition * _Nullable)value;
-- (void)fillExtrusionBase:(TMBValue * _Nullable)value;
-- (void)fillExtrusionBaseTransition:(TMBStyleTransition * _Nullable)value;
-- (void)fillExtrusionColor:(TMBValue * _Nullable)value;
-- (void)fillExtrusionColorTransition:(TMBStyleTransition * _Nullable)value;
-- (void)fillExtrusionHeight:(TMBValue * _Nullable)value;
-- (void)fillExtrusionHeightTransition:(TMBStyleTransition * _Nullable)value;
-- (void)fillExtrusionOpacity:(TMBValue * _Nullable)value;
-- (void)fillExtrusionOpacityTransition:(TMBStyleTransition * _Nullable)value;
-- (void)fillExtrusionPattern:(TMBValue * _Nullable)value;
-- (void)fillExtrusionPatternTransition:(TMBStyleTransition * _Nullable)value;
-- (void)fillExtrusionTranslate:(TMBValue * _Nullable)value;
-- (void)fillExtrusionTranslateTransition:(TMBStyleTransition * _Nullable)value;
-- (void)fillExtrusionTranslateAnchor:(TMBValue * _Nonnull)value;
-- (void)fillExtrusionVerticalGradient:(TMBValue * _Nullable)value;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
+
+
 
 
 @class NSValue;
@@ -372,13 +340,22 @@ SWIFT_CLASS("_TtC13MapboxMapObjC14GeometryHelper")
 @end
 
 @class MBMResourceOptions;
-
-@interface MapInitOptions (SWIFT_EXTENSION(MapboxMapObjC))
-- (MBMResourceOptions * _Nonnull)resourceOptions SWIFT_WARN_UNUSED_RESULT;
-@end
-
 @class MBMMapOptions;
 @class MBMCameraOptions;
+
+@interface MapInitOptions (SWIFT_EXTENSION(MapboxMapObjC))
+/// Associated <code>ResourceOptions</code>
+- (MBMResourceOptions * _Nonnull)getResourceOptions SWIFT_WARN_UNUSED_RESULT;
+/// Associated <code>MapOptions</code>
+- (MBMMapOptions * _Nonnull)getMapOptions SWIFT_WARN_UNUSED_RESULT;
+/// Style URI for initializing the map. Defaults to Mapbox Streets.
+- (NSString * _Nullable)getStyleURI SWIFT_WARN_UNUSED_RESULT;
+/// String representation of JSON style spec. Has precedence over <code>styleURI</code>.
+- (NSString * _Nullable)getStyleJSON SWIFT_WARN_UNUSED_RESULT;
+/// Camera options for initializing the map. CameraOptions default to 0.0 for each value.
+- (MBMCameraOptions * _Nullable)getCameraOptions SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class NSURL;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsBuilder")
@@ -396,258 +373,90 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MBMResourceO
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
+@interface MapInitOptionsFactory : NSObject
+/// Initializer. The default initializer, i.e. <code>MapInitOptions()</code> will use
+/// the default <code>ResourceOptionsManager</code> to use the current shared access token.
+/// \param resourceOptions <code>ResourceOptions</code>; default creates an instance
+/// using <code>ResourceOptionsManager.default</code>
+///
+/// \param mapOptions <code>MapOptions</code>; see <code>GlyphsRasterizationOptions</code> for the default
+/// used for glyph rendering.
+///
+/// \param cameraOptions <code>CameraOptions</code> to be applied to the map, overriding
+/// the default camera that has been specified in the style.
+///
+/// \param styleURI Style URI for the map to load. Defaults to <code>.streets</code>, but
+/// can be <code>nil</code>.
+///
+/// \param styleJSON Style JSON in String representation. Has precedence over <code>styleURI</code>.
+///
++ (MapInitOptions * _Nonnull)createWithResourceOptions:(MBMResourceOptions * _Nullable)resourceOptions mapOptions:(MBMMapOptions * _Nullable)mapOptions cameraOptions:(MBMCameraOptions * _Nullable)cameraOptions styleURI:(NSString * _Nullable)styleURI styleJSON:(NSString * _Nullable)styleJSON SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class TMBCameraAnimationsManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBCameraAnimationsManager * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 @class TMBGestureManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBGestureManager * _Nonnull)gestureManager SWIFT_WARN_UNUSED_RESULT;
+- (TMBGestureManager * _Nonnull)gestures SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class TMBTerrain;
+@class TMBViewport;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setTerrain:(TMBTerrain * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (TMBViewport * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class RasterDemSourceBuilder;
+@class TMBViewAnnotationManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addRasterDemSource:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(RasterDemSourceBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (TMBViewAnnotationManager * _Nonnull)viewAnnotations SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class SymbolLayerBuilder;
+@class TMBOrnamentsManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)updateSymbolLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SymbolLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (TMBOrnamentsManager * _Nonnull)ornaments SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class SkyLayerBuilder;
+@class TMBMapboxMap;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)updateSkyLayer:(NSString * _Nonnull)id configure:(SWIFT_NOESCAPE void (^ _Nonnull)(SkyLayerBuilder * _Nonnull))configure onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
+- (TMBMapboxMap * _Nonnull)mapboxMap SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class MBMCameraBoundsOptions;
+@class TMBAnnotationOrchestrator;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setCameraBounds:(MBMCameraBoundsOptions * _Nonnull)bounds completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (TMBAnnotationOrchestrator * _Nonnull)annotations SWIFT_WARN_UNUSED_RESULT;
 @end
 
-enum TMBOrnamentVisibility : NSInteger;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)ornamentsOptionsScaleBarVisibility:(enum TMBOrnamentVisibility)value;
-@end
-
+@class NSNumber;
+@class MBMCameraState;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (void)preferredFrameRateRange:(CAFrameRateRange)value;
 - (NSArray<NSNumber *> * _Nonnull)mapboxMapDebugOptions SWIFT_WARN_UNUSED_RESULT;
 - (void)mapboxMapDebugOptions:(NSArray<NSNumber *> * _Nonnull)value;
+- (BOOL)getPresentsWithTransaction SWIFT_WARN_UNUSED_RESULT;
+- (void)setPresentsWithTransaction:(BOOL)value;
+- (NSInteger)getPreferredFramesPerSecond SWIFT_WARN_UNUSED_RESULT;
+- (void)setPreferredFramesPerSecond:(NSInteger)value;
+- (CAFrameRateRange)getPreferredFrameRateRange SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=15.0);
+- (void)setPreferredFrameRateRange:(CAFrameRateRange)value SWIFT_AVAILABILITY(ios,introduced=15.0);
+- (MBMCameraState * _Nonnull)getCameraState SWIFT_WARN_UNUSED_RESULT;
+- (CGPoint)getAnchor SWIFT_WARN_UNUSED_RESULT;
 @end
 
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
-- (CLLocationCoordinate2D)coordinateFromScreenPosition:(CGPoint)point SWIFT_WARN_UNUSED_RESULT;
-- (NSArray<NSValue *> * _Nonnull)coordinateFromScreenPositions:(NSArray<NSValue *> * _Nonnull)point SWIFT_WARN_UNUSED_RESULT;
-@end
-
-enum TMBLayerPosition : NSInteger;
-@class TMBPolygonAnnotationManager;
-@class TMBCircleAnnotationManager;
-@class TMBClusterOptions;
-@class TMBPointAnnotationManager;
-@class TMBPolylineAnnotationManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBPolygonAnnotationManager * _Nonnull)polygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
-- (TMBCircleAnnotationManager * _Nonnull)circleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
-- (TMBPointAnnotationManager * _Nonnull)pointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam clusterOptions:(TMBClusterOptions * _Nullable)clusterOptions SWIFT_WARN_UNUSED_RESULT;
-- (TMBPolylineAnnotationManager * _Nonnull)polylineAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(id _Nullable)layerPositionParam SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@protocol LocationPermissionsDelegate;
-@class Puck2DConfigurationBuilder;
-enum TMBPuckBearingSource : NSInteger;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)locationDelegate:(id <LocationPermissionsDelegate> _Nonnull)delegate;
-- (void)locationRequestTemporaryFullAccuracyPermissions:(NSString * _Nonnull)customKey;
-- (void)puck2D:(void (^ _Nullable)(Puck2DConfigurationBuilder * _Nonnull))build;
-- (void)puckBearingSource:(enum TMBPuckBearingSource)source;
-@end
-
-@class MBMRenderedQueryOptions;
-@class MBMQueriedFeature;
-@class TMBCancelable;
-@class MBMSourceQueryOptions;
-@class MBXFeature;
-@class MBMFeatureExtensionValue;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBCancelable * _Nonnull)queryRenderedFeaturesWithin:(NSArray<NSValue *> * _Nonnull)shape options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
-- (TMBCancelable * _Nonnull)queryRenderedFeaturesIn:(CGRect)rect options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
-- (TMBCancelable * _Nonnull)queryRenderedFeaturesWith:(CGPoint)point options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
-- (void)querySourceFeaturesFor:(NSString * _Nonnull)sourceId options:(MBMSourceQueryOptions * _Nonnull)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
-- (void)queryFeatureExtensionFor:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature extension:(NSString * _Nonnull)extension extensionField:(NSString * _Nonnull)extensionField args:(NSDictionary<NSString *, id> * _Nullable)args completion:(void (^ _Nullable)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
-@end
-
-@class TMBStyle;
-@class UIImage;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)setStyle:(NSString * _Nonnull)styleUri;
-- (void)setStyleInJson:(NSString * _Nonnull)styleJson;
-- (void)loadStyle:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
-- (void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-- (void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-- (BOOL)imageExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBGeometry;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addSource:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)removeSource:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (BOOL)sourceExists:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (void)setSourcePropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (NSDictionary<NSString *, id> * _Nonnull)getSourcePropertiesFor:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
-- (void)addSourceWithId:(NSString * _Nonnull)id geometry:(TMBGeometry * _Nonnull)geometry onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addGeoJSONSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
-- (void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
-@end
-
-@class TMBAnchor;
-@class UIColor;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-/// Color tint for lighting extruded geometries.
-- (void)setLightProperty:(NSString * _Nonnull)name value:(id _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-/// Color tint for lighting extruded geometries.
-- (void)setLightWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-/// Whether extruded geometries are lit relative to the map or viewport.
-- (void)lightAnchor:(TMBAnchor * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-/// Color tint for lighting extruded geometries.
-- (void)lightColor:(UIColor * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-/// Transition property for <code>color</code>
-- (void)lightColorTransition:(TMBStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-/// Intensity of lighting (on a scale from 0 to 1). Higher numbers will present as more extreme contrast.
-- (void)lightIntensity:(double)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-/// Transition property for <code>intensity</code>
-- (void)lightIntensityTransition:(TMBStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-/// Position of the light source relative to lit (extruded) geometries, in [r radial coordinate, a azimuthal angle, p polar angle] where r indicates the distance from the center of the base of an object to its light, a indicates the position of the light relative to 0 degree (0 degree when <code>light.anchor</code> is set to <code>viewport</code> corresponds to the top of the viewport, or 0 degree when <code>light.anchor</code> is set to <code>map</code> corresponds to due north, and degrees proceed clockwise), and p indicates the height of the light (from 0 degree, directly above, to 180 degree, directly below).
-- (void)lightPosition:(NSArray<NSNumber *> * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-/// Transition property for <code>position</code>
-- (void)lightPositionTransition:(TMBStyleTransition * _Nonnull)value onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
-@class MBMViewAnnotationOptions;
-@class UIView;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationView:(UIView * _Nonnull)view SWIFT_WARN_UNUSED_RESULT;
-- (UIView * _Nullable)viewForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (UIView * _Nullable)viewForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (void)addWithViewAnnotation:(UIView * _Nonnull)viewAnnotation id:(NSString * _Nullable)id options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-- (void)updateWithViewAnnotation:(UIView * _Nonnull)viewAnnotation options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
-- (void)removeWithViewAnnotation:(UIView * _Nonnull)viewAnnotation;
-- (void)removeAllViewAnnotations;
-@end
-
-@protocol MBMCustomLayerHost;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addLayerWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)removeLayerWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (BOOL)isPersistentLayerWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)layerExistsWithId:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
-- (void)setLayerPropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)updateLayerPropertiesFor:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (NSDictionary<NSString *, id> * _Nonnull)getLayerPropertiesFor:(NSString * _Nonnull)id onError:(void (^ _Nullable)(NSError * _Nonnull))onError SWIFT_WARN_UNUSED_RESULT;
-- (void)addPersistentLayerWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addLayerWithTarget:(NSObject * _Nonnull)target selector:(SEL _Nonnull)selector layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addLayerWithBuilder:(SWIFT_NOESCAPE id _Nonnull (^ _Nonnull)(void))builder layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-- (void)addCustomLayer:(NSString * _Nonnull)id layerHost:(id <MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(enum TMBLayerPosition)layerPosition layerPositionParam:(NSObject * _Nullable)layerPositionParam onError:(void (^ _Nullable)(NSError * _Nonnull))onError;
-@end
-
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-/// The style has been fully loaded, and the map has rendered all visible tiles.
-- (TMBCancelable * _Nonnull)onMapLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
-/// Describes an error that has occurred while loading the Map. The <code>type</code> property defines what resource could
-/// not be loaded and the <code>message</code> property will contain a descriptive error message.
-/// In case of <code>source</code> or <code>tile</code> loading errors, <code>source-id</code> will contain the id of the source failing.
-/// In case of <code>tile</code> loading errors, <code>tile-id</code> will contain the id of the tile.
-- (TMBCancelable * _Nonnull)onMapLoadingError:(void (^ _Nonnull)(id _Nonnull))handler;
-/// The map has entered the idle state. The map is in the idle state when there are no ongoing transitions
-/// and the map has rendered all requested non-volatile tiles. The event will not be emitted if <code>setUserAnimationInProgress</code>
-/// and / or <code>setGestureInProgress</code> is set to <code>true</code>.
-- (TMBCancelable * _Nonnull)onMapIdle:(void (^ _Nonnull)(id _Nonnull))handler;
-/// The requested style data has been loaded. The <code>type</code> property defines what kind of style data has been loaded.
-/// Event may be emitted synchronously, for example, when <code>setStyleJSON</code> is used to load style.
-/// Based on an event data <code>type</code> property value, following use-cases may be implemented:
-/// <ul>
-///   <li>
-///     <code>style</code>: Style is parsed, style layer properties could be read and modified, style layers and sources could be
-///     added or removed before rendering is started.
-///   </li>
-///   <li>
-///     <code>sprite</code>: Style’s sprite sheet is parsed and it is possible to add or update images.
-///   </li>
-///   <li>
-///     <code>sources</code>: All sources defined by the style are loaded and their properties could be read and updated if needed.
-///   </li>
-/// </ul>
-- (TMBCancelable * _Nonnull)onStyleDataLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
-/// The requested style has been fully loaded, including the style, specified sprite and sources’ metadata.
-/// Note: The style specified sprite would be marked as loaded even with sprite loading error (An error will be emitted via <code>.mapLoadingError</code>).
-/// Sprite loading error is not fatal and we don’t want it to block the map rendering, thus this event will still be emitted if style and sources are fully loaded.
-- (TMBCancelable * _Nonnull)onStyleLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
-/// A style has a missing image. This event is emitted when the map renders visible tiles and
-/// one of the required images is missing in the sprite sheet. Subscriber has to provide the missing image
-/// by calling <code>Style/addImage(_:id:sdf:contentInsets:)</code>.
-- (TMBCancelable * _Nonnull)onStyleImageMissing:(void (^ _Nonnull)(id _Nonnull))handler;
-/// An image added to the style is no longer needed and can be removed using <code>Style/removeImage(withId:)</code>.
-- (TMBCancelable * _Nonnull)onStyleImageRemoveUnused:(void (^ _Nonnull)(id _Nonnull))handler;
-/// A source data has been loaded.
-/// Event may be emitted synchronously in cases when source’s metadata is available when source is added to the style.
-/// The <code>id</code> property defines the source id.
-/// The <code>type</code> property defines if source’s metadata (e.g., TileJSON) or tile has been loaded. The property of <code>metadata</code>
-/// value might be useful to identify when particular source’s metadata is loaded, thus all source’s properties are
-/// readable and can be updated before map will start requesting data to be rendered.
-/// The <code>loaded</code> property will be set to <code>true</code> if all source’s data required for visible viewport of the map, are loaded.
-/// The <code>tile-id</code> property defines the tile id if the <code>type</code> field equals <code>tile</code>.
-- (TMBCancelable * _Nonnull)onSourceDataLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
-/// The source has been added with <code>Style/addSource(_:id:)</code> or <code>Style/addSource(withId:properties:)</code>.
-/// The event is emitted synchronously, therefore, it is possible to immediately
-/// read added source’s properties.
-- (TMBCancelable * _Nonnull)onSourceAdded:(void (^ _Nonnull)(id _Nonnull))handler;
-/// The source has been removed with <code>Style/removeSource(withId:)</code>.
-/// The event is emitted synchronously, thus, <code>Style/allSourceIdentifiers</code> will be
-/// in sync when the observer receives the notification.
-- (TMBCancelable * _Nonnull)onSourceRemoved:(void (^ _Nonnull)(id _Nonnull))handler;
-/// The map finished rendering a frame.
-/// The <code>render-mode</code> property tells whether the map has all data (<code>full</code>) required to render the visible viewport.
-/// The <code>needs-repaint</code> property provides information about ongoing transitions that trigger map repaint.
-/// The <code>placement-changed</code> property tells if the symbol placement has been changed in the visible viewport.
-- (TMBCancelable * _Nonnull)onRenderFrameStarted:(void (^ _Nonnull)(id _Nonnull))handler;
-/// The camera has changed. This event is emitted whenever the visible viewport
-/// changes due to the MapView’s size changing or when the camera
-/// is modified by calling camera methods. The event is emitted synchronously,
-/// so that an updated camera state can be fetched immediately.
-- (TMBCancelable * _Nonnull)onRenderFrameFinished:(void (^ _Nonnull)(id _Nonnull))handler;
-/// The camera has changed. This event is emitted whenever the visible viewport
-/// changes due to the MapView’s size changing or when the camera
-/// is modified by calling camera methods. The event is emitted synchronously,
-/// so that an updated camera state can be fetched immediately.
-- (TMBCancelable * _Nonnull)onEvenCameraChanged:(void (^ _Nonnull)(id _Nonnull))handler;
-/// The <code>ResourceRequest</code> event allows client to observe resource requests made by a
-/// map or snapshotter.
-- (TMBCancelable * _Nonnull)onResourceRequest:(void (^ _Nonnull)(id _Nonnull))handler;
-@end
-
+@protocol TMBAttributionURLOpener;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC14MapViewFactory")
 @interface MapViewFactory : NSObject
@@ -656,6 +465,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC14MapViewFactory")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 + (MapView * _Nonnull)createWithFrame:(CGRect)frame options:(MapInitOptions * _Nullable)options SWIFT_WARN_UNUSED_RESULT;
++ (MapView * _Nonnull)createWithFrame:(CGRect)frame mapInitOptions:(MapInitOptions * _Nonnull)mapInitOptions urlOpener:(id <TMBAttributionURLOpener> _Nonnull)urlOpener SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -667,164 +477,14 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC11NamedString_")
 
 @class MBMStylePackLoadOptions;
 @class MBMStylePack;
+@class TMBCancelable;
 
 @interface MBMOfflineManager (SWIFT_EXTENSION(MapboxMapObjC))
 - (TMBCancelable * _Nonnull)loadStyleWithStyleUriString:(NSString * _Nonnull)styleUriString styleLoadOptions:(MBMStylePackLoadOptions * _Nonnull)styleLoadOptions progress:(MBMStylePackLoadProgressCallback _Nonnull)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
 - (void)allStylePacks:(void (^ _Nonnull)(NSArray<MBMStylePack *> * _Nullable, NSError * _Nullable))completion;
 @end
 
-@class Puck2DConfigurationPulsingBuilder;
 
-SWIFT_CLASS("_TtC13MapboxMapObjC26Puck2DConfigurationBuilder")
-@interface Puck2DConfigurationBuilder : NSObject
-- (Puck2DConfigurationBuilder * _Nonnull)setPulsingBuilder:(Puck2DConfigurationPulsingBuilder * _Nullable)builder SWIFT_WARN_UNUSED_RESULT;
-- (Puck2DConfigurationBuilder * _Nonnull)setPulsing:(SWIFT_NOESCAPE void (^ _Nonnull)(Puck2DConfigurationPulsingBuilder * _Nonnull))build SWIFT_WARN_UNUSED_RESULT;
-- (Puck2DConfigurationBuilder * _Nonnull)setOpacity:(NSNumber * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-- (Puck2DConfigurationBuilder * _Nonnull)setTopImage:(UIImage * _Nullable)value SWIFT_WARN_UNUSED_RESULT;
-- (Puck2DConfigurationBuilder * _Nonnull)setBearingImage:(UIImage * _Nullable)value SWIFT_WARN_UNUSED_RESULT;
-- (Puck2DConfigurationBuilder * _Nonnull)setShadowImage:(UIImage * _Nullable)value SWIFT_WARN_UNUSED_RESULT;
-- (Puck2DConfigurationBuilder * _Nonnull)setScale:(NSNumber * _Nullable)value SWIFT_WARN_UNUSED_RESULT;
-- (Puck2DConfigurationBuilder * _Nonnull)setShowsAccuracyRing:(BOOL)value SWIFT_WARN_UNUSED_RESULT;
-- (Puck2DConfigurationBuilder * _Nonnull)setAccuracyRingColor:(UIColor * _Nullable)value SWIFT_WARN_UNUSED_RESULT;
-- (Puck2DConfigurationBuilder * _Nonnull)setAccuracyRingBorderColor:(UIColor * _Nullable)value SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC13MapboxMapObjC33Puck2DConfigurationPulsingBuilder")
-@interface Puck2DConfigurationPulsingBuilder : NSObject
-- (Puck2DConfigurationPulsingBuilder * _Nonnull)setColor:(UIColor * _Nullable)color SWIFT_WARN_UNUSED_RESULT;
-- (Puck2DConfigurationPulsingBuilder * _Nonnull)setRadiusWithValue:(NSNumber * _Nullable)value SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class TMBEncoding;
-
-SWIFT_CLASS("_TtC13MapboxMapObjC22RasterDemSourceBuilder")
-@interface RasterDemSourceBuilder : NSObject
-- (RasterDemSourceBuilder * _Nonnull)url:(NSString * _Nullable)value;
-- (RasterDemSourceBuilder * _Nonnull)tiles:(NSArray<NSString *> * _Nullable)value;
-- (RasterDemSourceBuilder * _Nonnull)bounds:(NSArray<NSNumber *> * _Nullable)value;
-- (RasterDemSourceBuilder * _Nonnull)minzoom:(double)value;
-- (RasterDemSourceBuilder * _Nonnull)maxzoom:(double)value;
-- (RasterDemSourceBuilder * _Nonnull)tileSize:(double)value;
-- (RasterDemSourceBuilder * _Nonnull)attribution:(NSString * _Nullable)value;
-- (RasterDemSourceBuilder * _Nonnull)encoding:(TMBEncoding * _Nullable)value;
-- (RasterDemSourceBuilder * _Nonnull)volatile:(BOOL)value;
-- (RasterDemSourceBuilder * _Nonnull)prefetchZoomDelta:(double)value;
-- (RasterDemSourceBuilder * _Nonnull)minimumTileUpdateInterval:(double)value;
-- (RasterDemSourceBuilder * _Nonnull)maxOverscaleFactorForParentTiles:(double)value;
-- (RasterDemSourceBuilder * _Nonnull)tileRequestsDelay:(double)value;
-- (RasterDemSourceBuilder * _Nonnull)tileNetworkRequestsDelay:(double)value;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC13MapboxMapObjC15SkyLayerBuilder")
-@interface SkyLayerBuilder : NSObject
-+ (SkyLayerBuilder * _Nonnull)withId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (void)filter:(TMBExpression * _Nullable)value;
-- (void)source:(NSString * _Nullable)value;
-- (void)sourceLayer:(NSString * _Nullable)value;
-- (void)minZoom:(NSNumber * _Nullable)value;
-- (void)maxZoom:(NSNumber * _Nullable)value;
-- (void)visibility:(TMBValue * _Nullable)value;
-- (void)skyAtmosphereColor:(TMBValue * _Nullable)value;
-- (void)skyAtmosphereHaloColor:(TMBValue * _Nullable)value;
-- (void)skyAtmosphereSun:(TMBValue * _Nullable)value;
-- (void)skyAtmosphereSunIntensity:(TMBValue * _Nullable)value;
-- (void)skyGradient:(TMBValue * _Nullable)value;
-- (void)skyGradientCenter:(TMBValue * _Nullable)value;
-- (void)skyGradientRadius:(TMBValue * _Nullable)value;
-- (void)skyOpacity:(TMBValue * _Nullable)value;
-- (void)skyOpacityTransition:(TMBStyleTransition * _Nullable)value;
-- (void)skyType:(TMBValue * _Nullable)value;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC13MapboxMapObjC18SymbolLayerBuilder")
-@interface SymbolLayerBuilder : NSObject
-+ (SymbolLayerBuilder * _Nonnull)withId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
-- (void)filter:(TMBExpression * _Nullable)value;
-- (void)source:(NSString * _Nullable)value;
-- (void)sourceLayer:(NSString * _Nullable)value;
-- (void)minZoom:(NSNumber * _Nullable)value;
-- (void)maxZoom:(NSNumber * _Nullable)value;
-- (void)visibility:(TMBValue * _Nullable)value;
-- (void)iconAllowOverlap:(TMBValue * _Nullable)value;
-- (void)iconAnchor:(TMBValue * _Nullable)value;
-- (void)iconIgnorePlacement:(TMBValue * _Nullable)value;
-- (void)iconImage:(TMBValue * _Nullable)value;
-- (void)iconKeepUpright:(TMBValue * _Nullable)value;
-- (void)iconOffset:(TMBValue * _Nullable)value;
-- (void)iconOptional:(TMBValue * _Nullable)value;
-- (void)iconPadding:(TMBValue * _Nullable)value;
-- (void)iconPitchAlignment:(TMBValue * _Nullable)value;
-- (void)iconRotate:(TMBValue * _Nullable)value;
-- (void)iconRotationAlignment:(TMBValue * _Nullable)value;
-- (void)iconSize:(TMBValue * _Nullable)value;
-- (void)iconTextFit:(TMBValue * _Nullable)value;
-- (void)iconTextFitPadding:(TMBValue * _Nullable)value;
-- (void)symbolAvoidEdges:(TMBValue * _Nullable)value;
-- (void)symbolPlacement:(TMBValue * _Nullable)value;
-- (void)symbolSortKey:(TMBValue * _Nullable)value;
-- (void)symbolSpacing:(TMBValue * _Nullable)value;
-- (void)symbolZOrder:(TMBValue * _Nullable)value;
-- (void)textAllowOverlap:(TMBValue * _Nullable)value;
-- (void)textAnchor:(TMBValue * _Nullable)value;
-- (void)textField:(TMBValue * _Nullable)value;
-- (void)textFont:(TMBValue * _Nullable)value;
-- (void)textIgnorePlacement:(TMBValue * _Nullable)value;
-- (void)textJustify:(TMBValue * _Nullable)value;
-- (void)textKeepUpright:(TMBValue * _Nullable)value;
-- (void)textLetterSpacing:(TMBValue * _Nullable)value;
-- (void)textLineHeight:(TMBValue * _Nullable)value;
-- (void)textMaxAngle:(TMBValue * _Nullable)value;
-- (void)textMaxWidth:(TMBValue * _Nullable)value;
-- (void)textOffset:(TMBValue * _Nullable)value;
-- (void)textOptional:(TMBValue * _Nullable)value;
-- (void)textPadding:(TMBValue * _Nullable)value;
-- (void)textPitchAlignment:(TMBValue * _Nullable)value;
-- (void)textRadialOffset:(TMBValue * _Nullable)value;
-- (void)textRotate:(TMBValue * _Nullable)value;
-- (void)textRotationAlignment:(TMBValue * _Nullable)value;
-- (void)textSize:(TMBValue * _Nullable)value;
-- (void)textTransform:(TMBValue * _Nullable)value;
-- (void)textVariableAnchor:(TMBValue * _Nullable)value;
-- (void)textWritingMode:(TMBValue * _Nullable)value;
-- (void)iconColor:(TMBValue * _Nullable)value;
-- (void)iconColorTransition:(TMBStyleTransition * _Nullable)value;
-- (void)iconHaloBlur:(TMBValue * _Nullable)value;
-- (void)iconHaloBlurTransition:(TMBStyleTransition * _Nullable)value;
-- (void)iconHaloColor:(TMBValue * _Nullable)value;
-- (void)iconHaloColorTransition:(TMBStyleTransition * _Nullable)value;
-- (void)iconHaloWidth:(TMBValue * _Nullable)value;
-- (void)iconHaloWidthTransition:(TMBStyleTransition * _Nullable)value;
-- (void)iconOpacity:(TMBValue * _Nullable)value;
-- (void)iconOpacityTransition:(TMBStyleTransition * _Nullable)value;
-- (void)iconTranslate:(TMBValue * _Nullable)value;
-- (void)iconTranslateTransition:(TMBStyleTransition * _Nullable)value;
-- (void)iconTranslateAnchor:(TMBValue * _Nullable)value;
-- (void)textColor:(TMBValue * _Nullable)value;
-- (void)textColorTransition:(TMBStyleTransition * _Nullable)value;
-- (void)textHaloBlur:(TMBValue * _Nullable)value;
-- (void)textHaloBlurTransition:(TMBStyleTransition * _Nullable)value;
-- (void)textHaloColor:(TMBValue * _Nullable)value;
-- (void)textHaloColorTransition:(TMBStyleTransition * _Nullable)value;
-- (void)textHaloWidth:(TMBValue * _Nullable)value;
-- (void)textHaloWidthTransition:(TMBStyleTransition * _Nullable)value;
-- (void)textOpacity:(TMBValue * _Nullable)value;
-- (void)textOpacityTransition:(TMBStyleTransition * _Nullable)value;
-- (void)textTranslate:(TMBValue * _Nullable)value;
-- (void)textTranslateTransition:(TMBStyleTransition * _Nullable)value;
-- (void)textTranslateAnchor:(TMBValue * _Nullable)value;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC9TMBAnchor")
@@ -837,6 +497,19 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBAnchor * 
 /// The position of the light source is aligned to the rotation of the viewport.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBAnchor * _Nonnull viewport;)
 + (TMBAnchor * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC17TMBAnimationOwner")
+@interface TMBAnimationOwner : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithRawValue:(NSString * _Nonnull)rawValue OBJC_DESIGNATED_INITIALIZER;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBAnimationOwner * _Nonnull gestures;)
++ (TMBAnimationOwner * _Nonnull)gestures SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBAnimationOwner * _Nonnull unspecified;)
++ (TMBAnimationOwner * _Nonnull)unspecified SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -876,6 +549,260 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC20TMBAnnotationManager_")
 @property (nonatomic, readonly, copy) NSString * _Nonnull layerId;
 @end
 
+@class TMBLayerPosition;
+@class TMBClusterOptions;
+@class TMBPointAnnotationManager;
+@class TMBPolygonAnnotationManager;
+@class TMBPolylineAnnotationManager;
+@class TMBCircleAnnotationManager;
+
+/// <code>AnnotationOrchestrator</code> provides a way to create annotation managers of different types.
+SWIFT_CLASS("_TtC13MapboxMapObjC25TMBAnnotationOrchestrator")
+@interface TMBAnnotationOrchestrator : NSObject
+/// Dictionary of annotation managers keyed by their identifiers.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id <TMBAnnotationManager>> * _Nonnull annotationManagersById;
+/// Creates a <code>PointAnnotationManager</code> which is used to manage a collection of
+/// <code>PointAnnotation</code>s. Annotations persist across style changes. If an annotation manager with
+/// the same <code>id</code> has already been created, the old one will be removed as if
+/// <code>removeAnnotationManager(withId:)</code> had been called. <code>AnnotationOrchestrator</code>
+/// keeps a strong reference to any <code>PointAnnotationManager</code> until it is removed.
+/// \param id Optional string identifier for this manager.
+///
+/// \param layerPosition Optionally set the <code>LayerPosition</code> of the layer managed.
+///
+/// \param clusterOptions Optionally set the <code>ClusterOptions</code> to cluster the Point Annotations
+///
+///
+/// returns:
+/// An instance of <code>PointAnnotationManager</code>
+- (TMBPointAnnotationManager * _Nonnull)makePointAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(TMBLayerPosition * _Nullable)layerPosition clusterOptions:(TMBClusterOptions * _Nullable)clusterOptions SWIFT_WARN_UNUSED_RESULT;
+/// Creates a <code>PolygonAnnotationManager</code> which is used to manage a collection of
+/// <code>PolygonAnnotation</code>s. Annotations persist across style changes. If an annotation manager with
+/// the same <code>id</code> has already been created, the old one will be removed as if
+/// <code>removeAnnotationManager(withId:)</code> had been called. <code>AnnotationOrchestrator</code>
+/// keeps a strong reference to any <code>PolygonAnnotationManager</code> until it is removed.
+/// \param id Optional string identifier for this manager..
+///
+/// \param layerPosition Optionally set the <code>LayerPosition</code> of the layer managed.
+///
+///
+/// returns:
+/// An instance of <code>PolygonAnnotationManager</code>
+- (TMBPolygonAnnotationManager * _Nonnull)makePolygonAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(TMBLayerPosition * _Nullable)layerPosition SWIFT_WARN_UNUSED_RESULT;
+/// Creates a <code>PolylineAnnotationManager</code> which is used to manage a collection of
+/// <code>PolylineAnnotation</code>s. Annotations persist across style changes. If an annotation manager with
+/// the same <code>id</code> has already been created, the old one will be removed as if
+/// <code>removeAnnotationManager(withId:)</code> had been called. <code>AnnotationOrchestrator</code>
+/// keeps a strong reference to any <code>PolylineAnnotationManager</code> until it is removed.
+/// \param id Optional string identifier for this manager.
+///
+/// \param layerPosition Optionally set the <code>LayerPosition</code> of the layer managed.
+///
+///
+/// returns:
+/// An instance of <code>PolylineAnnotationManager</code>
+- (TMBPolylineAnnotationManager * _Nonnull)makePolylineAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(TMBLayerPosition * _Nullable)layerPosition SWIFT_WARN_UNUSED_RESULT;
+/// Creates a <code>CircleAnnotationManager</code> which is used to manage a collection of
+/// <code>CircleAnnotation</code>s. Annotations persist across style changes. If an annotation manager with
+/// the same <code>id</code> has already been created, the old one will be removed as if
+/// <code>removeAnnotationManager(withId:)</code> had been called. <code>AnnotationOrchestrator</code>
+/// keeps a strong reference to any <code>CircleAnnotationManager</code> until it is removed.
+/// \param id Optional string identifier for this manager.
+///
+/// \param layerPosition Optionally set the <code>LayerPosition</code> of the layer managed.
+///
+///
+/// returns:
+/// An instance of <code>CircleAnnotationManager</code>
+- (TMBCircleAnnotationManager * _Nonnull)makeCircleAnnotationManagerWithId:(NSString * _Nullable)id layerPosition:(TMBLayerPosition * _Nullable)layerPosition SWIFT_WARN_UNUSED_RESULT;
+/// Removes an annotation manager, this will remove the underlying layer and source from the style.
+/// A removed annotation manager will not be able to reuse anymore, you will need to create new annotation manger to add annotations.
+/// \param id Identifer of annotation manager to remove
+///
+- (void)removeAnnotationManagerWithId:(NSString * _Nonnull)id;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A style’s fog property is a global effect that improves depth perception by fading out distant objects.
+/// seealso:
+/// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/fog/">Mapbox Style Specification</a>
+SWIFT_CLASS("_TtC13MapboxMapObjC13TMBAtmosphere")
+@interface TMBAtmosphere : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Used to configure position, margin, and visibility for the map’s attribution button.
+SWIFT_CLASS("_TtC13MapboxMapObjC27TMBAttributionButtonOptions")
+@interface TMBAttributionButtonOptions : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A protocol to open attribution URLs.
+/// Use this protocol when the map view is used in non-application target(e.g. application extension target).
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC23TMBAttributionURLOpener_")
+@protocol TMBAttributionURLOpener
+/// Asks the opener to open the provided URL.
+/// \param url The URL to be opened.
+///
+- (void)openAttributionURL:(NSURL * _Nonnull)url;
+@end
+
+@class TMBCameraAnimator;
+@protocol UITimingCurveProvider;
+@class TMBCameraTransition;
+@class BasicCameraAnimator;
+
+/// APIs for animating the camera.
+SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCameraAnimationsManager")
+@interface TMBCameraAnimationsManager : NSObject
+/// List of animators currently alive
+@property (nonatomic, readonly, copy) NSArray<TMBCameraAnimator *> * _Nonnull cameraAnimators;
+/// Interrupts all <code>active</code> animation.
+/// The camera remains at the last point before the cancel request was invoked, i.e.,
+/// the camera is not reset or fast-forwarded to the end of the transition.
+/// Canceled animations cannot be restarted / resumed. The animator must be recreated.
+- (void)cancelAnimations;
+/// Moves the viewpoint to a different location using a transition animation that
+/// evokes powered flight and an optional transition duration and timing function.
+/// It seamlessly incorporates zooming and panning to help
+/// the user find his or her bearings even after traversing a great distance.
+/// \param to The camera options at the end of the animation. Any camera parameters that are nil will
+/// not be animated.
+///
+/// \param duration Duration of the animation, measured in seconds. If nil, a suitable calculated
+/// duration is used.
+///
+/// \param completion Completion handler called when the animation stops
+///
+///
+/// returns:
+/// An instance of <code>Cancelable</code> which can be canceled if necessary
+- (TMBCancelable * _Nullable)flyTo:(MBMCameraOptions * _Nonnull)to duration:(NSNumber * _Nullable)duration completion:(void (^ _Nullable)(UIViewAnimatingPosition))completion;
+/// Ease the camera to a destination
+/// \param to the target camera after animation; if <code>camera.anchor</code> is non-nil, it is use for both
+/// the <code>fromValue</code> and the <code>toValue</code> of the underlying animation such that the
+/// value specified will not be interpolated, but will be passed as-is to each camera update
+/// during the animation. To animate <code>anchor</code> itself, use the <code>makeAnimator</code> APIs.
+///
+/// \param duration duration of the animation
+///
+/// \param curve the easing curve for the animation
+///
+/// \param completion completion to be called after animation
+///
+///
+/// returns:
+/// An instance of <code>Cancelable</code> which can be canceled if necessary
+- (TMBCancelable * _Nullable)easeTo:(MBMCameraOptions * _Nonnull)to duration:(NSTimeInterval)duration curve:(enum UIViewAnimationCurve)curve completion:(void (^ _Nullable)(UIViewAnimatingPosition))completion;
+/// Creates a <code>BasicCameraAnimator</code>.
+/// note:
+/// <code>CameraAnimationsManager</code> only keeps animators alive while their
+/// <code>CameraAnimator/state</code> is <code>.active</code>.
+/// \param duration The duration of the animation.
+///
+/// \param timingParameters The object providing the timing information. This object must adopt
+/// the <code>UITimingCurveProvider</code> protocol.
+///
+/// \param animationOwner An <code>AnimationOwner</code> that can be used to identify what component
+/// initiated an animation.
+///
+/// \param animations a closure that configures the animation’s to and from values via a
+/// <code>CameraTransition</code>.
+///
+///
+/// returns:
+/// A new <code>BasicCameraAnimator</code>.
+- (BasicCameraAnimator * _Nonnull)makeAnimatorWithDuration:(NSTimeInterval)duration timingParameters:(id <UITimingCurveProvider> _Nonnull)timingParameters animationOwner:(TMBAnimationOwner * _Nullable)animationOwner animations:(void (^ _Nonnull)(TMBCameraTransition * _Nonnull))animations SWIFT_WARN_UNUSED_RESULT;
+/// Creates a <code>BasicCameraAnimator</code>.
+/// note:
+/// <code>CameraAnimationsManager</code> only keeps animators alive while their
+/// <code>CameraAnimator/state</code> is <code>.active</code>.
+/// \param duration The duration of the animation.
+///
+/// \param curve One of UIKit’s predefined timing curves to apply to the animation.
+///
+/// \param animationOwner An <code>AnimationOwner</code> that can be used to identify what component
+/// initiated an animation.
+///
+/// \param animations a closure that configures the animation’s to and from values via a
+/// <code>CameraTransition</code>.
+///
+///
+/// returns:
+/// A new <code>BasicCameraAnimator</code>.
+- (BasicCameraAnimator * _Nonnull)makeAnimatorWithDuration:(NSTimeInterval)duration curve:(enum UIViewAnimationCurve)curve animationOwner:(TMBAnimationOwner * _Nullable)animationOwner animations:(void (^ _Nonnull)(TMBCameraTransition * _Nonnull))animations SWIFT_WARN_UNUSED_RESULT;
+/// Creates a <code>BasicCameraAnimator</code>.
+/// note:
+/// <code>CameraAnimationsManager</code> only keeps animators alive while their
+/// <code>CameraAnimator/state</code> is <code>.active</code>.
+/// \param duration The duration of the animation.
+///
+/// \param controlPoint1 The first control point for the cubic Bézier timing curve.
+///
+/// \param controlPoint2 The second control point for the cubic Bézier timing curve.
+///
+/// \param animationOwner An <code>AnimationOwner</code> that can be used to identify what component
+/// initiated an animation.
+///
+/// \param animations a closure that configures the animation’s to and from values via a
+/// <code>CameraTransition</code>.
+///
+///
+/// returns:
+/// A new <code>BasicCameraAnimator</code>.
+- (BasicCameraAnimator * _Nonnull)makeAnimatorWithDuration:(NSTimeInterval)duration controlPoint1:(CGPoint)controlPoint1 controlPoint2:(CGPoint)controlPoint2 animationOwner:(TMBAnimationOwner * _Nullable)animationOwner animations:(void (^ _Nonnull)(TMBCameraTransition * _Nonnull))animations SWIFT_WARN_UNUSED_RESULT;
+/// Creates a <code>BasicCameraAnimator</code>.
+/// note:
+/// <code>CameraAnimationsManager</code> only keeps animators alive while their
+/// <code>CameraAnimator/state</code> is <code>.active</code>.
+/// \param duration The duration of the animation.
+///
+/// \param dampingRatio The damping ratio to apply to the initial acceleration and oscillation. To
+/// smoothly decelerate the animation without oscillation, specify a value of 1.
+/// Specify values closer to 0 to create less damping and more oscillation.
+///
+/// \param animationOwner An <code>AnimationOwner</code> that can be used to identify what component
+/// initiated an animation.
+///
+/// \param animations a closure that configures the animation’s to and from values via a
+/// <code>CameraTransition</code>.
+///
+///
+/// returns:
+/// A new <code>BasicCameraAnimator</code>.
+- (BasicCameraAnimator * _Nonnull)makeAnimatorWithDuration:(NSTimeInterval)duration dampingRatio:(CGFloat)dampingRatio animationOwner:(TMBAnimationOwner * _Nullable)animationOwner animations:(void (^ _Nonnull)(TMBCameraTransition * _Nonnull))animations SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC17TMBCameraAnimator")
+@interface TMBCameraAnimator : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Structure used to represent a desired change to the map’s camera
+SWIFT_CLASS("_TtC13MapboxMapObjC19TMBCameraTransition")
+@interface TMBCameraTransition : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Generic struct used to represent a change in a value from a starting point (i.e. <code>fromValue</code>) to an end point (i.e. <code>toValue</code>).
+SWIFT_CLASS("_TtC13MapboxMapObjC25TMBCameraTransitionChange")
+@interface TMBCameraTransitionChange : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBCancelable")
 @interface TMBCancelable : NSObject
@@ -884,6 +811,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC13TMBCancelable")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class UIColor;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC19TMBCircleAnnotation")
 @interface TMBCircleAnnotation : NSObject <TMBAnnotation>
@@ -984,6 +912,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBCircleTra
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBValue;
+@class TMBExpression;
 
 SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
 @interface TMBClusterOptions : NSObject
@@ -1043,6 +973,95 @@ SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
 @end
 
 
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBCollatorOptions")
+@interface TMBCollatorOptions : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC21TMBCompassViewOptions")
+@interface TMBCompassViewOptions : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class TMBDefaultViewportTransitionOptions;
+
+/// A default <code>ViewportTransition</code> implementation.
+/// Use <code>Viewport/makeDefaultViewportTransition(options:)</code> to create instances of this
+/// class.
+SWIFT_CLASS("_TtC13MapboxMapObjC28TMBDefaultViewportTransition")
+@interface TMBDefaultViewportTransition : NSObject
+/// Configuration options.
+/// New values will take effect the next time <code>ViewportTransition/run(to:completion:)</code>
+/// is invoked
+@property (nonatomic, strong) TMBDefaultViewportTransitionOptions * _Nonnull options;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@protocol TMBViewportState;
+
+/// to and from different <code>ViewportState</code>s.
+/// MapboxMaps provides implementations of <code>ViewportTransition</code> that can be created and
+/// configured via methods on <code>Viewport</code>. Applications may also define their own implementations to
+/// handle advanced use cases not covered by the provided implementations.
+/// seealso:
+///
+/// <ul>
+///   <li>
+///     <code>DefaultViewportTransition</code>
+///   </li>
+///   <li>
+///     <code>ImmediateViewportTransition</code>
+///   </li>
+/// </ul>
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC21TMBViewportTransition_")
+@protocol TMBViewportTransition
+/// Runs the transition to <code>toState</code>.
+/// The completion block must be invoked with <code>true</code> if the transition completes successfully. If the
+/// transition fails, invoke the completion block with <code>false</code>.
+/// If the returned <code>Cancelable</code> is canceled, it not necessary to invoke the completion block (but
+/// is safe to do so — it will just be ignored).
+/// Transitions should handle the possibility that the “to” state might fail to provide a target camera in a
+/// timely manner or might update the target camera multiple times during the transition (a “moving
+/// target”).
+/// \param toState The target state for the transition.
+///
+/// \param completion A block that must be invoked when the transition is complete. Must be invoked
+/// on the main queue.
+///
+/// \param success A flag to indicate whether the transition was successful.
+///
+///
+/// returns:
+/// a <code>Cancelable</code> that can be used to terminate the transition. If
+/// <code>Cancelable/cancel()</code> is invoked, the transition must immediately stop
+/// updating the camera and cancel any animations that it started.
+- (TMBCancelable * _Nonnull)runTo:(id <TMBViewportState> _Nonnull)toState completion:(void (^ _Nonnull)(BOOL))completion SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBDefaultViewportTransition (SWIFT_EXTENSION(MapboxMapObjC)) <TMBViewportTransition>
+- (TMBCancelable * _Nonnull)runTo:(id <TMBViewportState> _Nonnull)toState completion:(void (^ _Nonnull)(BOOL))completion SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+/// Configuration options for <code>DefaultViewportTransition</code>.
+SWIFT_CLASS("_TtC13MapboxMapObjC35TMBDefaultViewportTransitionOptions")
+@interface TMBDefaultViewportTransitionOptions : NSObject
+/// The maximum duration of the transition.
+@property (nonatomic) NSTimeInterval maxDuration;
+/// Memberwise initializer for <code>DefaultViewportTransitionOptions</code>.
+/// \param maxDuration Defaults to 3.5.
+///
+- (nonnull instancetype)initWithMaxDuration:(NSTimeInterval)maxDuration OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtC13MapboxMapObjC11TMBEncoding")
 @interface TMBEncoding : NSObject <NamedString>
 - (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
@@ -1061,8 +1080,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBEncoding 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBExpression")
 @interface TMBExpression : NSObject
-@property (nonatomic, readonly, copy) NSString * _Nonnull description;
-@property (nonatomic, readonly, copy) NSString * _Nonnull debugDescription;
 + (TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ SWIFT_WARN_UNUSED_RESULT;
 + (TMBExpression * _Nonnull)createWithOperator:(TMBOperator * _Nonnull)operator_ arguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
 + (TMBExpression * _Nonnull)createWithArguments:(NSArray * _Nonnull)arguments SWIFT_WARN_UNUSED_RESULT;
@@ -1070,6 +1087,21 @@ SWIFT_CLASS("_TtC13MapboxMapObjC13TMBExpression")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+enum TMBExpressionOptionsType : NSInteger;
+
+SWIFT_CLASS("_TtC13MapboxMapObjC20TMBExpressionOptions")
+@interface TMBExpressionOptions : NSObject
+@property (nonatomic, readonly) enum TMBExpressionOptionsType type;
+@property (nonatomic, readonly) id _Nonnull options;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, TMBExpressionOptionsType, open) {
+  TMBExpressionOptionsTypeFormat = 0,
+  TMBExpressionOptionsTypeNumberFormat = 1,
+  TMBExpressionOptionsTypeCollator = 2,
+};
 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC31TMBFillExtrusionTranslateAnchor")
@@ -1102,18 +1134,180 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTrans
 @end
 
 
-SWIFT_PROTOCOL("_TtP13MapboxMapObjC10TMBGeoData_")
-@protocol TMBGeoData
-@end
-
-
-SWIFT_CLASS("_TtC13MapboxMapObjC11TMBGeometry")
-@interface TMBGeometry : NSObject
-+ (TMBGeometry * _Nonnull)fromData:(id <TMBGeoData> _Nonnull)data SWIFT_WARN_UNUSED_RESULT;
+/// A <code>ViewportState</code> implementation that tracks the location puck (to show a puck, use
+/// <code>LocationOptions/puckType</code>)
+/// Use <code>Viewport/makeFollowPuckViewportState(options:)</code> to create instances of this
+/// class.
+SWIFT_CLASS("_TtC13MapboxMapObjC26TMBFollowPuckViewportState")
+@interface TMBFollowPuckViewportState : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+/// <code>ViewportState</code> is a protocol that <code>Viewport</code> depends on as it orchestrates transitions to and
+/// from different states.
+/// A <code>ViewportState</code> is a reference type and must not be shared among multiple <code>Viewport</code>
+/// instances simultaneously.
+/// The <code>ViewportState/observeDataSource(with:)</code> method allows
+/// <code>ViewportTransition</code>s to consume a stream of camera updates from a target state while
+/// executing a transition. <code>ViewportState/startUpdatingCamera()</code> and
+/// <code>ViewportState/stopUpdatingCamera()</code> are invoked to tell the state that it should assume or
+/// relinquish control of the map’s camera. These are typically used by <code>Viewport</code> itself after a
+/// successful transition into a state and when exiting a state, respectively.
+/// MapboxMaps provides implementations of <code>ViewportState</code> that can be created and configured
+/// via methods on <code>Viewport</code>. Applications may also define their own implementations to handle
+/// advanced use cases not covered by the provided implementations.
+/// States should generally pre-warm their data sources as soon as they are created to minimize delays when
+/// they become current. For this reason, only states that are currently (or soon-to-be) needed should be kept
+/// alive so that unneeded resources (e.g. location services) can be released.
+/// seealso:
+///
+/// <ul>
+///   <li>
+///     <code>FollowPuckViewportState</code>
+///   </li>
+///   <li>
+///     <code>OverviewViewportState</code>
+///   </li>
+/// </ul>
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC16TMBViewportState_")
+@protocol TMBViewportState
+/// Registers a <code>handler</code> to receive the cameras being generated by this <code>ViewportState</code>.
+/// This method is commonly used by <code>ViewportTransition</code> implementations to obtain the
+/// target camera for transition animations. Transitions typically cannot start their animations until after
+/// <code>handler</code> is invoked for the first time, so it’s a good idea for states to invoke <code>handler</code> with
+/// the current camera if it’s not too stale rather than waiting for the next camera change to occur. To
+/// increase the likelihood that a valid camera exists when a handler is registered, design
+/// <code>ViewportState</code> implementations so that they start updating their internal state prior to when
+/// they are passed to <code>Viewport/transition(to:transition:completion:)</code>.
+/// The caller may either cancel the returned <code>Cancelable</code> <em>or</em> return <code>false</code> from
+/// <code>handler</code> to indicate that it wishes to stop receiving updates. Following either of these events,
+/// implemenations must no longer invoke <code>handler</code> and must release all strong references to it.
+/// \param handler A closure that is invoked by the state whenever its camera changes. Returns
+/// <code>true</code> to stay subscribed and <code>false</code> to unsubscribe. <code>handler</code> must be
+/// invoked on the main queue.
+///
+/// \param camera The <code>ViewportState</code>’s most recent camera.
+///
+///
+/// returns:
+/// A <code>Cancelable</code> that the caller can use to unsubscribe.
+- (TMBCancelable * _Nonnull)observeDataSourceWith:(BOOL (^ _Nonnull)(MBMCameraOptions * _Nonnull))handler SWIFT_WARN_UNUSED_RESULT;
+/// Tells this state that it is now responsible for updating the camera.
+/// <code>Viewport</code> calls this method at the end of a successful transition into this state.
+/// Implementations typically have a dependency on either <code>MapboxMap</code> so that they can use its
+/// <code>MapboxMap/setCamera(to:)</code> method to change the camea or on
+/// <code>CameraAnimationsManager</code> so that they can run camera animations.
+- (void)startUpdatingCamera;
+/// Tells this state that it is no longer responsible for updating the camera.
+/// <code>Viewport</code> calls this method at the beginning of the transition out of this state.
+/// Implementations must stop updating the camera immediately and should typically cancel any
+/// ongoing animations that they started when this method is invoked.
+- (void)stopUpdatingCamera;
+@end
+
+
+@interface TMBFollowPuckViewportState (SWIFT_EXTENSION(MapboxMapObjC)) <TMBViewportState>
+- (TMBCancelable * _Nonnull)observeDataSourceWith:(BOOL (^ _Nonnull)(MBMCameraOptions * _Nonnull))handler SWIFT_WARN_UNUSED_RESULT;
+- (void)startUpdatingCamera;
+- (void)stopUpdatingCamera;
+@end
+
+
+/// Expresses the different ways that <code>FollowPuckViewportState</code> can obtain values to use when
+/// setting <code>CameraOptions/bearing</code>.
+/// seealso:
+/// <code>LocationOptions/puckBearingSource</code>
+SWIFT_CLASS("_TtC13MapboxMapObjC33TMBFollowPuckViewportStateBearing")
+@interface TMBFollowPuckViewportStateBearing : NSObject
+/// <code>FollowPuckViewportState</code> sets <code>CameraOptions/bearing</code> based on the current
+/// heading.
+/// seealso:
+///
+/// <ul>
+///   <li>
+///     <code>LocationManager</code>
+///   </li>
+///   <li>
+///     <code>Location/heading</code>
+///   </li>
+/// </ul>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFollowPuckViewportStateBearing * _Nonnull heading;)
++ (TMBFollowPuckViewportStateBearing * _Nonnull)heading SWIFT_WARN_UNUSED_RESULT;
+/// <code>FollowPuckViewportState</code> sets <code>CameraOptions/bearing</code> based on the current
+/// course.
+/// seealso:
+///
+/// <ul>
+///   <li>
+///     <code>LocationManager</code>
+///   </li>
+///   <li>
+///     <code>Location/course</code>
+///   </li>
+/// </ul>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFollowPuckViewportStateBearing * _Nonnull course;)
++ (TMBFollowPuckViewportStateBearing * _Nonnull)course SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// Configuration options for <code>FollowPuckViewportState</code>.
+/// Each of the <code>CameraOptions</code>-related properties is optional, so that the state can be configured to
+/// only modify certain aspects of the camera if desired. This can be used, to achieve effects like allowing
+/// zoom gestures to work simultaneously with <code>FollowPuckViewportState</code>.
+/// seealso:
+/// <code>ViewportOptions/transitionsToIdleUponUserInteraction</code>
+SWIFT_CLASS("_TtC13MapboxMapObjC33TMBFollowPuckViewportStateOptions")
+@interface TMBFollowPuckViewportStateOptions : NSObject
+/// The value to use for <code>CameraOptions/padding</code> when setting the camera. If <code>nil</code>, padding
+/// will not be modified.
+@property (nonatomic, strong) NSValue * _Nullable padding;
+/// The value to use for <code>CameraOptions/zoom</code> when setting the camera. If <code>nil</code>, zoom will
+/// not be modified.
+@property (nonatomic, strong) NSNumber * _Nullable zoom;
+/// Indicates how to obtain the value to use for <code>CameraOptions/bearing</code> when setting the
+/// camera. If <code>nil</code>, bearing will not be modified.
+@property (nonatomic, strong) TMBFollowPuckViewportStateBearing * _Nullable bearing;
+/// The value to use for <code>CameraOptions/pitch</code> when setting the camera. If <code>nil</code>, pitch will
+/// not be modified.
+@property (nonatomic, strong) NSNumber * _Nullable pitch;
+/// Memberwise initializer for <code>FollowPuckViewportStateOptions</code>.
+/// All parameters have default values.
+/// \param padding Defaults to <code>UIEdgeInsets.zero</code>.
+///
+/// \param zoom Defaults to 16.35.
+///
+/// \param bearing Defaults to <code>FollowPuckViewportStateBearing/heading</code>.
+///
+/// \param pitch Defaults to 45.
+///
+- (nonnull instancetype)initWithPadding:(NSValue * _Nullable)padding zoom:(NSNumber * _Nullable)zoom bearing:(TMBFollowPuckViewportStateBearing * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC16TMBFormatOptions")
+@interface TMBFormatOptions : NSObject
+/// Applies a scaling factor on text-size as specified by the root layout property.
+@property (nonatomic, strong) TMBValue * _Nullable fontScaleValue;
+/// Applies a scaling factor on text-size as specified by the root layout property.
+@property (nonatomic, strong) NSNumber * _Nullable fontScale;
+/// Overrides the font stack specified by the root layout property.
+@property (nonatomic, strong) TMBValue * _Nullable textFontValue;
+/// Overrides the font stack specified by the root layout property.
+@property (nonatomic, copy) NSArray<NSString *> * _Nullable textFont;
+/// Overrides the color specified by the root paint property.
+@property (nonatomic, strong) TMBValue * _Nullable textColorValue;
+/// Overrides the color specified by the root paint property.
+@property (nonatomic, strong) UIColor * _Nullable textColor;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 @protocol TMBGestureManagerDelegate;
 @class TMBGestureOptions;
@@ -1350,12 +1544,99 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTrans
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, TMBLayerPosition, open) {
-  TMBLayerPositionAt = 0,
-  TMBLayerPositionBelow = 1,
-  TMBLayerPositionAbove = 2,
-  TMBLayerPositionUnowned = 3,
+
+/// A <code>ViewportTransition</code> implementation that transitions immediately without any animation.
+/// Use <code>Viewport/makeImmediateViewportTransition()</code> to create instances of this class.
+SWIFT_CLASS("_TtC13MapboxMapObjC30TMBImmediateViewportTransition")
+@interface TMBImmediateViewportTransition : NSObject <TMBViewportTransition>
+- (TMBCancelable * _Nonnull)runTo:(id <TMBViewportState> _Nonnull)toState completion:(void (^ _Nonnull)(BOOL))completion SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC8TMBLayer")
+@interface TMBLayer : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Information about a layer
+SWIFT_CLASS("_TtC13MapboxMapObjC12TMBLayerInfo")
+@interface TMBLayerInfo : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum TMBLayerPositionType : NSInteger;
+
+SWIFT_CLASS("_TtC13MapboxMapObjC16TMBLayerPosition")
+@interface TMBLayerPosition : NSObject
+@property (nonatomic, readonly, strong) id _Nonnull arg;
+@property (nonatomic, readonly) enum TMBLayerPositionType type;
+- (nonnull instancetype)init:(enum TMBLayerPositionType)type arg:(id _Nonnull)arg OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+typedef SWIFT_ENUM(NSInteger, TMBLayerPositionType, open) {
+  TMBLayerPositionTypeAt = 0,
+  TMBLayerPositionTypeAbove = 1,
+  TMBLayerPositionTypeBelow = 2,
 };
+
+/// Layer rendering types
+typedef SWIFT_ENUM(NSInteger, TMBLayerType, open) {
+/// A filled polygon with an optional stroked border.
+  TMBLayerTypeFill = 0,
+/// A stroked line.
+  TMBLayerTypeLine = 1,
+/// An icon or a text label.
+  TMBLayerTypeSymbol = 2,
+/// A filled circle.
+  TMBLayerTypeCircle = 3,
+/// A heatmap.
+  TMBLayerTypeHeatmap = 4,
+/// An extruded (3D) polygon.
+  TMBLayerTypeFillExtrusion = 5,
+/// Raster map textures such as satellite imagery.
+  TMBLayerTypeRaster = 6,
+/// Client-side hillshading visualization based on DEM data.
+/// Currently, the implementation only supports Mapbox Terrain RGB and Mapzen Terrarium tiles.
+  TMBLayerTypeHillshade = 7,
+/// The background color or pattern of the map.
+  TMBLayerTypeBackground = 8,
+/// Layer representing the location indicator
+  TMBLayerTypeLocationIndicator = 9,
+/// Layer representing the sky
+  TMBLayerTypeSky = 10,
+};
+
+@class TMBStyleTransition;
+
+/// The global light source.
+/// seealso:
+/// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#light">Mapbox Style Specification</a>
+SWIFT_CLASS("_TtC13MapboxMapObjC8TMBLight")
+@interface TMBLight : NSObject
+/// Whether extruded geometries are lit relative to the map or viewport.
+@property (nonatomic, strong) TMBAnchor * _Nullable anchor;
+/// Color tint for lighting extruded geometries.
+@property (nonatomic, strong) UIColor * _Nullable color;
+/// Transition property for <code>color</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable colorTransition;
+/// Intensity of lighting (on a scale from 0 to 1). Higher numbers will present as more extreme contrast.
+@property (nonatomic, strong) NSNumber * _Nullable intensity;
+/// Transition property for <code>intensity</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable intensityTransition;
+/// Position of the light source relative to lit (extruded) geometries, in [r radial coordinate, a azimuthal angle, p polar angle] where r indicates the distance from the center of the base of an object to its light, a indicates the position of the light relative to 0 degree (0 degree when <code>light.anchor</code> is set to <code>viewport</code> corresponds to the top of the viewport, or 0 degree when <code>light.anchor</code> is set to <code>map</code> corresponds to due north, and degrees proceed clockwise), and p indicates the height of the light (from 0 degree, directly above, to 180 degree, directly below).
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable position;
+/// Transition property for <code>position</code>
+@property (nonatomic, strong) TMBStyleTransition * _Nullable positionTransition;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC10TMBLineCap")
@@ -1404,6 +1685,808 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTrans
 /// The line is translated relative to the viewport.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillTranslateAnchor * _Nonnull viewport;)
 + (TMBFillTranslateAnchor * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class Location;
+@protocol TMBLocationPermissionsDelegate;
+@protocol TMBLocationProvider;
+@protocol LocationConsumer;
+@class TMBLocationOptions;
+@protocol PuckLocationConsumer;
+
+/// An object responsible for notifying the map view about location-related events,
+/// such as a change in the device’s location.
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBLocationManager")
+@interface TMBLocationManager : NSObject
+/// Represents the latest location received from the location provider.
+@property (nonatomic, readonly, strong) Location * _Nullable latestLocation;
+/// The object that acts as the delegate of the location manager.
+@property (nonatomic, weak) id <TMBLocationPermissionsDelegate> _Nullable delegate;
+/// The current underlying location provider. Use <code>overrideLocationProvider(with:)</code> to substitute a different provider.
+/// Avoid manipulating the location provider directly. LocationManager assumes full responsibility for starting and stopping location
+/// and heading updates as needed.
+@property (nonatomic, readonly, strong) id <TMBLocationProvider> _Null_unspecified locationProvider;
+/// The set of objects that are currently consuming location updates.
+/// The returned object is a copy of the underlying one, so mutating it will have no effect.
+@property (nonatomic, readonly, strong) NSHashTable<id <LocationConsumer>> * _Nonnull consumers;
+/// Configuration options for the location manager.
+@property (nonatomic, strong) TMBLocationOptions * _Nonnull options;
+- (void)overrideLocationProviderWith:(id <TMBLocationProvider> _Nonnull)customLocationProvider;
+/// The location manager holds weak references to consumers, client code should retain these references.
+- (void)addLocationConsumer:(id <LocationConsumer> _Nonnull)consumer;
+/// Removes a location consumer from the location manager.
+- (void)removeLocationConsumer:(id <LocationConsumer> _Nonnull)consumer;
+/// Adds <code>PuckLocationConsumer</code> to the location manager.
+/// An instance of <code>PuckLocationConsumer</code> will get the accurate (interpolated) location of the puck as it moves,
+/// as opposed to the <code>LocationConsumer</code> that gets updated only when the <code>LocationProvider</code> has emitted a new location.
+/// important:
+/// The location manager holds a weak reference to the consumer, thus client should retain these references.
+- (void)addPuckLocationConsumer:(id <PuckLocationConsumer> _Nonnull)consumer;
+/// Removes a <code>PuckLocationConsumer</code> from the location manager.
+- (void)removePuckLocationConsumer:(id <PuckLocationConsumer> _Nonnull)consumer;
+/// Allows a custom case to request full accuracy
+- (void)requestTemporaryFullAccuracyPermissionsWithPurposeKey:(NSString * _Nonnull)purposeKey SWIFT_AVAILABILITY(ios,introduced=14.0);
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class LocationManager;
+
+@interface TMBLocationManager (SWIFT_EXTENSION(MapboxMapObjC)) <LocationPermissionsDelegate>
+- (BOOL)locationManagerShouldDisplayHeadingCalibration:(LocationManager * _Nonnull)locationManager SWIFT_WARN_UNUSED_RESULT;
+- (void)locationManager:(LocationManager * _Nonnull)locationManager didChangeAccuracyAuthorization:(CLAccuracyAuthorization)accuracyAuthorization;
+- (void)locationManager:(LocationManager * _Nonnull)locationManager didFailToLocateUserWithError:(NSError * _Nonnull)error;
+@end
+
+enum TMBPuckType : NSInteger;
+@class TMBPuck2DConfiguration;
+@class TMBPuck3DConfiguration;
+enum TMBPuckBearingSource : NSInteger;
+
+/// A struct to configure a <code>LocationManager</code>
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBLocationOptions")
+@interface TMBLocationOptions : NSObject
+/// Specifies the minimum distance (measured in meters) a device must move horizontally
+/// before a location update is generated.
+/// The default value of this property is <code>kCLDistanceFilterNone</code>.
+@property (nonatomic) CLLocationDistance distanceFilter;
+/// Specifies the accuracy of the location data.
+/// The default value is <code>kCLLocationAccuracyBest</code>.
+@property (nonatomic) CLLocationAccuracy desiredAccuracy;
+/// Sets the type of user activity associated with the location updates.
+/// The default value is <code>CLActivityType.other</code>.
+@property (nonatomic) CLActivityType activityType;
+@property (nonatomic, readonly) enum TMBPuckType puckType;
+/// Sets the type of puck that should be used
+@property (nonatomic, strong) TMBPuck2DConfiguration * _Nullable puck2DConfiguration;
+@property (nonatomic, strong) TMBPuck3DConfiguration * _Nullable puck3DConfiguration;
+/// Specifies if a <code>Puck</code> should use <code>Heading</code> or <code>Course</code> for the bearing.
+/// The default value is <code>PuckBearingSource.heading</code>.
+@property (nonatomic) enum TMBPuckBearingSource puckBearingSource;
+/// Whether the puck rotates to track the bearing source.
+/// The default value is <code>true</code>.
+@property (nonatomic) BOOL puckBearingEnabled;
+/// Initializes a <code>LocationOptions</code>.
+/// \param distanceFilter Specifies the minimum distance (measured in meters) a device must move horizontally
+/// before a location update is generated.
+///
+/// \param desiredAccuracy Specifies the accuracy of the location data.
+///
+/// \param activityType Sets the type of user activity associated with the location.
+///
+/// \param puckType Sets the type of puck that should be used.
+///
+/// \param puckBearingSource Specifies if a <code>Puck</code> should use <code>Heading</code> or <code>Course</code> for the bearing.
+///
+/// \param puckBearingEnabled Whether the puck rotates to track the bearing source.
+///
+- (nonnull instancetype)initWithDistanceFilter:(CLLocationDistance)distanceFilter desiredAccuracy:(CLLocationAccuracy)desiredAccuracy activityType:(CLActivityType)activityType puck2DConfiguration:(TMBPuck2DConfiguration * _Nullable)puck2DConfiguration puck3DConfiguration:(TMBPuck3DConfiguration * _Nullable)puck3DConfiguration puckBearingSource:(enum TMBPuckBearingSource)puckBearingSource puckBearingEnabled:(BOOL)puckBearingEnabled OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The <code>LocationPermissionsDelegate</code> protocol defines a set of optional methods that you
+/// can use to receive events from an associated location manager object.
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC30TMBLocationPermissionsDelegate_")
+@protocol TMBLocationPermissionsDelegate
+@optional
+/// Tells the delegate that an attempt to locate the user’s position failed.
+/// \param locationManager The location manager that is tracking the user’s location.
+///
+/// \param error An error object containing the reason why location tracking failed.
+///
+- (void)locationManager:(TMBLocationManager * _Nonnull)locationManager didFailToLocateUserWithError:(NSError * _Nonnull)error;
+/// Tells the delegate that the accuracy authorization has changed.
+/// \param locationManager The location manager that is tracking the user’s location.
+///
+/// \param accuracyAuthorization The updated accuracy authorization value.
+///
+- (void)locationManager:(TMBLocationManager * _Nonnull)locationManager didChangeAccuracyAuthorization:(CLAccuracyAuthorization)accuracyAuthorization;
+/// Asks the delegate whether the heading calibration alert should be displayed.
+/// \param locationManager The location manager object coordinating the display of the heading calibration alert.
+///
+///
+/// returns:
+/// <code>true</code> if you want to allow the heading calibration alert to be displayed; <code>false</code> if you do not.
+- (BOOL)locationManagerShouldDisplayHeadingCalibration:(TMBLocationManager * _Nonnull)locationManager SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class CLHeading;
+@protocol TMBLocationProviderDelegate;
+
+/// The <code>LocationProvider</code> protocol defines a set of methods that a class must
+/// implement in order to serve as the location events provider.
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC19TMBLocationProvider_")
+@protocol TMBLocationProvider
+/// Configures the location provider.
+@property (nonatomic, strong) TMBLocationOptions * _Nonnull locationProviderOptions;
+/// Returns the current localization authorization status.
+@property (nonatomic, readonly) CLAuthorizationStatus authorizationStatus;
+/// Returns the current accuracy authorization that the user has granted.
+/// The default value is <code>CLAccuracyAuthorization.fullAccuracy</code> on iOS versions prior to iOS 14.
+@property (nonatomic, readonly) CLAccuracyAuthorization accuracyAuthorization;
+/// Returns the latest heading update received, or <code>nil</code> if none is available.
+@property (nonatomic, readonly, strong) CLHeading * _Nullable heading;
+/// Sets the delegate for <code>LocationProvider</code>. The implementation should hold a weak reference to the
+/// provided delegate to avoid creating a strong reference cycle with <code>LocationManager</code>.
+/// note:
+/// This method should only be called by <code>LocationManager</code>. To allow other objects to
+/// participate in location updates, add a <code>LocationConsumer</code> to the <code>LocationManager</code>
+/// instead.
+- (void)setDelegate:(id <TMBLocationProviderDelegate> _Nonnull)delegate;
+/// Requests permission to use the location services whenever the app is running.
+- (void)requestAlwaysAuthorization;
+/// Requests permission to use the location services while the app is in
+/// the foreground.
+- (void)requestWhenInUseAuthorization;
+/// Requests temporary permission for full accuracy
+- (void)requestTemporaryFullAccuracyAuthorizationWithPurposeKey:(NSString * _Nonnull)purposeKey SWIFT_AVAILABILITY(ios,introduced=14.0);
+/// Starts the generation of location updates that reports the device’s current location.
+- (void)startUpdatingLocation;
+/// Stops the generation of location updates.
+- (void)stopUpdatingLocation;
+/// Specifies a physical device orientation.
+@property (nonatomic) CLDeviceOrientation headingOrientation;
+/// Starts the generation of heading updates that reports the devices’s current heading.
+- (void)startUpdatingHeading;
+/// Stops the generation of heading updates.
+- (void)stopUpdatingHeading;
+/// Dismisses immediately the heading calibration view from screen.
+- (void)dismissHeadingCalibrationDisplay;
+@end
+
+@class CLLocation;
+
+/// The <code>LocationProviderDelegate</code> protocol defines a set of methods that respond
+/// to location updates from an <code>LocationProvider</code>.
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC27TMBLocationProviderDelegate_")
+@protocol TMBLocationProviderDelegate
+/// Notifies the delegate with the new location data.
+/// \param provider The location provider reporting the update.
+///
+/// \param locations An array of <code>CLLocation</code> objects in chronological order,
+/// with the last object representing the most recent location.
+///
+- (void)locationProvider:(id <TMBLocationProvider> _Nonnull)provider didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
+/// Notifies the delegate with the new heading data.
+/// \param provider The location provider reporting the update.
+///
+/// \param newHeading The new heading update.
+///
+- (void)locationProvider:(id <TMBLocationProvider> _Nonnull)provider didUpdateHeading:(CLHeading * _Nonnull)newHeading;
+/// Notifies the delegate that the location provider was unable to retrieve
+/// location updates.
+/// \param provider The location provider reporting the error.
+///
+/// \param error An error object containing the error code that indicates
+/// why the location provider failed.
+///
+- (void)locationProvider:(id <TMBLocationProvider> _Nonnull)provider didFailWithError:(NSError * _Nonnull)error;
+/// Notifies the delegate that the location provider changed accuracy authorization
+/// \param provider The location provider reporting the error.
+///
+/// \param manager The location manager that is reporting the change
+///
+- (void)locationProviderDidChangeAuthorization:(id <TMBLocationProvider> _Nonnull)provider;
+@end
+
+
+/// Used to configure position, margin, and visibility for the map’s logo view.
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBLogoViewOptions")
+@interface TMBLogoViewOptions : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class NSCoder;
+
+SWIFT_RESILIENT_CLASS("_TtC13MapboxMapObjC10TMBMapView")
+@interface TMBMapView : MapView
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios_app_extension,unavailable);
+@end
+
+@class TMBStyle;
+@class MBMCoordinateBounds;
+@class MBMCoordinateBoundsZoom;
+@class MBMFreeCameraOptions;
+@class MBMCameraBounds;
+@class MBMCameraBoundsOptions;
+
+/// MapboxMap provides access to the map model, including the camera, style, observable map events,
+/// and querying rendered features. Obtain the MapboxMap instance for a <code>MapView</code> via MapView.mapboxMap.
+/// important:
+/// MapboxMap should only be used from the main thread.
+SWIFT_CLASS("_TtC13MapboxMapObjC12TMBMapboxMap")
+@interface TMBMapboxMap : NSObject
+/// The <code>style</code> object supports run time styling.
+@property (nonatomic, readonly, strong) TMBStyle * _Nonnull style;
+/// Triggers a repaint of the map. Calling this method is typically unnecessary but
+/// may be needed if using a custom layer that needs to be redrawn independently
+/// of other map changes.
+- (void)triggerRepaint;
+/// Loads a <code>style</code> from a StyleURI, calling a completion closure when the
+/// style is fully loaded or there has been an error during load.
+/// \param styleURI StyleURI to load
+///
+/// \param completion Closure called when the style has been fully loaded. The
+/// <code>Result</code> type encapsulates the <code>Style</code> or error that occurred. See
+/// <code>MapLoadingError</code>
+///
+- (void)loadStyleURI:(NSString * _Nonnull)styleUri completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
+/// Loads a <code>style</code> from a JSON string, calling a completion closure when the
+/// style is fully loaded or there has been an error during load.
+/// \param styleURI Style JSON string
+///
+/// \param completion Closure called when the style has been fully loaded. The
+/// <code>Result</code> type encapsulates the <code>Style</code> or error that occurred. See
+/// <code>MapLoadingError</code>
+///
+- (void)loadStyleJSON:(NSString * _Nonnull)JSON completion:(void (^ _Nullable)(TMBStyle * _Nullable, NSError * _Nullable))completion;
+/// When loading a map, if <code>prefetchZoomDelta</code> is set to any number greater
+/// than 0, the map will first request a tile for <code>zoom - prefetchZoomDelta</code>
+/// in an attempt to display a full map at lower resolution as quick as
+/// possible.
+/// It will get clamped at the tile source minimum zoom. The default delta
+/// is 4.
+@property (nonatomic) uint8_t prefetchZoomDelta;
+/// Defines whether multiple copies of the world will be rendered side by side beyond -180 and 180 degrees longitude.
+/// If disabled, when the map is zoomed out far enough that a single representation of the world does not fill the map’s entire container,
+/// there will be blank space beyond 180 and -180 degrees longitude.
+/// In this case, features that cross 180 and -180 degrees longitude will be cut in two (with one portion on the right edge of the map
+/// and the other on the left edge of the map) at every zoom level.
+/// By default, <code>shouldRenderWorldCopies</code> is set to <code>true</code>.
+@property (nonatomic) BOOL shouldRenderWorldCopies;
+/// Gets the resource options for the map.
+/// All optional fields of the returned object are initialized with the
+/// actual values.
+/// note:
+/// The result of this property is different from the <code>ResourceOptions</code>
+/// that were provided to the map’s initializer.
+@property (nonatomic, readonly, strong) MBMResourceOptions * _Nonnull resourceOptions;
+/// Clears temporary map data.
+/// Clears temporary map data from the data path defined in the given resource
+/// options. Useful to reduce the disk usage or in case the disk cache contains
+/// invalid data.
+/// note:
+/// Calling this API will affect all maps that use the same data path
+/// and does not affect persistent map data like offline style packages.
+/// \param resourceOptions The <code>resource options</code> that contain the map data path
+/// to be used
+///
+/// \param completion Called once the request is complete
+///
++ (void)clearDataFor:(MBMResourceOptions * _Nonnull)resourceOptions completion:(void (^ _Nonnull)(NSError * _Nullable))completion;
+/// Gets elevation for the given coordinate.
+/// note:
+/// Elevation is only available for the visible region on the screen.
+/// \param coordinate Coordinate for which to return the elevation.
+///
+///
+/// returns:
+/// Elevation (in meters) multiplied by current terrain
+/// exaggeration, or empty if elevation for the coordinate is not available.
+- (NSNumber * _Nullable)elevationAt:(CLLocationCoordinate2D)coordinate SWIFT_WARN_UNUSED_RESULT;
+/// Transforms a view’s frame into a set of coordinate bounds
+/// \param rect The <code>rect</code> whose bounds will be transformed into a set of map coordinate bounds.
+///
+///
+/// returns:
+/// A <code>CoordinateBounds</code> object that represents the southwest and northeast corners of the view’s bounds.
+- (MBMCoordinateBounds * _Nonnull)coordinateBoundsFor:(CGRect)rect SWIFT_WARN_UNUSED_RESULT;
+/// Transforms a set of map coordinate bounds to a <code>CGRect</code> relative to the <code>MapView</code>.
+/// \param coordinateBounds The <code>coordinateBounds</code> that will be converted into a rect relative to the <code>MapView</code>
+///
+///
+/// returns:
+/// A <code>CGRect</code> whose corners represent the vertices of a set of <code>CoordinateBounds</code>.
+- (CGRect)rectFor:(MBMCoordinateBounds * _Nonnull)coordinateBounds SWIFT_WARN_UNUSED_RESULT;
+/// The array of <code>MapDebugOptions</code>. Setting this property to an empty array
+/// disables previously enabled <code>MapDebugOptions</code>.
+/// The default value is an empty array.
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull debugOptions;
+/// Returns the map’s options
+@property (nonatomic, readonly, strong) MBMMapOptions * _Nonnull options;
+/// Calculates a <code>CameraOptions</code> to fit a <code>CoordinateBounds</code>
+/// This API isn’t supported by Globe projection.
+/// \param coordinateBounds The coordinate bounds that will be displayed within the viewport.
+///
+/// \param padding The new padding to be used by the camera.
+///
+/// \param bearing The new bearing to be used by the camera.
+///
+/// \param pitch The new pitch to be used by the camera.
+///
+///
+/// returns:
+/// A <code>CameraOptions</code> that fits the provided constraints
+- (MBMCameraOptions * _Nonnull)cameraForCoordinateBounds:(MBMCoordinateBounds * _Nonnull)coordinateBounds padding:(UIEdgeInsets)padding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch SWIFT_WARN_UNUSED_RESULT;
+/// Calculates a <code>CameraOptions</code> to fit a list of coordinates.
+/// This API isn’t supported by Globe projection.
+/// \param coordinates Array of coordinates that should fit within the new viewport.
+///
+/// \param padding The new padding to be used by the camera.
+///
+/// \param bearing The new bearing to be used by the camera.
+///
+/// \param pitch The new pitch to be used by the camera.
+///
+///
+/// returns:
+/// A <code>CameraOptions</code> that fits the provided constraints
+- (MBMCameraOptions * _Nonnull)cameraForCoordinates:(NSArray<NSValue *> * _Nonnull)coordinates padding:(UIEdgeInsets)padding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch SWIFT_WARN_UNUSED_RESULT;
+/// Calculates a <code>CameraOptions</code> to fit a list of coordinates into a sub-rect of the map.
+/// Adjusts the zoom of <code>camera</code> to fit <code>coordinates</code> into <code>rect</code>.
+/// Returns the provided camera with zoom adjusted to fit coordinates into
+/// <code>rect</code>, so that the coordinates on the left, top and right of the effective
+/// camera center at the principal point of the projection (defined by padding)
+/// fit into the rect.
+/// This API isn’t supported by Globe projection.
+/// note:
+///
+/// This method may fail if the principal point of the projection is not
+/// inside <code>rect</code> or if there is insufficient screen space, defined by
+/// principal point and rect, to fit the geometry.
+/// \param coordinates The coordinates to frame within <code>rect</code>.
+///
+/// \param camera The camera for which the zoom should be adjusted to fit <code>coordinates</code>. <code>camera.center</code> must be non-nil.
+///
+/// \param rect The rectangle inside of the map that should be used to frame <code>coordinates</code>.
+///
+///
+/// returns:
+/// A <code>CameraOptions</code> that fits the provided constraints, or <code>cameraOptions</code> if an error occurs.
+- (MBMCameraOptions * _Nonnull)cameraFor:(NSArray<NSValue *> * _Nonnull)coordinates camera:(MBMCameraOptions * _Nonnull)camera rect:(CGRect)rect SWIFT_WARN_UNUSED_RESULT;
+/// Calculates a <code>CameraOptions</code> to fit a geometry
+/// This API isn’t supported by Globe projection.
+/// \param geometry The geoemtry that will be displayed within the viewport.
+///
+/// \param padding The new padding to be used by the camera.
+///
+/// \param bearing The new bearing to be used by the camera.
+///
+/// \param pitch The new pitch to be used by the camera.
+///
+///
+/// returns:
+/// A <code>CameraOptions</code> that fits the provided constraints
+- (MBMCameraOptions * _Nonnull)cameraFor:(MBXGeometry * _Nonnull)geometry padding:(UIEdgeInsets)padding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch SWIFT_WARN_UNUSED_RESULT;
+/// Returns the coordinate bounds corresponding to a given <code>CameraOptions</code>
+/// This API isn’t supported by Globe projection.
+/// \param camera The camera for which the coordinate bounds will be returned.
+///
+///
+/// returns:
+/// <code>CoordinateBounds</code> for the given <code>CameraOptions</code>
+- (MBMCoordinateBounds * _Nonnull)coordinateBoundsForCameraBounds:(MBMCameraOptions * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
+/// Returns the unwrapped coordinate bounds to a given <code>CameraOptions</code>.
+/// This function is particularly useful, if the camera shows the antimeridian.
+/// This API isn’t supported by Globe projection.
+/// \param camera The camera for which the coordinate bounds will be returned.
+///
+///
+/// returns:
+/// <code>CoordinateBounds</code> for the given <code>CameraOptions</code>.
+- (MBMCoordinateBounds * _Nonnull)coordinateBoundsUnwrappedFor:(MBMCameraOptions * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
+/// Returns the coordinate bounds and zoom for a given <code>CameraOptions</code>.
+/// This API isn’t supported by Globe projection.
+/// \param camera The camera for which the <code>CoordinateBoundsZoom</code> will be returned.
+///
+///
+/// returns:
+/// <code>CoordinateBoundsZoom</code> for the given <code>CameraOptions</code>
+- (MBMCoordinateBoundsZoom * _Nonnull)coordinateBoundsZoomFor:(MBMCameraOptions * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
+/// Returns the unwrapped coordinate bounds and zoom for a given <code>CameraOptions</code>.
+/// This function is particularly useful, if the camera shows the antimeridian.
+/// This API isn’t supported by Globe projection.
+/// \param camera The camera for which the <code>CoordinateBoundsZoom</code> will
+/// be returned.
+///
+///
+/// returns:
+/// <code>CoordinateBoundsZoom</code> for the given <code>CameraOptions</code>
+- (MBMCoordinateBoundsZoom * _Nonnull)coordinateBoundsZoomUnwrappedFor:(MBMCameraOptions * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
+/// Converts a point in the mapView’s coordinate system to a geographic coordinate.
+/// The point must exist in the coordinate space of the <code>MapView</code>
+/// This API isn’t supported by Globe projection.
+/// \param point The point to convert. Must exist in the coordinate space
+/// of the <code>MapView</code>
+///
+///
+/// returns:
+/// A <code>CLLocationCoordinate</code> that represents the geographic location
+/// of the point.
+- (CLLocationCoordinate2D)coordinateFor:(CGPoint)point SWIFT_WARN_UNUSED_RESULT;
+/// Converts a map coordinate to a <code>CGPoint</code>, relative to the <code>MapView</code>.
+/// This API isn’t supported by Globe projection.
+/// \param coordinate The coordinate to convert.
+///
+///
+/// returns:
+/// A <code>CGPoint</code> relative to the <code>UIView</code>. If the point is outside of the bounds
+/// of <code>MapView</code> the returned point contains <code>-1.0</code> for both coordinates.
+- (CGPoint)pointFor:(CLLocationCoordinate2D)coordinate SWIFT_WARN_UNUSED_RESULT;
+/// Converts map coordinates to an array of <code>CGPoint</code>, relative to the <code>MapView</code>.
+/// This API isn’t supported by Globe projection.
+/// \param coordinates The coordinate to convert.
+///
+///
+/// returns:
+/// An array of <code>CGPoint</code> relative to the <code>UIView. If a coordinate's point is outside of map view's bounds, it will be </code>(-1, -1)`
+- (NSArray<NSValue *> * _Nonnull)pointsFor:(NSArray<NSValue *> * _Nonnull)coordinates SWIFT_WARN_UNUSED_RESULT;
+/// Converts points in the mapView’s coordinate system to geographic coordinates.
+/// The points must exist in the coordinate space of the <code>MapView</code>.
+/// This API isn’t supported by Globe projection.
+/// \param point The point to convert. Must exist in the coordinate space
+/// of the <code>MapView</code>
+///
+///
+/// returns:
+/// A <code>CLLocationCoordinate</code> that represents the geographic location
+/// of the point.
+- (NSArray<NSValue *> * _Nonnull)coordinatesFor:(NSArray<NSValue *> * _Nonnull)points SWIFT_WARN_UNUSED_RESULT;
+/// Changes the map view by any combination of center, zoom, bearing, and pitch,
+/// without an animated transition. The map will retain its current values
+/// for any details not passed via the camera options argument. It is not
+/// guaranteed that the provided <code>CameraOptions</code> will be set, the map may apply
+/// constraints resulting in a different <code>CameraState</code>.
+/// important:
+///
+/// This method does not cancel existing animations. Call
+/// <code>CameraAnimationsManager.cancelAnimations()</code>to cancel existing animations.
+/// \param cameraOptions New camera options
+///
+- (void)setCameraTo:(MBMCameraOptions * _Nonnull)cameraOptions;
+/// Returns the current camera state
+@property (nonatomic, readonly, strong) MBMCameraState * _Nonnull cameraState;
+/// Sets/get the map view with the free camera options.
+/// FreeCameraOptions provides more direct access to the underlying camera entity.
+/// For backwards compatibility the state set using this API must be representable
+/// with <code>CameraOptions</code> as well. Parameters are clamped to a valid range or
+/// discarded as invalid if the conversion to the pitch and bearing presentation
+/// is ambiguous. For example orientation can be invalid if it leads to the
+/// camera being upside down or the quaternion has zero length.
+/// \param freeCameraOptions The free camera options to set.
+///
+@property (nonatomic, strong) MBMFreeCameraOptions * _Nonnull freeCameraOptions;
+/// Returns the bounds of the map.
+@property (nonatomic, readonly, strong) MBMCameraBounds * _Nonnull cameraBounds;
+/// Sets the bounds of the map.
+/// \param options New camera bounds. Nil values will not take effect.
+///
+///
+/// throws:
+/// <code>MapError</code>
+- (void)setCameraBoundsWith:(MBMCameraBoundsOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Prepares the drag gesture to use the provided screen coordinate as a pivot
+/// point. This function should be called each time when user starts a
+/// dragging action (e.g. by clicking on the map). The following dragging
+/// will be relative to the pivot.
+/// \param point Screen point
+///
+- (void)dragStartFor:(CGPoint)point;
+/// Calculates target point where camera should move after drag. The method
+/// should be called after <code>dragStart</code> and before <code>dragEnd</code>.
+/// \param fromPoint The point from which the map is dragged.
+///
+/// \param toPoint The point to which the map is dragged.
+///
+///
+/// returns:
+///
+/// The camera options object showing end point.
+- (MBMCameraOptions * _Nonnull)dragCameraOptionsFrom:(CGPoint)from to:(CGPoint)to SWIFT_WARN_UNUSED_RESULT;
+/// Ends the ongoing drag gesture. This function should be called always after
+/// the user has ended a drag gesture initiated by <code>dragStart</code>.
+- (void)dragEnd;
+/// If implementing a custom animation mechanism, call this method when the animation begins.
+/// Must always be paired with a corresponding call to <code>endAnimation()</code>
+- (void)beginAnimation;
+/// If implementing a custom animation mechanism, call this method when the animation ends.
+/// Must always be paired with a corresponding call to <code>beginAnimation()</code>
+- (void)endAnimation;
+/// If implementing a custom gesture, call this method when the gesture begins.
+/// Must always be paired with a corresponding call to <code>endGesture()</code>
+- (void)beginGesture;
+/// If implementing a custom gesture, call this method when the gesture ends.
+/// Must always be paired with a corresponding call to <code>beginGesture()</code>
+- (void)endGesture;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@interface TMBMapboxMap (SWIFT_EXTENSION(MapboxMapObjC))
+/// Clears temporary map data.
+/// Clears temporary map data from the data path defined in the given resource
+/// options. Useful to reduce the disk usage or in case the disk cache contains
+/// invalid data.
+/// note:
+/// Calling this API will affect all maps that use the same data path
+/// and does not affect persistent map data like offline style packages.
+/// \param completion Called once the request is complete
+///
+- (void)clearDataWithCompletion:(void (^ _Nonnull)(NSError * _Nullable))completion;
+@end
+
+@protocol MBMObserver;
+
+@interface TMBMapboxMap (SWIFT_EXTENSION(MapboxMapObjC))
+/// Subscribes an observer to a list of events.
+/// <code>MapboxMap</code> holds a strong reference to <code>observer</code> while it is subscribed. To stop receiving
+/// notifications, pass the same <code>observer</code> to <code>unsubscribe(_:events:)</code>.
+/// note:
+///
+/// Prefer <code>onNext(eventTypes:handler:)</code>, <code>onNext(_:handler:)</code>, and
+/// <code>onEvery(_:handler:)</code> to using this lower-level APIs
+/// \param observer An object that will receive events of the types specified by <code>events</code>
+///
+/// \param events Array of event types to deliver to <code>observer</code>
+///
+- (void)subscribe:(id <MBMObserver> _Nonnull)observer events:(NSArray<NSString *> * _Nonnull)events;
+/// Unsubscribes an observer from a provided list of event types.
+/// <code>MapboxMap</code> holds a strong reference to <code>observer</code> while it is subscribed. To stop receiving
+/// notifications, pass the same <code>observer</code> to this method as was passed to
+/// <code>subscribe(_:events:)</code>.
+/// \param observer The object to unsubscribe
+///
+/// \param events Array of event types to unsubscribe from. Pass an
+/// empty array (the default) to unsubscribe from all events.
+///
+- (void)unsubscribe:(id <MBMObserver> _Nonnull)observer events:(NSArray<NSString *> * _Nonnull)events;
+@end
+
+
+@interface TMBMapboxMap (SWIFT_EXTENSION(MapboxMapObjC))
+/// Update the state map of a feature within a style source.
+/// Update entries in the state map of a given feature within a style source. Only entries listed in the state map
+/// will be updated. An entry in the feature state map that is not listed in <code>state</code> will retain its previous value.
+/// \param sourceId Style source identifier
+///
+/// \param sourceLayerId Style source layer identifier (for multi-layer sources such as vector sources). Defaults to <code>nil</code>.
+///
+/// \param featureId Identifier of the feature whose state should be updated
+///
+/// \param state Map of entries to update with their respective new values
+///
+- (void)setFeatureStateWithSourceId:(NSString * _Nonnull)sourceId sourceLayerId:(NSString * _Nullable)sourceLayerId featureId:(NSString * _Nonnull)featureId state:(NSDictionary<NSString *, id> * _Nonnull)state;
+/// Get the state map of a feature within a style source.
+/// \param sourceId Style source identifier.
+///
+/// \param sourceLayerId Style source layer identifier (for multi-layer sources such as vector sources).
+///
+/// \param featureId Identifier of the feature whose state should be queried.
+///
+/// \param callback Feature’s state map or an empty map if the feature could not be found.
+///
+- (void)getFeatureStateWithSourceId:(NSString * _Nonnull)sourceId sourceLayerId:(NSString * _Nullable)sourceLayerId featureId:(NSString * _Nonnull)featureId callback:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nullable, NSError * _Nullable))callback;
+/// Removes entries from a feature state object.
+/// Remove a specified property or all property from a feature’s state object, depending on the value of <code>stateKey</code>.
+/// \param sourceId The style source identifier
+///
+/// \param sourceLayerId The style source layer identifier (for multi-layer sources such as vector sources). Defaults to <code>nil</code>.
+///
+/// \param featureId The feature identifier of the feature whose state should be removed.
+///
+/// \param stateKey The key of the property to remove. If <code>nil</code>, all feature’s state object properties are removed. Defaults to <code>nil</code>.
+///
+- (void)removeFeatureStateWithSourceId:(NSString * _Nonnull)sourceId sourceLayerId:(NSString * _Nullable)sourceLayerId featureId:(NSString * _Nonnull)featureId stateKey:(NSString * _Nullable)stateKey;
+@end
+
+@class MBMRenderedQueryOptions;
+@class MBMQueriedFeature;
+@class MBMSourceQueryOptions;
+@class MBXFeature;
+@class MBMFeatureExtensionValue;
+
+@interface TMBMapboxMap (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBCancelable * _Nonnull)queryRenderedFeaturesWithShape:(NSArray<NSValue *> * _Nonnull)shape options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
+- (TMBCancelable * _Nonnull)queryRenderedFeaturesWithRect:(CGRect)rect options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
+- (TMBCancelable * _Nonnull)queryRenderedFeaturesWithPoint:(CGPoint)point options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
+/// Queries the map for source features.
+/// \param sourceId Style source identifier used to query for source features.
+///
+/// \param options Options for querying source features.
+///
+/// \param completion Callback called when the query completes
+///
+- (void)querySourceFeaturesFor:(NSString * _Nonnull)sourceId options:(MBMSourceQueryOptions * _Nonnull)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
+/// Queries for feature extension values in a GeoJSON source.
+/// \param sourceId The identifier of the source to query.
+///
+/// \param feature Feature to look for in the query.
+///
+/// \param extension Currently supports keyword <code>supercluster</code>.
+///
+/// \param extensionField Currently supports following three extensions:
+/// <ol>
+///   <li>
+///     <code>children</code>: returns the children of a cluster (on the next zoom
+///     level).
+///   </li>
+///   <li>
+///     <code>leaves</code>: returns all the leaves of a cluster (given its cluster_id)
+///   </li>
+///   <li>
+///     <code>expansion-zoom</code>: returns the zoom on which the cluster expands
+///     into several children (useful for “click to zoom” feature).
+///   </li>
+/// </ol>
+///
+/// \param args Used for further query specification when using ‘leaves’
+/// extensionField. Now only support following two args:
+/// <ol>
+///   <li>
+///     <code>limit</code>: the number of points to return from the query (must
+///     use type ‘UInt64’, set to maximum for all points)
+///   </li>
+///   <li>
+///     <code>offset</code>: the amount of points to skip (for pagination, must
+///     use type ‘UInt64’)
+///   </li>
+/// </ol>
+///
+/// \param completion The result could be a feature extension value containing
+/// either a value (expansion-zoom) or a feature collection (children
+/// or leaves). An error is passed if the operation was not successful.
+/// Deprecated. Use getGeoJsonClusterLeaves/getGeoJsonClusterChildren/getGeoJsonClusterExpansionZoom to instead.
+///
+- (void)queryFeatureExtensionFor:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature extension:(NSString * _Nonnull)extension extensionField:(NSString * _Nonnull)extensionField args:(NSDictionary<NSString *, id> * _Nullable)args completion:(void (^ _Nullable)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
+/// Returns all the leaves (original points) of a cluster (given its cluster_id) from a GeoJSON source, with pagination support: limit is the number of leaves
+/// to return (set to Infinity for all points), and offset is the amount of points to skip (for pagination).
+/// \param sourceId The identifier of the source to query.
+///
+/// \param feature Feature to look for in the query.
+///
+/// \param limit the number of points to return from the query, default to 10
+///
+/// \param offset the amount of points to skip, default to 0
+///
+/// \param completion The result could be a feature extension value containing
+/// either a value (expansion-zoom) or a feature collection (children
+/// or leaves). An error is passed if the operation was not successful.
+///
+- (void)getGeoJsonClusterLeavesForSourceId:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature limit:(uint64_t)limit offset:(uint64_t)offset completion:(void (^ _Nonnull)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
+/// Returns the children (original points or clusters) of a cluster (on the next zoom level)
+/// given its id (cluster_id value from feature properties) from a GeoJSON source.
+/// \param sourceId The identifier of the source to query.
+///
+/// \param feature Feature to look for in the query.
+///
+/// \param completion The result could be a feature extension value containing
+/// either a value (expansion-zoom) or a feature collection (children
+/// or leaves). An error is passed if the operation was not successful.
+///
+- (void)getGeoJsonClusterChildrenForSourceId:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature completion:(void (^ _Nonnull)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
+/// Returns the zoom on which the cluster expands into several children (useful for “click to zoom” feature)
+/// given the cluster’s cluster_id (cluster_id value from feature properties) from a GeoJSON source.
+/// \param sourceId The identifier of the source to query.
+///
+/// \param feature Feature to look for in the query.
+///
+/// \param completion The result could be a feature extension value containing
+/// either a value (expansion-zoom) or a feature collection (children
+/// or leaves). An error is passed if the operation was not successful.
+///
+- (void)getGeoJsonClusterExpansionZoomForSourceId:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature completion:(void (^ _Nonnull)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
+@end
+
+
+@interface TMBMapboxMap (SWIFT_EXTENSION(MapboxMapObjC))
+/// The style has been fully loaded, and the map has rendered all visible tiles.
+- (TMBCancelable * _Nonnull)onMapLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
+/// Describes an error that has occurred while loading the Map. The <code>type</code> property defines what resource could
+/// not be loaded and the <code>message</code> property will contain a descriptive error message.
+/// In case of <code>source</code> or <code>tile</code> loading errors, <code>source-id</code> will contain the id of the source failing.
+/// In case of <code>tile</code> loading errors, <code>tile-id</code> will contain the id of the tile.
+- (TMBCancelable * _Nonnull)onMapLoadingError:(void (^ _Nonnull)(id _Nonnull))handler;
+/// The map has entered the idle state. The map is in the idle state when there are no ongoing transitions
+/// and the map has rendered all requested non-volatile tiles. The event will not be emitted if <code>setUserAnimationInProgress</code>
+/// and / or <code>setGestureInProgress</code> is set to <code>true</code>.
+- (TMBCancelable * _Nonnull)onMapIdle:(void (^ _Nonnull)(id _Nonnull))handler;
+/// The requested style data has been loaded. The <code>type</code> property defines what kind of style data has been loaded.
+/// Event may be emitted synchronously, for example, when <code>setStyleJSON</code> is used to load style.
+/// Based on an event data <code>type</code> property value, following use-cases may be implemented:
+/// <ul>
+///   <li>
+///     <code>style</code>: Style is parsed, style layer properties could be read and modified, style layers and sources could be
+///     added or removed before rendering is started.
+///   </li>
+///   <li>
+///     <code>sprite</code>: Style’s sprite sheet is parsed and it is possible to add or update images.
+///   </li>
+///   <li>
+///     <code>sources</code>: All sources defined by the style are loaded and their properties could be read and updated if needed.
+///   </li>
+/// </ul>
+- (TMBCancelable * _Nonnull)onStyleDataLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
+/// The requested style has been fully loaded, including the style, specified sprite and sources’ metadata.
+/// Note: The style specified sprite would be marked as loaded even with sprite loading error (An error will be emitted via <code>.mapLoadingError</code>).
+/// Sprite loading error is not fatal and we don’t want it to block the map rendering, thus this event will still be emitted if style and sources are fully loaded.
+- (TMBCancelable * _Nonnull)onStyleLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
+/// A style has a missing image. This event is emitted when the map renders visible tiles and
+/// one of the required images is missing in the sprite sheet. Subscriber has to provide the missing image
+/// by calling <code>Style/addImage(_:id:sdf:contentInsets:)</code>.
+- (TMBCancelable * _Nonnull)onStyleImageMissing:(void (^ _Nonnull)(id _Nonnull))handler;
+/// An image added to the style is no longer needed and can be removed using <code>Style/removeImage(withId:)</code>.
+- (TMBCancelable * _Nonnull)onStyleImageRemoveUnused:(void (^ _Nonnull)(id _Nonnull))handler;
+/// A source data has been loaded.
+/// Event may be emitted synchronously in cases when source’s metadata is available when source is added to the style.
+/// The <code>id</code> property defines the source id.
+/// The <code>type</code> property defines if source’s metadata (e.g., TileJSON) or tile has been loaded. The property of <code>metadata</code>
+/// value might be useful to identify when particular source’s metadata is loaded, thus all source’s properties are
+/// readable and can be updated before map will start requesting data to be rendered.
+/// The <code>loaded</code> property will be set to <code>true</code> if all source’s data required for visible viewport of the map, are loaded.
+/// The <code>tile-id</code> property defines the tile id if the <code>type</code> field equals <code>tile</code>.
+- (TMBCancelable * _Nonnull)onSourceDataLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
+/// The source has been added with <code>Style/addSource(_:id:)</code> or <code>Style/addSource(withId:properties:)</code>.
+/// The event is emitted synchronously, therefore, it is possible to immediately
+/// read added source’s properties.
+- (TMBCancelable * _Nonnull)onSourceAdded:(void (^ _Nonnull)(id _Nonnull))handler;
+/// The source has been removed with <code>Style/removeSource(withId:)</code>.
+/// The event is emitted synchronously, thus, <code>Style/allSourceIdentifiers</code> will be
+/// in sync when the observer receives the notification.
+- (TMBCancelable * _Nonnull)onSourceRemoved:(void (^ _Nonnull)(id _Nonnull))handler;
+/// The map finished rendering a frame.
+/// The <code>render-mode</code> property tells whether the map has all data (<code>full</code>) required to render the visible viewport.
+/// The <code>needs-repaint</code> property provides information about ongoing transitions that trigger map repaint.
+/// The <code>placement-changed</code> property tells if the symbol placement has been changed in the visible viewport.
+- (TMBCancelable * _Nonnull)onRenderFrameStarted:(void (^ _Nonnull)(id _Nonnull))handler;
+/// The camera has changed. This event is emitted whenever the visible viewport
+/// changes due to the MapView’s size changing or when the camera
+/// is modified by calling camera methods. The event is emitted synchronously,
+/// so that an updated camera state can be fetched immediately.
+- (TMBCancelable * _Nonnull)onRenderFrameFinished:(void (^ _Nonnull)(id _Nonnull))handler;
+/// The camera has changed. This event is emitted whenever the visible viewport
+/// changes due to the MapView’s size changing or when the camera
+/// is modified by calling camera methods. The event is emitted synchronously,
+/// so that an updated camera state can be fetched immediately.
+- (TMBCancelable * _Nonnull)onEvenCameraChanged:(void (^ _Nonnull)(id _Nonnull))handler;
+/// The <code>ResourceRequest</code> event allows client to observe resource requests made by a
+/// map or snapshotter.
+- (TMBCancelable * _Nonnull)onResourceRequest:(void (^ _Nonnull)(id _Nonnull))handler;
+@end
+
+
+/// A structure represeting a Model
+SWIFT_CLASS("_TtC13MapboxMapObjC8TMBModel")
+@interface TMBModel : NSObject
+/// URL to a <code>gltf</code> 3D asset in the application bundle
+@property (nonatomic, copy) NSURL * _Nullable uri;
+/// Coordinates of the model in <code>[longitude, latitude]</code>format
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable position;
+/// Orientation of the model
+@property (nonatomic, copy) NSArray<NSNumber *> * _Nullable orientation;
+- (nonnull instancetype)initWithUri:(NSURL * _Nullable)uri position:(NSArray<NSNumber *> * _Nullable)position orientation:(NSArray<NSNumber *> * _Nullable)orientation OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC22TMBNumberFormatOptions")
+@interface TMBNumberFormatOptions : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1724,11 +2807,124 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBOperator 
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBScaleBarViewOptions;
+
+/// Used to configure Ornament-specific capabilities of the map
+/// All margin values are relative to the <code>MapView</code>’s safe area. To allow the safe area
+/// (and thereby ornaments) to track the presence of navigation bars and tab bars,
+/// make MapView the root view of a view controller.
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBOrnamentOptions")
+@interface TMBOrnamentOptions : NSObject
+/// The ornament options for the map’s scale bar.
+@property (nonatomic, strong) TMBScaleBarViewOptions * _Nonnull scaleBar;
+/// The ornament options for the map’s compass view.
+@property (nonatomic, strong) TMBCompassViewOptions * _Nonnull compass;
+/// The ornament options for the map’s logo view.
+/// Per our terms of service, a Mapbox map is required to display both
+/// a Mapbox logo as well as an information icon that contains attribution
+/// information. See https://docs.mapbox.com/help/how-mapbox-works/attribution/
+/// for details.
+@property (nonatomic, strong) TMBLogoViewOptions * _Nonnull logo;
+/// The ornament options for the map’s attribution button.
+@property (nonatomic, strong) TMBAttributionButtonOptions * _Nonnull attributionButton;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, TMBOrnamentPosition, open) {
+  TMBOrnamentPositionTopLeft = 0,
+  TMBOrnamentPositionTopRight = 1,
+  TMBOrnamentPositionBottomRight = 2,
+  TMBOrnamentPositionBottomLeft = 3,
+  TMBOrnamentPositionTopLeading = 4,
+  TMBOrnamentPositionTopTrailing = 5,
+  TMBOrnamentPositionBottomLeading = 6,
+  TMBOrnamentPositionBottomTrailing = 7,
+};
+
 typedef SWIFT_ENUM(NSInteger, TMBOrnamentVisibility, open) {
   TMBOrnamentVisibilityAdaptive = 0,
   TMBOrnamentVisibilityHidden = 1,
   TMBOrnamentVisibilityVisible = 2,
 };
+
+@class UIView;
+
+SWIFT_CLASS("_TtC13MapboxMapObjC19TMBOrnamentsManager")
+@interface TMBOrnamentsManager : NSObject
+/// The <code>OrnamentOptions</code> object that is used to set up and update the required ornaments on the map.
+@property (nonatomic, strong) TMBOrnamentOptions * _Nonnull options;
+/// The view for the logo ornament. This view can be used to position other views relative to the logo
+/// ornament, but it should not be manipulated. Use <code>OrnamentOptions/logo</code> to configure the
+/// logo presentation if customization is needed.
+@property (nonatomic, readonly, strong) UIView * _Nonnull logoView;
+/// The view for the scale bar ornament. This view can be used to position other views relative to the
+/// scale bar ornament, but it should not be manipulated. Use <code>OrnamentOptions/scaleBar</code>
+/// to configure the scale bar presentation if customization is needed.
+@property (nonatomic, readonly, strong) UIView * _Nonnull scaleBarView;
+/// The view for the compass ornament. This view can be used to position other views relative to the
+/// compass ornament, but it should not be manipulated. Use <code>OrnamentOptions/compass</code> to
+/// configure the compass presentation if customization is needed.
+@property (nonatomic, readonly, strong) UIView * _Nonnull compassView;
+/// The view for the attribution button ornament. This view can be used to position other views relative
+/// to the attribution button ornament, but it should not be manipulated. Use
+/// <code>OrnamentOptions/attributionButton</code> to configure the attribution button presentation
+/// if customization is needed.
+@property (nonatomic, readonly, strong) UIView * _Nonnull attributionButton;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A <code>ViewportState</code> implementation that shows an overview of the geometry specified by its
+/// <code>OverviewViewportStateOptions/geometry</code>.
+/// Use <code>Viewport/makeOverviewViewportState(options:)</code> to create instances of this
+/// class.
+SWIFT_CLASS("_TtC13MapboxMapObjC24TMBOverviewViewportState")
+@interface TMBOverviewViewportState : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@interface TMBOverviewViewportState (SWIFT_EXTENSION(MapboxMapObjC)) <TMBViewportState>
+- (TMBCancelable * _Nonnull)observeDataSourceWith:(BOOL (^ _Nonnull)(MBMCameraOptions * _Nonnull))handler SWIFT_WARN_UNUSED_RESULT;
+- (void)startUpdatingCamera;
+- (void)stopUpdatingCamera;
+@end
+
+
+/// Configuration options for <code>OverviewViewportState</code>.
+SWIFT_CLASS("_TtC13MapboxMapObjC31TMBOverviewViewportStateOptions")
+@interface TMBOverviewViewportStateOptions : NSObject
+/// The geometry that the <code>OverviewViewportState</code> should use when calculating its camera.
+@property (nonatomic, strong) MBXGeometry * _Nonnull geometry;
+/// The padding that <code>OverviewViewportState</code> should use when calculating its camera.
+@property (nonatomic) UIEdgeInsets padding;
+/// The bearing that <code>OverviewViewportState</code> should use when calcualting its camera.
+@property (nonatomic, strong) NSNumber * _Nullable bearing;
+/// The pitch that <code>OverviewViewportState</code> should use when calculating its camera.
+@property (nonatomic, strong) NSNumber * _Nullable pitch;
+/// The length of the animation performed by <code>OverviewViewportState</code> when it starts updating
+/// the camera and any time <code>OverviewViewportState/options</code> is set. See
+/// <code>OverviewViewportState/options</code> for details.
+@property (nonatomic) NSTimeInterval animationDuration;
+/// Memberwise initializer for <code>OverviewViewportStateOptions</code>.
+/// <code>geometry</code> is required, but all other parameters have default values.
+/// \param geometry the geometry for which an overview should be shown.
+///
+/// \param padding Defaults to <code>UIEdgeInsets.zero</code>.
+///
+/// \param bearing Defaults to 0.
+///
+/// \param pitch Defaults to 0.
+///
+/// \param animationDuration Defaults to 1.
+///
+- (nonnull instancetype)initWithGeometry:(MBXGeometry * _Nonnull)geometry padding:(UIEdgeInsets)padding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch animationDuration:(NSTimeInterval)animationDuration OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 /// Options used to configure the direction in which the map is allowed to move
 /// during a pan gesture. Called <code>ScrollMode</code> in the Android SDK for
@@ -1742,14 +2938,7 @@ typedef SWIFT_ENUM(NSInteger, TMBPanMode, open) {
   TMBPanModeHorizontalAndVertical = 2,
 };
 
-
-SWIFT_CLASS("_TtC13MapboxMapObjC8TMBPoint")
-@interface TMBPoint : NSObject <TMBGeoData>
-+ (TMBPoint * _Nonnull)withCoordinates:(CLLocationCoordinate2D)coordinates SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
+@class UIImage;
 @class TMBTextAnchor;
 @class TMBTextJustify;
 @class TMBTextTransform;
@@ -2013,9 +3202,122 @@ SWIFT_CLASS("_TtC13MapboxMapObjC28TMBPolylineAnnotationManager")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class TMBPuck2DConfigurationPulsing;
+
+SWIFT_CLASS("_TtC13MapboxMapObjC22TMBPuck2DConfiguration")
+@interface TMBPuck2DConfiguration : NSObject
+/// The opacity of the entire location indicator.
+@property (nonatomic) double opacity;
+/// Image to use as the top of the location indicator.
+@property (nonatomic, strong) UIImage * _Nullable topImage;
+/// Image to use as the middle of the location indicator.
+@property (nonatomic, strong) UIImage * _Nullable bearingImage;
+/// Image to use as the background of the location indicator.
+@property (nonatomic, strong) UIImage * _Nullable shadowImage;
+/// The size of the images, as a scale factor applied to the size of the specified image.
+@property (nonatomic, strong) TMBValue * _Nullable scale;
+@property (nonatomic, strong) TMBPuck2DConfigurationPulsing * _Nullable pulsing;
+/// Flag determining if the horizontal accuracy ring should be shown arround the <code>Puck</code>. default value is false
+@property (nonatomic) BOOL showsAccuracyRing;
+/// The color of the accuracy ring.
+@property (nonatomic, strong) UIColor * _Nonnull accuracyRingColor;
+/// The color of the accuracy ring border.
+@property (nonatomic, strong) UIColor * _Nonnull accuracyRingBorderColor;
+/// Initialize a <code>Puck2D</code> object with a top image, bearing image, shadow image, scale, opacity and accuracy ring visibility.
+/// \param topImage The image to use as the top layer for the location indicator.
+///
+/// \param bearingImage The image used as the middle of the location indicator.
+///
+/// \param shadowImage The image that acts as a background of the location indicator.
+///
+/// \param scale The size of the images, as a scale factor applied to the size of the specified image..
+///
+/// \param showsAccuracyRing Indicates whether the location accurary ring should be shown.
+///
+/// \param accuracyRingColor The color of the accuracy ring.
+///
+/// \param accuracyRingBorderColor The color of the accuracy ring border.
+///
+/// \param opacity The opacity of the entire location indicator.
+///
+- (nonnull instancetype)initWithTopImage:(UIImage * _Nullable)topImage bearingImage:(UIImage * _Nullable)bearingImage shadowImage:(UIImage * _Nullable)shadowImage scale:(TMBValue * _Nullable)scale showsAccuracyRing:(BOOL)showsAccuracyRing accuracyRingColor:(UIColor * _Nonnull)accuracyRingColor accuracyRingBorderColor:(UIColor * _Nonnull)accuracyRingBorderColor opacity:(double)opacity OBJC_DESIGNATED_INITIALIZER;
+/// Initialize a <code>Puck2D</code> object with a top image, bearing image, shadow image, scale, opacity and accuracy ring visibility.
+/// \param topImage The image to use as the top layer for the location indicator.
+///
+/// \param bearingImage The image used as the middle of the location indicator.
+///
+/// \param shadowImage The image that acts as a background of the location indicator.
+///
+/// \param scale The size of the images, as a scale factor applied to the size of the specified image.
+///
+/// \param showsAccuracyRing Indicates whether the location accurary ring should be shown.
+///
+/// \param opacity The opacity of the entire location indicator.
+///
+- (nonnull instancetype)initWithTopImage:(UIImage * _Nullable)topImage bearingImage:(UIImage * _Nullable)bearingImage shadowImage:(UIImage * _Nullable)shadowImage scale:(TMBValue * _Nullable)scale pulsing:(TMBPuck2DConfigurationPulsing * _Nullable)pulsing showsAccuracyRing:(BOOL)showsAccuracyRing opacity:(double)opacity OBJC_DESIGNATED_INITIALIZER;
+/// Create a Puck2DConfiguration instance with or without an arrow bearing image. Default without the arrow bearing image.
++ (TMBPuck2DConfiguration * _Nonnull)makeDefaultWithShowBearing:(BOOL)showBearing SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The configration parameters for sonar-like pulsing circle animation shown around the 2D puck.
+SWIFT_CLASS("_TtC13MapboxMapObjC29TMBPuck2DConfigurationPulsing")
+@interface TMBPuck2DConfigurationPulsing : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// Circle radius configuration for the pulsing circle animation.
+typedef SWIFT_ENUM(NSInteger, TMBPuck2DConfigurationPulsingRadius, open) {
+/// Pulsing circle should animate with the constant radius.
+  TMBPuck2DConfigurationPulsingRadiusConstant = 0,
+/// Pulsing circle animates with the <code>horizontalAccuracy</code> form the latest puck location.
+  TMBPuck2DConfigurationPulsingRadiusAccuracy = 1,
+};
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC22TMBPuck3DConfiguration")
+@interface TMBPuck3DConfiguration : NSObject
+/// The model to use as the locaiton puck
+@property (nonatomic, strong) TMBModel * _Nonnull model;
+/// The scale of the model.
+@property (nonatomic, strong) TMBValue * _Nullable modelScale;
+/// The rotation of the model in euler angles [lon, lat, z].
+@property (nonatomic, strong) TMBValue * _Nullable modelRotation;
+/// The opacity of the model used as the location puck
+@property (nonatomic, strong) TMBValue * _Nullable modelOpacity;
+/// Initialize a <code>Puck3DConfiguration</code> with a model, scale and rotation.
+/// \param model The <code>gltf</code> model to use for the puck.
+///
+/// \param modelScale The amount to scale the model by.
+///
+/// \param modelRotation The rotation of the model in euler angles <code>[lon, lat, z]</code>.
+///
+/// \param modelOpacity The opacity of the model used as the location puck
+///
+- (nonnull instancetype)initWithModel:(TMBModel * _Nonnull)model modelScale:(TMBValue * _Nullable)modelScale modelRotation:(TMBValue * _Nullable)modelRotation modelOpacity:(TMBValue * _Nullable)modelOpacity OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// Controls how the puck is oriented
 typedef SWIFT_ENUM(NSInteger, TMBPuckBearingSource, open) {
+/// The puck should set its bearing using <code>heading: CLHeading</code>. Bearing will mimic user’s
+/// spatial orientation.
   TMBPuckBearingSourceHeading = 0,
+/// The puck should set its bearing using <code>course: CLLocationDirection</code>. Bearing will mimic
+/// the general direction of travel.
   TMBPuckBearingSourceCourse = 1,
+};
+
+/// Represents the different types of pucks
+typedef SWIFT_ENUM(NSInteger, TMBPuckType, open) {
+/// A 2-dimensional puck. Optionally provide <code>Puck2DConfiguration</code> to configure the puck’s appearance.
+  TMBPuckTypePuck2D = 0,
+/// A 3-dimensional puck. Provide a <code>Puck3DConfiguration</code> to configure the puck’s appearance.
+  TMBPuckTypePuck3D = 1,
 };
 
 
@@ -2054,6 +3356,77 @@ SWIFT_CLASS("_TtC13MapboxMapObjC20TMBResolvedImageData")
 @end
 
 
+/// Convenience class that manages a global <code>ResourceOptions</code>
+/// It’s possible to create <code>ResourceOptionsManager</code> instances as you need them,
+/// however it’s convenient to use the default object (<code>default</code>).
+/// For example, we recommend that the Mapbox access token be set in
+/// <code>application(_:didFinishLaunchingWithOptions:)</code> rather than relying on the
+/// value in your application’s Info.plist:
+/// \code
+/// ```
+/// func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+///     // Override point for customization after application launch.
+///     ResourceOptionsManager.default.resourceOptions.accessToken = "overridden-access-token"
+///     return true
+/// }
+/// ```
+///
+/// \endcode
+SWIFT_CLASS("_TtC13MapboxMapObjC25TMBResourceOptionsManager")
+@interface TMBResourceOptionsManager : NSObject
+/// Default instance
+/// This shared instance is used by the default initializers
+/// for <code>ResourceOptions</code> and <code>MapInitOptions</code>.
+/// The application’s Info.plist will be searched for a valid access token
+/// under the key <code>MBXAccessToken</code>
+/// A valid access token must be provided or found.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=default) TMBResourceOptionsManager * _Nonnull default_;)
++ (TMBResourceOptionsManager * _Nonnull)default SWIFT_WARN_UNUSED_RESULT;
+/// Convenience function to remove the default instance. Calling <code>default</code>
+/// again will re-create the default instance.
++ (void)destroyDefault;
+/// Return the current resource options.
+@property (nonatomic, strong) MBMResourceOptions * _Nonnull resourceOptions;
+/// Initializes a <code>ResourceOptionsManager</code> with an optional access token.
+/// If the supplied token is nil (which is the case for the <code>default</code>) then
+/// we will use appropriate defaults for the <code>ResourceOptions</code>, including
+/// searching for an access token in the application’s Info.plist.
+/// You can override the shared global access token, using
+/// <code>ResourceOptionsManager.default</code>:
+/// \code
+/// ```
+/// ResourceOptionsManager.default.resourceOptions.accessToken = "overridden-access-token"
+/// ```
+///
+/// \endcode\param accessToken Valid access token or <code>nil</code>
+///
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken;
+/// Initializes a <code>ResourceOptionsManager</code> with the specified <code>resourceOptions</code>.
+/// \param resourceOptions Resource options to initialize the manager with.
+///
+- (nonnull instancetype)initWithResourceOptions:(MBMResourceOptions * _Nonnull)resourceOptions;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Used to configure position, margin, and visibility for the map’s scale bar view.
+SWIFT_CLASS("_TtC13MapboxMapObjC22TMBScaleBarViewOptions")
+@interface TMBScaleBarViewOptions : NSObject
+/// The position of the scale bar view.
+/// The default value for this property is <code>.topLeading</code>.
+@property (nonatomic) enum TMBOrnamentPosition position;
+/// The margins of the scale bar view.
+/// The default value for this property is <code>CGPoint(x: 8.0, y: 8.0)</code>.
+@property (nonatomic) CGPoint margins;
+/// The visibility of the scale bar view.
+/// The default value for this property is <code>.adaptive</code>.
+@property (nonatomic) enum TMBOrnamentVisibility visibility;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtC13MapboxMapObjC9TMBScheme")
 @interface TMBScheme : NSObject <NamedString>
 - (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
@@ -2084,9 +3457,23 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSkyType *
 @end
 
 
+SWIFT_CLASS("_TtC13MapboxMapObjC9TMBSource")
+@interface TMBSource : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Information about a layer
+SWIFT_CLASS("_TtC13MapboxMapObjC13TMBSourceInfo")
+@interface TMBSourceInfo : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBSourceType")
 @interface TMBSourceType : NSObject <NamedString>
-- (nonnull instancetype)initWithValue:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
 /// A vector tile source.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceType * _Nonnull vector;)
@@ -2110,12 +3497,740 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSourceTyp
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class MBMStyleManager;
+@class MBMTransitionOptions;
+@protocol MBMCustomLayerHost;
+@class MBMStylePropertyValue;
+@class MBMImageStretches;
+@class MBMImageContent;
+@class TMBTerrain;
+@class MBMCustomGeometrySourceOptions;
+@class MBMCanonicalTileID;
 
+/// Style provides access to the APIs used to dynamically modify the map’s style. Use it
+/// to read and write layers, sources, and images. Obtain the Style instance for a MapView
+/// via MapView.mapboxMap.style.
+/// important:
+/// Style should only be used from the main thread.
 SWIFT_CLASS("_TtC13MapboxMapObjC8TMBStyle")
 @interface TMBStyle : NSObject
-- (void)addImageWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+@property (nonatomic, readonly, weak) MBMStyleManager * _Null_unspecified styleManager;
+/// Adds a <code>layer</code> to the map
+/// \param layer The layer to apply on the map
+///
+/// \param layerPosition Position to add the layer in the stack of layers on the map. Defaults to the top layer.
+///
+///
+/// throws:
+/// <code>StyleError</code> if there is a problem adding the given <code>layer</code> at the given <code>position</code>.
+- (void)addLayer:(TMBLayer * _Nonnull)layer layerPosition:(TMBLayerPosition * _Nullable)layerPosition completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Adds a  persistent <code>layer</code> to the map.
+/// Persistent layers are valid across <code>style</code> changes.
+/// \param layer The layer to apply on the map
+///
+/// \param layerPosition Position to add the layer in the stack of layers on the map. Defaults to the top layer.
+///
+///
+/// throws:
+/// <code>StyleError</code> if there is a problem adding the persistent layer.
+- (void)addPersistentLayer:(TMBLayer * _Nonnull)layer layerPosition:(TMBLayerPosition * _Nullable)layerPosition completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Moves a <code>layer</code> to a new layer position in the style.
+/// \param layerId The layer to move
+///
+/// \param position Position to move the layer in the stack of layers on the map. Defaults to the top layer.
+///
+///
+/// throws:
+/// <code>StyleError</code> on failure, or <code>NSError</code> with a _domain of “com.mapbox.bindgen”
+- (void)moveLayerWithId:(NSString * _Nonnull)id to:(TMBLayerPosition * _Nonnull)position completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Gets a <code>layer</code> from the map
+/// \param id The id of the layer to be fetched
+///
+/// \param type The type of the layer that will be fetched
+///
+///
+/// throws:
+/// <code>TypeConversionError</code> is there is a problem decoding the layer data to the given <code>type</code>.
+///
+/// returns:
+/// The fully formed <code>layer</code> object of type equal to <code>type</code>
+- (void)layerWithId:(NSString * _Nonnull)id type:(enum TMBLayerType)type completion:(void (^ _Nullable)(TMBLayer * _Nullable, NSError * _Nullable))completion;
+/// Gets a <code>layer</code> from the map.
+/// This function is useful if you do not know the concrete type of the layer
+/// you are fetching, or don’t need to know for your situation.
+/// \param layerID The id of the layer to be fetched
+///
+///
+/// throws:
+/// Type conversion errors
+///
+/// returns:
+/// The fully formed <code>layer</code> object.
+- (void)layerWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(TMBLayer * _Nullable, NSError * _Nullable))completion;
+/// Updates a <code>layer</code> that exists in the <code>style</code> already
+/// \param id identifier of layer to update
+///
+/// \param type Type of the layer
+///
+/// \param update Closure that mutates a layer passed to it
+///
+///
+/// throws:
+/// An error when executing <code>update</code> block.
+- (void)updateLayerWithId:(NSString * _Nonnull)id type:(enum TMBLayerType)type update:(SWIFT_NOESCAPE void (^ _Nonnull)(TMBLayer * _Nonnull))update completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Adds a <code>source</code> to the map
+/// \param source The source to add to the map.
+///
+/// \param identifier A unique source identifier.
+///
+///
+/// throws:
+/// <code>StyleError</code> if there is a problem adding the <code>source</code>.
+- (void)addSource:(TMBSource * _Nonnull)source id:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Retrieves a <code>source</code> from the map
+/// \param id The id of the source to retrieve
+///
+/// \param type The type of the source
+///
+///
+/// throws:
+/// <code>TypeConversionError</code> if there is a problem decoding the source data to the given <code>type</code>.
+///
+/// returns:
+/// The fully formed <code>source</code> object of type equal to <code>type</code>.
+- (void)sourceWithId:(NSString * _Nonnull)id type:(TMBSourceType * _Nonnull)type completion:(void (^ _Nullable)(TMBSource * _Nullable, NSError * _Nullable))completion;
+/// Retrieves a <code>source</code> from the map
+/// This function is useful if you do not know the concrete type of the source
+/// you are fetching, or don’t need to know for your situation.
+/// \param id The id of the <code>source</code> to retrieve.
+///
+///
+/// throws:
+/// <code>TypeConversionError</code> if there is a problem decoding the source of given <code>id</code>.
+///
+/// returns:
+/// The fully formed <code>source</code> object.
+- (void)sourceWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(TMBSource * _Nullable, NSError * _Nullable))completion;
+/// Updates the <code>data</code> property of a given <code>GeoJSONSource</code> with a new value
+/// conforming to the <code>GeoJSONObject</code> protocol.
+/// attention:
+/// This method is only effective with sources of <code>GeoJSONSource</code>
+/// type, and cannot be used to update other source types.
+/// \param id The identifier representing the GeoJSON source.
+///
+/// \param geoJSON The new GeoJSON to be associated with the source data. i.e.
+/// a feature or feature collection.
+///
+///
+/// throws:
+/// <code>StyleError</code> if there is a problem when updating GeoJSON source.
+- (void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geometry:(MBXGeometry * _Nonnull)geometry completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id feature:(MBXFeature * _Nonnull)feature completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// <code>true</code> if and only if the style JSON contents, the style specified sprite,
+/// and sources are all loaded, otherwise returns <code>false</code>.
+@property (nonatomic, readonly) BOOL isLoaded;
+/// Get or set the style URI
+/// Setting a new style is asynchronous. In order to get the result of this
+/// operation, listen to <code>MapEvents.styleDataLoaded</code>, <code>MapEvents.styleLoaded</code>.
+/// attention:
+///
+/// This method should be called on the same thread where the MapboxMap
+/// object is initialized.
+@property (nonatomic, copy) NSString * _Nullable uri;
+/// Get or set the style via a JSON serialization string
+/// attention:
+///
+/// This method should be called on the same thread where the MapboxMap
+/// object is initialized.
+@property (nonatomic, copy) NSString * _Nonnull JSON;
+/// The map <code>style</code>’s default camera, if any, or a default camera otherwise.
+/// The map <code>style</code> default camera is defined as follows:
+/// <ul>
+///   <li>
+///     <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/#root-center">center</a>
+///   </li>
+///   <li>
+///     <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/#root-zoom">zoom</a>
+///   </li>
+///   <li>
+///     <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/#root-bearing">bearing</a>
+///   </li>
+///   <li>
+///     <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/#root-pitch">pitch</a>
+///   </li>
+/// </ul>
+/// The <code>style</code> default camera is re-evaluated when a new <code>style</code> is loaded. Values default to 0.0 if they are not defined in the <code>style</code>.
+@property (nonatomic, readonly, strong) MBMCameraOptions * _Nonnull defaultCamera;
+/// Get or set the map <code>style</code>’s transition options.
+/// By default, the style parser will attempt to read the style default
+/// transition, if any, falling back to a 0.3 s transition otherwise.
+/// Overridden transitions are reset once a new style has been loaded.
+/// To customize the transition used when switching styles, set this
+/// property after <code>MapEvents.EventKind.styleDataLoaded</code> where
+/// <code>Event.type == "style"</code> and before
+/// <code>MapEvents.EventKind.styleDataLoaded</code> where <code>Event.type == "sprite"</code>
+/// and where <code>Event.type == "sources"</code>.
+/// seealso:
+/// <code>MapboxMap/onNext(_:handler:)</code>
+@property (nonatomic, strong) MBMTransitionOptions * _Nonnull transition;
+/// Adds a new style layer given its JSON properties
+/// Runtime style layers are valid until they are either removed or a new
+/// style is loaded.
+/// <ul>
+///   <li>
+///     See Also: https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers
+///   </li>
+/// </ul>
+/// \param properties A JSON dictionary of style layer properties.
+///
+/// \param layerPosition Position to add the layer in the stack of layers on the map. Defaults to the top layer.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)addLayerWith:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(TMBLayerPosition * _Nullable)layerPosition completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Adds a new persistent style layer given its JSON properties
+/// Persistent style layers remain valid across style reloads.
+/// \param properties A JSON dictionary of style layer properties
+///
+/// \param layerPosition Position to add the layer in the stack of layers on the map. Defaults to the top layer.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful
+- (void)addPersistentLayerWith:(NSDictionary<NSString *, id> * _Nonnull)properties layerPosition:(TMBLayerPosition * _Nullable)layerPosition completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Returns <code>true</code> if the id passed in is associated to a persistent layer
+/// \param id The layer identifier to test
+///
+- (void)isPersistentLayerWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSNumber * _Nullable, NSError * _Nullable))completion;
+/// Adds a new persistent style custom layer.
+/// Persistent style layers are valid across style reloads.
+/// <ul>
+///   <li>
+///     See Also: https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers
+///   </li>
+/// </ul>
+/// \param id Style layer id.
+///
+/// \param layerHost Style custom layer host.
+///
+/// \param layerPosition Position to add the layer in the stack of layers on the map. Defaults to the top layer.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)addPersistentCustomLayerWithId:(NSString * _Nonnull)id layerHost:(id <MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(TMBLayerPosition * _Nullable)layerPosition completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Adds a new style custom layer.
+/// Runtime style layers are valid until they are either removed or a new
+/// style is loaded.
+/// <ul>
+///   <li>
+///     See Also: https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers
+///   </li>
+/// </ul>
+/// \param id Style layer id.
+///
+/// \param layerHost Style custom layer host.
+///
+/// \param layerPosition Position to add the layer in the stack of layers on the map. Defaults to the top layer.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)addCustomLayerWithId:(NSString * _Nonnull)id layerHost:(id <MBMCustomLayerHost> _Nonnull)layerHost layerPosition:(TMBLayerPosition * _Nullable)layerPosition completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Removes an existing style layer
+/// Runtime style layers are valid until they are either removed or a new
+/// style is loaded.
+/// \param id Identifier of the style layer to remove.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)removeLayerWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Checks whether a given style layer exists.
+/// Runtime style layers are valid until they are either removed or a new
+/// style is loaded.
+/// \param id Style layer identifier.
+///
+///
+/// returns:
+/// <code>true</code> if the given style layer exists, <code>false</code> otherwise.
+- (BOOL)layerExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+/// The ordered list of the current style layers’ identifiers and types
+@property (nonatomic, readonly, copy) NSArray<TMBLayerInfo *> * _Nonnull allLayerIdentifiers;
+/// Gets the value of style layer property.
+/// \param layerId Style layer identifier.
+///
+/// \param property Style layer property name.
+///
+///
+/// returns:
+///
+/// The value of the property in the layer with layerId.
+- (id _Nonnull)layerPropertyValueFor:(NSString * _Nonnull)layerId property:(NSString * _Nonnull)property SWIFT_WARN_UNUSED_RESULT;
+/// Gets the value of style layer property.
+/// \param layerId Style layer identifier.
+///
+/// \param property Style layer property name.
+///
+///
+/// returns:
+///
+/// The value of the property in the layer with layerId.
+- (MBMStylePropertyValue * _Nonnull)layerPropertyFor:(NSString * _Nonnull)layerId property:(NSString * _Nonnull)property SWIFT_WARN_UNUSED_RESULT;
+/// Sets a JSON value to a style layer property.
+/// \param layerId Style layer identifier.
+///
+/// \param property Style layer property name.
+///
+/// \param value Style layer property value.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setLayerPropertyFor:(NSString * _Nonnull)layerId property:(NSString * _Nonnull)property value:(id _Nonnull)value completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Gets the default value of style layer property.
+/// \param layerType Style layer type.
+///
+/// \param property Style layer property name.
+///
+///
+/// returns:
+///
+/// The default value of the property for the layers with type layerType.
++ (MBMStylePropertyValue * _Nonnull)layerPropertyDefaultValueFor:(enum TMBLayerType)layerType property:(NSString * _Nonnull)property SWIFT_WARN_UNUSED_RESULT;
+/// Gets the properties for a style layer.
+/// \param layerId layer id.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+///
+/// returns:
+///
+/// JSON dictionary representing the layer properties
+- (void)layerPropertiesFor:(NSString * _Nonnull)layerId completion:(void (^ _Nullable)(NSDictionary<NSString *, id> * _Nullable, NSError * _Nullable))completion;
+/// Sets style layer properties.
+/// This method can be used to perform batch update for a style layer properties.
+/// The structure of a provided <code>properties</code> value must conform to the
+/// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/">format for a corresponding layer type</a>.
+/// Modification of a <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#id">layer identifier</a>
+/// and/or <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#type">layer type</a>
+/// is not allowed.
+/// \param layerId Style layer identifier.
+///
+/// \param properties JSON dictionary representing the updated layer properties.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setLayerPropertiesFor:(NSString * _Nonnull)layerId properties:(NSDictionary<NSString *, id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Adds a new style source.
+/// <ul>
+///   <li>
+///     See Also: https://docs.mapbox.com/mapbox-gl-js/style-spec/#sources
+///   </li>
+/// </ul>
+/// \param id An identifier for the style source.
+///
+/// \param properties A JSON dictionary of style source properties.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)addSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Removes an existing style source.
+/// \param id Identifier of the style source to remove.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)removeSourceWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Checks whether a given style source exists.
+/// \param id Style source identifier.
+///
+///
+/// returns:
+/// <code>true</code> if the given source exists, <code>false</code> otherwise.
+- (BOOL)sourceExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+/// The ordered list of the current style sources’ identifiers and types. Identifiers for custom vector
+/// sources will not be included
+@property (nonatomic, readonly, copy) NSArray<TMBSourceInfo *> * _Nonnull allSourceIdentifiers;
+/// Gets the value of style source property.
+/// \param sourceId Style source identifier.
+///
+/// \param property Style source property name.
+///
+///
+/// returns:
+/// The value of the property in the source with sourceId.
+- (MBMStylePropertyValue * _Nonnull)sourcePropertyFor:(NSString * _Nonnull)sourceId property:(NSString * _Nonnull)property SWIFT_WARN_UNUSED_RESULT;
+/// Sets a value to a style source property.
+/// \param sourceId Style source identifier.
+///
+/// \param property Style source property name.
+///
+/// \param value Style source property value (JSON value)
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setSourcePropertyFor:(NSString * _Nonnull)sourceId property:(NSString * _Nonnull)property value:(id _Nonnull)value completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Gets style source properties.
+/// \param sourceId Style source identifier
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+///
+/// returns:
+///
+/// JSON dictionary representing the layer properties
+- (void)sourcePropertiesFor:(NSString * _Nonnull)sourceId completion:(void (^ _Nullable)(NSDictionary<NSString *, id> * _Nullable, NSError * _Nullable))completion;
+/// Sets style source properties.
+/// This method can be used to perform batch update for a style source properties.
+/// The structure of a provided <code>properties</code> value must conform to the
+/// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/">format</a> for a
+/// corresponding source type. Modification of a <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#type">source type</a>
+/// is not allowed.
+/// \param sourceId Style source identifier
+///
+/// \param properties A JSON dictionary of Style source properties
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setSourcePropertiesFor:(NSString * _Nonnull)sourceId properties:(NSDictionary<NSString *, id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Gets the default value of style source property.
+/// \param sourceType Style source type.
+///
+/// \param property Style source property name.
+///
+///
+/// returns:
+///
+/// The default value for the named property for the sources with type sourceType.
++ (MBMStylePropertyValue * _Nonnull)sourcePropertyDefaultValueFor:(NSString * _Nonnull)sourceType property:(NSString * _Nonnull)property SWIFT_WARN_UNUSED_RESULT;
+/// Updates the image of an image style source.
+/// <ul>
+///   <li>
+///     See Also: https://docs.mapbox.com/mapbox-gl-js/style-spec/#sources-image
+///   </li>
+/// </ul>
+/// \param id Style source identifier.
+///
+/// \param image UIImage
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)updateImageSourceWithId:(NSString * _Nonnull)id image:(UIImage * _Nonnull)image completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Adds an image to be used in the style.
+/// This API can also be used for
+/// updating an image. If the image id was already added, it gets replaced
+/// by the new image.
+/// The image can be used in
+/// <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#layout-symbol-icon-image"><code>icon-image</code></a>,
+/// <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#paint-fill-fill-pattern"><code>fill-pattern</code></a>, and
+/// <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#paint-line-line-pattern"><code>line-pattern</code></a>.
+/// For more information on how <code>stretchX</code> and <code>stretchY</code> parameters affect image stretching
+/// see <a href="https://docs.mapbox.com/mapbox-gl-js/example/add-image-stretchable">this Mapbox GL-JS example</a>.
+/// \param image Image to add.
+///
+/// \param id ID of the image.
+///
+/// \param sdf Option to treat whether image is SDF(signed distance field) or not.
+/// Setting this to <code>true</code> allows template images to be recolored. The
+/// default value is <code>false</code>.
+///
+/// \param stretchX An array of two-element arrays, consisting of two numbers
+/// that represent the from position and the to position of areas
+/// that can be stretched horizontally.
+///
+/// \param stretchY An array of two-element arrays, consisting of two numbers
+/// that represent the from position and the to position of areas
+/// that can be stretched vertically.
+///
+/// \param content An array of four numbers, with the first two specifying the
+/// left, top corner, and the last two specifying the right, bottom
+/// corner. If present, and if the icon uses icon-text-fit, the
+/// symbol’s text will be fit inside the content box.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)addImage:(UIImage * _Nonnull)image id:(NSString * _Nonnull)id sdf:(BOOL)sdf stretchX:(NSArray<MBMImageStretches *> * _Nonnull)stretchX stretchY:(NSArray<MBMImageStretches *> * _Nonnull)stretchY content:(MBMImageContent * _Nullable)content completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Adds an image to be used in the style.
+/// If the image has non-zero <code>UIImage.capInsets</code> it will be stretched accordingly,
+/// regardless of the value in <code>UIImage.resizingMode</code>.
+/// \param image Image to add.
+///
+/// \param id ID of the image.
+///
+/// \param sdf Option to treat whether image is SDF(signed distance field) or not.
+/// Setting this to <code>true</code> allows template images to be recolored. The
+/// default value is <code>false</code>.
+///
+/// \param contentInsets The distances the edges of content are inset from the image rectangle.
+/// If present, and if the icon uses icon-text-fit, the
+/// symbol’s text will be fit inside the content box.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)addImage:(UIImage * _Nonnull)image id:(NSString * _Nonnull)id sdf:(BOOL)sdf contentInsets:(UIEdgeInsets)contentInsets completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Removes an image from the style.
+/// \param id ID of the image to remove.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
 - (void)removeImageWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Checks whether an image exists.
+/// \param id The identifier of the image.
+///
+///
+/// returns:
+/// <code>true</code> if the given image exists, <code>false</code> otherwise.
 - (BOOL)imageExistsWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+/// Get an image from the style.
+/// \param id ID of the image.
+///
+///
+/// returns:
+/// UIImage representing the data associated with the given ID,
+/// or nil if no image is associated with that ID.
+- (UIImage * _Nullable)imageWithId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+/// Sets a light on the style.
+/// \param light The <code>Light</code> that should be applied.
+///
+///
+/// throws:
+/// An error describing why the operation was unsuccessful.
+- (void)setLight:(TMBLight * _Nonnull)light completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Sets the style global light source properties.
+/// <ul>
+///   <li>
+///     See Also: https://docs.mapbox.com/mapbox-gl-js/style-spec/#light
+///   </li>
+/// </ul>
+/// \param properties A dictionary of style light properties values,
+/// with their names as key.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setLightWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Sets a value to the style light property.
+/// \param property Style light property name.
+///
+/// \param value Style light property value.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setLightProperty:(NSString * _Nonnull)property value:(id _Nonnull)value completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Gets the value of a style light property.
+/// \param property Style light property name.
+///
+///
+/// returns:
+/// Style light property value.
+- (id _Nonnull)lightProperty:(NSString * _Nonnull)property SWIFT_WARN_UNUSED_RESULT;
+/// Gets the value of a style light property.
+/// \param property Style light property name.
+///
+///
+/// returns:
+/// Style light property value.
+- (MBMStylePropertyValue * _Nonnull)lightStylePropertyValue:(NSString * _Nonnull)property SWIFT_WARN_UNUSED_RESULT;
+/// Sets a terrain on the style
+/// \param terrain The <code>Terrain</code> that should be rendered
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setTerrain:(TMBTerrain * _Nonnull)terrain completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Removes terrain from style if it was set.
+- (void)removeTerrain;
+/// Sets the style global terrain source properties.
+/// <ul>
+///   <li>
+///     See Also: https://docs.mapbox.com/mapbox-gl-js/style-spec/#terrain
+///   </li>
+/// </ul>
+/// \param properties A dictionary of style terrain properties values,
+/// with their names as key.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setTerrainWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Sets a value to the named style terrain property.
+/// \param property Style terrain property name.
+///
+/// \param value Style terrain property value.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setTerrainProperty:(NSString * _Nonnull)property value:(id _Nonnull)value completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Gets the value of a style terrain property.
+/// \param property Style terrain property name.
+///
+///
+/// returns:
+/// Style terrain property value.
+- (id _Nonnull)terrainProperty:(NSString * _Nonnull)property SWIFT_WARN_UNUSED_RESULT;
+/// Gets the value of a style terrain property.
+/// \param property Style terrain property name.
+///
+///
+/// returns:
+/// Style terrain property value.
+- (MBMStylePropertyValue * _Nonnull)terrainStylePropertyValue:(NSString * _Nonnull)property SWIFT_WARN_UNUSED_RESULT;
+/// Set the atmosphere of the style
+/// \param atmosphere <code>Atmosphere</code> object describing the fog, space and stars.
+///
+- (void)setAtmosphere:(TMBAtmosphere * _Nonnull)atmosphere completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Remove the atmosphere of the style. No fog, space or stars would be rendered.
+- (void)removeAtmosphereWithCompletion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Set an explicit atmosphere properties
+/// <ul>
+///   <li>
+///     See Also <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/fog/">style-spec/fog</a>
+///   </li>
+/// </ul>
+/// \param properties A dictionary of style fog (aka atmosphere) properties values,
+/// with their names as key.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setAtmosphereWithProperties:(NSDictionary<NSString *, id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Sets the value of a style atmosphere property.
+/// <ul>
+///   <li>
+///     See Also <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/fog/">style-spec/fog</a>
+///   </li>
+/// </ul>
+/// \param property Style atmosphere property name.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setAtmosphereProperty:(NSString * _Nonnull)property value:(id _Nonnull)value completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Gets the value of a style atmosphere property.
+/// <ul>
+///   <li>
+///     See Also: https://docs.mapbox.com/mapbox-gl-js/style-spec/fog/
+///   </li>
+/// </ul>
+/// \param property Style atmosphere property name.
+///
+///
+/// returns:
+/// Style atmosphere property value.
+- (MBMStylePropertyValue * _Nonnull)atmosphereProperty:(NSString * _Nonnull)property SWIFT_WARN_UNUSED_RESULT;
+/// Adds a custom geometry to be used in the style.
+/// To add the data, implement the fetchTileFunction callback in the options
+/// and call <code>setCustomGeometrySourceTileData</code>.
+/// \param id Style source identifier
+///
+/// \param options Settings for the custom geometry
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)addCustomGeometrySourceWithId:(NSString * _Nonnull)id options:(MBMCustomGeometrySourceOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Set tile data of a custom geometry.
+/// \param sourceId Style source identifier
+///
+/// \param tileId Identifier of the tile
+///
+/// \param features An array of features to add
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)setCustomGeometrySourceTileDataForSourceId:(NSString * _Nonnull)sourceId tileId:(MBMCanonicalTileID * _Nonnull)tileId features:(NSArray<MBXFeature *> * _Nonnull)features completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Invalidate tile for provided custom geometry source.
+/// \param sourceId Style source identifier
+///
+/// \param tileId Identifier of the tile
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)invalidateCustomGeometrySourceTileForSourceId:(NSString * _Nonnull)sourceId tileId:(MBMCanonicalTileID * _Nonnull)tileId completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// Invalidate region for provided custom geometry source.
+/// \param sourceId Style source identifier
+///
+/// \param bounds Coordinate bounds.
+///
+///
+/// throws:
+///
+/// An error describing why the operation was unsuccessful.
+- (void)invalidateCustomGeometrySourceRegionForSourceId:(NSString * _Nonnull)sourceId bounds:(MBMCoordinateBounds * _Nonnull)bounds completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@interface TMBStyle (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)addGeoJSONSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *, id> * _Nonnull)properties geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
+- (void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
+@end
+
+@class TMBStyleProjection;
+
+@interface TMBStyle (SWIFT_EXTENSION(MapboxMapObjC))
+/// Sets the projection.
+/// \param projection The <code>StyleProjection</code> to apply to the style.
+///
+///
+/// throws:
+/// <code>StyleError</code> if the projection could not be applied.
+- (void)setProjection:(TMBStyleProjection * _Nonnull)projection completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+/// The current projection.
+@property (nonatomic, readonly, strong) TMBStyleProjection * _Nonnull projection;
+@end
+
+@class TMBStyleProjectionName;
+
+/// Describes the projection used to render the map.
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBStyleProjection")
+@interface TMBStyleProjection : NSObject
+/// Initializes a projection
+- (nonnull instancetype)initWithName:(TMBStyleProjectionName * _Nonnull)name OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2139,10 +4254,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBStyleProj
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBStyleTransition")
 @interface TMBStyleTransition : NSObject
 - (nonnull instancetype)initWithDuration:(double)duration delay:(double)delay OBJC_DESIGNATED_INITIALIZER;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBStyleTransition * _Nonnull zero;)
++ (TMBStyleTransition * _Nonnull)zero SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBSymbolPlacement")
@@ -2183,13 +4299,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBSymbolZOr
 
 SWIFT_CLASS("_TtC13MapboxMapObjC10TMBTerrain")
 @interface TMBTerrain : NSObject
-- (nonnull instancetype)initWithSourceId:(NSString * _Nonnull)sourceId OBJC_DESIGNATED_INITIALIZER;
 /// Exaggerates the elevation of the terrain by multiplying the data from the DEM with this value.
 @property (nonatomic, strong) TMBValue * _Nullable exaggeration;
+- (nonnull instancetype)initWithSourceId:(NSString * _Nonnull)sourceId OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBTextAnchor")
@@ -2346,6 +4461,255 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+
+@class MBMViewAnnotationOptions;
+@protocol TMBViewAnnotationUpdateObserver;
+
+SWIFT_CLASS("_TtC13MapboxMapObjC24TMBViewAnnotationManager")
+@interface TMBViewAnnotationManager : NSObject
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationView:(UIView * _Nonnull)view SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nullable)viewForAnnotationId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (UIView * _Nullable)viewForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (MBMViewAnnotationOptions * _Nullable)optionsForAnnotationFeatureId:(NSString * _Nonnull)id SWIFT_WARN_UNUSED_RESULT;
+- (void)addWithViewAnnotation:(UIView * _Nonnull)viewAnnotation id:(NSString * _Nullable)id options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)updateWithViewAnnotation:(UIView * _Nonnull)viewAnnotation options:(MBMViewAnnotationOptions * _Nonnull)options completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)removeWithViewAnnotation:(UIView * _Nonnull)viewAnnotation;
+- (void)removeAllViewAnnotations;
+/// Add an observer for annotation views updates
+/// Observers are held strongly.
+/// \param observer The object to notify when updates occur.
+///
+- (void)addViewAnnotationUpdateObserver:(id <TMBViewAnnotationUpdateObserver> _Nonnull)observer;
+/// Remove an observer for annotation views updates.
+/// \param observer The object to stop sending notifications to.
+///
+- (void)removeViewAnnotationUpdateObserver:(id <TMBViewAnnotationUpdateObserver> _Nonnull)observer;
+/// Calculates <code>CameraOptions</code> to fit the list of view annotations.
+/// important:
+/// This API isn’t supported by Globe projection.
+/// \param ids The list of annotations ids to be framed.
+///
+/// \param padding See <code>CameraOptions/padding</code>.
+///
+/// \param bearing See <code>CameraOptions/bearing</code>.
+///
+/// \param pitch See <code>CameraOptions/pitch</code>.
+///
+- (MBMCameraOptions * _Nullable)cameraForAnnotations:(NSArray<NSString *> * _Nonnull)identifiers padding:(UIEdgeInsets)padding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, TMBViewAnnotationManagerError, open) {
+  TMBViewAnnotationManagerErrorViewIsAlreadyAdded = 0,
+  TMBViewAnnotationManagerErrorAssociatedFeatureIdIsAlreadyInUse = 1,
+  TMBViewAnnotationManagerErrorAnnotationNotFound = 2,
+  TMBViewAnnotationManagerErrorGeometryFieldMissing = 3,
+};
+
+
+/// An interface you use to detect when the map view lays out or updates visibility of annotation views.
+/// When visible portion of a map changes, e.g. responding to the user interaction, the map view adjusts the positions and visibility of its annotation views.
+/// Implement methods of <code>ViewAnnotationUpdateObserver</code> to detect when the map view updates position/size for supplied annotation views.
+/// As well as when annotation views get show/hidden when going in/out of visible portion of the map.
+/// To register an observer for view annotation updates, call the <code>ViewAnnotationManager/addViewAnnotationUpdateObserver(_:)</code> method.
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC31TMBViewAnnotationUpdateObserver_")
+@protocol TMBViewAnnotationUpdateObserver
+/// Tells the observer that the frames of the annotation views changed.
+/// \param annotationViews The annotation views whose frames changed.
+///
+- (void)framesDidChangeFor:(NSArray<UIView *> * _Nonnull)annotationViews;
+/// Tells the observer that the visibility of the annotation views changed.
+/// Use <code>isHidden</code> property to determine whether a view is visible or not.
+/// \param annotationsViews The annotation vies whose visibility changed.
+///
+- (void)visibilityDidChangeFor:(NSArray<UIView *> * _Nonnull)annotationViews;
+@end
+
+@class TMBViewportOptions;
+@class TMBViewportStatus;
+@protocol TMBViewportStatusObserver;
+
+/// <code>Viewport</code> provides a structured approach to organizing camera management logic into states and
+/// transitions between them.
+/// At any given time, the viewport is either:
+/// <ul>
+///   <li>
+///     idle (not updating the camera)
+///   </li>
+///   <li>
+///     in a state (camera is being managed by a <code>ViewportState</code>)
+///   </li>
+///   <li>
+///     transitioning (camera is being managed by a <code>ViewportTransition</code>)
+///   </li>
+/// </ul>
+SWIFT_CLASS("_TtC13MapboxMapObjC11TMBViewport")
+@interface TMBViewport : NSObject
+/// Configuration options for adjusting the viewport’s behavior.
+@property (nonatomic, strong) TMBViewportOptions * _Nonnull options;
+/// The current <code>ViewportStatus</code>.
+/// <code>status</code> cannot be set directly. Use
+/// <code>Viewport/transition(to:transition:completion:)</code> and <code>Viewport/idle()</code> to
+/// transition to a state or to idle.
+/// Defaults to <code>ViewportStatus/idle</code>.
+/// seealso:
+///
+/// <ul>
+///   <li>
+///     <code>Viewport/addStatusObserver(_:)</code>
+///   </li>
+///   <li>
+///     <code>Viewport/removeStatusObserver(_:)</code>
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) TMBViewportStatus * _Nonnull status;
+/// Subscribes a <code>ViewportStatusObserver</code> to <code>Viewport/status</code> changes.
+/// Viewport keeps a strong reference to registered observers. Adding the same observer again while it is already subscribed has no effect.
+/// note:
+/// Observers are notified of status changes asynchronously on the main queue. This means that by
+/// the time the notification is delivered, the status may have already changed again. This behavior is necessary to allow
+/// observers to trigger further transitions while avoiding out-of-order delivery of status changed notifications.
+/// seealso:
+/// <code>Viewport/removeStatusObserver(_:)</code>
+/// \param observer An object that will be notified when the <code>Viewport/status</code> changes.
+///
+- (void)addStatusObserver:(id <TMBViewportStatusObserver> _Nonnull)observer;
+/// Unsubscribes a <code>ViewportStatusObserver</code> from <code>Viewport/status</code> changes. This causes viewport
+/// to release its strong reference to the observer. Removing an observer that is not subscribed has no effect.
+/// seealso:
+/// <code>Viewport/addStatusObserver(_:)</code>
+/// \param observer An object that should no longer be notified when the <code>Viewport/status</code> changes.
+///
+- (void)removeStatusObserver:(id <TMBViewportStatusObserver> _Nonnull)observer;
+/// Sets <code>Viewport/status</code> to <code>ViewportStatus/idle</code> synchronously.
+/// This cancels any active <code>ViewportState</code> or <code>ViewportTransition</code>.
+- (void)idle;
+/// Executes a transition to the requested state.
+/// If the transition fails, <code>Viewport/status</code> is set to <code>ViewportStatus/idle</code>.
+/// Transitioning to state <code>x</code> when the status is <code>.state(x)</code> invokes <code>completion</code>
+/// synchronously with <code>true</code> and does not modify <code>Viewport/status</code>.
+/// Transitioning to state <code>x</code> when the status is <code>.transition(_, x)</code> invokes <code>completion</code>
+/// synchronously with <code>false</code> and does not modify <code>Viewport/status</code>.
+/// <code>Viewport</code> keeps a strong reference to active transitions and states. To reuse states and transitions,
+/// keep strong references to them in the consuming project.
+/// \param toState The target <code>ViewportState</code> to transition to.
+///
+/// \param transition The <code>ViewportTransition</code> that is used to transition to the target state.
+/// If <code>nil</code>, <code>Viewport/defaultTransition</code> is used. Defaults to <code>nil</code>.
+///
+/// \param completion A closure that is invoked when the transition ends. Defaults to <code>nil</code>.
+///
+/// \param success Whether the transition ran to completion. Transitions may end early if they fail or
+/// are interrupted (e.g. by another call to
+/// <code>transition(to:transition:completion:)</code> or <code>Viewport/idle()</code>)
+///
+- (void)transitionTo:(id <TMBViewportState> _Nonnull)toState transition:(id <TMBViewportTransition> _Nullable)transition completion:(void (^ _Nullable)(BOOL))completion;
+/// <code>Viewport/transition(to:transition:completion:)</code> uses this transition unless
+/// some non-nil value is passed to its <code>transition</code> argument.
+/// Defaults to <code>DefaultViewportTransition</code> with default options.
+@property (nonatomic, strong) id <TMBViewportTransition> _Nonnull defaultTransition;
+/// Creates a new instance of <code>FollowPuckViewportState</code> with the specified options.
+/// \param options configuration options used when creating <code>FollowPuckViewportState</code>. Defaults to
+/// <code>FollowPuckViewportStateOptions/init(padding:zoom:bearing:pitch:animationDuration:)</code>
+/// with the default value specified for all parameters.
+///
+///
+/// returns:
+/// The newly-created <code>FollowPuckViewportState</code>.
+- (TMBFollowPuckViewportState * _Nonnull)makeFollowPuckViewportStateWithOptions:(TMBFollowPuckViewportStateOptions * _Nullable)options SWIFT_WARN_UNUSED_RESULT;
+/// Creates a new instance of <code>OverviewViewportState</code> with the specified options.
+/// \param options configuration options used when creating <code>OverviewViewportState</code>.
+///
+///
+/// returns:
+/// The newly-created <code>OverviewViewportState</code>.
+- (TMBOverviewViewportState * _Nonnull)makeOverviewViewportStateWithOptions:(TMBOverviewViewportStateOptions * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
+/// Creates a new instance of <code>DefaultViewportTransition</code>.
+/// \param options configuration options used when creating <code>DefaultViewportTransition</code>. Defaults to
+/// <code>DefaultViewportTransitionOptions/init(maxDuration:)</code> with the default value specified for all parameters
+///
+///
+/// returns:
+/// The newly-created <code>DefaultViewportTransition</code>.
+- (TMBDefaultViewportTransition * _Nonnull)makeDefaultViewportTransitionWithOptions:(TMBDefaultViewportTransitionOptions * _Nullable)options SWIFT_WARN_UNUSED_RESULT;
+/// Creates a new instance of <code>ImmediateViewportTransition</code>.
+///
+/// returns:
+/// The newly-created <code>ImmediateViewportTransition</code>.
+- (TMBImmediateViewportTransition * _Nonnull)makeImmediateViewportTransition SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Configuraton options for <code>Viewport</code>.
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBViewportOptions")
+@interface TMBViewportOptions : NSObject
+/// Indicates whether the <code>Viewport</code> should idle when the <code>MapView</code>
+/// receives touch input.
+/// Set this property to <code>false</code> to enable building custom <code>ViewportState</code>s that
+/// can work simultaneously with certain types of gestures.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL transitionsToIdleUponUserInteraction;
+/// Initializes <code>ViewportOptions</code>.
+/// \param transitionsToIdleUponUserInteraction Defaults to <code>true</code>.
+///
+- (nonnull instancetype)initWithTransitionsToIdleUponUserInteraction:(BOOL)transitionsToIdleUponUserInteraction OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// <code>ViewportStatus</code> contains 3 cases that express what the <code>Viewport</code> is doing at any given time.
+/// The <code>ViewportStatus/state(_:)</code> and <code>ViewportStatus/transition(_:toState:)</code>
+/// cases have associated values that are reference types, so equality and hash are implemented in terms of
+/// the identities of those objects.
+SWIFT_CLASS("_TtC13MapboxMapObjC17TMBViewportStatus")
+@interface TMBViewportStatus : NSObject
+/// The <code>idle</code> status indicates that <code>Viewport</code> is inactive.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBViewportStatus * _Nonnull idle;)
++ (TMBViewportStatus * _Nonnull)idle SWIFT_WARN_UNUSED_RESULT;
+/// The <code>state(_:)</code> status indicates that <code>Viewport</code> is running the associated value <code>state</code>.
++ (TMBViewportStatus * _Nonnull)state:(id <TMBViewportState> _Nonnull)state SWIFT_WARN_UNUSED_RESULT;
+/// The <code>transition(_:toState:)</code> status indicates that <code>Viewport</code> is running <code>transition</code>
+/// and will start running <code>toState</code> upon success.
++ (TMBViewportStatus * _Nonnull)transition:(id <TMBViewportTransition> _Nonnull)transition toState:(id <TMBViewportState> _Nonnull)toState SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Constants that describe why <code>Viewport/status</code> changed.
+SWIFT_CLASS("_TtC13MapboxMapObjC29TMBViewportStatusChangeReason")
+@interface TMBViewportStatusChangeReason : NSObject <NamedString>
+- (NSString * _Nonnull)stringValue SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// <code>ViewportStatusObserver</code> must be implemented by objects that wish to register
+/// themselves using <code>Viewport/addStatusObserver(_:)</code> so that they can observe
+/// <code>Viewport/status</code> changes.
+/// seealso:
+/// <code>Viewport/addStatusObserver(_:)</code> for an important note about how
+/// these notifications are delivered asynchronously.
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC25TMBViewportStatusObserver_")
+@protocol TMBViewportStatusObserver
+/// Called whenever <code>Viewport/status</code> changes.
+/// \param fromStatus The value of <code>Viewport/status</code> prior to the change.
+///
+/// \param toStatus The value of <code>Viewport/status</code> after the change.
+///
+/// \param reason A <code>ViewportStatusChangeReason</code> that indicates what initiated the change.
+///
+- (void)viewportStatusDidChangeFrom:(TMBViewportStatus * _Nonnull)fromStatus to:(TMBViewportStatus * _Nonnull)toStatus reason:(TMBViewportStatusChangeReason * _Nonnull)reason;
+@end
 
 
 

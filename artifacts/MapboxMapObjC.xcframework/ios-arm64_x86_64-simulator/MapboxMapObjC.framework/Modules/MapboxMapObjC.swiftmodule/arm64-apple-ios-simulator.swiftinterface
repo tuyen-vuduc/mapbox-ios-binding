@@ -2,7 +2,6 @@
 // swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)
 // swift-module-flags: -target arm64-apple-ios15.4-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MapboxMapObjC
 // swift-module-flags-ignorable: -enable-bare-slash-regex
-import CoreLocation/*.CoreLocation*/
 import Foundation
 import MapboxCommon
 import MapboxCoreMaps
@@ -14,6 +13,61 @@ import Turf
 import UIKit
 import _Concurrency
 import _StringProcessing
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class TMBAtmosphere : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.Atmosphere {
+    get
+  }
+  public var color: MapboxMapObjC.TMBValue? {
+    get
+    set
+  }
+  public var colorTransition: MapboxMapObjC.TMBStyleTransition? {
+    get
+    set
+  }
+  public var highColor: MapboxMapObjC.TMBValue? {
+    get
+    set
+  }
+  public var highColorTransition: MapboxMapObjC.TMBStyleTransition? {
+    get
+    set
+  }
+  public var horizonBlend: MapboxMapObjC.TMBValue? {
+    get
+    set
+  }
+  public var horizonBlendTransition: MapboxMapObjC.TMBStyleTransition? {
+    get
+    set
+  }
+  public var range: MapboxMapObjC.TMBValue? {
+    get
+    set
+  }
+  public var rangeTransition: MapboxMapObjC.TMBStyleTransition? {
+    get
+    set
+  }
+  public var spaceColor: MapboxMapObjC.TMBValue? {
+    get
+    set
+  }
+  public var spaceColorTransition: MapboxMapObjC.TMBStyleTransition? {
+    get
+    set
+  }
+  public var starIntensity: MapboxMapObjC.TMBValue? {
+    get
+    set
+  }
+  public var starIntensityTransition: MapboxMapObjC.TMBStyleTransition? {
+    get
+    set
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc public protocol TMBAnnotation {
   @objc var id: Swift.String { get }
   @objc var geometryInJSON: Swift.String { get }
@@ -29,18 +83,248 @@ import _StringProcessing
   @objc dynamic public func loadTileRegion(forId id: Swift.String, loadOptions: MapboxCommon.TileRegionLoadOptions, progress: MapboxCommon.TileRegionLoadProgressCallback? = nil, completion: @escaping (MapboxCommon.TileRegion?, (any Swift.Error)?) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
   @objc dynamic public func allTileRegions(_ completion: @escaping ([MapboxCommon.TileRegion]?, (any Swift.Error)?) -> Swift.Void)
 }
-@objc public protocol NamedString {
-  @objc func stringValue() -> Swift.String
+@objc public protocol TMBLocationPermissionsDelegate {
+  @objc optional func locationManager(_ locationManager: MapboxMapObjC.TMBLocationManager, didFailToLocateUserWithError error: any Swift.Error)
+  @objc optional func locationManager(_ locationManager: MapboxMapObjC.TMBLocationManager, didChangeAccuracyAuthorization accuracyAuthorization: CoreLocation.CLAccuracyAuthorization)
+  @objc optional func locationManagerShouldDisplayHeadingCalibration(_ locationManager: MapboxMapObjC.TMBLocationManager) -> Swift.Bool
 }
-@objc public enum TMBOrnamentVisibility : Swift.Int {
-  case adaptive
-  case hidden
-  case visible
+@_hasMissingDesignatedInitializers @objc open class TMBLocationManager : ObjectiveC.NSObject {
+  @objc public var latestLocation: MapboxMaps.Location? {
+    @objc get
+  }
+  @objc weak public var delegate: (any MapboxMapObjC.TMBLocationPermissionsDelegate)? {
+    @objc get
+    @objc set
+  }
+  @objc public var locationProvider: (any MapboxMapObjC.TMBLocationProvider)! {
+    @objc get
+  }
+  @objc public var consumers: Foundation.NSHashTable<any MapboxMaps.LocationConsumer> {
+    @objc get
+  }
+  @objc public var options: MapboxMapObjC.TMBLocationOptions {
+    @objc get
+    @objc set
+  }
+  @objc public func overrideLocationProvider(with customLocationProvider: any MapboxMapObjC.TMBLocationProvider)
+  @objc public func addLocationConsumer(_ consumer: any MapboxMaps.LocationConsumer)
+  @objc public func removeLocationConsumer(_ consumer: any MapboxMaps.LocationConsumer)
+  @objc public func addPuckLocationConsumer(_ consumer: any MapboxMaps.PuckLocationConsumer)
+  @objc public func removePuckLocationConsumer(_ consumer: any MapboxMaps.PuckLocationConsumer)
+  @available(iOS 14.0, *)
+  @objc public func requestTemporaryFullAccuracyPermissions(withPurposeKey purposeKey: Swift.String)
+  @objc deinit
+}
+extension MapboxMapObjC.TMBLocationManager : MapboxMaps.LocationPermissionsDelegate {
+  @objc dynamic public func locationManagerShouldDisplayHeadingCalibration(_ locationManager: MapboxMaps.LocationManager) -> Swift.Bool
+  @objc dynamic public func locationManager(_ locationManager: MapboxMaps.LocationManager, didChangeAccuracyAuthorization accuracyAuthorization: CoreLocation.CLAccuracyAuthorization)
+  @objc dynamic public func locationManager(_ locationManager: MapboxMaps.LocationManager, didFailToLocateUserWithError error: any Swift.Error)
+}
+@objc public protocol TMBLocationProvider {
+  @objc var locationProviderOptions: MapboxMapObjC.TMBLocationOptions { get set }
+  @objc var authorizationStatus: CoreLocation.CLAuthorizationStatus { get }
+  @objc var accuracyAuthorization: CoreLocation.CLAccuracyAuthorization { get }
+  @objc var heading: CoreLocation.CLHeading? { get }
+  @objc func setDelegate(_ delegate: any MapboxMapObjC.TMBLocationProviderDelegate)
+  @objc func requestAlwaysAuthorization()
+  @objc func requestWhenInUseAuthorization()
+  @objc @available(iOS 14.0, *)
+  func requestTemporaryFullAccuracyAuthorization(withPurposeKey purposeKey: Swift.String)
+  @objc func startUpdatingLocation()
+  @objc func stopUpdatingLocation()
+  @objc var headingOrientation: CoreLocation.CLDeviceOrientation { get set }
+  @objc func startUpdatingHeading()
+  @objc func stopUpdatingHeading()
+  @objc func dismissHeadingCalibrationDisplay()
+}
+@objc public protocol TMBLocationProviderDelegate {
+  @objc func locationProvider(_ provider: any MapboxMapObjC.TMBLocationProvider, didUpdateLocations locations: [CoreLocation.CLLocation])
+  @objc func locationProvider(_ provider: any MapboxMapObjC.TMBLocationProvider, didUpdateHeading newHeading: CoreLocation.CLHeading)
+  @objc func locationProvider(_ provider: any MapboxMapObjC.TMBLocationProvider, didFailWithError error: any Swift.Error)
+  @objc func locationProviderDidChangeAuthorization(_ provider: any MapboxMapObjC.TMBLocationProvider)
+}
+@_hasMissingDesignatedInitializers @objc open class TMBLocationOptions : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.LocationOptions {
+    get
+  }
+  @objc public var distanceFilter: CoreLocation.CLLocationDistance {
+    @objc get
+    @objc set
+  }
+  @objc public var desiredAccuracy: CoreLocation.CLLocationAccuracy {
+    @objc get
+    @objc set
+  }
+  @objc public var activityType: CoreLocation.CLActivityType {
+    @objc get
+    @objc set
+  }
+  @objc public var puckType: MapboxMapObjC.TMBPuckType {
+    @objc get
+  }
+  @objc public var puck2DConfiguration: MapboxMapObjC.TMBPuck2DConfiguration? {
+    @objc get
+    @objc set
+  }
+  @objc public var puck3DConfiguration: MapboxMapObjC.TMBPuck3DConfiguration? {
+    @objc get
+    @objc set
+  }
+  @objc public var puckBearingSource: MapboxMapObjC.TMBPuckBearingSource {
+    @objc get
+    @objc set
+  }
+  @objc public var puckBearingEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public init(distanceFilter: CoreLocation.CLLocationDistance = kCLDistanceFilterNone, desiredAccuracy: CoreLocation.CLLocationAccuracy = kCLLocationAccuracyBest, activityType: CoreLocation.CLActivityType = .other, puck2DConfiguration: MapboxMapObjC.TMBPuck2DConfiguration? = nil, puck3DConfiguration: MapboxMapObjC.TMBPuck3DConfiguration? = nil, puckBearingSource: MapboxMapObjC.TMBPuckBearingSource = .heading, puckBearingEnabled: Swift.Bool = true)
+  @objc deinit
+}
+@objc public enum TMBPuckBearingSource : Swift.Int {
+  case heading
+  case course
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
+}
+@objc public enum TMBPuckType : Swift.Int {
+  case puck2D
+  case puck3D
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc open class TMBPuck2DConfiguration : ObjectiveC.NSObject {
+  @objc public var opacity: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc public var topImage: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc public var bearingImage: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc public var shadowImage: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc public var scale: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
+  }
+  @objc public var pulsing: MapboxMapObjC.TMBPuck2DConfigurationPulsing? {
+    @objc get
+    @objc set
+  }
+  @objc public var showsAccuracyRing: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var accuracyRingColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc public var accuracyRingBorderColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  public var rawValue: MapboxMaps.Puck2DConfiguration {
+    get
+  }
+  @objc public init(topImage: UIKit.UIImage? = nil, bearingImage: UIKit.UIImage? = nil, shadowImage: UIKit.UIImage? = nil, scale: MapboxMapObjC.TMBValue? = nil, showsAccuracyRing: Swift.Bool = false, accuracyRingColor: UIKit.UIColor = UIColor(red: 0.537, green: 0.812, blue: 0.941, alpha: 0.3), accuracyRingBorderColor: UIKit.UIColor = UIColor(red: 0.537, green: 0.812, blue: 0.941, alpha: 0.3), opacity: Swift.Double = 1)
+  @objc public init(topImage: UIKit.UIImage? = nil, bearingImage: UIKit.UIImage? = nil, shadowImage: UIKit.UIImage? = nil, scale: MapboxMapObjC.TMBValue? = nil, pulsing: MapboxMapObjC.TMBPuck2DConfigurationPulsing? = nil, showsAccuracyRing: Swift.Bool = false, opacity: Swift.Double = 1)
+  @objc public static func makeDefault(showBearing: Swift.Bool = false) -> MapboxMapObjC.TMBPuck2DConfiguration
+  @objc deinit
+}
+@objc public enum TMBPuck2DConfigurationPulsingRadius : Swift.Int {
+  case constant
+  case accuracy
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc open class TMBPuck2DConfigurationPulsing : ObjectiveC.NSObject {
+  public static var `default`: MapboxMapObjC.TMBPuck2DConfigurationPulsing {
+    get
+  }
+  public var isEnabled: Swift.Bool {
+    get
+    set
+  }
+  public var color: UIKit.UIColor {
+    get
+    set
+  }
+  public var radius: MapboxMapObjC.TMBPuck2DConfigurationPulsingRadius {
+    get
+    set
+  }
+  public var radiusValue: Swift.Double {
+    get
+    set
+  }
+  public var rawValue: MapboxMaps.Puck2DConfiguration.Pulsing {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBPuck3DConfiguration : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.Puck3DConfiguration {
+    get
+  }
+  @objc public var model: MapboxMapObjC.TMBModel {
+    @objc get
+    @objc set
+  }
+  @objc public var modelScale: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
+  }
+  @objc public var modelRotation: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
+  }
+  @objc public var modelOpacity: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
+  }
+  @objc public init(model: MapboxMapObjC.TMBModel, modelScale: MapboxMapObjC.TMBValue? = nil, modelRotation: MapboxMapObjC.TMBValue? = nil, modelOpacity: MapboxMapObjC.TMBValue? = nil)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBModel : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.Model {
+    get
+  }
+  @objc public var uri: Foundation.URL? {
+    @objc get
+    @objc set
+  }
+  @objc public var position: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public var orientation: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public init(uri: Foundation.URL? = nil, position: [Swift.Double]? = nil, orientation: [Swift.Double]? = nil)
+  @objc deinit
+}
+@objc public protocol NamedString {
+  @objc func stringValue() -> Swift.String
+}
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func gestures() -> MapboxMapObjC.TMBGestureManager
 }
 @objc public enum TMBPanMode : Swift.Int {
   case horizontal
@@ -159,101 +443,167 @@ import _StringProcessing
   public func gestureManager(_ gestureManager: MapboxMaps.GestureManager, didEndAnimatingFor gestureType: MapboxMaps.GestureType)
   @objc deinit
 }
-@objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func gestureManager() -> MapboxMapObjC.TMBGestureManager
-}
-extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setTerrain(_ value: MapboxMapObjC.TMBTerrain, onError: ((any Swift.Error) -> Swift.Void)?)
-}
-@objc open class TMBTerrain : ObjectiveC.NSObject {
-  public var sourceId: Swift.String
+@_hasMissingDesignatedInitializers @objc open class TMBTerrain : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.Terrain {
+    get
+  }
+  public var sourceId: Swift.String {
+    get
+    set
+  }
+  @objc public var exaggeration: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
+  }
   @objc public init(sourceId: Swift.String)
-  @objc public var exaggeration: MapboxMapObjC.TMBValue?
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func queryRenderedFeatures(within shape: [CoreFoundation.CGPoint], options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?) -> MapboxMapObjC.TMBCancelable
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func queryRenderedFeatures(in rect: CoreFoundation.CGRect, options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?) -> MapboxMapObjC.TMBCancelable
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func queryRenderedFeatures(with point: CoreFoundation.CGPoint, options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?) -> MapboxMapObjC.TMBCancelable
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func querySourceFeatures(for sourceId: Swift.String, options: MapboxCoreMaps.SourceQueryOptions, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func queryFeatureExtension(for sourceId: Swift.String, feature: MapboxCommon.Feature, extension: Swift.String, extensionField: Swift.String, args: [Swift.String : Any]? = nil, completion: ((MapboxCoreMaps.FeatureExtensionValue?, (any Swift.Error)?) -> Swift.Void)?)
-}
-@objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setCamera(to cameraOptions: MapboxCoreMaps.CameraOptions)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func coordinateFromScreenPosition(_ point: CoreFoundation.CGPoint) -> CoreLocation.CLLocationCoordinate2D
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func coordinateFromScreenPositions(_ point: [CoreFoundation.CGPoint]) -> [CoreLocation.CLLocationCoordinate2D]
-}
-@objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func ornamentsOptionsScaleBarVisibility(_ value: MapboxMapObjC.TMBOrnamentVisibility)
-}
-extension MapboxMaps.MapView {
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapLoadingError(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onMapIdle(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleDataLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleImageMissing(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onStyleImageRemoveUnused(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceDataLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceAdded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onSourceRemoved(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onRenderFrameStarted(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onRenderFrameFinished(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onEvenCameraChanged(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-  @discardableResult
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func onResourceRequest(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
-}
-extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func locationDelegate(_ delegate: any MapboxMaps.LocationPermissionsDelegate)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func locationRequestTemporaryFullAccuracyPermissions(_ customKey: Swift.String)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func puck2D(_ build: ((_ builder: MapboxMapObjC.Puck2DConfigurationBuilder) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func puckBearingSource(_ source: MapboxMapObjC.TMBPuckBearingSource)
-}
-extension MapboxMaps.MapView {
   @objc @_Concurrency.MainActor(unsafe) dynamic public func preferredFrameRateRange(_ value: QuartzCore.CAFrameRateRange)
   @objc @_Concurrency.MainActor(unsafe) dynamic public func mapboxMapDebugOptions() -> [Foundation.NSNumber]
   @objc @_Concurrency.MainActor(unsafe) dynamic public func mapboxMapDebugOptions(_ value: [Foundation.NSNumber])
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func getPresentsWithTransaction() -> Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setPresentsWithTransaction(_ value: Swift.Bool)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func getPreferredFramesPerSecond() -> Swift.Int
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setPreferredFramesPerSecond(_ value: Swift.Int)
+  @available(iOS 15.0, *)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func getPreferredFrameRateRange() -> QuartzCore.CAFrameRateRange
+  @available(iOS 15.0, *)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func setPreferredFrameRateRange(_ value: QuartzCore.CAFrameRateRange)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func getCameraState() -> MapboxCoreMaps.CameraState
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func getAnchor() -> CoreFoundation.CGPoint
 }
-@_hasMissingDesignatedInitializers @objc open class TMBCancelable : ObjectiveC.NSObject {
-  @objc public func cancel()
+@objc public protocol TMBAttributionURLOpener {
+  @objc func openAttributionURL(_ url: Foundation.URL)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class MapViewFactory : ObjectiveC.NSObject {
+  @objc public static func create(frame: CoreFoundation.CGRect, options: MapboxMaps.MapInitOptions?) -> MapboxMaps.MapView
+  @objc public static func create(frame: CoreFoundation.CGRect, mapInitOptions: MapboxMaps.MapInitOptions = MapInitOptions(), urlOpener: any MapboxMapObjC.TMBAttributionURLOpener) -> MapboxMaps.MapView
+  @objc deinit
+}
+@objc @_Concurrency.MainActor(unsafe) open class TMBMapView : MapboxMaps.MapView {
+  @available(iOSApplicationExtension, unavailable)
+  @_Concurrency.MainActor(unsafe) override public init(frame: CoreFoundation.CGRect, mapInitOptions: MapboxMaps.MapInitOptions = super)
+  @available(iOS, deprecated: 13)
+  @_Concurrency.MainActor(unsafe) override public init(frame: CoreFoundation.CGRect, mapInitOptions: MapboxMaps.MapInitOptions = super, orientationProvider: any MapboxMaps.InterfaceOrientationProvider, urlOpener: any MapboxMaps.AttributionURLOpener)
+  @available(iOS 13.0, *)
+  @_Concurrency.MainActor(unsafe) override public init(frame: CoreFoundation.CGRect, mapInitOptions: MapboxMaps.MapInitOptions = super, urlOpener: any MapboxMaps.AttributionURLOpener)
+  @available(iOSApplicationExtension, unavailable)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 extension MapboxMaps.ResourceOptions {
   public init(_ objcValue: MapboxCoreMaps.ResourceOptions)
+  public func objcValue() -> MapboxCoreMaps.ResourceOptions
 }
-@objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func options(forAnnotationId id: Swift.String) -> MapboxCoreMaps.ViewAnnotationOptions?
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func options(forAnnotationView view: UIKit.UIView) -> MapboxCoreMaps.ViewAnnotationOptions?
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func view(forAnnotationId id: Swift.String) -> UIKit.UIView?
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func view(forAnnotationFeatureId id: Swift.String) -> UIKit.UIView?
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func options(forAnnotationFeatureId id: Swift.String) -> MapboxCoreMaps.ViewAnnotationOptions?
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func add(viewAnnotation: UIKit.UIView, id: Swift.String?, options: MapboxCoreMaps.ViewAnnotationOptions, completion: (((any Swift.Error)?) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func update(viewAnnotation: UIKit.UIView, options: MapboxCoreMaps.ViewAnnotationOptions, completion: (((any Swift.Error)?) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func remove(viewAnnotation: UIKit.UIView)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeAllViewAnnotations()
+extension MapboxCoreMaps.ResourceOptions {
+  public func swiftValue() -> MapboxMaps.ResourceOptions
+}
+@_hasMissingDesignatedInitializers @objc open class TMBCancelable : ObjectiveC.NSObject {
+  final public let cancelable: any MapboxMaps.Cancelable
+  @objc public func cancel()
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBStyle : ObjectiveC.NSObject {
-  @objc public func addImage(id: Swift.String, image: UIKit.UIImage, sdf: Swift.Bool = false, contentInsets: UIKit.UIEdgeInsets = .zero, completion: (((any Swift.Error)?) -> Swift.Void)?)
-  @objc public func removeImage(id: Swift.String, completion: (((any Swift.Error)?) -> Swift.Void)?)
-  @objc public func imageExists(id: Swift.String) -> Swift.Bool
+  public var rawValue: MapboxMaps.Style {
+    get
+  }
+  @objc weak public var styleManager: MapboxCoreMaps.StyleManager! {
+    @objc get
+  }
+  @objc public func addLayer(_ layer: MapboxMapObjC.TMBLayer, layerPosition: MapboxMapObjC.TMBLayerPosition? = nil, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func addPersistentLayer(_ layer: MapboxMapObjC.TMBLayer, layerPosition: MapboxMapObjC.TMBLayerPosition? = nil, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func moveLayer(withId id: Swift.String, to position: MapboxMapObjC.TMBLayerPosition, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func layer(withId id: Swift.String, type: MapboxMapObjC.TMBLayerType, completion: ((MapboxMapObjC.TMBLayer?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func layer(withId id: Swift.String, completion: ((MapboxMapObjC.TMBLayer?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func updateLayer(withId id: Swift.String, type: MapboxMapObjC.TMBLayerType, update: (MapboxMapObjC.TMBLayer) -> Swift.Void, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func addSource(_ source: MapboxMapObjC.TMBSource, id: Swift.String, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func source(withId id: Swift.String, type: MapboxMapObjC.TMBSourceType, completion: ((MapboxMapObjC.TMBSource?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func source(withId id: Swift.String, completion: ((MapboxMapObjC.TMBSource?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func updateGeoJSONSource(withId id: Swift.String, geometry: MapboxCommon.Geometry, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func updateGeoJSONSource(withId id: Swift.String, feature: MapboxCommon.Feature, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public var isLoaded: Swift.Bool {
+    @objc get
+  }
+  @objc public var uri: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc public var JSON: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc public var defaultCamera: MapboxCoreMaps.CameraOptions {
+    @objc get
+  }
+  @objc public var transition: MapboxCoreMaps.TransitionOptions {
+    @objc get
+    @objc set
+  }
+  @objc public func addLayer(with properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition?, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func addPersistentLayer(with properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition?, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func isPersistentLayer(id: Swift.String, completion: ((Foundation.NSNumber?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func addPersistentCustomLayer(withId id: Swift.String, layerHost: any MapboxCoreMaps.CustomLayerHost, layerPosition: MapboxMapObjC.TMBLayerPosition?, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func addCustomLayer(withId id: Swift.String, layerHost: any MapboxCoreMaps.CustomLayerHost, layerPosition: MapboxMapObjC.TMBLayerPosition?, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func removeLayer(withId id: Swift.String, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func layerExists(withId id: Swift.String) -> Swift.Bool
+  @objc public var allLayerIdentifiers: [MapboxMapObjC.TMBLayerInfo] {
+    @objc get
+  }
+  @objc public func layerPropertyValue(for layerId: Swift.String, property: Swift.String) -> Any
+  @objc public func layerProperty(for layerId: Swift.String, property: Swift.String) -> MapboxCoreMaps.StylePropertyValue
+  @objc public func setLayerProperty(for layerId: Swift.String, property: Swift.String, value: Any, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public static func layerPropertyDefaultValue(for layerType: MapboxMapObjC.TMBLayerType, property: Swift.String) -> MapboxCoreMaps.StylePropertyValue
+  @objc public func layerProperties(for layerId: Swift.String, completion: (([Swift.String : Any]?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func setLayerProperties(for layerId: Swift.String, properties: [Swift.String : Any], completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func addSource(withId id: Swift.String, properties: [Swift.String : Any], completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func removeSource(withId id: Swift.String, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func sourceExists(withId id: Swift.String) -> Swift.Bool
+  @objc public var allSourceIdentifiers: [MapboxMapObjC.TMBSourceInfo] {
+    @objc get
+  }
+  @objc public func sourceProperty(for sourceId: Swift.String, property: Swift.String) -> MapboxCoreMaps.StylePropertyValue
+  @objc public func setSourceProperty(for sourceId: Swift.String, property: Swift.String, value: Any, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func sourceProperties(for sourceId: Swift.String, completion: (([Swift.String : Any]?, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func setSourceProperties(for sourceId: Swift.String, properties: [Swift.String : Any], completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public static func sourcePropertyDefaultValue(for sourceType: Swift.String, property: Swift.String) -> MapboxCoreMaps.StylePropertyValue
+  @objc public func updateImageSource(withId id: Swift.String, image: UIKit.UIImage, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func addImage(_ image: UIKit.UIImage, id: Swift.String, sdf: Swift.Bool = false, stretchX: [MapboxCoreMaps.ImageStretches], stretchY: [MapboxCoreMaps.ImageStretches], content: MapboxCoreMaps.ImageContent? = nil, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func addImage(_ image: UIKit.UIImage, id: Swift.String, sdf: Swift.Bool = false, contentInsets: UIKit.UIEdgeInsets = .zero, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func removeImage(withId id: Swift.String, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func imageExists(withId id: Swift.String) -> Swift.Bool
+  @objc public func image(withId id: Swift.String) -> UIKit.UIImage?
+  @objc public func setLight(_ light: MapboxMapObjC.TMBLight, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func setLight(properties: [Swift.String : Any], completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func setLightProperty(_ property: Swift.String, value: Any, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func lightProperty(_ property: Swift.String) -> Any
+  @objc public func lightStylePropertyValue(_ property: Swift.String) -> MapboxCoreMaps.StylePropertyValue
+  @objc public func setTerrain(_ terrain: MapboxMapObjC.TMBTerrain, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func removeTerrain()
+  @objc public func setTerrain(properties: [Swift.String : Any], completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func setTerrainProperty(_ property: Swift.String, value: Any, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func terrainProperty(_ property: Swift.String) -> Any
+  @objc public func terrainStylePropertyValue(_ property: Swift.String) -> MapboxCoreMaps.StylePropertyValue
+  @objc public func setAtmosphere(_ atmosphere: MapboxMapObjC.TMBAtmosphere, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func removeAtmosphere(completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func setAtmosphere(properties: [Swift.String : Any], completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func setAtmosphereProperty(_ property: Swift.String, value: Any, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func atmosphereProperty(_ property: Swift.String) -> MapboxCoreMaps.StylePropertyValue
+  @objc public func addCustomGeometrySource(withId id: Swift.String, options: MapboxCoreMaps.CustomGeometrySourceOptions, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func setCustomGeometrySourceTileData(forSourceId sourceId: Swift.String, tileId: MapboxCoreMaps.CanonicalTileID, features: [MapboxCommon.Feature], completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func invalidateCustomGeometrySourceTile(forSourceId sourceId: Swift.String, tileId: MapboxCoreMaps.CanonicalTileID, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc public func invalidateCustomGeometrySourceRegion(forSourceId sourceId: Swift.String, bounds: MapboxCoreMaps.CoordinateBounds, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class MapViewFactory : ObjectiveC.NSObject {
-  @objc public static func create(frame: CoreFoundation.CGRect, options: MapboxMaps.MapInitOptions?) -> MapboxMaps.MapView
-  @objc deinit
+extension MapboxMapObjC.TMBStyle {
+  @objc dynamic public func setProjection(_ projection: MapboxMapObjC.TMBStyleProjection, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  @objc dynamic public var projection: MapboxMapObjC.TMBStyleProjection {
+    @objc get
+  }
+}
+@objc extension MapboxMapObjC.TMBStyle {
+  @objc dynamic public func addGeoJSONSource(id: Swift.String, properties: [Swift.String : Any], geojson: Swift.String, onComplete: (((any Swift.Error)?) -> Swift.Void)?)
+  @objc dynamic public func updateGeoJSONSource(id: Swift.String, geojson: Swift.String, onComplete: (((any Swift.Error)?) -> Swift.Void)?)
 }
 @objc open class TMBClusterOptions : ObjectiveC.NSObject {
   @objc public var circleRadius: MapboxMapObjC.TMBValue?
@@ -267,51 +617,6 @@ extension MapboxMaps.ResourceOptions {
   @objc public init(circleRadius: MapboxMapObjC.TMBValue?, circleColor: MapboxMapObjC.TMBValue?, textColor: MapboxMapObjC.TMBValue?, textSize: MapboxMapObjC.TMBValue?, textField: MapboxMapObjC.TMBValue?, clusterRadius: Swift.Double = 50, clusterMaxZoom: Swift.Double = 14, clusterProperties: [Swift.String : MapboxMapObjC.TMBExpression]? = nil)
   @objc deinit
 }
-@objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addSource(_ id: Swift.String, properties: [Swift.String : Any], onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeSource(_ id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func sourceExists(_ id: Swift.String) -> Swift.Bool
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setSourceProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func getSourceProperties(for id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?) -> [Swift.String : Any]
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addSource(id: Swift.String, geometry: MapboxMapObjC.TMBGeometry, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addGeoJSONSource(id: Swift.String, properties: [Swift.String : Any], geojson: Swift.String, onComplete: (((any Swift.Error)?) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateGeoJSONSource(id: Swift.String, geojson: Swift.String, onComplete: (((any Swift.Error)?) -> Swift.Void)?)
-}
-@objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addRasterDemSource(_ id: Swift.String, configure: (MapboxMapObjC.RasterDemSourceBuilder) -> Swift.Void, onError: ((any Swift.Error) -> Swift.Void)?)
-}
-@_inheritsConvenienceInitializers @objc open class RasterDemSourceBuilder : ObjectiveC.NSObject {
-  @discardableResult
-  @objc public func url(_ value: Swift.String?) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func tiles(_ value: [Swift.String]?) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func bounds(_ value: [Swift.Double]?) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func minzoom(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func maxzoom(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func tileSize(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func attribution(_ value: Swift.String?) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func encoding(_ value: MapboxMapObjC.TMBEncoding?) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func volatile(_ value: Swift.Bool) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func prefetchZoomDelta(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func minimumTileUpdateInterval(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func maxOverscaleFactorForParentTiles(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func tileRequestsDelay(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
-  @discardableResult
-  @objc public func tileNetworkRequestsDelay(_ value: Swift.Double) -> MapboxMapObjC.RasterDemSourceBuilder
-  @objc override dynamic public init()
-  @objc deinit
-}
 @objc public protocol TMBAnnotationManager {
   @objc var id: Swift.String { get }
   @objc var sourceId: Swift.String { get }
@@ -321,31 +626,122 @@ extension MapboxMaps.ResourceOptions {
   @objc func annotationManager(_ manager: any MapboxMapObjC.TMBAnnotationManager, didDetectTappedAnnotations annotations: [any MapboxMapObjC.TMBAnnotation])
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateSkyLayer(_ id: Swift.String, configure: (MapboxMapObjC.SkyLayerBuilder) -> Swift.Void, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func mapboxMap() -> MapboxMapObjC.TMBMapboxMap
 }
-@_hasMissingDesignatedInitializers @objc open class SkyLayerBuilder : ObjectiveC.NSObject, MapboxMapObjC.LayerBuilder {
-  public typealias T = MapboxMaps.SkyLayer
-  final public let id: Swift.String
-  @objc public class func withId(_ id: Swift.String) -> MapboxMapObjC.SkyLayerBuilder
-  public func create() -> MapboxMaps.SkyLayer
-  public func update(_ layer: inout MapboxMaps.SkyLayer)
-  @objc public func filter(_ value: MapboxMapObjC.TMBExpression?)
-  @objc public func source(_ value: Swift.String?)
-  @objc public func sourceLayer(_ value: Swift.String?)
-  @objc public func minZoom(_ value: Foundation.NSNumber?)
-  @objc public func maxZoom(_ value: Foundation.NSNumber?)
-  @objc public func visibility(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func skyAtmosphereColor(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func skyAtmosphereHaloColor(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func skyAtmosphereSun(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func skyAtmosphereSunIntensity(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func skyGradient(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func skyGradientCenter(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func skyGradientRadius(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func skyOpacity(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func skyOpacityTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func skyType(_ value: MapboxMapObjC.TMBValue?)
+@_hasMissingDesignatedInitializers @objc open class TMBMapboxMap : ObjectiveC.NSObject {
+  @objc final public let style: MapboxMapObjC.TMBStyle
+  @objc public func triggerRepaint()
+  @objc public func loadStyleURI(_ styleUri: Swift.String, completion: ((MapboxMapObjC.TMBStyle?, (any Swift.Error)?) -> Swift.Void)?)
+  @objc public func loadStyleJSON(_ JSON: Swift.String, completion: ((MapboxMapObjC.TMBStyle?, (any Swift.Error)?) -> Swift.Void)?)
+  @objc public var prefetchZoomDelta: Swift.UInt8 {
+    @objc get
+    @objc set
+  }
+  @objc public var shouldRenderWorldCopies: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var resourceOptions: MapboxCoreMaps.ResourceOptions {
+    @objc get
+  }
+  @objc public static func clearData(for resourceOptions: MapboxCoreMaps.ResourceOptions, completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  @objc public func elevation(at coordinate: CoreLocation.CLLocationCoordinate2D) -> Foundation.NSNumber?
+  @objc public func coordinateBounds(for rect: CoreFoundation.CGRect) -> MapboxCoreMaps.CoordinateBounds
+  @objc public func rect(for coordinateBounds: MapboxCoreMaps.CoordinateBounds) -> CoreFoundation.CGRect
+  @objc public var debugOptions: [Foundation.NSNumber] {
+    @objc get
+    @objc set
+  }
+  @objc public var options: MapboxCoreMaps.MapOptions {
+    @objc get
+  }
+  @objc public func camera(forCoordinateBounds coordinateBounds: MapboxCoreMaps.CoordinateBounds, padding: UIKit.UIEdgeInsets, bearing: Foundation.NSNumber?, pitch: Foundation.NSNumber?) -> MapboxCoreMaps.CameraOptions
+  @objc public func camera(forCoordinates coordinates: [Foundation.NSValue], padding: UIKit.UIEdgeInsets, bearing: Foundation.NSNumber?, pitch: Foundation.NSNumber?) -> MapboxCoreMaps.CameraOptions
+  @objc public func camera(for coordinates: [Foundation.NSValue], camera: MapboxCoreMaps.CameraOptions, rect: CoreFoundation.CGRect) -> MapboxCoreMaps.CameraOptions
+  @objc public func camera(for geometry: MapboxCommon.Geometry, padding: UIKit.UIEdgeInsets, bearing: Foundation.NSNumber?, pitch: Foundation.NSNumber?) -> MapboxCoreMaps.CameraOptions
+  @objc public func coordinateBounds(forCameraBounds camera: MapboxCoreMaps.CameraOptions) -> MapboxCoreMaps.CoordinateBounds
+  @objc public func coordinateBoundsUnwrapped(for camera: MapboxCoreMaps.CameraOptions) -> MapboxCoreMaps.CoordinateBounds
+  @objc public func coordinateBoundsZoom(for camera: MapboxCoreMaps.CameraOptions) -> MapboxCoreMaps.CoordinateBoundsZoom
+  @objc public func coordinateBoundsZoomUnwrapped(for camera: MapboxCoreMaps.CameraOptions) -> MapboxCoreMaps.CoordinateBoundsZoom
+  @objc public func coordinate(for point: CoreFoundation.CGPoint) -> CoreLocation.CLLocationCoordinate2D
+  @objc public func point(for coordinate: CoreLocation.CLLocationCoordinate2D) -> CoreFoundation.CGPoint
+  @objc public func points(for coordinates: [CoreLocation.CLLocationCoordinate2D]) -> [Foundation.NSValue]
+  @objc public func coordinates(for points: [Foundation.NSValue]) -> [Foundation.NSValue]
+  @objc public func setCamera(to cameraOptions: MapboxCoreMaps.CameraOptions)
+  @objc public var cameraState: MapboxCoreMaps.CameraState {
+    @objc get
+  }
+  @objc public var freeCameraOptions: MapboxCoreMaps.FreeCameraOptions {
+    @objc get
+    @objc set
+  }
+  @objc public var cameraBounds: MapboxCoreMaps.CameraBounds {
+    @objc get
+  }
+  @objc public func setCameraBounds(with options: MapboxCoreMaps.CameraBoundsOptions, completion: (((any Swift.Error)?) -> Swift.Void)?)
+  @objc public func dragStart(for point: CoreFoundation.CGPoint)
+  @objc public func dragCameraOptions(from: CoreFoundation.CGPoint, to: CoreFoundation.CGPoint) -> MapboxCoreMaps.CameraOptions
+  @objc public func dragEnd()
+  @objc public func beginAnimation()
+  @objc public func endAnimation()
+  @objc public func beginGesture()
+  @objc public func endGesture()
   @objc deinit
+}
+extension MapboxMapObjC.TMBMapboxMap {
+  @discardableResult
+  @objc dynamic public func queryRenderedFeatures(withShape shape: [CoreFoundation.CGPoint], options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func queryRenderedFeatures(withRect rect: CoreFoundation.CGRect, options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func queryRenderedFeatures(withPoint point: CoreFoundation.CGPoint, options: MapboxCoreMaps.RenderedQueryOptions? = nil, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?) -> MapboxMapObjC.TMBCancelable
+  @objc dynamic public func querySourceFeatures(for sourceId: Swift.String, options: MapboxCoreMaps.SourceQueryOptions, completion: (([MapboxCoreMaps.QueriedFeature]?, (any Swift.Error)?) -> Swift.Void)?)
+  @objc dynamic public func queryFeatureExtension(for sourceId: Swift.String, feature: MapboxCommon.Feature, extension: Swift.String, extensionField: Swift.String, args: [Swift.String : Any]? = nil, completion: ((MapboxCoreMaps.FeatureExtensionValue?, (any Swift.Error)?) -> Swift.Void)?)
+  @objc dynamic public func getGeoJsonClusterLeaves(forSourceId sourceId: Swift.String, feature: MapboxCommon.Feature, limit: Swift.UInt64 = 10, offset: Swift.UInt64 = 0, completion: @escaping (MapboxCoreMaps.FeatureExtensionValue?, (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func getGeoJsonClusterChildren(forSourceId sourceId: Swift.String, feature: MapboxCommon.Feature, completion: @escaping (MapboxCoreMaps.FeatureExtensionValue?, (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func getGeoJsonClusterExpansionZoom(forSourceId sourceId: Swift.String, feature: MapboxCommon.Feature, completion: @escaping (MapboxCoreMaps.FeatureExtensionValue?, (any Swift.Error)?) -> Swift.Void)
+}
+extension MapboxMapObjC.TMBMapboxMap {
+  @objc dynamic public func subscribe(_ observer: any MapboxCoreMaps.Observer, events: [Swift.String])
+  @objc dynamic public func unsubscribe(_ observer: any MapboxCoreMaps.Observer, events: [Swift.String] = [])
+}
+extension MapboxMapObjC.TMBMapboxMap {
+  @objc dynamic public func clearData(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+}
+extension MapboxMapObjC.TMBMapboxMap {
+  @objc dynamic public func setFeatureState(sourceId: Swift.String, sourceLayerId: Swift.String? = nil, featureId: Swift.String, state: [Swift.String : Any])
+  @objc dynamic public func getFeatureState(sourceId: Swift.String, sourceLayerId: Swift.String? = nil, featureId: Swift.String, callback: @escaping ([Swift.String : Any]?, (any Swift.Error)?) -> Swift.Void)
+  @objc dynamic public func removeFeatureState(sourceId: Swift.String, sourceLayerId: Swift.String? = nil, featureId: Swift.String, stateKey: Swift.String? = nil)
+}
+extension MapboxMapObjC.TMBMapboxMap {
+  @discardableResult
+  @objc dynamic public func onMapLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onMapLoadingError(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onMapIdle(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onStyleDataLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onStyleLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onStyleImageMissing(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onStyleImageRemoveUnused(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onSourceDataLoaded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onSourceAdded(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onSourceRemoved(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onRenderFrameStarted(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onRenderFrameFinished(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onEvenCameraChanged(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @discardableResult
+  @objc dynamic public func onResourceRequest(_ handler: @escaping (Any) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
 }
 @_hasMissingDesignatedInitializers @objc open class TMBVisibility : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
   @objc public init(value: Swift.String)
@@ -570,8 +966,107 @@ extension MapboxMaps.ResourceOptions {
   @objc public static let vertical: MapboxMapObjC.TMBTextWritingMode
   @objc deinit
 }
-@objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setCameraBounds(_ bounds: MapboxCoreMaps.CameraBoundsOptions, completion: (((any Swift.Error)?) -> Swift.Void)?)
+@_hasMissingDesignatedInitializers @objc open class TMBExpressionOptions : ObjectiveC.NSObject {
+  @objc final public let type: MapboxMapObjC.TMBExpressionOptionsType
+  @objc final public let options: Any
+  final public let arguments: [MapboxMaps.Expression.Argument]
+  public static func format(options: MapboxMapObjC.TMBFormatOptions) -> MapboxMapObjC.TMBExpressionOptions
+  public static func numberFormat(options: MapboxMapObjC.TMBNumberFormatOptions) -> MapboxMapObjC.TMBExpressionOptions
+  public static func collator(options: MapboxMapObjC.TMBCollatorOptions) -> MapboxMapObjC.TMBExpressionOptions
+  @objc deinit
+}
+@objc public enum TMBExpressionOptionsType : Swift.Int {
+  case format
+  case numberFormat
+  case collator
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc open class TMBFormatOptions : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.FormatOptions {
+    get
+  }
+  @objc public var fontScaleValue: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
+  }
+  @objc public var fontScale: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var textFontValue: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
+  }
+  @objc public var textFont: [Swift.String]? {
+    @objc get
+    @objc set
+  }
+  @objc public var textColorValue: MapboxMapObjC.TMBValue? {
+    @objc get
+    @objc set
+  }
+  @objc public var textColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  public var expressionArguments: [MapboxMaps.Expression.Argument] {
+    get
+  }
+  public init(fontScale: MapboxMapObjC.TMBValue? = nil, textFont: MapboxMapObjC.TMBValue? = nil, textColor: MapboxMapObjC.TMBValue? = nil)
+  public init(fontScale: Swift.Double? = nil, textFont: [Swift.String]? = nil, textColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBNumberFormatOptions : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.NumberFormatOptions {
+    get
+  }
+  public var locale: Swift.String? {
+    get
+    set
+  }
+  public var currency: Swift.String? {
+    get
+    set
+  }
+  public var minFractionDigits: Foundation.NSNumber? {
+    get
+    set
+  }
+  public var maxFractionDigits: Foundation.NSNumber? {
+    get
+    set
+  }
+  public var expressionArguments: [MapboxMaps.Expression.Argument] {
+    get
+  }
+  public init(locale: Swift.String?, currency: Swift.String?, minFractionDigits: Swift.Int?, maxFractionDigits: Swift.Int?)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBCollatorOptions : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.CollatorOptions {
+    get
+  }
+  public var caseSensitive: Foundation.NSNumber? {
+    get
+    set
+  }
+  public var diacriticSensitive: Foundation.NSNumber? {
+    get
+    set
+  }
+  public var locale: Swift.String? {
+    get
+    set
+  }
+  public var expressionArguments: [MapboxMaps.Expression.Argument] {
+    get
+  }
+  public init(caseSensitive: Swift.Bool?, diacriticSensitive: Swift.Bool?, locale: Swift.String?)
+  @objc deinit
 }
 @objc open class TMBCircleAnnotation : ObjectiveC.NSObject, MapboxMapObjC.TMBAnnotation {
   @objc public var id: Swift.String {
@@ -643,8 +1138,11 @@ extension MapboxMaps.ResourceOptions {
     @objc get
     @objc set
   }
-  final public let swiftValue: MapboxMaps.CircleAnnotationManager
-  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)?
+  final public let _self: MapboxMaps.CircleAnnotationManager
+  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)? {
+    @objc get
+    @objc set
+  }
   public init(_ swiftValue: MapboxMaps.CircleAnnotationManager)
   @objc public var circlePitchAlignment: MapboxMapObjC.TMBCirclePitchAlignment? {
     @objc get
@@ -664,95 +1162,104 @@ extension MapboxMaps.ResourceOptions {
   }
   @objc deinit
 }
-@objc public protocol TMBGeoData {
-}
-@_hasMissingDesignatedInitializers @objc open class TMBGeometry : ObjectiveC.NSObject {
-  final public let data: any MapboxMapObjC.TMBGeoData
-  @objc public class func from(data: any MapboxMapObjC.TMBGeoData) -> MapboxMapObjC.TMBGeometry
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class TMBLight : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.Light {
+    get
+  }
+  @objc public var anchor: MapboxMapObjC.TMBAnchor? {
+    @objc get
+    @objc set
+  }
+  @objc public var color: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc public var colorTransition: MapboxMapObjC.TMBStyleTransition? {
+    @objc get
+    @objc set
+  }
+  @objc public var intensity: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var intensityTransition: MapboxMapObjC.TMBStyleTransition? {
+    @objc get
+    @objc set
+  }
+  @objc public var position: [Swift.Double]? {
+    @objc get
+    @objc set
+  }
+  @objc public var positionTransition: MapboxMapObjC.TMBStyleTransition? {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic public init()
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateSymbolLayer(_ id: Swift.String, configure: (MapboxMapObjC.SymbolLayerBuilder) -> Swift.Void, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func camera() -> MapboxMapObjC.TMBCameraAnimationsManager
 }
-@_hasMissingDesignatedInitializers @objc open class SymbolLayerBuilder : ObjectiveC.NSObject, MapboxMapObjC.LayerBuilder {
-  public typealias T = MapboxMaps.SymbolLayer
-  final public let id: Swift.String
-  @objc public class func withId(_ id: Swift.String) -> MapboxMapObjC.SymbolLayerBuilder
-  public func create() -> MapboxMaps.SymbolLayer
-  public func update(_ layer: inout MapboxMaps.SymbolLayer)
-  @objc public func filter(_ value: MapboxMapObjC.TMBExpression?)
-  @objc public func source(_ value: Swift.String?)
-  @objc public func sourceLayer(_ value: Swift.String?)
-  @objc public func minZoom(_ value: Foundation.NSNumber?)
-  @objc public func maxZoom(_ value: Foundation.NSNumber?)
-  @objc public func visibility(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconAllowOverlap(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconAnchor(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconIgnorePlacement(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconImage(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconKeepUpright(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconOffset(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconOptional(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconPadding(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconPitchAlignment(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconRotate(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconRotationAlignment(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconSize(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconTextFit(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconTextFitPadding(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func symbolAvoidEdges(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func symbolPlacement(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func symbolSortKey(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func symbolSpacing(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func symbolZOrder(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textAllowOverlap(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textAnchor(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textField(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textFont(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textIgnorePlacement(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textJustify(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textKeepUpright(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textLetterSpacing(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textLineHeight(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textMaxAngle(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textMaxWidth(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textOffset(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textOptional(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textPadding(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textPitchAlignment(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textRadialOffset(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textRotate(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textRotationAlignment(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textSize(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textTransform(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textVariableAnchor(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textWritingMode(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconColor(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconColorTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func iconHaloBlur(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconHaloBlurTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func iconHaloColor(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconHaloColorTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func iconHaloWidth(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconHaloWidthTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func iconOpacity(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconOpacityTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func iconTranslate(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func iconTranslateTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func iconTranslateAnchor(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textColor(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textColorTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func textHaloBlur(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textHaloBlurTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func textHaloColor(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textHaloColorTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func textHaloWidth(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textHaloWidthTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func textOpacity(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textOpacityTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func textTranslate(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func textTranslateTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func textTranslateAnchor(_ value: MapboxMapObjC.TMBValue?)
+@_hasMissingDesignatedInitializers @objc open class TMBCameraAnimationsManager : ObjectiveC.NSObject {
+  @objc public var cameraAnimators: [MapboxMapObjC.TMBCameraAnimator] {
+    @objc get
+  }
+  @objc public func cancelAnimations()
+  @discardableResult
+  @objc public func fly(to: MapboxCoreMaps.CameraOptions, duration: Foundation.NSNumber?, completion: MapboxMaps.AnimationCompletion? = nil) -> MapboxMapObjC.TMBCancelable?
+  @discardableResult
+  @objc public func ease(to: MapboxCoreMaps.CameraOptions, duration: Foundation.TimeInterval, curve: UIKit.UIView.AnimationCurve = .easeOut, completion: MapboxMaps.AnimationCompletion? = nil) -> MapboxMapObjC.TMBCancelable?
+  @objc public func makeAnimator(duration: Foundation.TimeInterval, timingParameters: any UIKit.UITimingCurveProvider, animationOwner: MapboxMapObjC.TMBAnimationOwner?, animations: @escaping (MapboxMapObjC.TMBCameraTransition) -> Swift.Void) -> MapboxMaps.BasicCameraAnimator
+  @objc public func makeAnimator(duration: Foundation.TimeInterval, curve: UIKit.UIView.AnimationCurve, animationOwner: MapboxMapObjC.TMBAnimationOwner?, animations: @escaping (MapboxMapObjC.TMBCameraTransition) -> Swift.Void) -> MapboxMaps.BasicCameraAnimator
+  @objc public func makeAnimator(duration: Foundation.TimeInterval, controlPoint1: CoreFoundation.CGPoint, controlPoint2: CoreFoundation.CGPoint, animationOwner: MapboxMapObjC.TMBAnimationOwner?, animations: @escaping (MapboxMapObjC.TMBCameraTransition) -> Swift.Void) -> MapboxMaps.BasicCameraAnimator
+  @objc public func makeAnimator(duration: Foundation.TimeInterval, dampingRatio: CoreFoundation.CGFloat, animationOwner: MapboxMapObjC.TMBAnimationOwner?, animations: @escaping (MapboxMapObjC.TMBCameraTransition) -> Swift.Void) -> MapboxMaps.BasicCameraAnimator
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBCameraAnimator : ObjectiveC.NSObject {
+  @objc deinit
+}
+@objc open class TMBAnimationOwner : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  @objc public init(rawValue: Swift.String)
+  @objc public static let gestures: MapboxMapObjC.TMBAnimationOwner
+  @objc public static let unspecified: MapboxMapObjC.TMBAnimationOwner
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBCameraTransition : ObjectiveC.NSObject {
+  public var center: MapboxMapObjC.TMBCameraTransitionChange {
+    get
+  }
+  public var zoom: MapboxMapObjC.TMBCameraTransitionChange {
+    get
+  }
+  public var padding: MapboxMapObjC.TMBCameraTransitionChange {
+    get
+  }
+  public var anchor: MapboxMapObjC.TMBCameraTransitionChange {
+    get
+  }
+  public var bearing: MapboxMapObjC.TMBCameraTransitionChange {
+    get
+  }
+  public var shouldOptimizeBearingPath: Swift.Bool {
+    get
+    set
+  }
+  public var pitch: MapboxMapObjC.TMBCameraTransitionChange {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBCameraTransitionChange : ObjectiveC.NSObject {
+  public var fromValue: Foundation.NSValue
+  public var toValue: Foundation.NSValue?
+  public static func fromChange(_ change: MapboxMaps.CameraTransition.Change<CoreLocation.CLLocationCoordinate2D>) -> MapboxMapObjC.TMBCameraTransitionChange
+  public static func fromCoordinate(_ change: MapboxMaps.CameraTransition.Change<CoreLocation.CLLocationCoordinate2D>) -> MapboxMapObjC.TMBCameraTransitionChange
+  public static func fromEdgeInsets(_ change: MapboxMaps.CameraTransition.Change<UIKit.UIEdgeInsets>) -> MapboxMapObjC.TMBCameraTransitionChange
+  public static func fromCGFloat(_ change: MapboxMaps.CameraTransition.Change<CoreFoundation.CGFloat>) -> MapboxMapObjC.TMBCameraTransitionChange
+  public func change(_ change: inout MapboxMaps.CameraTransition.Change<CoreLocation.CLLocationCoordinate2D>)
+  public func change(_ change: inout MapboxMaps.CameraTransition.Change<UIKit.UIEdgeInsets>)
+  public func change(_ change: inout MapboxMaps.CameraTransition.Change<CoreFoundation.CGFloat>)
   @objc deinit
 }
 @objc open class TMBPointAnnotation : ObjectiveC.NSObject, MapboxMapObjC.TMBAnnotation {
@@ -902,8 +1409,11 @@ extension MapboxMaps.ResourceOptions {
     @objc get
     @objc set
   }
-  final public let swiftValue: MapboxMaps.PointAnnotationManager
-  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)?
+  final public let _self: MapboxMaps.PointAnnotationManager
+  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)? {
+    @objc get
+    @objc set
+  }
   public init(_ swiftValue: MapboxMaps.PointAnnotationManager)
   @objc public var iconAllowOverlap: Foundation.NSNumber? {
     @objc get
@@ -1024,11 +1534,19 @@ extension MapboxMaps.ResourceOptions {
   }
   @objc deinit
 }
-@objc public enum TMBLayerPosition : Swift.Int {
+@objc open class TMBLayerPosition : ObjectiveC.NSObject {
+  @objc final public let arg: Swift.AnyObject
+  @objc final public let type: MapboxMapObjC.TMBLayerPositionType
+  @objc public init(_ type: MapboxMapObjC.TMBLayerPositionType, arg: Swift.AnyObject)
+  public static func at(index: Swift.Int) -> MapboxMapObjC.TMBLayerPosition
+  public static func below(layerId: Swift.String) -> MapboxMapObjC.TMBLayerPosition
+  public static func above(layerId: Swift.String) -> MapboxMapObjC.TMBLayerPosition
+  @objc deinit
+}
+@objc public enum TMBLayerPositionType : Swift.Int {
   case at
-  case below
   case above
-  case unowned
+  case below
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -1036,7 +1554,7 @@ extension MapboxMaps.ResourceOptions {
   }
 }
 extension MapboxMapObjC.TMBLayerPosition {
-  public func swiftValue(_ layerPositionParam: Swift.AnyObject?) -> MapboxMaps.LayerPosition
+  public func swiftValue() -> MapboxMaps.LayerPosition
 }
 @_hasMissingDesignatedInitializers @objc open class TMBResolvedImageData : ObjectiveC.NSObject {
   final public let available: Swift.Bool
@@ -1124,16 +1642,13 @@ extension MapboxMapObjC.TMBResolvedImage {
     @objc get
     @objc set
   }
-  final public let swiftValue: MapboxMaps.PolygonAnnotationManager
-  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)?
+  final public let _self: MapboxMaps.PolygonAnnotationManager
+  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)? {
+    @objc get
+    @objc set
+  }
   public init(_ swiftValue: MapboxMaps.PolygonAnnotationManager)
   @objc deinit
-}
-@objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func polygonAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPolygonAnnotationManager
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func circleAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBCircleAnnotationManager
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func pointAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?, clusterOptions: MapboxMapObjC.TMBClusterOptions?) -> MapboxMapObjC.TMBPointAnnotationManager
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func polylineAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition = TMBLayerPosition.unowned, layerPositionParam: Swift.AnyObject?) -> MapboxMapObjC.TMBPolylineAnnotationManager
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class GeometryHelper : ObjectiveC.NSObject {
   @objc public class func createPoint(_ location: Foundation.NSValue) -> MapboxCommon.Geometry
@@ -1146,36 +1661,23 @@ extension MapboxMapObjC.TMBResolvedImage {
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeLayer(id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func isPersistentLayer(id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?) -> Swift.Bool
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func layerExists(id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?) -> Swift.Bool
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLayerProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func updateLayerProperties(for id: Swift.String, properties: [Swift.String : Any], onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func getLayerProperties(for id: Swift.String, onError: ((any Swift.Error) -> Swift.Void)?) -> [Swift.String : Any]
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addPersistentLayer(properties: [Swift.String : Any], layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(target: ObjectiveC.NSObject, selector: ObjectiveC.Selector, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addLayer(builder: () -> Swift.AnyObject, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addCustomLayer(_ id: Swift.String, layerHost: any MapboxCoreMaps.CustomLayerHost, layerPosition: MapboxMapObjC.TMBLayerPosition = .unowned, layerPositionParam: ObjectiveC.NSObject?, onError: ((any Swift.Error) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func annotations() -> MapboxMapObjC.TMBAnnotationOrchestrator
 }
-public protocol LayerBuilder {
-  associatedtype T : MapboxMaps.Layer
-  var id: Swift.String { get }
-  func create() -> Self.T
-  func update(_ layer: inout Self.T)
-}
-@objc open class TMBPoint : ObjectiveC.NSObject, MapboxMapObjC.TMBGeoData {
-  public var swiftValue: Turf.Point
-  public var coordinates: Turf.LocationCoordinate2D {
-    get
-    set
+@_hasMissingDesignatedInitializers @objc open class TMBAnnotationOrchestrator : ObjectiveC.NSObject {
+  @objc public var annotationManagersById: [Swift.String : any MapboxMapObjC.TMBAnnotationManager] {
+    @objc get
   }
-  public init(_ coordinates: Turf.LocationCoordinate2D)
-  @objc public class func with(coordinates: Turf.LocationCoordinate2D) -> MapboxMapObjC.TMBPoint
+  @objc public func makePointAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition?, clusterOptions: MapboxMapObjC.TMBClusterOptions?) -> MapboxMapObjC.TMBPointAnnotationManager
+  @objc public func makePolygonAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition?) -> MapboxMapObjC.TMBPolygonAnnotationManager
+  @objc public func makePolylineAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition?) -> MapboxMapObjC.TMBPolylineAnnotationManager
+  @objc public func makeCircleAnnotationManager(id: Swift.String?, layerPosition: MapboxMapObjC.TMBLayerPosition?) -> MapboxMapObjC.TMBCircleAnnotationManager
+  @objc public func removeAnnotationManager(withId id: Swift.String)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBSourceType : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
-  @objc public init(value: Swift.String)
+  public var rawValue: MapboxMaps.SourceType {
+    get
+  }
   @objc public func stringValue() -> Swift.String
   @objc public static let vector: MapboxMapObjC.TMBSourceType
   @objc public static let raster: MapboxMapObjC.TMBSourceType
@@ -1185,30 +1687,104 @@ public protocol LayerBuilder {
   @objc public static let model: MapboxMapObjC.TMBSourceType
   @objc deinit
 }
-@objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLightProperty(_ name: Swift.String, value: Any, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setLight(properties: [Swift.String : Any], onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightAnchor(_ value: MapboxMapObjC.TMBAnchor, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightColor(_ value: UIKit.UIColor, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightColorTransition(_ value: MapboxMapObjC.TMBStyleTransition, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightIntensity(_ value: Swift.Double, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightIntensityTransition(_ value: MapboxMapObjC.TMBStyleTransition, onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightPosition(_ value: [Swift.Double], onError: ((any Swift.Error) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func lightPositionTransition(_ value: MapboxMapObjC.TMBStyleTransition, onError: ((any Swift.Error) -> Swift.Void)?)
-}
-@objc open class TMBStyleTransition : ObjectiveC.NSObject {
-  final public let duration: Swift.Double
-  final public let delay: Swift.Double
+@_hasMissingDesignatedInitializers @objc open class TMBStyleTransition : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.StyleTransition {
+    get
+  }
+  public var duration: Swift.Double {
+    get
+    set
+  }
+  public var delay: Swift.Double {
+    get
+    set
+  }
   @objc public init(duration: Swift.Double, delay: Swift.Double)
+  @objc public class var zero: MapboxMapObjC.TMBStyleTransition {
+    @objc get
+  }
+  @objc deinit
+}
+@objc extension MapboxMaps.MapInitOptions {
+  @objc final public func getResourceOptions() -> MapboxCoreMaps.ResourceOptions
+  @objc final public func getMapOptions() -> MapboxCoreMaps.MapOptions
+  @objc final public func getStyleURI() -> Swift.String?
+  @objc final public func getStyleJSON() -> Swift.String?
+  @objc final public func getCameraOptions() -> MapboxCoreMaps.CameraOptions?
+}
+@_inheritsConvenienceInitializers @objc open class MapInitOptionsFactory : ObjectiveC.NSObject {
+  @objc public static func create(resourceOptions: MapboxCoreMaps.ResourceOptions? = nil, mapOptions: MapboxCoreMaps.MapOptions? = nil, cameraOptions: MapboxCoreMaps.CameraOptions? = nil, styleURI: Swift.String?, styleJSON: Swift.String? = nil) -> MapboxMaps.MapInitOptions
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBResourceOptionsManager : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.ResourceOptionsManager {
+    get
+  }
+  @objc public static var `default`: MapboxMapObjC.TMBResourceOptionsManager {
+    @objc get
+  }
+  @objc public static func destroyDefault()
+  @objc public var resourceOptions: MapboxCoreMaps.ResourceOptions {
+    @objc get
+    @objc set
+  }
+  @objc convenience public init(accessToken: Swift.String? = nil)
+  @objc convenience public init(resourceOptions: MapboxCoreMaps.ResourceOptions)
   @objc deinit
 }
 @objc extension MapboxMaps.MapView {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setStyle(_ styleUri: Swift.String)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setStyle(inJson styleJson: Swift.String)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func loadStyle(_ styleUri: Swift.String, completion: ((MapboxMapObjC.TMBStyle?, (any Swift.Error)?) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func addImage(id: Swift.String, image: UIKit.UIImage, sdf: Swift.Bool = false, contentInsets: UIKit.UIEdgeInsets = .zero, completion: (((any Swift.Error)?) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func removeImage(id: Swift.String, completion: (((any Swift.Error)?) -> Swift.Void)?)
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func imageExists(id: Swift.String) -> Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func viewAnnotations() -> MapboxMapObjC.TMBViewAnnotationManager
+}
+@_hasMissingDesignatedInitializers @objc open class TMBViewAnnotationManager : ObjectiveC.NSObject {
+  @objc public func options(forAnnotationId id: Swift.String) -> MapboxCoreMaps.ViewAnnotationOptions?
+  @objc public func options(forAnnotationView view: UIKit.UIView) -> MapboxCoreMaps.ViewAnnotationOptions?
+  @objc public func view(forAnnotationId id: Swift.String) -> UIKit.UIView?
+  @objc public func view(forAnnotationFeatureId id: Swift.String) -> UIKit.UIView?
+  @objc public func options(forAnnotationFeatureId id: Swift.String) -> MapboxCoreMaps.ViewAnnotationOptions?
+  @objc public func add(viewAnnotation: UIKit.UIView, id: Swift.String?, options: MapboxCoreMaps.ViewAnnotationOptions, completion: (((any Swift.Error)?) -> Swift.Void)?)
+  @objc public func update(viewAnnotation: UIKit.UIView, options: MapboxCoreMaps.ViewAnnotationOptions, completion: (((any Swift.Error)?) -> Swift.Void)?)
+  @objc public func remove(viewAnnotation: UIKit.UIView)
+  @objc public func removeAllViewAnnotations()
+  @objc public func addViewAnnotationUpdateObserver(_ observer: any MapboxMapObjC.TMBViewAnnotationUpdateObserver)
+  @objc public func removeViewAnnotationUpdateObserver(_ observer: any MapboxMapObjC.TMBViewAnnotationUpdateObserver)
+  @objc public func camera(forAnnotations identifiers: [Swift.String], padding: UIKit.UIEdgeInsets = .zero, bearing: Foundation.NSNumber?, pitch: Foundation.NSNumber?) -> MapboxCoreMaps.CameraOptions?
+  @objc deinit
+}
+@objc public enum TMBViewAnnotationManagerError : Swift.Int {
+  case viewIsAlreadyAdded
+  case associatedFeatureIdIsAlreadyInUse
+  case annotationNotFound
+  case geometryFieldMissing
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol TMBViewAnnotationUpdateObserver {
+  @objc func framesDidChange(for annotationViews: [UIKit.UIView])
+  @objc func visibilityDidChange(for annotationViews: [UIKit.UIView])
+}
+@_hasMissingDesignatedInitializers @objc open class TMBSource : ObjectiveC.NSObject {
+  public var rawValue: any MapboxMaps.Source {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBSourceInfo : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.SourceInfo {
+    get
+  }
+  public var id: Swift.String {
+    get
+    set
+  }
+  public var type: MapboxMapObjC.TMBSourceType {
+    get
+    set
+  }
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc open class TMBScheme : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
   @objc public init(value: Swift.String)
@@ -1224,14 +1800,26 @@ public protocol LayerBuilder {
   @objc public static let mapbox: MapboxMapObjC.TMBEncoding
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc open class TMBExpression : ObjectiveC.NSObject {
-  final public let `operator`: MapboxMapObjC.TMBOperator?
-  final public let arguments: [Any]
-  @objc override dynamic open var description: Swift.String {
-    @objc get
+@_hasMissingDesignatedInitializers @objc open class TMBStyleProjection : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.StyleProjection {
+    get
   }
-  @objc override dynamic open var debugDescription: Swift.String {
-    @objc get
+  public var name: MapboxMapObjC.TMBStyleProjectionName {
+    get
+    set
+  }
+  @objc public init(name: MapboxMapObjC.TMBStyleProjectionName)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBExpression : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.Expression {
+    get
+  }
+  public var `operator`: MapboxMapObjC.TMBOperator? {
+    get
+  }
+  public var arguments: [Any] {
+    get
   }
   @objc public class func create(withOperator operator: MapboxMapObjC.TMBOperator) -> MapboxMapObjC.TMBExpression
   @objc public class func create(withOperator operator: MapboxMapObjC.TMBOperator, arguments: [Any]) -> MapboxMapObjC.TMBExpression
@@ -1312,8 +1900,11 @@ public protocol LayerBuilder {
     @objc get
     @objc set
   }
-  final public let swiftValue: MapboxMaps.PolylineAnnotationManager
-  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)?
+  final public let _self: MapboxMaps.PolylineAnnotationManager
+  @objc weak public var delegate: (any MapboxMapObjC.TMBAnnotationInteractionDelegate)? {
+    @objc get
+    @objc set
+  }
   public init(_ swiftValue: MapboxMaps.PolylineAnnotationManager)
   @objc public var lineCap: MapboxMapObjC.TMBLineCap? {
     @objc get
@@ -1437,15 +2028,6 @@ public protocol LayerBuilder {
   @objc public static let cubicBezier: MapboxMapObjC.TMBOperator
   @objc deinit
 }
-@objc public enum TMBPuckBearingSource : Swift.Int {
-  case heading
-  case course
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
 @_inheritsConvenienceInitializers @objc open class MapInitOptionsBuilder : ObjectiveC.NSObject {
   @objc public class var defaultResourceOptions: MapboxCoreMaps.ResourceOptions {
     @objc get
@@ -1461,65 +2043,145 @@ public protocol LayerBuilder {
   @objc override dynamic public init()
   @objc deinit
 }
-@objc extension MapboxMaps.MapInitOptions {
-  @objc final public func resourceOptions() -> MapboxCoreMaps.ResourceOptions
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func ornaments() -> MapboxMapObjC.TMBOrnamentsManager
 }
-@_inheritsConvenienceInitializers @objc open class Puck2DConfigurationBuilder : ObjectiveC.NSObject {
-  public static let defaultAccuracyRingColor: UIKit.UIColor
-  public static let defaultOpacity: Foundation.NSNumber
-  public func build() -> MapboxMaps.Puck2DConfiguration
-  @objc public func setPulsingBuilder(_ builder: MapboxMapObjC.Puck2DConfigurationPulsingBuilder?) -> MapboxMapObjC.Puck2DConfigurationBuilder
-  @objc public func setPulsing(_ build: (_ builder: MapboxMapObjC.Puck2DConfigurationPulsingBuilder) -> Swift.Void) -> MapboxMapObjC.Puck2DConfigurationBuilder
-  @objc public func setOpacity(_ value: Foundation.NSNumber) -> MapboxMapObjC.Puck2DConfigurationBuilder
-  @objc public func setTopImage(_ value: UIKit.UIImage?) -> MapboxMapObjC.Puck2DConfigurationBuilder
-  @objc public func setBearingImage(_ value: UIKit.UIImage?) -> MapboxMapObjC.Puck2DConfigurationBuilder
-  @objc public func setShadowImage(_ value: UIKit.UIImage?) -> MapboxMapObjC.Puck2DConfigurationBuilder
-  @objc public func setScale(_ value: Foundation.NSNumber?) -> MapboxMapObjC.Puck2DConfigurationBuilder
-  @objc public func setShowsAccuracyRing(_ value: Swift.Bool) -> MapboxMapObjC.Puck2DConfigurationBuilder
-  @objc public func setAccuracyRingColor(_ value: UIKit.UIColor?) -> MapboxMapObjC.Puck2DConfigurationBuilder
-  @objc public func setAccuracyRingBorderColor(_ value: UIKit.UIColor?) -> MapboxMapObjC.Puck2DConfigurationBuilder
-  @objc override dynamic public init()
+@_hasMissingDesignatedInitializers @objc open class TMBOrnamentsManager : ObjectiveC.NSObject {
+  @objc public var options: MapboxMapObjC.TMBOrnamentOptions {
+    @objc get
+    @objc set
+  }
+  @objc public var logoView: UIKit.UIView {
+    @objc get
+  }
+  @objc public var scaleBarView: UIKit.UIView {
+    @objc get
+  }
+  @objc public var compassView: UIKit.UIView {
+    @objc get
+  }
+  @objc public var attributionButton: UIKit.UIView {
+    @objc get
+  }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @objc open class Puck2DConfigurationPulsingBuilder : ObjectiveC.NSObject {
-  public func build() -> MapboxMaps.Puck2DConfiguration.Pulsing
-  public static let defaultColor: UIKit.UIColor
-  public static let defaultRadius: Foundation.NSNumber
-  @objc public func setColor(_ color: UIKit.UIColor?) -> MapboxMapObjC.Puck2DConfigurationPulsingBuilder
-  @objc public func setRadius(value: Foundation.NSNumber? = Puck2DConfigurationPulsingBuilder.defaultRadius) -> MapboxMapObjC.Puck2DConfigurationPulsingBuilder
-  @objc override dynamic public init()
+@_hasMissingDesignatedInitializers @objc open class TMBOrnamentOptions : ObjectiveC.NSObject {
+  public var swiftValue: MapboxMaps.OrnamentOptions {
+    get
+  }
+  @objc public var scaleBar: MapboxMapObjC.TMBScaleBarViewOptions {
+    @objc get
+    @objc set
+  }
+  @objc public var compass: MapboxMapObjC.TMBCompassViewOptions {
+    @objc get
+    @objc set
+  }
+  @objc public var logo: MapboxMapObjC.TMBLogoViewOptions {
+    @objc get
+    @objc set
+  }
+  @objc public var attributionButton: MapboxMapObjC.TMBAttributionButtonOptions {
+    @objc get
+    @objc set
+  }
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc open class FillExtrusionLayerBuilder : ObjectiveC.NSObject, MapboxMapObjC.LayerBuilder {
-  public typealias T = MapboxMaps.FillExtrusionLayer
-  final public let id: Swift.String
-  @objc public class func withId(_ id: Swift.String) -> MapboxMapObjC.FillExtrusionLayerBuilder
-  public func create() -> MapboxMaps.FillExtrusionLayer
-  public func update(_ layer: inout MapboxMaps.FillExtrusionLayer)
-  @objc public func filter(_ value: MapboxMapObjC.TMBExpression?)
-  @objc public func source(_ value: Swift.String?)
-  @objc public func sourceLayer(_ value: Swift.String?)
-  @objc public func minZoom(_ value: Foundation.NSNumber?)
-  @objc public func maxZoom(_ value: Foundation.NSNumber?)
-  @objc public func visibility(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func fillExtrusionAmbientOcclusionIntensity(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func fillExtrusionAmbientOcclusionIntensityTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func fillExtrusionAmbientOcclusionRadius(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func fillExtrusionAmbientOcclusionRadiusTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func fillExtrusionBase(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func fillExtrusionBaseTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func fillExtrusionColor(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func fillExtrusionColorTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func fillExtrusionHeight(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func fillExtrusionHeightTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func fillExtrusionOpacity(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func fillExtrusionOpacityTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func fillExtrusionPattern(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func fillExtrusionPatternTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func fillExtrusionTranslate(_ value: MapboxMapObjC.TMBValue?)
-  @objc public func fillExtrusionTranslateTransition(_ value: MapboxMapObjC.TMBStyleTransition?)
-  @objc public func fillExtrusionTranslateAnchor(_ value: MapboxMapObjC.TMBValue)
-  @objc public func fillExtrusionVerticalGradient(_ value: MapboxMapObjC.TMBValue?)
+@_hasMissingDesignatedInitializers @objc open class TMBScaleBarViewOptions : ObjectiveC.NSObject {
+  public var swiftValue: MapboxMaps.ScaleBarViewOptions {
+    get
+  }
+  @objc public var position: MapboxMapObjC.TMBOrnamentPosition {
+    @objc get
+    @objc set
+  }
+  @objc public var margins: CoreFoundation.CGPoint {
+    @objc get
+    @objc set
+  }
+  @objc public var visibility: MapboxMapObjC.TMBOrnamentVisibility {
+    @objc get
+    @objc set
+  }
+  public var useMetricUnits: Swift.Bool {
+    get
+    set
+  }
+  @objc deinit
+}
+@objc public enum TMBOrnamentVisibility : Swift.Int {
+  case adaptive
+  case hidden
+  case visible
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum TMBOrnamentPosition : Swift.Int {
+  case topLeft
+  case topRight
+  case bottomRight
+  case bottomLeft
+  case topLeading
+  case topTrailing
+  case bottomLeading
+  case bottomTrailing
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc open class TMBCompassViewOptions : ObjectiveC.NSObject {
+  public var swiftValue: MapboxMaps.CompassViewOptions {
+    get
+  }
+  public var position: MapboxMapObjC.TMBOrnamentPosition {
+    get
+    set
+  }
+  public var margins: CoreFoundation.CGPoint {
+    get
+    set
+  }
+  public var image: UIKit.UIImage? {
+    get
+    set
+  }
+  public var visibility: MapboxMapObjC.TMBOrnamentVisibility {
+    get
+    set
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBLogoViewOptions : ObjectiveC.NSObject {
+  public var swiftValue: MapboxMaps.LogoViewOptions {
+    get
+  }
+  public var position: MapboxMapObjC.TMBOrnamentPosition {
+    get
+    set
+  }
+  public var margins: CoreFoundation.CGPoint {
+    get
+    set
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBAttributionButtonOptions : ObjectiveC.NSObject {
+  public var swiftValue: MapboxMaps.AttributionButtonOptions {
+    get
+  }
+  public var position: MapboxMapObjC.TMBOrnamentPosition {
+    get
+    set
+  }
+  public var margins: CoreFoundation.CGPoint {
+    get
+    set
+  }
   @objc deinit
 }
 @objc open class TMBValue : ObjectiveC.NSObject {
@@ -1556,18 +2218,265 @@ public protocol LayerBuilder {
   @objc override dynamic public init()
   @objc deinit
 }
-extension MapboxMapObjC.TMBOrnamentVisibility : Swift.Equatable {}
-extension MapboxMapObjC.TMBOrnamentVisibility : Swift.Hashable {}
-extension MapboxMapObjC.TMBOrnamentVisibility : Swift.RawRepresentable {}
+@_hasMissingDesignatedInitializers @objc open class TMBLayer : ObjectiveC.NSObject {
+  public var rawValue: any MapboxMaps.Layer {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBLayerInfo : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.LayerInfo {
+    get
+  }
+  public var id: Swift.String {
+    get
+    set
+  }
+  public var type: MapboxMapObjC.TMBLayerType {
+    get
+    set
+  }
+  @objc deinit
+}
+@objc extension MapboxMaps.MapView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func viewport() -> MapboxMapObjC.TMBViewport
+}
+@_hasMissingDesignatedInitializers @objc open class TMBViewport : ObjectiveC.NSObject {
+  @objc public var options: MapboxMapObjC.TMBViewportOptions {
+    @objc get
+    @objc set
+  }
+  @objc public var status: MapboxMapObjC.TMBViewportStatus {
+    @objc get
+  }
+  @objc public func addStatusObserver(_ observer: any MapboxMapObjC.TMBViewportStatusObserver)
+  @objc public func removeStatusObserver(_ observer: any MapboxMapObjC.TMBViewportStatusObserver)
+  @objc public func idle()
+  @objc public func transition(to toState: any MapboxMapObjC.TMBViewportState, transition: (any MapboxMapObjC.TMBViewportTransition)? = nil, completion: ((_ success: Swift.Bool) -> Swift.Void)? = nil)
+  @objc public var defaultTransition: any MapboxMapObjC.TMBViewportTransition {
+    @objc get
+    @objc set
+  }
+  @objc public func makeFollowPuckViewportState(options: MapboxMapObjC.TMBFollowPuckViewportStateOptions? = nil) -> MapboxMapObjC.TMBFollowPuckViewportState
+  @objc public func makeOverviewViewportState(options: MapboxMapObjC.TMBOverviewViewportStateOptions) -> MapboxMapObjC.TMBOverviewViewportState
+  @objc public func makeDefaultViewportTransition(options: MapboxMapObjC.TMBDefaultViewportTransitionOptions? = nil) -> MapboxMapObjC.TMBDefaultViewportTransition
+  @objc public func makeImmediateViewportTransition() -> MapboxMapObjC.TMBImmediateViewportTransition
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBViewportStatus : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.ViewportStatus {
+    get
+  }
+  @objc public static var idle: MapboxMapObjC.TMBViewportStatus {
+    @objc get
+  }
+  @objc public static func state(_ state: any MapboxMapObjC.TMBViewportState) -> MapboxMapObjC.TMBViewportStatus
+  @objc public static func transition(_ transition: any MapboxMapObjC.TMBViewportTransition, toState: any MapboxMapObjC.TMBViewportState) -> MapboxMapObjC.TMBViewportStatus
+  @objc deinit
+}
+@objc public protocol TMBViewportTransition {
+  @objc func run(to toState: any MapboxMapObjC.TMBViewportState, completion: @escaping (_ success: Swift.Bool) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+}
+@_hasMissingDesignatedInitializers @objc open class TMBViewportOptions : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.ViewportOptions {
+    get
+  }
+  @objc public var transitionsToIdleUponUserInteraction: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public init(transitionsToIdleUponUserInteraction: Swift.Bool = true)
+  @objc deinit
+}
+@objc public protocol TMBViewportState {
+  @objc func observeDataSource(with handler: @escaping (_ camera: MapboxCoreMaps.CameraOptions) -> Swift.Bool) -> MapboxMapObjC.TMBCancelable
+  @objc func startUpdatingCamera()
+  @objc func stopUpdatingCamera()
+}
+@objc public protocol TMBViewportStatusObserver {
+  @objc func viewportStatusDidChange(from fromStatus: MapboxMapObjC.TMBViewportStatus, to toStatus: MapboxMapObjC.TMBViewportStatus, reason: MapboxMapObjC.TMBViewportStatusChangeReason)
+}
+@_hasMissingDesignatedInitializers @objc open class TMBViewportStatusChangeReason : ObjectiveC.NSObject, MapboxMapObjC.NamedString {
+  @objc public func stringValue() -> Swift.String
+  public static let idleRequested: MapboxMapObjC.TMBViewportStatusChangeReason
+  public static let transitionStarted: MapboxMapObjC.TMBViewportStatusChangeReason
+  public static let transitionSucceeded: MapboxMapObjC.TMBViewportStatusChangeReason
+  public static let transitionFailed: MapboxMapObjC.TMBViewportStatusChangeReason
+  public static let userInteraction: MapboxMapObjC.TMBViewportStatusChangeReason
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBFollowPuckViewportStateOptions : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.FollowPuckViewportStateOptions {
+    get
+  }
+  @objc public var padding: Foundation.NSValue? {
+    @objc get
+    @objc set
+  }
+  @objc public var zoom: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var bearing: MapboxMapObjC.TMBFollowPuckViewportStateBearing? {
+    @objc get
+    @objc set
+  }
+  @objc public var pitch: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public init(padding: Foundation.NSValue?, zoom: Foundation.NSNumber? = 16.35, bearing: MapboxMapObjC.TMBFollowPuckViewportStateBearing? = nil, pitch: Foundation.NSNumber? = 45)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBFollowPuckViewportStateBearing : ObjectiveC.NSObject {
+  public var bearing: CoreLocation.CLLocationDirection? {
+    get
+  }
+  public static func constant(_ bearing: CoreLocation.CLLocationDirection) -> MapboxMapObjC.TMBFollowPuckViewportStateBearing
+  @objc public static let heading: MapboxMapObjC.TMBFollowPuckViewportStateBearing
+  @objc public static let course: MapboxMapObjC.TMBFollowPuckViewportStateBearing
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBFollowPuckViewportState : ObjectiveC.NSObject {
+  public var options: MapboxMapObjC.TMBFollowPuckViewportStateOptions {
+    get
+    set
+  }
+  @objc deinit
+}
+extension MapboxMapObjC.TMBFollowPuckViewportState : MapboxMapObjC.TMBViewportState {
+  @objc dynamic public func observeDataSource(with handler: @escaping (MapboxCoreMaps.CameraOptions) -> Swift.Bool) -> MapboxMapObjC.TMBCancelable
+  @objc dynamic public func startUpdatingCamera()
+  @objc dynamic public func stopUpdatingCamera()
+}
+@_hasMissingDesignatedInitializers @objc open class TMBOverviewViewportStateOptions : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.OverviewViewportStateOptions {
+    get
+  }
+  @objc public var geometry: MapboxCommon.Geometry {
+    @objc get
+    @objc set
+  }
+  @objc public var padding: UIKit.UIEdgeInsets {
+    @objc get
+    @objc set
+  }
+  @objc public var bearing: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var pitch: Foundation.NSNumber? {
+    @objc get
+    @objc set
+  }
+  @objc public var animationDuration: Foundation.TimeInterval {
+    @objc get
+    @objc set
+  }
+  @objc public init(geometry: MapboxCommon.Geometry, padding: UIKit.UIEdgeInsets = .zero, bearing: Foundation.NSNumber? = 0, pitch: Foundation.NSNumber? = 0, animationDuration: Foundation.TimeInterval = 1)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBOverviewViewportState : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.OverviewViewportState {
+    get
+  }
+  public var options: MapboxMapObjC.TMBOverviewViewportStateOptions {
+    get
+    set
+  }
+  @objc deinit
+}
+extension MapboxMapObjC.TMBOverviewViewportState : MapboxMapObjC.TMBViewportState {
+  @objc dynamic public func observeDataSource(with handler: @escaping (MapboxCoreMaps.CameraOptions) -> Swift.Bool) -> MapboxMapObjC.TMBCancelable
+  @objc dynamic public func startUpdatingCamera()
+  @objc dynamic public func stopUpdatingCamera()
+}
+@_hasMissingDesignatedInitializers @objc open class TMBDefaultViewportTransitionOptions : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.DefaultViewportTransitionOptions {
+    get
+  }
+  @objc public var maxDuration: Foundation.TimeInterval {
+    @objc get
+    @objc set
+  }
+  @objc public init(maxDuration: Foundation.TimeInterval = 3.5)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc open class TMBDefaultViewportTransition : ObjectiveC.NSObject {
+  public var rawValue: MapboxMaps.DefaultViewportTransition {
+    get
+  }
+  @objc public var options: MapboxMapObjC.TMBDefaultViewportTransitionOptions {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+extension MapboxMapObjC.TMBDefaultViewportTransition : MapboxMapObjC.TMBViewportTransition {
+  @objc dynamic public func run(to toState: any MapboxMapObjC.TMBViewportState, completion: @escaping (Swift.Bool) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+}
+@_hasMissingDesignatedInitializers @objc open class TMBImmediateViewportTransition : ObjectiveC.NSObject, MapboxMapObjC.TMBViewportTransition {
+  @objc public func run(to toState: any MapboxMapObjC.TMBViewportState, completion: @escaping (Swift.Bool) -> Swift.Void) -> MapboxMapObjC.TMBCancelable
+  @objc deinit
+}
+@objc public enum TMBLayerType : Swift.Int {
+  case fill
+  case line
+  case symbol
+  case circle
+  case heatmap
+  case fillExtrusion
+  case raster
+  case hillshade
+  case background
+  case locationIndicator
+  case sky
+  public init?(rawValue: Swift.String)
+  public static let supportedTypes: [MapboxMapObjC.TMBLayerType : Swift.String]
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension MapboxMapObjC.TMBLayerType {
+  public static let layerTypeMapping: [MapboxMapObjC.TMBLayerType : MapboxMaps.LayerType]
+  public func swiftValue() -> MapboxMaps.LayerType?
+}
+extension MapboxMaps.LayerType {
+  public static let layerTypeMapping: [MapboxMaps.LayerType : MapboxMapObjC.TMBLayerType]
+  public func objcValue() -> MapboxMapObjC.TMBLayerType?
+}
+extension MapboxMapObjC.TMBPuckBearingSource : Swift.Equatable {}
+extension MapboxMapObjC.TMBPuckBearingSource : Swift.Hashable {}
+extension MapboxMapObjC.TMBPuckBearingSource : Swift.RawRepresentable {}
+extension MapboxMapObjC.TMBPuckType : Swift.Equatable {}
+extension MapboxMapObjC.TMBPuckType : Swift.Hashable {}
+extension MapboxMapObjC.TMBPuckType : Swift.RawRepresentable {}
+extension MapboxMapObjC.TMBPuck2DConfigurationPulsingRadius : Swift.Equatable {}
+extension MapboxMapObjC.TMBPuck2DConfigurationPulsingRadius : Swift.Hashable {}
+extension MapboxMapObjC.TMBPuck2DConfigurationPulsingRadius : Swift.RawRepresentable {}
 extension MapboxMapObjC.TMBPanMode : Swift.Equatable {}
 extension MapboxMapObjC.TMBPanMode : Swift.Hashable {}
 extension MapboxMapObjC.TMBPanMode : Swift.RawRepresentable {}
 extension MapboxMapObjC.TMBGestureType : Swift.Equatable {}
 extension MapboxMapObjC.TMBGestureType : Swift.Hashable {}
 extension MapboxMapObjC.TMBGestureType : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBLayerPosition : Swift.Equatable {}
-extension MapboxMapObjC.TMBLayerPosition : Swift.Hashable {}
-extension MapboxMapObjC.TMBLayerPosition : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBPuckBearingSource : Swift.Equatable {}
-extension MapboxMapObjC.TMBPuckBearingSource : Swift.Hashable {}
-extension MapboxMapObjC.TMBPuckBearingSource : Swift.RawRepresentable {}
+extension MapboxMapObjC.TMBExpressionOptionsType : Swift.Equatable {}
+extension MapboxMapObjC.TMBExpressionOptionsType : Swift.Hashable {}
+extension MapboxMapObjC.TMBExpressionOptionsType : Swift.RawRepresentable {}
+extension MapboxMapObjC.TMBLayerPositionType : Swift.Equatable {}
+extension MapboxMapObjC.TMBLayerPositionType : Swift.Hashable {}
+extension MapboxMapObjC.TMBLayerPositionType : Swift.RawRepresentable {}
+extension MapboxMapObjC.TMBViewAnnotationManagerError : Swift.Equatable {}
+extension MapboxMapObjC.TMBViewAnnotationManagerError : Swift.Hashable {}
+extension MapboxMapObjC.TMBViewAnnotationManagerError : Swift.RawRepresentable {}
+extension MapboxMapObjC.TMBOrnamentVisibility : Swift.Equatable {}
+extension MapboxMapObjC.TMBOrnamentVisibility : Swift.Hashable {}
+extension MapboxMapObjC.TMBOrnamentVisibility : Swift.RawRepresentable {}
+extension MapboxMapObjC.TMBOrnamentPosition : Swift.Equatable {}
+extension MapboxMapObjC.TMBOrnamentPosition : Swift.Hashable {}
+extension MapboxMapObjC.TMBOrnamentPosition : Swift.RawRepresentable {}
+extension MapboxMapObjC.TMBLayerType : Swift.Equatable {}
+extension MapboxMapObjC.TMBLayerType : Swift.Hashable {}
+extension MapboxMapObjC.TMBLayerType : Swift.RawRepresentable {}
