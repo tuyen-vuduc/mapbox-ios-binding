@@ -26,8 +26,8 @@
     <Title>Mapbox iOS SDK - MapboxCoreMaps</Title>
     <Summary>C# bindings for Mapbox iOS SDK - MapboxCoreMaps</Summary>
     <Description>C# bindings for Mapbox iOS SDK - MapboxCoreMaps</Description>
-    <Authors>tuyen</Authors>
-    <Owners>tuyen</Owners>
+    <Authors>tuyen,tuyen-vuduc</Authors>
+    <Owners>tuyen,tuyen-vuduc</Owners>
     <Copyright>© tuyen-vuduc. All rights reserved.</Copyright>
     <PackageIconUrl>https://avatars0.githubusercontent.com/u/600935</PackageIconUrl>
     <PackageProjectUrl>https://github.com/naxam/mapbox-ios-binding</PackageProjectUrl>
