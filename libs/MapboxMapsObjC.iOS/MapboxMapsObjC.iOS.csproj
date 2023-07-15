@@ -33,7 +33,7 @@
     <PackageProjectUrl>https://github.com/naxam/mapbox-ios-binding</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageVersion>$(_NativeVersion)-alpha4</PackageVersion>
+    <PackageVersion>$(_NativeVersion)</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Include="MapboxMapsObjC.iOS.targets" Pack="True" PackagePath="build/MapboxMapsObjC.iOS.targets" />

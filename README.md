@@ -26,11 +26,16 @@ Install-Package MapboxMapObjC.iOS
 <MAPBOX_DOWNLOADS_TOKEN>YOUR_MAPBOX_DOWNLOADS_TOKEN</MAPBOX_DOWNLOADS_TOKEN>
 ```
 
-- 3/ Replace [your Mapbox access token](https://account.mapbox.com/) in `ViewController.cs`
+- 4/ Replace [your Mapbox access token](https://account.mapbox.com/) in `ViewController.cs`
 ```
 var myResourceOptions = new MBMResourceOptions(
                 "YOUR_MAPBOX_TOKEN", // TODO Put your token here
                 null, null, null, null);
+```
+or you can update `Info.plist` file
+```
+<key>MBXAccessToken</key>
+<string>YOUR_MAPBOX_TOKEN</string>
 ```
 
 ## How to upgrade
@@ -49,7 +54,7 @@ Here are steps if you want to make changes and/or upgrade to the libraries
 
 ## IMPROTANT
 Mapbox SDK for iOS now is written in Swift and not very compatible with Objective-C, hence it won't be that friendly when doing the binding.
-I have to create an additional framework to make the bridge between Swift & C# in Objective-C, it's really a time consuming task. 
+I have to create [an additional framework to make the bridge between Swift & C# in Objective-C](https://github.com/tuyen-vuduc/mapbox-ios-objective-c), it's really a time consuming task.
 It'll require support from the developers like you in the community.
 
 ## Maintainer
