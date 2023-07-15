@@ -183,7 +183,7 @@ namespace MapboxMapsObjC
 	}
 
 	[Native]
-	public enum TMBOperator : long
+	public enum TMBExpressionOperator : long
 	{
 		Subtract = 0,
 		Not = 1,

@@ -1735,11 +1735,11 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithAccessToken:(NSString * _Nonnull)accessToken baseURL:(NSString * _Nullable)baseURL dataPath:(NSString * _Nullable)dataPath assetPath:(NSString * _Nullable)assetPath tileStore:(MBXTileStore * _Nullable)tileStore;
 		[Export ("initWithAccessToken:baseURL:dataPath:assetPath:tileStore:")]
-		IntPtr Constructor (string accessToken, [NullAllowed] string baseURL, [NullAllowed] string dataPath, [NullAllowed] string assetPath, [NullAllowed] MBXTileStore tileStore);
+		IntPtr Constructor (string accessToken, [NullAllowed] string baseURL = null, [NullAllowed] string dataPath = null, [NullAllowed] string assetPath = null, [NullAllowed] MBXTileStore tileStore = null);
 
 		// -(instancetype _Nonnull)initWithAccessToken:(NSString * _Nonnull)accessToken baseURL:(NSString * _Nullable)baseURL dataPath:(NSString * _Nullable)dataPath assetPath:(NSString * _Nullable)assetPath tileStore:(MBXTileStore * _Nullable)tileStore tileStoreUsageMode:(MBMTileStoreUsageMode)tileStoreUsageMode;
 		[Export ("initWithAccessToken:baseURL:dataPath:assetPath:tileStore:tileStoreUsageMode:")]
-		IntPtr Constructor (string accessToken, [NullAllowed] string baseURL, [NullAllowed] string dataPath, [NullAllowed] string assetPath, [NullAllowed] MBXTileStore tileStore, MBMTileStoreUsageMode tileStoreUsageMode);
+		IntPtr Constructor (string accessToken, [NullAllowed] string baseURL = null, [NullAllowed] string dataPath = null, [NullAllowed] string assetPath = null, [NullAllowed] MBXTileStore tileStore = null, MBMTileStoreUsageMode tileStoreUsageMode = MBMTileStoreUsageMode.ReadOnly);
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull accessToken;
 		[Export ("accessToken")]

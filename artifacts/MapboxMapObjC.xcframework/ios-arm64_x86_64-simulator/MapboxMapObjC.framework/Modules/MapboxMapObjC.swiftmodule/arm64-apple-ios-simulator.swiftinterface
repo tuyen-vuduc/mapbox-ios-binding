@@ -1886,7 +1886,7 @@ extension MapboxMapObjC.TMBStyleTransition {
   @objc final public func getCameraOptions() -> MapboxCoreMaps.CameraOptions?
 }
 @_inheritsConvenienceInitializers @objc open class MapInitOptionsFactory : ObjectiveC.NSObject {
-  @objc public static func create(resourceOptions: MapboxCoreMaps.ResourceOptions? = nil, mapOptions: MapboxCoreMaps.MapOptions? = nil, cameraOptions: MapboxCoreMaps.CameraOptions? = nil, styleURI: Swift.String?, styleJSON: Swift.String? = nil) -> MapboxMaps.MapInitOptions
+  @objc public static func create(resourceOptions: MapboxCoreMaps.ResourceOptions? = nil, mapOptions: MapboxCoreMaps.MapOptions? = nil, cameraOptions: MapboxCoreMaps.CameraOptions? = nil, styleURI: Swift.String? = nil, styleJSON: Swift.String? = nil) -> MapboxMaps.MapInitOptions
   @objc override dynamic public init()
   @objc deinit
 }
@@ -2098,7 +2098,7 @@ extension MapboxMaps.HillshadeLayer : MapboxMapObjC.ObjcConvertible {
   public func objcValue() -> MapboxMapObjC.TMBHillshadeLayer
   public typealias T = MapboxMapObjC.TMBHillshadeLayer
 }
-@objc public enum TMBOperator : Swift.Int {
+@objc public enum TMBExpressionOperator : Swift.Int {
   case subtract
   case not
   case neq
@@ -2193,24 +2193,24 @@ extension MapboxMaps.HillshadeLayer : MapboxMapObjC.ObjcConvertible {
   }
 }
 @objc extension MapboxMapObjC.TMBValue {
-  @objc dynamic public class func expressionOperator(_ expressionOperator: MapboxMapObjC.TMBOperator) -> MapboxMapObjC.TMBValue
+  @objc dynamic public class func expressionOperator(_ expressionOperator: MapboxMapObjC.TMBExpressionOperator) -> MapboxMapObjC.TMBValue
 }
 @objc extension Foundation.NSNumber {
-  @objc dynamic public class func value(withOperator expressionOperator: MapboxMapObjC.TMBOperator) -> Foundation.NSNumber
-  @objc dynamic public func expressionOperator() -> MapboxMapObjC.TMBOperator
+  @objc dynamic public class func value(withExpressionOperator expressionOperator: MapboxMapObjC.TMBExpressionOperator) -> Foundation.NSNumber
+  @objc dynamic public func expressionOperator() -> MapboxMapObjC.TMBExpressionOperator
 }
 extension Foundation.NSNumber {
-  public var Operator: MapboxMaps.Expression.Operator {
+  public var ExpressionOperator: MapboxMaps.Expression.Operator {
     get
   }
 }
-extension MapboxMapObjC.TMBOperator : MapboxMapObjC.SwiftValueConvertible {
+extension MapboxMapObjC.TMBExpressionOperator : MapboxMapObjC.SwiftValueConvertible {
   public func swiftValue() -> MapboxMaps.Expression.Operator
   public typealias T = MapboxMaps.Expression.Operator
 }
 extension MapboxMaps.Expression.Operator : MapboxMapObjC.ObjcConvertible {
-  public func objcValue() -> MapboxMapObjC.TMBOperator
-  public typealias T = MapboxMapObjC.TMBOperator
+  public func objcValue() -> MapboxMapObjC.TMBExpressionOperator
+  public typealias T = MapboxMapObjC.TMBExpressionOperator
 }
 @_hasMissingDesignatedInitializers @objc open class TMBStyleProjection : ObjectiveC.NSObject {
   public var rawValue: MapboxMaps.StyleProjection {
@@ -3124,14 +3124,14 @@ extension MapboxMaps.LineLayer : MapboxMapObjC.ObjcConvertible {
   public var rawValue: MapboxMaps.Expression {
     get
   }
-  @objc public var `operator`: MapboxMapObjC.TMBOperator {
+  @objc public var expressionOperator: MapboxMapObjC.TMBExpressionOperator {
     @objc get
   }
   @objc public var arguments: [Any] {
     @objc get
   }
-  @objc public class func create(withOperator operator: MapboxMapObjC.TMBOperator) -> MapboxMapObjC.TMBExpression
-  @objc public class func create(withOperator operator: MapboxMapObjC.TMBOperator, arguments: [Any]) -> MapboxMapObjC.TMBExpression
+  @objc public class func create(withOperator operator: MapboxMapObjC.TMBExpressionOperator) -> MapboxMapObjC.TMBExpression
+  @objc public class func create(withOperator operator: MapboxMapObjC.TMBExpressionOperator, arguments: [Any]) -> MapboxMapObjC.TMBExpression
   @objc public class func args(_ arguments: [Any]) -> MapboxMapObjC.TMBExpression
   @objc deinit
 }
@@ -4114,9 +4114,9 @@ extension MapboxMapObjC.TMBPromoteIdType : Swift.RawRepresentable {}
 extension MapboxMapObjC.TMBGeoJSONSourceType : Swift.Equatable {}
 extension MapboxMapObjC.TMBGeoJSONSourceType : Swift.Hashable {}
 extension MapboxMapObjC.TMBGeoJSONSourceType : Swift.RawRepresentable {}
-extension MapboxMapObjC.TMBOperator : Swift.Equatable {}
-extension MapboxMapObjC.TMBOperator : Swift.Hashable {}
-extension MapboxMapObjC.TMBOperator : Swift.RawRepresentable {}
+extension MapboxMapObjC.TMBExpressionOperator : Swift.Equatable {}
+extension MapboxMapObjC.TMBExpressionOperator : Swift.Hashable {}
+extension MapboxMapObjC.TMBExpressionOperator : Swift.RawRepresentable {}
 extension MapboxMapObjC.TMBVisibility : Swift.Equatable {}
 extension MapboxMapObjC.TMBVisibility : Swift.Hashable {}
 extension MapboxMapObjC.TMBVisibility : Swift.RawRepresentable {}

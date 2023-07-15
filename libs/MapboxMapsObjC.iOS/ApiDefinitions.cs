@@ -121,7 +121,7 @@ namespace MapboxMapsObjC
 		// +(id)createWithResourceOptions:(MBMResourceOptions * _Nullable)resourceOptions mapOptions:(MBMMapOptions * _Nullable)mapOptions cameraOptions:(MBMCameraOptions * _Nullable)cameraOptions styleURI:(NSString * _Nullable)styleURI styleJSON:(NSString * _Nullable)styleJSON __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithResourceOptions:mapOptions:cameraOptions:styleURI:styleJSON:")]
-		NSObject CreateWithResourceOptions ([NullAllowed] MBMResourceOptions resourceOptions, [NullAllowed] MBMMapOptions mapOptions, [NullAllowed] MBMCameraOptions cameraOptions, [NullAllowed] string styleURI, [NullAllowed] string styleJSON);
+		MapInitOptions CreateWithResourceOptions ([NullAllowed] MBMResourceOptions resourceOptions = null, [NullAllowed] MBMMapOptions mapOptions = null, [NullAllowed] MBMCameraOptions cameraOptions = null, [NullAllowed] string styleURI = null, [NullAllowed] string styleJSON = null);
 	}
 
 	// @interface MapboxMapObjC_Swift_385
@@ -259,7 +259,7 @@ namespace MapboxMapsObjC
 		// +(id)createWithFrame:(CGRect)frame mapInitOptions:(id)mapInitOptions urlOpener:(id<TMBAttributionURLOpener> _Nonnull)urlOpener __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithFrame:mapInitOptions:urlOpener:")]
-		MapView CreateWithFrame (CGRect frame, NSObject mapInitOptions, TMBAttributionURLOpener urlOpener);
+		MapView CreateWithFrame (CGRect frame, MapInitOptions mapInitOptions, TMBAttributionURLOpener urlOpener);
 	}
 
 	// @interface MapboxMapObjC_Swift_458 (NSNumber)
@@ -597,14 +597,14 @@ namespace MapboxMapsObjC
 	[BaseType (typeof(NSNumber))]
 	interface NSNumber_MapboxMapObjC_Swift_632
 	{
-		// +(NSNumber * _Nonnull)valueWithOperator:(enum TMBOperator)expressionOperator __attribute__((warn_unused_result("")));
+		// +(NSNumber * _Nonnull)valueWithOperator:(enum TMBExpressionOperator)expressionOperator __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("valueWithOperator:")]
-		NSNumber ValueWithOperator (TMBOperator expressionOperator);
+		NSNumber ValueWithOperator (TMBExpressionOperator expressionOperator);
 
-		// -(enum TMBOperator)expressionOperator __attribute__((warn_unused_result("")));
+		// -(enum TMBExpressionOperator)expressionOperator __attribute__((warn_unused_result("")));
 		[Export ("expressionOperator")]
-		TMBOperator ExpressionOperator();
+		TMBExpressionOperator ExpressionOperator();
 	}
 
 	// @interface MapboxMapObjC_Swift_641 (NSNumber)
@@ -786,7 +786,7 @@ namespace MapboxMapsObjC
 	{
 		// -(TMBCancelable * _Nonnull)loadStyleWithStyleUriString:(NSString * _Nonnull)styleUriString styleLoadOptions:(MBMStylePackLoadOptions * _Nonnull)styleLoadOptions progress:(id)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion __attribute__((warn_unused_result("")));
 		[Export ("loadStyleWithStyleUriString:styleLoadOptions:progress:completion:")]
-		TMBCancelable LoadStyleWithStyleUriString (string styleUriString, MBMStylePackLoadOptions styleLoadOptions, NSObject progress, Action<MBMStylePack, NSError> completion);
+		TMBCancelable LoadStyleWithStyleUriString (string styleUriString, MBMStylePackLoadOptions styleLoadOptions, Action<MBMStylePackLoadProgress> progress, Action<MBMStylePack, NSError> completion);
 
 		// -(void)allStylePacks:(void (^ _Nonnull)(NSArray<MBMStylePack *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("allStylePacks:")]
@@ -1619,23 +1619,23 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBExpression
 	{
-		// @property (readonly, getter = operator, nonatomic) enum TMBOperator operator_;
-		[Export ("operator_")]
-		TMBOperator Operator_ { [Bind ("operator")] get; }
+		// @property (nonatomic, readonly) enum TMBExpressionOperator expressionOperator;
+		[Export ("expressionOperator")]
+		TMBExpressionOperator ExpressionOperator { [Bind ("expressionOperator")] get; }
 
 		// @property (readonly, copy, nonatomic) NSArray * _Nonnull arguments;
 		[Export ("arguments", ArgumentSemantic.Copy)]
 		NSObject[] Arguments { get; }
 
-		// +(TMBExpression * _Nonnull)createWithOperator:(enum TMBOperator)operator_ __attribute__((warn_unused_result("")));
+		// +(TMBExpression * _Nonnull)createWithOperator:(enum TMBExpressionOperator)operator_ __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithOperator:")]
-		TMBExpression CreateWithOperator (TMBOperator operator_);
+		TMBExpression CreateWithOperator (TMBExpressionOperator operator_);
 
-		// +(TMBExpression * _Nonnull)createWithOperator:(enum TMBOperator)operator_ arguments:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
+		// +(TMBExpression * _Nonnull)createWithOperator:(enum TMBExpressionOperator)operator_ arguments:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithOperator:arguments:")]
-		TMBExpression CreateWithOperator (TMBOperator operator_, NSObject[] arguments);
+		TMBExpression CreateWithOperator (TMBExpressionOperator operator_, NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)args:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
@@ -4193,19 +4193,19 @@ namespace MapboxMapsObjC
 	{
 		// -(TMBCancelable * _Nonnull)queryRenderedFeaturesWithShape:(NSArray<NSValue *> * _Nonnull)shape options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("queryRenderedFeaturesWithShape:options:completion:")]
-		TMBCancelable QueryRenderedFeaturesWithShape (NSValue[] shape, [NullAllowed] MBMRenderedQueryOptions options, [NullAllowed] Action<NSArray<MBMQueriedFeature>, NSError> completion);
+		TMBCancelable QueryRenderedFeaturesWithShape (NSValue[] shape, [NullAllowed] MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
 
 		// -(TMBCancelable * _Nonnull)queryRenderedFeaturesWithRect:(CGRect)rect options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("queryRenderedFeaturesWithRect:options:completion:")]
-		TMBCancelable QueryRenderedFeaturesWithRect (CGRect rect, [NullAllowed] MBMRenderedQueryOptions options, [NullAllowed] Action<NSArray<MBMQueriedFeature>, NSError> completion);
+		TMBCancelable QueryRenderedFeaturesWithRect (CGRect rect, [NullAllowed] MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
 
 		// -(TMBCancelable * _Nonnull)queryRenderedFeaturesWithPoint:(CGPoint)point options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("queryRenderedFeaturesWithPoint:options:completion:")]
-		TMBCancelable QueryRenderedFeaturesWithPoint (CGPoint point, [NullAllowed] MBMRenderedQueryOptions options, [NullAllowed] Action<NSArray<MBMQueriedFeature>, NSError> completion);
+		TMBCancelable QueryRenderedFeaturesWithPoint (CGPoint point, [NullAllowed] MBMRenderedQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
 
 		// -(void)querySourceFeaturesFor:(NSString * _Nonnull)sourceId options:(MBMSourceQueryOptions * _Nonnull)options completion:(void (^ _Nullable)(NSArray<MBMQueriedFeature *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("querySourceFeaturesFor:options:completion:")]
-		void QuerySourceFeaturesFor (string sourceId, MBMSourceQueryOptions options, [NullAllowed] Action<NSArray<MBMQueriedFeature>, NSError> completion);
+		void QuerySourceFeaturesFor (string sourceId, MBMSourceQueryOptions options, [NullAllowed] Action<MBMQueriedFeature[], NSError> completion);
 
 		// -(void)queryFeatureExtensionFor:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature extension:(NSString * _Nonnull)extension extensionField:(NSString * _Nonnull)extensionField args:(NSDictionary<NSString *,id> * _Nullable)args completion:(void (^ _Nullable)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
 		[Export ("queryFeatureExtensionFor:feature:extension:extensionField:args:completion:")]
@@ -6528,10 +6528,10 @@ namespace MapboxMapsObjC
 	[BaseType (typeof(TMBValue))]
 	interface TMBValue_MapboxMapObjC_Swift_5739
 	{
-		// +(TMBValue * _Nonnull)expressionOperator:(enum TMBOperator)expressionOperator __attribute__((warn_unused_result("")));
+		// +(TMBValue * _Nonnull)expressionOperator:(enum TMBExpressionOperator)expressionOperator __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("expressionOperator:")]
-		TMBValue ExpressionOperator (TMBOperator expressionOperator);
+		TMBValue ExpressionOperator (TMBExpressionOperator expressionOperator);
 	}
 
 	// @interface MapboxMapObjC_Swift_5744 (TMBValue)
