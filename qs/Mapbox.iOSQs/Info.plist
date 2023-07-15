@@ -41,6 +41,6 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>MBXAccessToken</key>
-	<string>YOUR_MAPBOX_TOKEN</string>
+	<string>pk.eyJ1IjoidHV5ZW52ZCIsImEiOiJjbGcxaHRheTcxNTYxM2ltc3pzbWZqM3FxIn0.U7VIhTCPwewyPgL3vhKTwQ</string>
 </dict>
 </plist>
