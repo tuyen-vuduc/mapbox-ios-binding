@@ -23,17 +23,14 @@ jobs:
       with:
         dotnet-version: '7.0.101'
 
+    - name: Install ios workload
+      run: |
+        dotnet workload install ios
+
     - name: Build
       run: |
         sh build.sh
   
-    # - name: Publish with Dotnet CLI
-    #   env:
-    #     NUGET_PUSH_API_KEY: ${{ secrets.NUGET_PUSH_API_KEY }}
-    #   shell: bash
-    #   run: |
-    #     dotnet nuget push ./nugets/*.nupkg --api-key "$NUGET_PUSH_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
-
     - name: Publish NuGet and symbols
       id: nuget-push
       uses: edumserrano/nuget-push@v1.2.0
