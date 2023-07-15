@@ -597,10 +597,10 @@ namespace MapboxMapsObjC
 	[BaseType (typeof(NSNumber))]
 	interface NSNumber_MapboxMapObjC_Swift_632
 	{
-		// +(NSNumber * _Nonnull)valueWithOperator:(enum TMBExpressionOperator)expressionOperator __attribute__((warn_unused_result("")));
+		// +(NSNumber * _Nonnull)valueWithExpressionOperator:(enum TMBExpressionOperator)expressionOperator __attribute__((warn_unused_result("")));
 		[Static]
-		[Export ("valueWithOperator:")]
-		NSNumber ValueWithOperator (TMBExpressionOperator expressionOperator);
+		[Export ("valueWithExpressionOperator:")]
+		NSNumber ValueWithExpressionOperator (TMBExpressionOperator expressionOperator);
 
 		// -(enum TMBExpressionOperator)expressionOperator __attribute__((warn_unused_result("")));
 		[Export ("expressionOperator")]
@@ -1572,9 +1572,9 @@ namespace MapboxMapsObjC
 		[Export ("options", ArgumentSemantic.Strong)]
 		TMBDefaultViewportTransitionOptions Options { get; set; }
 
-		// -(TMBCancelable * _Nonnull)runTo:(id<TMBViewportState> _Nonnull)toState completion:(void (^ _Nonnull)(BOOL))completion __attribute__((warn_unused_result("")));
-		[Export("runTo:completion:")]
-        TMBCancelable RunTo(ITMBViewportState toState, Action<bool> completion);
+		// // -(TMBCancelable * _Nonnull)runTo:(id<TMBViewportState> _Nonnull)toState completion:(void (^ _Nonnull)(BOOL))completion __attribute__((warn_unused_result("")));
+		// [Export("runTo:completion:")]
+        // TMBCancelable RunTo(ITMBViewportState toState, Action<bool> completion);
     }
 
 	// @protocol TMBViewportTransition
@@ -3340,9 +3340,9 @@ namespace MapboxMapsObjC
 	[DisableDefaultCtor]
 	interface TMBImmediateViewportTransition : TMBViewportTransition
 	{
-		// -(TMBCancelable * _Nonnull)runTo:(id<TMBViewportState> _Nonnull)toState completion:(void (^ _Nonnull)(BOOL))completion __attribute__((warn_unused_result("")));
-		[Export ("runTo:completion:")]
-		TMBCancelable RunTo (ITMBViewportState toState, Action<bool> completion);
+		// // -(TMBCancelable * _Nonnull)runTo:(id<TMBViewportState> _Nonnull)toState completion:(void (^ _Nonnull)(BOOL))completion __attribute__((warn_unused_result("")));
+		// [Export ("runTo:completion:")]
+		// TMBCancelable RunTo (ITMBViewportState toState, Action<bool> completion);
 	}
 
 	// @interface TMBLayerInfo : NSObject
