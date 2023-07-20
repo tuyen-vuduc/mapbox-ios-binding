@@ -31,9 +31,11 @@
     <Authors>tuyen,tuyen-vuduc</Authors>
     <Owners>tuyen,tuyen-vuduc</Owners>
     <Copyright>© tuyen-vuduc. All rights reserved.</Copyright>
-    <PackageIconUrl>https://avatars0.githubusercontent.com/u/600935</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/naxam/mapbox-ios-binding</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tuyen-vuduc/mapbox-ios-binding</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/tuyen-vuduc/mapbox-ios-binding</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>tv-mapbox.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageVersion>$(_NugetVersion)</PackageVersion>
   </PropertyGroup>
@@ -41,7 +43,9 @@
     <None Include="MapboxTurf.iOS.targets" Pack="True" PackagePath="build/MapboxTurf.iOS.targets" />
     <None Include="MapboxTurf.iOS.targets" Pack="True" PackagePath="buildTransitive/MapboxTurf.iOS.targets" />
     <None Include="../../source/External-Dependency-Info.txt" Pack="True" PackagePath="THIRD-PARTY-NOTICES.txt" />
-    <None Include="../../LICENSE" Pack="True" PackagePath="" />
+		<None Include="../../assets/tv-mapbox.png" Pack="True" PackagePath="tv-mapbox.png" />
+		<None Include="../../LICENSE" Pack="True" PackagePath="" />
+		<None Include="../../README.md" Pack="True" PackagePath="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
