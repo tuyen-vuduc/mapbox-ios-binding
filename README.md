@@ -66,7 +66,7 @@ If you find this project is helpful, please give it a star, become a sponsor of 
 
 ## License
 
-Mapbox binding library for iOS itself is released under the MIT license.
+Mapbox binding library for iOS itself is released under the 3-Clause BSD license.
 See [LICENSE](./LICENSE) for details.
 
 This license doesn't override and/or replace [the licence from Mapbox](./artifacts/LICENSE.md).
