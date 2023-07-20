@@ -12,6 +12,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <_NativeVersion>10.11.1</_NativeVersion>
+    <_NugetSuffix>.1</_NugetSuffix>
+    <_NugetVersion>$(_NativeVersion)$(_NugetSuffix)</_NugetVersion>
   </PropertyGroup>
   <PropertyGroup>
     <RootNamespace>MapboxMaps</RootNamespace>
@@ -32,7 +34,7 @@
     <PackageProjectUrl>https://github.com/naxam/mapbox-ios-binding</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageVersion>$(_NativeVersion)</PackageVersion>
+    <PackageVersion>$(_NugetVersion)</PackageVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Include="MapboxMaps.iOS.targets" Pack="True" PackagePath="build/MapboxMaps.iOS.targets" />

@@ -42,11 +42,11 @@ namespace MapboxCommon
 
 		// @property (readonly, retain) NSDictionary<NSString *,NSObject *> * _Nonnull properties;
 		[Export ("properties", ArgumentSemantic.Retain)]
-		NSDictionary<NSString, NSObject> Properties { get; }
+		NSDictionary Properties { get; }
 
 		// -(instancetype _Nonnull)initWithIdentifier:(NSObject * _Nonnull)identifier geometry:(MBXGeometry * _Nonnull)geometry properties:(NSDictionary<NSString *,NSObject *> * _Nonnull)properties;
 		[Export ("initWithIdentifier:geometry:properties:")]
-		IntPtr Constructor (NSObject identifier, MBXGeometry geometry, NSDictionary<NSString, NSObject> properties);
+		IntPtr Constructor (NSObject identifier, MBXGeometry geometry, NSDictionary properties);
 	}
 
 	// @interface MBXGeometry : NSObject
@@ -71,7 +71,7 @@ namespace MapboxCommon
 
 		// -(instancetype _Nonnull)initWithPolygon:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations;
 		[Export ("initWithPolygon:")]
-		IntPtr Constructor (NSArray<NSValue>[] locations);
+		IntPtr Constructor (NSArray locations);
 
 		// TODO add support method
 		// // -(instancetype _Nonnull)initWithMultiPoint:(NSArray<NSValue *> * _Nonnull)locations;
@@ -81,11 +81,11 @@ namespace MapboxCommon
 		// TODO add support method
 		// // -(instancetype _Nonnull)initWithMultiLine:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations;
 		// [Export ("initWithMultiLine:")]
-		// IntPtr Constructor (NSArray<NSValue>[] locations);
+		// IntPtr Constructor (NSArray locations);
 
 		// -(instancetype _Nonnull)initWithMultiPolygon:(NSArray<NSArray<NSArray<NSValue *> *> *> * _Nonnull)locations;
 		[Export ("initWithMultiPolygon:")]
-		IntPtr Constructor (NSArray<NSArray<NSValue>>[] locations);
+		IntPtr Constructor (NSArray[] locations);
 
 		// -(instancetype _Nonnull)initWithGeometryCollection:(NSArray<MBXGeometry *> * _Nonnull)geometries;
 		[Export ("initWithGeometryCollection:")]
@@ -101,11 +101,11 @@ namespace MapboxCommon
 
 		// -(NSArray<NSArray<NSValue *> *> * _Nullable)extractLocations2DArray;
 		[NullAllowed, Export ("extractLocations2DArray")]
-		NSArray<NSValue>[] ExtractLocations2DArray ();
+		NSArray ExtractLocations2DArray ();
 
 		// -(NSArray<NSArray<NSArray<NSValue *> *> *> * _Nullable)extractLocations3DArray;
 		[NullAllowed, Export ("extractLocations3DArray")]
-		NSArray<NSArray<NSValue>>[] ExtractLocations3DArray();
+		NSArray ExtractLocations3DArray();
 
 		// -(NSArray<MBXGeometry *> * _Nullable)extractGeometriesArray;
 		[NullAllowed, Export ("extractGeometriesArray")]
@@ -185,11 +185,11 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithUrl:(NSString * _Nonnull)url headers:(NSDictionary<NSString *,NSString *> * _Nonnull)headers uaComponents:(MBXUAComponents * _Nonnull)uaComponents body:(NSData * _Nullable)body;
 		[Export ("initWithUrl:headers:uaComponents:body:")]
-		IntPtr Constructor (string url, NSDictionary<NSString, NSString> headers, MBXUAComponents uaComponents, [NullAllowed] NSData body);
+		IntPtr Constructor (string url, NSDictionary headers, MBXUAComponents uaComponents, [NullAllowed] NSData body);
 
 		// -(instancetype _Nonnull)initWithMethod:(MBXHttpMethod)method url:(NSString * _Nonnull)url headers:(NSDictionary<NSString *,NSString *> * _Nonnull)headers keepCompression:(BOOL)keepCompression timeout:(uint64_t)timeout networkRestriction:(MBXNetworkRestriction)networkRestriction uaComponents:(MBXUAComponents * _Nonnull)uaComponents body:(NSData * _Nullable)body;
 		[Export ("initWithMethod:url:headers:keepCompression:timeout:networkRestriction:uaComponents:body:")]
-		IntPtr Constructor (MBXHttpMethod method, string url, NSDictionary<NSString, NSString> headers, bool keepCompression, ulong timeout, MBXNetworkRestriction networkRestriction, MBXUAComponents uaComponents, [NullAllowed] NSData body);
+		IntPtr Constructor (MBXHttpMethod method, string url, NSDictionary headers, bool keepCompression, ulong timeout, MBXNetworkRestriction networkRestriction, MBXUAComponents uaComponents, [NullAllowed] NSData body);
 
 		// @property (readwrite, nonatomic) MBXHttpMethod method;
 		[Export ("method", ArgumentSemantic.Assign)]
@@ -201,7 +201,7 @@ namespace MapboxCommon
 
 		// @property (readwrite, copy, nonatomic) NSDictionary<NSString *,NSString *> * _Nonnull headers;
 		[Export ("headers", ArgumentSemantic.Copy)]
-		NSDictionary<NSString, NSString> Headers { get; set; }
+		NSDictionary Headers { get; set; }
 
 		// @property (readonly, getter = isKeepCompression, nonatomic) BOOL keepCompression;
 		[Export ("keepCompression")]
@@ -249,11 +249,11 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithHeaders:(NSDictionary<NSString *,NSString *> * _Nonnull)headers code:(int64_t)code data:(NSData * _Nonnull)data;
 		[Export ("initWithHeaders:code:data:")]
-		IntPtr Constructor (NSDictionary<NSString, NSString> headers, long code, NSData data);
+		IntPtr Constructor (NSDictionary headers, long code, NSData data);
 
 		// @property (readonly, copy, nonatomic) NSDictionary<NSString *,NSString *> * _Nonnull headers;
 		[Export ("headers", ArgumentSemantic.Copy)]
-		NSDictionary<NSString, NSString> Headers { get; }
+		NSDictionary Headers { get; }
 
 		// @property (readonly, nonatomic) int64_t code;
 		[Export ("code")]
@@ -1166,11 +1166,11 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nonnull)filePath url:(NSString * _Nonnull)url headers:(NSDictionary<NSString *,NSString *> * _Nonnull)headers metadata:(NSString * _Nonnull)metadata mediaType:(NSString * _Nonnull)mediaType;
 		[Export ("initWithFilePath:url:headers:metadata:mediaType:")]
-		IntPtr Constructor (string filePath, string url, NSDictionary<NSString, NSString> headers, string metadata, string mediaType);
+		IntPtr Constructor (string filePath, string url, NSDictionary headers, string metadata, string mediaType);
 
 		// -(instancetype _Nonnull)initWithFilePath:(NSString * _Nonnull)filePath url:(NSString * _Nonnull)url headers:(NSDictionary<NSString *,NSString *> * _Nonnull)headers metadata:(NSString * _Nonnull)metadata mediaType:(NSString * _Nonnull)mediaType networkRestriction:(MBXNetworkRestriction)networkRestriction timeout:(uint64_t)timeout;
 		[Export ("initWithFilePath:url:headers:metadata:mediaType:networkRestriction:timeout:")]
-		IntPtr Constructor (string filePath, string url, NSDictionary<NSString, NSString> headers, string metadata, string mediaType, MBXNetworkRestriction networkRestriction, ulong timeout);
+		IntPtr Constructor (string filePath, string url, NSDictionary headers, string metadata, string mediaType, MBXNetworkRestriction networkRestriction, ulong timeout);
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull filePath;
 		[Export ("filePath")]
@@ -1182,7 +1182,7 @@ namespace MapboxCommon
 
 		// @property (readwrite, copy, nonatomic) NSDictionary<NSString *,NSString *> * _Nonnull headers;
 		[Export ("headers", ArgumentSemantic.Copy)]
-		NSDictionary<NSString, NSString> Headers { get; set; }
+		NSDictionary Headers { get; set; }
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull metadata;
 		[Export ("metadata")]

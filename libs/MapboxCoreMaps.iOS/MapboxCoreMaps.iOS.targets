@@ -4,7 +4,8 @@
 	<PropertyGroup>
 		<_MapboxDownloadToken>$(MAPBOX_DOWNLOADS_TOKEN)</_MapboxDownloadToken>
 		<_MapboxVersion>10.11.1</_MapboxVersion>
-		<_MapboxMapsItemsFolder>MapboxMaps-$(_MapboxVersion)</_MapboxMapsItemsFolder>
+		<_NugetSuffix>.1</_NugetSuffix>
+		<_MapboxMapsItemsFolder>MapboxMaps-$(_MapboxVersion)$(_NugetSuffix)</_MapboxMapsItemsFolder>
 		<_MapboxMapsSDKBaseFolder>$(XamarinBuildDownloadDir)$(_MapboxMapsItemsFolder)\</_MapboxMapsSDKBaseFolder>
 	</PropertyGroup>
 	<ItemGroup Condition="('$(OutputType)'!='Library' OR '$(IsAppExtension)'=='True')">

@@ -885,7 +885,7 @@ namespace MapboxMobileEvents
 
 		// -(void)enqueueEventWithName:(NSString * _Nonnull)name attributes:(MMEMapboxEventAttributes * _Nonnull)attributes;
 		[Export ("enqueueEventWithName:attributes:")]
-		void EnqueueEventWithName (string name, NSDictionary<NSString, NSObject> attributes);
+		void EnqueueEventWithName (string name, NSDictionary attributes);
 
 		// -(void)postMetadata:(NSArray * _Nonnull)metadata filePaths:(NSArray * _Nonnull)filePaths completionHandler:(void (^ _Nullable)(NSError * _Nullable))completionHandler;
 		[Export ("postMetadata:filePaths:completionHandler:")]

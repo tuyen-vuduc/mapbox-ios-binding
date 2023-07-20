@@ -3,8 +3,9 @@
 	<PropertyGroup>
 		<_MapboxDownloadToken>$(MAPBOX_DOWNLOADS_TOKEN)</_MapboxDownloadToken>
 		<_MapboxVersion>10.11.1</_MapboxVersion>
-		<_MapboxMapsObjCAssemblyName>MapboxMapsObjC.iOS, Version=10.11.1, Culture=neutral, PublicKeyToken=null </_MapboxMapsObjCAssemblyName>
-		<_MapboxMapsObjCItemsFolder>MapboxMapsObjC-10.11.1</_MapboxMapsObjCItemsFolder>
+		<_NugetSuffix>.1</_NugetSuffix>
+		<_MapboxMapsObjCAssemblyName>MapboxMapsObjC.iOS, Version=$(_MapboxVersion), Culture=neutral, PublicKeyToken=null </_MapboxMapsObjCAssemblyName>
+		<_MapboxMapsObjCItemsFolder>MapboxMapsObjC-$(_MapboxVersion)$(_NugetSuffix)</_MapboxMapsObjCItemsFolder>
 		<_MapboxMapsObjCSDKBaseFolder>$(XamarinBuildDownloadDir)$(_MapboxMapsObjCItemsFolder)\</_MapboxMapsObjCSDKBaseFolder>
 	</PropertyGroup>
   <ItemGroup Condition="('$(OutputType)'!='Library' OR '$(IsAppExtension)'=='True')">

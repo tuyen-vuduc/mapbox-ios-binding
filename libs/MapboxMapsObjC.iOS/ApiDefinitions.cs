@@ -790,7 +790,7 @@ namespace MapboxMapsObjC
 
 		// -(void)allStylePacks:(void (^ _Nonnull)(NSArray<MBMStylePack *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("allStylePacks:")]
-		void AllStylePacks (Action<NSArray<MBMStylePack>, NSError> completion);
+		void AllStylePacks(Action<MBMStylePack[], NSError> completion);
 	}
 
 	// @interface TMBAnimationOwner : NSObject <NamedString>
@@ -847,7 +847,7 @@ namespace MapboxMapsObjC
 		// @required @property (readonly, copy, nonatomic) NSDictionary<NSString *,id> * _Nullable userInfo;
 		[Abstract]
 		[NullAllowed, Export ("userInfo", ArgumentSemantic.Copy)]
-		NSDictionary<NSString, NSObject> UserInfo { get; }
+		NSDictionary UserInfo { get; }
 	}
 
 	partial interface ITMBAnnotationInteractionDelegate { }
@@ -1259,7 +1259,7 @@ namespace MapboxMapsObjC
 
 		// @property (readonly, copy, nonatomic) NSDictionary<NSString *,id> * _Nullable userInfo;
 		[NullAllowed, Export ("userInfo", ArgumentSemantic.Copy)]
-		NSDictionary<NSString, NSObject> UserInfo { get; }
+		NSDictionary UserInfo { get; }
 
 		// @property (nonatomic) BOOL isSelected;
 		[Export ("isSelected")]
@@ -3328,7 +3328,7 @@ namespace MapboxMapsObjC
 
 		// @property (copy, nonatomic) NSArray<NSArray<NSNumber *> *> * _Nullable coordinates;
 		[NullAllowed, Export ("coordinates", ArgumentSemantic.Copy)]
-		NSArray<NSNumber>[] Coordinates { get; set; }
+		NSArray Coordinates { get; set; }
 
 		// @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
 		[NullAllowed, Export ("prefetchZoomDelta", ArgumentSemantic.Strong)]
@@ -4175,11 +4175,11 @@ namespace MapboxMapsObjC
 	{
 		// -(void)setFeatureStateWithSourceId:(NSString * _Nonnull)sourceId sourceLayerId:(NSString * _Nullable)sourceLayerId featureId:(NSString * _Nonnull)featureId state:(NSDictionary<NSString *,id> * _Nonnull)state;
 		[Export ("setFeatureStateWithSourceId:sourceLayerId:featureId:state:")]
-		void SetFeatureStateWithSourceId (string sourceId, [NullAllowed] string sourceLayerId, string featureId, NSDictionary<NSString, NSObject> state);
+		void SetFeatureStateWithSourceId (string sourceId, [NullAllowed] string sourceLayerId, string featureId, NSDictionary state);
 
 		// -(void)getFeatureStateWithSourceId:(NSString * _Nonnull)sourceId sourceLayerId:(NSString * _Nullable)sourceLayerId featureId:(NSString * _Nonnull)featureId callback:(void (^ _Nonnull)(NSDictionary<NSString *,id> * _Nullable, NSError * _Nullable))callback;
 		[Export ("getFeatureStateWithSourceId:sourceLayerId:featureId:callback:")]
-		void GetFeatureStateWithSourceId (string sourceId, [NullAllowed] string sourceLayerId, string featureId, Action<NSDictionary<NSString, NSObject>, NSError> callback);
+		void GetFeatureStateWithSourceId (string sourceId, [NullAllowed] string sourceLayerId, string featureId, Action<NSDictionary, NSError> callback);
 
 		// -(void)removeFeatureStateWithSourceId:(NSString * _Nonnull)sourceId sourceLayerId:(NSString * _Nullable)sourceLayerId featureId:(NSString * _Nonnull)featureId stateKey:(NSString * _Nullable)stateKey;
 		[Export ("removeFeatureStateWithSourceId:sourceLayerId:featureId:stateKey:")]
@@ -4209,7 +4209,7 @@ namespace MapboxMapsObjC
 
 		// -(void)queryFeatureExtensionFor:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature extension:(NSString * _Nonnull)extension extensionField:(NSString * _Nonnull)extensionField args:(NSDictionary<NSString *,id> * _Nullable)args completion:(void (^ _Nullable)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
 		[Export ("queryFeatureExtensionFor:feature:extension:extensionField:args:completion:")]
-		void QueryFeatureExtensionFor (string sourceId, MBXFeature feature, string extension, string extensionField, [NullAllowed] NSDictionary<NSString, NSObject> args, [NullAllowed] Action<MBMFeatureExtensionValue, NSError> completion);
+		void QueryFeatureExtensionFor (string sourceId, MBXFeature feature, string extension, string extensionField, [NullAllowed] NSDictionary args, [NullAllowed] Action<MBMFeatureExtensionValue, NSError> completion);
 
 		// -(void)getGeoJsonClusterLeavesForSourceId:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature limit:(uint64_t)limit offset:(uint64_t)offset completion:(void (^ _Nonnull)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
 		[Export ("getGeoJsonClusterLeavesForSourceId:feature:limit:offset:completion:")]
@@ -4438,7 +4438,7 @@ namespace MapboxMapsObjC
 
 		// @property (readonly, copy, nonatomic) NSDictionary<NSString *,id> * _Nullable userInfo;
 		[NullAllowed, Export ("userInfo", ArgumentSemantic.Copy)]
-		NSDictionary<NSString, NSObject> UserInfo { get; }
+		NSDictionary UserInfo { get; }
 
 		// @property (nonatomic) BOOL isSelected;
 		[Export ("isSelected")]
@@ -4753,7 +4753,7 @@ namespace MapboxMapsObjC
 
 		// @property (readonly, copy, nonatomic) NSDictionary<NSString *,id> * _Nullable userInfo;
 		[NullAllowed, Export ("userInfo", ArgumentSemantic.Copy)]
-		NSDictionary<NSString, NSObject> UserInfo { get; }
+		NSDictionary UserInfo { get; }
 
 		// +(TMBPolygonAnnotation * _Nonnull)polygon:(TMBPolygon * _Nonnull)polygon __attribute__((warn_unused_result("")));
 		[Static]
@@ -4838,7 +4838,7 @@ namespace MapboxMapsObjC
 
 		// @property (readonly, copy, nonatomic) NSDictionary<NSString *,id> * _Nullable userInfo;
 		[NullAllowed, Export ("userInfo", ArgumentSemantic.Copy)]
-		NSDictionary<NSString, NSObject> UserInfo { get; }
+		NSDictionary UserInfo { get; }
 
 		// @property (nonatomic) BOOL isSelected;
 		[Export ("isSelected")]
@@ -4965,7 +4965,7 @@ namespace MapboxMapsObjC
 		// +(TMBPromoteId * _Nonnull)objectWithValue:(NSDictionary<NSString *,NSString *> * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("objectWithValue:")]
-		TMBPromoteId ObjectWithValue (NSDictionary<NSString, NSString> value);
+		TMBPromoteId ObjectWithValue (NSDictionary value);
 	}
 
 	// @interface TMBPuck2DConfiguration : NSObject
@@ -5563,11 +5563,11 @@ namespace MapboxMapsObjC
 
 		// -(void)addLayerWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties layerPosition:(TMBLayerPosition * _Nullable)layerPosition completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("addLayerWithProperties:layerPosition:completion:")]
-		void AddLayerWithProperties (NSDictionary<NSString, NSObject> properties, [NullAllowed] TMBLayerPosition layerPosition, [NullAllowed] Action<NSError> completion);
+		void AddLayerWithProperties (NSDictionary properties, [NullAllowed] TMBLayerPosition layerPosition, [NullAllowed] Action<NSError> completion);
 
 		// -(void)addPersistentLayerWith:(NSDictionary<NSString *,id> * _Nonnull)properties layerPosition:(TMBLayerPosition * _Nullable)layerPosition completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("addPersistentLayerWith:layerPosition:completion:")]
-		void AddPersistentLayerWith (NSDictionary<NSString, NSObject> properties, [NullAllowed] TMBLayerPosition layerPosition, [NullAllowed] Action<NSError> completion);
+		void AddPersistentLayerWith (NSDictionary properties, [NullAllowed] TMBLayerPosition layerPosition, [NullAllowed] Action<NSError> completion);
 
 		// -(void)isPersistentLayerWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSNumber * _Nullable, NSError * _Nullable))completion;
 		[Export ("isPersistentLayerWithId:completion:")]
@@ -5612,15 +5612,15 @@ namespace MapboxMapsObjC
 
 		// -(void)layerPropertiesFor:(NSString * _Nonnull)layerId completion:(void (^ _Nullable)(NSDictionary<NSString *,id> * _Nullable, NSError * _Nullable))completion;
 		[Export ("layerPropertiesFor:completion:")]
-		void LayerPropertiesFor (string layerId, [NullAllowed] Action<NSDictionary<NSString, NSObject>, NSError> completion);
+		void LayerPropertiesFor (string layerId, [NullAllowed] Action<NSDictionary, NSError> completion);
 
 		// -(void)setLayerPropertiesFor:(NSString * _Nonnull)layerId properties:(NSDictionary<NSString *,id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("setLayerPropertiesFor:properties:completion:")]
-		void SetLayerPropertiesFor (string layerId, NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> completion);
+		void SetLayerPropertiesFor (string layerId, NSDictionary properties, [NullAllowed] Action<NSError> completion);
 
 		// -(void)addSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("addSourceWithId:properties:completion:")]
-		void AddSourceWithId (string id, NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> completion);
+		void AddSourceWithId (string id, NSDictionary properties, [NullAllowed] Action<NSError> completion);
 
 		// -(void)removeSourceWithId:(NSString * _Nonnull)id completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("removeSourceWithId:completion:")]
@@ -5644,11 +5644,11 @@ namespace MapboxMapsObjC
 
 		// -(void)sourcePropertiesFor:(NSString * _Nonnull)sourceId completion:(void (^ _Nullable)(NSDictionary<NSString *,id> * _Nullable, NSError * _Nullable))completion;
 		[Export ("sourcePropertiesFor:completion:")]
-		void SourcePropertiesFor (string sourceId, [NullAllowed] Action<NSDictionary<NSString, NSObject>, NSError> completion);
+		void SourcePropertiesFor (string sourceId, [NullAllowed] Action<NSDictionary, NSError> completion);
 
 		// -(void)setSourcePropertiesFor:(NSString * _Nonnull)sourceId properties:(NSDictionary<NSString *,id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("setSourcePropertiesFor:properties:completion:")]
-		void SetSourcePropertiesFor (string sourceId, NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> completion);
+		void SetSourcePropertiesFor (string sourceId, NSDictionary properties, [NullAllowed] Action<NSError> completion);
 
 		// +(MBMStylePropertyValue * _Nonnull)sourcePropertyDefaultValueFor:(NSString * _Nonnull)sourceType property:(NSString * _Nonnull)property __attribute__((warn_unused_result("")));
 		[Static]
@@ -5686,7 +5686,7 @@ namespace MapboxMapsObjC
 
 		// -(void)setLightWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("setLightWithProperties:completion:")]
-		void SetLightWithProperties (NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> completion);
+		void SetLightWithProperties (NSDictionary properties, [NullAllowed] Action<NSError> completion);
 
 		// -(void)setLightProperty:(NSString * _Nonnull)property value:(id _Nonnull)value completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("setLightProperty:value:completion:")]
@@ -5710,7 +5710,7 @@ namespace MapboxMapsObjC
 
 		// -(void)setTerrainWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("setTerrainWithProperties:completion:")]
-		void SetTerrainWithProperties (NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> completion);
+		void SetTerrainWithProperties (NSDictionary properties, [NullAllowed] Action<NSError> completion);
 
 		// -(void)setTerrainProperty:(NSString * _Nonnull)property value:(id _Nonnull)value completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("setTerrainProperty:value:completion:")]
@@ -5734,7 +5734,7 @@ namespace MapboxMapsObjC
 
 		// -(void)setAtmosphereWithProperties:(NSDictionary<NSString *,id> * _Nonnull)properties completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("setAtmosphereWithProperties:completion:")]
-		void SetAtmosphereWithProperties (NSDictionary<NSString, NSObject> properties, [NullAllowed] Action<NSError> completion);
+		void SetAtmosphereWithProperties (NSDictionary properties, [NullAllowed] Action<NSError> completion);
 
 		// -(void)setAtmosphereProperty:(NSString * _Nonnull)property value:(id _Nonnull)value completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("setAtmosphereProperty:value:completion:")]
@@ -5768,7 +5768,7 @@ namespace MapboxMapsObjC
 	{
 		// -(void)addGeoJSONSourceWithId:(NSString * _Nonnull)id properties:(NSDictionary<NSString *,id> * _Nonnull)properties geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
 		[Export ("addGeoJSONSourceWithId:properties:geojson:onComplete:")]
-		void AddGeoJSONSourceWithId (string id, NSDictionary<NSString, NSObject> properties, string geojson, [NullAllowed] Action<NSError> onComplete);
+		void AddGeoJSONSourceWithId (string id, NSDictionary properties, string geojson, [NullAllowed] Action<NSError> onComplete);
 
 		// -(void)updateGeoJSONSourceWithId:(NSString * _Nonnull)id geojson:(NSString * _Nonnull)geojson onComplete:(void (^ _Nullable)(NSError * _Nullable))onComplete;
 		[Export ("updateGeoJSONSourceWithId:geojson:onComplete:")]
@@ -6846,6 +6846,6 @@ namespace MapboxMapsObjC
 
 		// -(void)allTileRegions:(void (^ _Nonnull)(NSArray<MBXTileRegion *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("allTileRegions:")]
-		void AllTileRegions (Action<NSArray<MBXTileRegion>, NSError> completion);
+		void AllTileRegions(Action<MBXTileRegion[], NSError> completion);
 	}
 }
