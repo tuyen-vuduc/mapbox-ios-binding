@@ -32,7 +32,7 @@
     <Owners>tuyen,tuyen-vuduc</Owners>
     <Copyright>© tuyen-vuduc. All rights reserved.</Copyright>
     <RepositoryUrl>https://github.com/tuyen-vuduc/mapbox-ios-binding</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/tuyen-vuduc/mapbox-ios-binding</PackageProjectUrl>
+    <PackageProjectUrl>https://mapbox.tuyen-vuduc.tech/</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>tv-mapbox.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
