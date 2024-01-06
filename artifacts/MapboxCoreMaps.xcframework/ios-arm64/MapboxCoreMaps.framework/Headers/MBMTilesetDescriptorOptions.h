@@ -4,7 +4,7 @@
 
 @class MBMStylePackLoadOptions;
 
-/** Describes the style package load option values for a style. */
+/** Describes the tileset descriptor option values. */
 NS_SWIFT_NAME(TilesetDescriptorOptions)
 __attribute__((visibility ("default")))
 @interface MBMTilesetDescriptorOptions : NSObject
@@ -18,13 +18,17 @@ __attribute__((visibility ("default")))
 - (nonnull instancetype)initWithStyleURI:(nonnull NSString *)styleURI
                                  minZoom:(uint8_t)minZoom
                                  maxZoom:(uint8_t)maxZoom
-                        stylePackOptions:(nullable MBMStylePackLoadOptions *)stylePackOptions;
+                                tilesets:(nullable NSArray<NSString *> *)tilesets
+                        stylePackOptions:(nullable MBMStylePackLoadOptions *)stylePackOptions
+                            extraOptions:(nullable id)extraOptions;
 
 - (nonnull instancetype)initWithStyleURI:(nonnull NSString *)styleURI
                                  minZoom:(uint8_t)minZoom
                                  maxZoom:(uint8_t)maxZoom
                               pixelRatio:(float)pixelRatio
-                        stylePackOptions:(nullable MBMStylePackLoadOptions *)stylePackOptions;
+                                tilesets:(nullable NSArray<NSString *> *)tilesets
+                        stylePackOptions:(nullable MBMStylePackLoadOptions *)stylePackOptions
+                            extraOptions:(nullable id)extraOptions;
 
 /** The style associated with the tileset descriptor */
 @property (nonatomic, readonly, nonnull, copy) NSString *styleURI;
@@ -64,6 +68,19 @@ __attribute__((visibility ("default")))
 @property (nonatomic, readonly) float pixelRatio;
 
 /**
+ * The tilesets associated with the tileset descriptor.
+ *
+ * Contains an array, each element of which must be either a URI to a TileJSON
+ * resource or a JSON string representing the inline tileset.
+ *
+ * This property can be used to resolve extra tilesets that are not part of the original style
+ * represented by `styleURL`, it can be used also with the empty `styleURL`.
+ *
+ * The provided URIs must have "mapbox://" scheme, e.g. "mapbox://mapbox.mapbox-streets-v8".
+ */
+@property (nonatomic, readonly, nullable, copy) NSArray<NSString *> *tilesets;
+
+/**
  * Style package load options, associated with the tileset descriptor.
  *
  * If provided, `offline manager` will create a style package while resolving the corresponding
@@ -72,8 +89,13 @@ __attribute__((visibility ("default")))
  * method of `offline manager`.
  * If not provided, resolving of the corresponding tileset descriptor will not cause creating of a new style
  * package but the loaded resources will be stored in the disk cache.
+ *
+ * Style package creation requires nonempty `styleURL`, which will be the created style package identifier.
  */
 @property (nonatomic, readonly, nullable) MBMStylePackLoadOptions *stylePackOptions;
+
+/** Extra tileset descriptor options. */
+@property (nonatomic, readonly, nullable, copy) id extraOptions;
 
 
 @end

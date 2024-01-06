@@ -3,6 +3,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MBXNetworkRestriction.h"
+@class MBXCoordinate2D;
 @class MBXGeometry;
 
 @class MBXTilesetDescriptor;
@@ -21,7 +22,7 @@ __attribute__((visibility ("default")))
 - (nonnull instancetype)initWithGeometry:(nullable MBXGeometry *)geometry
                              descriptors:(nullable NSArray<MBXTilesetDescriptor *> *)descriptors
                                 metadata:(nullable id)metadata
-                           startLocation:(nullable CLLocation *)startLocation
+                           startLocation:(nullable MBXCoordinate2D *)startLocation
                    averageBytesPerSecond:(nullable NSNumber *)averageBytesPerSecond
                             extraOptions:(nullable id)extraOptions NS_REFINED_FOR_SWIFT;
 
@@ -30,7 +31,7 @@ __attribute__((visibility ("default")))
                                 metadata:(nullable id)metadata
                            acceptExpired:(BOOL)acceptExpired
                       networkRestriction:(MBXNetworkRestriction)networkRestriction
-                           startLocation:(nullable CLLocation *)startLocation
+                           startLocation:(nullable MBXCoordinate2D *)startLocation
                    averageBytesPerSecond:(nullable NSNumber *)averageBytesPerSecond
                             extraOptions:(nullable id)extraOptions NS_REFINED_FOR_SWIFT;
 
@@ -70,7 +71,7 @@ __attribute__((visibility ("default")))
  * for a tile is up-to-date. Set to true to continue loading a group without updating expired data for tiles that
  * are already downloaded.
  */
-@property (nonatomic, readonly, getter=isAcceptExpired) BOOL acceptExpired;
+@property (nonatomic, readonly) BOOL acceptExpired;
 
 /**
  * Controls which networks may be used to load the tile.
@@ -87,7 +88,7 @@ __attribute__((visibility ("default")))
  *
  * Note that this functionality is not currently implemented.
  */
-@property (nonatomic, readonly, nullable) CLLocation *startLocation NS_REFINED_FOR_SWIFT;
+@property (nonatomic, readonly, nullable) MBXCoordinate2D *startLocation NS_REFINED_FOR_SWIFT;
 
 /**
  * Limits the download speed of the tile region.
@@ -107,7 +108,9 @@ __attribute__((visibility ("default")))
  *
  * If provided, contains an object value with extra tile region load options.
  *
- * There are currently no extra options.
+ * Currently supported options:
+ *  * force_refresh: if set to a true boolean value, all tiles in the group will be loaded instead of loading only
+ *                   missing or expired tiles.
  */
 @property (nonatomic, readonly, nullable, copy) id extraOptions;
 

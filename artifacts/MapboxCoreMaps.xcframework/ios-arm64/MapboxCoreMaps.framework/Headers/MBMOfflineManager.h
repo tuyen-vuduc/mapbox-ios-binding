@@ -1,14 +1,12 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCoreMaps/MBMStylePackLoadProgressCallback.h>
+#import "MBMStylePackLoadProgressCallback.h"
 
-@class MBMResourceOptions;
 @class MBMStylePackLoadOptions;
 @class MBMTilesetDescriptorOptions;
-@class MBMTilesetDescriptorOptionsForTilesets;
-@class MBXCancelable;
 @class MBXTilesetDescriptor;
+@protocol MBXCancelable;
 
 /**
  * An `offline manager` manages downloads and storage for style packages and also produces tileset descriptors for the `tile store`.
@@ -19,18 +17,8 @@ NS_SWIFT_NAME(OfflineManager)
 __attribute__((visibility ("default")))
 @interface MBMOfflineManager : NSObject
 
-// This class provides custom init which should be called
-- (nonnull instancetype)init NS_UNAVAILABLE;
-
-// This class provides custom init which should be called
-+ (nonnull instancetype)new NS_UNAVAILABLE;
-
-/**
- * Construct a new `offline manager`.
- *
- * @param resourceOptions The `resource options` to manage.
- */
-- (nonnull instancetype)initWithResourceOptions:(nonnull MBMResourceOptions *)resourceOptions;
+/** Construct a new `offline manager`. */
+- (nonnull instancetype)init;
 
 /**
  * Construct a new `tileset descriptor` for the `tile store`.
@@ -44,22 +32,10 @@ __attribute__((visibility ("default")))
  */
 - (nonnull MBXTilesetDescriptor *)createTilesetDescriptorForTilesetDescriptorOptions:(nonnull MBMTilesetDescriptorOptions *)tilesetDescriptorOptions __attribute((ns_returns_retained));
 /**
- * An overloaded version that accepts `TilesetDescriptorOptionsForTilesets`.
- *
- * This method is helpful if the required tilesets do not originally belong to
- * a style, e.g. when their corresponding style sources are added using runtime API.
- *
- * @param tilesetDescriptorOptionsForTilesets The `tileset descriptor options` to manage.
- * @return A new `tileset descriptor`.
- */
-- (nonnull MBXTilesetDescriptor *)createTilesetDescriptorForTilesetDescriptorOptionsForTilesets:(nonnull MBMTilesetDescriptorOptionsForTilesets *)tilesetDescriptorOptionsForTilesets __attribute((ns_returns_retained));
-/**
  * Removes a style package.
  *
  * Removes a style package from the existing packages list. The actual resources
- * eviction might be deferred as the implementation can first put the resources to the disk cache.
- * Call `MapboxMap#clearData()` API to make sure all the temporary data is physically removed
- * from the disk cache.
+ * eviction from the Tile Store might be deferred (see the Tile Store disk quota API).
  *
  * All pending loading operations for the style package with the given id will
  * fail with `Canceled` error.

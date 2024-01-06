@@ -25,10 +25,10 @@ __attribute__((visibility ("default")))
 @property (nonatomic, readonly) uint16_t buffer;
 
 /** If the data includes geometry outside the tile boundaries, setting this to true clips the geometry to the tile boundaries. Default is `false`; */
-@property (nonatomic, readonly, getter=isClip) BOOL clip;
+@property (nonatomic, readonly) BOOL clip;
 
 /** If the data includes wrapped coordinates, setting this to true unwraps the coordinates. Default is `false`; */
-@property (nonatomic, readonly, getter=isWrap) BOOL wrap;
+@property (nonatomic, readonly) BOOL wrap;
 
 
 @end

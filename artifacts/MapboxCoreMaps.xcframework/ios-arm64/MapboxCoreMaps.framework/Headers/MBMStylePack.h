@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCoreMaps/MBMGlyphsRasterizationMode.h>
+#import "MBMGlyphsRasterizationMode.h"
 
 /** The `style pack` represents a stored style package. */
 NS_SWIFT_NAME(StylePack)
@@ -14,12 +14,6 @@ __attribute__((visibility ("default")))
 // This class provides custom init which should be called
 + (nonnull instancetype)new NS_UNAVAILABLE;
 
-- (nonnull instancetype)initWithStyleURI:(nonnull NSString *)styleURI
-                 glyphsRasterizationMode:(MBMGlyphsRasterizationMode)glyphsRasterizationMode
-                   requiredResourceCount:(uint64_t)requiredResourceCount
-                  completedResourceCount:(uint64_t)completedResourceCount
-                   completedResourceSize:(uint64_t)completedResourceSize
-                                 expires:(nullable NSDate *)expires;
 
 /** The style associated with the style package. */
 @property (nonatomic, readonly, nonnull, copy) NSString *styleURI;

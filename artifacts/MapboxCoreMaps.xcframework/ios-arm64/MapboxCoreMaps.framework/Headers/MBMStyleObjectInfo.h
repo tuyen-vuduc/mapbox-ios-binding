@@ -13,7 +13,7 @@ __attribute__((visibility ("default")))
 // This class provides custom init which should be called
 + (nonnull instancetype)new NS_UNAVAILABLE;
 
-- (nonnull instancetype)initWithId:(nonnull NSString *)id
+- (nonnull instancetype)initWithId:(nonnull NSString *)id_
                               type:(nonnull NSString *)type;
 
 /** The object's identifier. */

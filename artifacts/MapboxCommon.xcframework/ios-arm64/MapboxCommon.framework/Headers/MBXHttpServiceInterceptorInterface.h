@@ -1,8 +1,9 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
+#import "MBXHttpServiceInterceptorRequestContinuation.h"
+#import "MBXHttpServiceInterceptorResponseContinuation.h"
 
-@class MBXDownloadOptions;
 @class MBXHttpRequest;
 @class MBXHttpResponse;
 
@@ -12,22 +13,18 @@ NS_SWIFT_NAME(HttpServiceInterceptorInterface)
 /**
  * The function to intercept HTTP requests with.
  * @param request The original HttpRequest object to be modified.
- *
- * @return The modified HttpRequest object.
+ * @param continuation Callback to be invoked once the interceptor has finished processing the request. Can also
+ * be invoked with a HttpResponse, in which case the request completes immediately.
  */
-- (nonnull MBXHttpRequest *)onRequestForRequest:(nonnull MBXHttpRequest *)request;
-/**
- * The function to intercept HTTP download options with.
- * @param download The original DownloadOptions object to be modified.
- *
- * @return The modified DownloadOptions object.
- */
-- (nonnull MBXDownloadOptions *)onDownloadForDownload:(nonnull MBXDownloadOptions *)download;
+- (void)onRequestForRequest:(nonnull MBXHttpRequest *)request
+               continuation:(nonnull MBXHttpServiceInterceptorRequestContinuation)continuation;
 /**
  * The function to intercept HTTP responses with.
- * @param response The original HttpResponse object to be modified.
  *
- * @return The modified HttpResponse object.
+ * @param response The original HttpResponse object to be modified. Note: certain requests have their response body
+ *                 written to disk. In that case, the field HttpResponseData.body will be empty.
+ * @param continuation Callback to be invoked once the interceptor has finished processing the response.
  */
-- (nonnull MBXHttpResponse *)onResponseForResponse:(nonnull MBXHttpResponse *)response;
+- (void)onResponseForResponse:(nonnull MBXHttpResponse *)response
+                 continuation:(nonnull MBXHttpServiceInterceptorResponseContinuation)continuation;
 @end

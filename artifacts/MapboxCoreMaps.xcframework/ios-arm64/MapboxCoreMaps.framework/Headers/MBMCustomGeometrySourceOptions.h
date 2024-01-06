@@ -1,8 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCoreMaps/MBMCancelTileFunctionCallback.h>
-#import <MapboxCoreMaps/MBMFetchTileFunctionCallback.h>
+#import "MBMTileFunctionCallback.h"
 
 @class MBMTileOptions;
 
@@ -17,21 +16,21 @@ __attribute__((visibility ("default")))
 // This class provides custom init which should be called
 + (nonnull instancetype)new NS_UNAVAILABLE;
 
-- (nonnull instancetype)initWithFetchTileFunction:(nonnull MBMFetchTileFunctionCallback)fetchTileFunction
-                               cancelTileFunction:(nonnull MBMCancelTileFunctionCallback)cancelTileFunction
+- (nonnull instancetype)initWithFetchTileFunction:(nonnull MBMTileFunctionCallback)fetchTileFunction
+                               cancelTileFunction:(nonnull MBMTileFunctionCallback)cancelTileFunction
                                       tileOptions:(nonnull MBMTileOptions *)tileOptions;
 
-- (nonnull instancetype)initWithFetchTileFunction:(nonnull MBMFetchTileFunctionCallback)fetchTileFunction
-                               cancelTileFunction:(nonnull MBMCancelTileFunctionCallback)cancelTileFunction
+- (nonnull instancetype)initWithFetchTileFunction:(nonnull MBMTileFunctionCallback)fetchTileFunction
+                               cancelTileFunction:(nonnull MBMTileFunctionCallback)cancelTileFunction
                                           minZoom:(uint8_t)minZoom
                                           maxZoom:(uint8_t)maxZoom
                                       tileOptions:(nonnull MBMTileOptions *)tileOptions;
 
 /** The callback that provides data for a tile. */
-@property (nonatomic, readonly, nonnull) MBMFetchTileFunctionCallback fetchTileFunction;
+@property (nonatomic, readonly, nonnull) MBMTileFunctionCallback fetchTileFunction;
 
 /** The callback that cancels a tile. */
-@property (nonatomic, readonly, nonnull) MBMCancelTileFunctionCallback cancelTileFunction;
+@property (nonatomic, readonly, nonnull) MBMTileFunctionCallback cancelTileFunction;
 
 /**
  * A minimum zoom level, at which to create vector tiles.

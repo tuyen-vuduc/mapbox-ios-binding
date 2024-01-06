@@ -13,12 +13,6 @@ __attribute__((visibility ("default")))
      */
     @property (nonatomic, class, readonly) NSString * DiskQuota;
     /**
-     * Sets the access token to use for tile requests. Defaults to use the access token from the application's
-     * manifest or the environment if unset.
-     * Accepts a string, or null for resetting to the default value.
-     */
-    @property (nonatomic, class, readonly) NSString * MapboxAccessToken;
-    /**
      * Sets the base URL to use for requests to the Mapbox API. Defaults to "https://api.mapbox.com".
      * Accepts a string, or null for resetting to the default value.
      */

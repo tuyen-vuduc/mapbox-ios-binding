@@ -3,10 +3,7 @@
 #import <Foundation/Foundation.h>
 @class MBXFeature;
 
-/**
- * Represents query result that is returned in QueryFeaturesCallback.
- * @see `queryRenderedFeatures` or `querySourceFeatures`
- */
+/** Represents queried feature that is returned through `QueriedRenderedFeature` or `QueriedSourceFeature` */
 NS_SWIFT_NAME(QueriedFeature)
 __attribute__((visibility ("default")))
 @interface MBMQueriedFeature : NSObject

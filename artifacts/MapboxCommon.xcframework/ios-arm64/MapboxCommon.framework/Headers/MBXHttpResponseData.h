@@ -14,14 +14,14 @@ __attribute__((visibility ("default")))
 + (nonnull instancetype)new NS_UNAVAILABLE;
 
 - (nonnull instancetype)initWithHeaders:(nonnull NSDictionary<NSString *, NSString *> *)headers
-                                   code:(int64_t)code
+                                   code:(int32_t)code
                                    data:(nonnull NSData *)data;
 
 /** Map which contains HTTP response headers in a format header name:value. All the header names are in lower case format. */
 @property (nonatomic, readonly, nonnull, copy) NSDictionary<NSString *, NSString *> *headers;
 
 /** HTTP response code. */
-@property (nonatomic, readonly) int64_t code;
+@property (nonatomic, readonly) int32_t code;
 
 /** Data chunk received in HTTP response. */
 @property (nonatomic, readonly, nonnull) NSData *data;

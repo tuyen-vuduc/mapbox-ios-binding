@@ -26,40 +26,40 @@ __attribute__((visibility ("default")))
                          bearingAccuracy:(nullable NSNumber *)bearingAccuracy
                                    floor:(nullable NSNumber *)floor
                                   source:(nullable NSString *)source
-                                   extra:(nullable id)extra;
+                                   extra:(nullable id)extra NS_REFINED_FOR_SWIFT;
 
 /** The north–south position of a point on the Earth's surface, in decimal degrees (WGS84). */
-@property (nonatomic, readonly) double latitude;
+@property (nonatomic, readonly) double latitude NS_REFINED_FOR_SWIFT;
 
 /** The east–west position of a point on the Earth's surface, in decimal degrees (WGS84). */
-@property (nonatomic, readonly) double longitude;
+@property (nonatomic, readonly) double longitude NS_REFINED_FOR_SWIFT;
 
 /** The UTC time of this location fix, in milliseconds since epoch (January 1, 1970). */
-@property (nonatomic, readonly) uint64_t timestamp;
+@property (nonatomic, readonly) uint64_t timestamp NS_REFINED_FOR_SWIFT;
 
 /** The monotonic timestamp, in nanoseconds. */
-@property (nonatomic, readwrite, nullable) NSNumber *monotonicTimestamp;
+@property (nonatomic, readwrite, nullable) NSNumber *monotonicTimestamp NS_REFINED_FOR_SWIFT;
 
 /** The altitude of the location in meters above the WGS84 reference ellipsoid. */
-@property (nonatomic, readwrite, nullable) NSNumber *altitude;
+@property (nonatomic, readwrite, nullable) NSNumber *altitude NS_REFINED_FOR_SWIFT;
 
 /** The estimated horizontal accuracy of this location, radial, in meters. */
-@property (nonatomic, readwrite, nullable) NSNumber *horizontalAccuracy;
+@property (nonatomic, readwrite, nullable) NSNumber *horizontalAccuracy NS_REFINED_FOR_SWIFT;
 
 /** The estimated vertical accuracy of this location, in meters. */
-@property (nonatomic, readwrite, nullable) NSNumber *verticalAccuracy;
+@property (nonatomic, readwrite, nullable) NSNumber *verticalAccuracy NS_REFINED_FOR_SWIFT;
 
 /** The instantaneous speed of the device, measured in meters/second over ground. */
-@property (nonatomic, readwrite, nullable) NSNumber *speed;
+@property (nonatomic, readwrite, nullable) NSNumber *speed NS_REFINED_FOR_SWIFT;
 
 /** The estimated speed accuracy of this location, in meters/second. */
-@property (nonatomic, readwrite, nullable) NSNumber *speedAccuracy;
+@property (nonatomic, readwrite, nullable) NSNumber *speedAccuracy NS_REFINED_FOR_SWIFT;
 
 /** The GNSS bearing, in degrees. */
-@property (nonatomic, readwrite, nullable) NSNumber *bearing;
+@property (nonatomic, readwrite, nullable) NSNumber *bearing NS_REFINED_FOR_SWIFT;
 
 /** The estimated bearing accuracy of this location, in degrees. */
-@property (nonatomic, readwrite, nullable) NSNumber *bearingAccuracy;
+@property (nonatomic, readwrite, nullable) NSNumber *bearingAccuracy NS_REFINED_FOR_SWIFT;
 
 /**
  * The logical floor of the building.
@@ -68,7 +68,7 @@ __attribute__((visibility ("default")))
  * indicate underground floors and positive values indicate floors
  * above ground level.
  */
-@property (nonatomic, readwrite, nullable) NSNumber *floor;
+@property (nonatomic, readwrite, nullable) NSNumber *floor NS_REFINED_FOR_SWIFT;
 
 /** The source that provides this location */
 @property (nonatomic, readwrite, nullable, copy) NSString *source;
@@ -76,5 +76,7 @@ __attribute__((visibility ("default")))
 /** Additional information */
 @property (nonatomic, readonly, nullable, copy) id extra;
 
+
+- (BOOL)isEqualToLocation:(nonnull MBXLocation *)other;
 
 @end

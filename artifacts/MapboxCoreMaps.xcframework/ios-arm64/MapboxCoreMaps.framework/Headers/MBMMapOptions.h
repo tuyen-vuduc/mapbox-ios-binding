@@ -1,10 +1,10 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCoreMaps/MBMConstrainMode.h>
-#import <MapboxCoreMaps/MBMContextMode.h>
-#import <MapboxCoreMaps/MBMNorthOrientation.h>
-#import <MapboxCoreMaps/MBMViewportMode.h>
+#import "MBMConstrainMode.h"
+#import "MBMContextMode.h"
+#import "MBMNorthOrientation.h"
+#import "MBMViewportMode.h"
 
 @class MBMGlyphsRasterizationOptions;
 @class MBMSize;
@@ -25,7 +25,6 @@ __attribute__((visibility ("default")))
                                viewportMode:(nullable NSNumber *)viewportMode
                                 orientation:(nullable NSNumber *)orientation
                       crossSourceCollisions:(nullable NSNumber *)crossSourceCollisions
-                         optimizeForTerrain:(nullable NSNumber *)optimizeForTerrain
                                        size:(nullable MBMSize *)size
                  glyphsRasterizationOptions:(nullable MBMGlyphsRasterizationOptions *)glyphsRasterizationOptions NS_REFINED_FOR_SWIFT;
 
@@ -34,7 +33,6 @@ __attribute__((visibility ("default")))
                                viewportMode:(nullable NSNumber *)viewportMode
                                 orientation:(nullable NSNumber *)orientation
                       crossSourceCollisions:(nullable NSNumber *)crossSourceCollisions
-                         optimizeForTerrain:(nullable NSNumber *)optimizeForTerrain
                                        size:(nullable MBMSize *)size
                                  pixelRatio:(float)pixelRatio
                  glyphsRasterizationOptions:(nullable MBMGlyphsRasterizationOptions *)glyphsRasterizationOptions NS_REFINED_FOR_SWIFT;
@@ -69,17 +67,6 @@ __attribute__((visibility ("default")))
  * or not. By default, it is set to `true`.
  */
 @property (nonatomic, readonly, nullable) NSNumber *crossSourceCollisions NS_REFINED_FOR_SWIFT;
-
-/**
- * With terrain on, if `true`, the map will render for performance
- * priority, which may lead to layer reordering allowing to maximize
- * performance (layers that are draped over terrain will be drawn first,
- * including fill, line, background, hillshade and raster). Any layers that
- * are positioned after symbols are draped last, over symbols. Otherwise, if
- * set to `false`, the map will always be drawn for layer order priority.
- * By default, it is set to `true`.
- */
-@property (nonatomic, readonly, nullable) NSNumber *optimizeForTerrain NS_REFINED_FOR_SWIFT;
 
 /**
  * The size to resize the map object and renderer backend.

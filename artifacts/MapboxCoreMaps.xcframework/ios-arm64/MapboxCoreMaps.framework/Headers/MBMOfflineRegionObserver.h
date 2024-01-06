@@ -2,8 +2,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class MBMOfflineRegionError;
 @class MBMOfflineRegionStatus;
-@class MBMResponseError;
 
 /**
  * A region can have a single observer, which gets notified whenever a change
@@ -24,10 +24,5 @@ __attribute__((deprecated))
  * will attempt to re-request failed resources based on an exponential backoff
  * algorithm, or when it detects that network access has been restored.
  */
-- (void)responseErrorForError:(nonnull MBMResponseError *)error;
-/**
- * Implement this method to be notified when the limit on the number of Mapbox
- * tiles stored for offline regions has been reached.
- */
-- (void)mapboxTileCountLimitExceededForLimit:(uint64_t)limit;
+- (void)errorOccurredForError:(nonnull MBMOfflineRegionError *)error;
 @end
