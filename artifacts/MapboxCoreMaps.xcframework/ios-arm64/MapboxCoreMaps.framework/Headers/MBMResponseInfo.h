@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMResponseSourceType.h"
+#import <MapboxCoreMaps/MBMResponseSourceType.h>
 
 @class MBMResourceRequestError;
 

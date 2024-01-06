@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMOfflineRegionErrorType.h"
+#import <MapboxCoreMaps/MBMOfflineRegionErrorType.h>
 
 /** Describes an offline request response error. */
 NS_SWIFT_NAME(OfflineRegionError)

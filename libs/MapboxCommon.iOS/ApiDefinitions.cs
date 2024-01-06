@@ -20,15 +20,15 @@ namespace MapboxCommon
 		IntPtr Constructor (CLLocationCoordinate2D value);
 	}
 
-	// @interface MBXExceptionHandler : NSObject
-	[BaseType (typeof(NSObject))]
-	interface MBXExceptionHandler
-	{
-		// +(void)tryWithCallback:(void (^ _Nonnull)(void))callback error:(NSError * _Nullable * _Nullable)error __attribute__((swift_error("nonnull_error"))) __attribute__((swift_private));
-		[Static]
-		[Export ("tryWithCallback:error:")]
-		void TryWithCallback (Action callback, [NullAllowed] out NSError error);
-	}
+	// // @interface MBXExceptionHandler : NSObject
+	// [BaseType (typeof(NSObject))]
+	// interface MBXExceptionHandler
+	// {
+	// 	// +(void)tryWithCallback:(void (^ _Nonnull)(void))callback error:(NSError * _Nullable * _Nullable)error __attribute__((swift_error("nonnull_error"))) __attribute__((swift_private));
+	// 	[Static]
+	// 	[Export ("tryWithCallback:error:")]
+	// 	void TryWithCallback (Action callback, [NullAllowed] out NSError error);
+	// }
 
 	// @interface MBXFeature : NSObject
 	[BaseType (typeof(NSObject))]

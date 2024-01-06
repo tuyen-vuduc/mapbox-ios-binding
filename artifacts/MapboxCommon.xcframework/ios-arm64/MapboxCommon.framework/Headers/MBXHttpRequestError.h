@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBXHttpRequestErrorType.h"
+#import <MapboxCommon/MBXHttpRequestErrorType.h>
 
 /** Record which contains detailed information about HTTP error happened during request/download call. */
 NS_SWIFT_NAME(HttpRequestError)

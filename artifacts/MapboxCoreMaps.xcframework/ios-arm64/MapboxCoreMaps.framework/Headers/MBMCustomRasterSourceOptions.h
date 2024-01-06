@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMTileFunctionCallback.h"
+#import <MapboxCoreMaps/MBMTileFunctionCallback.h>
 
 /** Options for custom raster source. */
 NS_SWIFT_NAME(CustomRasterSourceOptions)

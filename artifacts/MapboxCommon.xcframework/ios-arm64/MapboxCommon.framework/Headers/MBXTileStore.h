@@ -1,8 +1,8 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBXTileDataDomain.h"
-#import "MBXTileRegionLoadProgressCallback.h"
+#import <MapboxCommon/MBXTileDataDomain.h>
+#import <MapboxCommon/MBXTileRegionLoadProgressCallback.h>
 
 @class MBXResourceDescription;
 @class MBXResourceLoadOptions;

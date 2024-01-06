@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMPerfSamplerOptions.h"
+#import <MapboxCoreMaps/MBMPerfSamplerOptions.h>
 
 /** Options used to configure performance sampling */
 NS_SWIFT_NAME(PerfStatsCollectionOptions)

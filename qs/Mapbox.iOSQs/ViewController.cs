@@ -1,4 +1,5 @@
 ﻿using System;
+using CoreLocation;
 using Foundation;
 using MapboxMaps;
 using MapboxMapsObjC;
@@ -52,10 +53,13 @@ namespace Mapbox.iOSQs
         {
             base.ViewDidLoad();
 
+            var centerLocation = new CLLocationCoordinate2D(21.0278, 105.8342);
+            var cameraOptions = new TMBCameraOptions(centerLocation, UIEdgeInsets.Zero, CoreGraphics.CGPoint.Empty, 13, 0, 0);
+
             MapInitOptions options = MapInitOptionsFactory.CreateWithMapOptions(
                 null,
-                null,
-                "mapbox://styles/examples/cke97f49z5rlg19l310b7uu7j",
+                cameraOptions,
+                BuiltInStyles.Streets,
                 null,
                 (nint)1);
             // Perform any additional setup after loading the view, typically from a nib.

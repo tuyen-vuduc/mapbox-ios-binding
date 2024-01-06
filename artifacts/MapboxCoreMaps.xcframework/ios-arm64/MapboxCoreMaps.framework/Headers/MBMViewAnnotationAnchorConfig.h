@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMViewAnnotationAnchor.h"
+#import <MapboxCoreMaps/MBMViewAnnotationAnchor.h>
 
 /** Represents a specific setting for a view annotation anchor. */
 NS_SWIFT_NAME(ViewAnnotationAnchorConfig)
