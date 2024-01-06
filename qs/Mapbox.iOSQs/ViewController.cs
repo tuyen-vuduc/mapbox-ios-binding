@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
-using CoreLocation;
 using Foundation;
-using UIKit;
-using MapboxCoreMaps;
 using MapboxMaps;
 using MapboxMapsObjC;
-using MapKit;
+using UIKit;
 
 namespace Mapbox.iOSQs
 {
@@ -56,12 +52,12 @@ namespace Mapbox.iOSQs
         {
             base.ViewDidLoad();
 
-            MapInitOptions options = MapInitOptionsFactory.CreateWithResourceOptions(
-                null,
+            MapInitOptions options = MapInitOptionsFactory.CreateWithMapOptions(
                 null,
                 null,
                 "mapbox://styles/examples/cke97f49z5rlg19l310b7uu7j",
-                null);
+                null,
+                (nint)1);
             // Perform any additional setup after loading the view, typically from a nib.
             var mapView = MapViewFactory.CreateWithFrame(
                 View.Bounds,

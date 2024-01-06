@@ -11,8 +11,8 @@
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <_NativeVersion>10.11.1</_NativeVersion>
-    <_NugetSuffix>.1</_NugetSuffix>
+    <_NativeVersion>11.0.0</_NativeVersion>
+    <_NugetSuffix></_NugetSuffix>
     <_NugetVersion>$(_NativeVersion)$(_NugetSuffix)</_NugetVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -60,8 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MapboxCommon.iOS\MapboxCommon.iOS.csproj">
-      <Project>{3788F231-896A-49C7-A28C-CE655F7B2A8E}</Project>
-      <Name>MapboxCommon.iOS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

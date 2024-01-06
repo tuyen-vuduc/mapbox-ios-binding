@@ -11,8 +11,8 @@
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <_NativeVersion>10.11.1</_NativeVersion>
-    <_NugetSuffix>.1</_NugetSuffix>
+    <_NativeVersion>11.0.0</_NativeVersion>
+    <_NugetSuffix></_NugetSuffix>
     <_NugetVersion>$(_NativeVersion)$(_NugetSuffix)</_NugetVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -52,12 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MapboxMaps.iOS\MapboxMaps.iOS.csproj">
-      <Project>{682AEE9E-B4F4-4BED-8D14-23582E4992FE}</Project>
-      <Name>MapboxMaps.iOS</Name>
     </ProjectReference>
     <ProjectReference Include="..\MapboxCoreMaps.iOS\MapboxCoreMaps.iOS.csproj">
-      <Project>{E1105607-4EE9-4E78-AEF5-53EC6D02F081}</Project>
-      <Name>MapboxCoreMaps.iOS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'xamarin.ios10'">

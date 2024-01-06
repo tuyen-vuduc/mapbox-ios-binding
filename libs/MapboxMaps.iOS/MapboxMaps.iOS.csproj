@@ -11,8 +11,8 @@
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <_NativeVersion>10.11.1</_NativeVersion>
-    <_NugetSuffix>.1</_NugetSuffix>
+    <_NativeVersion>11.0.0</_NativeVersion>
+    <_NugetSuffix></_NugetSuffix>
     <_NugetVersion>$(_NativeVersion)$(_NugetSuffix)</_NugetVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -51,17 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MapboxCoreMaps.iOS\MapboxCoreMaps.iOS.csproj">
-      <Project>{E1105607-4EE9-4E78-AEF5-53EC6D02F081}</Project>
-      <Name>MapboxCoreMaps.iOS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MapboxMobileEvents.iOS\MapboxMobileEvents.iOS.csproj">
-      <Project>{451C5BBC-A76F-4B90-B13D-394006A593FA}</Project>
-      <Name>MapboxMobileEvents.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MapboxTurf.iOS\MapboxTurf.iOS.csproj">
-      <Project>{F6367818-1DD9-425C-9D60-B0434617FBFF}</Project>
-      <Name>MapboxTurf.iOS</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\MapboxCommon.iOS\MapboxCommon.iOS.csproj" />
+    <ProjectReference Include="..\Turf.iOS\Turf.iOS.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'xamarin.ios10'">
       <Compile Remove="ApiDefinitions.cs" />
