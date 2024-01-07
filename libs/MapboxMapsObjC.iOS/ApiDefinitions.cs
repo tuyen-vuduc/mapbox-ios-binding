@@ -668,7 +668,7 @@ namespace MapboxMapsObjC
 	// @interface TMBBackgroundLayer : NSObject <TMBLayer>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC18TMBBackgroundLayer")]
 	[DisableDefaultCtor]
-	interface TMBBackgroundLayer : ITMBLayer
+	interface TMBBackgroundLayer : TMBLayer
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -1023,7 +1023,7 @@ namespace MapboxMapsObjC
 	// @interface TMBCircleAnnotation : NSObject <TMBAnnotation>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC19TMBCircleAnnotation")]
 	[DisableDefaultCtor]
-	interface TMBCircleAnnotation : ITMBAnnotation
+	interface TMBCircleAnnotation : TMBAnnotation
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -1103,7 +1103,7 @@ namespace MapboxMapsObjC
 	// @interface TMBCircleAnnotationManager : NSObject <TMBAnnotationManager>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC26TMBCircleAnnotationManager")]
 	[DisableDefaultCtor]
-	interface TMBCircleAnnotationManager : ITMBAnnotationManager
+	interface TMBCircleAnnotationManager : TMBAnnotationManager
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
 		[Export ("sourceId")]
@@ -1149,7 +1149,7 @@ namespace MapboxMapsObjC
 	// @interface TMBCircleLayer : NSObject <TMBLayer>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC14TMBCircleLayer")]
 	[DisableDefaultCtor]
-	interface TMBCircleLayer : ITMBLayer
+	interface TMBCircleLayer : TMBLayer
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -2955,7 +2955,7 @@ namespace MapboxMapsObjC
 	// @interface TMBFillExtrusionLayer : NSObject <TMBLayer>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC21TMBFillExtrusionLayer")]
 	[DisableDefaultCtor]
-	interface TMBFillExtrusionLayer : ITMBLayer
+	interface TMBFillExtrusionLayer : TMBLayer
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -3098,7 +3098,7 @@ namespace MapboxMapsObjC
 	// @interface TMBFillLayer : NSObject <TMBLayer>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC12TMBFillLayer")]
 	[DisableDefaultCtor]
-	interface TMBFillLayer : ITMBLayer
+	interface TMBFillLayer : TMBLayer
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -3343,7 +3343,7 @@ namespace MapboxMapsObjC
 	// @interface TMBGeoJSONSource : NSObject <TMBSource>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC16TMBGeoJSONSource")]
 	[DisableDefaultCtor]
-	interface TMBGeoJSONSource : ITMBSource
+	interface TMBGeoJSONSource : TMBSource
 	{
 		// @property (readonly, nonatomic, strong) TMBSourceType * _Nonnull type;
 		[Export ("type", ArgumentSemantic.Strong)]
@@ -3666,7 +3666,7 @@ namespace MapboxMapsObjC
 	// @interface TMBHeatmapLayer : NSObject <TMBLayer>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC15TMBHeatmapLayer")]
 	[DisableDefaultCtor]
-	interface TMBHeatmapLayer : ITMBLayer
+	interface TMBHeatmapLayer : TMBLayer
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -3769,7 +3769,7 @@ namespace MapboxMapsObjC
 	// @interface TMBHillshadeLayer : NSObject <TMBLayer>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC17TMBHillshadeLayer")]
 	[DisableDefaultCtor]
-	interface TMBHillshadeLayer : ITMBLayer
+	interface TMBHillshadeLayer : TMBLayer
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -4300,7 +4300,7 @@ namespace MapboxMapsObjC
 	// @interface TMBLineLayer : NSObject <TMBLayer>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC12TMBLineLayer")]
 	[DisableDefaultCtor]
-	interface TMBLineLayer : ITMBLayer
+	interface TMBLineLayer : TMBLayer
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -4509,7 +4509,7 @@ namespace MapboxMapsObjC
 	// @interface TMBLocationIndicatorLayer : NSObject <TMBLayer>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC25TMBLocationIndicatorLayer")]
 	[DisableDefaultCtor]
-	interface TMBLocationIndicatorLayer : ITMBLayer
+	interface TMBLocationIndicatorLayer : TMBLayer
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -5511,7 +5511,7 @@ namespace MapboxMapsObjC
 	// @interface TMBPointAnnotation : NSObject <TMBAnnotation>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC18TMBPointAnnotation")]
 	[DisableDefaultCtor]
-	interface TMBPointAnnotation : ITMBAnnotation
+	interface TMBPointAnnotation : TMBAnnotation
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -5710,7 +5710,7 @@ namespace MapboxMapsObjC
 	// @interface TMBPointAnnotationManager : NSObject <TMBAnnotationManager>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC25TMBPointAnnotationManager")]
 	[DisableDefaultCtor]
-	interface TMBPointAnnotationManager : ITMBAnnotationManager
+	interface TMBPointAnnotationManager : TMBAnnotationManager
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
 		[Export ("sourceId")]
@@ -5869,7 +5869,7 @@ namespace MapboxMapsObjC
 	// @interface TMBPolygonAnnotation : NSObject <TMBAnnotation>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC20TMBPolygonAnnotation")]
 	[DisableDefaultCtor]
-	interface TMBPolygonAnnotation : ITMBAnnotation
+	interface TMBPolygonAnnotation : TMBAnnotation
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -5932,7 +5932,7 @@ namespace MapboxMapsObjC
 	// @interface TMBPolygonAnnotationManager : NSObject <TMBAnnotationManager>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC27TMBPolygonAnnotationManager")]
 	[DisableDefaultCtor]
-	interface TMBPolygonAnnotationManager : ITMBAnnotationManager
+	interface TMBPolygonAnnotationManager : TMBAnnotationManager
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
 		[Export ("sourceId")]
@@ -5989,7 +5989,7 @@ namespace MapboxMapsObjC
 	// @interface TMBPolylineAnnotation : NSObject <TMBAnnotation>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC21TMBPolylineAnnotation")]
 	[DisableDefaultCtor]
-	interface TMBPolylineAnnotation : ITMBAnnotation
+	interface TMBPolylineAnnotation : TMBAnnotation
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -6081,7 +6081,7 @@ namespace MapboxMapsObjC
 	// @interface TMBPolylineAnnotationManager : NSObject <TMBAnnotationManager>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC28TMBPolylineAnnotationManager")]
 	[DisableDefaultCtor]
-	interface TMBPolylineAnnotationManager : ITMBAnnotationManager
+	interface TMBPolylineAnnotationManager : TMBAnnotationManager
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
 		[Export ("sourceId")]
@@ -6221,7 +6221,7 @@ namespace MapboxMapsObjC
 	// @interface TMBPuck2DConfiguration : NSObject <TMBPuckTypeConfiguration>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC22TMBPuck2DConfiguration")]
 	[DisableDefaultCtor]
-	interface TMBPuck2DConfiguration : ITMBPuckTypeConfiguration
+	interface TMBPuck2DConfiguration : TMBPuckTypeConfiguration
 	{
 		// @property (nonatomic) double opacity;
 		[Export ("opacity")]
@@ -6294,7 +6294,7 @@ namespace MapboxMapsObjC
 	// @interface TMBPuck3DConfiguration : NSObject <TMBPuckTypeConfiguration>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC22TMBPuck3DConfiguration")]
 	[DisableDefaultCtor]
-	interface TMBPuck3DConfiguration : ITMBPuckTypeConfiguration
+	interface TMBPuck3DConfiguration : TMBPuckTypeConfiguration
 	{
 		// @property (nonatomic, strong) TMBModel * _Nonnull model;
 		[Export ("model", ArgumentSemantic.Strong)]
@@ -6344,7 +6344,7 @@ namespace MapboxMapsObjC
 	// @interface TMBRasterDemSource : NSObject <TMBSource>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC18TMBRasterDemSource")]
 	[DisableDefaultCtor]
-	interface TMBRasterDemSource : ITMBSource
+	interface TMBRasterDemSource : TMBSource
 	{
 		// @property (readonly, nonatomic, strong) TMBSourceType * _Nonnull type;
 		[Export ("type", ArgumentSemantic.Strong)]
@@ -6419,7 +6419,7 @@ namespace MapboxMapsObjC
 	// @interface TMBRasterLayer : NSObject <TMBLayer>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC14TMBRasterLayer")]
 	[DisableDefaultCtor]
-	interface TMBRasterLayer : ITMBLayer
+	interface TMBRasterLayer : TMBLayer
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -6566,7 +6566,7 @@ namespace MapboxMapsObjC
 	// @interface TMBRasterSource : NSObject <TMBSource>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC15TMBRasterSource")]
 	[DisableDefaultCtor]
-	interface TMBRasterSource : ITMBSource
+	interface TMBRasterSource : TMBSource
 	{
 		// @property (readonly, nonatomic, strong) TMBSourceType * _Nonnull type;
 		[Export ("type", ArgumentSemantic.Strong)]
@@ -6715,7 +6715,7 @@ namespace MapboxMapsObjC
 	// @interface TMBSkyLayer : NSObject <TMBLayer>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC11TMBSkyLayer")]
 	[DisableDefaultCtor]
-	interface TMBSkyLayer : ITMBLayer
+	interface TMBSkyLayer : TMBLayer
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -7027,7 +7027,7 @@ namespace MapboxMapsObjC
 	// @interface TMBSymbolLayer : NSObject <TMBLayer>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC14TMBSymbolLayer")]
 	[DisableDefaultCtor]
-	interface TMBSymbolLayer : ITMBLayer
+	interface TMBSymbolLayer : TMBLayer
 	{
 		// @property (copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -8126,7 +8126,7 @@ namespace MapboxMapsObjC
 	// @interface TMBVectorSource : NSObject <TMBSource>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC15TMBVectorSource")]
 	[DisableDefaultCtor]
-	interface TMBVectorSource : ITMBSource
+	interface TMBVectorSource : TMBSource
 	{
 		// @property (readonly, nonatomic, strong) TMBSourceType * _Nonnull type;
 		[Export ("type", ArgumentSemantic.Strong)]
