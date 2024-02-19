@@ -94,23 +94,23 @@ namespace MapboxCommon
 
 		// -(NSValue * _Nullable)extractLocations;
 		[NullAllowed, Export ("extractLocations")]
-		NSValue ExtractLocations { get; }
+		NSValue ExtractLocations();
 
 		// -(NSArray<NSValue *> * _Nullable)extractLocationsArray;
 		[NullAllowed, Export ("extractLocationsArray")]
-		NSValue[] ExtractLocationsArray { get; }
+		NSValue[] ExtractLocationsArray();
 
 		// -(NSArray<NSArray<NSValue *> *> * _Nullable)extractLocations2DArray;
 		[NullAllowed, Export ("extractLocations2DArray")]
-		NSArray ExtractLocations2DArray { get; }
+		NSArray ExtractLocations2DArray();
 
 		// -(NSArray<NSArray<NSArray<NSValue *> *> *> * _Nullable)extractLocations3DArray;
 		[NullAllowed, Export ("extractLocations3DArray")]
-		NSArray ExtractLocations3DArray { get; }
+		NSArray ExtractLocations3DArray();
 
 		// -(NSArray<MBXGeometry *> * _Nullable)extractGeometriesArray;
 		[NullAllowed, Export ("extractGeometriesArray")]
-		MBXGeometry[] ExtractGeometriesArray { get; }
+		MBXGeometry[] ExtractGeometriesArray();
 	}
 
 	// @interface MBXLocation : NSObject

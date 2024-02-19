@@ -5848,12 +5848,12 @@ namespace MapboxMapsObjC
 	{
 		// @property (readonly, copy, nonatomic) NSArray<NSArray<NSValue *> *> * _Nonnull coordinates;
 		[Export ("coordinates", ArgumentSemantic.Copy)]
-		NSArray<NSValue>[] Coordinates { get; }
+		NSArray Coordinates { get; }
 
 		// -(instancetype _Nonnull)init:(NSArray<NSArray<NSValue *> *> * _Nonnull)coordinates __attribute__((objc_designated_initializer));
 		[Export ("init:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (NSArray<NSValue>[] coordinates);
+		IntPtr Constructor (NSArray coordinates);
 
 		// -(instancetype _Nonnull)initWithOuterRing:(TMBPolygonRing * _Nonnull)outerRing innerRings:(NSArray<TMBPolygonRing *> * _Nonnull)innerRings __attribute__((objc_designated_initializer));
 		[Export ("initWithOuterRing:innerRings:")]
