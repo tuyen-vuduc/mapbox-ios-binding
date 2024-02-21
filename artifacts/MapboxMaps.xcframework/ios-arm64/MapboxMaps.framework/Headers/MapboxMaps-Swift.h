@@ -627,6 +627,8 @@ SWIFT_CLASS("_TtC10MapboxMaps27TouchBeganGestureRecognizer")
 
 
 
+
+
 @interface NSUserDefaults (SWIFT_EXTENSION(MapboxMaps))
 @property (nonatomic) BOOL MGLMapboxMetricsEnabled;
 @end
