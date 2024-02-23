@@ -391,23 +391,16 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class TMBViewAnnotationManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBViewAnnotationManager * _Nonnull)viewAnnotations SWIFT_WARN_UNUSED_RESULT;
+@end
 
 @class TMBMapboxMap;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (TMBMapboxMap * _Nonnull)mapboxMap SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBOrnamentsManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBOrnamentsManager * _Nonnull)ornaments SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBCameraAnimationsManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBCameraAnimationsManager * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class TMBGestureManager;
@@ -416,10 +409,17 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (TMBGestureManager * _Nonnull)gestures SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class TMBViewAnnotationManager;
+@class TMBCameraAnimationsManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBViewAnnotationManager * _Nonnull)viewAnnotations SWIFT_WARN_UNUSED_RESULT;
+- (TMBCameraAnimationsManager * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@class TMBOrnamentsManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBOrnamentsManager * _Nonnull)ornaments SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class TMBAnnotationOrchestrator;
@@ -476,8 +476,79 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC11NamedString_")
 @class TMBCancelable;
 
 @interface MBMOfflineManager (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBCancelable * _Nonnull)loadStyleWithStyleUriString:(NSString * _Nonnull)styleUriString styleLoadOptions:(MBMStylePackLoadOptions * _Nonnull)styleLoadOptions progress:(MBMStylePackLoadProgressCallback _Nonnull)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion SWIFT_WARN_UNUSED_RESULT;
+/// Loads a new style package or updates the existing one.
+/// If a style package with the given id already exists, it is updated with
+/// the values provided to the given load options. The missing resources get
+/// loaded and the expired resources get updated.
+/// If there no values provided to the given load options, the existing
+/// style package gets refreshed: the missing resources get loaded and the
+/// expired resources get updated.
+/// A failed load request can be reattempted with another <code>loadStylePack()</code> call.
+/// If the style cannot be fetched for any reason, the load request is terminated.
+/// If the style is fetched but loading some of the style package resources
+/// fails, the load request proceeds trying to load the remaining style package
+/// resources.
+/// important:
+///
+/// By default, users may download up to 750 tile packs for offline
+/// use across all regions. If the limit is hit, any loadRegion call
+/// will fail until excess regions are deleted. This limit is subject
+/// to change. Please contact Mapbox if you require a higher limit.
+/// Additional charges may apply.
+/// \param styleURI The URI of the style package’s associated style
+///
+/// \param loadOptions The style package load options.
+///
+/// \param progress Invoked multiple times to report progress of the loading
+/// operation.
+///
+/// \param completion Invoked only once upon success, failure, or cancelation
+/// of the loading operation. Any <code>Result</code> error could be of type
+/// <code>StylePackError</code>.
+///
+///
+/// returns:
+/// Returns a Cancelable object to cancel the load request
+- (TMBCancelable * _Nonnull)loadStylePackFor:(NSString * _Nonnull)styleUriString loadOptions:(MBMStylePackLoadOptions * _Nonnull)loadOptions progress:(MBMStylePackLoadProgressCallback _Nullable)progress completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion;
+/// Fetch an array of the existing style packages.
+/// note:
+///
+/// The user-provided callbacks will be executed on a worker thread; it
+/// is the responsibility of the user to dispatch to a user-controlled
+/// thread.
+/// \param completion The result callback. Any <code>Result</code> error should
+/// be of type <code>StylePackError</code>.
+///
 - (void)allStylePacks:(void (^ _Nonnull)(NSArray<MBMStylePack *> * _Nullable, NSError * _Nullable))completion;
+/// Returns a style package by its id.
+/// note:
+///
+/// The user-provided callbacks will be executed on a worker thread; it
+/// is the responsibility of the user to dispatch to a user-controlled
+/// thread.
+/// \param styleURI The URI of the style package’s associated style
+///
+/// \param completion The result callback. Any <code>Result</code> error could be of type
+/// <code>StylePackError</code>.
+///
+- (void)stylePackFor:(NSString * _Nonnull)styleUriString completion:(void (^ _Nonnull)(MBMStylePack * _Nullable, NSError * _Nullable))completion;
+/// Returns a style package’s associated metadata.
+/// The style package’s associated metadata that a user previously set.
+/// \param styleURI The URI of the style package’s associated style
+///
+/// \param completion The result callback. Any <code>Result</code> error could be of type
+/// <code>StylePackError</code>.
+///
+- (void)stylePackMetadataFor:(NSString * _Nonnull)styleUriString completion:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completion;
+/// Removes a style package.
+/// Removes a style package from the existing packages list. The actual
+/// resources eviction might be deferred. All pending loading operations for
+/// the style package with the given id will fail with Canceled error.
+/// \param styleURI The URI of the style package’s associated style
+///
+/// \param completion The result callback. Any <code>Result</code> error could be of type <code>StylePackError-swift.enum</code>.
+///
+- (void)removeStylePackFor:(NSString * _Nonnull)styleUriString completion:(void (^ _Nullable)(MBMStylePack * _Nullable, NSError * _Nullable))completion;
 @end
 
 @class TMBLightType;
@@ -6449,6 +6520,23 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextWriti
 @end
 
 
+@class MBXTileRegionLoadProgress;
+@class MBXTileRegion;
+
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC20TMBTileStoreObserver_")
+@protocol TMBTileStoreObserver
+/// Called whenever the load progress of a <code>TileRegion</code> changes.
+- (void)onRegionLoadProgressForId:(NSString * _Nonnull)id progress:(MBXTileRegionLoadProgress * _Nonnull)progress;
+/// Called when a <code>TileRegion</code> load finishes.
+- (void)onRegionLoadFinishedForId:(NSString * _Nonnull)id region:(MBXTileRegion * _Nullable)region error:(NSError * _Nullable)error;
+/// Called when a <code>TileRegion</code> was removed.
+- (void)onRegionRemovedForId:(NSString * _Nonnull)id;
+/// Called when the geometry of a <code>TileRegion</code> was modified.
+- (void)onRegionGeometryChangedForId:(NSString * _Nonnull)id geometry:(MBXGeometry * _Nullable)geometry;
+/// Called when the user-provided metadata associated with a <code>TileRegion</code> was changed.
+- (void)onRegionMetadataChangedForId:(NSString * _Nonnull)id value:(id _Nonnull)value;
+@end
+
 
 SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 @interface TMBValue : NSObject
@@ -6466,52 +6554,23 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconTextFit:(TMBIconTextFit * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)textRotationAlignment:(TMBTextRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textAnchor:(TMBTextAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)layerType:(TMBLayerType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconRotationAlignment:(TMBIconRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textJustify:(TMBTextJustify * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lineCap:(TMBLineCap * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 enum TMBVisibility : NSInteger;
@@ -6522,7 +6581,22 @@ enum TMBVisibility : NSInteger;
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textRotationAlignment:(TMBTextRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lightType:(TMBLightType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconRotationAlignment:(TMBIconRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6532,7 +6606,12 @@ enum TMBVisibility : NSInteger;
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)symbolZOrder:(TMBSymbolZOrder * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)fillTranslateAnchor:(TMBFillTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textJustify:(TMBTextJustify * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6542,7 +6621,22 @@ enum TMBVisibility : NSInteger;
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textAnchor:(TMBTextAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6557,12 +6651,12 @@ enum TMBVisibility : NSInteger;
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circlePitchScale:(TMBCirclePitchScale * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)iconTextFit:(TMBIconTextFit * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6577,7 +6671,17 @@ enum TMBVisibility : NSInteger;
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6587,7 +6691,17 @@ enum TMBVisibility : NSInteger;
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)modelType:(TMBModelType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)symbolZOrder:(TMBSymbolZOrder * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6607,48 +6721,22 @@ enum TMBVisibility : NSInteger;
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lineCap:(TMBLineCap * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)textWritingMode:(TMBTextWritingMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)circlePitchScale:(TMBCirclePitchScale * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)layerType:(TMBLayerType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lightType:(TMBLightType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)fillTranslateAnchor:(TMBFillTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6937,12 +7025,152 @@ typedef SWIFT_ENUM(NSInteger, TMBVisibility, open) {
 };
 
 @class MBXTileRegionLoadOptions;
-@class MBXTileRegion;
+@class MBXTilesetDescriptor;
 
 @interface MBXTileStore (SWIFT_EXTENSION(MapboxMapObjC))
-+ (MBXTileStore * _Nonnull)getDefault SWIFT_WARN_UNUSED_RESULT;
+/// Loads a new tile region or updates the existing one.
+/// Creating of a new region requires providing both geometry and tileset
+/// descriptors to the given load options, otherwise the load request fails
+/// with <code>RegionNotFound</code> error.
+/// If a tile region with the given id already exists, it gets updated with
+/// the values provided to the given load options. The missing resources get
+/// loaded and the expired resources get updated.
+/// If there are no values provided to the given load options, the existing tile
+/// region gets refreshed: the missing resources get loaded and the expired
+/// resources get updated.
+/// A failed load request can be reattempted with another <code>loadTileRegion()</code> call.
+/// If there is already a pending loading operation for the tile region with
+/// the given id, the pending loading operation will fail with an error of
+/// <code>Canceled</code> type.
+/// note:
+///
+/// The user-provided callbacks will be executed on a
+/// TileStore-controlled worker thread; it is the responsibility of the
+/// user to dispatch to a user-controlled thread.
+/// important:
+///
+/// By default, users may download up to 750 tile packs for offline
+/// use across all regions. If the limit is hit, any loadRegion call
+/// will fail until excess regions are deleted. This limit is subject
+/// to change. Please contact Mapbox if you require a higher limit.
+/// Additional charges may apply.
+/// \param id The tile region identifier.
+///
+/// \param loadOptions The tile region load options.
+///
+/// \param progress Invoked multiple times to report progress of the loading
+/// operation. Optional, default is nil.
+///
+/// \param completion Invoked only once upon success, failure, or cancelation
+/// of the loading operation. Any <code>Result</code> error could be of type
+/// <code>TileRegionError</code>.
+///
+///
+/// returns:
+/// A <code>Cancelable</code> object to cancel the load request
 - (TMBCancelable * _Nonnull)loadTileRegionForId:(NSString * _Nonnull)id loadOptions:(MBXTileRegionLoadOptions * _Nonnull)loadOptions progress:(MBXTileRegionLoadProgressCallback _Nullable)progress completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
+/// Checks if a tile region with the given id contains all tilesets from all
+/// of the given tileset descriptors.
+/// note:
+///
+/// The user-provided callbacks will be executed on a TileStore-controlled
+/// worker thread; it is the responsibility of the user to dispatch to a
+/// user-controlled thread.
+/// \param id The tile region identifier.
+///
+/// \param descriptors The array of tileset descriptors.
+///
+/// \param completion The result callback. Any <code>Result</code> error could be of type
+/// <code>TileRegionError</code>.
+///
+- (void)tileRegionContainsDescriptorsForId:(NSString * _Nonnull)id descriptors:(NSArray<MBXTilesetDescriptor *> * _Nonnull)descriptors completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
+/// Fetch the array of the existing tile regions.
+/// note:
+///
+/// The user-provided callbacks will be executed on a TileStore-controlled
+/// worker thread; it is the responsibility of the user to dispatch to a
+/// user-controlled thread.
+/// \param completion The result callback. Any <code>Result</code> error should be
+/// of type <code>TileRegionError</code>.
+///
 - (void)allTileRegions:(void (^ _Nonnull)(NSArray<MBXTileRegion *> * _Nullable, NSError * _Nullable))completion;
+/// Returns a tile region given its id.
+/// note:
+///
+/// The user-provided callbacks will be executed on a TileStore-controlled
+/// worker thread; it is the responsibility of the user to dispatch to a
+/// user-controlled thread.
+/// \param id The tile region id.
+///
+/// \param completion The Result callback. Any <code>Result</code> error could be of type
+/// <code>TileRegionError</code>.
+///
+- (void)tileRegionForId:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
+/// Fetch a tile region’s associated geometry
+/// The region associated geometry is provided by the client and it represents
+/// the area, which the tile region must cover. The actual regional geometry
+/// depends on the tiling scheme and might exceed the associated geometry.
+/// note:
+///
+/// The user-provided callbacks will be executed on a TileStore-controlled
+/// worker thread; it is the responsibility of the user to dispatch to a
+/// user-controlled thread.
+/// \param id The tile region id.
+///
+/// \param completion The Result closure. Any <code>Result</code> error could be of type
+/// <code>TileRegionError</code>.
+///
+- (void)tileRegionGeometryForId:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(MBXGeometry * _Nullable, NSError * _Nullable))completion;
+/// Fetch a tile region’s associated metadata
+/// The region’s associated metadata that a user previously set for this region.
+/// \param id The tile region id.
+///
+/// \param completion The Result closure. Any <code>Result</code> error could be of type
+/// <code>TileRegionError</code>.
+///
+- (void)tileRegionMetadataForId:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completion;
+/// Allows observing a tile store’s activity
+/// \param observer The object to be notified when events occur. TileStore holds a strong reference to this object until the subscription is canceled.
+///
+///
+/// returns:
+/// An object that can be used to cancel the subscription.
+- (TMBCancelable * _Nonnull)subscribe:(id <TMBTileStoreObserver> _Nonnull)observer SWIFT_WARN_UNUSED_RESULT;
+/// An overloaded version of <code>removeTileRegion(forId:)</code> with a callback for feedback.
+/// On successful tile region removal, the given callback is invoked with the removed tile region.
+/// Otherwise, the given callback is invoked with an error.
+/// \param id The tile region identifier.
+///
+/// \param callback A callback to be invoked when a tile region was removed. 
+///
+- (void)removeRegionForId:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
+@end
+
+
+SWIFT_CLASS("_TtC13MapboxMapObjC16TileStoreFactory")
+@interface TileStoreFactory : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Returns a shared <code>TileStore</code> instance at the default location. Creates a
+/// new one if one doesn’t yet exist.
+/// <ul>
+///   <li>
+///     See Also:
+///     <code>shared(for:)</code>
+///   </li>
+/// </ul>
++ (MBXTileStore * _Nonnull)getDefault SWIFT_WARN_UNUSED_RESULT;
+/// Gets a <code>TileStore</code> instance for the given storage path. Creates a new one
+/// if one doesn’t exist.
+/// If the given path is empty, the tile store at the default location is
+/// returned.
+/// On iOS, this storage path is excluded from automatic cloud backup.
+/// \param filePathURL The path on disk where tiles and metadata will be stored
+///
+///
+/// returns:
+/// TileStore instance.
++ (MBXTileStore * _Nonnull)sharedFor:(NSURL * _Nonnull)filePathURL SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
