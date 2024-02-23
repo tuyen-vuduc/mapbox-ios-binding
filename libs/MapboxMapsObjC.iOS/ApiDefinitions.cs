@@ -8410,7 +8410,7 @@ namespace MapboxMapsObjC
 	{
 		// -(TMBCancelable * _Nonnull)loadTileRegionForId:(NSString * _Nonnull)id loadOptions:(MBXTileRegionLoadOptions * _Nonnull)loadOptions progress:(id)progress completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
 		[Export ("loadTileRegionForId:loadOptions:progress:completion:")]
-		TMBCancelable LoadTileRegionForId (string id, MBXTileRegionLoadOptions loadOptions, NSObject progress, Action<MBXTileRegion, NSError> completion);
+		TMBCancelable LoadTileRegionForId (string id, MBXTileRegionLoadOptions loadOptions, Action<MBXTileRegionLoadProgress> progress, Action<MBXTileRegion, NSError> completion);
 
 		// -(void)tileRegionContainsDescriptorsForId:(NSString * _Nonnull)id descriptors:(NSArray<MBXTilesetDescriptor *> * _Nonnull)descriptors completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
 		[Export ("tileRegionContainsDescriptorsForId:descriptors:completion:")]
@@ -8418,7 +8418,7 @@ namespace MapboxMapsObjC
 
 		// -(void)allTileRegions:(void (^ _Nonnull)(NSArray<MBXTileRegion *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("allTileRegions:")]
-		void AllTileRegions (Action<NSArray<MBXTileRegion>, NSError> completion);
+		void AllTileRegions (Action<MBXTileRegion[], NSError> completion);
 
 		// -(void)tileRegionForId:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
 		[Export ("tileRegionForId:completion:")]
