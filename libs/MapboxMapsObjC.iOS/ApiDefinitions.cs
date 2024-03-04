@@ -94,7 +94,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_359
-[Category]
+	[Category]
     [BaseType(typeof(MapInitOptions))]
 	interface MapboxMapObjC_Swift_359
 	{
@@ -130,67 +130,68 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_396
-    [Category]
+	[Category]
     [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_396
 	{
-		// -(TMBViewAnnotationManager * _Nonnull)viewAnnotations __attribute__((warn_unused_result("")));
-		[Export ("viewAnnotations")]
-		TMBViewAnnotationManager ViewAnnotations();
+		// -(TMBCameraAnimationsManager * _Nonnull)camera __attribute__((warn_unused_result("")));
+		[Export ("camera")]
+		TMBCameraAnimationsManager Camera();
 	}
 
-	// @interface MapboxMapObjC_Swift_402
-    [Category]
+	// @interface MapboxMapObjC_Swift_403
+	[Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_402
+	interface MapboxMapObjC_Swift_403
+	{
+		// -(TMBAnnotationOrchestrator * _Nonnull)annotations __attribute__((warn_unused_result("")));
+		[Export ("annotations")]
+		TMBAnnotationOrchestrator Annotations();
+	}
+
+	// @interface MapboxMapObjC_Swift_409
+	[Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_409
 	{
 		// -(TMBMapboxMap * _Nonnull)mapboxMap __attribute__((warn_unused_result("")));
 		[Export ("mapboxMap")]
 		TMBMapboxMap MapboxMap();
 	}
 
-	// @interface MapboxMapObjC_Swift_408
-    [Category]
+	// @interface MapboxMapObjC_Swift_415
+	[Category]
     [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_408
+	interface MapboxMapObjC_Swift_415
 	{
 		// -(TMBGestureManager * _Nonnull)gestures __attribute__((warn_unused_result("")));
 		[Export ("gestures")]
+		[Verify (MethodToProperty)]
 		TMBGestureManager Gestures();
 	}
 
-	// @interface MapboxMapObjC_Swift_414
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_414
-	{
-		// -(TMBCameraAnimationsManager * _Nonnull)camera __attribute__((warn_unused_result("")));
-		[Export ("camera")]
-		TMBCameraAnimationsManager Camera ();
-	}
-
 	// @interface MapboxMapObjC_Swift_421
-    [Category]
+	[Category]
     [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_421
+	{
+		// -(TMBViewAnnotationManager * _Nonnull)viewAnnotations __attribute__((warn_unused_result("")));
+		[Export ("viewAnnotations")]
+		TMBViewAnnotationManager ViewAnnotations ();
+	}
+
+	// @interface MapboxMapObjC_Swift_427
+	[Category]
+    [BaseType(typeof(MapView))]
+	interface MapboxMapObjC_Swift_427
 	{
 		// -(TMBOrnamentsManager * _Nonnull)ornaments __attribute__((warn_unused_result("")));
 		[Export ("ornaments")]
 		TMBOrnamentsManager Ornaments ();
 	}
 
-	// @interface MapboxMapObjC_Swift_427
-    [Category]
-    [BaseType(typeof(MapView))]
-	interface MapboxMapObjC_Swift_427
-	{
-		// -(TMBAnnotationOrchestrator * _Nonnull)annotations __attribute__((warn_unused_result("")));
-		[Export ("annotations")]
-		TMBAnnotationOrchestrator Annotations ();
-	}
-
 	// @interface MapboxMapObjC_Swift_434
-    [Category]
+	[Category]
     [BaseType(typeof(MapView))]
 	interface MapboxMapObjC_Swift_434
 	{
@@ -225,18 +226,18 @@ namespace MapboxMapsObjC
 		void SetPreferredFramesPerSecond (nint value);
 
 		// -(CAFrameRateRange)getPreferredFrameRateRange __attribute__((warn_unused_result(""))) __attribute__((availability(ios, introduced=15.0)));
-		//[iOS (15, 0)]
+		// [iOS (15, 0)]
 		[Export ("getPreferredFrameRateRange")]
-		CAFrameRateRange PreferredFrameRateRange();
+		CAFrameRateRange PreferredFrameRateRange ();
 
 		// -(void)setPreferredFrameRateRange:(CAFrameRateRange)value __attribute__((availability(ios, introduced=15.0)));
-		//[iOS (15,0)]
+		[iOS (15,0)]
 		[Export ("setPreferredFrameRateRange:")]
 		void SetPreferredFrameRateRange (CAFrameRateRange value);
 
 		// -(TMBCameraState * _Nonnull)getCameraState __attribute__((warn_unused_result("")));
-		[Export("getCameraState")]
-		TMBCameraState CameraState();
+		[Export ("getCameraState")]
+		TMBCameraState GetCameraState ();
 	}
 
 	// @interface MapViewFactory : NSObject
@@ -274,11 +275,11 @@ namespace MapboxMapsObjC
 		// @required -(NSString * _Nonnull)stringValue __attribute__((warn_unused_result("")));
 		[Abstract]
 		[Export ("stringValue")]
-				string StringValue { get; }
+		string StringValue { get; }
 	}
 
 	// @interface MapboxMapObjC_Swift_478
-    [Category]
+[Category]
     [BaseType(typeof(MBMOfflineManager))]
 	interface MapboxMapObjC_Swift_478
 	{
@@ -534,6 +535,77 @@ namespace MapboxMapsObjC
 		// -(void)removeAnnotationManagerWithId:(NSString * _Nonnull)id;
 		[Export ("removeAnnotationManagerWithId:")]
 		void RemoveAnnotationManagerWithId (string id);
+	}
+
+	// @interface TMBAppleLocationProvider : NSObject
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC24TMBAppleLocationProvider")]
+	interface TMBAppleLocationProvider
+	{
+		// @property (nonatomic, strong) TMBAppleLocationProviderOptions * _Nonnull options;
+		[Export ("options", ArgumentSemantic.Strong)]
+		TMBAppleLocationProviderOptions Options { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		[NullAllowed]
+		TMBAppleLocationProviderDelegate Delegate { get; set; }
+
+		// @property (nonatomic, weak) id<TMBAppleLocationProviderDelegate> _Nullable delegate;
+		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
+		NSObject WeakDelegate { get; set; }
+
+		// -(TMBCancelable * _Nonnull)onLocationUpdateWithHandler:(void (^ _Nonnull)(NSArray<MBXLocation *> * _Nonnull))handler __attribute__((warn_unused_result("")));
+		[Export ("onLocationUpdateWithHandler:")]
+		TMBCancelable OnLocationUpdateWithHandler (Action<NSArray<MBXLocation>> handler);
+
+		// -(TMBCancelable * _Nonnull)onHeadingUpdateWithHandler:(void (^ _Nonnull)(TMBHeading * _Nonnull))handler __attribute__((warn_unused_result("")));
+		[Export ("onHeadingUpdateWithHandler:")]
+		TMBCancelable OnHeadingUpdateWithHandler (Action<TMBHeading> handler);
+	}
+
+	partial interface ITMBAppleLocationProviderDelegate {}
+
+	// @protocol TMBAppleLocationProviderDelegate
+	[Model, Protocol (Name = "_TtP13MapboxMapObjC32TMBAppleLocationProviderDelegate_")]
+	[BaseType(typeof(NSObject))]
+	interface TMBAppleLocationProviderDelegate
+	{
+		// @required -(void)appleLocationProvider:(TMBAppleLocationProvider * _Nonnull)locationProvider didFailWithError:(NSError * _Nonnull)error;
+		[Abstract]
+		[Export ("appleLocationProvider:didFailWithError:")]
+		void AppleLocationProvider (TMBAppleLocationProvider locationProvider, NSError error);
+
+		// @required -(void)appleLocationProvider:(TMBAppleLocationProvider * _Nonnull)locationProvider didChangeAccuracyAuthorization:(CLAccuracyAuthorization)accuracyAuthorization;
+		[Abstract]
+		[Export ("appleLocationProvider:didChangeAccuracyAuthorization:")]
+		void AppleLocationProvider (TMBAppleLocationProvider locationProvider, CLAccuracyAuthorization accuracyAuthorization);
+
+		// @required -(BOOL)appleLocationProviderShouldDisplayHeadingCalibration:(TMBAppleLocationProvider * _Nonnull)locationProvider __attribute__((warn_unused_result("")));
+		[Abstract]
+		[Export ("appleLocationProviderShouldDisplayHeadingCalibration:")]
+		bool AppleLocationProviderShouldDisplayHeadingCalibration (TMBAppleLocationProvider locationProvider);
+	}
+
+	// @interface TMBAppleLocationProviderOptions : NSObject
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC31TMBAppleLocationProviderOptions")]
+	[DisableDefaultCtor]
+	interface TMBAppleLocationProviderOptions
+	{
+		// @property (nonatomic) CLLocationDistance distanceFilter;
+		[Export ("distanceFilter")]
+		double DistanceFilter { get; set; }
+
+		// @property (nonatomic) CLLocationAccuracy desiredAccuracy;
+		[Export ("desiredAccuracy")]
+		double DesiredAccuracy { get; set; }
+
+		// @property (nonatomic) CLActivityType activityType;
+		[Export ("activityType", ArgumentSemantic.Assign)]
+		CLActivityType ActivityType { get; set; }
+
+		// -(instancetype _Nonnull)initWithDistanceFilter:(CLLocationDistance)distanceFilter desiredAccuracy:(CLLocationAccuracy)desiredAccuracy activityType:(CLActivityType)activityType __attribute__((objc_designated_initializer));
+		[Export ("initWithDistanceFilter:desiredAccuracy:activityType:")]
+		[DesignatedInitializer]
+		IntPtr Constructor (double distanceFilter, double desiredAccuracy, CLActivityType activityType);
 	}
 
 	// @interface TMBAtmosphere : NSObject
@@ -1572,7 +1644,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)createWithOperator:(TMBExpressionOperator * _Nonnull)operator_ arguments:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithOperator:arguments:")]
-				TMBExpression CreateWithOperator (TMBExpressionOperator operator_, NSObject[] arguments);
+		TMBExpression CreateWithOperator (TMBExpressionOperator operator_, NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)args:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
@@ -1580,10 +1652,10 @@ namespace MapboxMapsObjC
 		TMBExpression Args (NSObject[] arguments);
 	}
 
-	// @interface MapboxMapObjC_Swift_1650 (TMBExpression)
+	// @interface MapboxMapObjC_Swift_1730 (TMBExpression)
 	[Category]
 	[BaseType (typeof(TMBExpression))]
-	interface TMBExpression_MapboxMapObjC_Swift_1650
+	interface TMBExpression_MapboxMapObjC_Swift_1730
 	{
 		// +(TMBExpression * _Nonnull)subtract __attribute__((warn_unused_result("")));
 		[Static]
@@ -4125,8 +4197,9 @@ namespace MapboxMapsObjC
 
 		// +(TMBLayerPosition * _Nonnull)default __attribute__((warn_unused_result("")));
 		[Static]
-		[Export("default")]
-		TMBLayerPosition GetDefault();
+		[Export ("default")]
+		[Verify (MethodToProperty)]
+		TMBLayerPosition Default { get; }
 	}
 
 	// @interface TMBLayerType : NSObject
@@ -4661,6 +4734,8 @@ namespace MapboxMapsObjC
 		IntPtr Constructor (string id);
 	}
 
+	interface ITMBHeadingLocationProvider : INativeObject, IMBXLocationProvider, ITMBHeadingProvider {}
+
 	// @interface TMBLocationManager : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC18TMBLocationManager")]
 	[DisableDefaultCtor]
@@ -4688,7 +4763,7 @@ namespace MapboxMapsObjC
 
 		// -(void)overrideWithProvider:(id<MBXLocationProvider,TMBHeadingProvider> _Nonnull)provider;
 		[Export ("overrideWithProvider:")]
-		void OverrideWithProvider (NSObject provider);
+		void OverrideWithProvider (ITMBHeadingLocationProvider provider);
 
 		// @property (readonly, nonatomic, strong) MBXLocation * _Nullable latestLocation;
 		[NullAllowed, Export ("latestLocation", ArgumentSemantic.Strong)]
@@ -5249,10 +5324,10 @@ namespace MapboxMapsObjC
 		void EndGesture ();
 	}
 
-	// @interface MapboxMapObjC_Swift_4645 (TMBMapboxMap)
+	// @interface MapboxMapObjC_Swift_4724 (TMBMapboxMap)
 	[Category]
 	[BaseType (typeof(TMBMapboxMap))]
-	interface TMBMapboxMap_MapboxMapObjC_Swift_4645
+	interface TMBMapboxMap_MapboxMapObjC_Swift_4724
 	{
 		// +(void)clearDataWithCompletion:(void (^ _Nonnull)(NSError * _Nullable))completion;
 		[Static]
@@ -5260,10 +5335,10 @@ namespace MapboxMapsObjC
 		void ClearDataWithCompletion (Action<NSError> completion);
 	}
 
-	// @interface MapboxMapObjC_Swift_4659 (TMBMapboxMap)
+	// @interface MapboxMapObjC_Swift_4738 (TMBMapboxMap)
 	[Category]
 	[BaseType (typeof(TMBMapboxMap))]
-	interface TMBMapboxMap_MapboxMapObjC_Swift_4659
+	interface TMBMapboxMap_MapboxMapObjC_Swift_4738
 	{
 		// -(TMBCancelable * _Nonnull)setFeatureStateWithSourceId:(NSString * _Nonnull)sourceId sourceLayerId:(NSString * _Nullable)sourceLayerId featureId:(NSString * _Nonnull)featureId state:(NSDictionary<NSString *,id> * _Nonnull)state callback:(void (^ _Nonnull)(NSError * _Nullable))callback;
 		[Export ("setFeatureStateWithSourceId:sourceLayerId:featureId:state:callback:")]
@@ -5282,10 +5357,10 @@ namespace MapboxMapsObjC
 		TMBCancelable ResetFeatureStatesWithSourceId (string sourceId, [NullAllowed] string sourceLayerId, Action<NSError> callback);
 	}
 
-	// @interface MapboxMapObjC_Swift_4728 (TMBMapboxMap)
+	// @interface MapboxMapObjC_Swift_4807 (TMBMapboxMap)
 	[Category]
 	[BaseType (typeof(TMBMapboxMap))]
-	interface TMBMapboxMap_MapboxMapObjC_Swift_4728
+	interface TMBMapboxMap_MapboxMapObjC_Swift_4807
 	{
 		// -(TMBCancelable * _Nonnull)queryRenderedFeaturesWithShape:(NSArray<NSValue *> * _Nonnull)shape options:(MBMRenderedQueryOptions * _Nullable)options completion:(void (^ _Nullable)(NSArray<MBMQueriedRenderedFeature *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("queryRenderedFeaturesWithShape:options:completion:")]
@@ -5316,10 +5391,10 @@ namespace MapboxMapsObjC
 		void GetGeoJsonClusterExpansionZoomForSourceId (string sourceId, MBXFeature feature, Action<MBMFeatureExtensionValue, NSError> completion);
 	}
 
-	// @interface MapboxMapObjC_Swift_4780 (TMBMapboxMap)
+	// @interface MapboxMapObjC_Swift_4859 (TMBMapboxMap)
 	[Category]
 	[BaseType (typeof(TMBMapboxMap))]
-	interface TMBMapboxMap_MapboxMapObjC_Swift_4780
+	interface TMBMapboxMap_MapboxMapObjC_Swift_4859
 	{
 		// -(TMBCancelable * _Nonnull)onMapLoaded:(void (^ _Nonnull)(id _Nonnull))handler;
 		[Export ("onMapLoaded:")]
@@ -6657,10 +6732,10 @@ namespace MapboxMapsObjC
 	{
 	}
 
-	// @interface MapboxMapObjC_Swift_5842 (TMBResolvedImage)
+	// @interface MapboxMapObjC_Swift_5921 (TMBResolvedImage)
 	[Category]
 	[BaseType (typeof(TMBResolvedImage))]
-	interface TMBResolvedImage_MapboxMapObjC_Swift_5842
+	interface TMBResolvedImage_MapboxMapObjC_Swift_5921
 	{
 		// +(TMBResolvedImage * _Nonnull)fromName:(NSString * _Nonnull)name __attribute__((warn_unused_result("")));
 		[Static]
@@ -6915,10 +6990,10 @@ namespace MapboxMapsObjC
 		IntPtr Constructor (string rawValue);
 	}
 
-	// @interface MapboxMapObjC_Swift_6033 (TMBStyleManager)
+	// @interface MapboxMapObjC_Swift_6112 (TMBStyleManager)
 	[Category]
 	[BaseType (typeof(TMBStyleManager))]
-	interface TMBStyleManager_MapboxMapObjC_Swift_6033
+	interface TMBStyleManager_MapboxMapObjC_Swift_6112
 	{
 		// -(void)setProjection:(TMBStyleProjection * _Nonnull)projection completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 		[Export ("setProjection:completion:")]
@@ -7693,11 +7768,7 @@ namespace MapboxMapsObjC
   the generated interface. If consumers are not supposed to implement this
   protocol, then [Model] is redundant and will generate code that will never
   be used.
-*/
-	partial interface ITMBTileStoreObserver {}
-
-	[Model, Protocol (Name = "_TtP13MapboxMapObjC20TMBTileStoreObserver_")]
-	[BaseType(typeof(NSObject))]
+*/[Protocol (Name = "_TtP13MapboxMapObjC20TMBTileStoreObserver_")]
 	interface TMBTileStoreObserver
 	{
 		// @required -(void)onRegionLoadProgressForId:(NSString * _Nonnull)id progress:(MBXTileRegionLoadProgress * _Nonnull)progress;
@@ -7737,7 +7808,7 @@ namespace MapboxMapsObjC
 
 		// @property (readonly, nonatomic, strong) TMBExpression * _Nullable expression;
 		[NullAllowed, Export ("expression", ArgumentSemantic.Strong)]
-		TMBExpression Expression();
+		TMBExpression Expression { get; }
 
 		// -(instancetype _Nonnull)initWithConstant:(id _Nullable)constant __attribute__((objc_designated_initializer));
 		[Export ("initWithConstant:")]
@@ -7770,285 +7841,10 @@ namespace MapboxMapsObjC
 		TMBValue FromExpression (TMBExpression expression);
 	}
 
-	// @interface MapboxMapObjC_Swift_6556 (TMBValue)
+	// @interface MapboxMapObjC_Swift_6635 (TMBValue)
 	[Category]
 	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6556
-	{
-		// +(TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("sourceType:")]
-		TMBValue SourceType (TMBSourceType value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6561 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6561
-	{
-		// +(TMBValue * _Nonnull)textRotationAlignment:(TMBTextRotationAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("textRotationAlignment:")]
-		TMBValue TextRotationAlignment (TMBTextRotationAlignment value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6566 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6566
-	{
-		// +(TMBValue * _Nonnull)layerType:(TMBLayerType * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("layerType:")]
-		TMBValue LayerType (TMBLayerType value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6572 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6572
-	{
-		// +(TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("scheme:")]
-		TMBValue Scheme (TMBScheme value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6578 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6578
-	{
-		// +(TMBValue * _Nonnull)visibility:(enum TMBVisibility)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("visibility:")]
-		TMBValue Visibility (TMBVisibility value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6583 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6583
-	{
-		// +(TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("encoding:")]
-		TMBValue Encoding (TMBEncoding value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6588 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6588
-	{
-		// +(TMBValue * _Nonnull)lightType:(TMBLightType * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("lightType:")]
-		TMBValue LightType (TMBLightType value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6593 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6593
-	{
-		// +(TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("expressionOperator:")]
-		TMBValue ExpressionOperator (TMBExpressionOperator value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6598 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6598
-	{
-		// +(TMBValue * _Nonnull)iconRotationAlignment:(TMBIconRotationAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("iconRotationAlignment:")]
-		TMBValue IconRotationAlignment (TMBIconRotationAlignment value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6603 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6603
-	{
-		// +(TMBValue * _Nonnull)textTransform:(TMBTextTransform * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("textTransform:")]
-		TMBValue TextTransform (TMBTextTransform value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6608 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6608
-	{
-		// +(TMBValue * _Nonnull)fillTranslateAnchor:(TMBFillTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("fillTranslateAnchor:")]
-		TMBValue FillTranslateAnchor (TMBFillTranslateAnchor value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6613 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6613
-	{
-		// +(TMBValue * _Nonnull)textJustify:(TMBTextJustify * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("textJustify:")]
-		TMBValue TextJustify (TMBTextJustify value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6618 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6618
-	{
-		// +(TMBValue * _Nonnull)lineTranslateAnchor:(TMBLineTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("lineTranslateAnchor:")]
-		TMBValue LineTranslateAnchor (TMBLineTranslateAnchor value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6623 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6623
-	{
-		// +(TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("styleURI:")]
-		TMBValue StyleURI (TMBStyleURI value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6628 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6628
-	{
-		// +(TMBValue * _Nonnull)textAnchor:(TMBTextAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("textAnchor:")]
-		TMBValue TextAnchor (TMBTextAnchor value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6633 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6633
-	{
-		// +(TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("iconTranslateAnchor:")]
-		TMBValue IconTranslateAnchor (TMBIconTranslateAnchor value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6638 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6638
-	{
-		// +(TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("iconPitchAlignment:")]
-		TMBValue IconPitchAlignment (TMBIconPitchAlignment value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6643 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6643
-	{
-		// +(TMBValue * _Nonnull)textTranslateAnchor:(TMBTextTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("textTranslateAnchor:")]
-		TMBValue TextTranslateAnchor (TMBTextTranslateAnchor value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6648 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6648
-	{
-		// +(TMBValue * _Nonnull)circlePitchAlignment:(TMBCirclePitchAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("circlePitchAlignment:")]
-		TMBValue CirclePitchAlignment (TMBCirclePitchAlignment value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6653 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6653
-	{
-		// +(TMBValue * _Nonnull)iconTextFit:(TMBIconTextFit * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("iconTextFit:")]
-		TMBValue IconTextFit (TMBIconTextFit value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6658 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6658
-	{
-		// +(TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("iconAnchor:")]
-		TMBValue IconAnchor (TMBIconAnchor value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6663 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6663
-	{
-		// +(TMBValue * _Nonnull)fillExtrusionTranslateAnchor:(TMBFillExtrusionTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("fillExtrusionTranslateAnchor:")]
-		TMBValue FillExtrusionTranslateAnchor (TMBFillExtrusionTranslateAnchor value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6668 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6668
-	{
-		// +(TMBValue * _Nonnull)rasterResampling:(TMBRasterResampling * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("rasterResampling:")]
-		TMBValue RasterResampling (TMBRasterResampling value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6673 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6673
-	{
-		// +(TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("textPitchAlignment:")]
-		TMBValue TextPitchAlignment (TMBTextPitchAlignment value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6678 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6678
-	{
-		// +(TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("hillshadeIlluminationAnchor:")]
-		TMBValue HillshadeIlluminationAnchor (TMBHillshadeIlluminationAnchor value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6683 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6683
+	interface TMBValue_MapboxMapObjC_Swift_6635
 	{
 		// +(TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8056,10 +7852,10 @@ namespace MapboxMapsObjC
 		TMBValue SymbolPlacement (TMBSymbolPlacement value);
 	}
 
-	// @interface MapboxMapObjC_Swift_6688 (TMBValue)
+	// @interface MapboxMapObjC_Swift_6640 (TMBValue)
 	[Category]
 	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6688
+	interface TMBValue_MapboxMapObjC_Swift_6640
 	{
 		// +(TMBValue * _Nonnull)modelScaleMode:(TMBModelScaleMode * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8067,43 +7863,10 @@ namespace MapboxMapsObjC
 		TMBValue ModelScaleMode (TMBModelScaleMode value);
 	}
 
-	// @interface MapboxMapObjC_Swift_6693 (TMBValue)
+	// @interface MapboxMapObjC_Swift_6645 (TMBValue)
 	[Category]
 	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6693
-	{
-		// +(TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("lineJoin:")]
-		TMBValue LineJoin (TMBLineJoin value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6698 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6698
-	{
-		// +(TMBValue * _Nonnull)modelType:(TMBModelType * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("modelType:")]
-		TMBValue ModelType (TMBModelType value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6703 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6703
-	{
-		// +(TMBValue * _Nonnull)symbolZOrder:(TMBSymbolZOrder * _Nonnull)value __attribute__((warn_unused_result("")));
-		[Static]
-		[Export ("symbolZOrder:")]
-		TMBValue SymbolZOrder (TMBSymbolZOrder value);
-	}
-
-	// @interface MapboxMapObjC_Swift_6708 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6708
+	interface TMBValue_MapboxMapObjC_Swift_6645
 	{
 		// +(TMBValue * _Nonnull)skyType:(TMBSkyType * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8111,43 +7874,98 @@ namespace MapboxMapsObjC
 		TMBValue SkyType (TMBSkyType value);
 	}
 
-	// @interface MapboxMapObjC_Swift_6713 (TMBValue)
+	// @interface MapboxMapObjC_Swift_6650 (TMBValue)
 	[Category]
 	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6713
+	interface TMBValue_MapboxMapObjC_Swift_6650
 	{
-		// +(TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
+		// +(TMBValue * _Nonnull)modelType:(TMBModelType * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
-		[Export ("anchor:")]
-		TMBValue Anchor (TMBAnchor value);
+		[Export ("modelType:")]
+		TMBValue ModelType (TMBModelType value);
 	}
 
-	// @interface MapboxMapObjC_Swift_6718 (TMBValue)
+	// @interface MapboxMapObjC_Swift_6656 (TMBValue)
 	[Category]
 	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6718
+	interface TMBValue_MapboxMapObjC_Swift_6656
 	{
-		// +(TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value __attribute__((warn_unused_result("")));
+		// +(TMBValue * _Nonnull)visibility:(enum TMBVisibility)value __attribute__((warn_unused_result("")));
 		[Static]
-		[Export ("styleProjectionName:")]
-		TMBValue StyleProjectionName (TMBStyleProjectionName value);
+		[Export ("visibility:")]
+		TMBValue Visibility (TMBVisibility value);
 	}
 
-	// @interface MapboxMapObjC_Swift_6723 (TMBValue)
+	// @interface MapboxMapObjC_Swift_6661 (TMBValue)
 	[Category]
 	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6723
+	interface TMBValue_MapboxMapObjC_Swift_6661
 	{
-		// +(TMBValue * _Nonnull)lineCap:(TMBLineCap * _Nonnull)value __attribute__((warn_unused_result("")));
+		// +(TMBValue * _Nonnull)lightType:(TMBLightType * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
-		[Export ("lineCap:")]
-		TMBValue LineCap (TMBLineCap value);
+		[Export ("lightType:")]
+		TMBValue LightType (TMBLightType value);
 	}
 
-	// @interface MapboxMapObjC_Swift_6728 (TMBValue)
+	// @interface MapboxMapObjC_Swift_6666 (TMBValue)
 	[Category]
 	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6728
+	interface TMBValue_MapboxMapObjC_Swift_6666
+	{
+		// +(TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("encoding:")]
+		TMBValue Encoding (TMBEncoding value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6671 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6671
+	{
+		// +(TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("iconPitchAlignment:")]
+		TMBValue IconPitchAlignment (TMBIconPitchAlignment value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6676 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6676
+	{
+		// +(TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("textPitchAlignment:")]
+		TMBValue TextPitchAlignment (TMBTextPitchAlignment value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6681 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6681
+	{
+		// +(TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("sourceType:")]
+		TMBValue SourceType (TMBSourceType value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6686 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6686
+	{
+		// +(TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("styleURI:")]
+		TMBValue StyleURI (TMBStyleURI value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6691 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6691
 	{
 		// +(TMBValue * _Nonnull)textWritingMode:(TMBTextWritingMode * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8155,10 +7973,164 @@ namespace MapboxMapsObjC
 		TMBValue TextWritingMode (TMBTextWritingMode value);
 	}
 
-	// @interface MapboxMapObjC_Swift_6733 (TMBValue)
+	// @interface MapboxMapObjC_Swift_6696 (TMBValue)
 	[Category]
 	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6733
+	interface TMBValue_MapboxMapObjC_Swift_6696
+	{
+		// +(TMBValue * _Nonnull)textAnchor:(TMBTextAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("textAnchor:")]
+		TMBValue TextAnchor (TMBTextAnchor value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6701 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6701
+	{
+		// +(TMBValue * _Nonnull)textRotationAlignment:(TMBTextRotationAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("textRotationAlignment:")]
+		TMBValue TextRotationAlignment (TMBTextRotationAlignment value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6706 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6706
+	{
+		// +(TMBValue * _Nonnull)iconTextFit:(TMBIconTextFit * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("iconTextFit:")]
+		TMBValue IconTextFit (TMBIconTextFit value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6711 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6711
+	{
+		// +(TMBValue * _Nonnull)textTransform:(TMBTextTransform * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("textTransform:")]
+		TMBValue TextTransform (TMBTextTransform value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6716 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6716
+	{
+		// +(TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("iconAnchor:")]
+		TMBValue IconAnchor (TMBIconAnchor value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6721 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6721
+	{
+		// +(TMBValue * _Nonnull)fillTranslateAnchor:(TMBFillTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("fillTranslateAnchor:")]
+		TMBValue FillTranslateAnchor (TMBFillTranslateAnchor value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6726 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6726
+	{
+		// +(TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("styleProjectionName:")]
+		TMBValue StyleProjectionName (TMBStyleProjectionName value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6731 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6731
+	{
+		// +(TMBValue * _Nonnull)lineTranslateAnchor:(TMBLineTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("lineTranslateAnchor:")]
+		TMBValue LineTranslateAnchor (TMBLineTranslateAnchor value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6736 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6736
+	{
+		// +(TMBValue * _Nonnull)iconRotationAlignment:(TMBIconRotationAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("iconRotationAlignment:")]
+		TMBValue IconRotationAlignment (TMBIconRotationAlignment value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6741 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6741
+	{
+		// +(TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("iconTranslateAnchor:")]
+		TMBValue IconTranslateAnchor (TMBIconTranslateAnchor value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6746 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6746
+	{
+		// +(TMBValue * _Nonnull)layerType:(TMBLayerType * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("layerType:")]
+		TMBValue LayerType (TMBLayerType value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6751 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6751
+	{
+		// +(TMBValue * _Nonnull)textTranslateAnchor:(TMBTextTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("textTranslateAnchor:")]
+		TMBValue TextTranslateAnchor (TMBTextTranslateAnchor value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6756 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6756
+	{
+		// +(TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("lineJoin:")]
+		TMBValue LineJoin (TMBLineJoin value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6761 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6761
+	{
+		// +(TMBValue * _Nonnull)circlePitchAlignment:(TMBCirclePitchAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("circlePitchAlignment:")]
+		TMBValue CirclePitchAlignment (TMBCirclePitchAlignment value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6766 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6766
 	{
 		// +(TMBValue * _Nonnull)circlePitchScale:(TMBCirclePitchScale * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8166,15 +8138,114 @@ namespace MapboxMapsObjC
 		TMBValue CirclePitchScale (TMBCirclePitchScale value);
 	}
 
-	// @interface MapboxMapObjC_Swift_6738 (TMBValue)
+	// @interface MapboxMapObjC_Swift_6771 (TMBValue)
 	[Category]
 	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6738
+	interface TMBValue_MapboxMapObjC_Swift_6771
+	{
+		// +(TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("expressionOperator:")]
+		TMBValue ExpressionOperator (TMBExpressionOperator value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6776 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6776
 	{
 		// +(TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("circleTranslateAnchor:")]
 		TMBValue CircleTranslateAnchor (TMBCircleTranslateAnchor value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6781 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6781
+	{
+		// +(TMBValue * _Nonnull)symbolZOrder:(TMBSymbolZOrder * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("symbolZOrder:")]
+		TMBValue SymbolZOrder (TMBSymbolZOrder value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6786 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6786
+	{
+		// +(TMBValue * _Nonnull)lineCap:(TMBLineCap * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("lineCap:")]
+		TMBValue LineCap (TMBLineCap value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6791 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6791
+	{
+		// +(TMBValue * _Nonnull)fillExtrusionTranslateAnchor:(TMBFillExtrusionTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("fillExtrusionTranslateAnchor:")]
+		TMBValue FillExtrusionTranslateAnchor (TMBFillExtrusionTranslateAnchor value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6796 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6796
+	{
+		// +(TMBValue * _Nonnull)textJustify:(TMBTextJustify * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("textJustify:")]
+		TMBValue TextJustify (TMBTextJustify value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6801 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6801
+	{
+		// +(TMBValue * _Nonnull)rasterResampling:(TMBRasterResampling * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("rasterResampling:")]
+		TMBValue RasterResampling (TMBRasterResampling value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6806 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6806
+	{
+		// +(TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("scheme:")]
+		TMBValue Scheme (TMBScheme value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6811 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6811
+	{
+		// +(TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("hillshadeIlluminationAnchor:")]
+		TMBValue HillshadeIlluminationAnchor (TMBHillshadeIlluminationAnchor value);
+	}
+
+	// @interface MapboxMapObjC_Swift_6817 (TMBValue)
+	[Category]
+	[BaseType (typeof(TMBValue))]
+	interface TMBValue_MapboxMapObjC_Swift_6817
+	{
+		// +(TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
+		[Static]
+		[Export ("anchor:")]
+		TMBValue Anchor (TMBAnchor value);
 	}
 
 	// @interface TMBVectorSource : NSObject <TMBSource>
@@ -8403,14 +8474,12 @@ namespace MapboxMapsObjC
 		IntPtr Constructor ([NullAllowed] TMBAnnotatedFeature annotatedFeature, [NullAllowed] NSNumber width, [NullAllowed] NSNumber height, [NullAllowed] NSNumber allowOverlap, [NullAllowed] NSNumber allowOverlapWithPuck, [NullAllowed] NSNumber visible, [NullAllowed] NSNumber selected, [NullAllowed] MBMViewAnnotationAnchorConfig[] variableAnchors, [NullAllowed] NSNumber ignoreCameraPadding);
 	}
 
-	// @interface MapboxMapObjC_Swift_7030
-	[Category]
-	[BaseType(typeof(MBXTileStore))]
-	interface MapboxMapObjC_Swift_7030
+	// @interface MapboxMapObjC_Swift_7109
+	interface MapboxMapObjC_Swift_7109
 	{
 		// -(TMBCancelable * _Nonnull)loadTileRegionForId:(NSString * _Nonnull)id loadOptions:(MBXTileRegionLoadOptions * _Nonnull)loadOptions progress:(id)progress completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
 		[Export ("loadTileRegionForId:loadOptions:progress:completion:")]
-		TMBCancelable LoadTileRegionForId (string id, MBXTileRegionLoadOptions loadOptions, Action<MBXTileRegionLoadProgress> progress, Action<MBXTileRegion, NSError> completion);
+		TMBCancelable LoadTileRegionForId (string id, MBXTileRegionLoadOptions loadOptions, NSObject progress, Action<MBXTileRegion, NSError> completion);
 
 		// -(void)tileRegionContainsDescriptorsForId:(NSString * _Nonnull)id descriptors:(NSArray<MBXTilesetDescriptor *> * _Nonnull)descriptors completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
 		[Export ("tileRegionContainsDescriptorsForId:descriptors:completion:")]
@@ -8418,7 +8487,7 @@ namespace MapboxMapsObjC
 
 		// -(void)allTileRegions:(void (^ _Nonnull)(NSArray<MBXTileRegion *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("allTileRegions:")]
-		void AllTileRegions (Action<MBXTileRegion[], NSError> completion);
+		void AllTileRegions (Action<NSArray<MBXTileRegion>, NSError> completion);
 
 		// -(void)tileRegionForId:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
 		[Export ("tileRegionForId:completion:")]
