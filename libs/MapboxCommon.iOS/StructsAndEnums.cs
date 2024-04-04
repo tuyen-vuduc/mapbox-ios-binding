@@ -25,48 +25,48 @@ namespace MapboxCommon
 		Post
 	}
 
-	//static class CFunctions
-	//{
-	//	// extern NSString * MBXHttpMethodToString (MBXHttpMethod http_method);
-	//	[DllImport ("__Internal")]
-	//	[Verify (PlatformInvoke)]
-	//	static extern NSString MBXHttpMethodToString (MBXHttpMethod http_method);
+	// static class CFunctions
+	// {
+	// 	// extern NSString * MBXHttpMethodToString (MBXHttpMethod http_method);
+	// 	[DllImport ("__Internal")]
+	// 	[Verify (PlatformInvoke)]
+	// 	static extern NSString MBXHttpMethodToString (MBXHttpMethod http_method);
 
-	//	// extern NSString * MBXHttpRequestErrorTypeToString (MBXHttpRequestErrorType http_request_error_type);
-	//	[DllImport ("__Internal")]
-	//	[Verify (PlatformInvoke)]
-	//	static extern NSString MBXHttpRequestErrorTypeToString (MBXHttpRequestErrorType http_request_error_type);
+	// 	// extern NSString * MBXHttpRequestErrorTypeToString (MBXHttpRequestErrorType http_request_error_type);
+	// 	[DllImport ("__Internal")]
+	// 	[Verify (PlatformInvoke)]
+	// 	static extern NSString MBXHttpRequestErrorTypeToString (MBXHttpRequestErrorType http_request_error_type);
 
-	//	// extern NSString * MBXLocationErrorCodeToString (MBXLocationErrorCode location_error_code);
-	//	[DllImport ("__Internal")]
-	//	[Verify (PlatformInvoke)]
-	//	static extern NSString MBXLocationErrorCodeToString (MBXLocationErrorCode location_error_code);
+	// 	// extern NSString * MBXLocationErrorCodeToString (MBXLocationErrorCode location_error_code);
+	// 	[DllImport ("__Internal")]
+	// 	[Verify (PlatformInvoke)]
+	// 	static extern NSString MBXLocationErrorCodeToString (MBXLocationErrorCode location_error_code);
 
-	//	// extern NSString * MBXAccuracyAuthorizationToString (MBXAccuracyAuthorization accuracy_authorization);
-	//	[DllImport ("__Internal")]
-	//	[Verify (PlatformInvoke)]
-	//	static extern NSString MBXAccuracyAuthorizationToString (MBXAccuracyAuthorization accuracy_authorization);
+	// 	// extern NSString * MBXAccuracyAuthorizationToString (MBXAccuracyAuthorization accuracy_authorization);
+	// 	[DllImport ("__Internal")]
+	// 	[Verify (PlatformInvoke)]
+	// 	static extern NSString MBXAccuracyAuthorizationToString (MBXAccuracyAuthorization accuracy_authorization);
 
-	//	// extern NSString * MBXPermissionStatusToString (MBXPermissionStatus permission_status);
-	//	[DllImport ("__Internal")]
-	//	[Verify (PlatformInvoke)]
-	//	static extern NSString MBXPermissionStatusToString (MBXPermissionStatus permission_status);
+	// 	// extern NSString * MBXPermissionStatusToString (MBXPermissionStatus permission_status);
+	// 	[DllImport ("__Internal")]
+	// 	[Verify (PlatformInvoke)]
+	// 	static extern NSString MBXPermissionStatusToString (MBXPermissionStatus permission_status);
 
-	//	// extern NSString * MBXLoggingLevelToString (MBXLoggingLevel logging_level);
-	//	[DllImport ("__Internal")]
-	//	[Verify (PlatformInvoke)]
-	//	static extern NSString MBXLoggingLevelToString (MBXLoggingLevel logging_level);
+	// 	// extern NSString * MBXLoggingLevelToString (MBXLoggingLevel logging_level);
+	// 	[DllImport ("__Internal")]
+	// 	[Verify (PlatformInvoke)]
+	// 	static extern NSString MBXLoggingLevelToString (MBXLoggingLevel logging_level);
 
-	//	// extern NSString * MBXTileDataDomainToString (MBXTileDataDomain tile_data_domain);
-	//	[DllImport ("__Internal")]
-	//	[Verify (PlatformInvoke)]
-	//	static extern NSString MBXTileDataDomainToString (MBXTileDataDomain tile_data_domain);
+	// 	// extern NSString * MBXTileDataDomainToString (MBXTileDataDomain tile_data_domain);
+	// 	[DllImport ("__Internal")]
+	// 	[Verify (PlatformInvoke)]
+	// 	static extern NSString MBXTileDataDomainToString (MBXTileDataDomain tile_data_domain);
 
-	//	// extern NSString * MBXTileRegionErrorTypeToString (MBXTileRegionErrorType tile_region_error_type);
-	//	[DllImport ("__Internal")]
-	//	[Verify (PlatformInvoke)]
-	//	static extern NSString MBXTileRegionErrorTypeToString (MBXTileRegionErrorType tile_region_error_type);
-	//}
+	// 	// extern NSString * MBXTileRegionErrorTypeToString (MBXTileRegionErrorType tile_region_error_type);
+	// 	[DllImport ("__Internal")]
+	// 	[Verify (PlatformInvoke)]
+	// 	static extern NSString MBXTileRegionErrorTypeToString (MBXTileRegionErrorType tile_region_error_type);
+	// }
 
 	[Native]
 	public enum MBXNetworkRestriction : long

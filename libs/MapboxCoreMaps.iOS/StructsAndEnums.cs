@@ -83,13 +83,6 @@ namespace MapboxCoreMaps
 	}
 
 	[Native]
-	public enum MBMPerfSamplerOptions : long
-	{
-		CumulativeRenderingStats,
-		PerFrameRenderingStats
-	}
-
-	[Native]
 	public enum MBMTileCacheBudgetType : long
 	{
 		Megabytes,

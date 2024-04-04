@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export SDK=iphoneos17.2
+export SDK=iphoneos17.4
 
 function bind {
     echo "$1 artifacts/$2.xcframework/ios-arm64/$2.framework/Headers/"
@@ -38,7 +38,6 @@ function bind {
 
 # bind MapboxCoreMaps MapboxCoreMaps 1
 # bind MapboxCommon MapboxCommon 3
-# bind MapboxMaps MapboxMaps 0
+bind MapboxMaps MapboxMaps 0
 # bind Turf Turf 2
-# bind MapboxMobileEvents MapboxMobileEvents 1
-bind MapboxMapsObjC MapboxMapObjC 0
+# bind MapboxMapsObjC MapboxMapObjC 0

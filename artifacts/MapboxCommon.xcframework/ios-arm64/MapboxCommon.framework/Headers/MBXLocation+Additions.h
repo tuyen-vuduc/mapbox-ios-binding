@@ -1,6 +1,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
-#import <MapboxCommon/MBXLocation.h>
+#import "MBXLocation.h"
 
 @interface MBXLocation (Additions)
 - (nonnull instancetype)initWithCLLocation:(CLLocation * _Nonnull) location;

@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCoreMaps/MBMRequestDataSourceType.h>
+#import "MBMRequestDataSourceType.h"
 
 @class MBMEventTimeInterval;
 @class MBMRequestInfo;

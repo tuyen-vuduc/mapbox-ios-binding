@@ -11,8 +11,8 @@
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <_NativeVersion>24.1.0</_NativeVersion>
-    <_NugetSuffix>.1</_NugetSuffix>
+    <_NativeVersion>24.2.0</_NativeVersion>
+    <_NugetSuffix></_NugetSuffix>
     <_NugetVersion>$(_NativeVersion)$(_NugetSuffix)</_NugetVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -26,8 +26,8 @@
   <PropertyGroup>
     <PackageId>MapboxCommon.iOS</PackageId>
     <Title>Mapbox iOS SDK - MapboxCommon</Title>
-    <Summary>C# bindings for Mapbox iOS SDK - MapboxCommon</Summary>
-    <Description>C# bindings for Mapbox iOS SDK - MapboxCommon</Description>
+    <Summary>.NET iOS bindings for Mapbox SDK - MapboxCommon</Summary>
+    <Description>.NET iOS bindings for Mapbox SDK - MapboxCommon</Description>
     <Authors>tuyen,tuyen-vuduc</Authors>
     <Owners>tuyen,tuyen-vuduc</Owners>
     <Copyright>© tuyen-vuduc. All rights reserved.</Copyright>
@@ -59,6 +59,6 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-      <PackageReference Include="Xamarin.Build.Download" Version="0.11.3" PrivateAssets="None" />
+      <PackageReference Include="Xamarin.Build.Download" Version="0.11.4" PrivateAssets="None" />
   </ItemGroup>
 </Project>

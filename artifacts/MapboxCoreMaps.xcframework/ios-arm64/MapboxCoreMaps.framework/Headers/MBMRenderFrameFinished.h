@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCoreMaps/MBMRenderModeType.h>
+#import "MBMRenderModeType.h"
 
 @class MBMEventTimeInterval;
 

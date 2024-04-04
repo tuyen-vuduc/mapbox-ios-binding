@@ -539,28 +539,6 @@ namespace MapboxCoreMaps
 		bool IsEqualToViewAnnotationAnchorConfig (MBMViewAnnotationAnchorConfig other);
 	}
 
-	// @interface MBMPerfStatsCollectionOptions : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMPerfStatsCollectionOptions
-	{
-		// -(instancetype _Nonnull)initWithSamplerOptions:(NSArray<NSNumber *> * _Nonnull)samplerOptions;
-		[Export ("initWithSamplerOptions:")]
-		IntPtr Constructor (NSNumber[] samplerOptions);
-
-		// -(instancetype _Nonnull)initWithSamplerOptions:(NSArray<NSNumber *> * _Nonnull)samplerOptions framesPerSample:(uint32_t)framesPerSample;
-		[Export ("initWithSamplerOptions:framesPerSample:")]
-		IntPtr Constructor (NSNumber[] samplerOptions, uint framesPerSample);
-
-		// @property (readonly, copy, nonatomic) NSArray<NSNumber *> * _Nonnull samplerOptions;
-		[Export ("samplerOptions", ArgumentSemantic.Copy)]
-		NSNumber[] SamplerOptions { get; }
-
-		// @property (readonly, nonatomic) uint32_t framesPerSample;
-		[Export ("framesPerSample")]
-		uint FramesPerSample { get; }
-	}
-
 	// @interface MBMTileCacheBudget : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -891,24 +869,6 @@ namespace MapboxCoreMaps
 		MBMEventTimeInterval TimeInterval { get; }
 	}
 
-	// @interface MBMPerfStatsCollected : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMPerfStatsCollected
-	{
-		// -(instancetype _Nonnull)initWithStats:(id _Nonnull)stats timestamp:(NSDate * _Nonnull)timestamp;
-		[Export ("initWithStats:timestamp:")]
-		IntPtr Constructor (NSObject stats, NSDate timestamp);
-
-		// @property (readonly, copy, nonatomic) id _Nonnull stats;
-		[Export ("stats", ArgumentSemantic.Copy)]
-		NSObject Stats { get; }
-
-		// @property (readonly, nonatomic) NSDate * _Nonnull timestamp;
-		[Export ("timestamp")]
-		NSDate Timestamp { get; }
-	}
-
 	// @interface MBMResourceRequest : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -1107,9 +1067,6 @@ namespace MapboxCoreMaps
 
 	// typedef void (^MBMRenderFrameFinishedCallback)(MBMRenderFrameFinished * _Nonnull);
 	delegate void MBMRenderFrameFinishedCallback (MBMRenderFrameFinished arg0);
-
-	// typedef void (^MBMPerfStatsCollectedCallback)(MBMPerfStatsCollected * _Nonnull);
-	delegate void MBMPerfStatsCollectedCallback (MBMPerfStatsCollected arg0);
 
 	// typedef void (^MBMResourceRequestCallback)(MBMResourceRequest * _Nonnull);
 	delegate void MBMResourceRequestCallback (MBMResourceRequest arg0);
@@ -1466,7 +1423,6 @@ namespace MapboxCoreMaps
 */
 	partial interface IMBMOfflineRegionObserver { }
 
-
     [Model, Protocol]
 	[BaseType(typeof(NSObject))]
 	interface MBMOfflineRegionObserver
@@ -1481,6 +1437,133 @@ namespace MapboxCoreMaps
 		[Export ("errorOccurredForError:")]
 		void ErrorOccurredForError (MBMOfflineRegionError error);
 	}
+
+	// @interface MBMPerformanceStatisticsOptions : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMPerformanceStatisticsOptions
+	{
+		// @property (readonly, nonatomic) double samplingDurationMillis;
+		[Export ("samplingDurationMillis")]
+		double SamplingDurationMillis { get; }
+
+		// -(BOOL)isEqualToPerformanceStatisticsOptions:(MBMPerformanceStatisticsOptions * _Nonnull)other;
+		[Export ("isEqualToPerformanceStatisticsOptions:")]
+		bool IsEqualToPerformanceStatisticsOptions (MBMPerformanceStatisticsOptions other);
+	}
+
+	// @interface MBMCumulativeRenderingStatistics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMCumulativeRenderingStatistics
+	{
+		// -(instancetype _Nonnull)initWithDrawCalls:(NSNumber * _Nullable)drawCalls textureBytes:(NSNumber * _Nullable)textureBytes vertexBytes:(NSNumber * _Nullable)vertexBytes;
+		[Export ("initWithDrawCalls:textureBytes:vertexBytes:")]
+		IntPtr Constructor ([NullAllowed] NSNumber drawCalls, [NullAllowed] NSNumber textureBytes, [NullAllowed] NSNumber vertexBytes);
+
+		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * drawCalls __attribute__((swift_private));
+		[Export ("drawCalls")]
+		NSNumber DrawCalls { get; }
+
+		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * textureBytes __attribute__((swift_private));
+		[Export ("textureBytes")]
+		NSNumber TextureBytes { get; }
+
+		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * vertexBytes __attribute__((swift_private));
+		[Export ("vertexBytes")]
+		NSNumber VertexBytes { get; }
+	}
+
+	// @interface MBMDurationStatistics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMDurationStatistics
+	{
+		// -(instancetype _Nonnull)initWithMaxMillis:(double)maxMillis medianMillis:(double)medianMillis;
+		[Export ("initWithMaxMillis:medianMillis:")]
+		IntPtr Constructor (double maxMillis, double medianMillis);
+
+		// @property (readonly, nonatomic) double maxMillis;
+		[Export ("maxMillis")]
+		double MaxMillis { get; }
+
+		// @property (readonly, nonatomic) double medianMillis;
+		[Export ("medianMillis")]
+		double MedianMillis { get; }
+	}
+
+	// @interface MBMGroupPerformanceStatistics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMGroupPerformanceStatistics
+	{
+		// -(instancetype _Nonnull)initWithDurationMillis:(double)durationMillis name:(NSString * _Nonnull)name;
+		[Export ("initWithDurationMillis:name:")]
+		IntPtr Constructor (double durationMillis, string name);
+
+		// @property (readonly, nonatomic) double durationMillis;
+		[Export ("durationMillis")]
+		double DurationMillis { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull name;
+		[Export ("name")]
+		string Name { get; }
+	}
+
+	// @interface MBMPerFrameRenderingStatistics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMPerFrameRenderingStatistics
+	{
+		// -(instancetype _Nonnull)initWithTopRenderGroups:(NSArray<MBMGroupPerformanceStatistics *> * _Nonnull)topRenderGroups topRenderLayers:(NSArray<MBMGroupPerformanceStatistics *> * _Nonnull)topRenderLayers shadowMapDurationStatistics:(MBMDurationStatistics * _Nonnull)shadowMapDurationStatistics uploadDurationStatistics:(MBMDurationStatistics * _Nonnull)uploadDurationStatistics;
+		[Export ("initWithTopRenderGroups:topRenderLayers:shadowMapDurationStatistics:uploadDurationStatistics:")]
+		IntPtr Constructor (MBMGroupPerformanceStatistics[] topRenderGroups, MBMGroupPerformanceStatistics[] topRenderLayers, MBMDurationStatistics shadowMapDurationStatistics, MBMDurationStatistics uploadDurationStatistics);
+
+		// @property (readonly, copy, nonatomic) NSArray<MBMGroupPerformanceStatistics *> * _Nonnull topRenderGroups;
+		[Export ("topRenderGroups", ArgumentSemantic.Copy)]
+		MBMGroupPerformanceStatistics[] TopRenderGroups { get; }
+
+		// @property (readonly, copy, nonatomic) NSArray<MBMGroupPerformanceStatistics *> * _Nonnull topRenderLayers;
+		[Export ("topRenderLayers", ArgumentSemantic.Copy)]
+		MBMGroupPerformanceStatistics[] TopRenderLayers { get; }
+
+		// @property (readonly, nonatomic) MBMDurationStatistics * _Nonnull shadowMapDurationStatistics;
+		[Export ("shadowMapDurationStatistics")]
+		MBMDurationStatistics ShadowMapDurationStatistics { get; }
+
+		// @property (readonly, nonatomic) MBMDurationStatistics * _Nonnull uploadDurationStatistics;
+		[Export ("uploadDurationStatistics")]
+		MBMDurationStatistics UploadDurationStatistics { get; }
+	}
+
+	// @interface MBMPerformanceStatistics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMPerformanceStatistics
+	{
+		// -(instancetype _Nonnull)initWithCollectionDurationMillis:(double)collectionDurationMillis mapRenderDurationStatistics:(MBMDurationStatistics * _Nonnull)mapRenderDurationStatistics cumulativeStatistics:(MBMCumulativeRenderingStatistics * _Nullable)cumulativeStatistics perFrameStatistics:(MBMPerFrameRenderingStatistics * _Nullable)perFrameStatistics;
+		[Export ("initWithCollectionDurationMillis:mapRenderDurationStatistics:cumulativeStatistics:perFrameStatistics:")]
+		IntPtr Constructor (double collectionDurationMillis, MBMDurationStatistics mapRenderDurationStatistics, [NullAllowed] MBMCumulativeRenderingStatistics cumulativeStatistics, [NullAllowed] MBMPerFrameRenderingStatistics perFrameStatistics);
+
+		// @property (readonly, nonatomic) double collectionDurationMillis;
+		[Export ("collectionDurationMillis")]
+		double CollectionDurationMillis { get; }
+
+		// @property (readonly, nonatomic) MBMDurationStatistics * _Nonnull mapRenderDurationStatistics;
+		[Export ("mapRenderDurationStatistics")]
+		MBMDurationStatistics MapRenderDurationStatistics { get; }
+
+		// @property (readonly, nonatomic) MBMCumulativeRenderingStatistics * _Nullable cumulativeStatistics;
+		[NullAllowed, Export ("cumulativeStatistics")]
+		MBMCumulativeRenderingStatistics CumulativeStatistics { get; }
+
+		// @property (readonly, nonatomic) MBMPerFrameRenderingStatistics * _Nullable perFrameStatistics;
+		[NullAllowed, Export ("perFrameStatistics")]
+		MBMPerFrameRenderingStatistics PerFrameStatistics { get; }
+	}
+
+	// typedef void (^MBMPerformanceStatisticsCallback)(MBMPerformanceStatistics * _Nonnull);
+	delegate void MBMPerformanceStatisticsCallback (MBMPerformanceStatistics arg0);
 
 	// @interface MBMProjectedMeters : NSObject
 	[BaseType (typeof(NSObject))]
@@ -1717,7 +1800,7 @@ namespace MapboxCoreMaps
 
 		// -(instancetype _Nonnull)initWithWidth:(double)width height:(double)height latitude:(double)latitude longitude:(double)longitude zoom:(double)zoom bearing:(double)bearing pitch:(double)pitch fieldOfView:(double)fieldOfView projectionMatrix:(NSArray<NSNumber *> * _Nonnull)projectionMatrix elevationData:(id<MBMElevationData> _Nullable)elevationData __attribute__((deprecated("This constructor is deprecated and will be removed.")));
 		[Export ("initWithWidth:height:latitude:longitude:zoom:bearing:pitch:fieldOfView:projectionMatrix:elevationData:")]
-		IntPtr Constructor (double width, double height, double latitude, double longitude, double zoom, double bearing, double pitch, double fieldOfView, NSNumber[] projectionMatrix, [NullAllowed] IMBMElevationData elevationData);
+		IntPtr Constructor (double width, double height, double latitude, double longitude, double zoom, double bearing, double pitch, double fieldOfView, NSNumber[] projectionMatrix, [NullAllowed] MBMElevationData elevationData);
 
 		// @property (readonly, nonatomic) double width;
 		[Export ("width")]
@@ -1757,7 +1840,7 @@ namespace MapboxCoreMaps
 
 		// @property (readonly, nonatomic) id<MBMElevationData> _Nullable elevationData;
 		[NullAllowed, Export ("elevationData")]
-		IMBMElevationData ElevationData { get; }
+		MBMElevationData ElevationData { get; }
 
 		// @property (readonly, copy, nonatomic) NSArray<MBMCanonicalTileID *> * _Nullable renderToTilesIDs;
 		[NullAllowed, Export ("renderToTilesIDs", ArgumentSemantic.Copy)]
@@ -1792,7 +1875,6 @@ namespace MapboxCoreMaps
   be used.
 */
 	partial interface IMBMElevationData { }
-
 
     [Model, Protocol]
 	[BaseType(typeof(NSObject))]

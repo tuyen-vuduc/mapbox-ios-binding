@@ -1,5 +1,6 @@
 using System;
 using CoreAnimation;
+using CoreFoundation;
 using CoreGraphics;
 using CoreLocation;
 using Foundation;
@@ -8,7 +9,6 @@ using UIKit;
 using MapboxCoreMaps;
 using MapboxMaps;
 using MapboxCommon;
-using MapboxMapsObjC;
 
 namespace MapboxMapsObjC
 {
@@ -166,7 +166,6 @@ namespace MapboxMapsObjC
 	{
 		// -(TMBGestureManager * _Nonnull)gestures __attribute__((warn_unused_result("")));
 		[Export ("gestures")]
-		[Verify (MethodToProperty)]
 		TMBGestureManager Gestures();
 	}
 
@@ -231,7 +230,7 @@ namespace MapboxMapsObjC
 		CAFrameRateRange PreferredFrameRateRange ();
 
 		// -(void)setPreferredFrameRateRange:(CAFrameRateRange)value __attribute__((availability(ios, introduced=15.0)));
-		[iOS (15,0)]
+		// [iOS (15,0)]
 		[Export ("setPreferredFrameRateRange:")]
 		void SetPreferredFrameRateRange (CAFrameRateRange value);
 
@@ -279,7 +278,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_478
-[Category]
+	[Category]
     [BaseType(typeof(MBMOfflineManager))]
 	interface MapboxMapObjC_Swift_478
 	{
@@ -1644,7 +1643,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)createWithOperator:(TMBExpressionOperator * _Nonnull)operator_ arguments:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithOperator:arguments:")]
-		TMBExpression CreateWithOperator (TMBExpressionOperator operator_, NSObject[] arguments);
+				TMBExpression CreateWithOperator (TMBExpressionOperator operator_, NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)args:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
@@ -1935,7 +1934,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)concat:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("concat:")]
-		TMBExpression Concat (NSObject[] arguments);
+				TMBExpression Concat (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)cos __attribute__((warn_unused_result("")));
 		[Static]
@@ -1945,7 +1944,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)cos:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("cos:")]
-		TMBExpression Cos (NSObject[] arguments);
+				TMBExpression Cos (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)distance __attribute__((warn_unused_result("")));
 		[Static]
@@ -1955,7 +1954,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)distance:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("distance:")]
-		TMBExpression Distance (NSObject[] arguments);
+				TMBExpression Distance (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)distanceFromCenter __attribute__((warn_unused_result("")));
 		[Static]
@@ -1965,7 +1964,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)distanceFromCenter:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("distanceFromCenter:")]
-		TMBExpression DistanceFromCenter (NSObject[] arguments);
+				TMBExpression DistanceFromCenter (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)downcase __attribute__((warn_unused_result("")));
 		[Static]
@@ -1975,7 +1974,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)downcase:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("downcase:")]
-		TMBExpression Downcase (NSObject[] arguments);
+				TMBExpression Downcase (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)e __attribute__((warn_unused_result("")));
 		[Static]
@@ -1985,7 +1984,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)e:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("e:")]
-		TMBExpression E (NSObject[] arguments);
+				TMBExpression E (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)featureState __attribute__((warn_unused_result("")));
 		[Static]
@@ -1995,7 +1994,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)featureState:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("featureState:")]
-		TMBExpression FeatureState (NSObject[] arguments);
+				TMBExpression FeatureState (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)floor __attribute__((warn_unused_result("")));
 		[Static]
@@ -2005,7 +2004,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)floor:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("floor:")]
-		TMBExpression Floor (NSObject[] arguments);
+				TMBExpression Floor (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)format __attribute__((warn_unused_result("")));
 		[Static]
@@ -2015,7 +2014,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)format:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("format:")]
-		TMBExpression Format (NSObject[] arguments);
+				TMBExpression Format (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)geometryType __attribute__((warn_unused_result("")));
 		[Static]
@@ -2025,7 +2024,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)geometryType:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("geometryType:")]
-		TMBExpression GeometryType (NSObject[] arguments);
+				TMBExpression GeometryType (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)get __attribute__((warn_unused_result("")));
 		[Static]
@@ -2035,7 +2034,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)get:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("get:")]
-		TMBExpression Get (NSObject[] arguments);
+				TMBExpression Get (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)has __attribute__((warn_unused_result("")));
 		[Static]
@@ -2045,7 +2044,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)has:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("has:")]
-		TMBExpression Has (NSObject[] arguments);
+				TMBExpression Has (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)heatmapDensity __attribute__((warn_unused_result("")));
 		[Static]
@@ -2055,7 +2054,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)heatmapDensity:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("heatmapDensity:")]
-		TMBExpression HeatmapDensity (NSObject[] arguments);
+				TMBExpression HeatmapDensity (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)id __attribute__((warn_unused_result("")));
 		[Static]
@@ -2065,7 +2064,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)id:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("id:")]
-		TMBExpression Id (NSObject[] arguments);
+				TMBExpression Id (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)image __attribute__((warn_unused_result("")));
 		[Static]
@@ -2075,7 +2074,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)image:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("image:")]
-		TMBExpression Image (NSObject[] arguments);
+				TMBExpression Image (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)inExpression __attribute__((warn_unused_result("")));
 		[Static]
@@ -2085,7 +2084,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)inExpression:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("inExpression:")]
-		TMBExpression InExpression (NSObject[] arguments);
+				TMBExpression InExpression (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)indexOf __attribute__((warn_unused_result("")));
 		[Static]
@@ -2095,7 +2094,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)indexOf:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("indexOf:")]
-		TMBExpression IndexOf (NSObject[] arguments);
+				TMBExpression IndexOf (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)interpolate __attribute__((warn_unused_result("")));
 		[Static]
@@ -2105,7 +2104,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)interpolate:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("interpolate:")]
-		TMBExpression Interpolate (NSObject[] arguments);
+				TMBExpression Interpolate (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)isSupportedScript __attribute__((warn_unused_result("")));
 		[Static]
@@ -2115,7 +2114,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)isSupportedScript:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("isSupportedScript:")]
-		TMBExpression IsSupportedScript (NSObject[] arguments);
+				TMBExpression IsSupportedScript (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)length __attribute__((warn_unused_result("")));
 		[Static]
@@ -2125,7 +2124,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)length:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("length:")]
-		TMBExpression Length (NSObject[] arguments);
+				TMBExpression Length (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)letExpression __attribute__((warn_unused_result("")));
 		[Static]
@@ -2135,7 +2134,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)letExpression:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("letExpression:")]
-		TMBExpression LetExpression (NSObject[] arguments);
+				TMBExpression LetExpression (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)lineProgress __attribute__((warn_unused_result("")));
 		[Static]
@@ -2145,7 +2144,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)lineProgress:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("lineProgress:")]
-		TMBExpression LineProgress (NSObject[] arguments);
+				TMBExpression LineProgress (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)literal __attribute__((warn_unused_result("")));
 		[Static]
@@ -2155,7 +2154,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)literal:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("literal:")]
-		TMBExpression Literal (NSObject[] arguments);
+				TMBExpression Literal (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)ln __attribute__((warn_unused_result("")));
 		[Static]
@@ -2165,7 +2164,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)ln:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("ln:")]
-		TMBExpression Ln (NSObject[] arguments);
+				TMBExpression Ln (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)ln2 __attribute__((warn_unused_result("")));
 		[Static]
@@ -2175,7 +2174,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)ln2:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("ln2:")]
-		TMBExpression Ln2 (NSObject[] arguments);
+				TMBExpression Ln2 (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)log10 __attribute__((warn_unused_result("")));
 		[Static]
@@ -2185,7 +2184,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)log10:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("log10:")]
-		TMBExpression Log10 (NSObject[] arguments);
+				TMBExpression Log10 (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)log2 __attribute__((warn_unused_result("")));
 		[Static]
@@ -2195,7 +2194,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)log2:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("log2:")]
-		TMBExpression Log2 (NSObject[] arguments);
+				TMBExpression Log2 (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)match __attribute__((warn_unused_result("")));
 		[Static]
@@ -2205,7 +2204,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)match:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("match:")]
-		TMBExpression Match (NSObject[] arguments);
+				TMBExpression Match (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)max __attribute__((warn_unused_result("")));
 		[Static]
@@ -2215,7 +2214,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)max:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("max:")]
-		TMBExpression Max (NSObject[] arguments);
+				TMBExpression Max (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)min __attribute__((warn_unused_result("")));
 		[Static]
@@ -2225,7 +2224,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)min:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("min:")]
-		TMBExpression Min (NSObject[] arguments);
+				TMBExpression Min (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)number __attribute__((warn_unused_result("")));
 		[Static]
@@ -2235,7 +2234,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)number:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("number:")]
-		TMBExpression Number (NSObject[] arguments);
+				TMBExpression Number (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)numberFormat __attribute__((warn_unused_result("")));
 		[Static]
@@ -2245,7 +2244,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)numberFormat:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("numberFormat:")]
-		TMBExpression NumberFormat (NSObject[] arguments);
+				TMBExpression NumberFormat (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)objectExpression __attribute__((warn_unused_result("")));
 		[Static]
@@ -2255,7 +2254,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)objectExpression:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("objectExpression:")]
-		TMBExpression ObjectExpression (NSObject[] arguments);
+				TMBExpression ObjectExpression (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)pi __attribute__((warn_unused_result("")));
 		[Static]
@@ -2265,7 +2264,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)pi:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("pi:")]
-		TMBExpression Pi (NSObject[] arguments);
+				TMBExpression Pi (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)pitch __attribute__((warn_unused_result("")));
 		[Static]
@@ -2275,7 +2274,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)pitch:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("pitch:")]
-		TMBExpression Pitch (NSObject[] arguments);
+				TMBExpression Pitch (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)properties __attribute__((warn_unused_result("")));
 		[Static]
@@ -2285,7 +2284,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)properties:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("properties:")]
-		TMBExpression Properties (NSObject[] arguments);
+				TMBExpression Properties (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)resolvedLocale __attribute__((warn_unused_result("")));
 		[Static]
@@ -2295,7 +2294,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)resolvedLocale:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("resolvedLocale:")]
-		TMBExpression ResolvedLocale (NSObject[] arguments);
+				TMBExpression ResolvedLocale (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)rgb __attribute__((warn_unused_result("")));
 		[Static]
@@ -2305,7 +2304,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)rgb:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("rgb:")]
-		TMBExpression Rgb (NSObject[] arguments);
+				TMBExpression Rgb (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)rgba __attribute__((warn_unused_result("")));
 		[Static]
@@ -2315,7 +2314,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)rgba:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("rgba:")]
-		TMBExpression Rgba (NSObject[] arguments);
+				TMBExpression Rgba (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)round __attribute__((warn_unused_result("")));
 		[Static]
@@ -2325,7 +2324,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)round:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("round:")]
-		TMBExpression Round (NSObject[] arguments);
+				TMBExpression Round (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)sin __attribute__((warn_unused_result("")));
 		[Static]
@@ -2335,7 +2334,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)sin:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("sin:")]
-		TMBExpression Sin (NSObject[] arguments);
+				TMBExpression Sin (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)skyRadialProgress __attribute__((warn_unused_result("")));
 		[Static]
@@ -2345,7 +2344,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)skyRadialProgress:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("skyRadialProgress:")]
-		TMBExpression SkyRadialProgress (NSObject[] arguments);
+				TMBExpression SkyRadialProgress (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)slice __attribute__((warn_unused_result("")));
 		[Static]
@@ -2355,7 +2354,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)slice:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("slice:")]
-		TMBExpression Slice (NSObject[] arguments);
+				TMBExpression Slice (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)sqrt __attribute__((warn_unused_result("")));
 		[Static]
@@ -2365,7 +2364,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)sqrt:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("sqrt:")]
-		TMBExpression Sqrt (NSObject[] arguments);
+				TMBExpression Sqrt (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)step __attribute__((warn_unused_result("")));
 		[Static]
@@ -2375,7 +2374,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)step:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("step:")]
-		TMBExpression Step (NSObject[] arguments);
+				TMBExpression Step (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)string __attribute__((warn_unused_result("")));
 		[Static]
@@ -2385,7 +2384,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)string:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("string:")]
-		TMBExpression String (NSObject[] arguments);
+				TMBExpression String (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)tan __attribute__((warn_unused_result("")));
 		[Static]
@@ -2395,7 +2394,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)tan:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("tan:")]
-		TMBExpression Tan (NSObject[] arguments);
+				TMBExpression Tan (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)toBoolean __attribute__((warn_unused_result("")));
 		[Static]
@@ -2405,7 +2404,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)toBoolean:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("toBoolean:")]
-		TMBExpression ToBoolean (NSObject[] arguments);
+				TMBExpression ToBoolean (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)toColor __attribute__((warn_unused_result("")));
 		[Static]
@@ -2415,7 +2414,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)toColor:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("toColor:")]
-		TMBExpression ToColor (NSObject[] arguments);
+				TMBExpression ToColor (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)toNumber __attribute__((warn_unused_result("")));
 		[Static]
@@ -2425,7 +2424,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)toNumber:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("toNumber:")]
-		TMBExpression ToNumber (NSObject[] arguments);
+				TMBExpression ToNumber (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)toRgba __attribute__((warn_unused_result("")));
 		[Static]
@@ -2435,7 +2434,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)toRgba:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("toRgba:")]
-		TMBExpression ToRgba (NSObject[] arguments);
+				TMBExpression ToRgba (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)toString __attribute__((warn_unused_result("")));
 		[Static]
@@ -2445,7 +2444,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)toString:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("toString:")]
-		TMBExpression ToString (NSObject[] arguments);
+				TMBExpression ToString (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)typeofExpression __attribute__((warn_unused_result("")));
 		[Static]
@@ -2455,7 +2454,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)typeofExpression:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("typeofExpression:")]
-		TMBExpression TypeofExpression (NSObject[] arguments);
+				TMBExpression TypeofExpression (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)upcase __attribute__((warn_unused_result("")));
 		[Static]
@@ -2465,7 +2464,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)upcase:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("upcase:")]
-		TMBExpression Upcase (NSObject[] arguments);
+				TMBExpression Upcase (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)varExpression __attribute__((warn_unused_result("")));
 		[Static]
@@ -2475,7 +2474,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)varExpression:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("varExpression:")]
-		TMBExpression VarExpression (NSObject[] arguments);
+				TMBExpression VarExpression (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)within __attribute__((warn_unused_result("")));
 		[Static]
@@ -2485,7 +2484,7 @@ namespace MapboxMapsObjC
 		// +(TMBExpression * _Nonnull)within:(NSArray * _Nonnull)arguments __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("within:")]
-		TMBExpression Within (NSObject[] arguments);
+				TMBExpression Within (NSObject[] arguments);
 
 		// +(TMBExpression * _Nonnull)zoom __attribute__((warn_unused_result("")));
 		[Static]
@@ -3728,7 +3727,7 @@ namespace MapboxMapsObjC
 	partial interface ITMBHeadingProvider { }
 
     [Model, Protocol (Name = "_TtP13MapboxMapObjC18TMBHeadingProvider_")]
-	[BaseType(typeof(NSObject))]
+[BaseType(typeof(NSObject))]
 	interface TMBHeadingProvider
 	{
 		// @required @property (readonly, nonatomic, strong) TMBHeading * _Nullable latestHeading;
@@ -4198,7 +4197,6 @@ namespace MapboxMapsObjC
 		// +(TMBLayerPosition * _Nonnull)default __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("default")]
-		[Verify (MethodToProperty)]
 		TMBLayerPosition Default { get; }
 	}
 
@@ -4734,8 +4732,6 @@ namespace MapboxMapsObjC
 		IntPtr Constructor (string id);
 	}
 
-	interface ITMBHeadingLocationProvider : INativeObject, IMBXLocationProvider, ITMBHeadingProvider {}
-
 	// @interface TMBLocationManager : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC18TMBLocationManager")]
 	[DisableDefaultCtor]
@@ -4763,7 +4759,7 @@ namespace MapboxMapsObjC
 
 		// -(void)overrideWithProvider:(id<MBXLocationProvider,TMBHeadingProvider> _Nonnull)provider;
 		[Export ("overrideWithProvider:")]
-		void OverrideWithProvider (ITMBHeadingLocationProvider provider);
+		void OverrideWithProvider (NSObject provider);
 
 		// @property (readonly, nonatomic, strong) MBXLocation * _Nullable latestLocation;
 		[NullAllowed, Export ("latestLocation", ArgumentSemantic.Strong)]

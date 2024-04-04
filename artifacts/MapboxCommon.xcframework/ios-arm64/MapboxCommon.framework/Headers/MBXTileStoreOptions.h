@@ -8,8 +8,10 @@ __attribute__((visibility ("default")))
 @interface MBXTileStoreOptions : NSObject
 
     /**
-     * If the new value causes the quota to be exceed, data will be evicted to enforce the quota.
+     * Sets the maximum amount of bytes TileStore can use to store files.
+     * If the new value causes the quota to be exceed, request will fail and data will be evicted to enforce the quota.
      * Accepts a (positive) number of bytes, or null for resetting to the default value.
+     * Default is "no quota"
      */
     @property (nonatomic, class, readonly) NSString * DiskQuota;
     /**

@@ -7,7 +7,6 @@
 #import "MBMMapCenterAltitudeMode.h"
 #import "MBMMapDebugOptions.h"
 #import "MBMViewAnnotationAnchor.h"
-#import "MBMPerfSamplerOptions.h"
 #import "MBMGlyphsRasterizationOptions.h"
 #import "MBMTileCacheBudgetInMegabytes.h"
 #import "MBMTileCacheBudgetInTiles.h"
@@ -21,5 +20,4 @@
 #import "MBMQueriedRenderedFeature.h"
 #import "MBMQueriedSourceFeature.h"
 #import "MBMViewAnnotationAnchorConfig.h"
-#import "MBMPerfStatsCollectionOptions.h"
 #import "MBMTileCacheBudget.h"
