@@ -4197,7 +4197,7 @@ namespace MapboxMapsObjC
 		// +(TMBLayerPosition * _Nonnull)default __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("default")]
-		TMBLayerPosition Default { get; }
+		TMBLayerPosition GetDefault();
 	}
 
 	// @interface TMBLayerType : NSObject
@@ -7764,7 +7764,11 @@ namespace MapboxMapsObjC
   the generated interface. If consumers are not supposed to implement this
   protocol, then [Model] is redundant and will generate code that will never
   be used.
-*/[Protocol (Name = "_TtP13MapboxMapObjC20TMBTileStoreObserver_")]
+*/
+	partial interface ITMBTileStoreObserver {}
+
+	[Model, Protocol (Name = "_TtP13MapboxMapObjC20TMBTileStoreObserver_")]
+	[BaseType(typeof(NSObject))]
 	interface TMBTileStoreObserver
 	{
 		// @required -(void)onRegionLoadProgressForId:(NSString * _Nonnull)id progress:(MBXTileRegionLoadProgress * _Nonnull)progress;
@@ -8471,11 +8475,13 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_7109
+	[Category]
+	[BaseType(typeof(MBXTileStore))]
 	interface MapboxMapObjC_Swift_7109
 	{
 		// -(TMBCancelable * _Nonnull)loadTileRegionForId:(NSString * _Nonnull)id loadOptions:(MBXTileRegionLoadOptions * _Nonnull)loadOptions progress:(id)progress completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
 		[Export ("loadTileRegionForId:loadOptions:progress:completion:")]
-		TMBCancelable LoadTileRegionForId (string id, MBXTileRegionLoadOptions loadOptions, NSObject progress, Action<MBXTileRegion, NSError> completion);
+		TMBCancelable LoadTileRegionForId (string id, MBXTileRegionLoadOptions loadOptions, Action<MBXTileRegionLoadProgress> progress, Action<MBXTileRegion, NSError> completion);
 
 		// -(void)tileRegionContainsDescriptorsForId:(NSString * _Nonnull)id descriptors:(NSArray<MBXTilesetDescriptor *> * _Nonnull)descriptors completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion;
 		[Export ("tileRegionContainsDescriptorsForId:descriptors:completion:")]
@@ -8483,7 +8489,7 @@ namespace MapboxMapsObjC
 
 		// -(void)allTileRegions:(void (^ _Nonnull)(NSArray<MBXTileRegion *> * _Nullable, NSError * _Nullable))completion;
 		[Export ("allTileRegions:")]
-		void AllTileRegions (Action<NSArray<MBXTileRegion>, NSError> completion);
+		void AllTileRegions (Action<MBXTileRegion[], NSError> completion);
 
 		// -(void)tileRegionForId:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(MBXTileRegion * _Nullable, NSError * _Nullable))completion;
 		[Export ("tileRegionForId:completion:")]
