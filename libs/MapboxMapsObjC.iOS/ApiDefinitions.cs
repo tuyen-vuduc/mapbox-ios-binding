@@ -247,12 +247,12 @@ namespace MapboxMapsObjC
 		// +(id)createWithFrame:(CGRect)frame options:(id)options __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithFrame:options:")]
-		MapView CreateWithFrame (CGRect frame, MapInitOptions options);
+		MapView CreateWithFrame (CGRect frame, [NullAllowed]MapInitOptions options);
 
 		// +(id)createWithFrame:(CGRect)frame mapInitOptions:(id)mapInitOptions urlOpener:(id<TMBAttributionURLOpener> _Nonnull)urlOpener __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("createWithFrame:mapInitOptions:urlOpener:")]
-		MapView CreateWithFrame (CGRect frame, MapInitOptions mapInitOptions, ITMBAttributionURLOpener urlOpener);
+		MapView CreateWithFrame (CGRect frame, [NullAllowed]MapInitOptions mapInitOptions, ITMBAttributionURLOpener urlOpener);
 	}
 
 	// @protocol NamedString
