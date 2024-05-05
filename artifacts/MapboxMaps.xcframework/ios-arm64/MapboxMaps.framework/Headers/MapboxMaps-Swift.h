@@ -531,6 +531,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) Class _Nonnull layer
 
 
 
+
 SWIFT_CLASS("_TtC10MapboxMaps25MapboxCompassOrnamentView")
 @interface MapboxCompassOrnamentView : UIButton
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -558,6 +559,7 @@ SWIFT_CLASS("_TtC10MapboxMaps26MapboxScaleBarOrnamentView")
 
 
 @protocol CAMetalDrawable;
+@class UIEvent;
 
 /// On iOS the MTKView is used to prevent potential breaking of existing behavior.
 /// Also, iOS 13 simulator doesn’t directly support CAMetalLayer.
@@ -567,6 +569,7 @@ SWIFT_CLASS("_TtC10MapboxMaps9MetalView")
 - (id <CAMetalDrawable> _Nullable)nextDrawable SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithFrame:(CGRect)frameRect device:(id <MTLDevice> _Nullable)device OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (UIView * _Nullable)hitTest:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -650,9 +653,11 @@ SWIFT_CLASS("_TtC10MapboxMaps23SingleTapGestureHandler")
 @interface SingleTapGestureHandler : GestureHandler
 @end
 
+@class UITouch;
 
 @interface SingleTapGestureHandler (SWIFT_EXTENSION(MapboxMaps)) <UIGestureRecognizerDelegate>
 - (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer * _Nonnull)otherGestureRecognizer SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldReceiveTouch:(UITouch * _Nonnull)touch SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -683,14 +688,12 @@ SWIFT_CLASS("_TtC10MapboxMaps17SizeTrackingLayer")
 
 
 
-@class UITouch;
-@class UIEvent;
-
 SWIFT_CLASS("_TtC10MapboxMaps27TouchBeganGestureRecognizer")
 @interface TouchBeganGestureRecognizer : UIGestureRecognizer
 - (void)touchesBegan:(NSSet<UITouch *> * _Nonnull)touches withEvent:(UIEvent * _Nonnull)event;
 - (nonnull instancetype)initWithTarget:(id _Nullable)target action:(SEL _Nullable)action OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 

@@ -2,10 +2,12 @@
 
 #import <Foundation/Foundation.h>
 #import "MBXTileDataDomain.h"
+#import "MBXTileRegionEstimateProgressCallback.h"
 #import "MBXTileRegionLoadProgressCallback.h"
 
 @class MBXResourceDescription;
 @class MBXResourceLoadOptions;
+@class MBXTileRegionEstimateOptions;
 @class MBXTileRegionLoadOptions;
 @class MBXTilesetDescriptor;
 @protocol MBXCancelable;

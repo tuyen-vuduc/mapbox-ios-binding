@@ -377,6 +377,10 @@ namespace MapboxMaps
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
 		// IntPtr Constructor (NSCoder coder);
+
+		// - (UIView * _Nullable)hitTest:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
+		[Export("hitTest:withEvent:")]
+		UIView HitTest(CGPoint point, UIEvent @event);
 	}
 
 	// @interface PaddingDebugView : UIView
@@ -474,6 +478,10 @@ namespace MapboxMaps
 		// -(BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer * _Nonnull)otherGestureRecognizer __attribute__((warn_unused_result("")));
 		[Export ("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:")]
 		bool GestureRecognizer (UIGestureRecognizer gestureRecognizer, UIGestureRecognizer otherGestureRecognizer);
+
+		// - (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldReceiveTouch:(UITouch * _Nonnull)touch SWIFT_WARN_UNUSED_RESULT;
+		[Export("gestureRecognizer:shouldReceiveTouch:")]
+		bool ShouldReceiveTouch(UIGestureRecognizer gestureRecognizer, UITouch touch);
 	}
 
 	// @interface SizeTrackingLayer : CALayer
