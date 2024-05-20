@@ -50,7 +50,7 @@ namespace MapboxMaps
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 	}
 
 	// @interface CLLocationManagerDelegateProxy : NSObject <CLLocationManagerDelegate>
@@ -85,7 +85,7 @@ namespace MapboxMaps
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 	}
 
 	// @interface CameraView : UIView
@@ -95,7 +95,7 @@ namespace MapboxMaps
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 	}
 
 	// @interface DistanceFormatter : NSMeasurementFormatter
@@ -105,7 +105,7 @@ namespace MapboxMaps
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 	}
 
 	// @interface DoubleTapToZoomInGestureHandler : GestureHandler
@@ -161,7 +161,7 @@ namespace MapboxMaps
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 
 		// -(void)infoTapped;
 		[Export ("infoTapped")]
@@ -203,7 +203,7 @@ namespace MapboxMaps
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 	}
 
 	// @interface LongPressGestureHandler : NSObject <UIGestureRecognizerDelegate>
@@ -284,7 +284,7 @@ namespace MapboxMaps
 		// [Unavailable (PlatformName.iOSAppExtension)]
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 
 		// -(void)awakeFromNib __attribute__((objc_requires_super));
 		[Export ("awakeFromNib")]
@@ -307,7 +307,7 @@ namespace MapboxMaps
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 	}
 
 	// @interface MapboxScaleBarLabel : UILabel
@@ -321,12 +321,12 @@ namespace MapboxMaps
 		// -(instancetype _Nonnull)initWithFrame:(CGRect)frame __attribute__((objc_designated_initializer));
 		[Export ("initWithFrame:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (CGRect frame);
+		NativeHandle Constructor (CGRect frame);
 
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 	}
 
 	// @interface MapboxScaleBarOrnamentView : UIView
@@ -340,12 +340,12 @@ namespace MapboxMaps
 		// -(instancetype _Nonnull)initWithFrame:(CGRect)frame __attribute__((objc_designated_initializer));
 		[Export ("initWithFrame:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (CGRect frame);
+		NativeHandle Constructor (CGRect frame);
 
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 
 		// -(void)didMoveToSuperview;
 		[Export ("didMoveToSuperview")]
@@ -371,12 +371,12 @@ namespace MapboxMaps
 		// -(instancetype _Nonnull)initWithFrame:(CGRect)frameRect device:(id<MTLDevice> _Nullable)device __attribute__((objc_designated_initializer));
 		[Export ("initWithFrame:device:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (CGRect frameRect, [NullAllowed] IMTLDevice device);
+		NativeHandle Constructor (CGRect frameRect, [NullAllowed] IMTLDevice device);
 
 		// // -(instancetype _Nonnull)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 
 		// - (UIView * _Nullable)hitTest:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
 		[Export("hitTest:withEvent:")]
@@ -390,7 +390,7 @@ namespace MapboxMaps
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 
 		// -(void)layoutSubviews;
 		[Export ("layoutSubviews")]
@@ -499,12 +499,12 @@ namespace MapboxMaps
 		// -(instancetype _Nonnull)initWithLayer:(id _Nonnull)layer __attribute__((objc_designated_initializer));
 		[Export ("initWithLayer:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (NSObject layer);
+		NativeHandle Constructor (NSObject layer);
 
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 	}
 
 	// @interface TouchBeganGestureRecognizer : UIGestureRecognizer
@@ -518,7 +518,7 @@ namespace MapboxMaps
 		// -(instancetype _Nonnull)initWithTarget:(id _Nullable)target action:(SEL _Nullable)action __attribute__((objc_designated_initializer));
 		[Export ("initWithTarget:action:")]
 		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] NSObject target, [NullAllowed] Selector action);
+		NativeHandle Constructor ([NullAllowed] NSObject target, [NullAllowed] Selector action);
 	}
 
 	// @interface MapboxMaps_Swift_713 (NSUserDefaults)
@@ -549,11 +549,11 @@ namespace MapboxMaps
 		// -(instancetype _Nonnull)initWithFrame:(CGRect)frame __attribute__((objc_designated_initializer));
 		[Export ("initWithFrame:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (CGRect frame);
+		NativeHandle Constructor (CGRect frame);
 
 		// // -(instancetype _Nullable)initWithCoder:(NSCoder * _Nonnull)coder __attribute__((objc_designated_initializer));
 		// [Export ("initWithCoder:")]
 		// [DesignatedInitializer]
-		// IntPtr Constructor (NSCoder coder);
+		// NativeHandle Constructor (NSCoder coder);
 	}
 }

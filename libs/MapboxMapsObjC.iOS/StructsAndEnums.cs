@@ -5,8 +5,8 @@ namespace MapboxMapsObjC
 	[Native]
 	public enum TMBCompassDirectionFormatterStyle : long
 	{
-		Short = 0,
-		Long = 1
+		SShort = 0,
+		LLong = 1
 	}
 
 	[Native]
@@ -20,7 +20,7 @@ namespace MapboxMapsObjC
 	[Native]
 	public enum TMBGeoJSONSourceType : long
 	{
-		String = 0,
+		SString = 0,
 		Feature = 1,
 		FeatureCollection = 2,
 		Geometry = 3,
@@ -81,8 +81,8 @@ namespace MapboxMapsObjC
 	[Native]
 	public enum TMBPromoteIdType : long
 	{
-		String = 0,
-		Object = 1
+		SString = 0,
+		OObject = 1
 	}
 
 	[Native]
@@ -95,8 +95,8 @@ namespace MapboxMapsObjC
 	[Native]
 	public enum TMBPuckType : long
 	{
-		TMBPuckTypePuck2D = 0,
-		TMBPuckTypePuck3D = 1
+		Puck2D = 0,
+		Puck3D = 1
 	}
 
 	[Native]

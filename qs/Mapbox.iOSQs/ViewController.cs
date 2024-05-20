@@ -10,7 +10,7 @@ namespace Mapbox.iOSQs
     public partial class ViewController : UIViewController
     {
 
-        protected ViewController(IntPtr handle) : base(handle)
+        protected ViewController(NativeHandle handle) : base(handle)
         {
             // Note: this .ctor should not contain any initialization logic.
         }

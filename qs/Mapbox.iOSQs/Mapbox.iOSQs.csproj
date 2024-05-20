@@ -1,157 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Condition="EXISTS('Mapbox.iOSQs.props')" Project="Mapbox.iOSQs.props" />
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>{3A2E7243-0208-4292-92B4-8C25F27B9843}</ProjectGuid>
-    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <SupportedOSPlatformVersion>15.4</SupportedOSPlatformVersion>
     <LangVersion>latest</LangVersion>
     <RootNamespace>Mapbox.iOSQs</RootNamespace>
     <AssemblyName>Mapbox.iOSQs</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
-    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
     <CodesignProvision>Automatic</CodesignProvision>
-    <DeviceSpecificBuild>true</DeviceSpecificBuild>
-    <MtouchDebug>true</MtouchDebug>
-    <MtouchProfiling>true</MtouchProfiling>
-    <IOSDebuggerPort>47243</IOSDebuggerPort>
-    <MtouchLink>None</MtouchLink>
-    <MtouchArch>x86_64</MtouchArch>
-    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
-    <LangVersion>Latest</LangVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\iPhone\Release</OutputPath>
-    <DefineConstants></DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignProvision>Automatic</CodesignProvision>
-    <MtouchFloat32>true</MtouchFloat32>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>None</MtouchLink>
-    <MtouchArch>ARM64</MtouchArch>
-    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
-    <LangVersion>Latest</LangVersion>
-    <MtouchExtraArgs>-v -v -v -v</MtouchExtraArgs>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
-    <DefineConstants></DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignProvision>Automatic</CodesignProvision>
-    <DeviceSpecificBuild>true</DeviceSpecificBuild>
-    <MtouchLink>None</MtouchLink>
-    <MtouchArch>i386, x86_64</MtouchArch>
-    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
-    <LangVersion>Latest</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\iPhone\Debug</OutputPath>
-    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>    
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignProvision>Automatic</CodesignProvision>
-    <DeviceSpecificBuild>true</DeviceSpecificBuild>
-    <MtouchDebug>true</MtouchDebug>
-    <MtouchFloat32>true</MtouchFloat32>
-    <CodesignEntitlements></CodesignEntitlements>
-    <MtouchLink>None</MtouchLink>
-    <MtouchArch>ARM64</MtouchArch>
-    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <LangVersion>Latest</LangVersion>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="Xamarin.iOS" />
-    
-    <PackageReference Include="Masonry" Version="1.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Xamarin.Swift">
-      <Version>1.0.11</Version>
-    </PackageReference>
-    <PackageReference Include="System.Net.Http">
-      <Version>4.3.4</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Build.Download">
-      <Version>0.11.4</Version>
-    </PackageReference>
-    <PackageReference Include="MapboxMapsObjC.iOS">
-      <Version>11.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="MapboxCommon.iOS">
-      <Version>24.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="Turf.iOS">
-      <Version>2.7.0</Version>
-    </PackageReference>
-    <PackageReference Include="MapboxMaps.iOS">
-      <Version>11.0.0</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small%402x.png" />
-    <ImageAsset Include="Assets.xcassets\temple.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\temple.imageset\torri%402x.png" />
-    <ImageAsset Include="Assets.xcassets\temple.imageset\torri%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Assets.xcassets\temple.imageset\" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Main.storyboard" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Info.plist" />
-    <None Include="Entitlements.plist" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Main.cs" />
-    <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
+		<PackageReference Include="MapboxMapsObjC.iOS" Version="11.3.0" />
+		<PackageReference Include="MapboxMaps.iOS" Version="11.3.0" />
   </ItemGroup>
   <Target Name="DisplayMessages" AfterTargets="_CoreCompileImageAssets;">
     <Message Text="MAPBOX_DOWNLOADS_TOKEN = $(MAPBOX_DOWNLOADS_TOKEN)" />
     <Message Text="Project File Name = $(MSBuildProjectFile)" />
     <Message Text="Project Extension = $(MSBuildProjectExtension)" />
   </Target>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

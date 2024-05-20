@@ -163,9 +163,9 @@ namespace Mapbox
     [Native]
     public enum MGLAttributionInfoStyle : ulong
     {
-        Short = 1,
+        SShort = 1,
         Medium,
-        Long
+        LLong
     }
 
     [Flags]

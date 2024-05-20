@@ -335,7 +335,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
 		[Export ("initWithId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id);
+		NativeHandle Constructor (string id);
 	}
 
 	// @interface TMBAnchor : NSObject
@@ -349,7 +349,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBAnchor * _Nonnull map;
 		[Static]
@@ -373,7 +373,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBAnimationOwner * _Nonnull gestures;
 		[Static]
@@ -604,7 +604,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithDistanceFilter:(CLLocationDistance)distanceFilter desiredAccuracy:(CLLocationAccuracy)desiredAccuracy activityType:(CLActivityType)activityType __attribute__((objc_designated_initializer));
 		[Export ("initWithDistanceFilter:desiredAccuracy:activityType:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (double distanceFilter, double desiredAccuracy, CLActivityType activityType);
+		NativeHandle Constructor (double distanceFilter, double desiredAccuracy, CLActivityType activityType);
 	}
 
 	// @interface TMBAtmosphere : NSObject
@@ -676,7 +676,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithPosition:(enum TMBOrnamentPosition)position margins:(CGPoint)margins __attribute__((objc_designated_initializer));
 		[Export ("initWithPosition:margins:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBOrnamentPosition position, CGPoint margins);
+		NativeHandle Constructor (TMBOrnamentPosition position, CGPoint margins);
 	}
 
 	// @protocol TMBAttributionURLOpener
@@ -808,7 +808,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
 		[Export ("initWithId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id);
+		NativeHandle Constructor (string id);
 	}
 
 	// @interface TMBBasicCameraAnimator : NSObject
@@ -981,7 +981,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithBounds:(MBMCoordinateBounds * _Nullable)bounds maxZoom:(CGFloat)maxZoom minZoom:(CGFloat)minZoom maxPitch:(CGFloat)maxPitch minPitch:(CGFloat)minPitch __attribute__((objc_designated_initializer));
 		[Export ("initWithBounds:maxZoom:minZoom:maxPitch:minPitch:")]
 		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] MBMCoordinateBounds bounds, nfloat maxZoom, nfloat minZoom, nfloat maxPitch, nfloat minPitch);
+		NativeHandle Constructor ([NullAllowed] MBMCoordinateBounds bounds, nfloat maxZoom, nfloat minZoom, nfloat maxPitch, nfloat minPitch);
 	}
 
 	// @interface TMBCameraOptions : NSObject
@@ -1016,12 +1016,12 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithCenter:(CLLocationCoordinate2D)center padding:(UIEdgeInsets)padding anchor:(CGPoint)anchor zoom:(CGFloat)zoom bearing:(CLLocationDirection)bearing pitch:(CGFloat)pitch __attribute__((objc_designated_initializer));
 		[Export ("initWithCenter:padding:anchor:zoom:bearing:pitch:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (CLLocationCoordinate2D center, UIEdgeInsets padding, CGPoint anchor, nfloat zoom, double bearing, nfloat pitch);
+		NativeHandle Constructor (CLLocationCoordinate2D center, UIEdgeInsets padding, CGPoint anchor, nfloat zoom, double bearing, nfloat pitch);
 
 		// -(instancetype _Nonnull)initWithCameraState:(TMBCameraState * _Nonnull)cameraState anchor:(CGPoint)anchor __attribute__((objc_designated_initializer));
 		[Export ("initWithCameraState:anchor:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBCameraState cameraState, CGPoint anchor);
+		NativeHandle Constructor (TMBCameraState cameraState, CGPoint anchor);
 	}
 
 	// @interface TMBCameraState : NSObject
@@ -1052,7 +1052,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithCenter:(CLLocationCoordinate2D)center padding:(UIEdgeInsets)padding zoom:(CGFloat)zoom bearing:(CLLocationDirection)bearing pitch:(CGFloat)pitch __attribute__((objc_designated_initializer));
 		[Export ("initWithCenter:padding:zoom:bearing:pitch:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (CLLocationCoordinate2D center, UIEdgeInsets padding, nfloat zoom, double bearing, nfloat pitch);
+		NativeHandle Constructor (CLLocationCoordinate2D center, UIEdgeInsets padding, nfloat zoom, double bearing, nfloat pitch);
 	}
 
 	// @interface TMBCameraTransition : NSObject
@@ -1143,12 +1143,12 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id centerCoordinate:(CLLocationCoordinate2D)centerCoordinate isSelected:(BOOL)isSelected isDraggable:(BOOL)isDraggable __attribute__((objc_designated_initializer));
 		[Export ("initWithId:centerCoordinate:isSelected:isDraggable:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, CLLocationCoordinate2D centerCoordinate, bool isSelected, bool isDraggable);
+		NativeHandle Constructor (string id, CLLocationCoordinate2D centerCoordinate, bool isSelected, bool isDraggable);
 
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id point:(TMBPoint * _Nonnull)point isSelected:(BOOL)isSelected isDraggable:(BOOL)isDraggable __attribute__((objc_designated_initializer));
 		[Export ("initWithId:point:isSelected:isDraggable:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, TMBPoint point, bool isSelected, bool isDraggable);
+		NativeHandle Constructor (string id, TMBPoint point, bool isSelected, bool isDraggable);
 
 		// @property (nonatomic, strong) NSNumber * _Nullable circleSortKey;
 		[NullAllowed, Export ("circleSortKey", ArgumentSemantic.Strong)]
@@ -1361,7 +1361,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source __attribute__((objc_designated_initializer));
 		[Export ("initWithId:source:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, string source);
+		NativeHandle Constructor (string id, string source);
 	}
 
 	// @interface TMBCirclePitchAlignment : NSObject
@@ -1375,7 +1375,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBCirclePitchAlignment * _Nonnull map;
 		[Static]
@@ -1399,7 +1399,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBCirclePitchScale * _Nonnull map;
 		[Static]
@@ -1423,7 +1423,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBCircleTranslateAnchor * _Nonnull map;
 		[Static]
@@ -1476,7 +1476,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithCircleRadius:(TMBValue * _Nullable)circleRadius circleColor:(TMBValue * _Nullable)circleColor textColor:(TMBValue * _Nullable)textColor textSize:(TMBValue * _Nullable)textSize textField:(TMBValue * _Nullable)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *,TMBExpression *> * _Nullable)clusterProperties __attribute__((objc_designated_initializer));
 		[Export ("initWithCircleRadius:circleColor:textColor:textSize:textField:clusterRadius:clusterMaxZoom:clusterProperties:")]
 		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] TMBValue circleRadius, [NullAllowed] TMBValue circleColor, [NullAllowed] TMBValue textColor, [NullAllowed] TMBValue textSize, [NullAllowed] TMBValue textField, double clusterRadius, double clusterMaxZoom, [NullAllowed] NSDictionary<NSString, TMBExpression> clusterProperties);
+		NativeHandle Constructor ([NullAllowed] TMBValue circleRadius, [NullAllowed] TMBValue circleColor, [NullAllowed] TMBValue textColor, [NullAllowed] TMBValue textSize, [NullAllowed] TMBValue textField, double clusterRadius, double clusterMaxZoom, [NullAllowed] NSDictionary<NSString, TMBExpression> clusterProperties);
 	}
 
 	// @interface TMBCollatorOptions : NSObject
@@ -1499,7 +1499,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithCaseSensitive:(NSNumber * _Nullable)caseSensitive diacriticSensitive:(NSNumber * _Nullable)diacriticSensitive locale:(NSString * _Nullable)locale __attribute__((objc_designated_initializer));
 		[Export ("initWithCaseSensitive:diacriticSensitive:locale:")]
 		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] NSNumber caseSensitive, [NullAllowed] NSNumber diacriticSensitive, [NullAllowed] string locale);
+		NativeHandle Constructor ([NullAllowed] NSNumber caseSensitive, [NullAllowed] NSNumber diacriticSensitive, [NullAllowed] string locale);
 	}
 
 	// @interface TMBCompassDirectionFormatter : NSObject
@@ -1540,7 +1540,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithPosition:(enum TMBOrnamentPosition)position margins:(CGPoint)margins image:(UIImage * _Nullable)image visibility:(enum TMBOrnamentVisibility)visibility __attribute__((objc_designated_initializer));
 		[Export ("initWithPosition:margins:image:visibility:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBOrnamentPosition position, CGPoint margins, [NullAllowed] UIImage image, TMBOrnamentVisibility visibility);
+		NativeHandle Constructor (TMBOrnamentPosition position, CGPoint margins, [NullAllowed] UIImage image, TMBOrnamentVisibility visibility);
 	}
 
 	// @interface TMBDirectionalLight : NSObject
@@ -1595,7 +1595,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
 		[Export ("initWithId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id);
+		NativeHandle Constructor (string id);
 	}
 
 	// @interface TMBEncoding : NSObject
@@ -1609,7 +1609,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBEncoding * _Nonnull terrarium;
 		[Static]
@@ -3003,7 +3003,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 	}
 
 	// @interface TMBExpressionOptions : NSObject
@@ -3151,7 +3151,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source __attribute__((objc_designated_initializer));
 		[Export ("initWithId:source:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, string source);
+		NativeHandle Constructor (string id, string source);
 	}
 
 	// @interface TMBFillExtrusionTranslateAnchor : NSObject
@@ -3165,7 +3165,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBFillExtrusionTranslateAnchor * _Nonnull map;
 		[Static]
@@ -3278,7 +3278,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source __attribute__((objc_designated_initializer));
 		[Export ("initWithId:source:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, string source);
+		NativeHandle Constructor (string id, string source);
 	}
 
 	// @interface TMBFillTranslateAnchor : NSObject
@@ -3292,7 +3292,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBFillTranslateAnchor * _Nonnull map;
 		[Static]
@@ -3349,7 +3349,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
 		[Export ("initWithId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id);
+		NativeHandle Constructor (string id);
 	}
 
 	// @interface TMBFlyToCameraAnimator : NSObject
@@ -3491,7 +3491,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
 		[Export ("initWithId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id);
+		NativeHandle Constructor (string id);
 	}
 
 	// @interface TMBGeoJSONSourceData : NSObject
@@ -3662,7 +3662,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithPanEnabled:(BOOL)panEnabled pinchEnabled:(BOOL)pinchEnabled rotateEnabled:(BOOL)rotateEnabled simultaneousRotateAndPinchZoomEnabled:(BOOL)simultaneousRotateAndPinchZoomEnabled pinchZoomEnabled:(BOOL)pinchZoomEnabled pinchPanEnabled:(BOOL)pinchPanEnabled pitchEnabled:(BOOL)pitchEnabled doubleTapToZoomInEnabled:(BOOL)doubleTapToZoomInEnabled doubleTouchToZoomOutEnabled:(BOOL)doubleTouchToZoomOutEnabled quickZoomEnabled:(BOOL)quickZoomEnabled panMode:(enum TMBPanMode)panMode panDecelerationFactor:(CGFloat)panDecelerationFactor focalPoint:(CGPoint)focalPoint __attribute__((objc_designated_initializer));
 		[Export ("initWithPanEnabled:pinchEnabled:rotateEnabled:simultaneousRotateAndPinchZoomEnabled:pinchZoomEnabled:pinchPanEnabled:pitchEnabled:doubleTapToZoomInEnabled:doubleTouchToZoomOutEnabled:quickZoomEnabled:panMode:panDecelerationFactor:focalPoint:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (bool panEnabled, bool pinchEnabled, bool rotateEnabled, bool simultaneousRotateAndPinchZoomEnabled, bool pinchZoomEnabled, bool pinchPanEnabled, bool pitchEnabled, bool doubleTapToZoomInEnabled, bool doubleTouchToZoomOutEnabled, bool quickZoomEnabled, TMBPanMode panMode, nfloat panDecelerationFactor, CGPoint focalPoint);
+		NativeHandle Constructor (bool panEnabled, bool pinchEnabled, bool rotateEnabled, bool simultaneousRotateAndPinchZoomEnabled, bool pinchZoomEnabled, bool pinchPanEnabled, bool pitchEnabled, bool doubleTapToZoomInEnabled, bool doubleTouchToZoomOutEnabled, bool quickZoomEnabled, TMBPanMode panMode, nfloat panDecelerationFactor, CGPoint focalPoint);
 	}
 
 	// @interface TMBHeading : NSObject
@@ -3685,11 +3685,11 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithDirection:(CLLocationDirection)direction accuracy:(CLLocationDirection)accuracy timestamp:(NSDate * _Nonnull)timestamp __attribute__((objc_designated_initializer));
 		[Export ("initWithDirection:accuracy:timestamp:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (double direction, double accuracy, NSDate timestamp);
+		NativeHandle Constructor (double direction, double accuracy, NSDate timestamp);
 
 		// -(instancetype _Nonnull)initFrom:(CLHeading * _Nonnull)clHeading;
 		[Export ("initFrom:")]
-		IntPtr Constructor (CLHeading clHeading);
+		NativeHandle Constructor (CLHeading clHeading);
 	}
 
 	// @protocol TMBHeadingObserver
@@ -3822,7 +3822,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source __attribute__((objc_designated_initializer));
 		[Export ("initWithId:source:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, string source);
+		NativeHandle Constructor (string id, string source);
 	}
 
 	// @interface TMBHillshadeIlluminationAnchor : NSObject
@@ -3836,7 +3836,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBHillshadeIlluminationAnchor * _Nonnull map;
 		[Static]
@@ -3933,7 +3933,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source __attribute__((objc_designated_initializer));
 		[Export ("initWithId:source:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, string source);
+		NativeHandle Constructor (string id, string source);
 	}
 
 	// @interface TMBIconAnchor : NSObject
@@ -3947,7 +3947,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBIconAnchor * _Nonnull center;
 		[Static]
@@ -4006,7 +4006,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBIconPitchAlignment * _Nonnull map;
 		[Static]
@@ -4035,7 +4035,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBIconRotationAlignment * _Nonnull map;
 		[Static]
@@ -4064,7 +4064,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBIconTextFit * _Nonnull none;
 		[Static]
@@ -4098,7 +4098,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBIconTranslateAnchor * _Nonnull map;
 		[Static]
@@ -4139,7 +4139,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
 		[Export ("initWithId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id);
+		NativeHandle Constructor (string id);
 	}
 
 	// @interface TMBLayerInfo : NSObject
@@ -4158,7 +4158,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id type:(TMBLayerType * _Nonnull)type __attribute__((objc_designated_initializer));
 		[Export ("initWithId:type:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, TMBLayerType type);
+		NativeHandle Constructor (string id, TMBLayerType type);
 	}
 
 	// @interface TMBLayerPosition : NSObject
@@ -4177,7 +4177,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)init:(enum TMBLayerPositionType)type arg:(id _Nonnull)arg __attribute__((objc_designated_initializer));
 		[Export ("init:arg:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBLayerPositionType type, NSObject arg);
+		NativeHandle Constructor (TMBLayerPositionType type, NSObject arg);
 
 		// +(TMBLayerPosition * _Nonnull)atIndex:(NSInteger)index __attribute__((warn_unused_result("")));
 		[Static]
@@ -4271,7 +4271,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 	}
 
 	// @interface TMBLightInfo : NSObject
@@ -4290,7 +4290,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id type:(TMBLightType * _Nonnull)type __attribute__((objc_designated_initializer));
 		[Export ("initWithId:type:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, TMBLightType type);
+		NativeHandle Constructor (string id, TMBLightType type);
 	}
 
 	// @interface TMBLightType : NSObject
@@ -4319,7 +4319,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 	}
 
 	// @interface TMBLineCap : NSObject
@@ -4333,7 +4333,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBLineCap * _Nonnull butt;
 		[Static]
@@ -4362,7 +4362,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBLineJoin * _Nonnull bevel;
 		[Static]
@@ -4552,7 +4552,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source __attribute__((objc_designated_initializer));
 		[Export ("initWithId:source:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, string source);
+		NativeHandle Constructor (string id, string source);
 	}
 
 	// @interface TMBLineString : NSObject
@@ -4576,7 +4576,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBLineTranslateAnchor * _Nonnull map;
 		[Static]
@@ -4729,7 +4729,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
 		[Export ("initWithId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id);
+		NativeHandle Constructor (string id);
 	}
 
 	// @interface TMBLocationManager : NSObject
@@ -4786,7 +4786,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithPuckType:(id<TMBPuckTypeConfiguration> _Nullable)puckType puckBearing:(enum TMBPuckBearing)puckBearing puckBearingEnabled:(BOOL)puckBearingEnabled __attribute__((objc_designated_initializer));
 		[Export ("initWithPuckType:puckBearing:puckBearingEnabled:")]
 		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] ITMBPuckTypeConfiguration puckType, TMBPuckBearing puckBearing, bool puckBearingEnabled);
+		NativeHandle Constructor ([NullAllowed] ITMBPuckTypeConfiguration puckType, TMBPuckBearing puckBearing, bool puckBearingEnabled);
 	}
 
 	// @interface TMBLogoViewOptions : NSObject
@@ -4805,7 +4805,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithPosition:(enum TMBOrnamentPosition)position margins:(CGPoint)margins __attribute__((objc_designated_initializer));
 		[Export ("initWithPosition:margins:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBOrnamentPosition position, CGPoint margins);
+		NativeHandle Constructor (TMBOrnamentPosition position, CGPoint margins);
 	}
 
 	// @interface TMBMapContentGestureContext : NSObject
@@ -4888,7 +4888,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSInteger)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (nint rawValue);
+		NativeHandle Constructor (nint rawValue);
 	}
 
 	// @interface TMBStyleManager : NSObject
@@ -5465,7 +5465,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithUri:(NSURL * _Nullable)uri position:(NSArray<NSNumber *> * _Nullable)position orientation:(NSArray<NSNumber *> * _Nullable)orientation __attribute__((objc_designated_initializer));
 		[Export ("initWithUri:position:orientation:")]
 		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] NSUrl uri, [NullAllowed] NSNumber[] position, [NullAllowed] NSNumber[] orientation);
+		NativeHandle Constructor ([NullAllowed] NSUrl uri, [NullAllowed] NSNumber[] position, [NullAllowed] NSNumber[] orientation);
 	}
 
 	// @interface TMBModelScaleMode : NSObject
@@ -5479,7 +5479,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBModelScaleMode * _Nonnull map;
 		[Static]
@@ -5503,7 +5503,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBModelType * _Nonnull common3d;
 		[Static]
@@ -5547,7 +5547,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithScaleBar:(TMBScaleBarViewOptions * _Nonnull)scaleBar compass:(TMBCompassViewOptions * _Nonnull)compass logo:(TMBLogoViewOptions * _Nonnull)logo attributionButton:(TMBAttributionButtonOptions * _Nonnull)attributionButton __attribute__((objc_designated_initializer));
 		[Export ("initWithScaleBar:compass:logo:attributionButton:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBScaleBarViewOptions scaleBar, TMBCompassViewOptions compass, TMBLogoViewOptions logo, TMBAttributionButtonOptions attributionButton);
+		NativeHandle Constructor (TMBScaleBarViewOptions scaleBar, TMBCompassViewOptions compass, TMBLogoViewOptions logo, TMBAttributionButtonOptions attributionButton);
 	}
 
 	// @interface TMBOrnamentsManager : NSObject
@@ -5588,7 +5588,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)init:(CLLocationCoordinate2D)coordinates __attribute__((objc_designated_initializer));
 		[Export ("init:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (CLLocationCoordinate2D coordinates);
+		NativeHandle Constructor (CLLocationCoordinate2D coordinates);
 	}
 
 	// @interface TMBPointAnnotation : NSObject <TMBAnnotation>
@@ -5631,12 +5631,12 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id point:(TMBPoint * _Nonnull)point isSelected:(BOOL)isSelected isDraggable:(BOOL)isDraggable __attribute__((objc_designated_initializer));
 		[Export ("initWithId:point:isSelected:isDraggable:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, TMBPoint point, bool isSelected, bool isDraggable);
+		NativeHandle Constructor (string id, TMBPoint point, bool isSelected, bool isDraggable);
 
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id coordinate:(CLLocationCoordinate2D)coordinate isSelected:(BOOL)isSelected isDraggable:(BOOL)isDraggable __attribute__((objc_designated_initializer));
 		[Export ("initWithId:coordinate:isSelected:isDraggable:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, CLLocationCoordinate2D coordinate, bool isSelected, bool isDraggable);
+		NativeHandle Constructor (string id, CLLocationCoordinate2D coordinate, bool isSelected, bool isDraggable);
 
 		// @property (nonatomic, strong) TMBIconAnchor * _Nullable iconAnchor;
 		[NullAllowed, Export ("iconAnchor", ArgumentSemantic.Strong)]
@@ -5787,7 +5787,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithImage:(UIImage * _Nonnull)image name:(NSString * _Nonnull)name __attribute__((objc_designated_initializer));
 		[Export ("initWithImage:name:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (UIImage image, string name);
+		NativeHandle Constructor (UIImage image, string name);
 	}
 
 	// @interface TMBPointAnnotationManager : NSObject <TMBAnnotationManager>
@@ -5936,17 +5936,17 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)init:(NSArray<NSArray<NSValue *> *> * _Nonnull)coordinates __attribute__((objc_designated_initializer));
 		[Export ("init:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (NSArray coordinates);
+		NativeHandle Constructor (NSArray coordinates);
 
 		// -(instancetype _Nonnull)initWithOuterRing:(TMBPolygonRing * _Nonnull)outerRing innerRings:(NSArray<TMBPolygonRing *> * _Nonnull)innerRings __attribute__((objc_designated_initializer));
 		[Export ("initWithOuterRing:innerRings:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBPolygonRing outerRing, TMBPolygonRing[] innerRings);
+		NativeHandle Constructor (TMBPolygonRing outerRing, TMBPolygonRing[] innerRings);
 
 		// -(instancetype _Nonnull)initWithCenter:(CLLocationCoordinate2D)center radius:(CLLocationDistance)radius vertices:(NSInteger)vertices __attribute__((objc_designated_initializer));
 		[Export ("initWithCenter:radius:vertices:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (CLLocationCoordinate2D center, double radius, nint vertices);
+		NativeHandle Constructor (CLLocationCoordinate2D center, double radius, nint vertices);
 	}
 
 	// @interface TMBPolygonAnnotation : NSObject <TMBAnnotation>
@@ -5989,7 +5989,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id polygon:(TMBPolygon * _Nonnull)polygon isSelected:(BOOL)isSelected isDraggable:(BOOL)isDraggable __attribute__((objc_designated_initializer));
 		[Export ("initWithId:polygon:isSelected:isDraggable:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, TMBPolygon polygon, bool isSelected, bool isDraggable);
+		NativeHandle Constructor (string id, TMBPolygon polygon, bool isSelected, bool isDraggable);
 
 		// @property (nonatomic, strong) NSNumber * _Nullable fillSortKey;
 		[NullAllowed, Export ("fillSortKey", ArgumentSemantic.Strong)]
@@ -6066,7 +6066,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithCoordinates:(NSArray<NSValue *> * _Nonnull)coordinates __attribute__((objc_designated_initializer));
 		[Export ("initWithCoordinates:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (NSValue[] coordinates);
+		NativeHandle Constructor (NSValue[] coordinates);
 	}
 
 	// @interface TMBPolylineAnnotation : NSObject <TMBAnnotation>
@@ -6109,12 +6109,12 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id lineString:(TMBLineString * _Nonnull)lineString isSelected:(BOOL)isSelected isDraggable:(BOOL)isDraggable __attribute__((objc_designated_initializer));
 		[Export ("initWithId:lineString:isSelected:isDraggable:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, TMBLineString lineString, bool isSelected, bool isDraggable);
+		NativeHandle Constructor (string id, TMBLineString lineString, bool isSelected, bool isDraggable);
 
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id lineCoordinates:(NSArray<NSValue *> * _Nonnull)lineCoordinates isSelected:(BOOL)isSelected isDraggable:(BOOL)isDraggable __attribute__((objc_designated_initializer));
 		[Export ("initWithId:lineCoordinates:isSelected:isDraggable:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, NSValue[] lineCoordinates, bool isSelected, bool isDraggable);
+		NativeHandle Constructor (string id, NSValue[] lineCoordinates, bool isSelected, bool isDraggable);
 
 		// @property (nonatomic, strong) TMBLineJoin * _Nullable lineJoin;
 		[NullAllowed, Export ("lineJoin", ArgumentSemantic.Strong)]
@@ -6345,12 +6345,12 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithTopImage:(UIImage * _Nullable)topImage bearingImage:(UIImage * _Nullable)bearingImage shadowImage:(UIImage * _Nullable)shadowImage scale:(TMBValue * _Nullable)scale pulsing:(TMBPuck2DConfigurationPulsing * _Nullable)pulsing showsAccuracyRing:(BOOL)showsAccuracyRing opacity:(double)opacity __attribute__((objc_designated_initializer));
 		[Export ("initWithTopImage:bearingImage:shadowImage:scale:pulsing:showsAccuracyRing:opacity:")]
 		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] UIImage topImage, [NullAllowed] UIImage bearingImage, [NullAllowed] UIImage shadowImage, [NullAllowed] TMBValue scale, [NullAllowed] TMBPuck2DConfigurationPulsing pulsing, bool showsAccuracyRing, double opacity);
+		NativeHandle Constructor ([NullAllowed] UIImage topImage, [NullAllowed] UIImage bearingImage, [NullAllowed] UIImage shadowImage, [NullAllowed] TMBValue scale, [NullAllowed] TMBPuck2DConfigurationPulsing pulsing, bool showsAccuracyRing, double opacity);
 
 		// -(instancetype _Nonnull)initWithTopImage:(UIImage * _Nullable)topImage bearingImage:(UIImage * _Nullable)bearingImage shadowImage:(UIImage * _Nullable)shadowImage scale:(TMBValue * _Nullable)scale showsAccuracyRing:(BOOL)showsAccuracyRing accuracyRingColor:(UIColor * _Nonnull)accuracyRingColor accuracyRingBorderColor:(UIColor * _Nonnull)accuracyRingBorderColor opacity:(double)opacity __attribute__((objc_designated_initializer));
 		[Export ("initWithTopImage:bearingImage:shadowImage:scale:showsAccuracyRing:accuracyRingColor:accuracyRingBorderColor:opacity:")]
 		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] UIImage topImage, [NullAllowed] UIImage bearingImage, [NullAllowed] UIImage shadowImage, [NullAllowed] TMBValue scale, bool showsAccuracyRing, UIColor accuracyRingColor, UIColor accuracyRingBorderColor, double opacity);
+		NativeHandle Constructor ([NullAllowed] UIImage topImage, [NullAllowed] UIImage bearingImage, [NullAllowed] UIImage shadowImage, [NullAllowed] TMBValue scale, bool showsAccuracyRing, UIColor accuracyRingColor, UIColor accuracyRingBorderColor, double opacity);
 	}
 
 	// @interface TMBPuck2DConfigurationPulsing : NSObject
@@ -6361,7 +6361,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithColor:(UIColor * _Nonnull)color radius:(TMBPuck2DConfigurationPulsingRadius * _Nonnull)radius __attribute__((objc_designated_initializer));
 		[Export ("initWithColor:radius:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (UIColor color, TMBPuck2DConfigurationPulsingRadius radius);
+		NativeHandle Constructor (UIColor color, TMBPuck2DConfigurationPulsingRadius radius);
 	}
 
 	// @interface TMBPuck2DConfigurationPulsingRadius : NSObject
@@ -6402,7 +6402,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithModel:(TMBModel * _Nonnull)model modelScale:(TMBValue * _Nullable)modelScale modelRotation:(TMBValue * _Nullable)modelRotation modelOpacity:(TMBValue * _Nullable)modelOpacity __attribute__((objc_designated_initializer));
 		[Export ("initWithModel:modelScale:modelRotation:modelOpacity:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBModel model, [NullAllowed] TMBValue modelScale, [NullAllowed] TMBValue modelRotation, [NullAllowed] TMBValue modelOpacity);
+		NativeHandle Constructor (TMBModel model, [NullAllowed] TMBValue modelScale, [NullAllowed] TMBValue modelRotation, [NullAllowed] TMBValue modelOpacity);
 	}
 
 	// @interface TMBPuckRenderingData : NSObject
@@ -6421,7 +6421,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithLocation:(MBXLocation * _Nonnull)location heading:(TMBHeading * _Nullable)heading __attribute__((objc_designated_initializer));
 		[Export ("initWithLocation:heading:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (MBXLocation location, [NullAllowed] TMBHeading heading);
+		NativeHandle Constructor (MBXLocation location, [NullAllowed] TMBHeading heading);
 	}
 
 	// @interface TMBRasterDemSource : NSObject <TMBSource>
@@ -6496,7 +6496,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
 		[Export ("initWithId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id);
+		NativeHandle Constructor (string id);
 	}
 
 	// @interface TMBRasterLayer : NSObject <TMBLayer>
@@ -6619,7 +6619,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source __attribute__((objc_designated_initializer));
 		[Export ("initWithId:source:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, string source);
+		NativeHandle Constructor (string id, string source);
 	}
 
 	// @interface TMBRasterResampling : NSObject
@@ -6633,7 +6633,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBRasterResampling * _Nonnull linear;
 		[Static]
@@ -6718,7 +6718,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
 		[Export ("initWithId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id);
+		NativeHandle Constructor (string id);
 	}
 
 	// @interface TMBResolvedImage : NSObject
@@ -6768,7 +6768,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithPosition:(enum TMBOrnamentPosition)position margins:(CGPoint)margins visibility:(enum TMBOrnamentVisibility)visibility useMetricUnits:(BOOL)useMetricUnits __attribute__((objc_designated_initializer));
 		[Export ("initWithPosition:margins:visibility:useMetricUnits:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBOrnamentPosition position, CGPoint margins, TMBOrnamentVisibility visibility, bool useMetricUnits);
+		NativeHandle Constructor (TMBOrnamentPosition position, CGPoint margins, TMBOrnamentVisibility visibility, bool useMetricUnits);
 	}
 
 	// @interface TMBScheme : NSObject
@@ -6782,7 +6782,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBScheme * _Nonnull xyz;
 		[Static]
@@ -6867,7 +6867,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
 		[Export ("initWithId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id);
+		NativeHandle Constructor (string id);
 	}
 
 	// @interface TMBSkyType : NSObject
@@ -6881,7 +6881,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBSkyType * _Nonnull gradient;
 		[Static]
@@ -6920,7 +6920,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 	}
 
 	// @interface TMBSourceInfo : NSObject
@@ -6939,7 +6939,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id type:(TMBSourceType * _Nonnull)type __attribute__((objc_designated_initializer));
 		[Export ("initWithId:type:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, TMBSourceType type);
+		NativeHandle Constructor (string id, TMBSourceType type);
 	}
 
 	// @interface TMBSourceType : NSObject
@@ -6983,7 +6983,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 	}
 
 	// @interface MapboxMapObjC_Swift_6112 (TMBStyleManager)
@@ -7012,7 +7012,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithName:(TMBStyleProjectionName * _Nonnull)name __attribute__((objc_designated_initializer));
 		[Export ("initWithName:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBStyleProjectionName name);
+		NativeHandle Constructor (TMBStyleProjectionName name);
 	}
 
 	// @interface TMBStyleProjectionName : NSObject
@@ -7026,7 +7026,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBStyleProjectionName * _Nonnull mercator;
 		[Static]
@@ -7055,7 +7055,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay __attribute__((objc_designated_initializer));
 		[Export ("initWithDuration:delay:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (double duration, double delay);
+		NativeHandle Constructor (double duration, double delay);
 	}
 
 	// @interface TMBStyleURI : NSObject
@@ -7069,7 +7069,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBStyleURI * _Nonnull streets;
 		[Static]
@@ -7447,7 +7447,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source __attribute__((objc_designated_initializer));
 		[Export ("initWithId:source:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id, string source);
+		NativeHandle Constructor (string id, string source);
 	}
 
 	// @interface TMBSymbolPlacement : NSObject
@@ -7461,7 +7461,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBSymbolPlacement * _Nonnull point;
 		[Static]
@@ -7490,7 +7490,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, getter = auto, nonatomic, strong, class) TMBSymbolZOrder * _Nonnull auto_;
 		[Static]
@@ -7516,7 +7516,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithSourceId:(NSString * _Nonnull)sourceId __attribute__((objc_designated_initializer));
 		[Export ("initWithSourceId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string sourceId);
+		NativeHandle Constructor (string sourceId);
 
 		// @property (copy, nonatomic) NSString * _Nonnull source;
 		[Export ("source")]
@@ -7538,7 +7538,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBTextAnchor * _Nonnull center;
 		[Static]
@@ -7597,7 +7597,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, getter = auto, nonatomic, strong, class) TMBTextJustify * _Nonnull auto_;
 		[Static]
@@ -7631,7 +7631,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBTextPitchAlignment * _Nonnull map;
 		[Static]
@@ -7660,7 +7660,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBTextRotationAlignment * _Nonnull map;
 		[Static]
@@ -7689,7 +7689,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBTextTransform * _Nonnull none;
 		[Static]
@@ -7718,7 +7718,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBTextTranslateAnchor * _Nonnull map;
 		[Static]
@@ -7742,7 +7742,7 @@ namespace MapboxMapsObjC
 
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue;
 		[Export ("initWithRawValue:")]
-		IntPtr Constructor (string rawValue);
+		NativeHandle Constructor (string rawValue);
 
 		// @property (readonly, nonatomic, strong, class) TMBTextWritingMode * _Nonnull horizontal;
 		[Static]
@@ -7813,12 +7813,12 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithConstant:(id _Nullable)constant __attribute__((objc_designated_initializer));
 		[Export ("initWithConstant:")]
 		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] NSObject constant);
+		NativeHandle Constructor ([NullAllowed] NSObject constant);
 
 		// -(instancetype _Nonnull)initWithExpression:(TMBExpression * _Nonnull)expression __attribute__((objc_designated_initializer));
 		[Export ("initWithExpression:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (TMBExpression expression);
+		NativeHandle Constructor (TMBExpression expression);
 
 		// +(TMBValue * _Nonnull)constant:(NSObject * _Nonnull)constant __attribute__((warn_unused_result("")));
 		[Static]
@@ -8320,7 +8320,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
 		[Export ("initWithId:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (string id);
+		NativeHandle Constructor (string id);
 	}
 
 	// @interface TMBViewAnnotation : NSObject
@@ -8471,7 +8471,7 @@ namespace MapboxMapsObjC
 		// -(instancetype _Nonnull)initWithAnnotatedFeature:(TMBAnnotatedFeature * _Nullable)annotatedFeature width:(NSNumber * _Nullable)width height:(NSNumber * _Nullable)height allowOverlap:(NSNumber * _Nullable)allowOverlap allowOverlapWithPuck:(NSNumber * _Nullable)allowOverlapWithPuck visible:(NSNumber * _Nullable)visible selected:(NSNumber * _Nullable)selected variableAnchors:(NSArray<MBMViewAnnotationAnchorConfig *> * _Nullable)variableAnchors ignoreCameraPadding:(NSNumber * _Nullable)ignoreCameraPadding __attribute__((objc_designated_initializer));
 		[Export ("initWithAnnotatedFeature:width:height:allowOverlap:allowOverlapWithPuck:visible:selected:variableAnchors:ignoreCameraPadding:")]
 		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] TMBAnnotatedFeature annotatedFeature, [NullAllowed] NSNumber width, [NullAllowed] NSNumber height, [NullAllowed] NSNumber allowOverlap, [NullAllowed] NSNumber allowOverlapWithPuck, [NullAllowed] NSNumber visible, [NullAllowed] NSNumber selected, [NullAllowed] MBMViewAnnotationAnchorConfig[] variableAnchors, [NullAllowed] NSNumber ignoreCameraPadding);
+		NativeHandle Constructor ([NullAllowed] TMBAnnotatedFeature annotatedFeature, [NullAllowed] NSNumber width, [NullAllowed] NSNumber height, [NullAllowed] NSNumber allowOverlap, [NullAllowed] NSNumber allowOverlapWithPuck, [NullAllowed] NSNumber visible, [NullAllowed] NSNumber selected, [NullAllowed] MBMViewAnnotationAnchorConfig[] variableAnchors, [NullAllowed] NSNumber ignoreCameraPadding);
 	}
 
 	// @interface MapboxMapObjC_Swift_7109

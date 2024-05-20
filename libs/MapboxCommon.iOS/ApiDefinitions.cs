@@ -18,7 +18,7 @@ namespace MapboxCommon
 
 		// -(instancetype _Nonnull)initWithValue:(CLLocationCoordinate2D)value;
 		[Export ("initWithValue:")]
-		IntPtr Constructor (CLLocationCoordinate2D value);
+		NativeHandle Constructor (CLLocationCoordinate2D value);
 	}
 
 	// @interface MBXExceptionHandler : NSObject
@@ -50,7 +50,7 @@ namespace MapboxCommon
 
 		// -(instancetype _Nonnull)initWithIdentifier:(NSObject * _Nonnull)identifier geometry:(MBXGeometry * _Nonnull)geometry properties:(NSDictionary<NSString *,NSObject *> * _Nonnull)properties;
 		[Export ("initWithIdentifier:geometry:properties:")]
-		IntPtr Constructor (NSObject identifier, MBXGeometry geometry, NSDictionary<NSString, NSObject> properties);
+		NativeHandle Constructor (NSObject identifier, MBXGeometry geometry, NSDictionary<NSString, NSObject> properties);
 	}
 
 	// @interface MBXGeometry : NSObject
@@ -67,11 +67,11 @@ namespace MapboxCommon
 
 		// -(instancetype _Nonnull)initWithPoint:(NSValue * _Nonnull)location;
 		[Export ("initWithPoint:")]
-		IntPtr Constructor (NSValue location);
+		NativeHandle Constructor (NSValue location);
 
 		// -(instancetype _Nonnull)initWithLine:(NSArray<NSValue *> * _Nonnull)locations;
 		[Export ("initWithLine:")]
-		IntPtr Constructor (NSValue[] locations);
+		NativeHandle Constructor (NSValue[] locations);
 
 		// -(instancetype _Nonnull)initWithPolygon:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations;
 		[Static, Export ("initWithPolygon:")]
@@ -121,7 +121,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithLatitude:(double)latitude longitude:(double)longitude timestamp:(uint64_t)timestamp monotonicTimestamp:(NSNumber * _Nullable)monotonicTimestamp altitude:(NSNumber * _Nullable)altitude horizontalAccuracy:(NSNumber * _Nullable)horizontalAccuracy verticalAccuracy:(NSNumber * _Nullable)verticalAccuracy speed:(NSNumber * _Nullable)speed speedAccuracy:(NSNumber * _Nullable)speedAccuracy bearing:(NSNumber * _Nullable)bearing bearingAccuracy:(NSNumber * _Nullable)bearingAccuracy floor:(NSNumber * _Nullable)floor source:(NSString * _Nullable)source extra:(id _Nullable)extra __attribute__((swift_private));
 		[Export ("initWithLatitude:longitude:timestamp:monotonicTimestamp:altitude:horizontalAccuracy:verticalAccuracy:speed:speedAccuracy:bearing:bearingAccuracy:floor:source:extra:")]
-		IntPtr Constructor (double latitude, double longitude, ulong timestamp, [NullAllowed] NSNumber monotonicTimestamp, [NullAllowed] NSNumber altitude, [NullAllowed] NSNumber horizontalAccuracy, [NullAllowed] NSNumber verticalAccuracy, [NullAllowed] NSNumber speed, [NullAllowed] NSNumber speedAccuracy, [NullAllowed] NSNumber bearing, [NullAllowed] NSNumber bearingAccuracy, [NullAllowed] NSNumber floor, [NullAllowed] string source, [NullAllowed] NSObject extra);
+		NativeHandle Constructor (double latitude, double longitude, ulong timestamp, [NullAllowed] NSNumber monotonicTimestamp, [NullAllowed] NSNumber altitude, [NullAllowed] NSNumber horizontalAccuracy, [NullAllowed] NSNumber verticalAccuracy, [NullAllowed] NSNumber speed, [NullAllowed] NSNumber speedAccuracy, [NullAllowed] NSNumber bearing, [NullAllowed] NSNumber bearingAccuracy, [NullAllowed] NSNumber floor, [NullAllowed] string source, [NullAllowed] NSObject extra);
 
 		// @property (readonly, nonatomic) double latitude __attribute__((swift_private));
 		[Export ("latitude")]
@@ -234,11 +234,11 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithUrl:(NSString * _Nonnull)url headers:(NSDictionary<NSString *,NSString *> * _Nonnull)headers sdkInformation:(MBXSdkInformation * _Nonnull)sdkInformation body:(NSData * _Nullable)body;
 		[Export ("initWithUrl:headers:sdkInformation:body:")]
-		IntPtr Constructor (string url, NSDictionary<NSString, NSString> headers, MBXSdkInformation sdkInformation, [NullAllowed] NSData body);
+		NativeHandle Constructor (string url, NSDictionary<NSString, NSString> headers, MBXSdkInformation sdkInformation, [NullAllowed] NSData body);
 
 		// -(instancetype _Nonnull)initWithMethod:(MBXHttpMethod)method url:(NSString * _Nonnull)url headers:(NSDictionary<NSString *,NSString *> * _Nonnull)headers timeout:(uint64_t)timeout networkRestriction:(MBXNetworkRestriction)networkRestriction sdkInformation:(MBXSdkInformation * _Nonnull)sdkInformation body:(NSData * _Nullable)body flags:(uint32_t)flags;
 		[Export ("initWithMethod:url:headers:timeout:networkRestriction:sdkInformation:body:flags:")]
-		IntPtr Constructor (MBXHttpMethod method, string url, NSDictionary<NSString, NSString> headers, ulong timeout, MBXNetworkRestriction networkRestriction, MBXSdkInformation sdkInformation, [NullAllowed] NSData body, uint flags);
+		NativeHandle Constructor (MBXHttpMethod method, string url, NSDictionary<NSString, NSString> headers, ulong timeout, MBXNetworkRestriction networkRestriction, MBXSdkInformation sdkInformation, [NullAllowed] NSData body, uint flags);
 
 		// @property (readwrite, nonatomic) MBXHttpMethod method;
 		[Export ("method", ArgumentSemantic.Assign)]
@@ -280,7 +280,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithType:(MBXHttpRequestErrorType)type message:(NSString * _Nonnull)message;
 		[Export ("initWithType:message:")]
-		IntPtr Constructor (MBXHttpRequestErrorType type, string message);
+		NativeHandle Constructor (MBXHttpRequestErrorType type, string message);
 
 		// @property (readonly, nonatomic) MBXHttpRequestErrorType type;
 		[Export ("type")]
@@ -298,7 +298,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithHeaders:(NSDictionary<NSString *,NSString *> * _Nonnull)headers code:(int32_t)code data:(NSData * _Nonnull)data;
 		[Export ("initWithHeaders:code:data:")]
-		IntPtr Constructor (NSDictionary<NSString, NSString> headers, int code, NSData data);
+		NativeHandle Constructor (NSDictionary<NSString, NSString> headers, int code, NSData data);
 
 		// @property (readonly, copy, nonatomic) NSDictionary<NSString *,NSString *> * _Nonnull headers;
 		[Export ("headers", ArgumentSemantic.Copy)]
@@ -442,7 +442,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithCode:(MBXLocationErrorCode)code message:(NSString * _Nonnull)message;
 		[Export ("initWithCode:message:")]
-		IntPtr Constructor (MBXLocationErrorCode code, string message);
+		NativeHandle Constructor (MBXLocationErrorCode code, string message);
 
 		// @property (readonly, nonatomic) MBXLocationErrorCode code;
 		[Export ("code")]
@@ -460,7 +460,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithMinimumInterval:(NSNumber * _Nullable)minimumInterval maximumInterval:(NSNumber * _Nullable)maximumInterval interval:(NSNumber * _Nullable)interval;
 		[Export ("initWithMinimumInterval:maximumInterval:interval:")]
-		IntPtr Constructor ([NullAllowed] NSNumber minimumInterval, [NullAllowed] NSNumber maximumInterval, [NullAllowed] NSNumber interval);
+		NativeHandle Constructor ([NullAllowed] NSNumber minimumInterval, [NullAllowed] NSNumber maximumInterval, [NullAllowed] NSNumber interval);
 
 		// @property (readonly, nonatomic) NSNumber * _Nullable minimumInterval;
 		[NullAllowed, Export ("minimumInterval")]
@@ -486,7 +486,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithAccuracy:(NSNumber * _Nullable)accuracy displacement:(NSNumber * _Nullable)displacement interval:(MBXIntervalSettings * _Nullable)interval;
 		[Export ("initWithAccuracy:displacement:interval:")]
-		IntPtr Constructor ([NullAllowed] NSNumber accuracy, [NullAllowed] NSNumber displacement, [NullAllowed] MBXIntervalSettings interval);
+		NativeHandle Constructor ([NullAllowed] NSNumber accuracy, [NullAllowed] NSNumber displacement, [NullAllowed] MBXIntervalSettings interval);
 
 		// @property (readonly, nonatomic) NSNumber * _Nullable accuracy;
 		[NullAllowed, Export ("accuracy")]
@@ -744,7 +744,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithName:(NSString * _Nonnull)name version:(NSString * _Nonnull)version packageName:(NSString * _Nullable)packageName;
 		[Export ("initWithName:version:packageName:")]
-		IntPtr Constructor (string name, string version, [NullAllowed] string packageName);
+		NativeHandle Constructor (string name, string version, [NullAllowed] string packageName);
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull name;
 		[Export ("name")]
@@ -884,7 +884,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithCompletedResourceCount:(uint64_t)completedResourceCount completedResourceSize:(uint64_t)completedResourceSize erroredResourceCount:(uint64_t)erroredResourceCount requiredResourceCount:(uint64_t)requiredResourceCount loadedResourceCount:(uint64_t)loadedResourceCount loadedResourceSize:(uint64_t)loadedResourceSize;
 		[Export ("initWithCompletedResourceCount:completedResourceSize:erroredResourceCount:requiredResourceCount:loadedResourceCount:loadedResourceSize:")]
-		IntPtr Constructor (ulong completedResourceCount, ulong completedResourceSize, ulong erroredResourceCount, ulong requiredResourceCount, ulong loadedResourceCount, ulong loadedResourceSize);
+		NativeHandle Constructor (ulong completedResourceCount, ulong completedResourceSize, ulong erroredResourceCount, ulong requiredResourceCount, ulong loadedResourceCount, ulong loadedResourceSize);
 
 		// @property (readonly, nonatomic) uint64_t completedResourceCount;
 		[Export ("completedResourceCount")]
@@ -918,7 +918,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithType:(MBXTileRegionErrorType)type message:(NSString * _Nonnull)message;
 		[Export ("initWithType:message:")]
-		IntPtr Constructor (MBXTileRegionErrorType type, string message);
+		NativeHandle Constructor (MBXTileRegionErrorType type, string message);
 
 		// @property (readonly, nonatomic) MBXTileRegionErrorType type;
 		[Export ("type")]
@@ -936,11 +936,11 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithGeometry:(MBXGeometry * _Nullable)geometry descriptors:(NSArray<MBXTilesetDescriptor *> * _Nullable)descriptors metadata:(id _Nullable)metadata startLocation:(MBXCoordinate2D * _Nullable)startLocation averageBytesPerSecond:(NSNumber * _Nullable)averageBytesPerSecond extraOptions:(id _Nullable)extraOptions __attribute__((swift_private));
 		[Export ("initWithGeometry:descriptors:metadata:startLocation:averageBytesPerSecond:extraOptions:")]
-		IntPtr Constructor ([NullAllowed] MBXGeometry geometry, [NullAllowed] MBXTilesetDescriptor[] descriptors, [NullAllowed] NSObject metadata, [NullAllowed] MBXCoordinate2D startLocation, [NullAllowed] NSNumber averageBytesPerSecond, [NullAllowed] NSObject extraOptions);
+		NativeHandle Constructor ([NullAllowed] MBXGeometry geometry, [NullAllowed] MBXTilesetDescriptor[] descriptors, [NullAllowed] NSObject metadata, [NullAllowed] MBXCoordinate2D startLocation, [NullAllowed] NSNumber averageBytesPerSecond, [NullAllowed] NSObject extraOptions);
 
 		// -(instancetype _Nonnull)initWithGeometry:(MBXGeometry * _Nullable)geometry descriptors:(NSArray<MBXTilesetDescriptor *> * _Nullable)descriptors metadata:(id _Nullable)metadata acceptExpired:(BOOL)acceptExpired networkRestriction:(MBXNetworkRestriction)networkRestriction startLocation:(MBXCoordinate2D * _Nullable)startLocation averageBytesPerSecond:(NSNumber * _Nullable)averageBytesPerSecond extraOptions:(id _Nullable)extraOptions __attribute__((swift_private));
 		[Export ("initWithGeometry:descriptors:metadata:acceptExpired:networkRestriction:startLocation:averageBytesPerSecond:extraOptions:")]
-		IntPtr Constructor ([NullAllowed] MBXGeometry geometry, [NullAllowed] MBXTilesetDescriptor[] descriptors, [NullAllowed] NSObject metadata, bool acceptExpired, MBXNetworkRestriction networkRestriction, [NullAllowed] MBXCoordinate2D startLocation, [NullAllowed] NSNumber averageBytesPerSecond, [NullAllowed] NSObject extraOptions);
+		NativeHandle Constructor ([NullAllowed] MBXGeometry geometry, [NullAllowed] MBXTilesetDescriptor[] descriptors, [NullAllowed] NSObject metadata, bool acceptExpired, MBXNetworkRestriction networkRestriction, [NullAllowed] MBXCoordinate2D startLocation, [NullAllowed] NSNumber averageBytesPerSecond, [NullAllowed] NSObject extraOptions);
 
 		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT MBXGeometry * geometry __attribute__((swift_private));
 		[Export ("geometry")]
@@ -982,11 +982,11 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithExtraOptions:(id _Nullable)extraOptions;
 		[Export ("initWithExtraOptions:")]
-		IntPtr Constructor ([NullAllowed] NSObject extraOptions);
+		NativeHandle Constructor ([NullAllowed] NSObject extraOptions);
 
 		// -(instancetype _Nonnull)initWithErrorMargin:(float)errorMargin preciseEstimationTimeout:(NSTimeInterval)preciseEstimationTimeout timeout:(NSTimeInterval)timeout extraOptions:(id _Nullable)extraOptions;
 		[Export ("initWithErrorMargin:preciseEstimationTimeout:timeout:extraOptions:")]
-		IntPtr Constructor (float errorMargin, double preciseEstimationTimeout, double timeout, [NullAllowed] NSObject extraOptions);
+		NativeHandle Constructor (float errorMargin, double preciseEstimationTimeout, double timeout, [NullAllowed] NSObject extraOptions);
 
 		// @property (readonly, nonatomic) float errorMargin;
 		[Export ("errorMargin")]
@@ -1016,7 +1016,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithErrorMargin:(double)errorMargin transferSize:(uint64_t)transferSize storageSize:(uint64_t)storageSize extraData:(id _Nullable)extraData;
 		[Export ("initWithErrorMargin:transferSize:storageSize:extraData:")]
-		IntPtr Constructor (double errorMargin, ulong transferSize, ulong storageSize, [NullAllowed] NSObject extraData);
+		NativeHandle Constructor (double errorMargin, ulong transferSize, ulong storageSize, [NullAllowed] NSObject extraData);
 
 		// @property (readonly, nonatomic) double errorMargin;
 		[Export ("errorMargin")]
@@ -1046,7 +1046,7 @@ namespace MapboxCommon
 	{
 		// -(instancetype _Nonnull)initWithRequiredResourceCount:(uint64_t)requiredResourceCount erroredResourceCount:(uint64_t)erroredResourceCount completedResourceCount:(uint64_t)completedResourceCount partialResult:(MBXTileRegionEstimateResult * _Nonnull)partialResult;
 		[Export ("initWithRequiredResourceCount:erroredResourceCount:completedResourceCount:partialResult:")]
-		IntPtr Constructor (ulong requiredResourceCount, ulong erroredResourceCount, ulong completedResourceCount, MBXTileRegionEstimateResult partialResult);
+		NativeHandle Constructor (ulong requiredResourceCount, ulong erroredResourceCount, ulong completedResourceCount, MBXTileRegionEstimateResult partialResult);
 
 		// @property (readonly, nonatomic) uint64_t requiredResourceCount;
 		[Export ("requiredResourceCount")]
@@ -1117,11 +1117,11 @@ namespace MapboxCommon
 		// -(instancetype _Nonnull)initWithData:(NSData * _Nonnull)data __attribute__((objc_designated_initializer));
 		[Export ("initWithData:")]
 		[DesignatedInitializer]
-		IntPtr Constructor (NSData data);
+		NativeHandle Constructor (NSData data);
 
 		// -(instancetype _Nonnull)initWithBytesNoCopy:(void * _Nonnull)bytesNoCopy count:(NSInteger)count deallocator:(void (^ _Nonnull)(void * _Nonnull, NSInteger))deallocator __attribute__((objc_designated_initializer));
 		[Export ("initWithBytesNoCopy:count:deallocator:")]
 		[DesignatedInitializer]
-		unsafe IntPtr Constructor (NSObject bytesNoCopy, nint count, Action<NSObject, nint> deallocator);
+		unsafe NativeHandle Constructor (NSObject bytesNoCopy, nint count, Action<NSObject, nint> deallocator);
 	}
 }
