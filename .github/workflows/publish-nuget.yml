@@ -15,18 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    # - name: Set default Xamarin SDK versions
-    #   run: |
-    #     $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.12 --android=13.0
-
     - name: Install Xamarin.iOS package using Homebrew
       run: |
         brew install --cask xamarin-ios
 
-    - name: Setup .NET Core SDK 7.0.101
+    - name: Setup .NET Core SDK 8.x
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '7.0.101'
+        dotnet-version: '8.0'
 
     - name: Install ios workload
       run: |
