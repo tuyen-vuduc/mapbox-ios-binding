@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-      <TargetFramework>.net8.0-ios</TargetFramework>
+      <TargetFramework>net8.0-ios</TargetFramework>
       <Nullable>enable</Nullable>
       <ImplicitUsings>true</ImplicitUsings>
       <IsBindingProject>true</IsBindingProject>
-      <NoBindingEmbedding>false</NoBindingEmbedding>
+      <NoBindingEmbedding>true</NoBindingEmbedding>
       <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
