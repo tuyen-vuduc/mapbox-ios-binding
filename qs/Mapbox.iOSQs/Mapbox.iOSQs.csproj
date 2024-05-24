@@ -2,25 +2,29 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Condition="EXISTS('Mapbox.iOSQs.props')" Project="Mapbox.iOSQs.props" />
   <PropertyGroup>
+    <TargetFramework>net8.0-ios</TargetFramework>
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <SupportedOSPlatformVersion>15.4</SupportedOSPlatformVersion>
-    <LangVersion>latest</LangVersion>
-    <RootNamespace>Mapbox.iOSQs</RootNamespace>
-    <AssemblyName>Mapbox.iOSQs</AssemblyName>
-    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <ProvisioningType>manual</ProvisioningType>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <NoWarn>CA1822, CA1010</NoWarn>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <CodeAnalysisTreatWarningsAsErrors>False</CodeAnalysisTreatWarningsAsErrors>
+    <StyleCopTreatErrorsAsWarnings>False</StyleCopTreatErrorsAsWarnings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <CreatePackage>false</CreatePackage>
     <CodesignProvision>Automatic</CodesignProvision>
+    <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <CreatePackage>false</CreatePackage>
   </PropertyGroup>
   <ItemGroup>
-		<PackageReference Include="MapboxMapsObjC.iOS" Version="11.3.0" />
-		<PackageReference Include="MapboxMaps.iOS" Version="11.3.0" />
+		<PackageReference Include="MapboxMapsObjC.iOS" Version="11.3.0.2" />
+		<PackageReference Include="MapboxMaps.iOS" Version="11.3.0.2" />
   </ItemGroup>
   <Target Name="DisplayMessages" AfterTargets="_CoreCompileImageAssets;">
     <Message Text="MAPBOX_DOWNLOADS_TOKEN = $(MAPBOX_DOWNLOADS_TOKEN)" />

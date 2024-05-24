@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<_MapboxDownloadToken>$(MAPBOX_DOWNLOADS_TOKEN)</_MapboxDownloadToken>
 		<_MapboxVersion>11.3.0</_MapboxVersion>
-		<_NugetSuffix>.1</_NugetSuffix>
+		<_NugetSuffix>.2</_NugetSuffix>
 		<_MapboxMapsItemsFolder>MapboxMaps-$(_MapboxVersion)$(_NugetSuffix)</_MapboxMapsItemsFolder>
 		<_MapboxMapsSDKBaseFolder>$(XamarinBuildDownloadDir)$(_MapboxMapsItemsFolder)\</_MapboxMapsSDKBaseFolder>
 	</PropertyGroup>

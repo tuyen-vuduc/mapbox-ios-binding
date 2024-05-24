@@ -21,15 +21,18 @@ namespace MapboxCommon
 		NativeHandle Constructor (CLLocationCoordinate2D value);
 	}
 
-	// @interface MBXExceptionHandler : NSObject
-	[BaseType (typeof(NSObject))]
-	interface MBXExceptionHandler
-	{
-		// +(void)tryWithCallback:(void (^ _Nonnull)(void))callback error:(NSError * _Nullable * _Nullable)error __attribute__((swift_error("nonnull_error"))) __attribute__((swift_private));
-		[Static]
-		[Export ("tryWithCallback:error:")]
-		void TryWithCallback (Action callback, [NullAllowed] out NSError error);
-	}
+    // cmd: nm -m 'artifacts/MapboxCommon.xcframework/ios-arm64/MapboxCommon.framework/MapboxCommon' \
+    //  | grep '_OBJC_CLASS_$_MBXExceptionHandler'
+    // result: 000000000035cb58 (__DATA,__objc_data) non-external _OBJC_CLASS_$_MBXExceptionHandler
+	// // @interface MBXExceptionHandler : NSObject
+	// [BaseType (typeof(NSObject))]
+	// interface MBXExceptionHandler
+	// {
+	// 	// +(void)tryWithCallback:(void (^ _Nonnull)(void))callback error:(NSError * _Nullable * _Nullable)error __attribute__((swift_error("nonnull_error"))) __attribute__((swift_private));
+	// 	[Static]
+	// 	[Export ("tryWithCallback:error:")]
+	// 	void TryWithCallback (Action callback, [NullAllowed] out NSError error);
+	// }
 
 	// @interface MBXFeature : NSObject
 	[BaseType (typeof(NSObject))]
