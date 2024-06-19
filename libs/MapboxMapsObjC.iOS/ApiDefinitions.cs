@@ -1625,7 +1625,7 @@ namespace MapboxMapsObjC
 	// @interface TMBExpression : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC13TMBExpression")]
 	[DisableDefaultCtor]
-	interface TMBExpression : INativeObject
+	partial interface TMBExpression : INativeObject
 	{
 		// @property (readonly, nonatomic, strong) TMBExpressionOperator * _Nonnull expressionOperator;
 		[Export ("expressionOperator", ArgumentSemantic.Strong)]
@@ -1652,9 +1652,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_1730 (TMBExpression)
-	[Category]
-	[BaseType (typeof(TMBExpression))]
-	interface TMBExpression_MapboxMapObjC_Swift_1730
+	partial interface TMBExpression
 	{
 		// +(TMBExpression * _Nonnull)subtract __attribute__((warn_unused_result("")));
 		[Static]
@@ -3503,30 +3501,30 @@ namespace MapboxMapsObjC
 		[Export ("type")]
 		TMBGeoJSONSourceType Type { get; }
 
-		// +(TMBGeoJSONSourceData * _Nonnull)urlWithUrl:(NSURL * _Nonnull)url __attribute__((warn_unused_result("")));
+		// + (TMBGeoJSONSourceData * _Nonnull)url:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
 		[Static]
-		[Export ("urlWithUrl:")]
-		TMBGeoJSONSourceData UrlWithUrl (NSUrl url);
+		[Export ("url:")]
+		TMBGeoJSONSourceData FromUrl (NSUrl url);
 
-		// +(TMBGeoJSONSourceData * _Nonnull)stringWithString:(NSString * _Nonnull)string __attribute__((warn_unused_result("")));
+        //+ (TMBGeoJSONSourceData * _Nonnull)string:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
 		[Static]
-		[Export ("stringWithString:")]
-		TMBGeoJSONSourceData StringWithString (string @string);
+		[Export ("string:")]
+		TMBGeoJSONSourceData FromString (string @string);
 
-		// +(TMBGeoJSONSourceData * _Nonnull)featureWithFeature:(MBXFeature * _Nonnull)feature __attribute__((warn_unused_result("")));
+        // + (TMBGeoJSONSourceData * _Nonnull)feature:(MBXFeature * _Nonnull)feature SWIFT_WARN_UNUSED_RESULT;
 		[Static]
-		[Export ("featureWithFeature:")]
-		TMBGeoJSONSourceData FeatureWithFeature (MBXFeature feature);
+		[Export ("feature:")]
+		TMBGeoJSONSourceData FromFeature (MBXFeature feature);
 
-		// +(TMBGeoJSONSourceData * _Nonnull)featureCollectionWithFeatures:(NSArray<MBXFeature *> * _Nonnull)features __attribute__((warn_unused_result("")));
+        // + (TMBGeoJSONSourceData * _Nonnull)featureCollection:(NSArray<MBXFeature *> * _Nonnull)features SWIFT_WARN_UNUSED_RESULT;
 		[Static]
-		[Export ("featureCollectionWithFeatures:")]
-		TMBGeoJSONSourceData FeatureCollectionWithFeatures (MBXFeature[] features);
+		[Export ("featureCollection:")]
+		TMBGeoJSONSourceData FromFeatureCollection (MBXFeature[] features);
 
-		// +(TMBGeoJSONSourceData * _Nonnull)geometryWithGeometry:(MBXGeometry * _Nonnull)geometry __attribute__((warn_unused_result("")));
+		// + (TMBGeoJSONSourceData * _Nonnull)geometry:(MBXGeometry * _Nonnull)geometry SWIFT_WARN_UNUSED_RESULT;
 		[Static]
-		[Export ("geometryWithGeometry:")]
-		TMBGeoJSONSourceData GeometryWithGeometry (MBXGeometry geometry);
+		[Export ("geometry:")]
+		TMBGeoJSONSourceData FromGeometry (MBXGeometry geometry);
 	}
 
 	// @interface TMBGestureManager : NSObject
@@ -7800,7 +7798,7 @@ namespace MapboxMapsObjC
 	// @interface TMBValue : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC8TMBValue")]
 	[DisableDefaultCtor]
-	interface TMBValue
+	partial interface TMBValue
 	{
 		// @property (readonly, nonatomic) id _Nullable constant;
 		[NullAllowed, Export ("constant")]
@@ -7842,9 +7840,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6635 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6635
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7853,9 +7849,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6640 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6640
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)modelScaleMode:(TMBModelScaleMode * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7864,9 +7858,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6645 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6645
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)skyType:(TMBSkyType * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7875,9 +7867,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6650 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6650
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)modelType:(TMBModelType * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7886,9 +7876,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6656 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6656
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)visibility:(enum TMBVisibility)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7897,9 +7885,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6661 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6661
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)lightType:(TMBLightType * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7908,9 +7894,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6666 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6666
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7919,9 +7903,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6671 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6671
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7930,9 +7912,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6676 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6676
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7941,9 +7921,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6681 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6681
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7952,9 +7930,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6686 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6686
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7963,9 +7939,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6691 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6691
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)textWritingMode:(TMBTextWritingMode * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7974,9 +7948,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6696 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6696
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)textAnchor:(TMBTextAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7985,9 +7957,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6701 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6701
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)textRotationAlignment:(TMBTextRotationAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -7996,9 +7966,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6706 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6706
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)iconTextFit:(TMBIconTextFit * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8007,9 +7975,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6711 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6711
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)textTransform:(TMBTextTransform * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8018,9 +7984,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6716 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6716
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8029,9 +7993,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6721 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6721
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)fillTranslateAnchor:(TMBFillTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8040,9 +8002,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6726 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6726
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8051,9 +8011,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6731 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6731
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)lineTranslateAnchor:(TMBLineTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8062,9 +8020,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6736 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6736
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)iconRotationAlignment:(TMBIconRotationAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8073,9 +8029,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6741 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6741
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8084,9 +8038,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6746 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6746
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)layerType:(TMBLayerType * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8095,9 +8047,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6751 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6751
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)textTranslateAnchor:(TMBTextTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8106,9 +8056,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6756 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6756
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8117,9 +8065,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6761 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6761
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)circlePitchAlignment:(TMBCirclePitchAlignment * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8128,9 +8074,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6766 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6766
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)circlePitchScale:(TMBCirclePitchScale * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8139,9 +8083,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6771 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6771
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8150,9 +8092,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6776 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6776
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8161,9 +8101,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6781 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6781
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)symbolZOrder:(TMBSymbolZOrder * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8172,10 +8110,8 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6786 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6786
-	{
+	partial interface TMBValue
+    {
 		// +(TMBValue * _Nonnull)lineCap:(TMBLineCap * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
 		[Export ("lineCap:")]
@@ -8183,9 +8119,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6791 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6791
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)fillExtrusionTranslateAnchor:(TMBFillExtrusionTranslateAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8194,9 +8128,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6796 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6796
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)textJustify:(TMBTextJustify * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8205,9 +8137,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6801 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6801
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)rasterResampling:(TMBRasterResampling * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8216,9 +8146,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6806 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6806
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8227,9 +8155,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6811 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6811
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8238,9 +8164,7 @@ namespace MapboxMapsObjC
 	}
 
 	// @interface MapboxMapObjC_Swift_6817 (TMBValue)
-	[Category]
-	[BaseType (typeof(TMBValue))]
-	interface TMBValue_MapboxMapObjC_Swift_6817
+	partial interface TMBValue
 	{
 		// +(TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value __attribute__((warn_unused_result("")));
 		[Static]
@@ -8527,4 +8451,33 @@ namespace MapboxMapsObjC
 		[Export ("sharedFor:")]
 		MBXTileStore SharedFor (NSUrl filePathURL);
 	}
+
+    // SWIFT_CLASS("_TtC13MapboxMapObjC13TMBVisibility")
+    // @interface TMBVisibility : NSObject
+	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC13TMBVisibility")]
+	interface TMBVisibility
+	{
+        // @property (nonatomic, readonly, copy) NSString * _Nonnull rawValue;
+		[Export ("rawValue")]
+		string RawValue { get; }
+
+        // - (nonnull instancetype)initWithRawValue:(NSString * _Nonnull)rawValue;
+        [Export ("initWithRawValue:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (string rawValue);
+
+        // /// The layer is shown.
+        // SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBVisibility * _Nonnull visible;)
+        // + (TMBVisibility * _Nonnull)visible SWIFT_WARN_UNUSED_RESULT;
+		[Static]
+		[Export ("visible", ArgumentSemantic.Strong)]
+		TMBVisibility Visible { get; }
+
+        // /// The layer is hidden.
+        // SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBVisibility * _Nonnull none;)
+        // + (TMBVisibility * _Nonnull)none SWIFT_WARN_UNUSED_RESULT;
+		[Static]
+		[Export ("none", ArgumentSemantic.Strong)]
+		TMBVisibility None { get; }
+    }
 }

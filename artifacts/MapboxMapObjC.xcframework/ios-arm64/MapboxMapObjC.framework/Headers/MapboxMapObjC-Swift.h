@@ -2565,11 +2565,11 @@ enum TMBGeoJSONSourceType : NSInteger;
 SWIFT_CLASS("_TtC13MapboxMapObjC20TMBGeoJSONSourceData")
 @interface TMBGeoJSONSourceData : NSObject
 @property (nonatomic, readonly) enum TMBGeoJSONSourceType type;
-+ (TMBGeoJSONSourceData * _Nonnull)urlWithUrl:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
-+ (TMBGeoJSONSourceData * _Nonnull)stringWithString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
-+ (TMBGeoJSONSourceData * _Nonnull)featureWithFeature:(MBXFeature * _Nonnull)feature SWIFT_WARN_UNUSED_RESULT;
-+ (TMBGeoJSONSourceData * _Nonnull)featureCollectionWithFeatures:(NSArray<MBXFeature *> * _Nonnull)features SWIFT_WARN_UNUSED_RESULT;
-+ (TMBGeoJSONSourceData * _Nonnull)geometryWithGeometry:(MBXGeometry * _Nonnull)geometry SWIFT_WARN_UNUSED_RESULT;
++ (TMBGeoJSONSourceData * _Nonnull)url:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
++ (TMBGeoJSONSourceData * _Nonnull)string:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
++ (TMBGeoJSONSourceData * _Nonnull)feature:(MBXFeature * _Nonnull)feature SWIFT_WARN_UNUSED_RESULT;
++ (TMBGeoJSONSourceData * _Nonnull)featureCollection:(NSArray<MBXFeature *> * _Nonnull)features SWIFT_WARN_UNUSED_RESULT;
++ (TMBGeoJSONSourceData * _Nonnull)geometry:(MBXGeometry * _Nonnull)geometry SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -6633,6 +6633,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -6643,23 +6648,23 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)skyType:(TMBSkyType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)modelType:(TMBModelType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
-enum TMBVisibility : NSInteger;
+@class TMBVisibility;
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)visibility:(enum TMBVisibility)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)visibility:(TMBVisibility * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)lightType:(TMBLightType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6675,11 +6680,6 @@ enum TMBVisibility : NSInteger;
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6709,6 +6709,11 @@ enum TMBVisibility : NSInteger;
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)textTransform:(TMBTextTransform * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -6724,12 +6729,17 @@ enum TMBVisibility : NSInteger;
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)lineTranslateAnchor:(TMBLineTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)skyType:(TMBSkyType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6768,10 +6778,6 @@ enum TMBVisibility : NSInteger;
 @end
 
 
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
@@ -6809,13 +6815,7 @@ enum TMBVisibility : NSInteger;
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7096,12 +7096,21 @@ SWIFT_CLASS("_TtC13MapboxMapObjC24TMBViewAnnotationOptions")
 @end
 
 
-typedef SWIFT_ENUM(NSInteger, TMBVisibility, open) {
+
+SWIFT_CLASS("_TtC13MapboxMapObjC13TMBVisibility")
+@interface TMBVisibility : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull rawValue;
+- (nonnull instancetype)initWithRawValue:(NSString * _Nonnull)rawValue;
 /// The layer is shown.
-  TMBVisibilityVisible = 0,
-/// The layer is not shown.
-  TMBVisibilityNone = 1,
-};
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBVisibility * _Nonnull visible;)
++ (TMBVisibility * _Nonnull)visible SWIFT_WARN_UNUSED_RESULT;
+/// The layer is hidden.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBVisibility * _Nonnull none;)
++ (TMBVisibility * _Nonnull)none SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 @class MBXTileRegionLoadOptions;
 @class MBXTilesetDescriptor;
