@@ -2,15 +2,15 @@
 <Project>
 	<PropertyGroup>
 		<_MapboxDownloadToken>$(MAPBOX_DOWNLOADS_TOKEN)</_MapboxDownloadToken>
-		<_MapboxMapsObjC>11.3.0</_MapboxMapsObjC>
-		<_NugetSuffix>.3</_NugetSuffix>
-		<_MapboxMapsObjCAssemblyName>MapboxMapsObjC.iOS, Version=$(_MapboxMapsObjC), Culture=neutral, PublicKeyToken=null </_MapboxMapsObjCAssemblyName>
-		<_MapboxMapsObjCItemsFolder>MapboxMapsObjC-$(_MapboxMapsObjC)$(_NugetSuffix)</_MapboxMapsObjCItemsFolder>
+		<_MapboxMapsObjCVersion>11.4.0</_MapboxMapsObjCVersion>
+		<_MapboxMapsObjCNugetSuffix></_MapboxMapsObjCNugetSuffix>
+		<_MapboxMapsObjCAssemblyName>MapboxMapsObjC.iOS, Version=$(_MapboxMapsObjCVersion), Culture=neutral, PublicKeyToken=null </_MapboxMapsObjCAssemblyName>
+		<_MapboxMapsObjCItemsFolder>MapboxMapsObjC-$(_MapboxMapsObjCVersion)$(_MapboxMapsObjCNugetSuffix)</_MapboxMapsObjCItemsFolder>
 		<_MapboxMapsObjCSDKBaseFolder>$(XamarinBuildDownloadDir)$(_MapboxMapsObjCItemsFolder)\</_MapboxMapsObjCSDKBaseFolder>
 	</PropertyGroup>
   <ItemGroup Condition="('$(OutputType)'!='Library' OR '$(IsAppExtension)'=='True')">
 	<XamarinBuildDownload Include="$(_MapboxMapsObjCItemsFolder)">
-		<Url>https://drive.google.com/uc?id=1Wz235Bvkz1HxdKADvq6B8CE6FoRf177P&amp;export=download</Url>
+		<Url>https://drive.google.com/uc?id=1WaVhBBmxWE9EmNaUN9uWfUbaRPO5ibo2&amp;export=download</Url>
 		<Kind>Zip</Kind>
 	</XamarinBuildDownload>
     <NativeReference Include="$(_MapboxMapsObjCSDKBaseFolder)MapboxMapObjC.xcframework">
