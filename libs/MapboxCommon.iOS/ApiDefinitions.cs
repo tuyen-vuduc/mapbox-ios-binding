@@ -436,6 +436,11 @@ namespace MapboxCommon
 		[Static]
 		[Export ("PauseInBackground")]
 		uint PauseInBackground { get; }
+
+        // @property (nonatomic, class, readonly) uint32_t PreventCoalescing;
+		[Static]
+		[Export ("PreventCoalescing")]
+		uint PreventCoalescing { get; }
 	}
 
 	// @interface MBXLocationError : NSObject

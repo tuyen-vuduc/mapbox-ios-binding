@@ -16,5 +16,11 @@ __attribute__((visibility ("default")))
      * be queued.
      */
     @property (nonatomic, class, readonly) uint32_t PauseInBackground;
+    /**
+     * Flag to prevent the HTTP request from being coalesced with other equivalent request(s) that are currently on
+     * the fly. Setting this flag will ensure that the request made through the HTTP service interface results in
+     * its own network request.
+     */
+    @property (nonatomic, class, readonly) uint32_t PreventCoalescing;
 
 @end

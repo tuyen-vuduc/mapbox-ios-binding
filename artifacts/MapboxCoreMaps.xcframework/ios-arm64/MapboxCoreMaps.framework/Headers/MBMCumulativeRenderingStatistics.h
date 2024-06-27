@@ -14,7 +14,9 @@ __attribute__((visibility ("default")))
 
 - (nonnull instancetype)initWithDrawCalls:(nullable NSNumber *)drawCalls
                              textureBytes:(nullable NSNumber *)textureBytes
-                              vertexBytes:(nullable NSNumber *)vertexBytes;
+                              vertexBytes:(nullable NSNumber *)vertexBytes
+                         graphicsPrograms:(nullable NSNumber *)graphicsPrograms
+       graphicsProgramsCreationTimeMillis:(nullable NSNumber *)graphicsProgramsCreationTimeMillis;
 
 /** The number of draw calls at the end of the collection window. */
 @property (nonatomic, readonly, nullable) NSNumber *drawCalls NS_REFINED_FOR_SWIFT;
@@ -24,6 +26,12 @@ __attribute__((visibility ("default")))
 
 /** The amount of vertex memory (array and index buffer memory) in use at the end of the collection window. */
 @property (nonatomic, readonly, nullable) NSNumber *vertexBytes NS_REFINED_FOR_SWIFT;
+
+/** The number of graphics pipeline programs created. */
+@property (nonatomic, readonly, nullable) NSNumber *graphicsPrograms NS_REFINED_FOR_SWIFT;
+
+/** The total amount of time spent on all graphics pipeline program creation, in milliseconds. */
+@property (nonatomic, readonly, nullable) NSNumber *graphicsProgramsCreationTimeMillis NS_REFINED_FOR_SWIFT;
 
 
 @end

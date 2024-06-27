@@ -886,9 +886,9 @@ namespace MapboxMapsObjC
 		[Export ("cancelAnimations")]
 		void CancelAnimations ();
 
-		// -(TMBCancelable * _Nonnull)flyTo:(TMBCameraOptions * _Nonnull)to duration:(NSNumber * _Nullable)duration completion:(void (^ _Nullable)(UIViewAnimatingPosition))completion;
-		[Export ("flyTo:duration:completion:")]
-		TMBCancelable FlyTo (TMBCameraOptions to, [NullAllowed] NSNumber duration, [NullAllowed] Action<UIViewAnimatingPosition> completion);
+		// - (TMBCancelable * _Nonnull)flyTo:(TMBCameraOptions * _Nonnull)to duration:(NSNumber * _Nullable)duration curve:(enum UIViewAnimationCurve)curve completion:(void (^ _Nullable)(UIViewAnimatingPosition))completion;
+		[Export ("flyTo:duration:curve:completion:")]
+		TMBCancelable FlyTo (TMBCameraOptions to, [NullAllowed] NSNumber duration, UIViewAnimationCurve curve, [NullAllowed] Action<UIViewAnimatingPosition> completion);
 
 		// -(TMBCancelable * _Nonnull)easeTo:(TMBCameraOptions * _Nonnull)to duration:(NSTimeInterval)duration curve:(enum UIViewAnimationCurve)curve completion:(void (^ _Nullable)(UIViewAnimatingPosition))completion;
 		[Export ("easeTo:duration:curve:completion:")]

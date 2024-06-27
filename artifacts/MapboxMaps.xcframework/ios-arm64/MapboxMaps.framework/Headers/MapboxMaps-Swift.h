@@ -428,10 +428,12 @@ SWIFT_CLASS("_TtC10MapboxMaps19EmptyCustomRenderer")
 
 
 
+
 @interface MBMGlyphsRasterizationOptions (SWIFT_EXTENSION(MapboxMaps))
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly) NSUInteger hash;
 @end
+
 
 
 
@@ -485,6 +487,7 @@ SWIFT_CLASS("_TtC10MapboxMaps14MapInitOptions")
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly) NSUInteger hash;
 @end
+
 
 
 /// A protocol used to provide <code>MapInitOptions</code> when initializing a <code>MapView</code> with a Storyboard or
@@ -571,6 +574,7 @@ SWIFT_CLASS("_TtC10MapboxMaps9MetalView")
 - (nonnull instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (UIView * _Nullable)hitTest:(CGPoint)point withEvent:(UIEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 

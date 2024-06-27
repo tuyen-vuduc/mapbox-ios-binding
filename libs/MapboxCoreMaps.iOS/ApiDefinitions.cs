@@ -1457,9 +1457,13 @@ namespace MapboxCoreMaps
 	[DisableDefaultCtor]
 	interface MBMCumulativeRenderingStatistics
 	{
-		// -(instancetype _Nonnull)initWithDrawCalls:(NSNumber * _Nullable)drawCalls textureBytes:(NSNumber * _Nullable)textureBytes vertexBytes:(NSNumber * _Nullable)vertexBytes;
-		[Export ("initWithDrawCalls:textureBytes:vertexBytes:")]
-		NativeHandle Constructor ([NullAllowed] NSNumber drawCalls, [NullAllowed] NSNumber textureBytes, [NullAllowed] NSNumber vertexBytes);
+		// (nonnull instancetype)initWithDrawCalls:(nullable NSNumber *)drawCalls
+        //                          textureBytes:(nullable NSNumber *)textureBytes
+        //                           vertexBytes:(nullable NSNumber *)vertexBytes
+        //                      graphicsPrograms:(nullable NSNumber *)graphicsPrograms
+        //    graphicsProgramsCreationTimeMillis:(nullable NSNumber *)graphicsProgramsCreationTimeMillis;
+		[Export ("initWithDrawCalls:textureBytes:vertexBytes:graphicsPrograms:graphicsProgramsCreationTimeMillis:")]
+		NativeHandle Constructor ([NullAllowed] NSNumber drawCalls, [NullAllowed] NSNumber textureBytes, [NullAllowed] NSNumber vertexBytes, [NullAllowed] NSNumber graphicsPrograms, [NullAllowed] NSNumber graphicsProgramsCreationTimeMillis);
 
 		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * drawCalls __attribute__((swift_private));
 		[Export ("drawCalls")]
@@ -1472,6 +1476,14 @@ namespace MapboxCoreMaps
 		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * vertexBytes __attribute__((swift_private));
 		[Export ("vertexBytes")]
 		NSNumber VertexBytes { get; }
+
+        // @property (nonatomic, readonly, nullable) NSNumber *graphicsPrograms NS_REFINED_FOR_SWIFT;
+		[Export ("graphicsPrograms")]
+		NSNumber GraphicsPrograms { get; }
+
+        // @property (nonatomic, readonly, nullable) NSNumber *graphicsProgramsCreationTimeMillis NS_REFINED_FOR_SWIFT;
+		[Export ("graphicsProgramsCreationTimeMillis")]
+		NSNumber GraphicsProgramsCreationTimeMillis { get; }
 	}
 
 	// @interface MBMDurationStatistics : NSObject
