@@ -3654,13 +3654,8 @@ namespace MapboxMapsObjC
 		nfloat PanDecelerationFactor { get; set; }
 
 		// @property (nonatomic) CGPoint focalPoint;
-		[Export ("focalPoint", ArgumentSemantic.Assign)]
-		CGPoint FocalPoint { get; set; }
-
-		// -(instancetype _Nonnull)initWithPanEnabled:(BOOL)panEnabled pinchEnabled:(BOOL)pinchEnabled rotateEnabled:(BOOL)rotateEnabled simultaneousRotateAndPinchZoomEnabled:(BOOL)simultaneousRotateAndPinchZoomEnabled pinchZoomEnabled:(BOOL)pinchZoomEnabled pinchPanEnabled:(BOOL)pinchPanEnabled pitchEnabled:(BOOL)pitchEnabled doubleTapToZoomInEnabled:(BOOL)doubleTapToZoomInEnabled doubleTouchToZoomOutEnabled:(BOOL)doubleTouchToZoomOutEnabled quickZoomEnabled:(BOOL)quickZoomEnabled panMode:(enum TMBPanMode)panMode panDecelerationFactor:(CGFloat)panDecelerationFactor focalPoint:(CGPoint)focalPoint __attribute__((objc_designated_initializer));
-		[Export ("initWithPanEnabled:pinchEnabled:rotateEnabled:simultaneousRotateAndPinchZoomEnabled:pinchZoomEnabled:pinchPanEnabled:pitchEnabled:doubleTapToZoomInEnabled:doubleTouchToZoomOutEnabled:quickZoomEnabled:panMode:panDecelerationFactor:focalPoint:")]
-		[DesignatedInitializer]
-		NativeHandle Constructor (bool panEnabled, bool pinchEnabled, bool rotateEnabled, bool simultaneousRotateAndPinchZoomEnabled, bool pinchZoomEnabled, bool pinchPanEnabled, bool pitchEnabled, bool doubleTapToZoomInEnabled, bool doubleTouchToZoomOutEnabled, bool quickZoomEnabled, TMBPanMode panMode, nfloat panDecelerationFactor, CGPoint focalPoint);
+		[Export ("focalPoint", ArgumentSemantic.Strong)]
+		NSValue FocalPoint { get; set; }
 	}
 
 	// @interface TMBHeading : NSObject

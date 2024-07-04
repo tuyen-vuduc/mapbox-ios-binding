@@ -2679,35 +2679,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC17TMBGestureOptions")
 @property (nonatomic) CGFloat panDecelerationFactor;
 /// By default, gestures rotate and zoom around the center of the gesture. Set this property to rotate and zoom around a fixed point instead.
 /// This property will be ignored by the pinch gesture if <code>GestureOptions/pinchPanEnabled</code> is set to <code>true</code>.
-@property (nonatomic) CGPoint focalPoint;
-/// Initializes a <code>GestureOptions</code>.
-/// \param panEnabled Whether the single-touch pan gesture is enabled.
-///
-/// \param pinchEnabled Whether the pinch gesture is enabled.
-///
-/// \param rotateEnabled Whether rotation gesture is enabled.
-///
-/// \param simultaneousRotateAndPinchZoomEnabled Whether rotation is enabled during the pinch gesture.
-///
-/// \param pinchZoomEnabled Whether zoom is enabled for the pinch gesture.
-///
-/// \param pinchPanEnabled Whether pan is enabled during the pinch gesture.
-///
-/// \param pitchEnabled Whether the pitch gesture is enabled.
-///
-/// \param doubleTapToZoomInEnabled Whether double tapping the map with one touch results in a zoom-in animation.
-///
-/// \param doubleTouchToZoomOutEnabled Whether single tapping the map with two touches results in a zoom-out animation.
-///
-/// \param quickZoomEnabled Whether the quick zoom gesture is enabled.
-///
-/// \param panMode The directions in which the map is allowed to move during a pan gesture.
-///
-/// \param panDecelerationFactor The constant factor that determines how quickly pan deceleration animations happen.
-///
-/// \param focalPoint The centerpoint for rotating and zooming the map.
-///
-- (nonnull instancetype)initWithPanEnabled:(BOOL)panEnabled pinchEnabled:(BOOL)pinchEnabled rotateEnabled:(BOOL)rotateEnabled simultaneousRotateAndPinchZoomEnabled:(BOOL)simultaneousRotateAndPinchZoomEnabled pinchZoomEnabled:(BOOL)pinchZoomEnabled pinchPanEnabled:(BOOL)pinchPanEnabled pitchEnabled:(BOOL)pitchEnabled doubleTapToZoomInEnabled:(BOOL)doubleTapToZoomInEnabled doubleTouchToZoomOutEnabled:(BOOL)doubleTouchToZoomOutEnabled quickZoomEnabled:(BOOL)quickZoomEnabled panMode:(enum TMBPanMode)panMode panDecelerationFactor:(CGFloat)panDecelerationFactor focalPoint:(CGPoint)focalPoint OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, strong) NSValue * _Nullable focalPoint;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
