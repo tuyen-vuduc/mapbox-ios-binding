@@ -3540,9 +3540,9 @@ namespace MapboxMapsObjC
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
 		NSObject WeakDelegate { get; set; }
 
-		// -(TMBGestureOptions * _Nonnull)gestureOptions __attribute__((warn_unused_result("")));
-		[Export ("gestureOptions")]
-		TMBGestureOptions GestureOptions();
+		// @property (nonatomic, strong) TMBGestureOptions * _Nonnull gestureOptions;
+		[Export ("gestureOptions", ArgumentSemantic.Strong)]
+		TMBGestureOptions GestureOptions  { get; set; }
 
 		// @property (readonly, nonatomic, strong) UIGestureRecognizer * _Nonnull panGestureRecognizer;
 		[Export ("panGestureRecognizer", ArgumentSemantic.Strong)]
@@ -3654,8 +3654,13 @@ namespace MapboxMapsObjC
 		nfloat PanDecelerationFactor { get; set; }
 
 		// @property (nonatomic) CGPoint focalPoint;
-		[Export ("focalPoint", ArgumentSemantic.Strong)]
+		[NullAllowed, Export ("focalPoint", ArgumentSemantic.Strong)]
 		NSValue FocalPoint { get; set; }
+
+        // -(instancetype _Nonnull)initWithPanEnabled:(BOOL)panEnabled pinchEnabled:(BOOL)pinchEnabled rotateEnabled:(BOOL)rotateEnabled simultaneousRotateAndPinchZoomEnabled:(BOOL)simultaneousRotateAndPinchZoomEnabled pinchZoomEnabled:(BOOL)pinchZoomEnabled pinchPanEnabled:(BOOL)pinchPanEnabled pitchEnabled:(BOOL)pitchEnabled doubleTapToZoomInEnabled:(BOOL)doubleTapToZoomInEnabled doubleTouchToZoomOutEnabled:(BOOL)doubleTouchToZoomOutEnabled quickZoomEnabled:(BOOL)quickZoomEnabled panMode:(enum TMBPanMode)panMode panDecelerationFactor:(CGFloat)panDecelerationFactor focalPoint:(CGPoint)focalPoint __attribute__((objc_designated_initializer));
+		[Export ("initWithPanEnabled:pinchEnabled:rotateEnabled:simultaneousRotateAndPinchZoomEnabled:pinchZoomEnabled:pinchPanEnabled:pitchEnabled:doubleTapToZoomInEnabled:doubleTouchToZoomOutEnabled:quickZoomEnabled:panMode:panDecelerationFactor:focalPoint:")]
+		[DesignatedInitializer]
+		NativeHandle Constructor (bool panEnabled, bool pinchEnabled, bool rotateEnabled, bool simultaneousRotateAndPinchZoomEnabled, bool pinchZoomEnabled, bool pinchPanEnabled, bool pitchEnabled, bool doubleTapToZoomInEnabled, bool doubleTouchToZoomOutEnabled, bool quickZoomEnabled, TMBPanMode panMode, nfloat panDecelerationFactor, [NullAllowed] NSValue focalPoint);
 	}
 
 	// @interface TMBHeading : NSObject
