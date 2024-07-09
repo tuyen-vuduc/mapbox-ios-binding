@@ -1,369 +1,29 @@
-﻿using System;
-using CoreGraphics;
+using System;
 using CoreLocation;
 using Foundation;
-using Metal;
 using MapboxCoreMaps;
-using MapboxCommon;
+using Metal;
 using ObjCRuntime;
-using UIKit;
+using MapboxCommon;
 
 namespace MapboxCoreMaps
 {
-	// @interface MBMEdgeInsets : NSObject
+	// @interface MBMCoordinateInfo : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface MBMEdgeInsets
+	interface MBMCoordinateInfo
 	{
-		// -(instancetype _Nonnull)initWithTop:(double)top left:(double)left bottom:(double)bottom right:(double)right;
-		[Export ("initWithTop:left:bottom:right:")]
-		IntPtr Constructor (double top, double left, double bottom, double right);
-
-		// @property (readonly, nonatomic) double top;
-		[Export ("top")]
-		double Top { get; }
-
-		// @property (readonly, nonatomic) double left;
-		[Export ("left")]
-		double Left { get; }
-
-		// @property (readonly, nonatomic) double bottom;
-		[Export ("bottom")]
-		double Bottom { get; }
-
-		// @property (readonly, nonatomic) double right;
-		[Export ("right")]
-		double Right { get; }
-
-		// -(BOOL)isEqualToEdgeInsets:(MBMEdgeInsets * _Nonnull)other;
-		[Export ("isEqualToEdgeInsets:")]
-		bool IsEqualToEdgeInsets (MBMEdgeInsets other);
-	}
-
-	// @interface MBMCameraOptions : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMCameraOptions
-	{
-		// -(instancetype _Nonnull)initWithCenter:(CLLocation * _Nullable)center padding:(MBMEdgeInsets * _Nullable)padding anchor:(MBMScreenCoordinate * _Nullable)anchor zoom:(NSNumber * _Nullable)zoom bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch __attribute__((swift_private));
-		[Export ("initWithCenter:padding:anchor:zoom:bearing:pitch:")]
-		IntPtr Constructor ([NullAllowed] CLLocation center, [NullAllowed] MBMEdgeInsets padding, [NullAllowed] MBMScreenCoordinate anchor, [NullAllowed] NSNumber zoom, [NullAllowed] NSNumber bearing, [NullAllowed] NSNumber pitch);
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT CLLocation * center __attribute__((swift_private));
-		[Export ("center")]
-		CLLocation Center { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT MBMEdgeInsets * padding __attribute__((swift_private));
-		[Export ("padding")]
-		MBMEdgeInsets Padding { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT MBMScreenCoordinate * anchor __attribute__((swift_private));
-		[Export ("anchor")]
-		MBMScreenCoordinate Anchor { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * zoom __attribute__((swift_private));
-		[Export ("zoom")]
-		NSNumber Zoom { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * bearing __attribute__((swift_private));
-		[Export ("bearing")]
-		NSNumber Bearing { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * pitch __attribute__((swift_private));
-		[Export ("pitch")]
-		NSNumber Pitch { get; }
-	}
-
-	// @interface MBMCameraState : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMCameraState
-	{
-		// -(instancetype _Nonnull)initWithCenter:(CLLocationCoordinate2D)center padding:(MBMEdgeInsets * _Nonnull)padding zoom:(double)zoom bearing:(double)bearing pitch:(double)pitch;
-		[Export ("initWithCenter:padding:zoom:bearing:pitch:")]
-		IntPtr Constructor (CLLocationCoordinate2D center, MBMEdgeInsets padding, double zoom, double bearing, double pitch);
-
-		// @property (readonly, nonatomic) CLLocationCoordinate2D center;
-		[Export ("center")]
-		CLLocationCoordinate2D Center { get; }
-
-		// @property (readonly, nonatomic) MBMEdgeInsets * _Nonnull padding;
-		[Export ("padding")]
-		MBMEdgeInsets Padding { get; }
-
-		// @property (readonly, nonatomic) double zoom;
-		[Export ("zoom")]
-		double Zoom { get; }
-
-		// @property (readonly, nonatomic) double bearing;
-		[Export ("bearing")]
-		double Bearing { get; }
-
-		// @property (readonly, nonatomic) double pitch;
-		[Export ("pitch")]
-		double Pitch { get; }
-	}
-
-	// @interface MBMCameraBoundsOptions : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMCameraBoundsOptions
-	{
-		// -(instancetype _Nonnull)initWithBounds:(MBMCoordinateBounds * _Nullable)bounds maxZoom:(NSNumber * _Nullable)maxZoom minZoom:(NSNumber * _Nullable)minZoom maxPitch:(NSNumber * _Nullable)maxPitch minPitch:(NSNumber * _Nullable)minPitch __attribute__((swift_private));
-		[Export ("initWithBounds:maxZoom:minZoom:maxPitch:minPitch:")]
-		IntPtr Constructor ([NullAllowed] MBMCoordinateBounds bounds, [NullAllowed] NSNumber maxZoom, [NullAllowed] NSNumber minZoom, [NullAllowed] NSNumber maxPitch, [NullAllowed] NSNumber minPitch);
-
-		// @property (readonly, nonatomic) MBMCoordinateBounds * _Nullable bounds;
-		[NullAllowed, Export ("bounds")]
-		MBMCoordinateBounds Bounds { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * maxZoom __attribute__((swift_private));
-		[Export ("maxZoom")]
-		NSNumber MaxZoom { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * minZoom __attribute__((swift_private));
-		[Export ("minZoom")]
-		NSNumber MinZoom { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * maxPitch __attribute__((swift_private));
-		[Export ("maxPitch")]
-		NSNumber MaxPitch { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * minPitch __attribute__((swift_private));
-		[Export ("minPitch")]
-		NSNumber MinPitch { get; }
-	}
-
-	// @interface MBMCameraBounds : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMCameraBounds
-	{
-		// -(instancetype _Nonnull)initWithBounds:(MBMCoordinateBounds * _Nonnull)bounds maxZoom:(double)maxZoom minZoom:(double)minZoom maxPitch:(double)maxPitch minPitch:(double)minPitch;
-		[Export ("initWithBounds:maxZoom:minZoom:maxPitch:minPitch:")]
-		IntPtr Constructor (MBMCoordinateBounds bounds, double maxZoom, double minZoom, double maxPitch, double minPitch);
-
-		// @property (readonly, nonatomic) MBMCoordinateBounds * _Nonnull bounds;
-		[Export ("bounds")]
-		MBMCoordinateBounds Bounds { get; }
-
-		// @property (readonly, nonatomic) double maxZoom;
-		[Export ("maxZoom")]
-		double MaxZoom { get; }
-
-		// @property (readonly, nonatomic) double minZoom;
-		[Export ("minZoom")]
-		double MinZoom { get; }
-
-		// @property (readonly, nonatomic) double maxPitch;
-		[Export ("maxPitch")]
-		double MaxPitch { get; }
-
-		// @property (readonly, nonatomic) double minPitch;
-		[Export ("minPitch")]
-		double MinPitch { get; }
-	}
-
-	// @interface MBMObservable : NSObject
-	[BaseType (typeof(NSObject))]
-	interface MBMObservable
-	{
-		// -(void)subscribeForObserver:(id<MBMObserver> _Nonnull)observer events:(NSArray<NSString *> * _Nonnull)events;
-		[Export ("subscribeForObserver:events:")]
-		void SubscribeForObserver (IMBMObserver observer, string[] events);
-
-		// -(void)unsubscribeForObserver:(id<MBMObserver> _Nonnull)observer events:(NSArray<NSString *> * _Nonnull)events;
-		[Export ("unsubscribeForObserver:events:")]
-		void UnsubscribeForObserver (IMBMObserver observer, string[] events);
-
-		// -(void)unsubscribeForObserver:(id<MBMObserver> _Nonnull)observer;
-		[Export ("unsubscribeForObserver:")]
-		void UnsubscribeForObserver (IMBMObserver observer);
-	}
-
-	// @interface MBMStyleManager : MBMObservable
-	[BaseType (typeof(MBMObservable))]
-	interface MBMStyleManager
-	{
-		// -(NSString * _Nonnull)getStyleURI __attribute__((ns_returns_retained));
-		[Export ("getStyleURI")]
-		string StyleURI { get; }
-
-		// -(void)setStyleURIForUri:(NSString * _Nonnull)uri;
-		[Export ("setStyleURIForUri:")]
-		void SetStyleURIForUri (string uri);
-
-		// -(NSString * _Nonnull)getStyleJSON __attribute__((ns_returns_retained));
-		[Export ("getStyleJSON")]
-		string StyleJSON { get; }
-
-		// -(void)setStyleJSONForJson:(NSString * _Nonnull)json;
-		[Export ("setStyleJSONForJson:")]
-		void SetStyleJSONForJson (string json);
-
-		// -(MBMCameraOptions * _Nonnull)getStyleDefaultCamera __attribute__((ns_returns_retained));
-		[Export ("getStyleDefaultCamera")]
-		MBMCameraOptions StyleDefaultCamera { get; }
-
-		// -(MBMTransitionOptions * _Nonnull)getStyleTransition __attribute__((ns_returns_retained));
-		[Export ("getStyleTransition")]
-		MBMTransitionOptions StyleTransition { get; }
-
-		// -(void)setStyleTransitionForTransitionOptions:(MBMTransitionOptions * _Nonnull)transitionOptions;
-		[Export ("setStyleTransitionForTransitionOptions:")]
-		void SetStyleTransitionForTransitionOptions (MBMTransitionOptions transitionOptions);
-
-		// -(BOOL)styleLayerExistsForLayerId:(NSString * _Nonnull)layerId;
-		[Export ("styleLayerExistsForLayerId:")]
-		bool StyleLayerExistsForLayerId (string layerId);
-
-		// -(NSArray<MBMStyleObjectInfo *> * _Nonnull)getStyleLayers __attribute__((ns_returns_retained));
-		[Export ("getStyleLayers")]
-		MBMStyleObjectInfo[] StyleLayers { get; }
-
-		// -(MBMStylePropertyValue * _Nonnull)getStyleLayerPropertyForLayerId:(NSString * _Nonnull)layerId property:(NSString * _Nonnull)property __attribute__((ns_returns_retained));
-		[Export ("getStyleLayerPropertyForLayerId:property:")]
-		MBMStylePropertyValue GetStyleLayerPropertyForLayerId (string layerId, string property);
-
-		// +(MBMStylePropertyValue * _Nonnull)getStyleLayerPropertyDefaultValueForLayerType:(NSString * _Nonnull)layerType property:(NSString * _Nonnull)property __attribute__((ns_returns_retained));
-		[Static]
-		[Export ("getStyleLayerPropertyDefaultValueForLayerType:property:")]
-		MBMStylePropertyValue GetStyleLayerPropertyDefaultValueForLayerType (string layerType, string property);
-
-		// -(MBMStylePropertyValue * _Nonnull)getStyleSourcePropertyForSourceId:(NSString * _Nonnull)sourceId property:(NSString * _Nonnull)property __attribute__((ns_returns_retained));
-		[Export ("getStyleSourcePropertyForSourceId:property:")]
-		MBMStylePropertyValue GetStyleSourcePropertyForSourceId (string sourceId, string property);
-
-		// +(MBMStylePropertyValue * _Nonnull)getStyleSourcePropertyDefaultValueForSourceType:(NSString * _Nonnull)sourceType property:(NSString * _Nonnull)property __attribute__((ns_returns_retained));
-		[Static]
-		[Export ("getStyleSourcePropertyDefaultValueForSourceType:property:")]
-		MBMStylePropertyValue GetStyleSourcePropertyDefaultValueForSourceType (string sourceType, string property);
-
-		// -(BOOL)styleSourceExistsForSourceId:(NSString * _Nonnull)sourceId;
-		[Export ("styleSourceExistsForSourceId:")]
-		bool StyleSourceExistsForSourceId (string sourceId);
-
-		// -(NSArray<MBMStyleObjectInfo *> * _Nonnull)getStyleSources __attribute__((ns_returns_retained));
-		[Export ("getStyleSources")]
-        MBMStyleObjectInfo[] GetStyleSources();
-
-		// -(MBMStylePropertyValue * _Nonnull)getStyleLightPropertyForProperty:(NSString * _Nonnull)property __attribute__((ns_returns_retained));
-		[Export ("getStyleLightPropertyForProperty:")]
-		MBMStylePropertyValue GetStyleLightPropertyForProperty (string property);
-
-		// -(MBMStylePropertyValue * _Nonnull)getStyleTerrainPropertyForProperty:(NSString * _Nonnull)property __attribute__((ns_returns_retained));
-		[Export ("getStyleTerrainPropertyForProperty:")]
-		MBMStylePropertyValue GetStyleTerrainPropertyForProperty (string property);
-
-		// -(MBMStylePropertyValue * _Nonnull)getStyleProjectionPropertyForProperty:(NSString * _Nonnull)property __attribute__((ns_returns_retained));
-		[Export ("getStyleProjectionPropertyForProperty:")]
-		MBMStylePropertyValue GetStyleProjectionPropertyForProperty (string property);
-
-		// -(MBMImage * _Nullable)getStyleImageForImageId:(NSString * _Nonnull)imageId __attribute__((ns_returns_retained));
-		[Export ("getStyleImageForImageId:")]
-		[return: NullAllowed]
-		MBMImage GetStyleImageForImageId (string imageId);
-
-		// -(BOOL)hasStyleImageForImageId:(NSString * _Nonnull)imageId;
-		[Export ("hasStyleImageForImageId:")]
-		bool HasStyleImageForImageId (string imageId);
-
-		// -(BOOL)isStyleLoaded;
-		[Export ("isStyleLoaded")]
-		bool IsStyleLoaded { get; }
-	}
-
-	// @interface MBMCameraManager : MBMStyleManager
-	[BaseType (typeof(MBMStyleManager))]
-	interface MBMCameraManager
-	{
-		// -(MBMCameraOptions * _Nonnull)cameraForCoordinateBoundsForBounds:(MBMCoordinateBounds * _Nonnull)bounds padding:(MBMEdgeInsets * _Nonnull)padding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch __attribute__((ns_returns_retained));
-		[Export ("cameraForCoordinateBoundsForBounds:padding:bearing:pitch:")]
-		MBMCameraOptions CameraForCoordinateBoundsForBounds (MBMCoordinateBounds bounds, MBMEdgeInsets padding, [NullAllowed] NSNumber bearing, [NullAllowed] NSNumber pitch);
-
-		// -(MBMCameraOptions * _Nonnull)cameraForCoordinatesForCoordinates:(NSArray<CLLocation *> * _Nonnull)coordinates padding:(MBMEdgeInsets * _Nonnull)padding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch __attribute__((ns_returns_retained));
-		[Export ("cameraForCoordinatesForCoordinates:padding:bearing:pitch:")]
-		MBMCameraOptions CameraForCoordinatesForCoordinates (CLLocation[] coordinates, MBMEdgeInsets padding, [NullAllowed] NSNumber bearing, [NullAllowed] NSNumber pitch);
-
-		// -(MBMCameraOptions * _Nonnull)cameraForCoordinatesForCoordinates:(NSArray<CLLocation *> * _Nonnull)coordinates camera:(MBMCameraOptions * _Nonnull)camera box:(MBMScreenBox * _Nonnull)box __attribute__((ns_returns_retained));
-		[Export ("cameraForCoordinatesForCoordinates:camera:box:")]
-		MBMCameraOptions CameraForCoordinatesForCoordinates (CLLocation[] coordinates, MBMCameraOptions camera, MBMScreenBox box);
-
-		// -(MBMCameraOptions * _Nonnull)cameraForGeometryForGeometry:(MBXGeometry * _Nonnull)geometry padding:(MBMEdgeInsets * _Nonnull)padding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch __attribute__((ns_returns_retained));
-		[Export ("cameraForGeometryForGeometry:padding:bearing:pitch:")]
-		MBMCameraOptions CameraForGeometryForGeometry (MBXGeometry geometry, MBMEdgeInsets padding, [NullAllowed] NSNumber bearing, [NullAllowed] NSNumber pitch);
-
-		// -(MBMCoordinateBounds * _Nonnull)coordinateBoundsForCameraForCamera:(MBMCameraOptions * _Nonnull)camera __attribute__((ns_returns_retained));
-		[Export ("coordinateBoundsForCameraForCamera:")]
-		MBMCoordinateBounds CoordinateBoundsForCameraForCamera (MBMCameraOptions camera);
-
-		// -(MBMCoordinateBounds * _Nonnull)coordinateBoundsForCameraUnwrappedForCamera:(MBMCameraOptions * _Nonnull)camera __attribute__((ns_returns_retained));
-		[Export ("coordinateBoundsForCameraUnwrappedForCamera:")]
-		MBMCoordinateBounds CoordinateBoundsForCameraUnwrappedForCamera (MBMCameraOptions camera);
-
-		// -(MBMCoordinateBoundsZoom * _Nonnull)coordinateBoundsZoomForCameraForCamera:(MBMCameraOptions * _Nonnull)camera __attribute__((ns_returns_retained));
-		[Export ("coordinateBoundsZoomForCameraForCamera:")]
-		MBMCoordinateBoundsZoom CoordinateBoundsZoomForCameraForCamera (MBMCameraOptions camera);
-
-		// -(MBMCoordinateBoundsZoom * _Nonnull)coordinateBoundsZoomForCameraUnwrappedForCamera:(MBMCameraOptions * _Nonnull)camera __attribute__((ns_returns_retained));
-		[Export ("coordinateBoundsZoomForCameraUnwrappedForCamera:")]
-		MBMCoordinateBoundsZoom CoordinateBoundsZoomForCameraUnwrappedForCamera (MBMCameraOptions camera);
-
-		// -(MBMScreenCoordinate * _Nonnull)pixelForCoordinateForCoordinate:(CLLocationCoordinate2D)coordinate __attribute__((ns_returns_retained));
-		[Export ("pixelForCoordinateForCoordinate:")]
-		MBMScreenCoordinate PixelForCoordinateForCoordinate (CLLocationCoordinate2D coordinate);
-
-		// -(CLLocationCoordinate2D)coordinateForPixelForPixel:(MBMScreenCoordinate * _Nonnull)pixel;
-		[Export ("coordinateForPixelForPixel:")]
-		CLLocationCoordinate2D CoordinateForPixelForPixel (MBMScreenCoordinate pixel);
-
-		// -(NSArray<MBMScreenCoordinate *> * _Nonnull)pixelsForCoordinatesForCoordinates:(NSArray<CLLocation *> * _Nonnull)coordinates __attribute__((ns_returns_retained));
-		[Export ("pixelsForCoordinatesForCoordinates:")]
-		MBMScreenCoordinate[] PixelsForCoordinatesForCoordinates (CLLocation[] coordinates);
-
-		// -(NSArray<CLLocation *> * _Nonnull)coordinatesForPixelsForPixels:(NSArray<MBMScreenCoordinate *> * _Nonnull)pixels __attribute__((ns_returns_retained));
-		[Export ("coordinatesForPixelsForPixels:")]
-		CLLocation[] CoordinatesForPixelsForPixels (MBMScreenCoordinate[] pixels);
-
-		// -(void)setCameraForCameraOptions:(MBMCameraOptions * _Nonnull)cameraOptions;
-		[Export ("setCameraForCameraOptions:")]
-		void SetCameraForCameraOptions (MBMCameraOptions cameraOptions);
-
-		// -(MBMCameraState * _Nonnull)getCameraState __attribute__((ns_returns_retained));
-		[Export ("getCameraState")]
-        MBMCameraState GetCameraState();
-
-		// -(void)setCameraForFreeCameraOptions:(MBMFreeCameraOptions * _Nonnull)freeCameraOptions;
-		[Export ("setCameraForFreeCameraOptions:")]
-		void SetCameraForFreeCameraOptions (MBMFreeCameraOptions freeCameraOptions);
-
-		// -(MBMFreeCameraOptions * _Nonnull)getFreeCameraOptions __attribute__((ns_returns_retained));
-		[Export ("getFreeCameraOptions")]
-        MBMFreeCameraOptions GetFreeCameraOptions();
-
-		// -(MBMCameraBounds * _Nonnull)getBounds __attribute__((ns_returns_retained));
-		[Export ("getBounds")]
-        MBMCameraBounds GetBounds();
-
-		// - (void)setRenderWorldCopiesForRenderWorldCopies:(BOOL)renderWorldCopies;
-		[Export ("setRenderWorldCopiesForRenderWorldCopies:")]
-        void SetRenderWorldCopiesForRenderWorldCopies(bool renderWorldCopies);
-
-		// - (BOOL)getRenderWorldCopies;
-		[Export ("getRenderWorldCopies")]
-        MBMCameraBounds GetRenderWorldCopies();
-
-		// -(void)dragStartForPoint:(MBMScreenCoordinate * _Nonnull)point;
-		[Export ("dragStartForPoint:")]
-		void DragStartForPoint (MBMScreenCoordinate point);
-
-		// -(MBMCameraOptions * _Nonnull)getDragCameraOptionsForFromPoint:(MBMScreenCoordinate * _Nonnull)fromPoint toPoint:(MBMScreenCoordinate * _Nonnull)toPoint __attribute__((ns_returns_retained));
-		[Export ("getDragCameraOptionsForFromPoint:toPoint:")]
-		MBMCameraOptions GetDragCameraOptionsForFromPoint (MBMScreenCoordinate fromPoint, MBMScreenCoordinate toPoint);
-
-		// -(void)dragEnd;
-		[Export ("dragEnd")]
-		void DragEnd ();
+		// -(instancetype _Nonnull)initWithCoordinate:(CLLocationCoordinate2D)coordinate isOnSurface:(BOOL)isOnSurface;
+		[Export ("initWithCoordinate:isOnSurface:")]
+		NativeHandle Constructor (CLLocationCoordinate2D coordinate, bool isOnSurface);
+
+		// @property (readonly, nonatomic) CLLocationCoordinate2D coordinate;
+		[Export ("coordinate")]
+		CLLocationCoordinate2D Coordinate { get; }
+
+		// @property (readonly, nonatomic) BOOL isOnSurface;
+		[Export ("isOnSurface")]
+		bool IsOnSurface { get; }
 	}
 
 	// @interface MBMCoordinateBounds : NSObject
@@ -373,11 +33,11 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithSouthwest:(CLLocationCoordinate2D)southwest northeast:(CLLocationCoordinate2D)northeast;
 		[Export ("initWithSouthwest:northeast:")]
-		IntPtr Constructor (CLLocationCoordinate2D southwest, CLLocationCoordinate2D northeast);
+		NativeHandle Constructor (CLLocationCoordinate2D southwest, CLLocationCoordinate2D northeast);
 
 		// -(instancetype _Nonnull)initWithSouthwest:(CLLocationCoordinate2D)southwest northeast:(CLLocationCoordinate2D)northeast infiniteBounds:(BOOL)infiniteBounds;
 		[Export ("initWithSouthwest:northeast:infiniteBounds:")]
-		IntPtr Constructor (CLLocationCoordinate2D southwest, CLLocationCoordinate2D northeast, bool infiniteBounds);
+		NativeHandle Constructor (CLLocationCoordinate2D southwest, CLLocationCoordinate2D northeast, bool infiniteBounds);
 
 		// +(MBMCoordinateBounds * _Nonnull)world __attribute__((ns_returns_retained)) __attribute__((swift_private));
 		[Static]
@@ -486,9 +146,9 @@ namespace MapboxCoreMaps
 		[Export ("northeast")]
 		CLLocationCoordinate2D Northeast { get; }
 
-		// @property (readonly, getter = isInfiniteBounds, nonatomic) BOOL infiniteBounds;
+		// @property (readonly, nonatomic) BOOL infiniteBounds;
 		[Export ("infiniteBounds")]
-		bool InfiniteBounds { [Bind ("isInfiniteBounds")] get; }
+		bool InfiniteBounds { get; }
 	}
 
 	// @interface MBMFreeCameraOptions : NSObject
@@ -498,7 +158,7 @@ namespace MapboxCoreMaps
 	{
 		// -(MBMVec3 * _Nullable)getPosition __attribute__((ns_returns_retained));
 		[NullAllowed, Export ("getPosition")]
-        MBMVec3 GetPosition();
+		MBMVec3 Position { get; }
 
 		// -(void)setPositionForPosition:(MBMVec3 * _Nullable)position;
 		[Export ("setPositionForPosition:")]
@@ -506,11 +166,27 @@ namespace MapboxCoreMaps
 
 		// -(MBMVec4 * _Nullable)getOrientation __attribute__((ns_returns_retained));
 		[NullAllowed, Export ("getOrientation")]
-        MBMVec4 GetOrientation();
+		MBMVec4 Orientation { get; }
 
 		// -(void)setOrientationForOrientation:(MBMVec4 * _Nullable)orientation;
 		[Export ("setOrientationForOrientation:")]
 		void SetOrientationForOrientation ([NullAllowed] MBMVec4 orientation);
+
+		// -(MBXCoordinate2D * _Nullable)getLocation __attribute__((ns_returns_retained)) __attribute__((swift_private));
+		[NullAllowed, Export ("getLocation")]
+		MBXCoordinate2D Location { get; }
+
+		// -(NSNumber * _Nullable)getAltitude __attribute__((ns_returns_retained)) __attribute__((swift_private));
+		[NullAllowed, Export ("getAltitude")]
+		NSNumber Altitude { get; }
+
+		// -(void)setLocationForLocation:(CLLocationCoordinate2D)location __attribute__((swift_private));
+		[Export ("setLocationForLocation:")]
+		void SetLocationForLocation (CLLocationCoordinate2D location);
+
+		// -(void)setAltitudeForAltitude:(double)altitude __attribute__((swift_private));
+		[Export ("setAltitudeForAltitude:")]
+		void SetAltitudeForAltitude (double altitude);
 
 		// -(void)setLocationForLocation:(CLLocationCoordinate2D)location altitude:(double)altitude;
 		[Export ("setLocationForLocation:altitude:")]
@@ -533,43 +209,56 @@ namespace MapboxCoreMaps
 		void SetPitchBearingForPitch (double pitch, double bearing);
 	}
 
-	// @interface MBMImage : NSObject
+	// @interface MBMImageStretches : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface MBMImage
+	interface MBMImageStretches
 	{
-		// -(instancetype _Nonnull)initWithWidth:(uint32_t)width height:(uint32_t)height data:(NSData * _Nonnull)data;
-		[Export ("initWithWidth:height:data:")]
-		IntPtr Constructor (uint width, uint height, NSData data);
+		// -(instancetype _Nonnull)initWithFirst:(float)first second:(float)second;
+		[Export ("initWithFirst:second:")]
+		NativeHandle Constructor (float first, float second);
 
-		// @property (readonly, nonatomic) uint32_t width;
-		[Export ("width")]
-		uint Width { get; }
+		// @property (readonly, nonatomic) float first;
+		[Export ("first")]
+		float First { get; }
 
-		// @property (readonly, nonatomic) uint32_t height;
-		[Export ("height")]
-		uint Height { get; }
+		// @property (readonly, nonatomic) float second;
+		[Export ("second")]
+		float Second { get; }
 
-		// @property (readonly, nonatomic) NSData * _Nonnull data;
-		[Export ("data")]
-		NSData Data { get; }
+		// -(BOOL)isEqualToImageStretches:(MBMImageStretches * _Nonnull)other;
+		[Export ("isEqualToImageStretches:")]
+		bool IsEqualToImageStretches (MBMImageStretches other);
 	}
 
-	// @interface Additions (MBMImage)
-	[Category]
-	[BaseType (typeof(MBMImage))]
-	interface MBMImage_Additions
+	// @interface MBMImageContent : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMImageContent
 	{
-		// +(instancetype _Nullable)imageWithUIImage:(UIImage * _Nonnull)uiImage;
-		[Static]
-		[Export ("imageWithUIImage:")]
-		[return: NullAllowed]
-		MBMImage ImageWithUIImage (UIImage uiImage);
+		// -(instancetype _Nonnull)initWithLeft:(float)left top:(float)top right:(float)right bottom:(float)bottom;
+		[Export ("initWithLeft:top:right:bottom:")]
+		NativeHandle Constructor (float left, float top, float right, float bottom);
 
-		// -(CGImageRef _Nonnull)cgImage;
-		[Static]
-		[Export ("cgImage")]
-        CGImage GetCgImage();
+		// @property (readonly, nonatomic) float left;
+		[Export ("left")]
+		float Left { get; }
+
+		// @property (readonly, nonatomic) float top;
+		[Export ("top")]
+		float Top { get; }
+
+		// @property (readonly, nonatomic) float right;
+		[Export ("right")]
+		float Right { get; }
+
+		// @property (readonly, nonatomic) float bottom;
+		[Export ("bottom")]
+		float Bottom { get; }
+
+		// -(BOOL)isEqualToImageContent:(MBMImageContent * _Nonnull)other;
+		[Export ("isEqualToImageContent:")]
+		bool IsEqualToImageContent (MBMImageContent other);
 	}
 
 	// @interface MBMGlyphsRasterizationOptions : NSObject
@@ -579,7 +268,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithRasterizationMode:(MBMGlyphsRasterizationMode)rasterizationMode fontFamily:(NSString * _Nullable)fontFamily;
 		[Export ("initWithRasterizationMode:fontFamily:")]
-		IntPtr Constructor (MBMGlyphsRasterizationMode rasterizationMode, [NullAllowed] string fontFamily);
+		NativeHandle Constructor (MBMGlyphsRasterizationMode rasterizationMode, [NullAllowed] string fontFamily);
 
 		// @property (readonly, nonatomic) MBMGlyphsRasterizationMode rasterizationMode;
 		[Export ("rasterizationMode")]
@@ -590,40 +279,40 @@ namespace MapboxCoreMaps
 		string FontFamily { get; }
 	}
 
-	// @interface MBMMapMemoryBudgetInMegabytes : NSObject
+	// @interface MBMTileCacheBudgetInMegabytes : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface MBMMapMemoryBudgetInMegabytes
+	interface MBMTileCacheBudgetInMegabytes
 	{
 		// -(instancetype _Nonnull)initWithSize:(uint64_t)size;
 		[Export ("initWithSize:")]
-		IntPtr Constructor (ulong size);
+		NativeHandle Constructor (ulong size);
 
 		// @property (readonly, nonatomic) uint64_t size;
 		[Export ("size")]
 		ulong Size { get; }
 
-		// -(BOOL)isEqualToMapMemoryBudgetInMegabytes:(MBMMapMemoryBudgetInMegabytes * _Nonnull)other;
-		[Export ("isEqualToMapMemoryBudgetInMegabytes:")]
-		bool IsEqualToMapMemoryBudgetInMegabytes (MBMMapMemoryBudgetInMegabytes other);
+		// -(BOOL)isEqualToTileCacheBudgetInMegabytes:(MBMTileCacheBudgetInMegabytes * _Nonnull)other;
+		[Export ("isEqualToTileCacheBudgetInMegabytes:")]
+		bool IsEqualToTileCacheBudgetInMegabytes (MBMTileCacheBudgetInMegabytes other);
 	}
 
-	// @interface MBMMapMemoryBudgetInTiles : NSObject
+	// @interface MBMTileCacheBudgetInTiles : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface MBMMapMemoryBudgetInTiles
+	interface MBMTileCacheBudgetInTiles
 	{
 		// -(instancetype _Nonnull)initWithSize:(uint64_t)size;
 		[Export ("initWithSize:")]
-		IntPtr Constructor (ulong size);
+		NativeHandle Constructor (ulong size);
 
 		// @property (readonly, nonatomic) uint64_t size;
 		[Export ("size")]
 		ulong Size { get; }
 
-		// -(BOOL)isEqualToMapMemoryBudgetInTiles:(MBMMapMemoryBudgetInTiles * _Nonnull)other;
-		[Export ("isEqualToMapMemoryBudgetInTiles:")]
-		bool IsEqualToMapMemoryBudgetInTiles (MBMMapMemoryBudgetInTiles other);
+		// -(BOOL)isEqualToTileCacheBudgetInTiles:(MBMTileCacheBudgetInTiles * _Nonnull)other;
+		[Export ("isEqualToTileCacheBudgetInTiles:")]
+		bool IsEqualToTileCacheBudgetInTiles (MBMTileCacheBudgetInTiles other);
 	}
 
 	// @interface MBMMapOptions : NSObject
@@ -631,13 +320,13 @@ namespace MapboxCoreMaps
 	[DisableDefaultCtor]
 	interface MBMMapOptions
 	{
-		// -(instancetype _Nonnull)initWithContextMode:(NSNumber * _Nullable)contextMode constrainMode:(NSNumber * _Nullable)constrainMode viewportMode:(NSNumber * _Nullable)viewportMode orientation:(NSNumber * _Nullable)orientation crossSourceCollisions:(NSNumber * _Nullable)crossSourceCollisions optimizeForTerrain:(NSNumber * _Nullable)optimizeForTerrain size:(MBMSize * _Nullable)size glyphsRasterizationOptions:(MBMGlyphsRasterizationOptions * _Nullable)glyphsRasterizationOptions __attribute__((swift_private));
-		[Export ("initWithContextMode:constrainMode:viewportMode:orientation:crossSourceCollisions:optimizeForTerrain:size:glyphsRasterizationOptions:")]
-		IntPtr Constructor ([NullAllowed] NSNumber contextMode, [NullAllowed] NSNumber constrainMode, [NullAllowed] NSNumber viewportMode, [NullAllowed] NSNumber orientation, [NullAllowed] NSNumber crossSourceCollisions, [NullAllowed] NSNumber optimizeForTerrain, [NullAllowed] MBMSize size, [NullAllowed] MBMGlyphsRasterizationOptions glyphsRasterizationOptions);
+		// -(instancetype _Nonnull)initWithContextMode:(NSNumber * _Nullable)contextMode constrainMode:(NSNumber * _Nullable)constrainMode viewportMode:(NSNumber * _Nullable)viewportMode orientation:(NSNumber * _Nullable)orientation crossSourceCollisions:(NSNumber * _Nullable)crossSourceCollisions size:(MBMSize * _Nullable)size glyphsRasterizationOptions:(MBMGlyphsRasterizationOptions * _Nullable)glyphsRasterizationOptions __attribute__((swift_private));
+		[Export ("initWithContextMode:constrainMode:viewportMode:orientation:crossSourceCollisions:size:glyphsRasterizationOptions:")]
+		NativeHandle Constructor ([NullAllowed] NSNumber contextMode, [NullAllowed] NSNumber constrainMode, [NullAllowed] NSNumber viewportMode, [NullAllowed] NSNumber orientation, [NullAllowed] NSNumber crossSourceCollisions, [NullAllowed] MBMSize size, [NullAllowed] MBMGlyphsRasterizationOptions glyphsRasterizationOptions);
 
-		// -(instancetype _Nonnull)initWithContextMode:(NSNumber * _Nullable)contextMode constrainMode:(NSNumber * _Nullable)constrainMode viewportMode:(NSNumber * _Nullable)viewportMode orientation:(NSNumber * _Nullable)orientation crossSourceCollisions:(NSNumber * _Nullable)crossSourceCollisions optimizeForTerrain:(NSNumber * _Nullable)optimizeForTerrain size:(MBMSize * _Nullable)size pixelRatio:(float)pixelRatio glyphsRasterizationOptions:(MBMGlyphsRasterizationOptions * _Nullable)glyphsRasterizationOptions __attribute__((swift_private));
-		[Export ("initWithContextMode:constrainMode:viewportMode:orientation:crossSourceCollisions:optimizeForTerrain:size:pixelRatio:glyphsRasterizationOptions:")]
-		IntPtr Constructor ([NullAllowed] NSNumber contextMode, [NullAllowed] NSNumber constrainMode, [NullAllowed] NSNumber viewportMode, [NullAllowed] NSNumber orientation, [NullAllowed] NSNumber crossSourceCollisions, [NullAllowed] NSNumber optimizeForTerrain, [NullAllowed] MBMSize size, float pixelRatio, [NullAllowed] MBMGlyphsRasterizationOptions glyphsRasterizationOptions);
+		// -(instancetype _Nonnull)initWithContextMode:(NSNumber * _Nullable)contextMode constrainMode:(NSNumber * _Nullable)constrainMode viewportMode:(NSNumber * _Nullable)viewportMode orientation:(NSNumber * _Nullable)orientation crossSourceCollisions:(NSNumber * _Nullable)crossSourceCollisions size:(MBMSize * _Nullable)size pixelRatio:(float)pixelRatio glyphsRasterizationOptions:(MBMGlyphsRasterizationOptions * _Nullable)glyphsRasterizationOptions __attribute__((swift_private));
+		[Export ("initWithContextMode:constrainMode:viewportMode:orientation:crossSourceCollisions:size:pixelRatio:glyphsRasterizationOptions:")]
+		NativeHandle Constructor ([NullAllowed] NSNumber contextMode, [NullAllowed] NSNumber constrainMode, [NullAllowed] NSNumber viewportMode, [NullAllowed] NSNumber orientation, [NullAllowed] NSNumber crossSourceCollisions, [NullAllowed] MBMSize size, float pixelRatio, [NullAllowed] MBMGlyphsRasterizationOptions glyphsRasterizationOptions);
 
 		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * contextMode __attribute__((swift_private));
 		[Export ("contextMode")]
@@ -659,10 +348,6 @@ namespace MapboxCoreMaps
 		[Export ("crossSourceCollisions")]
 		NSNumber CrossSourceCollisions { get; }
 
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * optimizeForTerrain __attribute__((swift_private));
-		[Export ("optimizeForTerrain")]
-		NSNumber OptimizeForTerrain { get; }
-
 		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT MBMSize * size __attribute__((swift_private));
 		[Export ("size")]
 		MBMSize Size { get; }
@@ -676,50 +361,6 @@ namespace MapboxCoreMaps
 		MBMGlyphsRasterizationOptions GlyphsRasterizationOptions { get; }
 	}
 
-	// @interface MBMScreenCoordinate : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMScreenCoordinate
-	{
-		// -(instancetype _Nonnull)initWithX:(double)x y:(double)y;
-		[Export ("initWithX:y:")]
-		IntPtr Constructor (double x, double y);
-
-		// @property (readonly, nonatomic) double x;
-		[Export ("x")]
-		double X { get; }
-
-		// @property (readonly, nonatomic) double y;
-		[Export ("y")]
-		double Y { get; }
-
-		// -(BOOL)isEqualToScreenCoordinate:(MBMScreenCoordinate * _Nonnull)other;
-		[Export ("isEqualToScreenCoordinate:")]
-		bool IsEqualToScreenCoordinate (MBMScreenCoordinate other);
-	}
-
-	// @interface MBMScreenBox : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMScreenBox
-	{
-		// -(instancetype _Nonnull)initWithMin:(MBMScreenCoordinate * _Nonnull)min max:(MBMScreenCoordinate * _Nonnull)max;
-		[Export ("initWithMin:max:")]
-		IntPtr Constructor (MBMScreenCoordinate min, MBMScreenCoordinate max);
-
-		// @property (readonly, nonatomic) MBMScreenCoordinate * _Nonnull min;
-		[Export ("min")]
-		MBMScreenCoordinate Min { get; }
-
-		// @property (readonly, nonatomic) MBMScreenCoordinate * _Nonnull max;
-		[Export ("max")]
-		MBMScreenCoordinate Max { get; }
-
-		// -(BOOL)isEqualToScreenBox:(MBMScreenBox * _Nonnull)other;
-		[Export ("isEqualToScreenBox:")]
-		bool IsEqualToScreenBox (MBMScreenBox other);
-	}
-
 	// @interface MBMCoordinateBoundsZoom : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -727,7 +368,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithBounds:(MBMCoordinateBounds * _Nonnull)bounds zoom:(double)zoom;
 		[Export ("initWithBounds:zoom:")]
-		IntPtr Constructor (MBMCoordinateBounds bounds, double zoom);
+		NativeHandle Constructor (MBMCoordinateBounds bounds, double zoom);
 
 		// @property (readonly, nonatomic) MBMCoordinateBounds * _Nonnull bounds;
 		[Export ("bounds")]
@@ -745,7 +386,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithWidth:(float)width height:(float)height;
 		[Export ("initWithWidth:height:")]
-		IntPtr Constructor (float width, float height);
+		NativeHandle Constructor (float width, float height);
 
 		// @property (readonly, nonatomic) float width;
 		[Export ("width")]
@@ -767,7 +408,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithLayerIds:(NSArray<NSString *> * _Nullable)layerIds filter:(id _Nullable)filter __attribute__((swift_private));
 		[Export ("initWithLayerIds:filter:")]
-		IntPtr Constructor ([NullAllowed] string[] layerIds, [NullAllowed] NSObject filter);
+		NativeHandle Constructor ([NullAllowed] string[] layerIds, [NullAllowed] NSObject filter);
 
 		// @property (readonly, copy, nonatomic) NSArray<NSString *> * _Nullable layerIds;
 		[NullAllowed, Export ("layerIds", ArgumentSemantic.Copy)]
@@ -785,7 +426,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithSourceLayerIds:(NSArray<NSString *> * _Nullable)sourceLayerIds filter:(id _Nonnull)filter;
 		[Export ("initWithSourceLayerIds:filter:")]
-		IntPtr Constructor ([NullAllowed] string[] sourceLayerIds, NSObject filter);
+		NativeHandle Constructor ([NullAllowed] string[] sourceLayerIds, NSObject filter);
 
 		// @property (readonly, copy, nonatomic) NSArray<NSString *> * _Nullable sourceLayerIds;
 		[NullAllowed, Export ("sourceLayerIds", ArgumentSemantic.Copy)]
@@ -803,7 +444,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithValue:(id _Nullable)value featureCollection:(NSArray<MBXFeature *> * _Nullable)featureCollection __attribute__((swift_private));
 		[Export ("initWithValue:featureCollection:")]
-		IntPtr Constructor ([NullAllowed] NSObject value, [NullAllowed] MBXFeature[] featureCollection);
+		NativeHandle Constructor ([NullAllowed] NSObject value, [NullAllowed] MBXFeature[] featureCollection);
 
 		// @property (readonly, copy, nonatomic) id _Nullable value;
 		[NullAllowed, Export ("value", ArgumentSemantic.Copy)]
@@ -814,28 +455,6 @@ namespace MapboxCoreMaps
 		MBXFeature[] FeatureCollection { get; }
 	}
 
-	// @interface MBMLayerPosition : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMLayerPosition
-	{
-		// -(instancetype _Nonnull)initWithAbove:(NSString * _Nullable)above below:(NSString * _Nullable)below at:(NSNumber * _Nullable)at __attribute__((swift_private));
-		[Export ("initWithAbove:below:at:")]
-		IntPtr Constructor ([NullAllowed] string above, [NullAllowed] string below, [NullAllowed] NSNumber at);
-
-		// @property (readonly, copy, nonatomic) NSString * _Nullable above;
-		[NullAllowed, Export ("above")]
-		string Above { get; }
-
-		// @property (readonly, copy, nonatomic) NSString * _Nullable below;
-		[NullAllowed, Export ("below")]
-		string Below { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * at __attribute__((swift_private));
-		[Export ("at")]
-		NSNumber At { get; }
-	}
-
 	// @interface MBMQueriedFeature : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -843,7 +462,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithFeature:(MBXFeature * _Nonnull)feature source:(NSString * _Nonnull)source sourceLayer:(NSString * _Nullable)sourceLayer state:(id _Nonnull)state __attribute__((swift_private));
 		[Export ("initWithFeature:source:sourceLayer:state:")]
-		IntPtr Constructor (MBXFeature feature, string source, [NullAllowed] string sourceLayer, NSObject state);
+		NativeHandle Constructor (MBXFeature feature, string source, [NullAllowed] string sourceLayer, NSObject state);
 
 		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT MBXFeature * feature __attribute__((swift_private));
 		[Export ("feature")]
@@ -862,278 +481,98 @@ namespace MapboxCoreMaps
 		NSObject State { get; }
 	}
 
-	// @interface MBMRenderCacheOptions : NSObject
+	// @interface MBMQueriedRenderedFeature : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface MBMRenderCacheOptions
+	interface MBMQueriedRenderedFeature
 	{
-		// -(instancetype _Nonnull)initWithSize:(NSNumber * _Nullable)size __attribute__((swift_private));
-		[Export ("initWithSize:")]
-		IntPtr Constructor ([NullAllowed] NSNumber size);
+		// -(instancetype _Nonnull)initWithQueriedFeature:(MBMQueriedFeature * _Nonnull)queriedFeature layers:(NSArray<NSString *> * _Nonnull)layers __attribute__((swift_private));
+		[Export ("initWithQueriedFeature:layers:")]
+		NativeHandle Constructor (MBMQueriedFeature queriedFeature, string[] layers);
 
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * size __attribute__((swift_private));
-		[Export ("size")]
-		NSNumber Size { get; }
+		// @property (readonly, nonatomic) MBMQueriedFeature * _Nonnull queriedFeature;
+		[Export ("queriedFeature")]
+		MBMQueriedFeature QueriedFeature { get; }
+
+		// @property (readonly, copy, nonatomic) NSArray<NSString *> * _Nonnull layers;
+		[Export ("layers", ArgumentSemantic.Copy)]
+		string[] Layers { get; }
 	}
 
-	// @interface MBMViewAnnotationOptions : NSObject
+	// @interface MBMQueriedSourceFeature : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface MBMViewAnnotationOptions
+	interface MBMQueriedSourceFeature
 	{
-		// -(instancetype _Nonnull)initWithGeometry:(MBXGeometry * _Nullable)geometry associatedFeatureId:(NSString * _Nullable)associatedFeatureId width:(NSNumber * _Nullable)width height:(NSNumber * _Nullable)height allowOverlap:(NSNumber * _Nullable)allowOverlap visible:(NSNumber * _Nullable)visible anchor:(NSNumber * _Nullable)anchor offsetX:(NSNumber * _Nullable)offsetX offsetY:(NSNumber * _Nullable)offsetY selected:(NSNumber * _Nullable)selected __attribute__((swift_private));
-		[Export ("initWithGeometry:associatedFeatureId:width:height:allowOverlap:visible:anchor:offsetX:offsetY:selected:")]
-		IntPtr Constructor ([NullAllowed] MBXGeometry geometry, [NullAllowed] string associatedFeatureId, [NullAllowed] NSNumber width, [NullAllowed] NSNumber height, [NullAllowed] NSNumber allowOverlap, [NullAllowed] NSNumber visible, [NullAllowed] NSNumber anchor, [NullAllowed] NSNumber offsetX, [NullAllowed] NSNumber offsetY, [NullAllowed] NSNumber selected);
+		// -(instancetype _Nonnull)initWithQueriedFeature:(MBMQueriedFeature * _Nonnull)queriedFeature __attribute__((swift_private));
+		[Export ("initWithQueriedFeature:")]
+		NativeHandle Constructor (MBMQueriedFeature queriedFeature);
 
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT MBXGeometry * geometry __attribute__((swift_private));
-		[Export ("geometry")]
-		MBXGeometry Geometry { get; }
+		// @property (readonly, nonatomic) MBMQueriedFeature * _Nonnull queriedFeature;
+		[Export ("queriedFeature")]
+		MBMQueriedFeature QueriedFeature { get; }
+	}
 
-		// @property (readonly, copy, nonatomic) NS_REFINED_FOR_SWIFT NSString * associatedFeatureId __attribute__((swift_private));
-		[Export ("associatedFeatureId")]
-		string AssociatedFeatureId { get; }
+	// @interface MBMViewAnnotationAnchorConfig : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMViewAnnotationAnchorConfig
+	{
+		// -(instancetype _Nonnull)initWithAnchor:(MBMViewAnnotationAnchor)anchor offsetX:(double)offsetX offsetY:(double)offsetY __attribute__((swift_private));
+		[Export ("initWithAnchor:offsetX:offsetY:")]
+		NativeHandle Constructor (MBMViewAnnotationAnchor anchor, double offsetX, double offsetY);
 
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * width __attribute__((swift_private));
-		[Export ("width")]
-		NSNumber Width { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * height __attribute__((swift_private));
-		[Export ("height")]
-		NSNumber Height { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * allowOverlap __attribute__((swift_private));
-		[Export ("allowOverlap")]
-		NSNumber AllowOverlap { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * visible __attribute__((swift_private));
-		[Export ("visible")]
-		NSNumber Visible { get; }
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * anchor __attribute__((swift_private));
+		// @property (readonly, nonatomic) MBMViewAnnotationAnchor anchor;
 		[Export ("anchor")]
-		NSNumber Anchor { get; }
+		MBMViewAnnotationAnchor Anchor { get; }
 
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * offsetX __attribute__((swift_private));
+		// @property (readonly, nonatomic) double offsetX;
 		[Export ("offsetX")]
-		NSNumber OffsetX { get; }
+		double OffsetX { get; }
 
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * offsetY __attribute__((swift_private));
+		// @property (readonly, nonatomic) double offsetY;
 		[Export ("offsetY")]
-		NSNumber OffsetY { get; }
+		double OffsetY { get; }
 
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * selected __attribute__((swift_private));
-		[Export ("selected")]
-		NSNumber Selected { get; }
+		// -(BOOL)isEqualToViewAnnotationAnchorConfig:(MBMViewAnnotationAnchorConfig * _Nonnull)other;
+		[Export ("isEqualToViewAnnotationAnchorConfig:")]
+		bool IsEqualToViewAnnotationAnchorConfig (MBMViewAnnotationAnchorConfig other);
 	}
 
-	// @interface MBMMap : MBMCameraManager
-	[BaseType (typeof(MBMCameraManager))]
+	// @interface MBMTileCacheBudget : NSObject
+	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface MBMMap
+	interface MBMTileCacheBudget
 	{
-		// -(void)createRenderer;
-		[Export ("createRenderer")]
-		void CreateRenderer ();
-
-		// -(void)destroyRenderer;
-		[Export ("destroyRenderer")]
-		void DestroyRenderer ();
-
-		// -(void)render;
-		[Export ("render")]
-		void Render ();
-
-		// -(void)setSizeForSize:(MBMSize * _Nonnull)size;
-		[Export ("setSizeForSize:")]
-		void SetSizeForSize (MBMSize size);
-
-		// -(MBMSize * _Nonnull)getSize __attribute__((ns_returns_retained));
-		[Export ("getSize")]
-        MBMSize GetSize();
-
-		// -(void)triggerRepaint;
-		[Export ("triggerRepaint")]
-		void TriggerRepaint ();
-
-		// -(void)setGestureInProgressForInProgress:(BOOL)inProgress;
-		[Export ("setGestureInProgressForInProgress:")]
-		void SetGestureInProgressForInProgress (bool inProgress);
-
-		// -(BOOL)isGestureInProgress;
-		[Export ("isGestureInProgress")]
-		bool IsGestureInProgress { get; }
-
-		// -(void)setUserAnimationInProgressForInProgress:(BOOL)inProgress;
-		[Export ("setUserAnimationInProgressForInProgress:")]
-		void SetUserAnimationInProgressForInProgress (bool inProgress);
-
-		// -(BOOL)isUserAnimationInProgress;
-		[Export ("isUserAnimationInProgress")]
-		bool IsUserAnimationInProgress { get; }
-
-		// -(void)setPrefetchZoomDeltaForDelta:(uint8_t)delta;
-		[Export ("setPrefetchZoomDeltaForDelta:")]
-		void SetPrefetchZoomDeltaForDelta (byte delta);
-
-		// -(uint8_t)getPrefetchZoomDelta;
-		[Export ("getPrefetchZoomDelta")]
-        byte GetPrefetchZoomDelta();
-
-		// -(void)setNorthOrientationForOrientation:(MBMNorthOrientation)orientation;
-		[Export ("setNorthOrientationForOrientation:")]
-		void SetNorthOrientationForOrientation (MBMNorthOrientation orientation);
-
-		// -(void)setConstrainModeForMode:(MBMConstrainMode)mode;
-		[Export ("setConstrainModeForMode:")]
-		void SetConstrainModeForMode (MBMConstrainMode mode);
-
-		// -(void)setViewportModeForMode:(MBMViewportMode)mode;
-		[Export ("setViewportModeForMode:")]
-		void SetViewportModeForMode (MBMViewportMode mode);
-
-		// -(MBMMapOptions * _Nonnull)getMapOptions __attribute__((ns_returns_retained));
-		[Export ("getMapOptions")]
-        MBMMapOptions GetMapOptions();
-
-		// -(NSArray<NSNumber *> * _Nonnull)getDebug __attribute__((ns_returns_retained));
-		[Export ("getDebug")]
-        NSNumber[] GetDebug();
-
-		// -(void)setDebugForDebugOptions:(NSArray<NSNumber *> * _Nonnull)debugOptions value:(BOOL)value;
-		[Export ("setDebugForDebugOptions:value:")]
-		void SetDebugForDebugOptions (NSNumber[] debugOptions, bool value);
-
-		// -(BOOL)isMapLoaded;
-		[Export ("isMapLoaded")]
-		bool IsMapLoaded { get; }
-
-		// -(void)setFeatureStateForSourceId:(NSString * _Nonnull)sourceId sourceLayerId:(NSString * _Nullable)sourceLayerId featureId:(NSString * _Nonnull)featureId state:(id _Nonnull)state;
-		[Export ("setFeatureStateForSourceId:sourceLayerId:featureId:state:")]
-		void SetFeatureStateForSourceId (string sourceId, [NullAllowed] string sourceLayerId, string featureId, NSObject state);
-
-		// -(void)removeFeatureStateForSourceId:(NSString * _Nonnull)sourceId sourceLayerId:(NSString * _Nullable)sourceLayerId featureId:(NSString * _Nonnull)featureId stateKey:(NSString * _Nullable)stateKey;
-		[Export ("removeFeatureStateForSourceId:sourceLayerId:featureId:stateKey:")]
-		void RemoveFeatureStateForSourceId (string sourceId, [NullAllowed] string sourceLayerId, string featureId, [NullAllowed] string stateKey);
-
-		// -(void)reduceMemoryUse;
-		[Export ("reduceMemoryUse")]
-		void ReduceMemoryUse ();
-
-		// -(MBMResourceOptions * _Nonnull)getResourceOptions __attribute__((ns_returns_retained));
-		[Export ("getResourceOptions")]
-        MBMResourceOptions GetResourceOptions();
-
-		// -(NSNumber * _Nullable)getElevationForCoordinate:(CLLocationCoordinate2D)coordinate __attribute__((ns_returns_retained));
-		[Export ("getElevationForCoordinate:")]
-		[return: NullAllowed]
-		NSNumber GetElevationForCoordinate (CLLocationCoordinate2D coordinate);
-
-		// -(void)setRenderCacheOptionsForOptions:(MBMRenderCacheOptions * _Nonnull)options;
-		[Export ("setRenderCacheOptionsForOptions:")]
-		void SetRenderCacheOptionsForOptions (MBMRenderCacheOptions options);
-
-		// -(MBMRenderCacheOptions * _Nonnull)getRenderCacheOptions __attribute__((ns_returns_retained));
-		[Export ("getRenderCacheOptions")]
-        MBMRenderCacheOptions GetRenderCacheOptions();
-	}
-
-	// @interface MBMMapMemoryBudget : NSObject
-	[BaseType (typeof(NSObject))]
-	interface MBMMapMemoryBudget
-	{
-		// -(instancetype _Nonnull)initWithValue:(id _Nonnull)value;
-		[Export ("initWithValue:")]
-		IntPtr Constructor (NSObject value);
-
-		// +(instancetype _Nonnull)fromMapMemoryBudgetInMegabytes:(MBMMapMemoryBudgetInMegabytes * _Nonnull)value;
+		// +(instancetype _Nonnull)fromTileCacheBudgetInMegabytes:(MBMTileCacheBudgetInMegabytes * _Nonnull)value;
 		[Static]
-		[Export ("fromMapMemoryBudgetInMegabytes:")]
-		MBMMapMemoryBudget FromMapMemoryBudgetInMegabytes (MBMMapMemoryBudgetInMegabytes value);
+		[Export ("fromTileCacheBudgetInMegabytes:")]
+		MBMTileCacheBudget FromTileCacheBudgetInMegabytes (MBMTileCacheBudgetInMegabytes value);
 
-		// +(instancetype _Nonnull)fromMapMemoryBudgetInTiles:(MBMMapMemoryBudgetInTiles * _Nonnull)value;
+		// +(instancetype _Nonnull)fromTileCacheBudgetInTiles:(MBMTileCacheBudgetInTiles * _Nonnull)value;
 		[Static]
-		[Export ("fromMapMemoryBudgetInTiles:")]
-		MBMMapMemoryBudget FromMapMemoryBudgetInTiles (MBMMapMemoryBudgetInTiles value);
+		[Export ("fromTileCacheBudgetInTiles:")]
+		MBMTileCacheBudget FromTileCacheBudgetInTiles (MBMTileCacheBudgetInTiles value);
 
-		// -(BOOL)isMapMemoryBudgetInMegabytes;
-		[Export ("isMapMemoryBudgetInMegabytes")]
-		bool IsMapMemoryBudgetInMegabytes { get; }
+		// -(BOOL)isTileCacheBudgetInMegabytes;
+		[Export ("isTileCacheBudgetInMegabytes")]
+		bool IsTileCacheBudgetInMegabytes { get; }
 
-		// -(BOOL)isMapMemoryBudgetInTiles;
-		[Export ("isMapMemoryBudgetInTiles")]
-		bool IsMapMemoryBudgetInTiles { get; }
+		// -(BOOL)isTileCacheBudgetInTiles;
+		[Export ("isTileCacheBudgetInTiles")]
+		bool IsTileCacheBudgetInTiles { get; }
 
-		// -(MBMMapMemoryBudgetInMegabytes * _Nonnull)getMapMemoryBudgetInMegabytes __attribute__((ns_returns_retained));
-		[Export ("getMapMemoryBudgetInMegabytes")]
-        MBMMapMemoryBudgetInMegabytes GetMapMemoryBudgetInMegabytes();
+		// -(MBMTileCacheBudgetInMegabytes * _Nonnull)getTileCacheBudgetInMegabytes __attribute__((ns_returns_retained));
+		[Export ("getTileCacheBudgetInMegabytes")]
+		MBMTileCacheBudgetInMegabytes TileCacheBudgetInMegabytes { get; }
 
-		// -(MBMMapMemoryBudgetInTiles * _Nonnull)getMapMemoryBudgetInTiles __attribute__((ns_returns_retained));
-		[Export ("getMapMemoryBudgetInTiles")]
-        MBMMapMemoryBudgetInTiles GetMapMemoryBudgetInTiles();
+		// -(MBMTileCacheBudgetInTiles * _Nonnull)getTileCacheBudgetInTiles __attribute__((ns_returns_retained));
+		[Export ("getTileCacheBudgetInTiles")]
+		MBMTileCacheBudgetInTiles TileCacheBudgetInTiles { get; }
 
-		// @property (nonatomic) id _Nonnull value;
-		[Export ("value", ArgumentSemantic.Assign)]
-		NSObject Value { get; set; }
-
-		// @property (readonly, nonatomic) MBMMapMemoryBudgetType type;
+		// @property (readonly, nonatomic) MBMTileCacheBudgetType type;
 		[Export ("type")]
-		MBMMapMemoryBudgetType Type { get; }
-	}
-
-	// @interface MBMRenderedQueryGeometry : NSObject
-	[BaseType (typeof(NSObject))]
-	interface MBMRenderedQueryGeometry
-	{
-		// -(instancetype _Nonnull)initWithValue:(id _Nonnull)value;
-		[Export ("initWithValue:")]
-		IntPtr Constructor (NSObject value);
-
-		// +(instancetype _Nonnull)fromScreenBox:(MBMScreenBox * _Nonnull)value;
-		[Static]
-		[Export ("fromScreenBox:")]
-		MBMRenderedQueryGeometry FromScreenBox (MBMScreenBox value);
-
-		// +(instancetype _Nonnull)fromScreenCoordinate:(MBMScreenCoordinate * _Nonnull)value;
-		[Static]
-		[Export ("fromScreenCoordinate:")]
-		MBMRenderedQueryGeometry FromScreenCoordinate (MBMScreenCoordinate value);
-
-		// +(instancetype _Nonnull)fromNSArray:(NSArray<MBMScreenCoordinate *> * _Nonnull)value;
-		[Static]
-		[Export ("fromNSArray:")]
-		MBMRenderedQueryGeometry FromNSArray (NSArray value);
-
-		// -(BOOL)isScreenBox;
-		[Export ("isScreenBox")]
-		bool IsScreenBox { get; }
-
-		// -(BOOL)isScreenCoordinate;
-		[Export ("isScreenCoordinate")]
-		bool IsScreenCoordinate { get; }
-
-		// -(BOOL)isNSArray;
-		[Export ("isNSArray")]
-		bool IsNSArray { get; }
-
-		// -(MBMScreenBox * _Nonnull)getScreenBox __attribute__((ns_returns_retained));
-		[Export ("getScreenBox")]
-		MBMScreenBox ScreenBox { get; }
-
-		// -(MBMScreenCoordinate * _Nonnull)getScreenCoordinate __attribute__((ns_returns_retained));
-		[Export ("getScreenCoordinate")]
-		MBMScreenCoordinate ScreenCoordinate { get; }
-
-		// -(NSArray<MBMScreenCoordinate *> * _Nonnull)getNSArray __attribute__((ns_returns_retained));
-		[Export ("getNSArray")]
-		MBMScreenCoordinate[] NSArray { get; }
-
-		// @property (nonatomic) id _Nonnull value;
-		[Export ("value", ArgumentSemantic.Assign)]
-		NSObject Value { get; set; }
-
-		// @property (readonly, nonatomic) MBMRenderedQueryGeometryType type;
-		[Export ("type")]
-		MBMRenderedQueryGeometryType Type { get; }
+		MBMTileCacheBudgetType Type { get; }
 	}
 
 	// @interface MBMMapConstants : NSObject
@@ -1166,131 +605,480 @@ namespace MapboxCoreMaps
 		ulong DefaultTransitionDuration { get; }
 	}
 
-	// @interface MBMEvent : NSObject
+	// @interface MBMMapRecorder : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface MBMEvent
+	interface MBMMapRecorder
 	{
-		// -(instancetype _Nonnull)initWithType:(NSString * _Nonnull)type data:(id _Nonnull)data;
-		[Export ("initWithType:data:")]
-		IntPtr Constructor (string type, NSObject data);
+		// -(MBXDataRef * _Nonnull)stopRecording __attribute__((ns_returns_retained));
+		[Export ("stopRecording")]
+		MBXDataRef StopRecording { get; }
 
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull type;
+		// -(void)togglePauseReplay;
+		[Export ("togglePauseReplay")]
+		void TogglePauseReplay ();
+
+		// -(NSString * _Nonnull)getPlaybackState __attribute__((ns_returns_retained));
+		[Export ("getPlaybackState")]
+		string PlaybackState { get; }
+	}
+
+	// @interface MBMMapLoaded : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMMapLoaded
+	{
+		// -(instancetype _Nonnull)initWithTimeInterval:(MBMEventTimeInterval * _Nonnull)timeInterval;
+		[Export ("initWithTimeInterval:")]
+		NativeHandle Constructor (MBMEventTimeInterval timeInterval);
+
+		// @property (readonly, nonatomic) MBMEventTimeInterval * _Nonnull timeInterval;
+		[Export ("timeInterval")]
+		MBMEventTimeInterval TimeInterval { get; }
+	}
+
+	// @interface MBMMapIdle : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMMapIdle
+	{
+		// -(instancetype _Nonnull)initWithTimestamp:(NSDate * _Nonnull)timestamp;
+		[Export ("initWithTimestamp:")]
+		NativeHandle Constructor (NSDate timestamp);
+
+		// @property (readonly, nonatomic) NSDate * _Nonnull timestamp;
+		[Export ("timestamp")]
+		NSDate Timestamp { get; }
+	}
+
+	// @interface MBMMapLoadingError : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMMapLoadingError
+	{
+		// -(instancetype _Nonnull)initWithType:(MBMMapLoadingErrorType)type message:(NSString * _Nonnull)message sourceId:(NSString * _Nullable)sourceId tileId:(MBMCanonicalTileID * _Nullable)tileId timestamp:(NSDate * _Nonnull)timestamp;
+		[Export ("initWithType:message:sourceId:tileId:timestamp:")]
+		NativeHandle Constructor (MBMMapLoadingErrorType type, string message, [NullAllowed] string sourceId, [NullAllowed] MBMCanonicalTileID tileId, NSDate timestamp);
+
+		// @property (readonly, nonatomic) MBMMapLoadingErrorType type;
 		[Export ("type")]
-		string Type { get; }
+		MBMMapLoadingErrorType Type { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull message;
+		[Export ("message")]
+		string Message { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nullable sourceId;
+		[NullAllowed, Export ("sourceId")]
+		string SourceId { get; }
+
+		// @property (readonly, nonatomic) MBMCanonicalTileID * _Nullable tileId;
+		[NullAllowed, Export ("tileId")]
+		MBMCanonicalTileID TileId { get; }
+
+		// @property (readonly, nonatomic) NSDate * _Nonnull timestamp;
+		[Export ("timestamp")]
+		NSDate Timestamp { get; }
+	}
+
+	// @interface MBMStyleLoaded : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMStyleLoaded
+	{
+		// -(instancetype _Nonnull)initWithTimeInterval:(MBMEventTimeInterval * _Nonnull)timeInterval;
+		[Export ("initWithTimeInterval:")]
+		NativeHandle Constructor (MBMEventTimeInterval timeInterval);
+
+		// @property (readonly, nonatomic) MBMEventTimeInterval * _Nonnull timeInterval;
+		[Export ("timeInterval")]
+		MBMEventTimeInterval TimeInterval { get; }
+	}
+
+	// @interface MBMStyleDataLoaded : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMStyleDataLoaded
+	{
+		// -(instancetype _Nonnull)initWithType:(MBMStyleDataLoadedType)type timeInterval:(MBMEventTimeInterval * _Nonnull)timeInterval;
+		[Export ("initWithType:timeInterval:")]
+		NativeHandle Constructor (MBMStyleDataLoadedType type, MBMEventTimeInterval timeInterval);
+
+		// @property (readonly, nonatomic) MBMStyleDataLoadedType type;
+		[Export ("type")]
+		MBMStyleDataLoadedType Type { get; }
+
+		// @property (readonly, nonatomic) MBMEventTimeInterval * _Nonnull timeInterval;
+		[Export ("timeInterval")]
+		MBMEventTimeInterval TimeInterval { get; }
+	}
+
+	// @interface MBMSourceDataLoaded : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMSourceDataLoaded
+	{
+		// -(instancetype _Nonnull)initWithSourceId:(NSString * _Nonnull)sourceId type:(MBMSourceDataLoadedType)type loaded:(NSNumber * _Nullable)loaded tileId:(MBMCanonicalTileID * _Nullable)tileId dataId:(NSString * _Nullable)dataId timeInterval:(MBMEventTimeInterval * _Nonnull)timeInterval __attribute__((swift_private));
+		[Export ("initWithSourceId:type:loaded:tileId:dataId:timeInterval:")]
+		NativeHandle Constructor (string sourceId, MBMSourceDataLoadedType type, [NullAllowed] NSNumber loaded, [NullAllowed] MBMCanonicalTileID tileId, [NullAllowed] string dataId, MBMEventTimeInterval timeInterval);
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
+		[Export ("sourceId")]
+		string SourceId { get; }
+
+		// @property (readonly, nonatomic) MBMSourceDataLoadedType type;
+		[Export ("type")]
+		MBMSourceDataLoadedType Type { get; }
+
+		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * loaded __attribute__((swift_private));
+		[Export ("loaded")]
+		NSNumber Loaded { get; }
+
+		// @property (readonly, nonatomic) MBMCanonicalTileID * _Nullable tileId;
+		[NullAllowed, Export ("tileId")]
+		MBMCanonicalTileID TileId { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nullable dataId;
+		[NullAllowed, Export ("dataId")]
+		string DataId { get; }
+
+		// @property (readonly, nonatomic) MBMEventTimeInterval * _Nonnull timeInterval;
+		[Export ("timeInterval")]
+		MBMEventTimeInterval TimeInterval { get; }
+	}
+
+	// @interface MBMSourceAdded : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMSourceAdded
+	{
+		// -(instancetype _Nonnull)initWithSourceId:(NSString * _Nonnull)sourceId timestamp:(NSDate * _Nonnull)timestamp;
+		[Export ("initWithSourceId:timestamp:")]
+		NativeHandle Constructor (string sourceId, NSDate timestamp);
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
+		[Export ("sourceId")]
+		string SourceId { get; }
+
+		// @property (readonly, nonatomic) NSDate * _Nonnull timestamp;
+		[Export ("timestamp")]
+		NSDate Timestamp { get; }
+	}
+
+	// @interface MBMSourceRemoved : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMSourceRemoved
+	{
+		// -(instancetype _Nonnull)initWithSourceId:(NSString * _Nonnull)sourceId timestamp:(NSDate * _Nonnull)timestamp;
+		[Export ("initWithSourceId:timestamp:")]
+		NativeHandle Constructor (string sourceId, NSDate timestamp);
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
+		[Export ("sourceId")]
+		string SourceId { get; }
+
+		// @property (readonly, nonatomic) NSDate * _Nonnull timestamp;
+		[Export ("timestamp")]
+		NSDate Timestamp { get; }
+	}
+
+	// @interface MBMStyleImageMissing : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMStyleImageMissing
+	{
+		// -(instancetype _Nonnull)initWithImageId:(NSString * _Nonnull)imageId timestamp:(NSDate * _Nonnull)timestamp;
+		[Export ("initWithImageId:timestamp:")]
+		NativeHandle Constructor (string imageId, NSDate timestamp);
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull imageId;
+		[Export ("imageId")]
+		string ImageId { get; }
+
+		// @property (readonly, nonatomic) NSDate * _Nonnull timestamp;
+		[Export ("timestamp")]
+		NSDate Timestamp { get; }
+	}
+
+	// @interface MBMStyleImageRemoveUnused : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMStyleImageRemoveUnused
+	{
+		// -(instancetype _Nonnull)initWithImageId:(NSString * _Nonnull)imageId timestamp:(NSDate * _Nonnull)timestamp;
+		[Export ("initWithImageId:timestamp:")]
+		NativeHandle Constructor (string imageId, NSDate timestamp);
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull imageId;
+		[Export ("imageId")]
+		string ImageId { get; }
+
+		// @property (readonly, nonatomic) NSDate * _Nonnull timestamp;
+		[Export ("timestamp")]
+		NSDate Timestamp { get; }
+	}
+
+	// @interface MBMCameraChanged : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMCameraChanged
+	{
+		// @property (readonly, nonatomic) NSDate * _Nonnull timestamp;
+		[Export ("timestamp")]
+		NSDate Timestamp { get; }
+	}
+
+	// @interface MBMRenderFrameStarted : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMRenderFrameStarted
+	{
+		// -(instancetype _Nonnull)initWithTimestamp:(NSDate * _Nonnull)timestamp;
+		[Export ("initWithTimestamp:")]
+		NativeHandle Constructor (NSDate timestamp);
+
+		// @property (readonly, nonatomic) NSDate * _Nonnull timestamp;
+		[Export ("timestamp")]
+		NSDate Timestamp { get; }
+	}
+
+	// @interface MBMRenderFrameFinished : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMRenderFrameFinished
+	{
+		// -(instancetype _Nonnull)initWithRenderMode:(MBMRenderModeType)renderMode needsRepaint:(BOOL)needsRepaint placementChanged:(BOOL)placementChanged timeInterval:(MBMEventTimeInterval * _Nonnull)timeInterval;
+		[Export ("initWithRenderMode:needsRepaint:placementChanged:timeInterval:")]
+		NativeHandle Constructor (MBMRenderModeType renderMode, bool needsRepaint, bool placementChanged, MBMEventTimeInterval timeInterval);
+
+		// @property (readonly, nonatomic) MBMRenderModeType renderMode;
+		[Export ("renderMode")]
+		MBMRenderModeType RenderMode { get; }
+
+		// @property (readonly, nonatomic) BOOL needsRepaint;
+		[Export ("needsRepaint")]
+		bool NeedsRepaint { get; }
+
+		// @property (readonly, nonatomic) BOOL placementChanged;
+		[Export ("placementChanged")]
+		bool PlacementChanged { get; }
+
+		// @property (readonly, nonatomic) MBMEventTimeInterval * _Nonnull timeInterval;
+		[Export ("timeInterval")]
+		MBMEventTimeInterval TimeInterval { get; }
+	}
+
+	// @interface MBMResourceRequest : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMResourceRequest
+	{
+		// -(instancetype _Nonnull)initWithSource:(MBMRequestDataSourceType)source request:(MBMRequestInfo * _Nonnull)request response:(MBMResponseInfo * _Nullable)response cancelled:(BOOL)cancelled timeInterval:(MBMEventTimeInterval * _Nonnull)timeInterval;
+		[Export ("initWithSource:request:response:cancelled:timeInterval:")]
+		NativeHandle Constructor (MBMRequestDataSourceType source, MBMRequestInfo request, [NullAllowed] MBMResponseInfo response, bool cancelled, MBMEventTimeInterval timeInterval);
+
+		// @property (readonly, nonatomic) MBMRequestDataSourceType source;
+		[Export ("source")]
+		MBMRequestDataSourceType Source { get; }
+
+		// @property (readonly, nonatomic) MBMRequestInfo * _Nonnull request;
+		[Export ("request")]
+		MBMRequestInfo Request { get; }
+
+		// @property (readonly, nonatomic) MBMResponseInfo * _Nullable response;
+		[NullAllowed, Export ("response")]
+		MBMResponseInfo Response { get; }
+
+		// @property (readonly, nonatomic) BOOL cancelled;
+		[Export ("cancelled")]
+		bool Cancelled { get; }
+
+		// @property (readonly, nonatomic) MBMEventTimeInterval * _Nonnull timeInterval;
+		[Export ("timeInterval")]
+		MBMEventTimeInterval TimeInterval { get; }
+	}
+
+	// @interface MBMRequestInfo : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMRequestInfo
+	{
+		// -(instancetype _Nonnull)initWithUrl:(NSString * _Nonnull)url resource:(MBMRequestResourceType)resource priority:(MBMRequestPriorityType)priority loadingMethod:(NSArray<NSNumber *> * _Nonnull)loadingMethod;
+		[Export ("initWithUrl:resource:priority:loadingMethod:")]
+		NativeHandle Constructor (string url, MBMRequestResourceType resource, MBMRequestPriorityType priority, NSNumber[] loadingMethod);
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull url;
+		[Export ("url")]
+		string Url { get; }
+
+		// @property (readonly, nonatomic) MBMRequestResourceType resource;
+		[Export ("resource")]
+		MBMRequestResourceType Resource { get; }
+
+		// @property (readonly, nonatomic) MBMRequestPriorityType priority;
+		[Export ("priority")]
+		MBMRequestPriorityType Priority { get; }
+
+		// @property (readonly, copy, nonatomic) NS_REFINED_FOR_SWIFT NSArray<NSNumber *> * loadingMethod __attribute__((swift_private));
+		[Export ("loadingMethod", ArgumentSemantic.Copy)]
+		NSNumber[] LoadingMethod { get; }
+	}
+
+	// @interface MBMResourceRequestError : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMResourceRequestError
+	{
+		// -(instancetype _Nonnull)initWithReason:(MBMRequestErrorType)reason message:(NSString * _Nonnull)message;
+		[Export ("initWithReason:message:")]
+		NativeHandle Constructor (MBMRequestErrorType reason, string message);
+
+		// @property (readonly, nonatomic) MBMRequestErrorType reason;
+		[Export ("reason")]
+		MBMRequestErrorType Reason { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull message;
+		[Export ("message")]
+		string Message { get; }
+	}
+
+	// @interface MBMResponseInfo : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMResponseInfo
+	{
+		// -(instancetype _Nonnull)initWithNoContent:(BOOL)noContent notModified:(BOOL)notModified mustRevalidate:(BOOL)mustRevalidate source:(MBMResponseSourceType)source size:(uint64_t)size modified:(NSDate * _Nullable)modified expires:(NSDate * _Nullable)expires etag:(NSString * _Nullable)etag error:(MBMResourceRequestError * _Nullable)error;
+		[Export ("initWithNoContent:notModified:mustRevalidate:source:size:modified:expires:etag:error:")]
+		NativeHandle Constructor (bool noContent, bool notModified, bool mustRevalidate, MBMResponseSourceType source, ulong size, [NullAllowed] NSDate modified, [NullAllowed] NSDate expires, [NullAllowed] string etag, [NullAllowed] MBMResourceRequestError error);
+
+		// @property (readonly, nonatomic) BOOL noContent;
+		[Export ("noContent")]
+		bool NoContent { get; }
+
+		// @property (readonly, nonatomic) BOOL notModified;
+		[Export ("notModified")]
+		bool NotModified { get; }
+
+		// @property (readonly, nonatomic) BOOL mustRevalidate;
+		[Export ("mustRevalidate")]
+		bool MustRevalidate { get; }
+
+		// @property (readonly, nonatomic) MBMResponseSourceType source;
+		[Export ("source")]
+		MBMResponseSourceType Source { get; }
+
+		// @property (readonly, nonatomic) uint64_t size;
+		[Export ("size")]
+		ulong Size { get; }
+
+		// @property (readonly, nonatomic) NSDate * _Nullable modified;
+		[NullAllowed, Export ("modified")]
+		NSDate Modified { get; }
+
+		// @property (readonly, nonatomic) NSDate * _Nullable expires;
+		[NullAllowed, Export ("expires")]
+		NSDate Expires { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nullable etag;
+		[NullAllowed, Export ("etag")]
+		string Etag { get; }
+
+		// @property (readonly, nonatomic) MBMResourceRequestError * _Nullable error;
+		[NullAllowed, Export ("error")]
+		MBMResourceRequestError Error { get; }
+	}
+
+	// @interface MBMEventTimeInterval : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMEventTimeInterval
+	{
+		// -(instancetype _Nonnull)initWithBegin:(NSDate * _Nonnull)begin end:(NSDate * _Nonnull)end;
+		[Export ("initWithBegin:end:")]
+		NativeHandle Constructor (NSDate begin, NSDate end);
+
+		// @property (readonly, nonatomic) NSDate * _Nonnull begin;
+		[Export ("begin")]
+		NSDate Begin { get; }
+
+		// @property (readonly, nonatomic) NSDate * _Nonnull end;
+		[Export ("end")]
+		NSDate End { get; }
+	}
+
+	// @interface MBMGenericEvent : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMGenericEvent
+	{
+		// -(instancetype _Nonnull)initWithName:(NSString * _Nonnull)name data:(id _Nonnull)data timeInterval:(MBMEventTimeInterval * _Nonnull)timeInterval;
+		[Export ("initWithName:data:timeInterval:")]
+		NativeHandle Constructor (string name, NSObject data, MBMEventTimeInterval timeInterval);
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull name;
+		[Export ("name")]
+		string Name { get; }
 
 		// @property (readonly, copy, nonatomic) id _Nonnull data;
 		[Export ("data", ArgumentSemantic.Copy)]
 		NSObject Data { get; }
+
+		// @property (readonly, nonatomic) MBMEventTimeInterval * _Nonnull timeInterval;
+		[Export ("timeInterval")]
+		MBMEventTimeInterval TimeInterval { get; }
 	}
 
-	// @protocol MBMObserver
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/
+	// typedef void (^MBMMapLoadedCallback)(MBMMapLoaded * _Nonnull);
+	delegate void MBMMapLoadedCallback (MBMMapLoaded arg0);
 
-    partial interface IMBMObserver { }
+	// typedef void (^MBMMapIdleCallback)(MBMMapIdle * _Nonnull);
+	delegate void MBMMapIdleCallback (MBMMapIdle arg0);
 
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-	interface MBMObserver
-	{
-		// @required -(void)notifyForEvent:(MBMEvent * _Nonnull)event;
-		[Abstract]
-		[Export ("notifyForEvent:")]
-		void NotifyForEvent (MBMEvent @event);
-	}
+	// typedef void (^MBMMapLoadingErrorCallback)(MBMMapLoadingError * _Nonnull);
+	delegate void MBMMapLoadingErrorCallback (MBMMapLoadingError arg0);
 
-	// @interface MBMMapEvents : NSObject
-	[BaseType (typeof(NSObject))]
-	interface MBMMapEvents
-	{
-		// @property (readonly, nonatomic, class) NSString * MapLoaded;
-		[Static]
-		[Export ("MapLoaded")]
-		string MapLoaded { get; }
+	// typedef void (^MBMStyleLoadedCallback)(MBMStyleLoaded * _Nonnull);
+	delegate void MBMStyleLoadedCallback (MBMStyleLoaded arg0);
 
-		// @property (readonly, nonatomic, class) NSString * MapLoadingError;
-		[Static]
-		[Export ("MapLoadingError")]
-		string MapLoadingError { get; }
+	// typedef void (^MBMStyleDataLoadedCallback)(MBMStyleDataLoaded * _Nonnull);
+	delegate void MBMStyleDataLoadedCallback (MBMStyleDataLoaded arg0);
 
-		// @property (readonly, nonatomic, class) NSString * MapIdle;
-		[Static]
-		[Export ("MapIdle")]
-		string MapIdle { get; }
+	// typedef void (^MBMSourceDataLoadedCallback)(MBMSourceDataLoaded * _Nonnull);
+	delegate void MBMSourceDataLoadedCallback (MBMSourceDataLoaded arg0);
 
-		// @property (readonly, nonatomic, class) NSString * StyleDataLoaded;
-		[Static]
-		[Export ("StyleDataLoaded")]
-		string StyleDataLoaded { get; }
+	// typedef void (^MBMSourceAddedCallback)(MBMSourceAdded * _Nonnull);
+	delegate void MBMSourceAddedCallback (MBMSourceAdded arg0);
 
-		// @property (readonly, nonatomic, class) NSString * StyleLoaded;
-		[Static]
-		[Export ("StyleLoaded")]
-		string StyleLoaded { get; }
+	// typedef void (^MBMSourceRemovedCallback)(MBMSourceRemoved * _Nonnull);
+	delegate void MBMSourceRemovedCallback (MBMSourceRemoved arg0);
 
-		// @property (readonly, nonatomic, class) NSString * StyleImageMissing;
-		[Static]
-		[Export ("StyleImageMissing")]
-		string StyleImageMissing { get; }
+	// typedef void (^MBMStyleImageMissingCallback)(MBMStyleImageMissing * _Nonnull);
+	delegate void MBMStyleImageMissingCallback (MBMStyleImageMissing arg0);
 
-		// @property (readonly, nonatomic, class) NSString * StyleImageRemoveUnused;
-		[Static]
-		[Export ("StyleImageRemoveUnused")]
-		string StyleImageRemoveUnused { get; }
+	// typedef void (^MBMStyleImageRemoveUnusedCallback)(MBMStyleImageRemoveUnused * _Nonnull);
+	delegate void MBMStyleImageRemoveUnusedCallback (MBMStyleImageRemoveUnused arg0);
 
-		// @property (readonly, nonatomic, class) NSString * SourceDataLoaded;
-		[Static]
-		[Export ("SourceDataLoaded")]
-		string SourceDataLoaded { get; }
+	// typedef void (^MBMCameraChangedCallback)(MBMCameraChanged * _Nonnull);
+	delegate void MBMCameraChangedCallback (MBMCameraChanged arg0);
 
-		// @property (readonly, nonatomic, class) NSString * SourceAdded;
-		[Static]
-		[Export ("SourceAdded")]
-		string SourceAdded { get; }
+	// typedef void (^MBMRenderFrameStartedCallback)(MBMRenderFrameStarted * _Nonnull);
+	delegate void MBMRenderFrameStartedCallback (MBMRenderFrameStarted arg0);
 
-		// @property (readonly, nonatomic, class) NSString * SourceRemoved;
-		[Static]
-		[Export ("SourceRemoved")]
-		string SourceRemoved { get; }
+	// typedef void (^MBMRenderFrameFinishedCallback)(MBMRenderFrameFinished * _Nonnull);
+	delegate void MBMRenderFrameFinishedCallback (MBMRenderFrameFinished arg0);
 
-		// @property (readonly, nonatomic, class) NSString * RenderFrameStarted;
-		[Static]
-		[Export ("RenderFrameStarted")]
-		string RenderFrameStarted { get; }
+	// typedef void (^MBMResourceRequestCallback)(MBMResourceRequest * _Nonnull);
+	delegate void MBMResourceRequestCallback (MBMResourceRequest arg0);
 
-		// @property (readonly, nonatomic, class) NSString * RenderFrameFinished;
-		[Static]
-		[Export ("RenderFrameFinished")]
-		string RenderFrameFinished { get; }
-
-		// @property (readonly, nonatomic, class) NSString * CameraChanged;
-		[Static]
-		[Export ("CameraChanged")]
-		string CameraChanged { get; }
-
-		// @property (readonly, nonatomic, class) NSString * ResourceRequest;
-		[Static]
-		[Export ("ResourceRequest")]
-		string ResourceRequest { get; }
-	}
+	// typedef void (^MBMGenericEventCallback)(MBMGenericEvent * _Nonnull);
+	delegate void MBMGenericEventCallback (MBMGenericEvent arg0);
 
 	// @interface MBMStylePack : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
 	interface MBMStylePack
 	{
-		// -(instancetype _Nonnull)initWithStyleURI:(NSString * _Nonnull)styleURI glyphsRasterizationMode:(MBMGlyphsRasterizationMode)glyphsRasterizationMode requiredResourceCount:(uint64_t)requiredResourceCount completedResourceCount:(uint64_t)completedResourceCount completedResourceSize:(uint64_t)completedResourceSize expires:(NSDate * _Nullable)expires;
-		[Export ("initWithStyleURI:glyphsRasterizationMode:requiredResourceCount:completedResourceCount:completedResourceSize:expires:")]
-		IntPtr Constructor (string styleURI, MBMGlyphsRasterizationMode glyphsRasterizationMode, ulong requiredResourceCount, ulong completedResourceCount, ulong completedResourceSize, [NullAllowed] NSDate expires);
-
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull styleURI;
 		[Export ("styleURI")]
 		string StyleURI { get; }
@@ -1323,7 +1111,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithCompletedResourceCount:(uint64_t)completedResourceCount completedResourceSize:(uint64_t)completedResourceSize erroredResourceCount:(uint64_t)erroredResourceCount requiredResourceCount:(uint64_t)requiredResourceCount loadedResourceCount:(uint64_t)loadedResourceCount loadedResourceSize:(uint64_t)loadedResourceSize;
 		[Export ("initWithCompletedResourceCount:completedResourceSize:erroredResourceCount:requiredResourceCount:loadedResourceCount:loadedResourceSize:")]
-		IntPtr Constructor (ulong completedResourceCount, ulong completedResourceSize, ulong erroredResourceCount, ulong requiredResourceCount, ulong loadedResourceCount, ulong loadedResourceSize);
+		NativeHandle Constructor (ulong completedResourceCount, ulong completedResourceSize, ulong erroredResourceCount, ulong requiredResourceCount, ulong loadedResourceCount, ulong loadedResourceSize);
 
 		// @property (readonly, nonatomic) uint64_t completedResourceCount;
 		[Export ("completedResourceCount")]
@@ -1355,14 +1143,6 @@ namespace MapboxCoreMaps
 	[DisableDefaultCtor]
 	interface MBMStylePackError
 	{
-		// -(instancetype _Nonnull)initWithType:(MBMStylePackErrorType)type message:(NSString * _Nonnull)message;
-		[Export ("initWithType:message:")]
-		IntPtr Constructor (MBMStylePackErrorType type, string message);
-
-		// @property (readonly, nonatomic) MBMStylePackErrorType type;
-		[Export ("type")]
-		MBMStylePackErrorType Type { get; }
-
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull message;
 		[Export ("message")]
 		string Message { get; }
@@ -1373,13 +1153,13 @@ namespace MapboxCoreMaps
 	[DisableDefaultCtor]
 	interface MBMStylePackLoadOptions
 	{
-		// -(instancetype _Nonnull)initWithGlyphsRasterizationMode:(NSNumber * _Nullable)glyphsRasterizationMode metadata:(id _Nullable)metadata __attribute__((swift_private));
-		[Export ("initWithGlyphsRasterizationMode:metadata:")]
-		IntPtr Constructor ([NullAllowed] NSNumber glyphsRasterizationMode, [NullAllowed] NSObject metadata);
+		// -(instancetype _Nonnull)initWithGlyphsRasterizationMode:(NSNumber * _Nullable)glyphsRasterizationMode metadata:(id _Nullable)metadata extraOptions:(id _Nullable)extraOptions __attribute__((swift_private));
+		[Export ("initWithGlyphsRasterizationMode:metadata:extraOptions:")]
+		NativeHandle Constructor ([NullAllowed] NSNumber glyphsRasterizationMode, [NullAllowed] NSObject metadata, [NullAllowed] NSObject extraOptions);
 
-		// -(instancetype _Nonnull)initWithGlyphsRasterizationMode:(NSNumber * _Nullable)glyphsRasterizationMode metadata:(id _Nullable)metadata acceptExpired:(BOOL)acceptExpired __attribute__((swift_private));
-		[Export ("initWithGlyphsRasterizationMode:metadata:acceptExpired:")]
-		IntPtr Constructor ([NullAllowed] NSNumber glyphsRasterizationMode, [NullAllowed] NSObject metadata, bool acceptExpired);
+		// -(instancetype _Nonnull)initWithGlyphsRasterizationMode:(NSNumber * _Nullable)glyphsRasterizationMode metadata:(id _Nullable)metadata acceptExpired:(BOOL)acceptExpired extraOptions:(id _Nullable)extraOptions __attribute__((swift_private));
+		[Export ("initWithGlyphsRasterizationMode:metadata:acceptExpired:extraOptions:")]
+		NativeHandle Constructor ([NullAllowed] NSNumber glyphsRasterizationMode, [NullAllowed] NSObject metadata, bool acceptExpired, [NullAllowed] NSObject extraOptions);
 
 		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * glyphsRasterizationMode __attribute__((swift_private));
 		[Export ("glyphsRasterizationMode")]
@@ -1389,9 +1169,13 @@ namespace MapboxCoreMaps
 		[NullAllowed, Export ("metadata", ArgumentSemantic.Copy)]
 		NSObject Metadata { get; }
 
-		// @property (readonly, getter = isAcceptExpired, nonatomic) BOOL acceptExpired;
+		// @property (readonly, nonatomic) BOOL acceptExpired;
 		[Export ("acceptExpired")]
-		bool AcceptExpired { [Bind ("isAcceptExpired")] get; }
+		bool AcceptExpired { get; }
+
+		// @property (readonly, copy, nonatomic) id _Nullable extraOptions;
+		[NullAllowed, Export ("extraOptions", ArgumentSemantic.Copy)]
+		NSObject ExtraOptions { get; }
 	}
 
 	// @interface MBMTilesetDescriptorOptions : NSObject
@@ -1399,13 +1183,13 @@ namespace MapboxCoreMaps
 	[DisableDefaultCtor]
 	interface MBMTilesetDescriptorOptions
 	{
-		// -(instancetype _Nonnull)initWithStyleURI:(NSString * _Nonnull)styleURI minZoom:(uint8_t)minZoom maxZoom:(uint8_t)maxZoom stylePackOptions:(MBMStylePackLoadOptions * _Nullable)stylePackOptions;
-		[Export ("initWithStyleURI:minZoom:maxZoom:stylePackOptions:")]
-		IntPtr Constructor (string styleURI, byte minZoom, byte maxZoom, [NullAllowed] MBMStylePackLoadOptions stylePackOptions);
+		// -(instancetype _Nonnull)initWithStyleURI:(NSString * _Nonnull)styleURI minZoom:(uint8_t)minZoom maxZoom:(uint8_t)maxZoom tilesets:(NSArray<NSString *> * _Nullable)tilesets stylePackOptions:(MBMStylePackLoadOptions * _Nullable)stylePackOptions extraOptions:(id _Nullable)extraOptions;
+		[Export ("initWithStyleURI:minZoom:maxZoom:tilesets:stylePackOptions:extraOptions:")]
+		NativeHandle Constructor (string styleURI, byte minZoom, byte maxZoom, [NullAllowed] string[] tilesets, [NullAllowed] MBMStylePackLoadOptions stylePackOptions, [NullAllowed] NSObject extraOptions);
 
-		// -(instancetype _Nonnull)initWithStyleURI:(NSString * _Nonnull)styleURI minZoom:(uint8_t)minZoom maxZoom:(uint8_t)maxZoom pixelRatio:(float)pixelRatio stylePackOptions:(MBMStylePackLoadOptions * _Nullable)stylePackOptions;
-		[Export ("initWithStyleURI:minZoom:maxZoom:pixelRatio:stylePackOptions:")]
-		IntPtr Constructor (string styleURI, byte minZoom, byte maxZoom, float pixelRatio, [NullAllowed] MBMStylePackLoadOptions stylePackOptions);
+		// -(instancetype _Nonnull)initWithStyleURI:(NSString * _Nonnull)styleURI minZoom:(uint8_t)minZoom maxZoom:(uint8_t)maxZoom pixelRatio:(float)pixelRatio tilesets:(NSArray<NSString *> * _Nullable)tilesets stylePackOptions:(MBMStylePackLoadOptions * _Nullable)stylePackOptions extraOptions:(id _Nullable)extraOptions;
+		[Export ("initWithStyleURI:minZoom:maxZoom:pixelRatio:tilesets:stylePackOptions:extraOptions:")]
+		NativeHandle Constructor (string styleURI, byte minZoom, byte maxZoom, float pixelRatio, [NullAllowed] string[] tilesets, [NullAllowed] MBMStylePackLoadOptions stylePackOptions, [NullAllowed] NSObject extraOptions);
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull styleURI;
 		[Export ("styleURI")]
@@ -1423,9 +1207,17 @@ namespace MapboxCoreMaps
 		[Export ("pixelRatio")]
 		float PixelRatio { get; }
 
+		// @property (readonly, copy, nonatomic) NSArray<NSString *> * _Nullable tilesets;
+		[NullAllowed, Export ("tilesets", ArgumentSemantic.Copy)]
+		string[] Tilesets { get; }
+
 		// @property (readonly, nonatomic) MBMStylePackLoadOptions * _Nullable stylePackOptions;
 		[NullAllowed, Export ("stylePackOptions")]
 		MBMStylePackLoadOptions StylePackOptions { get; }
+
+		// @property (readonly, copy, nonatomic) id _Nullable extraOptions;
+		[NullAllowed, Export ("extraOptions", ArgumentSemantic.Copy)]
+		NSObject ExtraOptions { get; }
 	}
 
 	// typedef void (^MBMStylePackLoadProgressCallback)(MBMStylePackLoadProgress * _Nonnull);
@@ -1433,13 +1225,8 @@ namespace MapboxCoreMaps
 
 	// @interface MBMOfflineManager : NSObject
 	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
 	interface MBMOfflineManager
 	{
-		// -(instancetype _Nonnull)initWithResourceOptions:(MBMResourceOptions * _Nonnull)resourceOptions;
-		[Export ("initWithResourceOptions:")]
-		IntPtr Constructor (MBMResourceOptions resourceOptions);
-
 		// -(MBXTilesetDescriptor * _Nonnull)createTilesetDescriptorForTilesetDescriptorOptions:(MBMTilesetDescriptorOptions * _Nonnull)tilesetDescriptorOptions __attribute__((ns_returns_retained));
 		[Export ("createTilesetDescriptorForTilesetDescriptorOptions:")]
 		MBXTilesetDescriptor CreateTilesetDescriptorForTilesetDescriptorOptions (MBMTilesetDescriptorOptions tilesetDescriptorOptions);
@@ -1449,22 +1236,26 @@ namespace MapboxCoreMaps
 		void RemoveStylePackForStyleURI (string styleURI);
 	}
 
-	// @interface MBMResponseError : NSObject
+	// @interface MBMOfflineRegionError : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface MBMResponseError
+	interface MBMOfflineRegionError
 	{
-		// -(instancetype _Nonnull)initWithReason:(MBMResponseErrorReason)reason message:(NSString * _Nonnull)message retryAfter:(NSDate * _Nullable)retryAfter;
-		[Export ("initWithReason:message:retryAfter:")]
-		IntPtr Constructor (MBMResponseErrorReason reason, string message, [NullAllowed] NSDate retryAfter);
+		// -(instancetype _Nonnull)initWithType:(MBMOfflineRegionErrorType)type message:(NSString * _Nonnull)message isFatal:(BOOL)isFatal retryAfter:(NSDate * _Nullable)retryAfter;
+		[Export ("initWithType:message:isFatal:retryAfter:")]
+		NativeHandle Constructor (MBMOfflineRegionErrorType type, string message, bool isFatal, [NullAllowed] NSDate retryAfter);
 
-		// @property (readonly, nonatomic) MBMResponseErrorReason reason;
-		[Export ("reason")]
-		MBMResponseErrorReason Reason { get; }
+		// @property (readonly, nonatomic) MBMOfflineRegionErrorType type;
+		[Export ("type")]
+		MBMOfflineRegionErrorType Type { get; }
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull message;
 		[Export ("message")]
 		string Message { get; }
+
+		// @property (readonly, nonatomic) BOOL isFatal;
+		[Export ("isFatal")]
+		bool IsFatal { get; }
 
 		// @property (readonly, nonatomic) NSDate * _Nullable retryAfter;
 		[NullAllowed, Export ("retryAfter")]
@@ -1478,7 +1269,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithDownloadState:(MBMOfflineRegionDownloadState)downloadState completedResourceCount:(uint64_t)completedResourceCount completedResourceSize:(uint64_t)completedResourceSize completedTileCount:(uint64_t)completedTileCount requiredTileCount:(uint64_t)requiredTileCount completedTileSize:(uint64_t)completedTileSize requiredResourceCount:(uint64_t)requiredResourceCount requiredResourceCountIsPrecise:(BOOL)requiredResourceCountIsPrecise;
 		[Export ("initWithDownloadState:completedResourceCount:completedResourceSize:completedTileCount:requiredTileCount:completedTileSize:requiredResourceCount:requiredResourceCountIsPrecise:")]
-		IntPtr Constructor (MBMOfflineRegionDownloadState downloadState, ulong completedResourceCount, ulong completedResourceSize, ulong completedTileCount, ulong requiredTileCount, ulong completedTileSize, ulong requiredResourceCount, bool requiredResourceCountIsPrecise);
+		NativeHandle Constructor (MBMOfflineRegionDownloadState downloadState, ulong completedResourceCount, ulong completedResourceSize, ulong completedTileCount, ulong requiredTileCount, ulong completedTileSize, ulong requiredResourceCount, bool requiredResourceCountIsPrecise);
 
 		// @property (readonly, nonatomic) MBMOfflineRegionDownloadState downloadState;
 		[Export ("downloadState")]
@@ -1508,9 +1299,9 @@ namespace MapboxCoreMaps
 		[Export ("requiredResourceCount")]
 		ulong RequiredResourceCount { get; }
 
-		// @property (readonly, getter = isRequiredResourceCountIsPrecise, nonatomic) BOOL requiredResourceCountIsPrecise;
+		// @property (readonly, nonatomic) BOOL requiredResourceCountIsPrecise;
 		[Export ("requiredResourceCountIsPrecise")]
-		bool RequiredResourceCountIsPrecise { [Bind ("isRequiredResourceCountIsPrecise")] get; }
+		bool RequiredResourceCountIsPrecise { get; }
 	}
 
 	// @interface MBMOfflineRegionGeometryDefinition : NSObject
@@ -1520,7 +1311,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithStyleURL:(NSString * _Nonnull)styleURL geometry:(MBXGeometry * _Nonnull)geometry minZoom:(double)minZoom maxZoom:(double)maxZoom pixelRatio:(float)pixelRatio glyphsRasterizationMode:(MBMGlyphsRasterizationMode)glyphsRasterizationMode __attribute__((swift_private));
 		[Export ("initWithStyleURL:geometry:minZoom:maxZoom:pixelRatio:glyphsRasterizationMode:")]
-		IntPtr Constructor (string styleURL, MBXGeometry geometry, double minZoom, double maxZoom, float pixelRatio, MBMGlyphsRasterizationMode glyphsRasterizationMode);
+		NativeHandle Constructor (string styleURL, MBXGeometry geometry, double minZoom, double maxZoom, float pixelRatio, MBMGlyphsRasterizationMode glyphsRasterizationMode);
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull styleURL;
 		[Export ("styleURL")]
@@ -1554,7 +1345,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithStyleURL:(NSString * _Nonnull)styleURL bounds:(MBMCoordinateBounds * _Nonnull)bounds minZoom:(double)minZoom maxZoom:(double)maxZoom pixelRatio:(float)pixelRatio glyphsRasterizationMode:(MBMGlyphsRasterizationMode)glyphsRasterizationMode;
 		[Export ("initWithStyleURL:bounds:minZoom:maxZoom:pixelRatio:glyphsRasterizationMode:")]
-		IntPtr Constructor (string styleURL, MBMCoordinateBounds bounds, double minZoom, double maxZoom, float pixelRatio, MBMGlyphsRasterizationMode glyphsRasterizationMode);
+		NativeHandle Constructor (string styleURL, MBMCoordinateBounds bounds, double minZoom, double maxZoom, float pixelRatio, MBMGlyphsRasterizationMode glyphsRasterizationMode);
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull styleURL;
 		[Export ("styleURL")]
@@ -1588,19 +1379,19 @@ namespace MapboxCoreMaps
 	{
 		// -(int64_t)getIdentifier;
 		[Export ("getIdentifier")]
-        long GetIdentifier();
+		long Identifier { get; }
 
 		// -(MBMOfflineRegionTilePyramidDefinition * _Nullable)getTilePyramidDefinition __attribute__((ns_returns_retained));
 		[NullAllowed, Export ("getTilePyramidDefinition")]
-        MBMOfflineRegionTilePyramidDefinition GetTilePyramidDefinition();
+		MBMOfflineRegionTilePyramidDefinition TilePyramidDefinition { get; }
 
 		// -(MBMOfflineRegionGeometryDefinition * _Nullable)getGeometryDefinition __attribute__((ns_returns_retained));
 		[NullAllowed, Export ("getGeometryDefinition")]
-        MBMOfflineRegionGeometryDefinition GetGeometryDefinition();
+		MBMOfflineRegionGeometryDefinition GeometryDefinition { get; }
 
 		// -(NSData * _Nonnull)getMetadata __attribute__((ns_returns_retained));
 		[Export ("getMetadata")]
-        NSData GetMetadata();
+		NSData Metadata { get; }
 
 		// -(void)setOfflineRegionDownloadStateForState:(MBMOfflineRegionDownloadState)state;
 		[Export ("setOfflineRegionDownloadStateForState:")]
@@ -1613,13 +1404,8 @@ namespace MapboxCoreMaps
 
 	// @interface MBMOfflineRegionManager : NSObject
 	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
 	interface MBMOfflineRegionManager
 	{
-		// -(instancetype _Nonnull)initWithResourceOptions:(MBMResourceOptions * _Nonnull)resourceOptions;
-		[Export ("initWithResourceOptions:")]
-		IntPtr Constructor (MBMResourceOptions resourceOptions);
-
 		// -(void)setOfflineMapboxTileCountLimitForLimit:(uint64_t)limit;
 		[Export ("setOfflineMapboxTileCountLimitForLimit:")]
 		void SetOfflineMapboxTileCountLimitForLimit (ulong limit);
@@ -1635,10 +1421,10 @@ namespace MapboxCoreMaps
   protocol, then [Model] is redundant and will generate code that will never
   be used.
 */
-    partial interface IMBMOfflineRegionObserver { }
+	partial interface IMBMOfflineRegionObserver { }
 
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
+    [Model, Protocol]
+	[BaseType(typeof(NSObject))]
 	interface MBMOfflineRegionObserver
 	{
 		// @required -(void)statusChangedForStatus:(MBMOfflineRegionStatus * _Nonnull)status;
@@ -1646,16 +1432,150 @@ namespace MapboxCoreMaps
 		[Export ("statusChangedForStatus:")]
 		void StatusChangedForStatus (MBMOfflineRegionStatus status);
 
-		// @required -(void)responseErrorForError:(MBMResponseError * _Nonnull)error;
+		// @required -(void)errorOccurredForError:(MBMOfflineRegionError * _Nonnull)error;
 		[Abstract]
-		[Export ("responseErrorForError:")]
-		void ResponseErrorForError (MBMResponseError error);
-
-		// @required -(void)mapboxTileCountLimitExceededForLimit:(uint64_t)limit;
-		[Abstract]
-		[Export ("mapboxTileCountLimitExceededForLimit:")]
-		void MapboxTileCountLimitExceededForLimit (ulong limit);
+		[Export ("errorOccurredForError:")]
+		void ErrorOccurredForError (MBMOfflineRegionError error);
 	}
+
+	// @interface MBMPerformanceStatisticsOptions : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMPerformanceStatisticsOptions
+	{
+		// @property (readonly, nonatomic) double samplingDurationMillis;
+		[Export ("samplingDurationMillis")]
+		double SamplingDurationMillis { get; }
+
+		// -(BOOL)isEqualToPerformanceStatisticsOptions:(MBMPerformanceStatisticsOptions * _Nonnull)other;
+		[Export ("isEqualToPerformanceStatisticsOptions:")]
+		bool IsEqualToPerformanceStatisticsOptions (MBMPerformanceStatisticsOptions other);
+	}
+
+	// @interface MBMCumulativeRenderingStatistics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMCumulativeRenderingStatistics
+	{
+		// (nonnull instancetype)initWithDrawCalls:(nullable NSNumber *)drawCalls
+        //                          textureBytes:(nullable NSNumber *)textureBytes
+        //                           vertexBytes:(nullable NSNumber *)vertexBytes
+        //                      graphicsPrograms:(nullable NSNumber *)graphicsPrograms
+        //    graphicsProgramsCreationTimeMillis:(nullable NSNumber *)graphicsProgramsCreationTimeMillis;
+		[Export ("initWithDrawCalls:textureBytes:vertexBytes:graphicsPrograms:graphicsProgramsCreationTimeMillis:")]
+		NativeHandle Constructor ([NullAllowed] NSNumber drawCalls, [NullAllowed] NSNumber textureBytes, [NullAllowed] NSNumber vertexBytes, [NullAllowed] NSNumber graphicsPrograms, [NullAllowed] NSNumber graphicsProgramsCreationTimeMillis);
+
+		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * drawCalls __attribute__((swift_private));
+		[Export ("drawCalls")]
+		NSNumber DrawCalls { get; }
+
+		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * textureBytes __attribute__((swift_private));
+		[Export ("textureBytes")]
+		NSNumber TextureBytes { get; }
+
+		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * vertexBytes __attribute__((swift_private));
+		[Export ("vertexBytes")]
+		NSNumber VertexBytes { get; }
+
+        // @property (nonatomic, readonly, nullable) NSNumber *graphicsPrograms NS_REFINED_FOR_SWIFT;
+		[Export ("graphicsPrograms")]
+		NSNumber GraphicsPrograms { get; }
+
+        // @property (nonatomic, readonly, nullable) NSNumber *graphicsProgramsCreationTimeMillis NS_REFINED_FOR_SWIFT;
+		[Export ("graphicsProgramsCreationTimeMillis")]
+		NSNumber GraphicsProgramsCreationTimeMillis { get; }
+	}
+
+	// @interface MBMDurationStatistics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMDurationStatistics
+	{
+		// -(instancetype _Nonnull)initWithMaxMillis:(double)maxMillis medianMillis:(double)medianMillis;
+		[Export ("initWithMaxMillis:medianMillis:")]
+		NativeHandle Constructor (double maxMillis, double medianMillis);
+
+		// @property (readonly, nonatomic) double maxMillis;
+		[Export ("maxMillis")]
+		double MaxMillis { get; }
+
+		// @property (readonly, nonatomic) double medianMillis;
+		[Export ("medianMillis")]
+		double MedianMillis { get; }
+	}
+
+	// @interface MBMGroupPerformanceStatistics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMGroupPerformanceStatistics
+	{
+		// -(instancetype _Nonnull)initWithDurationMillis:(double)durationMillis name:(NSString * _Nonnull)name;
+		[Export ("initWithDurationMillis:name:")]
+		NativeHandle Constructor (double durationMillis, string name);
+
+		// @property (readonly, nonatomic) double durationMillis;
+		[Export ("durationMillis")]
+		double DurationMillis { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull name;
+		[Export ("name")]
+		string Name { get; }
+	}
+
+	// @interface MBMPerFrameRenderingStatistics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMPerFrameRenderingStatistics
+	{
+		// -(instancetype _Nonnull)initWithTopRenderGroups:(NSArray<MBMGroupPerformanceStatistics *> * _Nonnull)topRenderGroups topRenderLayers:(NSArray<MBMGroupPerformanceStatistics *> * _Nonnull)topRenderLayers shadowMapDurationStatistics:(MBMDurationStatistics * _Nonnull)shadowMapDurationStatistics uploadDurationStatistics:(MBMDurationStatistics * _Nonnull)uploadDurationStatistics;
+		[Export ("initWithTopRenderGroups:topRenderLayers:shadowMapDurationStatistics:uploadDurationStatistics:")]
+		NativeHandle Constructor (MBMGroupPerformanceStatistics[] topRenderGroups, MBMGroupPerformanceStatistics[] topRenderLayers, MBMDurationStatistics shadowMapDurationStatistics, MBMDurationStatistics uploadDurationStatistics);
+
+		// @property (readonly, copy, nonatomic) NSArray<MBMGroupPerformanceStatistics *> * _Nonnull topRenderGroups;
+		[Export ("topRenderGroups", ArgumentSemantic.Copy)]
+		MBMGroupPerformanceStatistics[] TopRenderGroups { get; }
+
+		// @property (readonly, copy, nonatomic) NSArray<MBMGroupPerformanceStatistics *> * _Nonnull topRenderLayers;
+		[Export ("topRenderLayers", ArgumentSemantic.Copy)]
+		MBMGroupPerformanceStatistics[] TopRenderLayers { get; }
+
+		// @property (readonly, nonatomic) MBMDurationStatistics * _Nonnull shadowMapDurationStatistics;
+		[Export ("shadowMapDurationStatistics")]
+		MBMDurationStatistics ShadowMapDurationStatistics { get; }
+
+		// @property (readonly, nonatomic) MBMDurationStatistics * _Nonnull uploadDurationStatistics;
+		[Export ("uploadDurationStatistics")]
+		MBMDurationStatistics UploadDurationStatistics { get; }
+	}
+
+	// @interface MBMPerformanceStatistics : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMPerformanceStatistics
+	{
+		// -(instancetype _Nonnull)initWithCollectionDurationMillis:(double)collectionDurationMillis mapRenderDurationStatistics:(MBMDurationStatistics * _Nonnull)mapRenderDurationStatistics cumulativeStatistics:(MBMCumulativeRenderingStatistics * _Nullable)cumulativeStatistics perFrameStatistics:(MBMPerFrameRenderingStatistics * _Nullable)perFrameStatistics;
+		[Export ("initWithCollectionDurationMillis:mapRenderDurationStatistics:cumulativeStatistics:perFrameStatistics:")]
+		NativeHandle Constructor (double collectionDurationMillis, MBMDurationStatistics mapRenderDurationStatistics, [NullAllowed] MBMCumulativeRenderingStatistics cumulativeStatistics, [NullAllowed] MBMPerFrameRenderingStatistics perFrameStatistics);
+
+		// @property (readonly, nonatomic) double collectionDurationMillis;
+		[Export ("collectionDurationMillis")]
+		double CollectionDurationMillis { get; }
+
+		// @property (readonly, nonatomic) MBMDurationStatistics * _Nonnull mapRenderDurationStatistics;
+		[Export ("mapRenderDurationStatistics")]
+		MBMDurationStatistics MapRenderDurationStatistics { get; }
+
+		// @property (readonly, nonatomic) MBMCumulativeRenderingStatistics * _Nullable cumulativeStatistics;
+		[NullAllowed, Export ("cumulativeStatistics")]
+		MBMCumulativeRenderingStatistics CumulativeStatistics { get; }
+
+		// @property (readonly, nonatomic) MBMPerFrameRenderingStatistics * _Nullable perFrameStatistics;
+		[NullAllowed, Export ("perFrameStatistics")]
+		MBMPerFrameRenderingStatistics PerFrameStatistics { get; }
+	}
+
+	// typedef void (^MBMPerformanceStatisticsCallback)(MBMPerformanceStatistics * _Nonnull);
+	delegate void MBMPerformanceStatisticsCallback (MBMPerformanceStatistics arg0);
 
 	// @interface MBMProjectedMeters : NSObject
 	[BaseType (typeof(NSObject))]
@@ -1664,7 +1584,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithNorthing:(double)northing easting:(double)easting;
 		[Export ("initWithNorthing:easting:")]
-		IntPtr Constructor (double northing, double easting);
+		NativeHandle Constructor (double northing, double easting);
 
 		// @property (readonly, nonatomic) double northing;
 		[Export ("northing")]
@@ -1682,7 +1602,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithX:(double)x y:(double)y;
 		[Export ("initWithX:y:")]
-		IntPtr Constructor (double x, double y);
+		NativeHandle Constructor (double x, double y);
 
 		// @property (readonly, nonatomic) double x;
 		[Export ("x")]
@@ -1697,186 +1617,14 @@ namespace MapboxCoreMaps
 		bool IsEqualToMercatorCoordinate (MBMMercatorCoordinate other);
 	}
 
-	// @interface MBMProjection : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMProjection
-	{
-		// +(double)getMetersPerPixelAtLatitudeForLatitude:(double)latitude zoom:(double)zoom;
-		[Static]
-		[Export ("getMetersPerPixelAtLatitudeForLatitude:zoom:")]
-		double GetMetersPerPixelAtLatitudeForLatitude (double latitude, double zoom);
-
-		// +(MBMProjectedMeters * _Nonnull)projectedMetersForCoordinateForCoordinate:(CLLocationCoordinate2D)coordinate __attribute__((ns_returns_retained));
-		[Static]
-		[Export ("projectedMetersForCoordinateForCoordinate:")]
-		MBMProjectedMeters ProjectedMetersForCoordinateForCoordinate (CLLocationCoordinate2D coordinate);
-
-		// +(CLLocationCoordinate2D)coordinateForProjectedMetersForProjectedMeters:(MBMProjectedMeters * _Nonnull)projectedMeters;
-		[Static]
-		[Export ("coordinateForProjectedMetersForProjectedMeters:")]
-		CLLocationCoordinate2D CoordinateForProjectedMetersForProjectedMeters (MBMProjectedMeters projectedMeters);
-
-		// +(MBMMercatorCoordinate * _Nonnull)projectForCoordinate:(CLLocationCoordinate2D)coordinate zoomScale:(double)zoomScale __attribute__((ns_returns_retained));
-		[Static]
-		[Export ("projectForCoordinate:zoomScale:")]
-		MBMMercatorCoordinate ProjectForCoordinate (CLLocationCoordinate2D coordinate, double zoomScale);
-
-		// +(CLLocationCoordinate2D)unprojectForCoordinate:(MBMMercatorCoordinate * _Nonnull)coordinate zoomScale:(double)zoomScale;
-		[Static]
-		[Export ("unprojectForCoordinate:zoomScale:")]
-		CLLocationCoordinate2D UnprojectForCoordinate (MBMMercatorCoordinate coordinate, double zoomScale);
-	}
-
-	// @interface MBMResourceOptions : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMResourceOptions
-	{
-		// -(instancetype _Nonnull)initWithAccessToken:(NSString * _Nonnull)accessToken baseURL:(NSString * _Nullable)baseURL dataPath:(NSString * _Nullable)dataPath assetPath:(NSString * _Nullable)assetPath tileStore:(MBXTileStore * _Nullable)tileStore;
-		[Export ("initWithAccessToken:baseURL:dataPath:assetPath:tileStore:")]
-		IntPtr Constructor (string accessToken, [NullAllowed] string baseURL = null, [NullAllowed] string dataPath = null, [NullAllowed] string assetPath = null, [NullAllowed] MBXTileStore tileStore = null);
-
-		// -(instancetype _Nonnull)initWithAccessToken:(NSString * _Nonnull)accessToken baseURL:(NSString * _Nullable)baseURL dataPath:(NSString * _Nullable)dataPath assetPath:(NSString * _Nullable)assetPath tileStore:(MBXTileStore * _Nullable)tileStore tileStoreUsageMode:(MBMTileStoreUsageMode)tileStoreUsageMode;
-		[Export ("initWithAccessToken:baseURL:dataPath:assetPath:tileStore:tileStoreUsageMode:")]
-		IntPtr Constructor (string accessToken, [NullAllowed] string baseURL = null, [NullAllowed] string dataPath = null, [NullAllowed] string assetPath = null, [NullAllowed] MBXTileStore tileStore = null, MBMTileStoreUsageMode tileStoreUsageMode = MBMTileStoreUsageMode.ReadOnly);
-
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull accessToken;
-		[Export ("accessToken")]
-		string AccessToken { get; }
-
-		// @property (readonly, copy, nonatomic) NSString * _Nullable baseURL;
-		[NullAllowed, Export ("baseURL")]
-		string BaseURL { get; }
-
-		// @property (readonly, copy, nonatomic) NSString * _Nullable dataPath;
-		[NullAllowed, Export ("dataPath")]
-		string DataPath { get; }
-
-		// @property (readonly, copy, nonatomic) NSString * _Nullable assetPath;
-		[NullAllowed, Export ("assetPath")]
-		string AssetPath { get; }
-
-		// @property (readonly, nonatomic) MBXTileStore * _Nullable tileStore;
-		[NullAllowed, Export ("tileStore")]
-		MBXTileStore TileStore { get; }
-
-		// @property (readonly, nonatomic) MBMTileStoreUsageMode tileStoreUsageMode;
-		[Export ("tileStoreUsageMode")]
-		MBMTileStoreUsageMode TileStoreUsageMode { get; }
-	}
-
-	// @interface MBMSettings : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMSettings
-	{
-		// +(void)setForKey:(NSString * _Nonnull)key value:(id _Nonnull)value;
-		[Static]
-		[Export ("setForKey:value:")]
-		void SetForKey (string key, NSObject value);
-
-		// +(id _Nonnull)getForKey:(NSString * _Nonnull)key __attribute__((ns_returns_retained));
-		[Static]
-		[Export ("getForKey:")]
-		NSObject GetForKey (string key);
-	}
-
-	// @interface MBMMapSnapshotOptions : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMMapSnapshotOptions
-	{
-		// -(instancetype _Nonnull)initWithSize:(MBMSize * _Nonnull)size glyphsRasterizationOptions:(MBMGlyphsRasterizationOptions * _Nullable)glyphsRasterizationOptions resourceOptions:(MBMResourceOptions * _Nonnull)resourceOptions __attribute__((swift_private));
-		[Export ("initWithSize:glyphsRasterizationOptions:resourceOptions:")]
-		IntPtr Constructor (MBMSize size, [NullAllowed] MBMGlyphsRasterizationOptions glyphsRasterizationOptions, MBMResourceOptions resourceOptions);
-
-		// -(instancetype _Nonnull)initWithSize:(MBMSize * _Nonnull)size pixelRatio:(float)pixelRatio glyphsRasterizationOptions:(MBMGlyphsRasterizationOptions * _Nullable)glyphsRasterizationOptions resourceOptions:(MBMResourceOptions * _Nonnull)resourceOptions __attribute__((swift_private));
-		[Export ("initWithSize:pixelRatio:glyphsRasterizationOptions:resourceOptions:")]
-		IntPtr Constructor (MBMSize size, float pixelRatio, [NullAllowed] MBMGlyphsRasterizationOptions glyphsRasterizationOptions, MBMResourceOptions resourceOptions);
-
-		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT MBMSize * size __attribute__((swift_private));
-		[Export ("size")]
-		MBMSize Size { get; }
-
-		// @property (readonly, nonatomic) float pixelRatio;
-		[Export ("pixelRatio")]
-		float PixelRatio { get; }
-
-		// @property (readonly, nonatomic) MBMGlyphsRasterizationOptions * _Nullable glyphsRasterizationOptions;
-		[NullAllowed, Export ("glyphsRasterizationOptions")]
-		MBMGlyphsRasterizationOptions GlyphsRasterizationOptions { get; }
-
-		// @property (readonly, nonatomic) MBMResourceOptions * _Nonnull resourceOptions;
-		[Export ("resourceOptions")]
-		MBMResourceOptions ResourceOptions { get; }
-	}
-
-	// @interface MBMMapSnapshot : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMMapSnapshot
-	{
-		// -(MBMScreenCoordinate * _Nonnull)screenCoordinateForCoordinate:(CLLocationCoordinate2D)coordinate __attribute__((ns_returns_retained));
-		[Export ("screenCoordinateForCoordinate:")]
-		MBMScreenCoordinate ScreenCoordinateForCoordinate (CLLocationCoordinate2D coordinate);
-
-		// -(CLLocationCoordinate2D)coordinateForScreenCoordinate:(MBMScreenCoordinate * _Nonnull)screenCoordinate;
-		[Export ("coordinateForScreenCoordinate:")]
-		CLLocationCoordinate2D CoordinateForScreenCoordinate (MBMScreenCoordinate screenCoordinate);
-
-		// -(NSArray<NSString *> * _Nonnull)attributions __attribute__((ns_returns_retained));
-		[Export ("attributions")]
-		string[] Attributions { get; }
-
-		// -(MBMImage * _Nonnull)image __attribute__((ns_returns_retained));
-		[Export ("image")]
-		MBMImage Image { get; }
-	}
-
-	// @interface MBMMapSnapshotter : MBMCameraManager
-	[BaseType (typeof(MBMCameraManager))]
-	[DisableDefaultCtor]
-	interface MBMMapSnapshotter
-	{
-		// -(instancetype _Nonnull)initWithOptions:(MBMMapSnapshotOptions * _Nonnull)options;
-		[Export ("initWithOptions:")]
-		IntPtr Constructor (MBMMapSnapshotOptions options);
-
-		// -(void)setSizeForSize:(MBMSize * _Nonnull)size;
-		[Export ("setSizeForSize:")]
-		void SetSizeForSize (MBMSize size);
-
-		// -(MBMSize * _Nonnull)getSize __attribute__((ns_returns_retained));
-		[Export ("getSize")]
-        MBMSize GetSize();
-
-		// -(BOOL)isInTileMode;
-		[Export ("isInTileMode")]
-		bool IsInTileMode { get; }
-
-		// -(void)setTileModeForSet:(BOOL)set;
-		[Export ("setTileModeForSet:")]
-		void SetTileModeForSet (bool set);
-
-		// -(void)cancel;
-		[Export ("cancel")]
-		void Cancel ();
-
-		// -(NSNumber * _Nullable)getElevationForCoordinate:(CLLocationCoordinate2D)coordinate __attribute__((ns_returns_retained));
-		[Export ("getElevationForCoordinate:")]
-		[return: NullAllowed]
-		NSNumber GetElevationForCoordinate (CLLocationCoordinate2D coordinate);
-	}
-
 	// @interface MBMStyleObjectInfo : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
 	interface MBMStyleObjectInfo
 	{
-		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id type:(NSString * _Nonnull)type;
+		// -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id_ type:(NSString * _Nonnull)type;
 		[Export ("initWithId:type:")]
-		IntPtr Constructor (string id, string type);
+		NativeHandle Constructor (string id_, string type);
 
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull id;
 		[Export ("id")]
@@ -1887,58 +1635,6 @@ namespace MapboxCoreMaps
 		string Type { get; }
 	}
 
-	// @interface MBMImageStretches : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMImageStretches
-	{
-		// -(instancetype _Nonnull)initWithFirst:(float)first second:(float)second;
-		[Export ("initWithFirst:second:")]
-		IntPtr Constructor (float first, float second);
-
-		// @property (readonly, nonatomic) float first;
-		[Export ("first")]
-		float First { get; }
-
-		// @property (readonly, nonatomic) float second;
-		[Export ("second")]
-		float Second { get; }
-
-		// -(BOOL)isEqualToImageStretches:(MBMImageStretches * _Nonnull)other;
-		[Export ("isEqualToImageStretches:")]
-		bool IsEqualToImageStretches (MBMImageStretches other);
-	}
-
-	// @interface MBMImageContent : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMImageContent
-	{
-		// -(instancetype _Nonnull)initWithLeft:(float)left top:(float)top right:(float)right bottom:(float)bottom;
-		[Export ("initWithLeft:top:right:bottom:")]
-		IntPtr Constructor (float left, float top, float right, float bottom);
-
-		// @property (readonly, nonatomic) float left;
-		[Export ("left")]
-		float Left { get; }
-
-		// @property (readonly, nonatomic) float top;
-		[Export ("top")]
-		float Top { get; }
-
-		// @property (readonly, nonatomic) float right;
-		[Export ("right")]
-		float Right { get; }
-
-		// @property (readonly, nonatomic) float bottom;
-		[Export ("bottom")]
-		float Bottom { get; }
-
-		// -(BOOL)isEqualToImageContent:(MBMImageContent * _Nonnull)other;
-		[Export ("isEqualToImageContent:")]
-		bool IsEqualToImageContent (MBMImageContent other);
-	}
-
 	// @interface MBMTransitionOptions : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -1946,7 +1642,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithDuration:(NSNumber * _Nullable)duration delay:(NSNumber * _Nullable)delay enablePlacementTransitions:(NSNumber * _Nullable)enablePlacementTransitions __attribute__((swift_private));
 		[Export ("initWithDuration:delay:enablePlacementTransitions:")]
-		IntPtr Constructor ([NullAllowed] NSNumber duration, [NullAllowed] NSNumber delay, [NullAllowed] NSNumber enablePlacementTransitions);
+		NativeHandle Constructor ([NullAllowed] NSNumber duration, [NullAllowed] NSNumber delay, [NullAllowed] NSNumber enablePlacementTransitions);
 
 		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * duration __attribute__((swift_private));
 		[Export ("duration")]
@@ -1968,7 +1664,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithZ:(uint8_t)z x:(uint32_t)x y:(uint32_t)y;
 		[Export ("initWithZ:x:y:")]
-		IntPtr Constructor (byte z, uint x, uint y);
+		NativeHandle Constructor (byte z, uint x, uint y);
 
 		// @property (readonly, nonatomic) uint8_t z;
 		[Export ("z")]
@@ -1981,6 +1677,10 @@ namespace MapboxCoreMaps
 		// @property (readonly, nonatomic) uint32_t y;
 		[Export ("y")]
 		uint Y { get; }
+
+		// -(BOOL)isEqualToCanonicalTileID:(MBMCanonicalTileID * _Nonnull)other;
+		[Export ("isEqualToCanonicalTileID:")]
+		bool IsEqualToCanonicalTileID (MBMCanonicalTileID other);
 	}
 
 	// @interface MBMTileOptions : NSObject
@@ -1989,7 +1689,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithTolerance:(double)tolerance tileSize:(uint16_t)tileSize buffer:(uint16_t)buffer clip:(BOOL)clip wrap:(BOOL)wrap;
 		[Export ("initWithTolerance:tileSize:buffer:clip:wrap:")]
-		IntPtr Constructor (double tolerance, ushort tileSize, ushort buffer, bool clip, bool wrap);
+		NativeHandle Constructor (double tolerance, ushort tileSize, ushort buffer, bool clip, bool wrap);
 
 		// @property (readonly, nonatomic) double tolerance;
 		[Export ("tolerance")]
@@ -2003,41 +1703,38 @@ namespace MapboxCoreMaps
 		[Export ("buffer")]
 		ushort Buffer { get; }
 
-		// @property (readonly, getter = isClip, nonatomic) BOOL clip;
+		// @property (readonly, nonatomic) BOOL clip;
 		[Export ("clip")]
-		bool Clip { [Bind ("isClip")] get; }
+		bool Clip { get; }
 
-		// @property (readonly, getter = isWrap, nonatomic) BOOL wrap;
+		// @property (readonly, nonatomic) BOOL wrap;
 		[Export ("wrap")]
-		bool Wrap { [Bind ("isWrap")] get; }
+		bool Wrap { get; }
 	}
 
-	// typedef void (^MBMCancelTileFunctionCallback)(MBMCanonicalTileID * _Nonnull);
-	delegate void MBMCancelTileFunctionCallback (MBMCanonicalTileID arg0);
-
-	// typedef void (^MBMFetchTileFunctionCallback)(MBMCanonicalTileID * _Nonnull);
-	delegate void MBMFetchTileFunctionCallback (MBMCanonicalTileID arg0);
+	// typedef void (^MBMTileFunctionCallback)(MBMCanonicalTileID * _Nonnull);
+	delegate void MBMTileFunctionCallback (MBMCanonicalTileID arg0);
 
 	// @interface MBMCustomGeometrySourceOptions : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
 	interface MBMCustomGeometrySourceOptions
 	{
-		// -(instancetype _Nonnull)initWithFetchTileFunction:(MBMFetchTileFunctionCallback _Nonnull)fetchTileFunction cancelTileFunction:(MBMCancelTileFunctionCallback _Nonnull)cancelTileFunction tileOptions:(MBMTileOptions * _Nonnull)tileOptions;
+		// -(instancetype _Nonnull)initWithFetchTileFunction:(MBMTileFunctionCallback _Nonnull)fetchTileFunction cancelTileFunction:(MBMTileFunctionCallback _Nonnull)cancelTileFunction tileOptions:(MBMTileOptions * _Nonnull)tileOptions;
 		[Export ("initWithFetchTileFunction:cancelTileFunction:tileOptions:")]
-		IntPtr Constructor (MBMFetchTileFunctionCallback fetchTileFunction, MBMCancelTileFunctionCallback cancelTileFunction, MBMTileOptions tileOptions);
+		NativeHandle Constructor (MBMTileFunctionCallback fetchTileFunction, MBMTileFunctionCallback cancelTileFunction, MBMTileOptions tileOptions);
 
-		// -(instancetype _Nonnull)initWithFetchTileFunction:(MBMFetchTileFunctionCallback _Nonnull)fetchTileFunction cancelTileFunction:(MBMCancelTileFunctionCallback _Nonnull)cancelTileFunction minZoom:(uint8_t)minZoom maxZoom:(uint8_t)maxZoom tileOptions:(MBMTileOptions * _Nonnull)tileOptions;
+		// -(instancetype _Nonnull)initWithFetchTileFunction:(MBMTileFunctionCallback _Nonnull)fetchTileFunction cancelTileFunction:(MBMTileFunctionCallback _Nonnull)cancelTileFunction minZoom:(uint8_t)minZoom maxZoom:(uint8_t)maxZoom tileOptions:(MBMTileOptions * _Nonnull)tileOptions;
 		[Export ("initWithFetchTileFunction:cancelTileFunction:minZoom:maxZoom:tileOptions:")]
-		IntPtr Constructor (MBMFetchTileFunctionCallback fetchTileFunction, MBMCancelTileFunctionCallback cancelTileFunction, byte minZoom, byte maxZoom, MBMTileOptions tileOptions);
+		NativeHandle Constructor (MBMTileFunctionCallback fetchTileFunction, MBMTileFunctionCallback cancelTileFunction, byte minZoom, byte maxZoom, MBMTileOptions tileOptions);
 
-		// @property (readonly, nonatomic) MBMFetchTileFunctionCallback _Nonnull fetchTileFunction;
+		// @property (readonly, nonatomic) MBMTileFunctionCallback _Nonnull fetchTileFunction;
 		[Export ("fetchTileFunction")]
-		MBMFetchTileFunctionCallback FetchTileFunction { get; }
+		MBMTileFunctionCallback FetchTileFunction { get; }
 
-		// @property (readonly, nonatomic) MBMCancelTileFunctionCallback _Nonnull cancelTileFunction;
+		// @property (readonly, nonatomic) MBMTileFunctionCallback _Nonnull cancelTileFunction;
 		[Export ("cancelTileFunction")]
-		MBMCancelTileFunctionCallback CancelTileFunction { get; }
+		MBMTileFunctionCallback CancelTileFunction { get; }
 
 		// @property (readonly, nonatomic) uint8_t minZoom;
 		[Export ("minZoom")]
@@ -2052,6 +1749,40 @@ namespace MapboxCoreMaps
 		MBMTileOptions TileOptions { get; }
 	}
 
+	// @interface MBMCustomRasterSourceOptions : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMCustomRasterSourceOptions
+	{
+		// -(instancetype _Nonnull)initWithFetchTileFunction:(MBMTileFunctionCallback _Nonnull)fetchTileFunction cancelTileFunction:(MBMTileFunctionCallback _Nonnull)cancelTileFunction;
+		[Export ("initWithFetchTileFunction:cancelTileFunction:")]
+		NativeHandle Constructor (MBMTileFunctionCallback fetchTileFunction, MBMTileFunctionCallback cancelTileFunction);
+
+		// -(instancetype _Nonnull)initWithFetchTileFunction:(MBMTileFunctionCallback _Nonnull)fetchTileFunction cancelTileFunction:(MBMTileFunctionCallback _Nonnull)cancelTileFunction minZoom:(uint8_t)minZoom maxZoom:(uint8_t)maxZoom tileSize:(uint16_t)tileSize;
+		[Export ("initWithFetchTileFunction:cancelTileFunction:minZoom:maxZoom:tileSize:")]
+		NativeHandle Constructor (MBMTileFunctionCallback fetchTileFunction, MBMTileFunctionCallback cancelTileFunction, byte minZoom, byte maxZoom, ushort tileSize);
+
+		// @property (readonly, nonatomic) MBMTileFunctionCallback _Nonnull fetchTileFunction;
+		[Export ("fetchTileFunction")]
+		MBMTileFunctionCallback FetchTileFunction { get; }
+
+		// @property (readonly, nonatomic) MBMTileFunctionCallback _Nonnull cancelTileFunction;
+		[Export ("cancelTileFunction")]
+		MBMTileFunctionCallback CancelTileFunction { get; }
+
+		// @property (readonly, nonatomic) uint8_t minZoom;
+		[Export ("minZoom")]
+		byte MinZoom { get; }
+
+		// @property (readonly, nonatomic) uint8_t maxZoom;
+		[Export ("maxZoom")]
+		byte MaxZoom { get; }
+
+		// @property (readonly, nonatomic) uint16_t tileSize;
+		[Export ("tileSize")]
+		ushort TileSize { get; }
+	}
+
 	// @interface MBMStylePropertyValue : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -2059,7 +1790,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithValue:(id _Nonnull)value kind:(MBMStylePropertyValueKind)kind;
 		[Export ("initWithValue:kind:")]
-		IntPtr Constructor (NSObject value, MBMStylePropertyValueKind kind);
+		NativeHandle Constructor (NSObject value, MBMStylePropertyValueKind kind);
 
 		// @property (readonly, copy, nonatomic) id _Nonnull value;
 		[Export ("value", ArgumentSemantic.Copy)]
@@ -2075,10 +1806,13 @@ namespace MapboxCoreMaps
 	[DisableDefaultCtor]
 	interface MBMCustomLayerRenderParameters
 	{
-		// -(instancetype _Nonnull)initWithWidth:(double)width height:(double)height latitude:(double)latitude longitude:(double)longitude zoom:(double)zoom bearing:(double)bearing pitch:(double)pitch fieldOfView:(double)fieldOfView projectionMatrix:(NSArray<NSNumber *> * _Nonnull)projectionMatrix elevationData:(id<MBMElevationData> _Nullable)elevationData;
-		// renderToTilesIDs:(nullable NSArray<MBMCanonicalTileID *> *)renderToTilesIDs __attribute__((deprecated("This constructor is internal and to be used from within Mapbox SDK only.")));
+		// -(instancetype _Nonnull)initWithWidth:(double)width height:(double)height latitude:(double)latitude longitude:(double)longitude zoom:(double)zoom bearing:(double)bearing pitch:(double)pitch fieldOfView:(double)fieldOfView projectionMatrix:(NSArray<NSNumber *> * _Nonnull)projectionMatrix elevationData:(id<MBMElevationData> _Nullable)elevationData renderToTilesIDs:(NSArray<MBMCanonicalTileID *> * _Nullable)renderToTilesIDs __attribute__((deprecated("This constructor is internal and to be used from within Mapbox SDK only.")));
 		[Export ("initWithWidth:height:latitude:longitude:zoom:bearing:pitch:fieldOfView:projectionMatrix:elevationData:renderToTilesIDs:")]
-		IntPtr Constructor (double width, double height, double latitude, double longitude, double zoom, double bearing, double pitch, double fieldOfView, NSNumber[] projectionMatrix, [NullAllowed] IMBMElevationData elevationData, [NullAllowed]MBMCanonicalTileID[] renderToTilesIDs);
+		NativeHandle Constructor (double width, double height, double latitude, double longitude, double zoom, double bearing, double pitch, double fieldOfView, NSNumber[] projectionMatrix, [NullAllowed] MBMElevationData elevationData, [NullAllowed] MBMCanonicalTileID[] renderToTilesIDs);
+
+		// -(instancetype _Nonnull)initWithWidth:(double)width height:(double)height latitude:(double)latitude longitude:(double)longitude zoom:(double)zoom bearing:(double)bearing pitch:(double)pitch fieldOfView:(double)fieldOfView projectionMatrix:(NSArray<NSNumber *> * _Nonnull)projectionMatrix elevationData:(id<MBMElevationData> _Nullable)elevationData __attribute__((deprecated("This constructor is deprecated and will be removed.")));
+		[Export ("initWithWidth:height:latitude:longitude:zoom:bearing:pitch:fieldOfView:projectionMatrix:elevationData:")]
+		NativeHandle Constructor (double width, double height, double latitude, double longitude, double zoom, double bearing, double pitch, double fieldOfView, NSNumber[] projectionMatrix, [NullAllowed] MBMElevationData elevationData);
 
 		// @property (readonly, nonatomic) double width;
 		[Export ("width")]
@@ -2118,11 +1852,28 @@ namespace MapboxCoreMaps
 
 		// @property (readonly, nonatomic) id<MBMElevationData> _Nullable elevationData;
 		[NullAllowed, Export ("elevationData")]
-		IMBMElevationData ElevationData { get; }
+		MBMElevationData ElevationData { get; }
 
-		// @property (nonatomic, readonly, nullable, copy) NSArray<MBMCanonicalTileID *> *renderToTilesIDs;
-		[NullAllowed, Export ("renderToTilesIDs")]
+		// @property (readonly, copy, nonatomic) NSArray<MBMCanonicalTileID *> * _Nullable renderToTilesIDs;
+		[NullAllowed, Export ("renderToTilesIDs", ArgumentSemantic.Copy)]
 		MBMCanonicalTileID[] RenderToTilesIDs { get; }
+	}
+
+	// @interface MBMCustomLayerRenderConfiguration : NSObject
+	[BaseType (typeof(NSObject))]
+	interface MBMCustomLayerRenderConfiguration
+	{
+		// -(instancetype _Nonnull)initWithIsRenderToTileSupported:(BOOL)isRenderToTileSupported shouldRerenderTiles:(BOOL)shouldRerenderTiles;
+		[Export ("initWithIsRenderToTileSupported:shouldRerenderTiles:")]
+		NativeHandle Constructor (bool isRenderToTileSupported, bool shouldRerenderTiles);
+
+		// @property (readonly, nonatomic) BOOL isRenderToTileSupported;
+		[Export ("isRenderToTileSupported")]
+		bool IsRenderToTileSupported { get; }
+
+		// @property (readonly, nonatomic) BOOL shouldRerenderTiles;
+		[Export ("shouldRerenderTiles")]
+		bool ShouldRerenderTiles { get; }
 	}
 
 	// @protocol MBMElevationData
@@ -2135,10 +1886,10 @@ namespace MapboxCoreMaps
   protocol, then [Model] is redundant and will generate code that will never
   be used.
 */
-    partial interface IMBMElevationData { }
+	partial interface IMBMElevationData { }
 
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
+    [Model, Protocol]
+	[BaseType(typeof(NSObject))]
 	interface MBMElevationData
 	{
 		// @required -(NSNumber * _Nullable)getElevationForCoordinate:(CLLocationCoordinate2D)coordinate;
@@ -2163,9 +1914,9 @@ namespace MapboxCoreMaps
   protocol, then [Model] is redundant and will generate code that will never
   be used.
 */
-	partial interface IMBMCustomLayerHost {}
+	partial interface IMBMCustomLayerHost { }
 
-	[Protocol, Model]
+    [Model, Protocol]
 	[BaseType (typeof(NSObject))]
 	interface MBMCustomLayerHost
 	{
@@ -2184,11 +1935,11 @@ namespace MapboxCoreMaps
 		[Export ("renderingWillEnd")]
 		void RenderingWillEnd ();
 
-		// - (nonnull MBMCustomLayerRenderConfiguration *)prerender:(nonnull MBMCustomLayerRenderParameters *)parameters mtlCommandBuffer:(nonnull id<MTLCommandBuffer>)mtlCommandBuffer;
+		// @optional -(MBMCustomLayerRenderConfiguration * _Nonnull)prerender:(MBMCustomLayerRenderParameters * _Nonnull)parameters mtlCommandBuffer:(id<MTLCommandBuffer> _Nonnull)mtlCommandBuffer;
 		[Export ("prerender:mtlCommandBuffer:")]
 		MBMCustomLayerRenderConfiguration Prerender (MBMCustomLayerRenderParameters parameters, IMTLCommandBuffer mtlCommandBuffer);
 
-		// - (void)renderToTile:(nonnull MBMCanonicalTileID *)tileID mtlRenderCommandEncoder:(nonnull id<MTLRenderCommandEncoder>)mtlRenderCommandEncoder;
+		// @optional -(void)renderToTile:(MBMCanonicalTileID * _Nonnull)tileID mtlRenderCommandEncoder:(id<MTLRenderCommandEncoder> _Nonnull)mtlRenderCommandEncoder;
 		[Export ("renderToTile:mtlRenderCommandEncoder:")]
 		void RenderToTile (MBMCanonicalTileID tileID, IMTLRenderCommandEncoder mtlRenderCommandEncoder);
 
@@ -2205,30 +1956,6 @@ namespace MapboxCoreMaps
 		void OpenGLContextLost ();
 	}
 
-	// @interface MBMCustomLayerRenderConfiguration : NSObject
-	[BaseType (typeof(NSObject))]
-	interface MBMCustomLayerRenderConfiguration
-	{
-		// - (nonnull instancetype)initWithIsRenderToTileSupported:(BOOL)isRenderToTileSupported
-		// 									shouldRerenderTiles:(BOOL)shouldRerenderTiles;
-		[Export ("initWithIsRenderToTileSupported:shouldRerenderTiles:")]
-		IntPtr Constructor (bool isRenderToTileSupported, bool shouldRerenderTiles);
-
-		// @property (nonatomic, readonly, getter=isIsRenderToTileSupported) BOOL isRenderToTileSupported;
-		[Export ("isRenderToTileSupported")]
-		bool IsRenderToTileSupported { 
-			[Export("isIsRenderToTileSupported")]
-			get; 
-		}
-
-		// @property (nonatomic, readonly, getter=isShouldRerenderTiles) BOOL shouldRerenderTiles;
-		[Export ("shouldRerenderTiles")]
-		bool ShouldRerenderTiles { 
-			[Export("isShouldRerenderTiles")]
-			get; 
-		}
-	}
-
 	// @interface MBMVec3 : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -2236,7 +1963,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithX:(double)x y:(double)y z:(double)z;
 		[Export ("initWithX:y:z:")]
-		IntPtr Constructor (double x, double y, double z);
+		NativeHandle Constructor (double x, double y, double z);
 
 		// @property (readonly, nonatomic) double x;
 		[Export ("x")]
@@ -2258,7 +1985,7 @@ namespace MapboxCoreMaps
 	{
 		// -(instancetype _Nonnull)initWithX:(double)x y:(double)y z:(double)z w:(double)w;
 		[Export ("initWithX:y:z:w:")]
-		IntPtr Constructor (double x, double y, double z, double w);
+		NativeHandle Constructor (double x, double y, double z, double w);
 
 		// @property (readonly, nonatomic) double x;
 		[Export ("x")]
@@ -2282,109 +2009,24 @@ namespace MapboxCoreMaps
 	[DisableDefaultCtor]
 	interface MBMViewAnnotationPositionDescriptor
 	{
-		// -(instancetype _Nonnull)initWithIdentifier:(NSString * _Nonnull)identifier width:(uint32_t)width height:(uint32_t)height leftTopCoordinate:(MBMScreenCoordinate * _Nonnull)leftTopCoordinate __attribute__((swift_private));
-		[Export ("initWithIdentifier:width:height:leftTopCoordinate:")]
-		IntPtr Constructor (string identifier, uint width, uint height, MBMScreenCoordinate leftTopCoordinate);
-
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull identifier;
 		[Export ("identifier")]
 		string Identifier { get; }
 
-		// @property (readonly, nonatomic) uint32_t width;
+		// @property (readonly, nonatomic) double width;
 		[Export ("width")]
-		uint Width { get; }
+		double Width { get; }
 
-		// @property (readonly, nonatomic) uint32_t height;
+		// @property (readonly, nonatomic) double height;
 		[Export ("height")]
-		uint Height { get; }
+		double Height { get; }
 
-		// @property (readonly, nonatomic) MBMScreenCoordinate * _Nonnull leftTopCoordinate;
-		[Export ("leftTopCoordinate")]
-		MBMScreenCoordinate LeftTopCoordinate { get; }
-	}
+		// @property (readonly, nonatomic) CLLocationCoordinate2D anchorCoordinate;
+		[Export ("anchorCoordinate")]
+		CLLocationCoordinate2D AnchorCoordinate { get; }
 
-	// @interface MBMGeoJSONSourceData : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMGeoJSONSourceData
-    {
-		// + (nonnull instancetype)fromGeometry:(nonnull MBXGeometry *)value;
-		[Static, Export("fromGeometry:")]
-		MBMViewAnnotationPositionDescriptor FromGeometry(MBXGeometry value);
-
-		// + (nonnull instancetype)fromFeature:(nonnull MBXFeature *)value;
-		[Static, Export("fromFeature:")]
-		MBMViewAnnotationPositionDescriptor FromFeature(MBXFeature value);
-
-		// + (nonnull instancetype)fromNSArray:(nonnull NSArray<MBXFeature *> *)value;
-		[Static, Export("fromNSArray:")]
-		MBMViewAnnotationPositionDescriptor FromArray(MBXFeature[] value);
-
-		// + (nonnull instancetype)fromNSString:(nonnull NSString *)value;
-		[Static, Export("fromNSString:")]
-		MBMViewAnnotationPositionDescriptor FromString(string value);
-
-		// - (BOOL)isGeometry;
-		[Export("isGeometry")]
-		bool IsGeometry ();
-
-		// - (BOOL)isFeature;
-		[Export("isFeature")]
-		bool IsFeature ();
-		
-		// - (BOOL)isNSArray;
-		[Export("isNSArray")]
-		bool IsNSArray ();
-		
-		// - (BOOL)isNSString;
-		[Export("isNSString")]
-		bool IsNSString ();
-		
-
-		// - (nonnull MBXGeometry *)getGeometry __attribute((ns_returns_retained));
-		[Export("getGeometry")]
-		MBXGeometry GetGeometry();
-
-		// - (nonnull MBXFeature *)getFeature __attribute((ns_returns_retained));
-		[Export("getFeature")]
-		MBXFeature GetFeature();
-
-		// - (nonnull NSArray<MBXFeature *> *)getNSArray __attribute((ns_returns_retained));
-		[Export("getNSArray")]
-		MBXFeature[] GetNSArray();
-
-		// - (nonnull NSString *)getNSString __attribute((ns_returns_retained));
-		[Export("getNSString")]
-		string GetNSString();
-
-		// @property (nonatomic, nonnull) id value;
-		[Export("id")]
-		NSValue Value { get; set; }
-
-		// @property (nonatomic, readonly) MBMGeoJSONSourceDataType type;
-		[Export("type")]
-		MBMGeoJSONSourceDataType Type { get; }
-	}
-
-	// @interface MBMTilesetDescriptorOptionsForTilesets : NSObject
-	[BaseType (typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface MBMTilesetDescriptorOptionsForTilesets
-    {
-		// @property (nonatomic, readonly, nonnull, copy) NSArray<NSString *> *tilesets;
-		[Export("tilesets")]
-		string[] Tilesets { get; }
-
-		// @property (nonatomic, readonly) uint8_t minZoom;
-		[Export("minZoom")]
-		byte MinZoom { get; }
-
-		// @property (nonatomic, readonly) uint8_t maxZoom;
-		[Export("maxZoom")]
-		byte MaxZoom { get; }
-
-		// @property (nonatomic, readonly) float pixelRatio;
-		[Export("pixelRatio")]
-		float PixelRatio { get; }
+		// @property (readonly, nonatomic) MBMViewAnnotationAnchorConfig * _Nonnull anchorConfig;
+		[Export ("anchorConfig")]
+		MBMViewAnnotationAnchorConfig AnchorConfig { get; }
 	}
 }

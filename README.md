@@ -52,6 +52,12 @@ Here are steps if you want to make changes and/or upgrade to the libraries
 - 7/ Run `sh build.sh` to create nuget packages
 - 8/ Commit and create a PR
 
+## NOTES
+- Check symbols in the lib
+```
+nm -m 'artifacts/MapboxMaps.xcframework/ios-arm64/MapboxMaps.framework/MapboxMaps' | grep '_TtC10MapboxMaps22AnyTouchGestureHandler'
+```
+
 ## IMPROTANT
 Mapbox SDK for iOS now is written in Swift and not very compatible with Objective-C, hence it won't be that friendly when doing the binding.
 I have to create [an additional framework to make the bridge between Swift & C# in Objective-C](https://github.com/tuyen-vuduc/mapbox-ios-objective-c), it's really a time consuming task.

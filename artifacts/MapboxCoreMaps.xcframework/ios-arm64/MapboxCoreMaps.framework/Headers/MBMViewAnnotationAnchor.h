@@ -6,6 +6,8 @@
 // NOLINTNEXTLINE(modernize-use-using)
 typedef NS_ENUM(NSInteger, MBMViewAnnotationAnchor)
 {
+    /** The center of the view annotation is placed closest to the geometry. */
+    MBMViewAnnotationAnchorCenter,
     /** The top of the view annotation is placed closest to the geometry. */
     MBMViewAnnotationAnchorTop,
     /** The left side of the view annotation is placed closest to the geometry. */
@@ -21,7 +23,5 @@ typedef NS_ENUM(NSInteger, MBMViewAnnotationAnchor)
     /** The top-right corner of the view annotation is placed closest to the geometry. */
     MBMViewAnnotationAnchorTopRight,
     /** The bottom-left corner of the view annotation is placed closest to the geometry. */
-    MBMViewAnnotationAnchorBottomLeft,
-    /** The center of the view annotation is placed closest to the geometry. */
-    MBMViewAnnotationAnchorCenter
+    MBMViewAnnotationAnchorBottomLeft
 } NS_SWIFT_NAME(ViewAnnotationAnchor);

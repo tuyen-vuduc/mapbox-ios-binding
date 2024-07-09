@@ -8,16 +8,12 @@ __attribute__((visibility ("default")))
 @interface MBXTileStoreOptions : NSObject
 
     /**
-     * If the new value causes the quota to be exceed, data will be evicted to enforce the quota.
+     * Sets the maximum amount of bytes TileStore can use to store files.
+     * If the new value causes the quota to be exceed, request will fail and data will be evicted to enforce the quota.
      * Accepts a (positive) number of bytes, or null for resetting to the default value.
+     * Default is "no quota"
      */
     @property (nonatomic, class, readonly) NSString * DiskQuota;
-    /**
-     * Sets the access token to use for tile requests. Defaults to use the access token from the application's
-     * manifest or the environment if unset.
-     * Accepts a string, or null for resetting to the default value.
-     */
-    @property (nonatomic, class, readonly) NSString * MapboxAccessToken;
     /**
      * Sets the base URL to use for requests to the Mapbox API. Defaults to "https://api.mapbox.com".
      * Accepts a string, or null for resetting to the default value.

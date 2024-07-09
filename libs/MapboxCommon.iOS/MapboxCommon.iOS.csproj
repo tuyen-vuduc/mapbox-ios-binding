@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Xamarin.Legacy.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-      <TargetFrameworks>xamarin.ios10;net6.0-ios;net7.0-ios;</TargetFrameworks>
-      <NoNFloatUsing Condition="'$(TargetFramework)' == 'xamarin.ios10'">true</NoNFloatUsing>
+      <TargetFramework>net8.0-ios</TargetFramework>
       <Nullable>enable</Nullable>
       <ImplicitUsings>true</ImplicitUsings>
       <IsBindingProject>true</IsBindingProject>
-      <NoBindingEmbedding>false</NoBindingEmbedding>
-      <SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
+      <NoBindingEmbedding>true</NoBindingEmbedding>
+      <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <_NativeVersion>23.3.2</_NativeVersion>
+    <_NativeVersion>24.4.0</_NativeVersion>
     <_NugetSuffix>.1</_NugetSuffix>
     <_NugetVersion>$(_NativeVersion)$(_NugetSuffix)</_NugetVersion>
   </PropertyGroup>
@@ -26,8 +25,8 @@
   <PropertyGroup>
     <PackageId>MapboxCommon.iOS</PackageId>
     <Title>Mapbox iOS SDK - MapboxCommon</Title>
-    <Summary>C# bindings for Mapbox iOS SDK - MapboxCommon</Summary>
-    <Description>C# bindings for Mapbox iOS SDK - MapboxCommon</Description>
+    <Summary>.NET iOS bindings for Mapbox SDK - MapboxCommon</Summary>
+    <Description>.NET iOS bindings for Mapbox SDK - MapboxCommon</Description>
     <Authors>tuyen,tuyen-vuduc</Authors>
     <Owners>tuyen,tuyen-vuduc</Owners>
     <Copyright>© tuyen-vuduc. All rights reserved.</Copyright>
@@ -50,15 +49,11 @@
 		<None Include="../../LICENSE" Pack="True" PackagePath="" />
 		<None Include="../../README.md" Pack="True" PackagePath="README.md" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'xamarin.ios10'">
-      <Compile Remove="ApiDefinitions.cs" />
-      <Compile Remove="StructsAndEnums.cs" />
-  </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-      <PackageReference Include="Xamarin.Build.Download" Version="0.11.3" PrivateAssets="None" />
+      <PackageReference Include="Xamarin.Build.Download" Version="0.11.4" PrivateAssets="None" />
   </ItemGroup>
 </Project>

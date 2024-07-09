@@ -210,7 +210,7 @@ __attribute__((visibility ("default")))
  * If set to `true`, an infinite (unconstrained) bounds covering the world coordinates would be used.
  * Coordinates provided in `southwest` and `northeast` fields would be omitted and have no effect.
  */
-@property (nonatomic, readonly, getter=isInfiniteBounds) BOOL infiniteBounds;
+@property (nonatomic, readonly) BOOL infiniteBounds;
 
 
 @end

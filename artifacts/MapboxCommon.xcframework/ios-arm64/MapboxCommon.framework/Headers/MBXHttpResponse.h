@@ -19,6 +19,9 @@ __attribute__((visibility ("default")))
 + (nonnull instancetype)new NS_UNAVAILABLE;
 
 
+/** The id of the request that resulted in this response. Matches the return value of HttpServiceInterface::request. */
+@property (nonatomic, readonly) uint64_t requestId;
+
 /** HTTP request data which was use to send HTTP request. */
 @property (nonatomic, readonly, nonnull) MBXHttpRequest *request;
 

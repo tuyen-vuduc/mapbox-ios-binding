@@ -4,7 +4,7 @@
 #import "MBXHttpMethod.h"
 #import "MBXNetworkRestriction.h"
 
-@class MBXUAComponents;
+@class MBXSdkInformation;
 
 /** HttpRequest holds basic information for construction of an HTTP request */
 NS_SWIFT_NAME(HttpRequest)
@@ -19,17 +19,17 @@ __attribute__((visibility ("default")))
 
 - (nonnull instancetype)initWithUrl:(nonnull NSString *)url
                             headers:(nonnull NSDictionary<NSString *, NSString *> *)headers
-                       uaComponents:(nonnull MBXUAComponents *)uaComponents
+                     sdkInformation:(nonnull MBXSdkInformation *)sdkInformation
                                body:(nullable NSData *)body;
 
 - (nonnull instancetype)initWithMethod:(MBXHttpMethod)method
                                    url:(nonnull NSString *)url
                                headers:(nonnull NSDictionary<NSString *, NSString *> *)headers
-                       keepCompression:(BOOL)keepCompression
                                timeout:(uint64_t)timeout
                     networkRestriction:(MBXNetworkRestriction)networkRestriction
-                          uaComponents:(nonnull MBXUAComponents *)uaComponents
-                                  body:(nullable NSData *)body;
+                        sdkInformation:(nonnull MBXSdkInformation *)sdkInformation
+                                  body:(nullable NSData *)body
+                                 flags:(uint32_t)flags;
 
 /**
  * HTTP defines a set of request methods to indicate the desired action to be performed for a given resource.
@@ -49,12 +49,6 @@ __attribute__((visibility ("default")))
 @property (nonatomic, readwrite, nonnull, copy) NSDictionary<NSString *, NSString *> *headers;
 
 /**
- * Keep compression flag. If set to true, responses will not be automatically decompressed.
- * Default is false.
- */
-@property (nonatomic, readonly, getter=isKeepCompression) BOOL keepCompression;
-
-/**
  * Timeout defines how long, in seconds, the request is allowed to take in total (including connecting to the host).
  * Default is 0, meaning no timeout.
  */
@@ -68,18 +62,21 @@ __attribute__((visibility ("default")))
  */
 @property (nonatomic, readonly) MBXNetworkRestriction networkRestriction;
 
-/**
- * Application and SDK information for generating a User-Agent string.
- * Attention! Setting this field has no effect, please use `headers` field instead.
- * This field will be removed in the next major versions.
- */
-@property (nonatomic, readonly, nonnull) MBXUAComponents *uaComponents;
+/** SDK Information to be appended to the User-Agent string. */
+@property (nonatomic, readonly, nonnull) MBXSdkInformation *sdkInformation;
 
 /**
  * HTTP Body data transmitted in an HTTP transaction message immediately following the headers if there is any.
  * Body data is used by POST HTTP methods.
  */
 @property (nonatomic, readonly, nullable) NSData *body;
+
+/**
+ * Various flags that control HttpRequest processing.
+ *
+ * See documentation for HttpRequestFlags.
+ */
+@property (nonatomic, readonly) uint32_t flags;
 
 
 @end

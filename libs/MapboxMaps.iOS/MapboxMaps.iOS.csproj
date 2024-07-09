@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Xamarin.Legacy.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-      <TargetFrameworks>xamarin.ios10;net6.0-ios;net7.0-ios;</TargetFrameworks>
-      <NoNFloatUsing Condition="'$(TargetFramework)' == 'xamarin.ios10'">true</NoNFloatUsing>
+      <TargetFramework>net8.0-ios</TargetFramework>
       <Nullable>enable</Nullable>
       <ImplicitUsings>true</ImplicitUsings>
       <IsBindingProject>true</IsBindingProject>
-      <NoBindingEmbedding>false</NoBindingEmbedding>
-      <SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
+      <NoBindingEmbedding>true</NoBindingEmbedding>
+      <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <_NativeVersion>10.11.1</_NativeVersion>
+    <_NativeVersion>11.4.0</_NativeVersion>
     <_NugetSuffix>.1</_NugetSuffix>
     <_NugetVersion>$(_NativeVersion)$(_NugetSuffix)</_NugetVersion>
   </PropertyGroup>
@@ -51,27 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MapboxCoreMaps.iOS\MapboxCoreMaps.iOS.csproj">
-      <Project>{E1105607-4EE9-4E78-AEF5-53EC6D02F081}</Project>
-      <Name>MapboxCoreMaps.iOS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MapboxMobileEvents.iOS\MapboxMobileEvents.iOS.csproj">
-      <Project>{451C5BBC-A76F-4B90-B13D-394006A593FA}</Project>
-      <Name>MapboxMobileEvents.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MapboxTurf.iOS\MapboxTurf.iOS.csproj">
-      <Project>{F6367818-1DD9-425C-9D60-B0434617FBFF}</Project>
-      <Name>MapboxTurf.iOS</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'xamarin.ios10'">
-      <Compile Remove="ApiDefinitions.cs" />
-      <Compile Remove="StructsAndEnums.cs" />
+    <ProjectReference Include="..\MapboxCommon.iOS\MapboxCommon.iOS.csproj" />
+    <ProjectReference Include="..\Turf.iOS\Turf.iOS.csproj" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-      <PackageReference Include="Xamarin.Build.Download" Version="0.11.3" PrivateAssets="None" />
+      <PackageReference Include="Xamarin.Build.Download" Version="0.11.4" PrivateAssets="None" />
   </ItemGroup>
 </Project>

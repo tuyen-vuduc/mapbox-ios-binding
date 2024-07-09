@@ -13,7 +13,10 @@ typedef NS_ENUM(NSInteger, MBMMapDebugOptions)
     MBMMapDebugOptionsTileBorders,
     /** Each tile shows its tile coordinate (x/y/z) in the upper-left corner. */
     MBMMapDebugOptionsParseStatus,
-    /** Each tile shows a timestamp indicating when it was loaded. */
+    /**
+     * Each tile shows a timestamps with modified and expires dates or n/a if
+     * timestamp is not available.
+     */
     MBMMapDebugOptionsTimestamps,
     /**
      * Edges of glyphs and symbols are shown as faint, green lines to help
@@ -29,14 +32,14 @@ typedef NS_ENUM(NSInteger, MBMMapDebugOptions)
     MBMMapDebugOptionsStencilClip,
     /** The depth buffer is shown instead of the color buffer. */
     MBMMapDebugOptionsDepthBuffer,
-    /**
-     * Visualize residency of tiles in the render cache. Tile boundaries of cached tiles
-     * are rendered with green, tiles waiting for an update with yellow and tiles not in the cache
-     * with red.
-     */
-    MBMMapDebugOptionsRenderCache,
     /** Show 3D model bounding boxes. */
     MBMMapDebugOptionsModelBounds,
-    /** Show a wireframe for terrain. */
-    MBMMapDebugOptionsTerrainWireframe
+    /** Show a wireframe for terrain. Currently supported for GL backend only. */
+    MBMMapDebugOptionsTerrainWireframe,
+    /** Show a wireframe for 2d layers. Currently supported for GL backend only. */
+    MBMMapDebugOptionsLayers2DWireframe,
+    /** Show a wireframe for 3d layers. Currently supported for GL backend only. */
+    MBMMapDebugOptionsLayers3DWireframe,
+    /** Each tile shows its local lighting conditions in the upper-left corner. (If `lights` properties are used, otherwise they show zero.) */
+    MBMMapDebugOptionsLight
 } NS_SWIFT_NAME(MapDebugOptions);

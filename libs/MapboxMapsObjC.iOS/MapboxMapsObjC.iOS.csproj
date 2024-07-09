@@ -1,18 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Xamarin.Legacy.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-      <TargetFrameworks>xamarin.ios10;net6.0-ios;net7.0-ios;</TargetFrameworks>
-      <NoNFloatUsing Condition="'$(TargetFramework)' == 'xamarin.ios10'">true</NoNFloatUsing>
+      <TargetFramework>net8.0-ios</TargetFramework>
       <Nullable>enable</Nullable>
       <ImplicitUsings>true</ImplicitUsings>
       <IsBindingProject>true</IsBindingProject>
-      <NoBindingEmbedding>false</NoBindingEmbedding>
-      <SupportedOSPlatformVersion>12.0</SupportedOSPlatformVersion>
+      <NoBindingEmbedding>true</NoBindingEmbedding>
+      <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <_NativeVersion>10.11.1</_NativeVersion>
-    <_NugetSuffix>.1</_NugetSuffix>
+    <_NativeVersion>11.4.0</_NativeVersion>
+    <_NugetSuffix>.2</_NugetSuffix>
     <_NugetVersion>$(_NativeVersion)$(_NugetSuffix)</_NugetVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -26,8 +25,8 @@
   <PropertyGroup>
     <PackageId>MapboxMapsObjC.iOS</PackageId>
     <Title>Mapbox SDK for .NET iOS</Title>
-    <Summary>C# bindings for Mapbox iOS SDK - MapboxMapsObjC</Summary>
-    <Description>C# bindings for Mapbox iOS SDK - MapboxMapsObjC</Description>
+    <Summary>.NET iOS bindings for Mapbox iOS SDK - MapboxMapsObjC</Summary>
+    <Description>.NET iOS bindings for Mapbox iOS SDK - MapboxMapsObjC</Description>
     <Authors>tuyen,tuyen-vuduc</Authors>
     <Owners>tuyen,tuyen-vuduc</Owners>
     <Copyright>© tuyen-vuduc. All rights reserved.</Copyright>
@@ -52,23 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MapboxMaps.iOS\MapboxMaps.iOS.csproj">
-      <Project>{682AEE9E-B4F4-4BED-8D14-23582E4992FE}</Project>
-      <Name>MapboxMaps.iOS</Name>
     </ProjectReference>
     <ProjectReference Include="..\MapboxCoreMaps.iOS\MapboxCoreMaps.iOS.csproj">
-      <Project>{E1105607-4EE9-4E78-AEF5-53EC6D02F081}</Project>
-      <Name>MapboxCoreMaps.iOS</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'xamarin.ios10'">
-      <Compile Remove="ApiDefinitions.cs" />
-      <Compile Remove="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-      <PackageReference Include="Xamarin.Build.Download" Version="0.11.3" PrivateAssets="None" />
+      <PackageReference Include="Xamarin.Build.Download" Version="0.11.4" PrivateAssets="None" />
   </ItemGroup>
 </Project>

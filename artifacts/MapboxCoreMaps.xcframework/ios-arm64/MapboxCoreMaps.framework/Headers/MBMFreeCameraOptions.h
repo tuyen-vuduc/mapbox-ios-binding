@@ -2,6 +2,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+@class MBXCoordinate2D;
 
 @class MBMVec3;
 @class MBMVec4;
@@ -74,7 +75,31 @@ __attribute__((visibility ("default")))
  */
 - (void)setOrientationForOrientation:(nullable MBMVec4 *)orientation;
 /**
- * Helper function for setting the mercator position as Lat&Lng and altitude in meters
+ * Helper function for getting current mercator position as Lat&Lng coordinate.
+ *
+ * @return The longitude, latitude for mercator position.
+ */
+- (nullable MBXCoordinate2D *)getLocation __attribute((ns_returns_retained)) NS_REFINED_FOR_SWIFT;
+/**
+ * Helper function for getting current altitude in meters
+ *
+ * @return The altitude in meters.
+ */
+- (nullable NSNumber *)getAltitude __attribute((ns_returns_retained)) NS_REFINED_FOR_SWIFT;
+/**
+ * Helper function for setting the mercator position as Lat&Lng coordinate.
+ *
+ * @param location The mercator `coordinate`.
+ */
+- (void)setLocationForLocation:(CLLocationCoordinate2D)location NS_REFINED_FOR_SWIFT;
+/**
+ * Helper function for setting the altitude in meters.
+ *
+ * @param altitude The altitude in meters.
+ */
+- (void)setAltitudeForAltitude:(double)altitude NS_REFINED_FOR_SWIFT;
+/**
+ * Helper function for setting the mercator position as Lat&Lng and altitude in meters.
  *
  * @param location The mercator `coordinate`.
  * @param altitude The altitude in meters.

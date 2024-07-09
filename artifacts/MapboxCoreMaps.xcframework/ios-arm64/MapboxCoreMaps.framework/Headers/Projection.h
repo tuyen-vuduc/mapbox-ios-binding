@@ -2,4 +2,3 @@
 
 #import "MBMProjectedMeters.h"
 #import "MBMMercatorCoordinate.h"
-#import "MBMProjection.h"

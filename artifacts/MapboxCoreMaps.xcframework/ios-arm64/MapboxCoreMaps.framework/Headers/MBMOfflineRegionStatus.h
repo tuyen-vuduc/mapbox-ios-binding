@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import <MapboxCoreMaps/MBMOfflineRegionDownloadState.h>
+#import "MBMOfflineRegionDownloadState.h"
 
 /**
  * A region's status includes its active/inactive state as well as counts
@@ -77,7 +77,7 @@ __attribute__((deprecated))
  * style and tile sources have been downloaded, it is possible to calculate the
  * precise number of required resources, at which point it is set to true.
  */
-@property (nonatomic, readonly, getter=isRequiredResourceCountIsPrecise) BOOL requiredResourceCountIsPrecise;
+@property (nonatomic, readonly) BOOL requiredResourceCountIsPrecise;
 
 
 @end

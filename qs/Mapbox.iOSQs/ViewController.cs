@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Diagnostics;
 using CoreLocation;
 using Foundation;
-using UIKit;
-using MapboxCoreMaps;
 using MapboxMaps;
 using MapboxMapsObjC;
-using MapKit;
+using UIKit;
 
 namespace Mapbox.iOSQs
 {
     public partial class ViewController : UIViewController
     {
 
-        protected ViewController(IntPtr handle) : base(handle)
+        protected ViewController(NativeHandle handle) : base(handle)
         {
             // Note: this .ctor should not contain any initialization logic.
         }
@@ -56,12 +53,15 @@ namespace Mapbox.iOSQs
         {
             base.ViewDidLoad();
 
-            MapInitOptions options = MapInitOptionsFactory.CreateWithResourceOptions(
+            var centerLocation = new CLLocationCoordinate2D(21.0278, 105.8342);
+            var cameraOptions = new TMBCameraOptions(centerLocation, UIEdgeInsets.Zero, CoreGraphics.CGPoint.Empty, 13, 0, 0);
+
+            MapInitOptions options = MapInitOptionsFactory.CreateWithMapOptions(
                 null,
+                cameraOptions,
+                BuiltInStyles.Streets,
                 null,
-                null,
-                "mapbox://styles/examples/cke97f49z5rlg19l310b7uu7j",
-                null);
+                (nint)1);
             // Perform any additional setup after loading the view, typically from a nib.
             var mapView = MapViewFactory.CreateWithFrame(
                 View.Bounds,

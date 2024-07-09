@@ -24,13 +24,13 @@ __attribute__((visibility ("default")))
  * and "immediate mode" render is not called. A custom layer is, at one frame, either rendered to tile or rendered
  * directly.
  */
-@property (nonatomic, readonly, getter=isIsRenderToTileSupported) BOOL isRenderToTileSupported;
+@property (nonatomic, readonly) BOOL isRenderToTileSupported;
 
 /**
  * Set to true only for frame when content has changed - when set to true,
  * all the terrain render cache would get invalidated and redrawn, causing a drop in performance if invoked on every frame.
  */
-@property (nonatomic, readonly, getter=isShouldRerenderTiles) BOOL shouldRerenderTiles;
+@property (nonatomic, readonly) BOOL shouldRerenderTiles;
 
 
 @end

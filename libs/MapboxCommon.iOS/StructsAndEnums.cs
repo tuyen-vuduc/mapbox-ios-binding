@@ -37,11 +37,6 @@ namespace MapboxCommon
 	// 	[Verify (PlatformInvoke)]
 	// 	static extern NSString MBXHttpRequestErrorTypeToString (MBXHttpRequestErrorType http_request_error_type);
 
-	// 	// extern NSString * MBXDownloadErrorCodeToString (MBXDownloadErrorCode download_error_code);
-	// 	[DllImport ("__Internal")]
-	// 	[Verify (PlatformInvoke)]
-	// 	static extern NSString MBXDownloadErrorCodeToString (MBXDownloadErrorCode download_error_code);
-
 	// 	// extern NSString * MBXLocationErrorCodeToString (MBXLocationErrorCode location_error_code);
 	// 	[DllImport ("__Internal")]
 	// 	[Verify (PlatformInvoke)]
@@ -57,11 +52,6 @@ namespace MapboxCommon
 	// 	[Verify (PlatformInvoke)]
 	// 	static extern NSString MBXPermissionStatusToString (MBXPermissionStatus permission_status);
 
-	// 	// extern NSString * MBXLiveTrackingStateToString (MBXLiveTrackingState live_tracking_state);
-	// 	[DllImport ("__Internal")]
-	// 	[Verify (PlatformInvoke)]
-	// 	static extern NSString MBXLiveTrackingStateToString (MBXLiveTrackingState live_tracking_state);
-
 	// 	// extern NSString * MBXLoggingLevelToString (MBXLoggingLevel logging_level);
 	// 	[DllImport ("__Internal")]
 	// 	[Verify (PlatformInvoke)]
@@ -76,11 +66,6 @@ namespace MapboxCommon
 	// 	[DllImport ("__Internal")]
 	// 	[Verify (PlatformInvoke)]
 	// 	static extern NSString MBXTileRegionErrorTypeToString (MBXTileRegionErrorType tile_region_error_type);
-
-	// 	// extern NSString * MBXUploadErrorCodeToString (MBXUploadErrorCode upload_error_code);
-	// 	[DllImport ("__Internal")]
-	// 	[Verify (PlatformInvoke)]
-	// 	static extern NSString MBXUploadErrorCodeToString (MBXUploadErrorCode upload_error_code);
 	// }
 
 	[Native]
@@ -103,19 +88,10 @@ namespace MapboxCommon
 	}
 
 	[Native]
-	public enum MBXDownloadErrorCode : long
+	public enum MBXHttpRequestOrResponseType : long
 	{
-		FileSystemError,
-		NetworkError
-	}
-
-	[Native]
-	public enum MBXDownloadState : long
-	{
-		Pending,
-		Downloading,
-		Failed,
-		Finished
+		quest,
+		sponse
 	}
 
 	[Native]
@@ -151,12 +127,13 @@ namespace MapboxCommon
 	}
 
 	[Native]
-	public enum MBXLiveTrackingState : long
+	public enum MBXAccuracyLevel : long
 	{
-		opped,
-		arting,
-		arted,
-		opping
+		Passive,
+		Low,
+		Medium,
+		High,
+		Highest
 	}
 
 	[Native]
@@ -193,21 +170,5 @@ namespace MapboxCommon
 		DiskFull,
 		Other,
 		TileCountExceeded
-	}
-
-	[Native]
-	public enum MBXUploadState : long
-	{
-		Pending,
-		Uploading,
-		Failed,
-		Finished
-	}
-
-	[Native]
-	public enum MBXUploadErrorCode : long
-	{
-		FileSystemError,
-		NetworkError
 	}
 }

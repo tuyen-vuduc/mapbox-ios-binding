@@ -2,13 +2,15 @@
 
 #import <Foundation/Foundation.h>
 #import "MBXTileDataDomain.h"
+#import "MBXTileRegionEstimateProgressCallback.h"
 #import "MBXTileRegionLoadProgressCallback.h"
 
-@class MBXCancelable;
 @class MBXResourceDescription;
 @class MBXResourceLoadOptions;
+@class MBXTileRegionEstimateOptions;
 @class MBXTileRegionLoadOptions;
 @class MBXTilesetDescriptor;
+@protocol MBXCancelable;
 @protocol MBXTileStoreObserver;
 
 /**
@@ -58,8 +60,8 @@ __attribute__((visibility ("default")))
  * @param loadOptions The tile region load options.
  * @return Returns a Cancelable object to cancel the load request
  */
-- (nonnull MBXCancelable *)loadTileRegionForId:(nonnull NSString *)id
-                                   loadOptions:(nonnull MBXTileRegionLoadOptions *)loadOptions __attribute((ns_returns_retained)) NS_REFINED_FOR_SWIFT;
+- (nonnull id<MBXCancelable>)loadTileRegionForId:(nonnull NSString *)id_
+                                     loadOptions:(nonnull MBXTileRegionLoadOptions *)loadOptions __attribute((ns_returns_retained)) NS_REFINED_FOR_SWIFT;
 /**
  * Removes a tile region.
  *
@@ -69,7 +71,7 @@ __attribute__((visibility ("default")))
  *
  * @param id The tile region identifier.
  */
-- (void)removeTileRegionForId:(nonnull NSString *)id;
+- (void)removeTileRegionForId:(nonnull NSString *)id_;
 /**
  * Sets additional options for this instance.
  *

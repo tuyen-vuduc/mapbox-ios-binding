@@ -13,11 +13,6 @@ __attribute__((visibility ("default")))
 // This class provides custom init which should be called
 + (nonnull instancetype)new NS_UNAVAILABLE;
 
-- (nonnull instancetype)initWithId:(nonnull NSString *)id
-             requiredResourceCount:(uint64_t)requiredResourceCount
-            completedResourceCount:(uint64_t)completedResourceCount
-             completedResourceSize:(uint64_t)completedResourceSize
-                           expires:(nullable NSDate *)expires;
 
 /** The id of the tile region */
 @property (nonatomic, readonly, nonnull, copy) NSString *id;
