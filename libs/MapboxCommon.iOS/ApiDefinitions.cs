@@ -7,6 +7,30 @@ using ObjCRuntime;
 
 namespace MapboxCommon
 {
+    // @interface MBXCacheClearingError : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBXCacheClearingError
+	{
+        // // This class provides custom init which should be called
+        // - (nonnull instancetype)init NS_UNAVAILABLE;
+
+        // // This class provides custom init which should be called
+        // + (nonnull instancetype)new NS_UNAVAILABLE;
+
+        // - (nonnull instancetype)initWithType:(MBXCacheClearingErrorType)type
+        //                             message:(nonnull NSString *)message;
+        [Export ("initWithType:message:")]
+		NativeHandle Constructor (MBXCacheClearingErrorType type, string message);
+
+        // /** The reason for the response error. */
+        // @property (nonatomic, readonly) MBXCacheClearingErrorType type;
+        [Export ("type", ArgumentSemantic.Assign)]
+		MBXCacheClearingErrorType Type { get; }
+    }
+
+    // /** An error message */
+    // @property (nonatomic, readonly, nonnull, copy) NSString *message;
 	// @interface MBXCoordinate2D : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]

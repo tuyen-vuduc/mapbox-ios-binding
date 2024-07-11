@@ -1,10 +1,13 @@
 // This file is generated and will be overwritten automatically.
 
 #import "MBXTileDataDomain.h"
+#import "MBXTileStoreAmbientCacheType.h"
 #import "MBXTileRegionErrorType.h"
+#import "MBXCacheClearingErrorType.h"
 #import "MBXTileRegion.h"
 #import "MBXTileRegionLoadProgress.h"
 #import "MBXTileRegionError.h"
+#import "MBXCacheClearingError.h"
 #import "MBXTileRegionLoadOptions.h"
 #import "MBXTileRegionEstimateOptions.h"
 #import "MBXTileRegionEstimateResult.h"

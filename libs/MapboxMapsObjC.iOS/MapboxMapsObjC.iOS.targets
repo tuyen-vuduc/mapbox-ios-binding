@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
 	<PropertyGroup>
-		<_MapboxMapsObjCFileId>1Bx-zKZ9OH1xzmmEY9UKYKVnNJYfGpWNu</_MapboxMapsObjCFileId>
-		<_MapboxMapsObjCVersion>11.4.0</_MapboxMapsObjCVersion>
-		<_MapboxMapsObjCNugetSuffix>.2</_MapboxMapsObjCNugetSuffix>
+		<_MapboxMapsObjCFileId>1t8y0yYE3IcvAh6fd9gRpRjaXBqGHxFMe</_MapboxMapsObjCFileId>
+		<_MapboxMapsObjCVersion>11.5.1</_MapboxMapsObjCVersion>
+		<_MapboxMapsObjCNugetSuffix></_MapboxMapsObjCNugetSuffix>
 		<_MapboxMapsObjCAssemblyName>MapboxMapsObjC.iOS, Version=$(_MapboxMapsObjCVersion), Culture=neutral, PublicKeyToken=null </_MapboxMapsObjCAssemblyName>
 		<_MapboxMapsObjCItemsFolder>MapboxMapsObjC-$(_MapboxMapsObjCVersion)$(_MapboxMapsObjCNugetSuffix)</_MapboxMapsObjCItemsFolder>
 		<_MapboxMapsObjCSDKBaseFolder>$(XamarinBuildDownloadDir)$(_MapboxMapsObjCItemsFolder)\</_MapboxMapsObjCSDKBaseFolder>

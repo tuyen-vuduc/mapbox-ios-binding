@@ -6,6 +6,22 @@ using ObjCRuntime;
 namespace MapboxCoreMaps
 {
 	[Native]
+	public enum MBMCustomRasterSourceTileStatus : long
+    {
+        /**
+        * Tile best suited for current camera position.
+        * Should be loaded if possible.
+        */
+        Required,
+        /**
+        * Tile can be used if required tile is missing.
+        * Can be provided if already present in a cache.
+        */
+        Optional,
+        /** Tile is not visible and no more needed. */
+        NotNeeded
+    }
+	[Native]
 	public enum MBMGlyphsRasterizationMode : long
 	{
 		NoGlyphsRasterizedLocally,

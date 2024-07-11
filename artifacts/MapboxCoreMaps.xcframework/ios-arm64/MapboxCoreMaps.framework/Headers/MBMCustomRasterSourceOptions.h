@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMTileFunctionCallback.h"
+#import "MBMCustomRasterSourceTileStatusChangedCallback.h"
 
 /** Options for custom raster source. */
 NS_SWIFT_NAME(CustomRasterSourceOptions)
@@ -14,20 +14,15 @@ __attribute__((visibility ("default")))
 // This class provides custom init which should be called
 + (nonnull instancetype)new NS_UNAVAILABLE;
 
-- (nonnull instancetype)initWithFetchTileFunction:(nonnull MBMTileFunctionCallback)fetchTileFunction
-                               cancelTileFunction:(nonnull MBMTileFunctionCallback)cancelTileFunction;
+- (nonnull instancetype)initWithTileStatusChangedFunction:(nonnull MBMCustomRasterSourceTileStatusChangedCallback)tileStatusChangedFunction;
 
-- (nonnull instancetype)initWithFetchTileFunction:(nonnull MBMTileFunctionCallback)fetchTileFunction
-                               cancelTileFunction:(nonnull MBMTileFunctionCallback)cancelTileFunction
-                                          minZoom:(uint8_t)minZoom
-                                          maxZoom:(uint8_t)maxZoom
-                                         tileSize:(uint16_t)tileSize;
+- (nonnull instancetype)initWithTileStatusChangedFunction:(nonnull MBMCustomRasterSourceTileStatusChangedCallback)tileStatusChangedFunction
+                                                  minZoom:(uint8_t)minZoom
+                                                  maxZoom:(uint8_t)maxZoom
+                                                 tileSize:(uint16_t)tileSize;
 
-/** The callback that provides data for a tile. */
-@property (nonatomic, readonly, nonnull) MBMTileFunctionCallback fetchTileFunction;
-
-/** The callback that cancels a tile. */
-@property (nonatomic, readonly, nonnull) MBMTileFunctionCallback cancelTileFunction;
+/** The callback with notification about tile status change. */
+@property (nonatomic, readonly, nonnull) MBMCustomRasterSourceTileStatusChangedCallback tileStatusChangedFunction;
 
 /**
  * A minimum zoom level, at which to create vector tiles.

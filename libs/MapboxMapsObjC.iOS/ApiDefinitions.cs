@@ -1186,7 +1186,7 @@ namespace MapboxMapsObjC
 	// @interface TMBCircleAnnotationManager : NSObject <TMBAnnotationManager>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC26TMBCircleAnnotationManager")]
 	[DisableDefaultCtor]
-	interface TMBCircleAnnotationManager : TMBAnnotationManager
+	partial interface TMBCircleAnnotationManager : TMBAnnotationManager
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
 		[Export ("sourceId")]
@@ -1469,14 +1469,18 @@ namespace MapboxMapsObjC
 		[Export ("clusterMaxZoom")]
 		double ClusterMaxZoom { get; set; }
 
+		// @property (nonatomic) double clusterMinPoints;
+		[Export ("clusterMinPoints")]
+		double ClusterMinPoints { get; set; }
+
 		// @property (copy, nonatomic) NSDictionary<NSString *,TMBExpression *> * _Nullable clusterProperties;
 		[NullAllowed, Export ("clusterProperties", ArgumentSemantic.Copy)]
 		NSDictionary<NSString, TMBExpression> ClusterProperties { get; set; }
 
-		// -(instancetype _Nonnull)initWithCircleRadius:(TMBValue * _Nullable)circleRadius circleColor:(TMBValue * _Nullable)circleColor textColor:(TMBValue * _Nullable)textColor textSize:(TMBValue * _Nullable)textSize textField:(TMBValue * _Nullable)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *,TMBExpression *> * _Nullable)clusterProperties __attribute__((objc_designated_initializer));
-		[Export ("initWithCircleRadius:circleColor:textColor:textSize:textField:clusterRadius:clusterMaxZoom:clusterProperties:")]
+		// -(instancetype _Nonnull)initWithCircleRadius:(TMBValue * _Nullable)circleRadius circleColor:(TMBValue * _Nullable)circleColor textColor:(TMBValue * _Nullable)textColor textSize:(TMBValue * _Nullable)textSize textField:(TMBValue * _Nullable)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterMinPoints:(double) clusterMinPoints clusterProperties:(NSDictionary<NSString *,TMBExpression *> * _Nullable)clusterProperties __attribute__((objc_designated_initializer));
+		[Export ("initWithCircleRadius:circleColor:textColor:textSize:textField:clusterRadius:clusterMaxZoom:clusterMinPoints:clusterProperties:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor ([NullAllowed] TMBValue circleRadius, [NullAllowed] TMBValue circleColor, [NullAllowed] TMBValue textColor, [NullAllowed] TMBValue textSize, [NullAllowed] TMBValue textField, double clusterRadius, double clusterMaxZoom, [NullAllowed] NSDictionary<NSString, TMBExpression> clusterProperties);
+		NativeHandle Constructor ([NullAllowed] TMBValue circleRadius, [NullAllowed] TMBValue circleColor, [NullAllowed] TMBValue textColor, [NullAllowed] TMBValue textSize, [NullAllowed] TMBValue textField, double clusterRadius, double clusterMaxZoom, double clusterMinPoints, [NullAllowed] NSDictionary<NSString, TMBExpression> clusterProperties);
 	}
 
 	// @interface TMBCollatorOptions : NSObject
@@ -5791,7 +5795,7 @@ namespace MapboxMapsObjC
 	// @interface TMBPointAnnotationManager : NSObject <TMBAnnotationManager>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC25TMBPointAnnotationManager")]
 	[DisableDefaultCtor]
-	interface TMBPointAnnotationManager : TMBAnnotationManager
+	partial interface TMBPointAnnotationManager : TMBAnnotationManager
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
 		[Export ("sourceId")]
@@ -5922,6 +5926,94 @@ namespace MapboxMapsObjC
 		string Slot { get; set; }
 	}
 
+    partial interface TMBPointAnnotationManager {
+        // - (void)addAnnotations:(NSArray<TMBPointAnnotation *> * _Nonnull)annotations;
+        [Export ("addAnnotations:")]
+		void AddAnnotations (TMBPointAnnotation[] annotations);
+
+        // - (void)addAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
+        [Export ("addAnnotation:")]
+		void AddAnnotation (TMBPointAnnotation annotations);
+
+        // - (void)removeAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
+        [Export ("removeAnnotation:")]
+		void RemoveAnnotation (TMBPointAnnotation annotation);
+
+        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+        [Export ("removeAnnotationById:")]
+		void RemoveAnnotationById (string annotationId);
+
+        // - (void)removeAllAnnotations;
+        [Export ("removeAllAnnotations")]
+		void RemoveAllAnnotations ();
+    }
+
+    partial interface TMBCircleAnnotationManager {
+        // - (void)addAnnotations:(NSArray<TMBCircleAnnotation *> * _Nonnull)annotations;
+        [Export ("addAnnotations:")]
+		void AddAnnotations (TMBCircleAnnotation[] annotations);
+
+        // - (void)addAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
+        [Export ("addAnnotation:")]
+		void AddAnnotation (TMBCircleAnnotation annotations);
+
+        // - (void)removeAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
+        [Export ("removeAnnotation:")]
+		void RemoveAnnotation (TMBCircleAnnotation annotation);
+
+        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+        [Export ("removeAnnotationById:")]
+		void RemoveAnnotationById (string annotationId);
+
+        // - (void)removeAllAnnotations;
+        [Export ("removeAllAnnotations")]
+		void RemoveAllAnnotations ();
+    }
+
+    partial interface TMBPolygonAnnotationManager {
+        // - (void)addAnnotations:(NSArray<TMBPolygonAnnotation *> * _Nonnull)annotations;
+        [Export ("addAnnotations:")]
+		void AddAnnotations (TMBPolygonAnnotation[] annotations);
+
+        // - (void)addAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
+        [Export ("addAnnotation:")]
+		void AddAnnotation (TMBPolygonAnnotation annotations);
+
+        // - (void)removeAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
+        [Export ("removeAnnotation:")]
+		void RemoveAnnotation (TMBPolygonAnnotation annotation);
+
+        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+        [Export ("removeAnnotationById:")]
+		void RemoveAnnotationById (string annotationId);
+
+        // - (void)removeAllAnnotations;
+        [Export ("removeAllAnnotations")]
+		void RemoveAllAnnotations ();
+    }
+
+    partial interface TMBPolylineAnnotationManager {
+        // - (void)addAnnotations:(NSArray<TMBPolylineAnnotation *> * _Nonnull)annotations;
+        [Export ("addAnnotations:")]
+		void AddAnnotations (TMBPolylineAnnotation[] annotations);
+
+        // - (void)addAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
+        [Export ("addAnnotation:")]
+		void AddAnnotation (TMBPolylineAnnotation annotations);
+
+        // - (void)removeAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
+        [Export ("removeAnnotation:")]
+		void RemoveAnnotation (TMBPolylineAnnotation annotation);
+
+        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+        [Export ("removeAnnotationById:")]
+		void RemoveAnnotationById (string annotationId);
+
+        // - (void)removeAllAnnotations;
+        [Export ("removeAllAnnotations")]
+		void RemoveAllAnnotations ();
+    }
+
 	// @interface TMBPolygon : NSObject
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC10TMBPolygon")]
 	[DisableDefaultCtor]
@@ -6013,7 +6105,7 @@ namespace MapboxMapsObjC
 	// @interface TMBPolygonAnnotationManager : NSObject <TMBAnnotationManager>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC27TMBPolygonAnnotationManager")]
 	[DisableDefaultCtor]
-	interface TMBPolygonAnnotationManager : TMBAnnotationManager
+	partial interface TMBPolygonAnnotationManager : TMBAnnotationManager
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
 		[Export ("sourceId")]
@@ -6162,7 +6254,7 @@ namespace MapboxMapsObjC
 	// @interface TMBPolylineAnnotationManager : NSObject <TMBAnnotationManager>
 	[BaseType (typeof(NSObject), Name = "_TtC13MapboxMapObjC28TMBPolylineAnnotationManager")]
 	[DisableDefaultCtor]
-	interface TMBPolylineAnnotationManager : TMBAnnotationManager
+	partial interface TMBPolylineAnnotationManager : TMBAnnotationManager
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull sourceId;
 		[Export ("sourceId")]

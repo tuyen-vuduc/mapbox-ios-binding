@@ -8,6 +8,28 @@ using MapboxCommon;
 
 namespace MapboxCoreMaps
 {
+    // typedef void (^MBMCustomRasterSourceTileStatusChangedCallback)(MBMCanonicalTileID * _Nonnull tileId, MBMCustomRasterSourceTileStatus status); 
+    delegate void MBMCustomRasterSourceTileStatusChangedCallback(MBMCanonicalTileID tileID, MBMCustomRasterSourceTileStatus status);
+    
+    // @interface MBMCustomRasterSourceTileData : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMCustomRasterSourceTileData
+	{
+        // // This class provides custom init which should be called
+        // - (nonnull instancetype)init NS_UNAVAILABLE;
+
+        // // This class provides custom init which should be called
+        // + (nonnull instancetype)new NS_UNAVAILABLE;
+
+
+        // /** A `canonical tile id` of the tile. */
+        // @property (nonatomic, readonly, nonnull) MBMCanonicalTileID *tileId;
+		[Export ("tileId")]
+		MBMCanonicalTileID TileId { get; }
+    }
+
+
 	// @interface MBMCoordinateInfo : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -1720,21 +1742,21 @@ namespace MapboxCoreMaps
 	[DisableDefaultCtor]
 	interface MBMCustomGeometrySourceOptions
 	{
-		// -(instancetype _Nonnull)initWithFetchTileFunction:(MBMTileFunctionCallback _Nonnull)fetchTileFunction cancelTileFunction:(MBMTileFunctionCallback _Nonnull)cancelTileFunction tileOptions:(MBMTileOptions * _Nonnull)tileOptions;
-		[Export ("initWithFetchTileFunction:cancelTileFunction:tileOptions:")]
-		NativeHandle Constructor (MBMTileFunctionCallback fetchTileFunction, MBMTileFunctionCallback cancelTileFunction, MBMTileOptions tileOptions);
+        // - (nonnull instancetype)initWithTileStatusChangedFunction:(nonnull MBMCustomRasterSourceTileStatusChangedCallback)tileStatusChangedFunction;
+		[Export ("initWithTileStatusChangedFunction:")]
+		NativeHandle Constructor (MBMCustomRasterSourceTileStatusChangedCallback tileStatusChangedFunction);
 
+        // - (nonnull instancetype)initWithTileStatusChangedFunction:(nonnull MBMCustomRasterSourceTileStatusChangedCallback)tileStatusChangedFunction
+        //                                           minZoom:(uint8_t)minZoom
+        //                                           maxZoom:(uint8_t)maxZoom
+        //                                          tileSize:(uint16_t)tileSize;
 		// -(instancetype _Nonnull)initWithFetchTileFunction:(MBMTileFunctionCallback _Nonnull)fetchTileFunction cancelTileFunction:(MBMTileFunctionCallback _Nonnull)cancelTileFunction minZoom:(uint8_t)minZoom maxZoom:(uint8_t)maxZoom tileOptions:(MBMTileOptions * _Nonnull)tileOptions;
-		[Export ("initWithFetchTileFunction:cancelTileFunction:minZoom:maxZoom:tileOptions:")]
-		NativeHandle Constructor (MBMTileFunctionCallback fetchTileFunction, MBMTileFunctionCallback cancelTileFunction, byte minZoom, byte maxZoom, MBMTileOptions tileOptions);
+		[Export ("initWithTileStatusChangedFunction:minZoom:maxZoom:tileSize:")]
+		NativeHandle Constructor (MBMCustomRasterSourceTileStatusChangedCallback tileStatusChangedFunction, byte minZoom, byte maxZoom, ushort tileSize);
 
-		// @property (readonly, nonatomic) MBMTileFunctionCallback _Nonnull fetchTileFunction;
-		[Export ("fetchTileFunction")]
-		MBMTileFunctionCallback FetchTileFunction { get; }
-
-		// @property (readonly, nonatomic) MBMTileFunctionCallback _Nonnull cancelTileFunction;
-		[Export ("cancelTileFunction")]
-		MBMTileFunctionCallback CancelTileFunction { get; }
+        // @property (nonatomic, readonly, nonnull) MBMCustomRasterSourceTileStatusChangedCallback tileStatusChangedFunction;
+		[Export ("tileStatusChangedFunction")]
+		MBMCustomRasterSourceTileStatusChangedCallback TileStatusChangedFunction { get; }
 
 		// @property (readonly, nonatomic) uint8_t minZoom;
 		[Export ("minZoom")]
@@ -1744,9 +1766,9 @@ namespace MapboxCoreMaps
 		[Export ("maxZoom")]
 		byte MaxZoom { get; }
 
-		// @property (readonly, nonatomic) MBMTileOptions * _Nonnull tileOptions;
-		[Export ("tileOptions")]
-		MBMTileOptions TileOptions { get; }
+		// @property (nonatomic, readonly) uint16_t tileSize;
+		[Export ("tileSize")]
+		ushort TileSize { get; }
 	}
 
 	// @interface MBMCustomRasterSourceOptions : NSObject
