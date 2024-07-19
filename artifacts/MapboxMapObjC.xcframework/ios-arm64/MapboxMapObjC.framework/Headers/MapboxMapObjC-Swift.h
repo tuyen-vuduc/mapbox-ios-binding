@@ -337,6 +337,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 
 
+
 @class NSValue;
 @class MBXGeometry;
 
@@ -391,12 +392,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class TMBCameraAnimationsManager;
+@class TMBViewportManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBCameraAnimationsManager * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
+- (TMBViewportManager * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
 @end
-
 
 @class TMBAnnotationOrchestrator;
 
@@ -410,10 +410,10 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (TMBMapboxMap * _Nonnull)mapboxMap SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class TMBGestureManager;
+@class TMBOrnamentsManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBGestureManager * _Nonnull)gestures SWIFT_WARN_UNUSED_RESULT;
+- (TMBOrnamentsManager * _Nonnull)ornaments SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class TMBViewAnnotationManager;
@@ -422,10 +422,17 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (TMBViewAnnotationManager * _Nonnull)viewAnnotations SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class TMBOrnamentsManager;
+@class TMBGestureManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBOrnamentsManager * _Nonnull)ornaments SWIFT_WARN_UNUSED_RESULT;
+- (TMBGestureManager * _Nonnull)gestures SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@class TMBCameraAnimationsManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBCameraAnimationsManager * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class NSNumber;
@@ -1208,6 +1215,19 @@ SWIFT_CLASS("_TtC13MapboxMapObjC22TMBCameraBoundsOptions")
 @end
 
 
+@class NSDate;
+
+SWIFT_CLASS("_TtC13MapboxMapObjC16TMBCameraChanged")
+@interface TMBCameraChanged : NSObject
+/// The current state of the camera.
+@property (nonatomic, readonly, strong) TMBCameraState * _Nonnull cameraState;
+/// The time when the camera was changed.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull timestamp;
+- (nonnull instancetype)initWithCameraState:(TMBCameraState * _Nonnull)cameraState timestamp:(NSDate * _Nonnull)timestamp OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 SWIFT_CLASS("_TtC13MapboxMapObjC16TMBCameraOptions")
 @interface TMBCameraOptions : NSObject
@@ -1302,6 +1322,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25TMBCameraTransitionChange")
 @end
 
 
+
 @class TMBPoint;
 @class TMBMapContentGestureContext;
 @class UIColor;
@@ -1386,6 +1407,15 @@ SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCircleAnnotationManager")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+
+@interface TMBCircleAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)addAnnotations:(NSArray<TMBCircleAnnotation *> * _Nonnull)annotations;
+- (void)addAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
+- (void)removeAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
+- (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+- (void)removeAllAnnotations;
+@end
 
 @class TMBExpression;
 
@@ -1538,6 +1568,8 @@ SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
 /// than maxzoom (so that last zoom features are not clustered). Clusters are re-evaluated at integer zoom
 /// levels so setting clusterMaxZoom to 14 means the clusters will be displayed until z15.
 @property (nonatomic) double clusterMaxZoom;
+/// Minimum number of points necessary to form a cluster if clustering is enabled. Defaults to <code>2</code>.
+@property (nonatomic) double clusterMinPoints;
 /// An object defining custom properties on the generated clusters if clustering is enabled, aggregating values from
 /// clustered points. Has the form <code>{"property_name": [operator, map_expression]}</code>.
 /// <code>operator</code> is any expression function that accepts at
@@ -1570,7 +1602,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC17TMBClusterOptions")
 /// Define a set of cluster options to determine how to cluster annotations.
 /// Providing clusterOptions when initializing a <code>PointAnnotationManager</code>
 /// will turn on clustering for that <code>PointAnnotationManager</code>.
-- (nonnull instancetype)initWithCircleRadius:(TMBValue * _Nullable)circleRadius circleColor:(TMBValue * _Nullable)circleColor textColor:(TMBValue * _Nullable)textColor textSize:(TMBValue * _Nullable)textSize textField:(TMBValue * _Nullable)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterProperties:(NSDictionary<NSString *, TMBExpression *> * _Nullable)clusterProperties OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCircleRadius:(TMBValue * _Nullable)circleRadius circleColor:(TMBValue * _Nullable)circleColor textColor:(TMBValue * _Nullable)textColor textSize:(TMBValue * _Nullable)textSize textField:(TMBValue * _Nullable)textField clusterRadius:(double)clusterRadius clusterMaxZoom:(double)clusterMaxZoom clusterMinPoints:(double)clusterMinPoints clusterProperties:(NSDictionary<NSString *, TMBExpression *> * _Nullable)clusterProperties OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1653,6 +1685,37 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21TMBCompassViewOptions")
 /// \param visibility The visibility of the compass view.
 ///
 - (nonnull instancetype)initWithPosition:(enum TMBOrnamentPosition)position margins:(CGPoint)margins image:(UIImage * _Nullable)image visibility:(enum TMBOrnamentVisibility)visibility OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@class TMBDefaultViewportTransitionOptions;
+
+/// A default <code>ViewportTransition</code> implementation.
+/// Use <code>ViewportManager/makeDefaultViewportTransition(options:)</code> to create instances of this
+/// class.
+SWIFT_CLASS("_TtC13MapboxMapObjC28TMBDefaultViewportTransition")
+@interface TMBDefaultViewportTransition : NSObject
+/// Configuration options.
+/// New values will take effect the next time <code>ViewportTransition/run(to:completion:)</code>
+/// is invoked
+@property (nonatomic, strong) TMBDefaultViewportTransitionOptions * _Nonnull options;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// Configuration options for <code>DefaultViewportTransition</code>.
+SWIFT_CLASS("_TtC13MapboxMapObjC35TMBDefaultViewportTransitionOptions")
+@interface TMBDefaultViewportTransitionOptions : NSObject
+/// The maximum duration of the transition.
+@property (nonatomic) NSTimeInterval maxDuration;
+/// Memberwise initializer for <code>DefaultViewportTransitionOptions</code>.
+/// \param maxDuration Defaults to 3.5.
+///
+- (nonnull instancetype)initWithMaxDuration:(NSTimeInterval)maxDuration OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2479,6 +2542,174 @@ SWIFT_CLASS("_TtC13MapboxMapObjC22TMBFlyToCameraAnimator")
 
 
 
+/// <code>ViewportState</code> is a protocol that <code>ViewportManager</code> depends on as it orchestrates transitions to and
+/// from different states.
+/// A <code>ViewportState</code> is a reference type and must not be shared among multiple <code>ViewportManager</code>
+/// instances simultaneously.
+/// The <code>ViewportState/observeDataSource(with:)</code> method allows
+/// <code>ViewportTransition</code>s to consume a stream of camera updates from a target state while
+/// executing a transition. <code>ViewportState/startUpdatingCamera()</code> and
+/// <code>ViewportState/stopUpdatingCamera()</code> are invoked to tell the state that it should assume or
+/// relinquish control of the map’s camera. These are typically used by <code>ViewportManager</code> itself after a
+/// successful transition into a state and when exiting a state, respectively.
+/// MapboxMaps provides implementations of <code>ViewportState</code> that can be created and configured
+/// via methods on <code>ViewportManager</code>. Applications may also define their own implementations to handle
+/// advanced use cases not covered by the provided implementations.
+/// States should generally pre-warm their data sources as soon as they are created to minimize delays when
+/// they become current. For this reason, only states that are currently (or soon-to-be) needed should be kept
+/// alive so that unneeded resources (e.g. location services) can be released.
+/// seealso:
+///
+/// <ul>
+///   <li>
+///     <code>FollowPuckViewportState</code>
+///   </li>
+///   <li>
+///     <code>OverviewViewportState</code>
+///   </li>
+/// </ul>
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC16TMBViewportState_")
+@protocol TMBViewportState
+/// Registers a <code>handler</code> to receive the cameras being generated by this <code>ViewportState</code>.
+/// This method is commonly used by <code>ViewportTransition</code> implementations to obtain the
+/// target camera for transition animations. Transitions typically cannot start their animations until after
+/// <code>handler</code> is invoked for the first time, so it’s a good idea for states to invoke <code>handler</code> with
+/// the current camera if it’s not too stale rather than waiting for the next camera change to occur. To
+/// increase the likelihood that a valid camera exists when a handler is registered, design
+/// <code>ViewportState</code> implementations so that they start updating their internal state prior to when
+/// they are passed to <code>ViewportManager/transition(to:transition:completion:)</code>.
+/// The caller may either cancel the returned <code>Cancelable</code> <em>or</em> return <code>false</code> from
+/// <code>handler</code> to indicate that it wishes to stop receiving updates. Following either of these events,
+/// implemenations must no longer invoke <code>handler</code> and must release all strong references to it.
+/// \param handler A closure that is invoked by the state whenever its camera changes. Returns
+/// <code>true</code> to stay subscribed and <code>false</code> to unsubscribe. <code>handler</code> must be
+/// invoked on the main queue.
+///
+///
+/// returns:
+/// A <code>Cancelable</code> that the caller can use to unsubscribe.
+- (TMBCancelable * _Nonnull)observeDataSourceWith:(BOOL (^ _Nonnull)(TMBCameraOptions * _Nonnull))handler SWIFT_WARN_UNUSED_RESULT;
+/// Tells this state that it is now responsible for updating the camera.
+/// <code>ViewportManager</code> calls this method at the end of a successful transition into this state.
+/// Implementations typically have a dependency on either <code>MapboxMap</code> so that they can use its
+/// <code>MapboxMap/setCamera(to:)</code> method to change the camea or on
+/// <code>CameraAnimationsManager</code> so that they can run camera animations.
+- (void)startUpdatingCamera;
+/// Tells this state that it is no longer responsible for updating the camera.
+/// <code>ViewportManager</code> calls this method at the beginning of the transition out of this state.
+/// Implementations must stop updating the camera immediately and should typically cancel any
+/// ongoing animations that they started when this method is invoked.
+- (void)stopUpdatingCamera;
+@end
+
+@class TMBFollowPuckViewportStateOptions;
+
+/// A <code>ViewportState</code> implementation that tracks the location puck (to show a puck, use
+/// <code>LocationOptions/puckType</code>)
+/// Use <code>ViewportManager/makeFollowPuckViewportState(options:)</code> to create instances of this
+/// class.
+SWIFT_CLASS("_TtC13MapboxMapObjC26TMBFollowPuckViewportState")
+@interface TMBFollowPuckViewportState : NSObject <TMBViewportState>
+/// Configuration options for this state.
+@property (nonatomic, strong) TMBFollowPuckViewportStateOptions * _Nonnull options;
+/// :nodoc:
+/// See <code>ViewportState/observeDataSource(with:)</code>.
+- (TMBCancelable * _Nonnull)observeDataSourceWith:(BOOL (^ _Nonnull)(TMBCameraOptions * _Nonnull))handler SWIFT_WARN_UNUSED_RESULT;
+/// :nodoc:
+/// See <code>ViewportState/startUpdatingCamera()</code>.
+- (void)startUpdatingCamera;
+/// :nodoc:
+/// See <code>ViewportState/stopUpdatingCamera()</code>.
+- (void)stopUpdatingCamera;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// Expresses the different ways that <code>FollowPuckViewportState</code> can obtain values to use when
+/// setting <code>CameraOptions-swift.struct/bearing</code>.
+/// seealso:
+/// <code>LocationOptions/puckBearing</code>
+SWIFT_CLASS("_TtC13MapboxMapObjC33TMBFollowPuckViewportStateBearing")
+@interface TMBFollowPuckViewportStateBearing : NSObject
+@property (nonatomic, readonly) CLLocationDirection bearing;
+@property (nonatomic, readonly) BOOL heading;
+@property (nonatomic, readonly) BOOL course;
+/// <code>FollowPuckViewportState</code> sets <code>CameraOptions-swift.struct/bearing</code> to a constant value.
+/// \param bearing the constant value that should be used to set the camera bearing.
+///
++ (TMBFollowPuckViewportStateBearing * _Nonnull)FromConstant:(CLLocationDirection)bearing SWIFT_WARN_UNUSED_RESULT;
+/// <code>FollowPuckViewportState</code> sets <code>CameraOptions-swift.struct/bearing</code> based on the current
+/// heading.
+/// seealso:
+///
+/// <ul>
+///   <li>
+///     <code>LocationManager</code>
+///   </li>
+///   <li>
+///     <code>Location/heading</code>
+///   </li>
+/// </ul>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFollowPuckViewportStateBearing * _Nonnull heading;)
++ (TMBFollowPuckViewportStateBearing * _Nonnull)heading SWIFT_WARN_UNUSED_RESULT;
+/// <code>FollowPuckViewportState</code> sets <code>CameraOptions-swift.struct/bearing</code> based on the current
+/// course.
+/// seealso:
+///
+/// <ul>
+///   <li>
+///     <code>LocationManager</code>
+///   </li>
+///   <li>
+///     <code>Location/course</code>
+///   </li>
+/// </ul>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFollowPuckViewportStateBearing * _Nonnull course;)
++ (TMBFollowPuckViewportStateBearing * _Nonnull)course SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// Configuration options for <code>FollowPuckViewportState</code>.
+/// Each of the <code>CameraOptions-swift.struct</code>-related properties is optional, so that the state can be configured to
+/// only modify certain aspects of the camera if desired. This can be used, to achieve effects like allowing
+/// zoom gestures to work simultaneously with <code>FollowPuckViewportState</code>.
+/// seealso:
+/// <code>ViewportOptions/transitionsToIdleUponUserInteraction</code>
+SWIFT_CLASS("_TtC13MapboxMapObjC33TMBFollowPuckViewportStateOptions")
+@interface TMBFollowPuckViewportStateOptions : NSObject
+/// The value to use for <code>CameraOptions-swift.struct/padding</code> when setting the camera. If <code>nil</code>, padding
+/// will not be modified.
+@property (nonatomic, strong) NSValue * _Nullable padding;
+/// The value to use for <code>CameraOptions-swift.struct/zoom</code> when setting the camera. If <code>nil</code>, zoom will
+/// not be modified.
+@property (nonatomic, strong) NSNumber * _Nullable zoom;
+/// Indicates how to obtain the value to use for <code>CameraOptions-swift.struct/bearing</code> when setting the
+/// camera. If <code>nil</code>, bearing will not be modified.
+@property (nonatomic, strong) TMBFollowPuckViewportStateBearing * _Nullable bearing;
+/// The value to use for <code>CameraOptions-swift.struct/pitch</code> when setting the camera. If <code>nil</code>, pitch will
+/// not be modified.
+@property (nonatomic, strong) NSNumber * _Nullable pitch;
+/// Creates options.
+/// \param padding Camera padding.
+///
+/// \param zoom Camera zoom. Default value is 16.35.
+///
+/// \param bearing camera bearing, by default bearing will be taken from heading data.
+///
+/// \param pitch Camera pitch. Default value is 45.
+///
+- (nonnull instancetype)initWithPadding:(NSValue * _Nullable)padding zoom:(NSNumber * _Nullable)zoom bearing:(TMBFollowPuckViewportStateBearing * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
 SWIFT_CLASS("_TtC13MapboxMapObjC16TMBFormatOptions")
 @interface TMBFormatOptions : NSObject
 /// Applies a scaling factor on text-size as specified by the root layout property.
@@ -2732,7 +2963,6 @@ typedef SWIFT_ENUM(NSInteger, TMBGestureType, open) {
   TMBGestureTypeRotation = 7,
 };
 
-@class NSDate;
 @class CLHeading;
 
 /// The azimuth (orientation) of the user’s device, relative to true or magnetic north.
@@ -4507,34 +4737,6 @@ SWIFT_CLASS("_TtC13MapboxMapObjC12TMBMapboxMap")
 - (CGRect)rectFor:(MBMCoordinateBounds * _Nonnull)coordinateBounds SWIFT_WARN_UNUSED_RESULT;
 /// Returns the map’s options
 @property (nonatomic, readonly, strong) MBMMapOptions * _Nonnull options;
-/// Calculates a <code>CameraOptions</code> to fit a <code>CoordinateBounds</code>
-/// This API isn’t supported by Globe projection.
-/// \param coordinateBounds The coordinate bounds that will be displayed within the viewport.
-///
-/// \param padding The new padding to be used by the camera.
-///
-/// \param bearing The new bearing to be used by the camera.
-///
-/// \param pitch The new pitch to be used by the camera.
-///
-///
-/// returns:
-/// A <code>CameraOptions</code> that fits the provided constraints
-- (TMBCameraOptions * _Nonnull)cameraForCoordinateBounds:(MBMCoordinateBounds * _Nonnull)coordinateBounds padding:(UIEdgeInsets)padding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch maxZoom:(NSNumber * _Nullable)maxZoom offset:(NSNumber * _Nullable)offset SWIFT_WARN_UNUSED_RESULT;
-/// Calculates a <code>CameraOptions</code> to fit a list of coordinates.
-/// This API isn’t supported by Globe projection.
-/// \param coordinates Array of coordinates that should fit within the new viewport.
-///
-/// \param padding The new padding to be used by the camera.
-///
-/// \param bearing The new bearing to be used by the camera.
-///
-/// \param pitch The new pitch to be used by the camera.
-///
-///
-/// returns:
-/// A <code>CameraOptions</code> that fits the provided constraints
-- (TMBCameraOptions * _Nonnull)cameraForCoordinates:(NSArray<NSValue *> * _Nonnull)coordinates padding:(UIEdgeInsets)padding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch SWIFT_WARN_UNUSED_RESULT;
 /// Calculates a <code>CameraOptions</code> to fit a list of coordinates into a sub-rect of the map.
 /// Adjusts the zoom of <code>camera</code> to fit <code>coordinates</code> into <code>rect</code>.
 /// Returns the provided camera with zoom adjusted to fit coordinates into
@@ -4574,20 +4776,6 @@ SWIFT_CLASS("_TtC13MapboxMapObjC12TMBMapboxMap")
 /// returns:
 /// A <code>CameraOptions</code> object representing the provided parameters.
 - (void)cameraFor:(NSArray<NSValue *> * _Nonnull)coordinates camera:(TMBCameraOptions * _Nonnull)camera coordinatesPadding:(NSNumber * _Nullable)coordinatesPadding maxZoom:(NSNumber * _Nullable)maxZoom offset:(NSNumber * _Nullable)offset completion:(SWIFT_NOESCAPE void (^ _Nonnull)(TMBCameraOptions * _Nullable, NSError * _Nullable))completion;
-/// Calculates a <code>CameraOptions</code> to fit a geometry
-/// This API isn’t supported by Globe projection.
-/// \param geometry The geoemtry that will be displayed within the viewport.
-///
-/// \param padding The new padding to be used by the camera.
-///
-/// \param bearing The new bearing to be used by the camera.
-///
-/// \param pitch The new pitch to be used by the camera.
-///
-///
-/// returns:
-/// A <code>CameraOptions</code> that fits the provided constraints
-- (TMBCameraOptions * _Nonnull)cameraFor:(MBXGeometry * _Nonnull)geometry padding:(UIEdgeInsets)padding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch SWIFT_WARN_UNUSED_RESULT;
 /// Returns the coordinate bounds corresponding to a given <code>CameraOptions</code>
 /// This API isn’t supported by Globe projection.
 /// \param camera The camera for which the coordinate bounds will be returned.
@@ -4855,6 +5043,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC12TMBMapboxMap")
 - (void)getGeoJsonClusterExpansionZoomForSourceId:(NSString * _Nonnull)sourceId feature:(MBXFeature * _Nonnull)feature completion:(void (^ _Nonnull)(MBMFeatureExtensionValue * _Nullable, NSError * _Nullable))completion;
 @end
 
+@class MBMMapLoadingError;
 
 @interface TMBMapboxMap (SWIFT_EXTENSION(MapboxMapObjC))
 /// The style has been fully loaded, and the map has rendered all visible tiles.
@@ -4862,7 +5051,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC12TMBMapboxMap")
 /// An error that has occurred while loading the Map. The <code>type</code> property defines what resource could
 /// not be loaded and the <code>message</code> property will contain a descriptive error message.
 /// In case of <code>source</code> or <code>tile</code> loading errors, <code>sourceID</code> or <code>tileID</code> will contain the identifier of the source failing.
-- (TMBCancelable * _Nonnull)onMapLoadingError:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onMapLoadingError:(void (^ _Nonnull)(MBMMapLoadingError * _Nonnull))handler;
 /// The requested style has been fully loaded, including the style, specified sprite and sources’ metadata.
 /// The style specified sprite would be marked as loaded even with sprite loading error (an error will be emitted via <code>MapboxMap/onMapLoadingError</code>).
 /// Sprite loading error is not fatal and we don’t want it to block the map rendering, thus this event will still be emitted if style and sources are fully loaded.
@@ -4887,7 +5076,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC12TMBMapboxMap")
 /// changes due to the MapView’s size changing or when the camera
 /// is modified by calling camera methods. The event is emitted synchronously,
 /// so that an updated camera state can be fetched immediately.
-- (TMBCancelable * _Nonnull)onCameraChanged:(void (^ _Nonnull)(id _Nonnull))handler;
+- (TMBCancelable * _Nonnull)onCameraChanged:(void (^ _Nonnull)(TMBCameraChanged * _Nonnull))handler;
 /// The map has entered the idle state. The map is in the idle state when there are no ongoing transitions
 /// and the map has rendered all requested non-volatile tiles. The event will not be emitted if animation is in progress (see <code>MapboxMap/beginAnimation()</code>, <code>MapboxMap/endAnimation()</code>)
 /// and / or gesture is in progress (see <code>MapboxMap/beginGesture()</code>, <code>MapboxMap/endGesture()</code>).
@@ -5062,6 +5251,82 @@ SWIFT_CLASS("_TtC13MapboxMapObjC19TMBOrnamentsManager")
 /// <code>OrnamentOptions/attributionButton</code> to configure the attribution button presentation
 /// if customization is needed.
 @property (nonatomic, readonly, strong) UIView * _Nonnull attributionButton;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@class TMBOverviewViewportStateOptions;
+
+/// A <code>ViewportState</code> implementation that shows an overview of the geometry specified by its
+/// <code>OverviewViewportStateOptions/geometry</code>.
+/// Use <code>ViewportManager/makeOverviewViewportState(options:)</code> to create instances of this
+/// class.
+SWIFT_CLASS("_TtC13MapboxMapObjC24TMBOverviewViewportState")
+@interface TMBOverviewViewportState : NSObject <TMBViewportState>
+/// Configuration options.
+/// When set, the viewport reframes the geometry using the new options and updates its camera with
+/// an <code>CameraAnimationsManager/ease(to:duration:curve:completion:)</code>
+/// animation with a linear timing curve and duration specified by the new value’s
+/// <code>OverviewViewportStateOptions/animationDuration</code>.
+@property (nonatomic, strong) TMBOverviewViewportStateOptions * _Nonnull options;
+/// :nodoc:
+/// See <code>ViewportState/observeDataSource(with:)</code>.
+- (TMBCancelable * _Nonnull)observeDataSourceWith:(BOOL (^ _Nonnull)(TMBCameraOptions * _Nonnull))handler SWIFT_WARN_UNUSED_RESULT;
+/// :nodoc:
+/// See <code>ViewportState/startUpdatingCamera()</code>.
+- (void)startUpdatingCamera;
+/// :nodoc:
+/// See <code>ViewportState/stopUpdatingCamera()</code>.
+- (void)stopUpdatingCamera;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// Configuration options for <code>OverviewViewportState</code>.
+SWIFT_CLASS("_TtC13MapboxMapObjC31TMBOverviewViewportStateOptions")
+@interface TMBOverviewViewportStateOptions : NSObject
+/// The geometry that the <code>OverviewViewportState</code> should use when calculating its camera.
+@property (nonatomic, strong) MBXGeometry * _Nonnull geometry;
+/// The padding that <code>OverviewViewportState</code> should add to geometry when calculating fitting camera.
+/// note:
+/// This is different from camera padding, see <code>OverviewViewportStateOptions/padding</code>.
+@property (nonatomic) UIEdgeInsets geometryPadding;
+/// The bearing that <code>OverviewViewportState</code> should use when calcualting its camera.
+@property (nonatomic, strong) NSNumber * _Nullable bearing;
+/// The pitch that <code>OverviewViewportState</code> should use when calculating its camera.
+@property (nonatomic, strong) NSNumber * _Nullable pitch;
+/// Camera padding to set as camera options.
+@property (nonatomic, strong) NSValue * _Nullable padding;
+/// The maximum zoom level to allow.
+@property (nonatomic, strong) NSNumber * _Nullable maxZoom;
+/// The center of the given bounds relative to the map’s center, measured in points.
+@property (nonatomic, strong) NSValue * _Nullable offset;
+/// The length of the animation performed by <code>OverviewViewportState</code> when it starts updating
+/// the camera and any time <code>OverviewViewportState/options</code> is set. See
+/// <code>OverviewViewportState/options</code> for details.
+@property (nonatomic) NSTimeInterval animationDuration;
+/// Memberwise initializer for <code>OverviewViewportStateOptions</code>.
+/// <code>geometry</code> is required, but all other parameters have default values.
+/// \param geometry The geometry for which an overview should be shown.
+///
+/// \param geometryPadding The padding to add to geometry when calculating fitting camera.
+///
+/// \param bearing Camera bearing.
+///
+/// \param pitch Camera pitch.
+///
+/// \param padding Camera padding.
+///
+/// \param maxZoom The maximum zoom level to allow.
+///
+/// \param offset The center of the given bounds relative to the map’s center, measured in points.
+///
+/// \param animationDuration Defaults to 1.
+///
+- (nonnull instancetype)initWithGeometry:(MBXGeometry * _Nonnull)geometry geometryPadding:(UIEdgeInsets)geometryPadding bearing:(NSNumber * _Nullable)bearing pitch:(NSNumber * _Nullable)pitch padding:(NSValue * _Nullable)padding maxZoom:(NSNumber * _Nullable)maxZoom offset:(NSValue * _Nullable)offset animationDuration:(NSTimeInterval)animationDuration OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -5289,6 +5554,15 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25TMBPointAnnotationManager")
 @end
 
 
+
+@interface TMBPointAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)addAnnotations:(NSArray<TMBPointAnnotation *> * _Nonnull)annotations;
+- (void)addAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
+- (void)removeAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
+- (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+- (void)removeAllAnnotations;
+@end
+
 @class TMBPolygonRing;
 
 /// A <a href="https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.6">Polygon geometry</a> is conceptually a collection of <code>Ring</code>s that form a single connected geometry.
@@ -5391,6 +5665,15 @@ SWIFT_CLASS("_TtC13MapboxMapObjC27TMBPolygonAnnotationManager")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+
+@interface TMBPolygonAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)addAnnotations:(NSArray<TMBPolygonAnnotation *> * _Nonnull)annotations;
+- (void)addAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
+- (void)removeAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
+- (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+- (void)removeAllAnnotations;
+@end
 
 
 /// A <a href="https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.6">linear ring</a> is a closed figure bounded by three or more straight line segments.
@@ -5496,6 +5779,15 @@ SWIFT_CLASS("_TtC13MapboxMapObjC28TMBPolylineAnnotationManager")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+
+@interface TMBPolylineAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
+- (void)addAnnotations:(NSArray<TMBPolylineAnnotation *> * _Nonnull)annotations;
+- (void)addAnnotation:(TMBPolylineAnnotation * _Nonnull)annotation;
+- (void)removeAnnotation:(TMBPolylineAnnotation * _Nonnull)annotation;
+- (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+- (void)removeAllAnnotations;
+@end
 
 @class MBMProjectedMeters;
 @class MBMMercatorCoordinate;
@@ -6633,7 +6925,72 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textJustify:(TMBTextJustify * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textAnchor:(TMBTextAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)symbolZOrder:(TMBSymbolZOrder * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconTextFit:(TMBIconTextFit * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textRotationAlignment:(TMBTextRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconRotationAlignment:(TMBIconRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textTransform:(TMBTextTransform * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)fillTranslateAnchor:(TMBFillTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lineTranslateAnchor:(TMBLineTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6643,7 +7000,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class TMBVisibility;
@@ -6654,112 +7011,12 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)textTranslateAnchor:(TMBTextTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lightType:(TMBLightType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)fillExtrusionTranslateAnchor:(TMBFillExtrusionTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)modelScaleMode:(TMBModelScaleMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textWritingMode:(TMBTextWritingMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textTransform:(TMBTextTransform * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textRotationAlignment:(TMBTextRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)modelType:(TMBModelType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)symbolZOrder:(TMBSymbolZOrder * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconTextFit:(TMBIconTextFit * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)rasterResampling:(TMBRasterResampling * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textAnchor:(TMBTextAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconRotationAlignment:(TMBIconRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)circlePitchAlignment:(TMBCirclePitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6774,33 +7031,22 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lineTranslateAnchor:(TMBLineTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circlePitchAlignment:(TMBCirclePitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)fillExtrusionTranslateAnchor:(TMBFillExtrusionTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textJustify:(TMBTextJustify * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)rasterResampling:(TMBRasterResampling * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6810,12 +7056,58 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)modelScaleMode:(TMBModelScaleMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)modelType:(TMBModelType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)skyType:(TMBSkyType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lightType:(TMBLightType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textWritingMode:(TMBTextWritingMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7095,6 +7387,247 @@ SWIFT_CLASS("_TtC13MapboxMapObjC24TMBViewAnnotationOptions")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+@class TMBViewportOptions;
+@class TMBViewportStatus;
+@protocol TMBViewportStatusObserver;
+@protocol TMBViewportTransition;
+
+/// <code>Viewport</code> provides a structured approach to organizing camera management logic into states and
+/// transitions between them.
+/// At any given time, the viewport is either:
+/// <ul>
+///   <li>
+///     idle (not updating the camera)
+///   </li>
+///   <li>
+///     in a state (camera is being managed by a <code>ViewportState</code>)
+///   </li>
+///   <li>
+///     transitioning (camera is being managed by a <code>ViewportTransition</code>)
+///   </li>
+/// </ul>
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBViewportManager")
+@interface TMBViewportManager : NSObject
+/// Configuration options for adjusting the viewport’s behavior.
+@property (nonatomic, strong) TMBViewportOptions * _Nonnull options;
+/// The current <code>ViewportStatus</code>.
+/// <code>status</code> cannot be set directly. Use
+/// <code>ViewportManager/transition(to:transition:completion:)</code> and <code>ViewportManager/idle()</code> to
+/// transition to a state or to idle.
+/// Defaults to <code>ViewportStatus/idle</code>.
+/// seealso:
+///
+/// <ul>
+///   <li>
+///     <code>ViewportManager/addStatusObserver(_:)</code>
+///   </li>
+///   <li>
+///     <code>ViewportManager/removeStatusObserver(_:)</code>
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) TMBViewportStatus * _Nonnull status;
+/// Subscribes a <code>ViewportStatusObserver</code> to <code>ViewportManager/status</code> changes.
+/// Viewport keeps a strong reference to registered observers. Adding the same observer again while it is already subscribed has no effect.
+/// note:
+/// Observers are notified of status changes asynchronously on the main queue. This means that by
+/// the time the notification is delivered, the status may have already changed again. This behavior is necessary to allow
+/// observers to trigger further transitions while avoiding out-of-order delivery of status changed notifications.
+/// seealso:
+/// <code>ViewportManager/removeStatusObserver(_:)</code>
+/// \param observer An object that will be notified when the <code>ViewportManager/status</code> changes.
+///
+- (void)addStatusObserver:(id <TMBViewportStatusObserver> _Nonnull)observer;
+/// Unsubscribes a <code>ViewportStatusObserver</code> from <code>ViewportManager/status</code> changes. This causes viewport
+/// to release its strong reference to the observer. Removing an observer that is not subscribed has no effect.
+/// seealso:
+/// <code>ViewportManager/addStatusObserver(_:)</code>
+/// \param observer An object that should no longer be notified when the <code>ViewportManager/status</code> changes.
+///
+- (void)removeStatusObserver:(id <TMBViewportStatusObserver> _Nonnull)observer;
+/// Sets <code>ViewportManager/status</code> to <code>ViewportStatus/idle</code> synchronously.
+/// This cancels any active <code>ViewportState</code> or <code>ViewportTransition</code>.
+- (void)idle;
+/// Executes a transition to the requested state.
+/// If the transition fails, <code>ViewportManager/status</code> is set to <code>ViewportStatus/idle</code>.
+/// Transitioning to state <code>x</code> when the status is <code>.state(x)</code> invokes <code>completion</code>
+/// synchronously with <code>true</code> and does not modify <code>ViewportManager/status</code>.
+/// Transitioning to state <code>x</code> when the status is <code>.transition(_, x)</code> invokes <code>completion</code>
+/// synchronously with <code>false</code> and does not modify <code>ViewportManager/status</code>.
+/// <code>Viewport</code> keeps a strong reference to active transitions and states. To reuse states and transitions,
+/// keep strong references to them in the consuming project.
+/// \param toState The target <code>ViewportState</code> to transition to.
+///
+/// \param transition The <code>ViewportTransition</code> that is used to transition to the target state.
+/// If <code>nil</code>, <code>ViewportManager/defaultTransition</code> is used. Defaults to <code>nil</code>.
+///
+/// \param completion A closure that is invoked when the transition ends. Defaults to <code>nil</code>.
+///
+- (void)transitionTo:(id <TMBViewportState> _Nonnull)toState transition:(id <TMBViewportTransition> _Nullable)transition completion:(void (^ _Nullable)(BOOL))completion;
+/// <code>ViewportManager/transition(to:transition:completion:)</code> uses this transition unless
+/// some non-nil value is passed to its <code>transition</code> argument.
+/// Defaults to <code>DefaultViewportTransition</code> with default options.
+@property (nonatomic, strong) id <TMBViewportTransition> _Nonnull defaultTransition;
+/// Creates a new instance of <code>FollowPuckViewportState</code> with the specified options.
+/// \param options configuration options used when creating <code>FollowPuckViewportState</code>. Defaults to
+/// <code>FollowPuckViewportStateOptions/init(padding:zoom:bearing:pitch:)</code>
+/// with the default value specified for all parameters.
+///
+///
+/// returns:
+/// The newly-created <code>FollowPuckViewportState</code>.
+- (TMBFollowPuckViewportState * _Nonnull)makeFollowPuckViewportStateWithOptions:(TMBFollowPuckViewportStateOptions * _Nullable)options SWIFT_WARN_UNUSED_RESULT;
+/// Creates a new instance of <code>OverviewViewportState</code> with the specified options.
+/// \param options configuration options used when creating <code>OverviewViewportState</code>.
+///
+///
+/// returns:
+/// The newly-created <code>OverviewViewportState</code>.
+- (TMBOverviewViewportState * _Nonnull)makeOverviewViewportStateWithOptions:(TMBOverviewViewportStateOptions * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
+/// Creates a new instance of <code>DefaultViewportTransition</code>.
+/// \param options configuration options used when creating <code>DefaultViewportTransition</code>. Defaults to
+/// <code>DefaultViewportTransitionOptions/init(maxDuration:)</code> with the default value specified for all parameters
+///
+///
+/// returns:
+/// The newly-created <code>DefaultViewportTransition</code>.
+- (TMBDefaultViewportTransition * _Nonnull)makeDefaultViewportTransitionWithOptions:(TMBDefaultViewportTransitionOptions * _Nullable)options SWIFT_WARN_UNUSED_RESULT;
+/// Creates a new instance of <code>ImmediateViewportTransition</code>.
+///
+/// returns:
+/// The newly-created <code>ImmediateViewportTransition</code>.
+- (id <TMBViewportTransition> _Nonnull)makeImmediateViewportTransition SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Configuration options for <code>ViewportManager</code>.
+SWIFT_CLASS("_TtC13MapboxMapObjC18TMBViewportOptions")
+@interface TMBViewportOptions : NSObject
+/// Indicates whether the <code>ViewportManager</code> should idle when the <code>MapView</code>
+/// receives pan touch input.
+/// Set this property to <code>false</code> to enable building custom <code>ViewportState</code>s that
+/// can work simultaneously with certain types of gestures.
+/// Defaults to <code>true</code>.
+@property (nonatomic) BOOL transitionsToIdleUponUserInteraction;
+/// Creates viewport options
+/// \param transitionsToIdleUponUserInteraction If <code>true</code>, viewport will idle when map receives pan gesture. Default value is <code>true</code>.
+///
+- (nonnull instancetype)initWithTransitionsToIdleUponUserInteraction:(BOOL)transitionsToIdleUponUserInteraction OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+
+/// <code>ViewportStatus</code> contains 3 cases that express what the <code>ViewportManager</code> is doing at any given time.
+/// The <code>ViewportStatus/state(_:)</code> and <code>ViewportStatus/transition(_:toState:)</code>
+/// cases have associated values that are reference types, so equality and hash are implemented in terms of
+/// the identities of those objects.
+SWIFT_CLASS("_TtC13MapboxMapObjC17TMBViewportStatus")
+@interface TMBViewportStatus : NSObject
+/// The <code>idle</code> status indicates that <code>ViewportManager</code> is inactive.
+@property (nonatomic, readonly) BOOL idle;
+@property (nonatomic, readonly, strong) id <TMBViewportState> _Nullable state;
+@property (nonatomic, readonly, strong) id <TMBViewportTransition> _Nullable transition;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBViewportStatus * _Nonnull idleInstance;)
++ (TMBViewportStatus * _Nonnull)idleInstance SWIFT_WARN_UNUSED_RESULT;
+/// The <code>state(_:)</code> status indicates that <code>ViewportManager</code> is running the associated value <code>state</code>.
++ (TMBViewportStatus * _Nonnull)fromState:(id <TMBViewportState> _Nonnull)state SWIFT_WARN_UNUSED_RESULT;
+/// The <code>transition(_:toState:)</code> status indicates that <code>ViewportManager</code> is running <code>transition</code>
+/// and will start running <code>toState</code> upon success.
++ (TMBViewportStatus * _Nonnull)fromTransition:(id <TMBViewportTransition> _Nonnull)transition toState:(id <TMBViewportState> _Nonnull)toState SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Constants that describe why <code>ViewportManager/status</code> changed.
+SWIFT_CLASS("_TtC13MapboxMapObjC29TMBViewportStatusChangeReason")
+@interface TMBViewportStatusChangeReason : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull rawValue;
+/// <code>ViewportManager/status</code> changed because <code>ViewportManager/idle()</code> was invoked.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBViewportStatusChangeReason * _Nonnull idleRequested;)
++ (TMBViewportStatusChangeReason * _Nonnull)idleRequested SWIFT_WARN_UNUSED_RESULT;
+/// <code>ViewportManager/status</code> changed because <code>ViewportManager/transition(to:transition:completion:)</code> was invoked.
+/// An event with this reason is not delivered if the <code>ViewportTransition/run(to:completion:)</code> invokes its completion
+/// block synchronously.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBViewportStatusChangeReason * _Nonnull transitionStarted;)
++ (TMBViewportStatusChangeReason * _Nonnull)transitionStarted SWIFT_WARN_UNUSED_RESULT;
+/// <code>ViewportManager/status</code> changed because <code>ViewportManager/transition(to:transition:completion:)</code> completed successfully.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBViewportStatusChangeReason * _Nonnull transitionSucceeded;)
++ (TMBViewportStatusChangeReason * _Nonnull)transitionSucceeded SWIFT_WARN_UNUSED_RESULT;
+/// <code>ViewportManager/status</code> changed because <code>ViewportManager/transition(to:transition:completion:)</code> failed.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBViewportStatusChangeReason * _Nonnull transitionFailed;)
++ (TMBViewportStatusChangeReason * _Nonnull)transitionFailed SWIFT_WARN_UNUSED_RESULT;
+/// <code>ViewportManager/status</code> changed due to user interaction.
+/// seealso:
+/// <code>ViewportOptions/transitionsToIdleUponUserInteraction</code>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBViewportStatusChangeReason * _Nonnull userInteraction;)
++ (TMBViewportStatusChangeReason * _Nonnull)userInteraction SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// <code>ViewportStatusObserver</code> must be implemented by objects that wish to register
+/// themselves using <code>ViewportManager/addStatusObserver(_:)</code> so that they can observe
+/// <code>ViewportManager/status</code> changes.
+/// seealso:
+/// <code>ViewportManager/addStatusObserver(_:)</code> for an important note about how
+/// these notifications are delivered asynchronously.
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC25TMBViewportStatusObserver_")
+@protocol TMBViewportStatusObserver
+/// Called whenever <code>ViewportManager/status</code> changes.
+/// \param fromStatus The value of <code>ViewportManager/status</code> prior to the change.
+///
+/// \param toStatus The value of <code>ViewportManager/status</code> after the change.
+///
+/// \param reason A <code>ViewportStatusChangeReason</code> that indicates what initiated the change.
+///
+- (void)viewportStatusDidChangeFrom:(TMBViewportStatus * _Nonnull)fromStatus to:(TMBViewportStatus * _Nonnull)toStatus reason:(TMBViewportStatusChangeReason * _Nonnull)reason;
+@end
+
+
+/// <code>ViewportTransition</code> is a protocol that <code>ViewportManager</code> depends on as it orchestrates transitions
+/// to and from different <code>ViewportState</code>s.
+/// MapboxMaps provides implementations of <code>ViewportTransition</code> that can be created and
+/// configured via methods on <code>ViewportManager</code>. Applications may also define their own implementations to
+/// handle advanced use cases not covered by the provided implementations.
+/// seealso:
+///
+/// <ul>
+///   <li>
+///     <code>DefaultViewportTransition</code>
+///   </li>
+///   <li>
+///     <code>ImmediateViewportTransition</code>
+///   </li>
+/// </ul>
+SWIFT_PROTOCOL("_TtP13MapboxMapObjC21TMBViewportTransition_")
+@protocol TMBViewportTransition
+/// Runs the transition to <code>toState</code>.
+/// The completion block must be invoked with <code>true</code> if the transition completes successfully. If the
+/// transition fails, invoke the completion block with <code>false</code>.
+/// If the returned <code>Cancelable</code> is canceled, it not necessary to invoke the completion block (but
+/// is safe to do so — it will just be ignored).
+/// Transitions should handle the possibility that the “to” state might fail to provide a target camera in a
+/// timely manner or might update the target camera multiple times during the transition (a “moving
+/// target”).
+/// \param toState The target state for the transition.
+///
+/// \param completion A block that must be invoked when the transition is complete. Must be invoked
+/// on the main queue.
+///
+///
+/// returns:
+/// a <code>Cancelable</code> that can be used to terminate the transition. If
+/// <code>Cancelable/cancel()</code> is invoked, the transition must immediately stop
+/// updating the camera and cancel any animations that it started.
+- (TMBCancelable * _Nonnull)runTo:(id <TMBViewportState> _Nonnull)toState completion:(void (^ _Nonnull)(BOOL))completion SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 SWIFT_CLASS("_TtC13MapboxMapObjC13TMBVisibility")

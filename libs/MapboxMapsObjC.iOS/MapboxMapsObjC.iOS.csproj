@@ -6,12 +6,12 @@
       <ImplicitUsings>true</ImplicitUsings>
       <IsBindingProject>true</IsBindingProject>
       <NoBindingEmbedding>true</NoBindingEmbedding>
-      <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+      <SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <_NativeVersion>11.4.0</_NativeVersion>
-    <_NugetSuffix>.2</_NugetSuffix>
+    <_NativeVersion>11.5.1</_NativeVersion>
+    <_NugetSuffix>.1</_NugetSuffix>
     <_NugetVersion>$(_NativeVersion)$(_NugetSuffix)</_NugetVersion>
   </PropertyGroup>
   <PropertyGroup>

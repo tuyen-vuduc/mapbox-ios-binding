@@ -68,6 +68,7 @@ __attribute__((visibility ("default")))
  * Removes a tile region from the existing packages list. The actual resources
  * eviction might be deferred. All pending loading operations for the tile region
  * with the given id will fail with Canceled error.
+ * When a tile region is removed associated resources will move to the ambient cache.
  *
  * @param id The tile region identifier.
  */

@@ -5,6 +5,20 @@ using ObjCRuntime;
 
 namespace MapboxCommon
 {
+    public enum MBXTileStoreAmbientCacheType : uint
+    {
+        /** Ambient data related to tiles */
+        Tiles,
+        /** Ambient data related to resources */
+        Resources,
+    }
+    public enum MBXCacheClearingErrorType : uint
+    {
+        /** There was an issue accessing the database */
+        DatabaseError,
+        /** There was an uncategorised error, see description */
+        OtherError,
+    }
 	public enum MBXGeometryType : uint
 	{
 		Empty,

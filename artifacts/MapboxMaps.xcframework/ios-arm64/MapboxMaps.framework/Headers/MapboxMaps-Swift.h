@@ -384,6 +384,7 @@ SWIFT_CLASS("_TtC10MapboxMaps10CameraView")
 
 
 
+
 /// <code>DistanceFormatter</code> implements a formatter object meant to be used for
 /// geographic distances. The user’s current locale will be used by default
 /// but it can be overriden by changing the locale property of the numberFormatter.
