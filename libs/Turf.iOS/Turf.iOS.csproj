@@ -11,7 +11,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <_NativeVersion>2.8.0</_NativeVersion>
-    <_NugetSuffix>.5</_NugetSuffix>
+    <_NugetSuffix>.6</_NugetSuffix>
     <_NugetVersion>$(_NativeVersion)$(_NugetSuffix)</_NugetVersion>
   </PropertyGroup>
   <PropertyGroup>

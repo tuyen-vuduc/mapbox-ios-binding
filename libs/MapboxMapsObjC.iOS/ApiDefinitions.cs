@@ -631,6 +631,10 @@ namespace MapboxMapsObjC
         // -(TMBGestureManager * _Nonnull)gestures __attribute__((warn_unused_result("")));
         [Export("gestures")]
         TMBGestureManager Gestures();
+
+        // - (TMBLocationManager * _Nonnull)location SWIFT_WARN_UNUSED_RESULT;
+        [Export("location")]
+        TMBLocationManager Location();
     }
 
     // @interface MapboxMapObjC_Swift_421

@@ -428,6 +428,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (TMBGestureManager * _Nonnull)gestures SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class TMBLocationManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBLocationManager * _Nonnull)location SWIFT_WARN_UNUSED_RESULT;
+@end
 
 @class TMBCameraAnimationsManager;
 
