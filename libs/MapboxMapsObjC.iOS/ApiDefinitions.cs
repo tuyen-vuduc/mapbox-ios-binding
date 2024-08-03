@@ -161,7 +161,7 @@ namespace MapboxMapsObjC
 
         // - (void)transitionTo:(id <TMBViewportState> _Nonnull)toState transition:(id <TMBViewportTransition> _Nullable)transition completion:(void (^ _Nullable)(BOOL))completion;
         [Export("transitionTo:transition:completion:")]
-        void TransitionTo(ITMBViewportState toState, ITMBViewportTransition transition, Action<bool> completion);
+        void TransitionTo(ITMBViewportState toState, [NullAllowed] ITMBViewportTransition transition, [NullAllowed] Action<bool> completion);
 
         // @property (nonatomic, strong) id <TMBViewportTransition> _Nonnull defaultTransition;
         [Export("defaultTransition", ArgumentSemantic.Strong)]
