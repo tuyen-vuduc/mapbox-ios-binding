@@ -95,7 +95,7 @@ namespace MapboxMapsObjC
         [Export("idle")]
         bool Idle { get; }
         // @property (nonatomic, readonly, strong) id <TMBViewportState> _Nullable state;
-        [Export("State")]
+        [Export("state")]
         ITMBViewportState State { get; }
         // @property (nonatomic, readonly, strong) id <TMBViewportTransition> _Nullable transition;
         [Export("transition")]
@@ -550,6 +550,11 @@ namespace MapboxMapsObjC
         [Static]
         [Export("createPolygon:")]
         MBXGeometry CreatePolygon(NSArray locations);
+
+        // + (MBXGeometry * _Nonnull)createPolygonWithCenter:(CLLocationCoordinate2D)center radius:(CLLocationDistance)radius vertices:(NSInteger)vertices SWIFT_WARN_UNUSED_RESULT;
+        [Static]
+        [Export("createPolygonWithCenter:radius:vertices:")]
+        MBXGeometry CreatePolygonWithCenter(CLLocationCoordinate2D center, double radius, int vertices);
 
         // +(MBXGeometry * _Nonnull)create:(NSArray<MBXGeometry *> * _Nonnull)items __attribute__((warn_unused_result("")));
         [Static]
@@ -5211,6 +5216,10 @@ namespace MapboxMapsObjC
     [DisableDefaultCtor]
     interface TMBLocationManager
     {
+        //  @property (nonatomic, strong) TMBLocationOptions * _Nonnull options;
+        [Export("options", ArgumentSemantic.Strong)]
+        TMBLocationOptions Options { get; set; }
+
         // -(TMBCancelable * _Nonnull)onLocationChangeWithHandler:(void (^ _Nonnull)(NSArray<MBXLocation *> * _Nonnull))handler __attribute__((warn_unused_result("")));
         [Export("onLocationChangeWithHandler:")]
         TMBCancelable OnLocationChangeWithHandler(Action<NSArray<MBXLocation>> handler);
@@ -5238,6 +5247,18 @@ namespace MapboxMapsObjC
         // @property (readonly, nonatomic, strong) MBXLocation * _Nullable latestLocation;
         [NullAllowed, Export("latestLocation", ArgumentSemantic.Strong)]
         MBXLocation LatestLocation { get; }
+
+        // + (CLLocationDirection)directionFrom:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)coordinate SWIFT_WARN_UNUSED_RESULT;
+        [Static, Export("directionFrom:to:")]
+        double DirectionFrom(CLLocationCoordinate2D from, CLLocationCoordinate2D to);
+        
+        // + (CLLocationCoordinate2D)coordinateFrom:(CLLocationCoordinate2D)from at:(CLLocationDistance)distance facing:(CLLocationDirection)direction SWIFT_WARN_UNUSED_RESULT;
+        [Static, Export("coordinateFrom:at:facing:")]
+        CLLocationCoordinate2D CoordinateFrom(CLLocationCoordinate2D from, double distance, double direction);
+        
+        // + (CLLocationDistance)distanceFrom:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)coordinate SWIFT_WARN_UNUSED_RESULT;
+        [Static, Export("distanceFrom:to:")]
+        double DistanceFrom(CLLocationCoordinate2D from, CLLocationCoordinate2D to);
     }
 
     // @interface TMBLocationOptions : NSObject
@@ -6905,6 +6926,10 @@ namespace MapboxMapsObjC
         [Export("initWithTopImage:bearingImage:shadowImage:scale:showsAccuracyRing:accuracyRingColor:accuracyRingBorderColor:opacity:")]
         [DesignatedInitializer]
         NativeHandle Constructor([NullAllowed] UIImage topImage, [NullAllowed] UIImage bearingImage, [NullAllowed] UIImage shadowImage, [NullAllowed] TMBValue scale, bool showsAccuracyRing, UIColor accuracyRingColor, UIColor accuracyRingBorderColor, double opacity);
+
+        // + (TMBPuck2DConfiguration * _Nonnull)makeDefaultWithShowBearing:(BOOL)showBearing SWIFT_WARN_UNUSED_RESULT;
+        [Export("makeDefaultWithShowBearing:"), Static]
+        TMBPuck2DConfiguration MakeDefaultWithShowBearing(bool showBearing);
     }
 
     // @interface TMBPuck2DConfigurationPulsing : NSObject

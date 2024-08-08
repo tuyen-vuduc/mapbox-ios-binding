@@ -351,6 +351,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC14GeometryHelper")
 + (MBXGeometry * _Nonnull)createMultiPoint:(NSArray<NSValue *> * _Nonnull)locations SWIFT_WARN_UNUSED_RESULT;
 + (MBXGeometry * _Nonnull)createMultiPolygon:(NSArray<NSArray<NSArray<NSValue *> *> *> * _Nonnull)locations SWIFT_WARN_UNUSED_RESULT;
 + (MBXGeometry * _Nonnull)createPolygon:(NSArray<NSArray<NSValue *> *> * _Nonnull)locations SWIFT_WARN_UNUSED_RESULT;
++ (MBXGeometry * _Nonnull)createPolygonWithCenter:(CLLocationCoordinate2D)center radius:(CLLocationDistance)radius vertices:(NSInteger)vertices SWIFT_WARN_UNUSED_RESULT;
 + (MBXGeometry * _Nonnull)create:(NSArray<MBXGeometry *> * _Nonnull)items SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -392,34 +393,10 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class TMBViewportManager;
+@class TMBLocationManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBViewportManager * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBAnnotationOrchestrator;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBAnnotationOrchestrator * _Nonnull)annotations SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBMapboxMap;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBMapboxMap * _Nonnull)mapboxMap SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBOrnamentsManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBOrnamentsManager * _Nonnull)ornaments SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBViewAnnotationManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBViewAnnotationManager * _Nonnull)viewAnnotations SWIFT_WARN_UNUSED_RESULT;
+- (TMBLocationManager * _Nonnull)location SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class TMBGestureManager;
@@ -428,16 +405,40 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (TMBGestureManager * _Nonnull)gestures SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class TMBLocationManager;
+@class TMBAnnotationOrchestrator;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBLocationManager * _Nonnull)location SWIFT_WARN_UNUSED_RESULT;
+- (TMBAnnotationOrchestrator * _Nonnull)annotations SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBViewportManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBViewportManager * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBViewAnnotationManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBViewAnnotationManager * _Nonnull)viewAnnotations SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class TMBCameraAnimationsManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (TMBCameraAnimationsManager * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBOrnamentsManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBOrnamentsManager * _Nonnull)ornaments SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBMapboxMap;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBMapboxMap * _Nonnull)mapboxMap SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class NSNumber;
@@ -3644,12 +3645,15 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25TMBLocationIndicatorLayer")
 @end
 
 
+@class TMBLocationOptions;
 @class TMBPuckRenderingData;
 @protocol MBXLocationProvider;
 
 /// An object responsible for managing user location Puck.
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBLocationManager")
 @interface TMBLocationManager : NSObject
+/// Configuration options for the location manager.
+@property (nonatomic, strong) TMBLocationOptions * _Nonnull options;
 /// A stream of location change events that drive the puck.
 - (TMBCancelable * _Nonnull)onLocationChangeWithHandler:(void (^ _Nonnull)(NSArray<MBXLocation *> * _Nonnull))handler SWIFT_WARN_UNUSED_RESULT;
 /// A stream of heading update events that drive the puck.
@@ -3694,6 +3698,18 @@ SWIFT_CLASS("_TtC13MapboxMapObjC18TMBLocationManager")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+
+@interface TMBLocationManager (SWIFT_EXTENSION(MapboxMapObjC))
+/// Returns the direction from the receiver to the given coordinate.
+/// This method is equivalent to the <a href="https://turfjs.org/docs/#bearing">turf-bearing</a> package of Turf.js (<a href="https://github.com/Turfjs/turf/tree/master/packages/turf-bearing/">source code</a>).
++ (CLLocationDirection)directionFrom:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)coordinate SWIFT_WARN_UNUSED_RESULT;
+/// Returns a coordinate a certain Haversine distance away in the given direction.
++ (CLLocationCoordinate2D)coordinateFrom:(CLLocationCoordinate2D)from at:(CLLocationDistance)distance facing:(CLLocationDirection)direction SWIFT_WARN_UNUSED_RESULT;
+/// Returns the Haversine distance between two coordinates measured in degrees.
+/// This method is equivalent to the <a href="https://turfjs.org/docs/#distance">turf-distance</a> package of Turf.js (<a href="https://github.com/Turfjs/turf/tree/master/packages/turf-distance/">source code</a>).
++ (CLLocationDistance)distanceFrom:(CLLocationCoordinate2D)from to:(CLLocationCoordinate2D)coordinate SWIFT_WARN_UNUSED_RESULT;
+@end
 
 @protocol TMBPuckTypeConfiguration;
 enum TMBPuckBearing : NSInteger;
@@ -5938,6 +5954,8 @@ SWIFT_CLASS("_TtC13MapboxMapObjC22TMBPuck2DConfiguration")
 /// \param opacity The opacity of the entire location indicator.
 ///
 - (nonnull instancetype)initWithTopImage:(UIImage * _Nullable)topImage bearingImage:(UIImage * _Nullable)bearingImage shadowImage:(UIImage * _Nullable)shadowImage scale:(TMBValue * _Nullable)scale showsAccuracyRing:(BOOL)showsAccuracyRing accuracyRingColor:(UIColor * _Nonnull)accuracyRingColor accuracyRingBorderColor:(UIColor * _Nonnull)accuracyRingBorderColor opacity:(double)opacity OBJC_DESIGNATED_INITIALIZER;
+/// Create a Puck2DConfiguration instance with or without an arrow bearing image. Default without the arrow bearing image.
++ (TMBPuck2DConfiguration * _Nonnull)makeDefaultWithShowBearing:(BOOL)showBearing SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -6930,17 +6948,29 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@class TMBVisibility;
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)visibility:(TMBVisibility * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textWritingMode:(TMBTextWritingMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textJustify:(TMBTextJustify * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textAnchor:(TMBTextAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6950,12 +6980,17 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconTextFit:(TMBIconTextFit * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)skyType:(TMBSkyType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6970,17 +7005,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)textTransform:(TMBTextTransform * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -6990,78 +7015,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lineTranslateAnchor:(TMBLineTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lineCap:(TMBLineCap * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBVisibility;
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)visibility:(TMBVisibility * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textTranslateAnchor:(TMBTextTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circlePitchAlignment:(TMBCirclePitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)layerType:(TMBLayerType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circlePitchScale:(TMBCirclePitchScale * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)fillExtrusionTranslateAnchor:(TMBFillExtrusionTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)rasterResampling:(TMBRasterResampling * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)modelScaleMode:(TMBModelScaleMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7071,38 +7025,27 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)skyType:(TMBSkyType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)modelScaleMode:(TMBModelScaleMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)lineTranslateAnchor:(TMBLineTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7112,7 +7055,82 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textWritingMode:(TMBTextWritingMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)textTranslateAnchor:(TMBTextTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)layerType:(TMBLayerType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)rasterResampling:(TMBRasterResampling * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)circlePitchAlignment:(TMBCirclePitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)fillExtrusionTranslateAnchor:(TMBFillExtrusionTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)circlePitchScale:(TMBCirclePitchScale * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textJustify:(TMBTextJustify * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textAnchor:(TMBTextAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconTextFit:(TMBIconTextFit * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lineCap:(TMBLineCap * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
