@@ -702,6 +702,13 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC20TMBAnnotationManager_")
 /// Use this property to position the annotations relative to other map features if you use Mapbox Standard Style.
 /// See <a href="doc:Migrate-to-v11##21-The-Mapbox-Standard-Style">doc:Migrate-to-v11##21-The-Mapbox-Standard-Style</a> for more info.
 @property (nonatomic, copy) NSString * _Nullable slot;
+- (void)addAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)addAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)updateAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)updateAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+- (void)removeAllAnnotations;
 @end
 
 @class TMBLayerPosition;
@@ -1416,9 +1423,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCircleAnnotationManager")
 
 
 @interface TMBCircleAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addAnnotations:(NSArray<TMBCircleAnnotation *> * _Nonnull)annotations;
-- (void)addAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
-- (void)removeAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
+- (void)addAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)addAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)updateAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)updateAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
 - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
 - (void)removeAllAnnotations;
 @end
@@ -5577,9 +5586,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25TMBPointAnnotationManager")
 
 
 @interface TMBPointAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addAnnotations:(NSArray<TMBPointAnnotation *> * _Nonnull)annotations;
-- (void)addAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
-- (void)removeAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
+- (void)addAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)addAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)updateAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)updateAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
 - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
 - (void)removeAllAnnotations;
 @end
@@ -5689,9 +5700,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC27TMBPolygonAnnotationManager")
 
 
 @interface TMBPolygonAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addAnnotations:(NSArray<TMBPolygonAnnotation *> * _Nonnull)annotations;
-- (void)addAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
-- (void)removeAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
+- (void)addAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)addAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)updateAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)updateAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
 - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
 - (void)removeAllAnnotations;
 @end
@@ -5803,9 +5816,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC28TMBPolylineAnnotationManager")
 
 
 @interface TMBPolylineAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addAnnotations:(NSArray<TMBPolylineAnnotation *> * _Nonnull)annotations;
-- (void)addAnnotation:(TMBPolylineAnnotation * _Nonnull)annotation;
-- (void)removeAnnotation:(TMBPolylineAnnotation * _Nonnull)annotation;
+- (void)addAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)addAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)updateAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)updateAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
 - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
 - (void)removeAllAnnotations;
 @end

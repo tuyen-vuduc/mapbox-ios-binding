@@ -981,6 +981,34 @@ namespace MapboxMapsObjC
         [Abstract]
         [NullAllowed, Export("slot")]
         string Slot { get; set; }
+        
+        // - (void)addAnnotations:(NSArray<TMBPointAnnotation *> * _Nonnull)annotations;
+        [Export("addAnnotations:")]
+        void AddAnnotations(ITMBAnnotation[] annotations);
+
+        // - (void)addAnnotation:(TMBAnnotation * _Nonnull)annotation;
+        [Export("addAnnotation:")]
+        void AddAnnotation(ITMBAnnotation annotations);
+
+        // - (void)updateAnnotations:(NSArray<TMBAnnotation *> * _Nonnull)annotations;
+        [Export("updateAnnotations:")]
+        void UpdateAnnotations(ITMBAnnotation[] annotations);
+
+        // - (void)updateAnnotation:(TMBAnnotation * _Nonnull)annotation;
+        [Export("updateAnnotation:")]
+        void UpdateAnnotation(ITMBAnnotation annotations);
+
+        // - (void)removeAnnotation:(TMBAnnotation * _Nonnull)annotation;
+        [Export("removeAnnotation:")]
+        void RemoveAnnotation(ITMBAnnotation annotation);
+
+        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+        [Export("removeAnnotationById:")]
+        void RemoveAnnotationById(string annotationId);
+
+        // - (void)removeAllAnnotations;
+        [Export("removeAllAnnotations")]
+        void RemoveAllAnnotations();
     }
 
     // @interface TMBAnnotationOrchestrator : NSObject
@@ -6405,98 +6433,6 @@ namespace MapboxMapsObjC
         // @property (copy, nonatomic) NSString * _Nullable slot;
         [NullAllowed, Export("slot")]
         string Slot { get; set; }
-    }
-
-    partial interface TMBPointAnnotationManager
-    {
-        // - (void)addAnnotations:(NSArray<TMBPointAnnotation *> * _Nonnull)annotations;
-        [Export("addAnnotations:")]
-        void AddAnnotations(TMBPointAnnotation[] annotations);
-
-        // - (void)addAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
-        [Export("addAnnotation:")]
-        void AddAnnotation(TMBPointAnnotation annotations);
-
-        // - (void)removeAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
-        [Export("removeAnnotation:")]
-        void RemoveAnnotation(TMBPointAnnotation annotation);
-
-        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
-        [Export("removeAnnotationById:")]
-        void RemoveAnnotationById(string annotationId);
-
-        // - (void)removeAllAnnotations;
-        [Export("removeAllAnnotations")]
-        void RemoveAllAnnotations();
-    }
-
-    partial interface TMBCircleAnnotationManager
-    {
-        // - (void)addAnnotations:(NSArray<TMBCircleAnnotation *> * _Nonnull)annotations;
-        [Export("addAnnotations:")]
-        void AddAnnotations(TMBCircleAnnotation[] annotations);
-
-        // - (void)addAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
-        [Export("addAnnotation:")]
-        void AddAnnotation(TMBCircleAnnotation annotations);
-
-        // - (void)removeAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
-        [Export("removeAnnotation:")]
-        void RemoveAnnotation(TMBCircleAnnotation annotation);
-
-        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
-        [Export("removeAnnotationById:")]
-        void RemoveAnnotationById(string annotationId);
-
-        // - (void)removeAllAnnotations;
-        [Export("removeAllAnnotations")]
-        void RemoveAllAnnotations();
-    }
-
-    partial interface TMBPolygonAnnotationManager
-    {
-        // - (void)addAnnotations:(NSArray<TMBPolygonAnnotation *> * _Nonnull)annotations;
-        [Export("addAnnotations:")]
-        void AddAnnotations(TMBPolygonAnnotation[] annotations);
-
-        // - (void)addAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
-        [Export("addAnnotation:")]
-        void AddAnnotation(TMBPolygonAnnotation annotations);
-
-        // - (void)removeAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
-        [Export("removeAnnotation:")]
-        void RemoveAnnotation(TMBPolygonAnnotation annotation);
-
-        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
-        [Export("removeAnnotationById:")]
-        void RemoveAnnotationById(string annotationId);
-
-        // - (void)removeAllAnnotations;
-        [Export("removeAllAnnotations")]
-        void RemoveAllAnnotations();
-    }
-
-    partial interface TMBPolylineAnnotationManager
-    {
-        // - (void)addAnnotations:(NSArray<TMBPolylineAnnotation *> * _Nonnull)annotations;
-        [Export("addAnnotations:")]
-        void AddAnnotations(TMBPolylineAnnotation[] annotations);
-
-        // - (void)addAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
-        [Export("addAnnotation:")]
-        void AddAnnotation(TMBPolylineAnnotation annotations);
-
-        // - (void)removeAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
-        [Export("removeAnnotation:")]
-        void RemoveAnnotation(TMBPolylineAnnotation annotation);
-
-        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
-        [Export("removeAnnotationById:")]
-        void RemoveAnnotationById(string annotationId);
-
-        // - (void)removeAllAnnotations;
-        [Export("removeAllAnnotations")]
-        void RemoveAllAnnotations();
     }
 
     // @interface TMBPolygon : NSObject
