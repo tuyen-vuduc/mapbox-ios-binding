@@ -6906,6 +6906,14 @@ namespace MapboxMapsObjC
         // @property (readonly, nonatomic, strong) NSNumber * _Nullable constant;
         [NullAllowed, Export("constant", ArgumentSemantic.Strong)]
         NSNumber Constant { get; }
+
+        // + (TMBPuck2DConfigurationPulsingRadius * _Nonnull)accuracy SWIFT_WARN_UNUSED_RESULT;
+        [Static, Export("accuracy")]
+        TMBPuck2DConfigurationPulsingRadius Accuracy { get; }
+
+        // + (TMBPuck2DConfigurationPulsingRadius * _Nonnull)fromConstant:(double)constant SWIFT_WARN_UNUSED_RESULT;
+        [Static, Export("fromConstant:")]
+        TMBPuck2DConfigurationPulsingRadius FromConstant(double constant);
     }
 
     // @interface TMBPuck3DConfiguration : NSObject <TMBPuckTypeConfiguration>

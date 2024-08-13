@@ -6005,6 +6005,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=defau
 SWIFT_CLASS("_TtC13MapboxMapObjC35TMBPuck2DConfigurationPulsingRadius")
 @interface TMBPuck2DConfigurationPulsingRadius : NSObject
 @property (nonatomic, readonly, strong) NSNumber * _Nullable constant;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBPuck2DConfigurationPulsingRadius * _Nonnull accuracy;)
++ (TMBPuck2DConfigurationPulsingRadius * _Nonnull)accuracy SWIFT_WARN_UNUSED_RESULT;
++ (TMBPuck2DConfigurationPulsingRadius * _Nonnull)fromConstant:(double)constant SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
