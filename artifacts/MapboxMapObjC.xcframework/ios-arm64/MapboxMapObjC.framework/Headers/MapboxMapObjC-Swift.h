@@ -5981,6 +5981,14 @@ SWIFT_CLASS("_TtC13MapboxMapObjC22TMBPuck2DConfiguration")
 /// The configuration parameters for sonar-like pulsing circle animation shown around the 2D puck.
 SWIFT_CLASS("_TtC13MapboxMapObjC29TMBPuck2DConfigurationPulsing")
 @interface TMBPuck2DConfigurationPulsing : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=default) TMBPuck2DConfigurationPulsing * _Nonnull default_;)
++ (TMBPuck2DConfigurationPulsing * _Nonnull)default SWIFT_WARN_UNUSED_RESULT;
+/// Flag determining whether the pulsing circle animation. <code>true</code> by default.
+@property (nonatomic) BOOL isEnabled;
+/// The color of the pulsing circle.
+@property (nonatomic, strong) UIColor * _Nonnull color;
+/// The radius of the pulsing circle.
+@property (nonatomic, strong) TMBPuck2DConfigurationPulsingRadius * _Nonnull radius;
 /// Create a pulsing animation config with a color and radius.
 /// \param color The color of the pulsing circle.
 ///

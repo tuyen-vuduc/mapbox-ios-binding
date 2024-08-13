@@ -6873,6 +6873,25 @@ namespace MapboxMapsObjC
     [DisableDefaultCtor]
     interface TMBPuck2DConfigurationPulsing
     {
+        // + (TMBPuck2DConfigurationPulsing * _Nonnull)default SWIFT_WARN_UNUSED_RESULT;
+        [Static, Export("default")]
+        TMBPuck2DConfigurationPulsing Default();
+
+        // /// Flag determining whether the pulsing circle animation. <code>true</code> by default.
+        // @property (nonatomic) BOOL isEnabled;
+        [Export("isEnabled")]
+        bool IsEnabled { get; set; }
+
+        // /// The color of the pulsing circle.
+        // @property (nonatomic, strong) UIColor * _Nonnull color;
+        [Export("color", ArgumentSemantic.Strong)]
+        UIColor Color { get; set; }
+
+        // /// The radius of the pulsing circle.
+        // @property (nonatomic, strong) TMBPuck2DConfigurationPulsingRadius * _Nonnull radius;
+        [Export("radius", ArgumentSemantic.Strong)]
+        TMBPuck2DConfigurationPulsingRadius Radius { get; set; }
+
         // -(instancetype _Nonnull)initWithColor:(UIColor * _Nonnull)color radius:(TMBPuck2DConfigurationPulsingRadius * _Nonnull)radius __attribute__((objc_designated_initializer));
         [Export("initWithColor:radius:")]
         [DesignatedInitializer]
