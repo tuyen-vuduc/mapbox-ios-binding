@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
 	<PropertyGroup>
-		<_MapboxMapsObjCFileId>1a3Ld6zPKzYRDNHw80YTYqk-f0Y4L4G6g</_MapboxMapsObjCFileId>
+		<_MapboxMapsObjCFileId>10WNEgqNoEIKNTqyjGgRjvJ_h-_4-_1t2</_MapboxMapsObjCFileId>
 		<_MapboxMapsObjCVersion>11.5.2</_MapboxMapsObjCVersion>
 		<_MapboxMapsObjCNugetSuffix>.6</_MapboxMapsObjCNugetSuffix>
 		<_MapboxMapsObjCAssemblyName>MapboxMapsObjC.iOS, Version=$(_MapboxMapsObjCVersion), Culture=neutral, PublicKeyToken=null </_MapboxMapsObjCAssemblyName>
