@@ -5754,9 +5754,9 @@ namespace MapboxMapsObjC
         [Export("cameraFor:camera:rect:")]
         TMBCameraOptions CameraFor(NSValue[] coordinates, TMBCameraOptions camera, CGRect rect);
 
-        // -(void)cameraFor:(NSArray<NSValue *> * _Nonnull)coordinates camera:(TMBCameraOptions * _Nonnull)camera coordinatesPadding:(NSNumber * _Nullable)coordinatesPadding maxZoom:(NSNumber * _Nullable)maxZoom offset:(NSNumber * _Nullable)offset completion:(void (^ _Nonnull)(TMBCameraOptions * _Nullable, NSError * _Nullable))completion;
+        // - (void)cameraFor:(NSArray<NSValue *> * _Nonnull)coordinates camera:(TMBCameraOptions * _Nonnull)camera coordinatesPadding:(NSValue * _Nullable)coordinatesPadding maxZoom:(NSNumber * _Nullable)maxZoom offset:(NSValue * _Nullable)offset completion:(SWIFT_NOESCAPE void (^ _Nonnull)(TMBCameraOptions * _Nullable, NSError * _Nullable))completion;
         [Export("cameraFor:camera:coordinatesPadding:maxZoom:offset:completion:")]
-        void CameraFor(NSValue[] coordinates, TMBCameraOptions camera, [NullAllowed] NSNumber coordinatesPadding, [NullAllowed] NSNumber maxZoom, [NullAllowed] NSNumber offset, Action<TMBCameraOptions, NSError> completion);
+        void CameraFor(NSValue[] coordinates, TMBCameraOptions camera, [NullAllowed] NSValue coordinatesPadding, [NullAllowed] NSNumber maxZoom, [NullAllowed] NSValue offset, Action<TMBCameraOptions?, NSError?> completion);
 
         // -(MBMCoordinateBounds * _Nonnull)coordinateBoundsForCameraBounds:(TMBCameraOptions * _Nonnull)camera __attribute__((warn_unused_result("")));
         [Export("coordinateBoundsForCameraBounds:")]

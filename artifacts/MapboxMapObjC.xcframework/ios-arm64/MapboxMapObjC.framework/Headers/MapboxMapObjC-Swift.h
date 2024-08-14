@@ -4805,7 +4805,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC12TMBMapboxMap")
 ///
 /// returns:
 /// A <code>CameraOptions</code> object representing the provided parameters.
-- (void)cameraFor:(NSArray<NSValue *> * _Nonnull)coordinates camera:(TMBCameraOptions * _Nonnull)camera coordinatesPadding:(NSNumber * _Nullable)coordinatesPadding maxZoom:(NSNumber * _Nullable)maxZoom offset:(NSNumber * _Nullable)offset completion:(SWIFT_NOESCAPE void (^ _Nonnull)(TMBCameraOptions * _Nullable, NSError * _Nullable))completion;
+- (void)cameraFor:(NSArray<NSValue *> * _Nonnull)coordinates camera:(TMBCameraOptions * _Nonnull)camera coordinatesPadding:(NSValue * _Nullable)coordinatesPadding maxZoom:(NSNumber * _Nullable)maxZoom offset:(NSValue * _Nullable)offset completion:(SWIFT_NOESCAPE void (^ _Nonnull)(TMBCameraOptions * _Nullable, NSError * _Nullable))completion;
 /// Returns the coordinate bounds corresponding to a given <code>CameraOptions</code>
 /// This API isn’t supported by Globe projection.
 /// \param camera The camera for which the coordinate bounds will be returned.
