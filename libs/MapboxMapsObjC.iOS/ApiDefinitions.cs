@@ -981,6 +981,34 @@ namespace MapboxMapsObjC
         [Abstract]
         [NullAllowed, Export("slot")]
         string Slot { get; set; }
+        
+        // - (void)addAnnotations:(NSArray<TMBPointAnnotation *> * _Nonnull)annotations;
+        [Export("addAnnotations:")]
+        void AddAnnotations(ITMBAnnotation[] annotations);
+
+        // - (void)addAnnotation:(TMBAnnotation * _Nonnull)annotation;
+        [Export("addAnnotation:")]
+        void AddAnnotation(ITMBAnnotation annotations);
+
+        // - (void)updateAnnotations:(NSArray<TMBAnnotation *> * _Nonnull)annotations;
+        [Export("updateAnnotations:")]
+        void UpdateAnnotations(ITMBAnnotation[] annotations);
+
+        // - (void)updateAnnotation:(TMBAnnotation * _Nonnull)annotation;
+        [Export("updateAnnotation:")]
+        void UpdateAnnotation(ITMBAnnotation annotations);
+
+        // - (void)removeAnnotation:(TMBAnnotation * _Nonnull)annotation;
+        [Export("removeAnnotation:")]
+        void RemoveAnnotation(ITMBAnnotation annotation);
+
+        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+        [Export("removeAnnotationById:")]
+        void RemoveAnnotationById(string annotationId);
+
+        // - (void)removeAllAnnotations;
+        [Export("removeAllAnnotations")]
+        void RemoveAllAnnotations();
     }
 
     // @interface TMBAnnotationOrchestrator : NSObject
@@ -5726,9 +5754,9 @@ namespace MapboxMapsObjC
         [Export("cameraFor:camera:rect:")]
         TMBCameraOptions CameraFor(NSValue[] coordinates, TMBCameraOptions camera, CGRect rect);
 
-        // -(void)cameraFor:(NSArray<NSValue *> * _Nonnull)coordinates camera:(TMBCameraOptions * _Nonnull)camera coordinatesPadding:(NSNumber * _Nullable)coordinatesPadding maxZoom:(NSNumber * _Nullable)maxZoom offset:(NSNumber * _Nullable)offset completion:(void (^ _Nonnull)(TMBCameraOptions * _Nullable, NSError * _Nullable))completion;
+        // - (void)cameraFor:(NSArray<NSValue *> * _Nonnull)coordinates camera:(TMBCameraOptions * _Nonnull)camera coordinatesPadding:(NSValue * _Nullable)coordinatesPadding maxZoom:(NSNumber * _Nullable)maxZoom offset:(NSValue * _Nullable)offset completion:(SWIFT_NOESCAPE void (^ _Nonnull)(TMBCameraOptions * _Nullable, NSError * _Nullable))completion;
         [Export("cameraFor:camera:coordinatesPadding:maxZoom:offset:completion:")]
-        void CameraFor(NSValue[] coordinates, TMBCameraOptions camera, [NullAllowed] NSNumber coordinatesPadding, [NullAllowed] NSNumber maxZoom, [NullAllowed] NSNumber offset, Action<TMBCameraOptions, NSError> completion);
+        void CameraFor(NSValue[] coordinates, TMBCameraOptions camera, [NullAllowed] NSValue coordinatesPadding, [NullAllowed] NSNumber maxZoom, [NullAllowed] NSValue offset, Action<TMBCameraOptions?, NSError?> completion);
 
         // -(MBMCoordinateBounds * _Nonnull)coordinateBoundsForCameraBounds:(TMBCameraOptions * _Nonnull)camera __attribute__((warn_unused_result("")));
         [Export("coordinateBoundsForCameraBounds:")]
@@ -6407,98 +6435,6 @@ namespace MapboxMapsObjC
         string Slot { get; set; }
     }
 
-    partial interface TMBPointAnnotationManager
-    {
-        // - (void)addAnnotations:(NSArray<TMBPointAnnotation *> * _Nonnull)annotations;
-        [Export("addAnnotations:")]
-        void AddAnnotations(TMBPointAnnotation[] annotations);
-
-        // - (void)addAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
-        [Export("addAnnotation:")]
-        void AddAnnotation(TMBPointAnnotation annotations);
-
-        // - (void)removeAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
-        [Export("removeAnnotation:")]
-        void RemoveAnnotation(TMBPointAnnotation annotation);
-
-        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
-        [Export("removeAnnotationById:")]
-        void RemoveAnnotationById(string annotationId);
-
-        // - (void)removeAllAnnotations;
-        [Export("removeAllAnnotations")]
-        void RemoveAllAnnotations();
-    }
-
-    partial interface TMBCircleAnnotationManager
-    {
-        // - (void)addAnnotations:(NSArray<TMBCircleAnnotation *> * _Nonnull)annotations;
-        [Export("addAnnotations:")]
-        void AddAnnotations(TMBCircleAnnotation[] annotations);
-
-        // - (void)addAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
-        [Export("addAnnotation:")]
-        void AddAnnotation(TMBCircleAnnotation annotations);
-
-        // - (void)removeAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
-        [Export("removeAnnotation:")]
-        void RemoveAnnotation(TMBCircleAnnotation annotation);
-
-        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
-        [Export("removeAnnotationById:")]
-        void RemoveAnnotationById(string annotationId);
-
-        // - (void)removeAllAnnotations;
-        [Export("removeAllAnnotations")]
-        void RemoveAllAnnotations();
-    }
-
-    partial interface TMBPolygonAnnotationManager
-    {
-        // - (void)addAnnotations:(NSArray<TMBPolygonAnnotation *> * _Nonnull)annotations;
-        [Export("addAnnotations:")]
-        void AddAnnotations(TMBPolygonAnnotation[] annotations);
-
-        // - (void)addAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
-        [Export("addAnnotation:")]
-        void AddAnnotation(TMBPolygonAnnotation annotations);
-
-        // - (void)removeAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
-        [Export("removeAnnotation:")]
-        void RemoveAnnotation(TMBPolygonAnnotation annotation);
-
-        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
-        [Export("removeAnnotationById:")]
-        void RemoveAnnotationById(string annotationId);
-
-        // - (void)removeAllAnnotations;
-        [Export("removeAllAnnotations")]
-        void RemoveAllAnnotations();
-    }
-
-    partial interface TMBPolylineAnnotationManager
-    {
-        // - (void)addAnnotations:(NSArray<TMBPolylineAnnotation *> * _Nonnull)annotations;
-        [Export("addAnnotations:")]
-        void AddAnnotations(TMBPolylineAnnotation[] annotations);
-
-        // - (void)addAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
-        [Export("addAnnotation:")]
-        void AddAnnotation(TMBPolylineAnnotation annotations);
-
-        // - (void)removeAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
-        [Export("removeAnnotation:")]
-        void RemoveAnnotation(TMBPolylineAnnotation annotation);
-
-        // - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
-        [Export("removeAnnotationById:")]
-        void RemoveAnnotationById(string annotationId);
-
-        // - (void)removeAllAnnotations;
-        [Export("removeAllAnnotations")]
-        void RemoveAllAnnotations();
-    }
-
     // @interface TMBPolygon : NSObject
     [BaseType(typeof(NSObject), Name = "_TtC13MapboxMapObjC10TMBPolygon")]
     [DisableDefaultCtor]
@@ -6937,6 +6873,25 @@ namespace MapboxMapsObjC
     [DisableDefaultCtor]
     interface TMBPuck2DConfigurationPulsing
     {
+        // + (TMBPuck2DConfigurationPulsing * _Nonnull)default SWIFT_WARN_UNUSED_RESULT;
+        [Static, Export("default")]
+        TMBPuck2DConfigurationPulsing Default();
+
+        // /// Flag determining whether the pulsing circle animation. <code>true</code> by default.
+        // @property (nonatomic) BOOL isEnabled;
+        [Export("isEnabled")]
+        bool IsEnabled { get; set; }
+
+        // /// The color of the pulsing circle.
+        // @property (nonatomic, strong) UIColor * _Nonnull color;
+        [Export("color", ArgumentSemantic.Strong)]
+        UIColor Color { get; set; }
+
+        // /// The radius of the pulsing circle.
+        // @property (nonatomic, strong) TMBPuck2DConfigurationPulsingRadius * _Nonnull radius;
+        [Export("radius", ArgumentSemantic.Strong)]
+        TMBPuck2DConfigurationPulsingRadius Radius { get; set; }
+
         // -(instancetype _Nonnull)initWithColor:(UIColor * _Nonnull)color radius:(TMBPuck2DConfigurationPulsingRadius * _Nonnull)radius __attribute__((objc_designated_initializer));
         [Export("initWithColor:radius:")]
         [DesignatedInitializer]
@@ -6951,6 +6906,14 @@ namespace MapboxMapsObjC
         // @property (readonly, nonatomic, strong) NSNumber * _Nullable constant;
         [NullAllowed, Export("constant", ArgumentSemantic.Strong)]
         NSNumber Constant { get; }
+
+        // + (TMBPuck2DConfigurationPulsingRadius * _Nonnull)accuracy SWIFT_WARN_UNUSED_RESULT;
+        [Static, Export("accuracy")]
+        TMBPuck2DConfigurationPulsingRadius Accuracy { get; }
+
+        // + (TMBPuck2DConfigurationPulsingRadius * _Nonnull)fromConstant:(double)constant SWIFT_WARN_UNUSED_RESULT;
+        [Static, Export("fromConstant:")]
+        TMBPuck2DConfigurationPulsingRadius FromConstant(double constant);
     }
 
     // @interface TMBPuck3DConfiguration : NSObject <TMBPuckTypeConfiguration>

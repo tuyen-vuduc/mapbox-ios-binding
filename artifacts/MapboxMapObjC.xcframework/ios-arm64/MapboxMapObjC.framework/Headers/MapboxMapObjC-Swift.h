@@ -702,6 +702,13 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC20TMBAnnotationManager_")
 /// Use this property to position the annotations relative to other map features if you use Mapbox Standard Style.
 /// See <a href="doc:Migrate-to-v11##21-The-Mapbox-Standard-Style">doc:Migrate-to-v11##21-The-Mapbox-Standard-Style</a> for more info.
 @property (nonatomic, copy) NSString * _Nullable slot;
+- (void)addAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)addAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)updateAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)updateAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
+- (void)removeAllAnnotations;
 @end
 
 @class TMBLayerPosition;
@@ -1416,9 +1423,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCircleAnnotationManager")
 
 
 @interface TMBCircleAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addAnnotations:(NSArray<TMBCircleAnnotation *> * _Nonnull)annotations;
-- (void)addAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
-- (void)removeAnnotation:(TMBCircleAnnotation * _Nonnull)annotation;
+- (void)addAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)addAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)updateAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)updateAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
 - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
 - (void)removeAllAnnotations;
 @end
@@ -4796,7 +4805,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC12TMBMapboxMap")
 ///
 /// returns:
 /// A <code>CameraOptions</code> object representing the provided parameters.
-- (void)cameraFor:(NSArray<NSValue *> * _Nonnull)coordinates camera:(TMBCameraOptions * _Nonnull)camera coordinatesPadding:(NSNumber * _Nullable)coordinatesPadding maxZoom:(NSNumber * _Nullable)maxZoom offset:(NSNumber * _Nullable)offset completion:(SWIFT_NOESCAPE void (^ _Nonnull)(TMBCameraOptions * _Nullable, NSError * _Nullable))completion;
+- (void)cameraFor:(NSArray<NSValue *> * _Nonnull)coordinates camera:(TMBCameraOptions * _Nonnull)camera coordinatesPadding:(NSValue * _Nullable)coordinatesPadding maxZoom:(NSNumber * _Nullable)maxZoom offset:(NSValue * _Nullable)offset completion:(SWIFT_NOESCAPE void (^ _Nonnull)(TMBCameraOptions * _Nullable, NSError * _Nullable))completion;
 /// Returns the coordinate bounds corresponding to a given <code>CameraOptions</code>
 /// This API isn’t supported by Globe projection.
 /// \param camera The camera for which the coordinate bounds will be returned.
@@ -5577,9 +5586,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25TMBPointAnnotationManager")
 
 
 @interface TMBPointAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addAnnotations:(NSArray<TMBPointAnnotation *> * _Nonnull)annotations;
-- (void)addAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
-- (void)removeAnnotation:(TMBPointAnnotation * _Nonnull)annotation;
+- (void)addAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)addAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)updateAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)updateAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
 - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
 - (void)removeAllAnnotations;
 @end
@@ -5689,9 +5700,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC27TMBPolygonAnnotationManager")
 
 
 @interface TMBPolygonAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addAnnotations:(NSArray<TMBPolygonAnnotation *> * _Nonnull)annotations;
-- (void)addAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
-- (void)removeAnnotation:(TMBPolygonAnnotation * _Nonnull)annotation;
+- (void)addAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)addAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)updateAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)updateAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
 - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
 - (void)removeAllAnnotations;
 @end
@@ -5803,9 +5816,11 @@ SWIFT_CLASS("_TtC13MapboxMapObjC28TMBPolylineAnnotationManager")
 
 
 @interface TMBPolylineAnnotationManager (SWIFT_EXTENSION(MapboxMapObjC))
-- (void)addAnnotations:(NSArray<TMBPolylineAnnotation *> * _Nonnull)annotations;
-- (void)addAnnotation:(TMBPolylineAnnotation * _Nonnull)annotation;
-- (void)removeAnnotation:(TMBPolylineAnnotation * _Nonnull)annotation;
+- (void)addAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)addAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)updateAnnotations:(NSArray<id <TMBAnnotation>> * _Nonnull)annotations;
+- (void)updateAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
+- (void)removeAnnotation:(id <TMBAnnotation> _Nonnull)annotation;
 - (void)removeAnnotationById:(NSString * _Nonnull)annotationId;
 - (void)removeAllAnnotations;
 @end
@@ -5966,6 +5981,14 @@ SWIFT_CLASS("_TtC13MapboxMapObjC22TMBPuck2DConfiguration")
 /// The configuration parameters for sonar-like pulsing circle animation shown around the 2D puck.
 SWIFT_CLASS("_TtC13MapboxMapObjC29TMBPuck2DConfigurationPulsing")
 @interface TMBPuck2DConfigurationPulsing : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong, getter=default) TMBPuck2DConfigurationPulsing * _Nonnull default_;)
++ (TMBPuck2DConfigurationPulsing * _Nonnull)default SWIFT_WARN_UNUSED_RESULT;
+/// Flag determining whether the pulsing circle animation. <code>true</code> by default.
+@property (nonatomic) BOOL isEnabled;
+/// The color of the pulsing circle.
+@property (nonatomic, strong) UIColor * _Nonnull color;
+/// The radius of the pulsing circle.
+@property (nonatomic, strong) TMBPuck2DConfigurationPulsingRadius * _Nonnull radius;
 /// Create a pulsing animation config with a color and radius.
 /// \param color The color of the pulsing circle.
 ///
@@ -5982,6 +6005,9 @@ SWIFT_CLASS("_TtC13MapboxMapObjC29TMBPuck2DConfigurationPulsing")
 SWIFT_CLASS("_TtC13MapboxMapObjC35TMBPuck2DConfigurationPulsingRadius")
 @interface TMBPuck2DConfigurationPulsingRadius : NSObject
 @property (nonatomic, readonly, strong) NSNumber * _Nullable constant;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBPuck2DConfigurationPulsingRadius * _Nonnull accuracy;)
++ (TMBPuck2DConfigurationPulsingRadius * _Nonnull)accuracy SWIFT_WARN_UNUSED_RESULT;
++ (TMBPuck2DConfigurationPulsingRadius * _Nonnull)fromConstant:(double)constant SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
