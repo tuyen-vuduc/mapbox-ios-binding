@@ -393,18 +393,6 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class TMBLocationManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBLocationManager * _Nonnull)location SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBGestureManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBGestureManager * _Nonnull)gestures SWIFT_WARN_UNUSED_RESULT;
-@end
-
 @class TMBAnnotationOrchestrator;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
@@ -417,16 +405,10 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (TMBViewportManager * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class TMBViewAnnotationManager;
+@class TMBLocationManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBViewAnnotationManager * _Nonnull)viewAnnotations SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBCameraAnimationsManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBCameraAnimationsManager * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
+- (TMBLocationManager * _Nonnull)location SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class TMBOrnamentsManager;
@@ -435,10 +417,28 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (TMBOrnamentsManager * _Nonnull)ornaments SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class TMBViewAnnotationManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBViewAnnotationManager * _Nonnull)viewAnnotations SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class TMBMapboxMap;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (TMBMapboxMap * _Nonnull)mapboxMap SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBGestureManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBGestureManager * _Nonnull)gestures SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBCameraAnimationsManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBCameraAnimationsManager * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class NSNumber;
@@ -2748,23 +2748,28 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC9TMBSource_")
 
 @class TMBGeoJSONSourceData;
 @class TMBPromoteId;
+@class TMBTileCacheBudgetSize;
 
 /// A GeoJSON data source.
 /// seealso:
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#geo_json">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC16TMBGeoJSONSource")
 @interface TMBGeoJSONSource : NSObject <TMBSource>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
 /// A URL to a GeoJSON file, or inline GeoJSON.
 @property (nonatomic, strong) TMBGeoJSONSourceData * _Nullable data;
 /// Maximum zoom level at which to create vector tiles (higher means greater detail at high zoom levels).
+/// Default value: 18.
 @property (nonatomic, strong) NSNumber * _Nullable maxzoom;
 /// Contains an attribution to be displayed when the map is shown to a user.
 @property (nonatomic, copy) NSString * _Nullable attribution;
 /// Size of the tile buffer on each side. A value of 0 produces no buffer. A value of 512 produces a buffer as wide as the tile itself. Larger values produce fewer rendering artifacts near tile edges and slower performance.
+/// Default value: 128. Value range: [0, 512]
 @property (nonatomic, strong) NSNumber * _Nullable buffer;
 /// Douglas-Peucker simplification tolerance (higher means simpler geometries and faster performance).
+/// Default value: 0.375.
 @property (nonatomic, strong) NSNumber * _Nullable tolerance;
 /// If the data is a collection of point features, setting this to true clusters the points by radius into groups. Cluster groups become new <code>Point</code> features in the source with additional properties:
 /// <ul>
@@ -2779,30 +2784,39 @@ SWIFT_CLASS("_TtC13MapboxMapObjC16TMBGeoJSONSource")
 ///   </li>
 ///   <li>
 ///     <code>point_count_abbreviated</code> An abbreviated point count
+///     Default value: false.
 ///   </li>
 /// </ul>
 @property (nonatomic, strong) NSNumber * _Nullable cluster;
 /// Radius of each cluster if clustering is enabled. A value of 512 indicates a radius equal to the width of a tile.
+/// Default value: 50. Minimum value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable clusterRadius;
 /// Max zoom on which to cluster points if clustering is enabled. Defaults to one zoom less than maxzoom (so that last zoom features are not clustered). Clusters are re-evaluated at integer zoom levels so setting clusterMaxZoom to 14 means the clusters will be displayed until z15.
 @property (nonatomic, strong) NSNumber * _Nullable clusterMaxZoom;
+/// Minimum number of points necessary to form a cluster if clustering is enabled. Defaults to <code>2</code>.
+@property (nonatomic, strong) NSNumber * _Nullable clusterMinPoints;
 /// An object defining custom properties on the generated clusters if clustering is enabled, aggregating values from clustered points. Has the form <code>{"property_name": [operator, map_expression]}</code>. <code>operator</code> is any expression function that accepts at least 2 operands (e.g. <code>"+"</code> or <code>"max"</code>) — it accumulates the property value from clusters/points the cluster contains; <code>map_expression</code> produces the value of a single point.
 /// Example: <code>{"sum": ["+", ["get", "scalerank"]]}</code>.
 /// For more advanced use cases, in place of <code>operator</code>, you can use a custom reduce expression that references a special <code>["accumulated"]</code> value, e.g.:
 /// <code>{"sum": [["+", ["accumulated"], ["get", "sum"]], ["get", "scalerank"]]}</code>
 @property (nonatomic, copy) NSDictionary<NSString *, TMBExpression *> * _Nullable clusterProperties;
 /// Whether to calculate line distance metrics. This is required for line layers that specify <code>line-gradient</code> values.
+/// Default value: false.
 @property (nonatomic, strong) NSNumber * _Nullable lineMetrics;
-/// Whether to generate ids for the geojson features. When enabled, the <code>feature.id</code> property will be auto assigned based on its index in the <code>features</code> array, over-writing any previous values.
+/// Whether to generate ids for the GeoJSON features. When enabled, the <code>feature.id</code> property will be auto assigned based on its index in the <code>features</code> array, over-writing any previous values.
+/// Default value: false.
 @property (nonatomic, strong) NSNumber * _Nullable generateId;
 /// A property to use as a feature id (for feature state). Either a property name, or an object of the form <code>{<sourceLayer>: <propertyName>}</code>.
 @property (nonatomic, strong) TMBPromoteId * _Nullable promoteId;
-/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom. The default delta is 4.
+/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom.
+/// Default value: 4.
 @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
+/// This property defines a source-specific resource budget, either in tile units or in megabytes. Whenever the tile cache goes over the defined limit, the least recently used tile will be evicted from the in-memory cache. Note that the current implementation does not take into account resources allocated by the visible tiles.
+@property (nonatomic, strong) TMBTileCacheBudgetSize * _Nullable tileCacheBudget;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 enum TMBGeoJSONSourceType : NSInteger;
@@ -3264,18 +3278,20 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTrans
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#image">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC14TMBImageSource")
 @interface TMBImageSource : NSObject <TMBSource>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
-/// URL that points to an image.
+/// URL that points to an image. If the URL is not specified, the image is expected to be loaded directly during runtime.
 @property (nonatomic, copy) NSString * _Nullable url;
 /// Corners of image specified in longitude, latitude pairs. Note: When using globe projection, the image will be centered at the North or South Pole in the respective hemisphere if the average latitude value exceeds 85 degrees or falls below -85 degrees.
 @property (nonatomic, copy) NSArray<NSArray<NSNumber *> *> * _Nullable coordinates;
-/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom. The default delta is 4.
+/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom.
+/// Default value: 4.
 @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -6083,40 +6099,53 @@ typedef SWIFT_ENUM(NSInteger, TMBPuckType, open) {
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#raster_dem">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBRasterDemSource")
 @interface TMBRasterDemSource : NSObject <TMBSource>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
-/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>.
+/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>. Required if <code>tiles</code> is not provided.
 @property (nonatomic, copy) NSString * _Nullable url;
-/// An array of one or more tile source URLs, as in the TileJSON spec.
+/// An array of one or more tile source URLs, as in the TileJSON spec. Required if <code>url</code> is not provided.
 @property (nonatomic, copy) NSArray<NSString *> * _Nullable tiles;
 /// An array containing the longitude and latitude of the southwest and northeast corners of the source’s bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by Mapbox GL.
+/// Default value: [-180,-85.051129,180,85.051129].
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nullable bounds;
 /// Minimum zoom level for which tiles are available, as in the TileJSON spec.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minzoom;
 /// Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.
+/// Default value: 22.
 @property (nonatomic, strong) NSNumber * _Nullable maxzoom;
 /// The minimum visual size to display tiles for this layer. Only configurable for raster layers.
+/// Default value: 512.
 @property (nonatomic, strong) NSNumber * _Nullable tileSize;
 /// Contains an attribution to be displayed when the map is shown to a user.
 @property (nonatomic, copy) NSString * _Nullable attribution;
 /// The encoding used by this source. Mapbox Terrain RGB is used by default
+/// Default value: “mapbox”.
 @property (nonatomic, strong) TMBEncoding * _Nullable encoding;
 /// A setting to determine whether a source’s tiles are cached locally.
+/// Default value: false.
 @property (nonatomic, strong, getter=volatile, setter=setVolatile:) NSNumber * _Nullable volatile_;
-/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom. The default delta is 4.
+/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom.
+/// Default value: 4.
 @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
+/// This property defines a source-specific resource budget, either in tile units or in megabytes. Whenever the tile cache goes over the defined limit, the least recently used tile will be evicted from the in-memory cache. Note that the current implementation does not take into account resources allocated by the visible tiles.
+@property (nonatomic, strong) TMBTileCacheBudgetSize * _Nullable tileCacheBudget;
 /// Minimum tile update interval in seconds, which is used to throttle the tile update network requests. If the given source supports loading tiles from a server, sets the minimum tile update interval. Update network requests that are more frequent than the minimum tile update interval are suppressed.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minimumTileUpdateInterval;
 /// When a set of tiles for a current zoom level is being rendered and some of the ideal tiles that cover the screen are not yet loaded, parent tile could be used instead. This might introduce unwanted rendering side-effects, especially for raster tiles that are overscaled multiple times. This property sets the maximum limit for how much a parent tile can be overscaled.
 @property (nonatomic, strong) NSNumber * _Nullable maxOverscaleFactorForParentTiles;
 /// For the tiled sources, this property sets the tile requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading, parsing and rendering of the transient tiles and thus to improve the rendering performance, especially on low-end devices.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileRequestsDelay;
 /// For the tiled sources, this property sets the tile network requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading the transient tiles from the network and thus to avoid redundant network requests. Note that tile-network-requests-delay value is superseded with tile-requests-delay property value, if both are provided.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileNetworkRequestsDelay;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -6215,40 +6244,53 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBRasterRes
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#raster">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC15TMBRasterSource")
 @interface TMBRasterSource : NSObject <TMBSource>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
-/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>.
+/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>. Required if <code>tiles</code> is not provided.
 @property (nonatomic, copy) NSString * _Nullable url;
-/// An array of one or more tile source URLs, as in the TileJSON spec.
+/// An array of one or more tile source URLs, as in the TileJSON spec. Required if <code>url</code> is not provided.
 @property (nonatomic, copy) NSArray<NSString *> * _Nullable tiles;
 /// An array containing the longitude and latitude of the southwest and northeast corners of the source’s bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by Mapbox GL.
+/// Default value: [-180,-85.051129,180,85.051129].
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nullable bounds;
 /// Minimum zoom level for which tiles are available, as in the TileJSON spec.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minzoom;
 /// Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.
+/// Default value: 22.
 @property (nonatomic, strong) NSNumber * _Nullable maxzoom;
 /// The minimum visual size to display tiles for this layer. Only configurable for raster layers.
+/// Default value: 512.
 @property (nonatomic, strong) NSNumber * _Nullable tileSize;
 /// Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.
+/// Default value: “xyz”.
 @property (nonatomic, strong) TMBScheme * _Nullable scheme;
 /// Contains an attribution to be displayed when the map is shown to a user.
 @property (nonatomic, copy) NSString * _Nullable attribution;
 /// A setting to determine whether a source’s tiles are cached locally.
+/// Default value: false.
 @property (nonatomic, strong, getter=volatile, setter=setVolatile:) NSNumber * _Nullable volatile_;
-/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom. The default delta is 4.
+/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom.
+/// Default value: 4.
 @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
+/// This property defines a source-specific resource budget, either in tile units or in megabytes. Whenever the tile cache goes over the defined limit, the least recently used tile will be evicted from the in-memory cache. Note that the current implementation does not take into account resources allocated by the visible tiles.
+@property (nonatomic, strong) TMBTileCacheBudgetSize * _Nullable tileCacheBudget;
 /// Minimum tile update interval in seconds, which is used to throttle the tile update network requests. If the given source supports loading tiles from a server, sets the minimum tile update interval. Update network requests that are more frequent than the minimum tile update interval are suppressed.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minimumTileUpdateInterval;
 /// When a set of tiles for a current zoom level is being rendered and some of the ideal tiles that cover the screen are not yet loaded, parent tile could be used instead. This might introduce unwanted rendering side-effects, especially for raster tiles that are overscaled multiple times. This property sets the maximum limit for how much a parent tile can be overscaled.
 @property (nonatomic, strong) NSNumber * _Nullable maxOverscaleFactorForParentTiles;
 /// For the tiled sources, this property sets the tile requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading, parsing and rendering of the transient tiles and thus to improve the rendering performance, especially on low-end devices.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileRequestsDelay;
 /// For the tiled sources, this property sets the tile network requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading the transient tiles from the network and thus to avoid redundant network requests. Note that tile-network-requests-delay value is superseded with tile-requests-delay property value, if both are provided.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileNetworkRequestsDelay;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -6940,6 +6982,28 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextWriti
 @end
 
 
+
+/// Defines a TileCacheBudgetSize, which can be set as either a megabyte or tile count limit.
+/// Whenever tile cache goes over the defined limit
+/// the least recently used tile will be evicted from the in-memory cache
+/// To use, create a TileCacheBudgetSize and then either:
+/// (1) Set it for an individual source with with the tileCacheBudget property, or
+/// (2) Set if for the map with <code>MapboxMap/setTileCacheBudget(size:)</code>
+SWIFT_CLASS("_TtC13MapboxMapObjC22TMBTileCacheBudgetSize")
+@interface TMBTileCacheBudgetSize : NSObject
+/// A tile cache budget measured in tile units
+@property (nonatomic, readonly, strong) NSNumber * _Nullable tiles;
+/// A tile cache budget measured in megabyte units
+@property (nonatomic, readonly, strong) NSNumber * _Nullable megabytes;
++ (TMBTileCacheBudgetSize * _Nonnull)inTiles:(NSInteger)tiles SWIFT_WARN_UNUSED_RESULT;
++ (TMBTileCacheBudgetSize * _Nonnull)inMegabytes:(NSInteger)megabytes SWIFT_WARN_UNUSED_RESULT;
+/// The TileCacheBudget formatted for core
+@property (nonatomic, readonly, strong) MBMTileCacheBudget * _Nonnull coreTileCacheBudget;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 @class MBXTileRegionLoadProgress;
 @class MBXTileRegion;
 
@@ -6974,79 +7038,12 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@class TMBVisibility;
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)visibility:(TMBVisibility * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)textWritingMode:(TMBTextWritingMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)symbolZOrder:(TMBSymbolZOrder * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)skyType:(TMBSkyType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textRotationAlignment:(TMBTextRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconRotationAlignment:(TMBIconRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textTransform:(TMBTextTransform * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)fillTranslateAnchor:(TMBFillTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)modelType:(TMBModelType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7061,37 +7058,32 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)textTransform:(TMBTextTransform * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lightType:(TMBLightType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)modelType:(TMBModelType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textTranslateAnchor:(TMBTextTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)layerType:(TMBLayerType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)circlePitchScale:(TMBCirclePitchScale * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7106,42 +7098,17 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)fillTranslateAnchor:(TMBFillTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)fillExtrusionTranslateAnchor:(TMBFillExtrusionTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)iconRotationAlignment:(TMBIconRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circlePitchScale:(TMBCirclePitchScale * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textJustify:(TMBTextJustify * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textAnchor:(TMBTextAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7151,12 +7118,109 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)layerType:(TMBLayerType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)fillExtrusionTranslateAnchor:(TMBFillExtrusionTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)symbolZOrder:(TMBSymbolZOrder * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)lineCap:(TMBLineCap * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textAnchor:(TMBTextAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textJustify:(TMBTextJustify * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBVisibility;
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)visibility:(TMBVisibility * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lightType:(TMBLightType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textRotationAlignment:(TMBTextRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)skyType:(TMBSkyType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textTranslateAnchor:(TMBTextTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7202,40 +7266,52 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#vector">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC15TMBVectorSource")
 @interface TMBVectorSource : NSObject <TMBSource>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
-/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>.
+/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>. Required if <code>tiles</code> is not provided.
 @property (nonatomic, copy) NSString * _Nullable url;
-/// An array of one or more tile source URLs, as in the TileJSON spec.
+/// An array of one or more tile source URLs, as in the TileJSON spec. Required if <code>url</code> is not provided.
 @property (nonatomic, copy) NSArray<NSString *> * _Nullable tiles;
 /// An array containing the longitude and latitude of the southwest and northeast corners of the source’s bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by Mapbox GL.
+/// Default value: [-180,-85.051129,180,85.051129].
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nullable bounds;
 /// Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.
+/// Default value: “xyz”.
 @property (nonatomic, strong) TMBScheme * _Nullable scheme;
 /// Minimum zoom level for which tiles are available, as in the TileJSON spec.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minzoom;
 /// Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.
+/// Default value: 22.
 @property (nonatomic, strong) NSNumber * _Nullable maxzoom;
 /// Contains an attribution to be displayed when the map is shown to a user.
 @property (nonatomic, copy) NSString * _Nullable attribution;
 /// A property to use as a feature id (for feature state). Either a property name, or an object of the form <code>{<sourceLayer>: <propertyName>}</code>. If specified as a string for a vector tile source, the same property is used across all its source layers. If specified as an object only specified source layers will have id overriden, others will fallback to original feature id
 @property (nonatomic, strong) TMBPromoteId * _Nullable promoteId;
 /// A setting to determine whether a source’s tiles are cached locally.
+/// Default value: false.
 @property (nonatomic, strong, getter=volatile, setter=setVolatile:) NSNumber * _Nullable volatile_;
-/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom. The default delta is 4.
+/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom.
+/// Default value: 4.
 @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
+/// This property defines a source-specific resource budget, either in tile units or in megabytes. Whenever the tile cache goes over the defined limit, the least recently used tile will be evicted from the in-memory cache. Note that the current implementation does not take into account resources allocated by the visible tiles.
+@property (nonatomic, strong) TMBTileCacheBudgetSize * _Nullable tileCacheBudget;
 /// Minimum tile update interval in seconds, which is used to throttle the tile update network requests. If the given source supports loading tiles from a server, sets the minimum tile update interval. Update network requests that are more frequent than the minimum tile update interval are suppressed.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minimumTileUpdateInterval;
 /// When a set of tiles for a current zoom level is being rendered and some of the ideal tiles that cover the screen are not yet loaded, parent tile could be used instead. This might introduce unwanted rendering side-effects, especially for raster tiles that are overscaled multiple times. This property sets the maximum limit for how much a parent tile can be overscaled.
 @property (nonatomic, strong) NSNumber * _Nullable maxOverscaleFactorForParentTiles;
 /// For the tiled sources, this property sets the tile requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading, parsing and rendering of the transient tiles and thus to improve the rendering performance, especially on low-end devices.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileRequestsDelay;
 /// For the tiled sources, this property sets the tile network requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading the transient tiles from the network and thus to avoid redundant network requests. Note that tile-network-requests-delay value is superseded with tile-requests-delay property value, if both are provided.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileNetworkRequestsDelay;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 @class MBMViewAnnotationAnchorConfig;
