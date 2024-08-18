@@ -3619,6 +3619,14 @@ namespace MapboxMapsObjC
         [NullAllowed, Export("fillExtrusionCutoffFadeRange", ArgumentSemantic.Strong)]
         TMBValue FillExtrusionCutoffFadeRange { get; set; }
 
+        // @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionEmissiveStrength;
+        [NullAllowed, Export("fillExtrusionEmissiveStrength", ArgumentSemantic.Strong)]
+        TMBValue FillExtrusionEmissiveStrength { get; set; }
+
+        // @property (nonatomic, strong) TMBStyleTransition * _Nullable fillExtrusionEmissiveStrengthTransition;
+        [NullAllowed, Export("fillExtrusionEmissiveStrengthTransition", ArgumentSemantic.Strong)]
+        TMBStyleTransition FillExtrusionEmissiveStrengthTransition { get; set; }
+
         // @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionHeight;
         [NullAllowed, Export("fillExtrusionHeight", ArgumentSemantic.Strong)]
         TMBValue FillExtrusionHeight { get; set; }
@@ -4428,6 +4436,14 @@ namespace MapboxMapsObjC
         // @property (nonatomic, strong) TMBStyleTransition * _Nullable hillshadeHighlightColorTransition;
         [NullAllowed, Export("hillshadeHighlightColorTransition", ArgumentSemantic.Strong)]
         TMBStyleTransition HillshadeHighlightColorTransition { get; set; }
+
+        // @property (nonatomic, strong) TMBValue * _Nullable hillshadeEmissiveStrength;
+        [NullAllowed, Export("hillshadeEmissiveStrength", ArgumentSemantic.Strong)]
+        TMBValue HillshadeEmissiveStrength { get; set; }
+        
+        // @property (nonatomic, strong) TMBStyleTransition * _Nullable hillshadeEmissiveStrengthTransition;
+        [NullAllowed, Export("hillshadeEmissiveStrengthTransition", ArgumentSemantic.Strong)]
+        TMBStyleTransition HillshadeEmissiveStrengthTransition { get; set; }
 
         // @property (nonatomic, strong) TMBValue * _Nullable hillshadeIlluminationAnchor;
         [NullAllowed, Export("hillshadeIlluminationAnchor", ArgumentSemantic.Strong)]
@@ -7166,6 +7182,14 @@ namespace MapboxMapsObjC
         [NullAllowed, Export("rasterContrastTransition", ArgumentSemantic.Strong)]
         TMBStyleTransition RasterContrastTransition { get; set; }
 
+        // @property (nonatomic, strong) TMBValue * _Nullable rasterEmissiveStrength;
+        [NullAllowed, Export("rasterEmissiveStrength", ArgumentSemantic.Strong)]
+        TMBValue RasterEmissiveStrength { get; set; }
+
+        // @property (nonatomic, strong) TMBStyleTransition * _Nullable rasterEmissiveStrengthTransition;
+        [NullAllowed, Export("rasterEmissiveStrengthTransition", ArgumentSemantic.Strong)]
+        TMBStyleTransition RasterEmissiveStrengthTransition { get; set; }
+
         // @property (nonatomic, strong) TMBValue * _Nullable rasterFadeDuration;
         [NullAllowed, Export("rasterFadeDuration", ArgumentSemantic.Strong)]
         TMBValue RasterFadeDuration { get; set; }
@@ -7909,6 +7933,14 @@ namespace MapboxMapsObjC
         // @property (nonatomic, strong) TMBStyleTransition * _Nullable iconColorTransition;
         [NullAllowed, Export("iconColorTransition", ArgumentSemantic.Strong)]
         TMBStyleTransition IconColorTransition { get; set; }
+
+        // @property (nonatomic, strong) TMBValue * _Nullable iconColorSaturation;
+        [NullAllowed, Export("iconColorSaturation", ArgumentSemantic.Strong)]
+        TMBValue IconColorSaturation { get; set; }
+
+        // @property (nonatomic, strong) TMBStyleTransition * _Nullable iconColorSaturationTransition;
+        [NullAllowed, Export("iconColorSaturationTransition", ArgumentSemantic.Strong)]
+        TMBStyleTransition IconColorSaturationTransition { get; set; }
 
         // @property (nonatomic, strong) TMBValue * _Nullable iconEmissiveStrength;
         [NullAllowed, Export("iconEmissiveStrength", ArgumentSemantic.Strong)]

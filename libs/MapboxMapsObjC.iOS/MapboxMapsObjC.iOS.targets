@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<_MapboxMapsObjCFileId>10WNEgqNoEIKNTqyjGgRjvJ_h-_4-_1t2</_MapboxMapsObjCFileId>
 		<_MapboxMapsObjCVersion>11.5.2</_MapboxMapsObjCVersion>
-		<_MapboxMapsObjCNugetSuffix>.6</_MapboxMapsObjCNugetSuffix>
+		<_MapboxMapsObjCNugetSuffix>.7</_MapboxMapsObjCNugetSuffix>
 		<_MapboxMapsObjCAssemblyName>MapboxMapsObjC.iOS, Version=$(_MapboxMapsObjCVersion), Culture=neutral, PublicKeyToken=null </_MapboxMapsObjCAssemblyName>
 		<_MapboxMapsObjCItemsFolder>MapboxMapsObjC-$(_MapboxMapsObjCVersion)$(_MapboxMapsObjCNugetSuffix)</_MapboxMapsObjCItemsFolder>
 		<_MapboxMapsObjCSDKBaseFolder>$(XamarinBuildDownloadDir)$(_MapboxMapsObjCItemsFolder)\</_MapboxMapsObjCSDKBaseFolder>
