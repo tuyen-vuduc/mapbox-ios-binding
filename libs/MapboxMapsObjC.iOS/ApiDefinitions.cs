@@ -3619,6 +3619,14 @@ namespace MapboxMapsObjC
         [NullAllowed, Export("fillExtrusionCutoffFadeRange", ArgumentSemantic.Strong)]
         TMBValue FillExtrusionCutoffFadeRange { get; set; }
 
+        // @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionEmissiveStrength;
+        [NullAllowed, Export("fillExtrusionEmissiveStrength", ArgumentSemantic.Strong)]
+        TMBValue FillExtrusionEmissiveStrength { get; set; }
+
+        // @property (nonatomic, strong) TMBStyleTransition * _Nullable fillExtrusionEmissiveStrengthTransition;
+        [NullAllowed, Export("fillExtrusionEmissiveStrengthTransition", ArgumentSemantic.Strong)]
+        TMBStyleTransition FillExtrusionEmissiveStrengthTransition { get; set; }
+
         // @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionHeight;
         [NullAllowed, Export("fillExtrusionHeight", ArgumentSemantic.Strong)]
         TMBValue FillExtrusionHeight { get; set; }
@@ -3935,6 +3943,11 @@ namespace MapboxMapsObjC
     [DisableDefaultCtor]
     interface TMBGeoJSONSource : TMBSource
     {
+        // -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
+        [Export("initWithId:")]
+        [DesignatedInitializer]
+        NativeHandle Constructor(string id);
+
         // @property (readonly, nonatomic, strong) TMBSourceType * _Nonnull type;
         [Export("type", ArgumentSemantic.Strong)]
         TMBSourceType Type { get; }
@@ -3975,6 +3988,10 @@ namespace MapboxMapsObjC
         [NullAllowed, Export("clusterMaxZoom", ArgumentSemantic.Strong)]
         NSNumber ClusterMaxZoom { get; set; }
 
+        // @property (nonatomic, strong) NSNumber * _Nullable clusterMinPoints;
+        [NullAllowed, Export("clusterMinPoints", ArgumentSemantic.Strong)]
+        NSNumber ClusterMinPoints { get; set; }
+
         // @property (copy, nonatomic) NSDictionary<NSString *,TMBExpression *> * _Nullable clusterProperties;
         [NullAllowed, Export("clusterProperties", ArgumentSemantic.Copy)]
         NSDictionary<NSString, TMBExpression> ClusterProperties { get; set; }
@@ -3995,10 +4012,9 @@ namespace MapboxMapsObjC
         [NullAllowed, Export("prefetchZoomDelta", ArgumentSemantic.Strong)]
         NSNumber PrefetchZoomDelta { get; set; }
 
-        // -(instancetype _Nonnull)initWithId:(NSString * _Nonnull)id __attribute__((objc_designated_initializer));
-        [Export("initWithId:")]
-        [DesignatedInitializer]
-        NativeHandle Constructor(string id);
+        // @property (nonatomic, strong) TMBTileCacheBudgetSize * _Nullable tileCacheBudget;
+        [NullAllowed, Export("tileCacheBudget", ArgumentSemantic.Strong)]
+        TMBTileCacheBudgetSize TileCacheBudget { get; set; }
     }
 
     // @interface TMBGeoJSONSourceData : NSObject
@@ -4420,6 +4436,14 @@ namespace MapboxMapsObjC
         // @property (nonatomic, strong) TMBStyleTransition * _Nullable hillshadeHighlightColorTransition;
         [NullAllowed, Export("hillshadeHighlightColorTransition", ArgumentSemantic.Strong)]
         TMBStyleTransition HillshadeHighlightColorTransition { get; set; }
+
+        // @property (nonatomic, strong) TMBValue * _Nullable hillshadeEmissiveStrength;
+        [NullAllowed, Export("hillshadeEmissiveStrength", ArgumentSemantic.Strong)]
+        TMBValue HillshadeEmissiveStrength { get; set; }
+        
+        // @property (nonatomic, strong) TMBStyleTransition * _Nullable hillshadeEmissiveStrengthTransition;
+        [NullAllowed, Export("hillshadeEmissiveStrengthTransition", ArgumentSemantic.Strong)]
+        TMBStyleTransition HillshadeEmissiveStrengthTransition { get; set; }
 
         // @property (nonatomic, strong) TMBValue * _Nullable hillshadeIlluminationAnchor;
         [NullAllowed, Export("hillshadeIlluminationAnchor", ArgumentSemantic.Strong)]
@@ -6966,6 +6990,34 @@ namespace MapboxMapsObjC
         NativeHandle Constructor(MBXLocation location, [NullAllowed] TMBHeading heading);
     }
 
+    // SWIFT_CLASS("_TtC13MapboxMapObjC22TMBTileCacheBudgetSize")
+    // @interface TMBTileCacheBudgetSize : NSObject
+    [BaseType(typeof(NSObject), Name = "_TtC13MapboxMapObjC22TMBTileCacheBudgetSize")]
+    [DisableDefaultCtor]
+    interface TMBTileCacheBudgetSize 
+    {
+        // + (TMBTileCacheBudgetSize * _Nonnull)inTiles:(NSInteger)tiles SWIFT_WARN_UNUSED_RESULT;
+        [Static, Export("inTiles:")]
+        TMBTileCacheBudgetSize InTiles(int tiles);
+
+        // + (TMBTileCacheBudgetSize * _Nonnull)inMegabytes:(NSInteger)megabytes SWIFT_WARN_UNUSED_RESULT;
+        [Static, Export("inMegabytes:")]
+        TMBTileCacheBudgetSize InMegabytes(int megabytes);
+
+        // @property (nonatomic, readonly, strong) NSNumber * _Nullable tiles;
+        [NullAllowed, Export("tiles", ArgumentSemantic.Strong)]
+        NSNumber Tiles { get; }
+
+        // @property (nonatomic, readonly, strong) NSNumber * _Nullable megabytes;
+        [NullAllowed, Export("megabytes", ArgumentSemantic.Strong)]
+        NSNumber Megabytes { get; }
+
+        // /// The TileCacheBudget formatted for core
+        // @property (nonatomic, readonly, strong) MBMTileCacheBudget * _Nonnull coreTileCacheBudget;
+        [Export("coreTileCacheBudget", ArgumentSemantic.Strong)]
+        MBMTileCacheBudget CoreTileCacheBudget { get; }
+    }
+
     // @interface TMBRasterDemSource : NSObject <TMBSource>
     [BaseType(typeof(NSObject), Name = "_TtC13MapboxMapObjC18TMBRasterDemSource")]
     [DisableDefaultCtor]
@@ -7018,6 +7070,10 @@ namespace MapboxMapsObjC
         // @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
         [NullAllowed, Export("prefetchZoomDelta", ArgumentSemantic.Strong)]
         NSNumber PrefetchZoomDelta { get; set; }
+
+        // @property (nonatomic, strong) TMBTileCacheBudgetSize * _Nullable tileCacheBudget;
+        [NullAllowed, Export("tileCacheBudget", ArgumentSemantic.Strong)]
+        TMBTileCacheBudgetSize TileCacheBudget { get; set; }
 
         // @property (nonatomic, strong) NSNumber * _Nullable minimumTileUpdateInterval;
         [NullAllowed, Export("minimumTileUpdateInterval", ArgumentSemantic.Strong)]
@@ -7125,6 +7181,14 @@ namespace MapboxMapsObjC
         // @property (nonatomic, strong) TMBStyleTransition * _Nullable rasterContrastTransition;
         [NullAllowed, Export("rasterContrastTransition", ArgumentSemantic.Strong)]
         TMBStyleTransition RasterContrastTransition { get; set; }
+
+        // @property (nonatomic, strong) TMBValue * _Nullable rasterEmissiveStrength;
+        [NullAllowed, Export("rasterEmissiveStrength", ArgumentSemantic.Strong)]
+        TMBValue RasterEmissiveStrength { get; set; }
+
+        // @property (nonatomic, strong) TMBStyleTransition * _Nullable rasterEmissiveStrengthTransition;
+        [NullAllowed, Export("rasterEmissiveStrengthTransition", ArgumentSemantic.Strong)]
+        TMBStyleTransition RasterEmissiveStrengthTransition { get; set; }
 
         // @property (nonatomic, strong) TMBValue * _Nullable rasterFadeDuration;
         [NullAllowed, Export("rasterFadeDuration", ArgumentSemantic.Strong)]
@@ -7240,6 +7304,10 @@ namespace MapboxMapsObjC
         // @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
         [NullAllowed, Export("prefetchZoomDelta", ArgumentSemantic.Strong)]
         NSNumber PrefetchZoomDelta { get; set; }
+
+        // @property (nonatomic, strong) TMBTileCacheBudgetSize * _Nullable tileCacheBudget;
+        [NullAllowed, Export("tileCacheBudget", ArgumentSemantic.Strong)]
+        TMBTileCacheBudgetSize TileCacheBudget { get; set; }
 
         // @property (nonatomic, strong) NSNumber * _Nullable minimumTileUpdateInterval;
         [NullAllowed, Export("minimumTileUpdateInterval", ArgumentSemantic.Strong)]
@@ -7865,6 +7933,14 @@ namespace MapboxMapsObjC
         // @property (nonatomic, strong) TMBStyleTransition * _Nullable iconColorTransition;
         [NullAllowed, Export("iconColorTransition", ArgumentSemantic.Strong)]
         TMBStyleTransition IconColorTransition { get; set; }
+
+        // @property (nonatomic, strong) TMBValue * _Nullable iconColorSaturation;
+        [NullAllowed, Export("iconColorSaturation", ArgumentSemantic.Strong)]
+        TMBValue IconColorSaturation { get; set; }
+
+        // @property (nonatomic, strong) TMBStyleTransition * _Nullable iconColorSaturationTransition;
+        [NullAllowed, Export("iconColorSaturationTransition", ArgumentSemantic.Strong)]
+        TMBStyleTransition IconColorSaturationTransition { get; set; }
 
         // @property (nonatomic, strong) TMBValue * _Nullable iconEmissiveStrength;
         [NullAllowed, Export("iconEmissiveStrength", ArgumentSemantic.Strong)]

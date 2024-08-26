@@ -393,6 +393,36 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class TMBViewportManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBViewportManager * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBAnnotationOrchestrator;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBAnnotationOrchestrator * _Nonnull)annotations SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBMapboxMap;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBMapboxMap * _Nonnull)mapboxMap SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBOrnamentsManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBOrnamentsManager * _Nonnull)ornaments SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBViewAnnotationManager;
+
+@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
+- (TMBViewAnnotationManager * _Nonnull)viewAnnotations SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class TMBLocationManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
@@ -405,40 +435,10 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21MapInitOptionsFactory")
 - (TMBGestureManager * _Nonnull)gestures SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class TMBAnnotationOrchestrator;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBAnnotationOrchestrator * _Nonnull)annotations SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBViewportManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBViewportManager * _Nonnull)viewport SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBViewAnnotationManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBViewAnnotationManager * _Nonnull)viewAnnotations SWIFT_WARN_UNUSED_RESULT;
-@end
-
 @class TMBCameraAnimationsManager;
 
 @interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
 - (TMBCameraAnimationsManager * _Nonnull)camera SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBOrnamentsManager;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBOrnamentsManager * _Nonnull)ornaments SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class TMBMapboxMap;
-
-@interface MapView (SWIFT_EXTENSION(MapboxMapObjC))
-- (TMBMapboxMap * _Nonnull)mapboxMap SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class NSNumber;
@@ -960,6 +960,7 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC8TMBLayer_")
 /// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers-background">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBBackgroundLayer")
 @interface TMBBackgroundLayer : NSObject <TMBLayer>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 /// Unique layer name
 @property (nonatomic, copy) NSString * _Nonnull id;
 /// Rendering type of this layer.
@@ -973,23 +974,26 @@ SWIFT_CLASS("_TtC13MapboxMapObjC18TMBBackgroundLayer")
 /// Whether this layer is displayed.
 @property (nonatomic, strong) TMBValue * _Nonnull visibility;
 /// The color with which the background will be drawn.
+/// Default value: “#000000”.
 @property (nonatomic, strong) TMBValue * _Nullable backgroundColor;
 /// Transition options for <code>backgroundColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable backgroundColorTransition;
-/// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when <code>lights</code> root property is defined.
+/// Controls the intensity of light emitted on the source features.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable backgroundEmissiveStrength;
 /// Transition options for <code>backgroundEmissiveStrength</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable backgroundEmissiveStrengthTransition;
 /// The opacity at which the background will be drawn.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable backgroundOpacity;
 /// Transition options for <code>backgroundOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable backgroundOpacityTransition;
 /// Name of image in sprite to use for drawing an image background. For seamless patterns, image width and height must be a factor of two (2, 4, 8, …, 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
 @property (nonatomic, strong) TMBValue * _Nullable backgroundPattern;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 @class TMBCameraTransition;
@@ -1439,6 +1443,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC26TMBCircleAnnotationManager")
 /// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers-circle">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC14TMBCircleLayer")
 @interface TMBCircleLayer : NSObject <TMBLayer>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 /// Unique layer name
 @property (nonatomic, copy) NSString * _Nonnull id;
 /// Rendering type of this layer.
@@ -1464,51 +1469,63 @@ SWIFT_CLASS("_TtC13MapboxMapObjC14TMBCircleLayer")
 /// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
 @property (nonatomic, strong) TMBValue * _Nullable circleSortKey;
 /// Amount to blur the circle. 1 blurs the circle such that only the centerpoint is full opacity.
+/// Default value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable circleBlur;
 /// Transition options for <code>circleBlur</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable circleBlurTransition;
 /// The fill color of the circle.
+/// Default value: “#000000”.
 @property (nonatomic, strong) TMBValue * _Nullable circleColor;
 /// Transition options for <code>circleColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable circleColorTransition;
-/// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when <code>lights</code> root property is defined.
+/// Controls the intensity of light emitted on the source features.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable circleEmissiveStrength;
 /// Transition options for <code>circleEmissiveStrength</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable circleEmissiveStrengthTransition;
 /// The opacity at which the circle will be drawn.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable circleOpacity;
 /// Transition options for <code>circleOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable circleOpacityTransition;
 /// Orientation of circle when map is pitched.
+/// Default value: “viewport”.
 @property (nonatomic, strong) TMBValue * _Nullable circlePitchAlignment;
 /// Controls the scaling behavior of the circle when the map is pitched.
+/// Default value: “map”.
 @property (nonatomic, strong) TMBValue * _Nullable circlePitchScale;
 /// Circle radius.
+/// Default value: 5. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable circleRadius;
 /// Transition options for <code>circleRadius</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable circleRadiusTransition;
 /// The stroke color of the circle.
+/// Default value: “#000000”.
 @property (nonatomic, strong) TMBValue * _Nullable circleStrokeColor;
 /// Transition options for <code>circleStrokeColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable circleStrokeColorTransition;
 /// The opacity of the circle’s stroke.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable circleStrokeOpacity;
 /// Transition options for <code>circleStrokeOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable circleStrokeOpacityTransition;
 /// The width of the circle’s stroke. Strokes are placed outside of the <code>circle-radius</code>.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable circleStrokeWidth;
 /// Transition options for <code>circleStrokeWidth</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable circleStrokeWidthTransition;
 /// The geometry’s offset. Values are [x, y] where negatives indicate left and up, respectively.
+/// Default value: [0,0].
 @property (nonatomic, strong) TMBValue * _Nullable circleTranslate;
 /// Transition options for <code>circleTranslate</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable circleTranslateTransition;
 /// Controls the frame of reference for <code>circle-translate</code>.
+/// Default value: “map”.
 @property (nonatomic, strong) TMBValue * _Nullable circleTranslateAnchor;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -2344,6 +2361,7 @@ typedef SWIFT_ENUM(NSInteger, TMBExpressionOptionsType, open) {
 /// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers-fill-extrusion">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC21TMBFillExtrusionLayer")
 @interface TMBFillExtrusionLayer : NSObject <TMBLayer>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 /// Unique layer name
 @property (nonatomic, copy) NSString * _Nonnull id;
 /// Rendering type of this layer.
@@ -2367,45 +2385,60 @@ SWIFT_CLASS("_TtC13MapboxMapObjC21TMBFillExtrusionLayer")
 /// Whether this layer is displayed.
 @property (nonatomic, strong) TMBValue * _Nonnull visibility;
 /// Controls the intensity of shading near ground and concave angles between walls. Default value 0.0 disables ambient occlusion and values around 0.3 provide the most plausible results for buildings.
+/// Default value: 0. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionAmbientOcclusionIntensity;
 /// Transition options for <code>fillExtrusionAmbientOcclusionIntensity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable fillExtrusionAmbientOcclusionIntensityTransition;
-/// Shades area near ground and concave angles between walls where the radius defines only vertical impact. Default value 3.0 corresponds to height of one floor and brings the most plausible results for buildings. This property works only with legacy light. When 3D light is enabled <code>fill-extrusion-ambient-occlusion-wall-radius</code> and <code>fill-extrusion-ambient-occlusion-ground-radius</code> are used instead.
+/// Shades area near ground and concave angles between walls where the radius defines only vertical impact. Default value 3.0 corresponds to height of one floor and brings the most plausible results for buildings. This property works only with legacy light. When 3D lights are enabled <code>fill-extrusion-ambient-occlusion-wall-radius</code> and <code>fill-extrusion-ambient-occlusion-ground-radius</code> are used instead.
+/// Default value: 3. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionAmbientOcclusionRadius;
 /// Transition options for <code>fillExtrusionAmbientOcclusionRadius</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable fillExtrusionAmbientOcclusionRadiusTransition;
 /// The height with which to extrude the base of this layer. Must be less than or equal to <code>fill-extrusion-height</code>.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionBase;
 /// Transition options for <code>fillExtrusionBase</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable fillExtrusionBaseTransition;
 /// The base color of the extruded fill. The extrusion’s surfaces will be shaded differently based on this color in combination with the root <code>light</code> settings. If this color is specified as <code>rgba</code> with an alpha component, the alpha component will be ignored; use <code>fill-extrusion-opacity</code> to set layer opacity.
+/// Default value: “#000000”.
 @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionColor;
 /// Transition options for <code>fillExtrusionColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable fillExtrusionColorTransition;
-/// This parameter defines the range for the fade-out effect before an automatic content cutoff on pitched map views. The automatic cutoff range is calculated according to the minimum required zoom level of the source and layer. The fade range is expressed in relation to the height of the map view. A value of 1.0 indicates that the content is faded to the same extent as the map’s height in pixels, while a value close to zero represents a sharp cutoff. When the value is set to 0.0, the cutoff is completely disabled. Note: The property has no effect on the map if terrain is enabled.
+/// This parameter defines the range for the fade-out effect before an automatic content cutoff on pitched map views. Fade out is implemented by scaling down and removing buildings in the fade range in a staggered fashion. Opacity is not changed. The fade range is expressed in relation to the height of the map view. A value of 1.0 indicates that the content is faded to the same extent as the map’s height in pixels, while a value close to zero represents a sharp cutoff. When the value is set to 0.0, the cutoff is completely disabled. Note: The property has no effect on the map if terrain is enabled.
+/// Default value: 0. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionCutoffFadeRange;
+/// Controls the intensity of light emitted on the source features.
+/// Default value: 0. Minimum value: 0.
+@property (nonatomic, strong) TMBValue * _Nullable fillExtrusionEmissiveStrength;
+/// Transition options for <code>fillExtrusionEmissiveStrength</code>.
+@property (nonatomic, strong) TMBStyleTransition * _Nullable fillExtrusionEmissiveStrengthTransition;
 /// The height with which to extrude this layer.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionHeight;
 /// Transition options for <code>fillExtrusionHeight</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable fillExtrusionHeightTransition;
 /// The opacity of the entire fill extrusion layer. This is rendered on a per-layer, not per-feature, basis, and data-driven styling is not available.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionOpacity;
 /// Transition options for <code>fillExtrusionOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable fillExtrusionOpacityTransition;
 /// Name of image in sprite to use for drawing images on extruded fills. For seamless patterns, image width and height must be a factor of two (2, 4, 8, …, 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
 @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionPattern;
 /// The geometry’s offset. Values are [x, y] where negatives indicate left and up (on the flat plane), respectively.
+/// Default value: [0,0].
 @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionTranslate;
 /// Transition options for <code>fillExtrusionTranslate</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable fillExtrusionTranslateTransition;
 /// Controls the frame of reference for <code>fill-extrusion-translate</code>.
+/// Default value: “map”.
 @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionTranslateAnchor;
 /// Whether to apply a vertical gradient to the sides of a fill-extrusion layer. If true, sides will be shaded slightly darker farther down.
+/// Default value: true.
 @property (nonatomic, strong) TMBValue * _Nullable fillExtrusionVerticalGradient;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -2431,6 +2464,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBFillExtru
 /// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers-fill">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC12TMBFillLayer")
 @interface TMBFillLayer : NSObject <TMBLayer>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 /// Unique layer name
 @property (nonatomic, copy) NSString * _Nonnull id;
 /// Rendering type of this layer.
@@ -2456,16 +2490,20 @@ SWIFT_CLASS("_TtC13MapboxMapObjC12TMBFillLayer")
 /// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
 @property (nonatomic, strong) TMBValue * _Nullable fillSortKey;
 /// Whether or not the fill should be antialiased.
+/// Default value: true.
 @property (nonatomic, strong) TMBValue * _Nullable fillAntialias;
 /// The color of the filled part of this layer. This color can be specified as <code>rgba</code> with an alpha component and the color’s opacity will not affect the opacity of the 1px stroke, if it is used.
+/// Default value: “#000000”.
 @property (nonatomic, strong) TMBValue * _Nullable fillColor;
 /// Transition options for <code>fillColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable fillColorTransition;
-/// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when <code>lights</code> root property is defined.
+/// Controls the intensity of light emitted on the source features.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable fillEmissiveStrength;
 /// Transition options for <code>fillEmissiveStrength</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable fillEmissiveStrengthTransition;
 /// The opacity of the entire fill layer. In contrast to the <code>fill-color</code>, this value will also affect the 1px stroke around the fill, if the stroke is used.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable fillOpacity;
 /// Transition options for <code>fillOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable fillOpacityTransition;
@@ -2476,15 +2514,17 @@ SWIFT_CLASS("_TtC13MapboxMapObjC12TMBFillLayer")
 /// Name of image in sprite to use for drawing image fills. For seamless patterns, image width and height must be a factor of two (2, 4, 8, …, 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
 @property (nonatomic, strong) TMBValue * _Nullable fillPattern;
 /// The geometry’s offset. Values are [x, y] where negatives indicate left and up, respectively.
+/// Default value: [0,0].
 @property (nonatomic, strong) TMBValue * _Nullable fillTranslate;
 /// Transition options for <code>fillTranslate</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable fillTranslateTransition;
 /// Controls the frame of reference for <code>fill-translate</code>.
+/// Default value: “map”.
 @property (nonatomic, strong) TMBValue * _Nullable fillTranslateAnchor;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -2748,23 +2788,28 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC9TMBSource_")
 
 @class TMBGeoJSONSourceData;
 @class TMBPromoteId;
+@class TMBTileCacheBudgetSize;
 
 /// A GeoJSON data source.
 /// seealso:
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#geo_json">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC16TMBGeoJSONSource")
 @interface TMBGeoJSONSource : NSObject <TMBSource>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
 /// A URL to a GeoJSON file, or inline GeoJSON.
 @property (nonatomic, strong) TMBGeoJSONSourceData * _Nullable data;
 /// Maximum zoom level at which to create vector tiles (higher means greater detail at high zoom levels).
+/// Default value: 18.
 @property (nonatomic, strong) NSNumber * _Nullable maxzoom;
 /// Contains an attribution to be displayed when the map is shown to a user.
 @property (nonatomic, copy) NSString * _Nullable attribution;
 /// Size of the tile buffer on each side. A value of 0 produces no buffer. A value of 512 produces a buffer as wide as the tile itself. Larger values produce fewer rendering artifacts near tile edges and slower performance.
+/// Default value: 128. Value range: [0, 512]
 @property (nonatomic, strong) NSNumber * _Nullable buffer;
 /// Douglas-Peucker simplification tolerance (higher means simpler geometries and faster performance).
+/// Default value: 0.375.
 @property (nonatomic, strong) NSNumber * _Nullable tolerance;
 /// If the data is a collection of point features, setting this to true clusters the points by radius into groups. Cluster groups become new <code>Point</code> features in the source with additional properties:
 /// <ul>
@@ -2779,30 +2824,39 @@ SWIFT_CLASS("_TtC13MapboxMapObjC16TMBGeoJSONSource")
 ///   </li>
 ///   <li>
 ///     <code>point_count_abbreviated</code> An abbreviated point count
+///     Default value: false.
 ///   </li>
 /// </ul>
 @property (nonatomic, strong) NSNumber * _Nullable cluster;
 /// Radius of each cluster if clustering is enabled. A value of 512 indicates a radius equal to the width of a tile.
+/// Default value: 50. Minimum value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable clusterRadius;
 /// Max zoom on which to cluster points if clustering is enabled. Defaults to one zoom less than maxzoom (so that last zoom features are not clustered). Clusters are re-evaluated at integer zoom levels so setting clusterMaxZoom to 14 means the clusters will be displayed until z15.
 @property (nonatomic, strong) NSNumber * _Nullable clusterMaxZoom;
+/// Minimum number of points necessary to form a cluster if clustering is enabled. Defaults to <code>2</code>.
+@property (nonatomic, strong) NSNumber * _Nullable clusterMinPoints;
 /// An object defining custom properties on the generated clusters if clustering is enabled, aggregating values from clustered points. Has the form <code>{"property_name": [operator, map_expression]}</code>. <code>operator</code> is any expression function that accepts at least 2 operands (e.g. <code>"+"</code> or <code>"max"</code>) — it accumulates the property value from clusters/points the cluster contains; <code>map_expression</code> produces the value of a single point.
 /// Example: <code>{"sum": ["+", ["get", "scalerank"]]}</code>.
 /// For more advanced use cases, in place of <code>operator</code>, you can use a custom reduce expression that references a special <code>["accumulated"]</code> value, e.g.:
 /// <code>{"sum": [["+", ["accumulated"], ["get", "sum"]], ["get", "scalerank"]]}</code>
 @property (nonatomic, copy) NSDictionary<NSString *, TMBExpression *> * _Nullable clusterProperties;
 /// Whether to calculate line distance metrics. This is required for line layers that specify <code>line-gradient</code> values.
+/// Default value: false.
 @property (nonatomic, strong) NSNumber * _Nullable lineMetrics;
-/// Whether to generate ids for the geojson features. When enabled, the <code>feature.id</code> property will be auto assigned based on its index in the <code>features</code> array, over-writing any previous values.
+/// Whether to generate ids for the GeoJSON features. When enabled, the <code>feature.id</code> property will be auto assigned based on its index in the <code>features</code> array, over-writing any previous values.
+/// Default value: false.
 @property (nonatomic, strong) NSNumber * _Nullable generateId;
 /// A property to use as a feature id (for feature state). Either a property name, or an object of the form <code>{<sourceLayer>: <propertyName>}</code>.
 @property (nonatomic, strong) TMBPromoteId * _Nullable promoteId;
-/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom. The default delta is 4.
+/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom.
+/// Default value: 4.
 @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
+/// This property defines a source-specific resource budget, either in tile units or in megabytes. Whenever the tile cache goes over the defined limit, the least recently used tile will be evicted from the in-memory cache. Note that the current implementation does not take into account resources allocated by the visible tiles.
+@property (nonatomic, strong) TMBTileCacheBudgetSize * _Nullable tileCacheBudget;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 enum TMBGeoJSONSourceType : NSInteger;
@@ -3025,6 +3079,7 @@ SWIFT_PROTOCOL("_TtP13MapboxMapObjC18TMBHeadingProvider_")
 /// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers-heatmap">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC15TMBHeatmapLayer")
 @interface TMBHeatmapLayer : NSObject <TMBLayer>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 /// Unique layer name
 @property (nonatomic, copy) NSString * _Nonnull id;
 /// Rendering type of this layer.
@@ -3048,25 +3103,30 @@ SWIFT_CLASS("_TtC13MapboxMapObjC15TMBHeatmapLayer")
 /// Whether this layer is displayed.
 @property (nonatomic, strong) TMBValue * _Nonnull visibility;
 /// Defines the color of each pixel based on its density value in a heatmap. Should be an expression that uses <code>["heatmap-density"]</code> as input.
+/// Default value: [“interpolate”,[“linear”],[“heatmap-density”],0,“rgba(0, 0, 255, 0)”,0.1,“royalblue”,0.3,“cyan”,0.5,“lime”,0.7,“yellow”,1,“red”].
 @property (nonatomic, strong) TMBValue * _Nullable heatmapColor;
 /// Similar to <code>heatmap-weight</code> but controls the intensity of the heatmap globally. Primarily used for adjusting the heatmap based on zoom level.
+/// Default value: 1. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable heatmapIntensity;
 /// Transition options for <code>heatmapIntensity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable heatmapIntensityTransition;
 /// The global opacity at which the heatmap layer will be drawn.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable heatmapOpacity;
 /// Transition options for <code>heatmapOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable heatmapOpacityTransition;
 /// Radius of influence of one heatmap point in pixels. Increasing the value makes the heatmap smoother, but less detailed. <code>queryRenderedFeatures</code> on heatmap layers will return points within this radius.
+/// Default value: 30. Minimum value: 1.
 @property (nonatomic, strong) TMBValue * _Nullable heatmapRadius;
 /// Transition options for <code>heatmapRadius</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable heatmapRadiusTransition;
 /// A measure of how much an individual point contributes to the heatmap. A value of 10 would be equivalent to having 10 points of weight 1 in the same spot. Especially useful when combined with clustering.
+/// Default value: 1. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable heatmapWeight;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -3092,6 +3152,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBHillshade
 /// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers-hillshade">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC17TMBHillshadeLayer")
 @interface TMBHillshadeLayer : NSObject <TMBLayer>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 /// Unique layer name
 @property (nonatomic, copy) NSString * _Nonnull id;
 /// Rendering type of this layer.
@@ -3115,29 +3176,40 @@ SWIFT_CLASS("_TtC13MapboxMapObjC17TMBHillshadeLayer")
 /// Whether this layer is displayed.
 @property (nonatomic, strong) TMBValue * _Nonnull visibility;
 /// The shading color used to accentuate rugged terrain like sharp cliffs and gorges.
+/// Default value: “#000000”.
 @property (nonatomic, strong) TMBValue * _Nullable hillshadeAccentColor;
 /// Transition options for <code>hillshadeAccentColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable hillshadeAccentColorTransition;
+/// Controls the intensity of light emitted on the source features.
+/// Default value: 0. Minimum value: 0.
+@property (nonatomic, strong) TMBValue * _Nullable hillshadeEmissiveStrength;
+/// Transition options for <code>hillshadeEmissiveStrength</code>.
+@property (nonatomic, strong) TMBStyleTransition * _Nullable hillshadeEmissiveStrengthTransition;
 /// Intensity of the hillshade
+/// Default value: 0.5. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable hillshadeExaggeration;
 /// Transition options for <code>hillshadeExaggeration</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable hillshadeExaggerationTransition;
 /// The shading color of areas that faces towards the light source.
+/// Default value: “#FFFFFF”.
 @property (nonatomic, strong) TMBValue * _Nullable hillshadeHighlightColor;
 /// Transition options for <code>hillshadeHighlightColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable hillshadeHighlightColorTransition;
 /// Direction of light source when map is rotated.
+/// Default value: “viewport”.
 @property (nonatomic, strong) TMBValue * _Nullable hillshadeIlluminationAnchor;
-/// The direction of the light source used to generate the hillshading with 0 as the top of the viewport if <code>hillshade-illumination-anchor</code> is set to <code>viewport</code> and due north if <code>hillshade-illumination-anchor</code> is set to <code>map</code>.
+/// The direction of the light source used to generate the hillshading with 0 as the top of the viewport if <code>hillshade-illumination-anchor</code> is set to <code>viewport</code> and due north if <code>hillshade-illumination-anchor</code> is set to <code>map</code> and no 3d lights enabled. If <code>hillshade-illumination-anchor</code> is set to <code>map</code> and 3d lights enabled, the direction from 3d lights is used instead.
+/// Default value: 335. Value range: [0, 359]
 @property (nonatomic, strong) TMBValue * _Nullable hillshadeIlluminationDirection;
 /// The shading color of areas that face away from the light source.
+/// Default value: “#000000”.
 @property (nonatomic, strong) TMBValue * _Nullable hillshadeShadowColor;
 /// Transition options for <code>hillshadeShadowColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable hillshadeShadowColorTransition;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -3264,18 +3336,20 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBIconTrans
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#image">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC14TMBImageSource")
 @interface TMBImageSource : NSObject <TMBSource>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
-/// URL that points to an image.
+/// URL that points to an image. If the URL is not specified, the image is expected to be loaded directly during runtime.
 @property (nonatomic, copy) NSString * _Nullable url;
 /// Corners of image specified in longitude, latitude pairs. Note: When using globe projection, the image will be centered at the North or South Pole in the respective hemisphere if the average latitude value exceeds 85 degrees or falls below -85 degrees.
 @property (nonatomic, copy) NSArray<NSArray<NSNumber *> *> * _Nullable coordinates;
-/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom. The default delta is 4.
+/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom.
+/// Default value: 4.
 @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -3456,6 +3530,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineJoin 
 /// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers-line">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC12TMBLineLayer")
 @interface TMBLineLayer : NSObject <TMBLayer>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 /// Unique layer name
 @property (nonatomic, copy) NSString * _Nonnull id;
 /// Rendering type of this layer.
@@ -3479,73 +3554,91 @@ SWIFT_CLASS("_TtC13MapboxMapObjC12TMBLineLayer")
 /// Whether this layer is displayed.
 @property (nonatomic, strong) TMBValue * _Nonnull visibility;
 /// The display of line endings.
+/// Default value: “butt”.
 @property (nonatomic, strong) TMBValue * _Nullable lineCap;
 /// The display of lines when joining.
+/// Default value: “miter”.
 @property (nonatomic, strong) TMBValue * _Nullable lineJoin;
 /// Used to automatically convert miter joins to bevel joins for sharp angles.
+/// Default value: 2.
 @property (nonatomic, strong) TMBValue * _Nullable lineMiterLimit;
 /// Used to automatically convert round joins to miter joins for shallow angles.
+/// Default value: 1.05.
 @property (nonatomic, strong) TMBValue * _Nullable lineRoundLimit;
 /// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
 @property (nonatomic, strong) TMBValue * _Nullable lineSortKey;
 /// Blur applied to the line, in pixels.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable lineBlur;
 /// Transition options for <code>lineBlur</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable lineBlurTransition;
 /// The color of the line border. If line-border-width is greater than zero and the alpha value of this color is 0 (default), the color for the border will be selected automatically based on the line color.
+/// Default value: “rgba(0, 0, 0, 0)”.
 @property (nonatomic, strong) TMBValue * _Nullable lineBorderColor;
 /// Transition options for <code>lineBorderColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable lineBorderColorTransition;
 /// The width of the line border. A value of zero means no border.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable lineBorderWidth;
 /// Transition options for <code>lineBorderWidth</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable lineBorderWidthTransition;
 /// The color with which the line will be drawn.
+/// Default value: “#000000”.
 @property (nonatomic, strong) TMBValue * _Nullable lineColor;
 /// Transition options for <code>lineColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable lineColorTransition;
 /// Specifies the lengths of the alternating dashes and gaps that form the dash pattern. The lengths are later scaled by the line width. To convert a dash length to pixels, multiply the length by the current line width. Note that GeoJSON sources with <code>lineMetrics: true</code> specified won’t render dashed lines to the expected scale. Also note that zoom-dependent expressions will be evaluated only at integer zoom levels.
+/// Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable lineDasharray;
 /// Decrease line layer opacity based on occlusion from 3D objects. Value 0 disables occlusion, value 1 means fully occluded.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable lineDepthOcclusionFactor;
 /// Transition options for <code>lineDepthOcclusionFactor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable lineDepthOcclusionFactorTransition;
-/// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when <code>lights</code> root property is defined.
+/// Controls the intensity of light emitted on the source features.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable lineEmissiveStrength;
 /// Transition options for <code>lineEmissiveStrength</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable lineEmissiveStrengthTransition;
 /// Draws a line casing outside of a line’s actual path. Value indicates the width of the inner gap.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable lineGapWidth;
 /// Transition options for <code>lineGapWidth</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable lineGapWidthTransition;
 /// A gradient used to color a line feature at various distances along its length. Defined using a <code>step</code> or <code>interpolate</code> expression which outputs a color for each corresponding <code>line-progress</code> input value. <code>line-progress</code> is a percentage of the line feature’s total length as measured on the webmercator projected coordinate plane (a <code>number</code> between <code>0</code> and <code>1</code>). Can only be used with GeoJSON sources that specify <code>"lineMetrics": true</code>.
 @property (nonatomic, strong) TMBValue * _Nullable lineGradient;
 /// The line’s offset. For linear features, a positive value offsets the line to the right, relative to the direction of the line, and a negative value to the left. For polygon features, a positive value results in an inset, and a negative value results in an outset.
+/// Default value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable lineOffset;
 /// Transition options for <code>lineOffset</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable lineOffsetTransition;
 /// The opacity at which the line will be drawn.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable lineOpacity;
 /// Transition options for <code>lineOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable lineOpacityTransition;
 /// Name of image in sprite to use for drawing image lines. For seamless patterns, image width must be a factor of two (2, 4, 8, …, 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
 @property (nonatomic, strong) TMBValue * _Nullable linePattern;
 /// The geometry’s offset. Values are [x, y] where negatives indicate left and up, respectively.
+/// Default value: [0,0].
 @property (nonatomic, strong) TMBValue * _Nullable lineTranslate;
 /// Transition options for <code>lineTranslate</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable lineTranslateTransition;
 /// Controls the frame of reference for <code>line-translate</code>.
+/// Default value: “map”.
 @property (nonatomic, strong) TMBValue * _Nullable lineTranslateAnchor;
 /// The line part between [trim-start, trim-end] will be marked as transparent to make a route vanishing effect. The line trim-off offset is based on the whole line range [0.0, 1.0].
+/// Default value: [0,0]. Minimum value: [0,0]. Maximum value: [1,1].
 @property (nonatomic, strong) TMBValue * _Nullable lineTrimOffset;
 /// Stroke thickness.
+/// Default value: 1. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable lineWidth;
 /// Transition options for <code>lineWidth</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable lineWidthTransition;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -3582,6 +3675,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBLineTrans
 /// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers-location-indicator">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC25TMBLocationIndicatorLayer")
 @interface TMBLocationIndicatorLayer : NSObject <TMBLayer>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 /// Unique layer name
 @property (nonatomic, copy) NSString * _Nonnull id;
 /// Rendering type of this layer.
@@ -3601,57 +3695,70 @@ SWIFT_CLASS("_TtC13MapboxMapObjC25TMBLocationIndicatorLayer")
 /// Name of image in sprite to use as the top of the location indicator.
 @property (nonatomic, strong) TMBValue * _Nullable topImage;
 /// The accuracy, in meters, of the position source used to retrieve the position of the location indicator.
+/// Default value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable accuracyRadius;
 /// Transition options for <code>accuracyRadius</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable accuracyRadiusTransition;
 /// The color for drawing the accuracy radius border. To adjust transparency, set the alpha component of the color accordingly.
+/// Default value: “#ffffff”.
 @property (nonatomic, strong) TMBValue * _Nullable accuracyRadiusBorderColor;
 /// Transition options for <code>accuracyRadiusBorderColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable accuracyRadiusBorderColorTransition;
 /// The color for drawing the accuracy radius, as a circle. To adjust transparency, set the alpha component of the color accordingly.
+/// Default value: “#ffffff”.
 @property (nonatomic, strong) TMBValue * _Nullable accuracyRadiusColor;
 /// Transition options for <code>accuracyRadiusColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable accuracyRadiusColorTransition;
 /// The bearing of the location indicator.
+/// Default value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable bearing;
 /// Transition options for <code>bearing</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable bearingTransition;
 /// The size of the bearing image, as a scale factor applied to the size of the specified image.
+/// Default value: 1.
 @property (nonatomic, strong) TMBValue * _Nullable bearingImageSize;
 /// Transition options for <code>bearingImageSize</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable bearingImageSizeTransition;
 /// The color of the circle emphasizing the indicator. To adjust transparency, set the alpha component of the color accordingly.
+/// Default value: “#ffffff”.
 @property (nonatomic, strong) TMBValue * _Nullable emphasisCircleColor;
 /// Transition options for <code>emphasisCircleColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable emphasisCircleColorTransition;
 /// The radius, in pixel, of the circle emphasizing the indicator, drawn between the accuracy radius and the indicator shadow.
+/// Default value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable emphasisCircleRadius;
 /// Transition options for <code>emphasisCircleRadius</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable emphasisCircleRadiusTransition;
 /// The displacement off the center of the top image and the shadow image when the pitch of the map is greater than 0. This helps producing a three-dimensional appearence.
+/// Default value: “0”.
 @property (nonatomic, strong) TMBValue * _Nullable imagePitchDisplacement;
 /// An array of [latitude, longitude, altitude] position of the location indicator.
+/// Default value: [0,0,0].
 @property (nonatomic, strong) TMBValue * _Nullable location;
 /// Transition options for <code>location</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable locationTransition;
 /// The opacity of the entire location indicator layer.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable locationIndicatorOpacity;
 /// Transition options for <code>locationIndicatorOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable locationIndicatorOpacityTransition;
 /// The amount of the perspective compensation, between 0 and 1. A value of 1 produces a location indicator of constant width across the screen. A value of 0 makes it scale naturally according to the viewing projection.
+/// Default value: “0.85”.
 @property (nonatomic, strong) TMBValue * _Nullable perspectiveCompensation;
 /// The size of the shadow image, as a scale factor applied to the size of the specified image.
+/// Default value: 1.
 @property (nonatomic, strong) TMBValue * _Nullable shadowImageSize;
 /// Transition options for <code>shadowImageSize</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable shadowImageSizeTransition;
 /// The size of the top image, as a scale factor applied to the size of the specified image.
+/// Default value: 1.
 @property (nonatomic, strong) TMBValue * _Nullable topImageSize;
 /// Transition options for <code>topImageSize</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable topImageSizeTransition;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 @class TMBLocationOptions;
@@ -6083,40 +6190,53 @@ typedef SWIFT_ENUM(NSInteger, TMBPuckType, open) {
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#raster_dem">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC18TMBRasterDemSource")
 @interface TMBRasterDemSource : NSObject <TMBSource>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
-/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>.
+/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>. Required if <code>tiles</code> is not provided.
 @property (nonatomic, copy) NSString * _Nullable url;
-/// An array of one or more tile source URLs, as in the TileJSON spec.
+/// An array of one or more tile source URLs, as in the TileJSON spec. Required if <code>url</code> is not provided.
 @property (nonatomic, copy) NSArray<NSString *> * _Nullable tiles;
 /// An array containing the longitude and latitude of the southwest and northeast corners of the source’s bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by Mapbox GL.
+/// Default value: [-180,-85.051129,180,85.051129].
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nullable bounds;
 /// Minimum zoom level for which tiles are available, as in the TileJSON spec.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minzoom;
 /// Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.
+/// Default value: 22.
 @property (nonatomic, strong) NSNumber * _Nullable maxzoom;
 /// The minimum visual size to display tiles for this layer. Only configurable for raster layers.
+/// Default value: 512.
 @property (nonatomic, strong) NSNumber * _Nullable tileSize;
 /// Contains an attribution to be displayed when the map is shown to a user.
 @property (nonatomic, copy) NSString * _Nullable attribution;
 /// The encoding used by this source. Mapbox Terrain RGB is used by default
+/// Default value: “mapbox”.
 @property (nonatomic, strong) TMBEncoding * _Nullable encoding;
 /// A setting to determine whether a source’s tiles are cached locally.
+/// Default value: false.
 @property (nonatomic, strong, getter=volatile, setter=setVolatile:) NSNumber * _Nullable volatile_;
-/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom. The default delta is 4.
+/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom.
+/// Default value: 4.
 @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
+/// This property defines a source-specific resource budget, either in tile units or in megabytes. Whenever the tile cache goes over the defined limit, the least recently used tile will be evicted from the in-memory cache. Note that the current implementation does not take into account resources allocated by the visible tiles.
+@property (nonatomic, strong) TMBTileCacheBudgetSize * _Nullable tileCacheBudget;
 /// Minimum tile update interval in seconds, which is used to throttle the tile update network requests. If the given source supports loading tiles from a server, sets the minimum tile update interval. Update network requests that are more frequent than the minimum tile update interval are suppressed.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minimumTileUpdateInterval;
 /// When a set of tiles for a current zoom level is being rendered and some of the ideal tiles that cover the screen are not yet loaded, parent tile could be used instead. This might introduce unwanted rendering side-effects, especially for raster tiles that are overscaled multiple times. This property sets the maximum limit for how much a parent tile can be overscaled.
 @property (nonatomic, strong) NSNumber * _Nullable maxOverscaleFactorForParentTiles;
 /// For the tiled sources, this property sets the tile requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading, parsing and rendering of the transient tiles and thus to improve the rendering performance, especially on low-end devices.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileRequestsDelay;
 /// For the tiled sources, this property sets the tile network requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading the transient tiles from the network and thus to avoid redundant network requests. Note that tile-network-requests-delay value is superseded with tile-requests-delay property value, if both are provided.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileNetworkRequestsDelay;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -6125,6 +6245,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC18TMBRasterDemSource")
 /// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers-raster">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC14TMBRasterLayer")
 @interface TMBRasterLayer : NSObject <TMBLayer>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 /// Unique layer name
 @property (nonatomic, copy) NSString * _Nonnull id;
 /// Rendering type of this layer.
@@ -6148,47 +6269,61 @@ SWIFT_CLASS("_TtC13MapboxMapObjC14TMBRasterLayer")
 /// Whether this layer is displayed.
 @property (nonatomic, strong) TMBValue * _Nonnull visibility;
 /// Increase or reduce the brightness of the image. The value is the maximum brightness.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable rasterBrightnessMax;
 /// Transition options for <code>rasterBrightnessMax</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable rasterBrightnessMaxTransition;
 /// Increase or reduce the brightness of the image. The value is the minimum brightness.
+/// Default value: 0. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable rasterBrightnessMin;
 /// Transition options for <code>rasterBrightnessMin</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable rasterBrightnessMinTransition;
-/// Defines a color map by which to colorize a raster layer, parameterized by the <code>["raster-value"]</code> expression and evaluated at 1024 uniformly spaced steps over the range specified by <code>raster-color-range</code>.
+/// Defines a color map by which to colorize a raster layer, parameterized by the <code>["raster-value"]</code> expression and evaluated at 256 uniformly spaced steps over the range specified by <code>raster-color-range</code>.
 @property (nonatomic, strong) TMBValue * _Nullable rasterColor;
-/// When <code>raster-color</code> is active, specifies the combination of source RGB channels used to compute the raster value. Computed using the equation <code>mix.r * src.r + mix.g * src.g + mix.b * src.b + mix.a</code>. The first three components specify the mix of source red, green, and blue channels, respectively. The fourth component serves as a constant offset and is <em>not</em> multipled by source alpha. Source alpha is instead carried through and applied as opacity to the colorized result. Default value corresponds to RGB luminosity.
+/// When <code>raster-color</code> is active, specifies the combination of source RGB channels used to compute the raster value. Computed using the equation <code>mix.r - src.r + mix.g - src.g + mix.b - src.b + mix.a</code>. The first three components specify the mix of source red, green, and blue channels, respectively. The fourth component serves as a constant offset and is -not- multipled by source alpha. Source alpha is instead carried through and applied as opacity to the colorized result. Default value corresponds to RGB luminosity.
+/// Default value: [0.2126,0.7152,0.0722,0].
 @property (nonatomic, strong) TMBValue * _Nullable rasterColorMix;
 /// Transition options for <code>rasterColorMix</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable rasterColorMixTransition;
-/// When <code>raster-color</code> is active, specifies the range over which <code>raster-color</code> is tabulated. Units correspond to the computed raster value via <code>raster-color-mix</code>.
+/// When <code>raster-color</code> is active, specifies the range over which <code>raster-color</code> is tabulated. Units correspond to the computed raster value via <code>raster-color-mix</code>. For <code>rasterarray</code> sources, if <code>raster-color-range</code> is unspecified, the source’s stated data range is used.
 @property (nonatomic, strong) TMBValue * _Nullable rasterColorRange;
 /// Transition options for <code>rasterColorRange</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable rasterColorRangeTransition;
 /// Increase or reduce the contrast of the image.
+/// Default value: 0. Value range: [-1, 1]
 @property (nonatomic, strong) TMBValue * _Nullable rasterContrast;
 /// Transition options for <code>rasterContrast</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable rasterContrastTransition;
+/// Controls the intensity of light emitted on the source features.
+/// Default value: 0. Minimum value: 0.
+@property (nonatomic, strong) TMBValue * _Nullable rasterEmissiveStrength;
+/// Transition options for <code>rasterEmissiveStrength</code>.
+@property (nonatomic, strong) TMBStyleTransition * _Nullable rasterEmissiveStrengthTransition;
 /// Fade duration when a new tile is added.
+/// Default value: 300. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable rasterFadeDuration;
 /// Rotates hues around the color wheel.
+/// Default value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable rasterHueRotate;
 /// Transition options for <code>rasterHueRotate</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable rasterHueRotateTransition;
 /// The opacity at which the image will be drawn.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable rasterOpacity;
 /// Transition options for <code>rasterOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable rasterOpacityTransition;
 /// The resampling/interpolation method to use for overscaling, also known as texture magnification filter
+/// Default value: “linear”.
 @property (nonatomic, strong) TMBValue * _Nullable rasterResampling;
 /// Increase or reduce the saturation of the image.
+/// Default value: 0. Value range: [-1, 1]
 @property (nonatomic, strong) TMBValue * _Nullable rasterSaturation;
 /// Transition options for <code>rasterSaturation</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable rasterSaturationTransition;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -6215,40 +6350,53 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBRasterRes
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#raster">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC15TMBRasterSource")
 @interface TMBRasterSource : NSObject <TMBSource>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
-/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>.
+/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>. Required if <code>tiles</code> is not provided.
 @property (nonatomic, copy) NSString * _Nullable url;
-/// An array of one or more tile source URLs, as in the TileJSON spec.
+/// An array of one or more tile source URLs, as in the TileJSON spec. Required if <code>url</code> is not provided.
 @property (nonatomic, copy) NSArray<NSString *> * _Nullable tiles;
 /// An array containing the longitude and latitude of the southwest and northeast corners of the source’s bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by Mapbox GL.
+/// Default value: [-180,-85.051129,180,85.051129].
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nullable bounds;
 /// Minimum zoom level for which tiles are available, as in the TileJSON spec.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minzoom;
 /// Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.
+/// Default value: 22.
 @property (nonatomic, strong) NSNumber * _Nullable maxzoom;
 /// The minimum visual size to display tiles for this layer. Only configurable for raster layers.
+/// Default value: 512.
 @property (nonatomic, strong) NSNumber * _Nullable tileSize;
 /// Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.
+/// Default value: “xyz”.
 @property (nonatomic, strong) TMBScheme * _Nullable scheme;
 /// Contains an attribution to be displayed when the map is shown to a user.
 @property (nonatomic, copy) NSString * _Nullable attribution;
 /// A setting to determine whether a source’s tiles are cached locally.
+/// Default value: false.
 @property (nonatomic, strong, getter=volatile, setter=setVolatile:) NSNumber * _Nullable volatile_;
-/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom. The default delta is 4.
+/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom.
+/// Default value: 4.
 @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
+/// This property defines a source-specific resource budget, either in tile units or in megabytes. Whenever the tile cache goes over the defined limit, the least recently used tile will be evicted from the in-memory cache. Note that the current implementation does not take into account resources allocated by the visible tiles.
+@property (nonatomic, strong) TMBTileCacheBudgetSize * _Nullable tileCacheBudget;
 /// Minimum tile update interval in seconds, which is used to throttle the tile update network requests. If the given source supports loading tiles from a server, sets the minimum tile update interval. Update network requests that are more frequent than the minimum tile update interval are suppressed.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minimumTileUpdateInterval;
 /// When a set of tiles for a current zoom level is being rendered and some of the ideal tiles that cover the screen are not yet loaded, parent tile could be used instead. This might introduce unwanted rendering side-effects, especially for raster tiles that are overscaled multiple times. This property sets the maximum limit for how much a parent tile can be overscaled.
 @property (nonatomic, strong) NSNumber * _Nullable maxOverscaleFactorForParentTiles;
 /// For the tiled sources, this property sets the tile requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading, parsing and rendering of the transient tiles and thus to improve the rendering performance, especially on low-end devices.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileRequestsDelay;
 /// For the tiled sources, this property sets the tile network requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading the transient tiles from the network and thus to avoid redundant network requests. Note that tile-network-requests-delay value is superseded with tile-requests-delay property value, if both are provided.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileNetworkRequestsDelay;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -6320,6 +6468,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBScheme * 
 /// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers-sky">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC11TMBSkyLayer")
 @interface TMBSkyLayer : NSObject <TMBLayer>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 /// Unique layer name
 @property (nonatomic, copy) NSString * _Nonnull id;
 /// Rendering type of this layer.
@@ -6333,29 +6482,38 @@ SWIFT_CLASS("_TtC13MapboxMapObjC11TMBSkyLayer")
 /// Whether this layer is displayed.
 @property (nonatomic, strong) TMBValue * _Nonnull visibility;
 /// A color used to tweak the main atmospheric scattering coefficients. Using white applies the default coefficients giving the natural blue color to the atmosphere. This color affects how heavily the corresponding wavelength is represented during scattering. The alpha channel describes the density of the atmosphere, with 1 maximum density and 0 no density.
+/// Default value: “white”.
 @property (nonatomic, strong) TMBValue * _Nullable skyAtmosphereColor;
 /// A color applied to the atmosphere sun halo. The alpha channel describes how strongly the sun halo is represented in an atmosphere sky layer.
+/// Default value: “white”.
 @property (nonatomic, strong) TMBValue * _Nullable skyAtmosphereHaloColor;
 /// Position of the sun center [a azimuthal angle, p polar angle]. The azimuthal angle indicates the position of the sun relative to 0 degree north, where degrees proceed clockwise. The polar angle indicates the height of the sun, where 0 degree is directly above, at zenith, and 90 degree at the horizon. When this property is ommitted, the sun center is directly inherited from the light position.
+/// Minimum value: [0,0]. Maximum value: [360,180].
 @property (nonatomic, strong) TMBValue * _Nullable skyAtmosphereSun;
 /// Intensity of the sun as a light source in the atmosphere (on a scale from 0 to a 100). Setting higher values will brighten up the sky.
+/// Default value: 10. Value range: [0, 100]
 @property (nonatomic, strong) TMBValue * _Nullable skyAtmosphereSunIntensity;
 /// Defines a radial color gradient with which to color the sky. The color values can be interpolated with an expression using <code>sky-radial-progress</code>. The range [0, 1] for the interpolant covers a radial distance (in degrees) of [0, <code>sky-gradient-radius</code>] centered at the position specified by <code>sky-gradient-center</code>.
+/// Default value: [“interpolate”,[“linear”],[“sky-radial-progress”],0.8,”#87ceeb”,1,“white”].
 @property (nonatomic, strong) TMBValue * _Nullable skyGradient;
 /// Position of the gradient center [a azimuthal angle, p polar angle]. The azimuthal angle indicates the position of the gradient center relative to 0 degree north, where degrees proceed clockwise. The polar angle indicates the height of the gradient center, where 0 degree is directly above, at zenith, and 90 degree at the horizon.
+/// Default value: [0,0]. Minimum value: [0,0]. Maximum value: [360,180].
 @property (nonatomic, strong) TMBValue * _Nullable skyGradientCenter;
 /// The angular distance (measured in degrees) from <code>sky-gradient-center</code> up to which the gradient extends. A value of 180 causes the gradient to wrap around to the opposite direction from <code>sky-gradient-center</code>.
+/// Default value: 90. Value range: [0, 180]
 @property (nonatomic, strong) TMBValue * _Nullable skyGradientRadius;
 /// The opacity of the entire sky layer.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable skyOpacity;
 /// Transition options for <code>skyOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable skyOpacityTransition;
 /// The type of the sky
+/// Default value: “atmosphere”.
 @property (nonatomic, strong) TMBValue * _Nullable skyType;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -6554,6 +6712,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBStyleURI 
 /// <a href="https://www.mapbox.com/mapbox-gl-style-spec/#layers-symbol">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC14TMBSymbolLayer")
 @interface TMBSymbolLayer : NSObject <TMBLayer>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 /// Unique layer name
 @property (nonatomic, copy) NSString * _Nonnull id;
 /// Rendering type of this layer.
@@ -6577,157 +6736,216 @@ SWIFT_CLASS("_TtC13MapboxMapObjC14TMBSymbolLayer")
 /// Whether this layer is displayed.
 @property (nonatomic, strong) TMBValue * _Nonnull visibility;
 /// If true, the icon will be visible even if it collides with other previously drawn symbols.
+/// Default value: false.
 @property (nonatomic, strong) TMBValue * _Nullable iconAllowOverlap;
 /// Part of the icon placed closest to the anchor.
+/// Default value: “center”.
 @property (nonatomic, strong) TMBValue * _Nullable iconAnchor;
 /// If true, other symbols can be visible even if they collide with the icon.
+/// Default value: false.
 @property (nonatomic, strong) TMBValue * _Nullable iconIgnorePlacement;
 /// Name of image in sprite to use for drawing an image background.
 @property (nonatomic, strong) TMBValue * _Nullable iconImage;
 /// If true, the icon may be flipped to prevent it from being rendered upside-down.
+/// Default value: false.
 @property (nonatomic, strong) TMBValue * _Nullable iconKeepUpright;
 /// Offset distance of icon from its anchor. Positive values indicate right and down, while negative values indicate left and up. Each component is multiplied by the value of <code>icon-size</code> to obtain the final offset in pixels. When combined with <code>icon-rotate</code> the offset will be as if the rotated direction was up.
+/// Default value: [0,0].
 @property (nonatomic, strong) TMBValue * _Nullable iconOffset;
 /// If true, text will display without their corresponding icons when the icon collides with other symbols and the text does not.
+/// Default value: false.
 @property (nonatomic, strong) TMBValue * _Nullable iconOptional;
 /// Size of the additional area around the icon bounding box used for detecting symbol collisions.
+/// Default value: 2. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable iconPadding;
 /// Orientation of icon when map is pitched.
+/// Default value: “auto”.
 @property (nonatomic, strong) TMBValue * _Nullable iconPitchAlignment;
 /// Rotates the icon clockwise.
+/// Default value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable iconRotate;
 /// In combination with <code>symbol-placement</code>, determines the rotation behavior of icons.
+/// Default value: “auto”.
 @property (nonatomic, strong) TMBValue * _Nullable iconRotationAlignment;
 /// Scales the original size of the icon by the provided factor. The new pixel size of the image will be the original pixel size multiplied by <code>icon-size</code>. 1 is the original size; 3 triples the size of the image.
+/// Default value: 1. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable iconSize;
 /// Scales the icon to fit around the associated text.
+/// Default value: “none”.
 @property (nonatomic, strong) TMBValue * _Nullable iconTextFit;
 /// Size of the additional area added to dimensions determined by <code>icon-text-fit</code>, in clockwise order: top, right, bottom, left.
+/// Default value: [0,0,0,0].
 @property (nonatomic, strong) TMBValue * _Nullable iconTextFitPadding;
 /// If true, the symbols will not cross tile edges to avoid mutual collisions. Recommended in layers that don’t have enough padding in the vector tile to prevent collisions, or if it is a point symbol layer placed after a line symbol layer. When using a client that supports global collision detection, like Mapbox GL JS version 0.42.0 or greater, enabling this property is not needed to prevent clipped labels at tile boundaries.
+/// Default value: false.
 @property (nonatomic, strong) TMBValue * _Nullable symbolAvoidEdges;
 /// Label placement relative to its geometry.
+/// Default value: “point”.
 @property (nonatomic, strong) TMBValue * _Nullable symbolPlacement;
 /// Sorts features in ascending order based on this value. Features with lower sort keys are drawn and placed first. When <code>icon-allow-overlap</code> or <code>text-allow-overlap</code> is <code>false</code>, features with a lower sort key will have priority during placement. When <code>icon-allow-overlap</code> or <code>text-allow-overlap</code> is set to <code>true</code>, features with a higher sort key will overlap over features with a lower sort key.
 @property (nonatomic, strong) TMBValue * _Nullable symbolSortKey;
 /// Distance between two symbol anchors.
+/// Default value: 250. Minimum value: 1.
 @property (nonatomic, strong) TMBValue * _Nullable symbolSpacing;
-/// Position symbol on buildings (both fill extrusions and models) roof tops. In order to have minimal impact on performance, this is supported only when <code>fill-extrusion-height</code> is not zoom-dependent and not edited after initial bucket creation. For fading in buildings when zooming in, fill-extrusion-vertical-scale should be used and symbols would raise with building roofs. Symbols are sorted by elevation, except in case when <code>viewport-y</code> sorting or <code>symbol-sort-key</code> are applied.
+/// Position symbol on buildings (both fill extrusions and models) rooftops. In order to have minimal impact on performance, this is supported only when <code>fill-extrusion-height</code> is not zoom-dependent and remains unchanged. For fading in buildings when zooming in, fill-extrusion-vertical-scale should be used and symbols would raise with building rooftops. Symbols are sorted by elevation, except in cases when <code>viewport-y</code> sorting or <code>symbol-sort-key</code> are applied.
+/// Default value: false.
 @property (nonatomic, strong) TMBValue * _Nullable symbolZElevate;
 /// Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use <code>symbol-sort-key</code>.
+/// Default value: “auto”.
 @property (nonatomic, strong) TMBValue * _Nullable symbolZOrder;
 /// If true, the text will be visible even if it collides with other previously drawn symbols.
+/// Default value: false.
 @property (nonatomic, strong) TMBValue * _Nullable textAllowOverlap;
 /// Part of the text placed closest to the anchor.
+/// Default value: “center”.
 @property (nonatomic, strong) TMBValue * _Nullable textAnchor;
 /// Value to use for a text label. If a plain <code>string</code> is provided, it will be treated as a <code>formatted</code> with default/inherited formatting options. SDF images are not supported in formatted text and will be ignored.
+/// Default value: “”.
 @property (nonatomic, strong) TMBValue * _Nullable textField;
 /// Font stack to use for displaying text.
 @property (nonatomic, strong) TMBValue * _Nullable textFont;
 /// If true, other symbols can be visible even if they collide with the text.
+/// Default value: false.
 @property (nonatomic, strong) TMBValue * _Nullable textIgnorePlacement;
 /// Text justification options.
+/// Default value: “center”.
 @property (nonatomic, strong) TMBValue * _Nullable textJustify;
 /// If true, the text may be flipped vertically to prevent it from being rendered upside-down.
+/// Default value: true.
 @property (nonatomic, strong) TMBValue * _Nullable textKeepUpright;
 /// Text tracking amount.
+/// Default value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable textLetterSpacing;
 /// Text leading value for multi-line text.
+/// Default value: 1.2.
 @property (nonatomic, strong) TMBValue * _Nullable textLineHeight;
 /// Maximum angle change between adjacent characters.
+/// Default value: 45.
 @property (nonatomic, strong) TMBValue * _Nullable textMaxAngle;
 /// The maximum line width for text wrapping.
+/// Default value: 10. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable textMaxWidth;
 /// Offset distance of text from its anchor. Positive values indicate right and down, while negative values indicate left and up. If used with text-variable-anchor, input values will be taken as absolute values. Offsets along the x- and y-axis will be applied automatically based on the anchor position.
+/// Default value: [0,0].
 @property (nonatomic, strong) TMBValue * _Nullable textOffset;
 /// If true, icons will display without their corresponding text when the text collides with other symbols and the icon does not.
+/// Default value: false.
 @property (nonatomic, strong) TMBValue * _Nullable textOptional;
 /// Size of the additional area around the text bounding box used for detecting symbol collisions.
+/// Default value: 2. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable textPadding;
 /// Orientation of text when map is pitched.
+/// Default value: “auto”.
 @property (nonatomic, strong) TMBValue * _Nullable textPitchAlignment;
 /// Radial offset of text, in the direction of the symbol’s anchor. Useful in combination with <code>text-variable-anchor</code>, which defaults to using the two-dimensional <code>text-offset</code> if present.
+/// Default value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable textRadialOffset;
 /// Rotates the text clockwise.
+/// Default value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable textRotate;
 /// In combination with <code>symbol-placement</code>, determines the rotation behavior of the individual glyphs forming the text.
+/// Default value: “auto”.
 @property (nonatomic, strong) TMBValue * _Nullable textRotationAlignment;
 /// Font size.
+/// Default value: 16. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable textSize;
 /// Specifies how to capitalize text, similar to the CSS <code>text-transform</code> property.
+/// Default value: “none”.
 @property (nonatomic, strong) TMBValue * _Nullable textTransform;
 /// To increase the chance of placing high-priority labels on the map, you can provide an array of <code>text-anchor</code> locations: the renderer will attempt to place the label at each location, in order, before moving onto the next label. Use <code>text-justify: auto</code> to choose justification based on anchor position. To apply an offset, use the <code>text-radial-offset</code> or the two-dimensional <code>text-offset</code>.
 @property (nonatomic, strong) TMBValue * _Nullable textVariableAnchor;
 /// The property allows control over a symbol’s orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single ‘vertical’ enum value. For symbol with point placement, the order of elements in an array define priority order for the placement of an orientation variant. For symbol with line placement, the default text writing mode is either [‘horizontal’, ‘vertical’] or [‘vertical’, ‘horizontal’], the order doesn’t affect the placement.
 @property (nonatomic, strong) TMBValue * _Nullable textWritingMode;
 /// The color of the icon. This can only be used with <a href="/help/troubleshooting/using-recolorable-images-in-mapbox-maps/">SDF icons</a>.
+/// Default value: “#000000”.
 @property (nonatomic, strong) TMBValue * _Nullable iconColor;
 /// Transition options for <code>iconColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable iconColorTransition;
-/// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when <code>lights</code> root property is defined.
+/// Increase or reduce the saturation of the symbol icon.
+/// Default value: 0. Value range: [-1, 1]
+@property (nonatomic, strong) TMBValue * _Nullable iconColorSaturation;
+/// Transition options for <code>iconColorSaturation</code>.
+@property (nonatomic, strong) TMBStyleTransition * _Nullable iconColorSaturationTransition;
+/// Controls the intensity of light emitted on the source features.
+/// Default value: 1. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable iconEmissiveStrength;
 /// Transition options for <code>iconEmissiveStrength</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable iconEmissiveStrengthTransition;
 /// Fade out the halo towards the outside.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable iconHaloBlur;
 /// Transition options for <code>iconHaloBlur</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable iconHaloBlurTransition;
 /// The color of the icon’s halo. Icon halos can only be used with <a href="/help/troubleshooting/using-recolorable-images-in-mapbox-maps/">SDF icons</a>.
+/// Default value: “rgba(0, 0, 0, 0)”.
 @property (nonatomic, strong) TMBValue * _Nullable iconHaloColor;
 /// Transition options for <code>iconHaloColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable iconHaloColorTransition;
 /// Distance of halo to the icon outline.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable iconHaloWidth;
 /// Transition options for <code>iconHaloWidth</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable iconHaloWidthTransition;
 /// Controls the transition progress between the image variants of icon-image. Zero means the first variant is used, one is the second, and in between they are blended together.
+/// Default value: 0. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable iconImageCrossFade;
 /// Transition options for <code>iconImageCrossFade</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable iconImageCrossFadeTransition;
 /// The opacity at which the icon will be drawn.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable iconOpacity;
 /// Transition options for <code>iconOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable iconOpacityTransition;
 /// Distance that the icon’s anchor is moved from its original placement. Positive values indicate right and down, while negative values indicate left and up.
+/// Default value: [0,0].
 @property (nonatomic, strong) TMBValue * _Nullable iconTranslate;
 /// Transition options for <code>iconTranslate</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable iconTranslateTransition;
 /// Controls the frame of reference for <code>icon-translate</code>.
+/// Default value: “map”.
 @property (nonatomic, strong) TMBValue * _Nullable iconTranslateAnchor;
 /// The color with which the text will be drawn.
+/// Default value: “#000000”.
 @property (nonatomic, strong) TMBValue * _Nullable textColor;
 /// Transition options for <code>textColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable textColorTransition;
-/// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when <code>lights</code> root property is defined.
+/// Controls the intensity of light emitted on the source features.
+/// Default value: 1. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable textEmissiveStrength;
 /// Transition options for <code>textEmissiveStrength</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable textEmissiveStrengthTransition;
 /// The halo’s fadeout distance towards the outside.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable textHaloBlur;
 /// Transition options for <code>textHaloBlur</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable textHaloBlurTransition;
 /// The color of the text’s halo, which helps it stand out from backgrounds.
+/// Default value: “rgba(0, 0, 0, 0)”.
 @property (nonatomic, strong) TMBValue * _Nullable textHaloColor;
 /// Transition options for <code>textHaloColor</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable textHaloColorTransition;
 /// Distance of halo to the font outline. Max text halo width is 1/4 of the font-size.
+/// Default value: 0. Minimum value: 0.
 @property (nonatomic, strong) TMBValue * _Nullable textHaloWidth;
 /// Transition options for <code>textHaloWidth</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable textHaloWidthTransition;
 /// The opacity at which the text will be drawn.
+/// Default value: 1. Value range: [0, 1]
 @property (nonatomic, strong) TMBValue * _Nullable textOpacity;
 /// Transition options for <code>textOpacity</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable textOpacityTransition;
 /// Distance that the text’s anchor is moved from its original placement. Positive values indicate right and down, while negative values indicate left and up.
+/// Default value: [0,0].
 @property (nonatomic, strong) TMBValue * _Nullable textTranslate;
 /// Transition options for <code>textTranslate</code>.
 @property (nonatomic, strong) TMBStyleTransition * _Nullable textTranslateTransition;
 /// Controls the frame of reference for <code>text-translate</code>.
+/// Default value: “map”.
 @property (nonatomic, strong) TMBValue * _Nullable textTranslateAnchor;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id source:(NSString * _Nonnull)source OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -6940,6 +7158,28 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TMBTextWriti
 @end
 
 
+
+/// Defines a TileCacheBudgetSize, which can be set as either a megabyte or tile count limit.
+/// Whenever tile cache goes over the defined limit
+/// the least recently used tile will be evicted from the in-memory cache
+/// To use, create a TileCacheBudgetSize and then either:
+/// (1) Set it for an individual source with with the tileCacheBudget property, or
+/// (2) Set if for the map with <code>MapboxMap/setTileCacheBudget(size:)</code>
+SWIFT_CLASS("_TtC13MapboxMapObjC22TMBTileCacheBudgetSize")
+@interface TMBTileCacheBudgetSize : NSObject
+/// A tile cache budget measured in tile units
+@property (nonatomic, readonly, strong) NSNumber * _Nullable tiles;
+/// A tile cache budget measured in megabyte units
+@property (nonatomic, readonly, strong) NSNumber * _Nullable megabytes;
++ (TMBTileCacheBudgetSize * _Nonnull)inTiles:(NSInteger)tiles SWIFT_WARN_UNUSED_RESULT;
++ (TMBTileCacheBudgetSize * _Nonnull)inMegabytes:(NSInteger)megabytes SWIFT_WARN_UNUSED_RESULT;
+/// The TileCacheBudget formatted for core
+@property (nonatomic, readonly, strong) MBMTileCacheBudget * _Nonnull coreTileCacheBudget;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 @class MBXTileRegionLoadProgress;
 @class MBXTileRegion;
 
@@ -6974,139 +7214,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@class TMBVisibility;
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)visibility:(TMBVisibility * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textWritingMode:(TMBTextWritingMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)symbolZOrder:(TMBSymbolZOrder * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)skyType:(TMBSkyType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textRotationAlignment:(TMBTextRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconRotationAlignment:(TMBIconRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textTransform:(TMBTextTransform * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)fillTranslateAnchor:(TMBFillTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)modelType:(TMBModelType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)modelScaleMode:(TMBModelScaleMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lineTranslateAnchor:(TMBLineTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)lightType:(TMBLightType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)textTranslateAnchor:(TMBTextTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)layerType:(TMBLayerType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)rasterResampling:(TMBRasterResampling * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circlePitchAlignment:(TMBCirclePitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7116,7 +7224,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circlePitchScale:(TMBCirclePitchScale * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)textPitchAlignment:(TMBTextPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7126,7 +7234,7 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)hillshadeIlluminationAnchor:(TMBHillshadeIlluminationAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7136,12 +7244,22 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)circlePitchScale:(TMBCirclePitchScale * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)symbolZOrder:(TMBSymbolZOrder * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)styleURI:(TMBStyleURI * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)symbolPlacement:(TMBSymbolPlacement * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7151,12 +7269,134 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
-+ (TMBValue * _Nonnull)lineCap:(TMBLineCap * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
++ (TMBValue * _Nonnull)textRotationAlignment:(TMBTextRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)skyType:(TMBSkyType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)rasterResampling:(TMBRasterResampling * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconRotationAlignment:(TMBIconRotationAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)circlePitchAlignment:(TMBCirclePitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)modelScaleMode:(TMBModelScaleMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
 + (TMBValue * _Nonnull)expressionOperator:(TMBExpressionOperator * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconPitchAlignment:(TMBIconPitchAlignment * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)anchor:(TMBAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)sourceType:(TMBSourceType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconAnchor:(TMBIconAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textTranslateAnchor:(TMBTextTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lineJoin:(TMBLineJoin * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)styleProjectionName:(TMBStyleProjectionName * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lineCap:(TMBLineCap * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textTransform:(TMBTextTransform * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class TMBVisibility;
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)visibility:(TMBVisibility * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)circleTranslateAnchor:(TMBCircleTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)layerType:(TMBLayerType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)textWritingMode:(TMBTextWritingMode * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)iconTranslateAnchor:(TMBIconTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)modelType:(TMBModelType * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)encoding:(TMBEncoding * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)fillTranslateAnchor:(TMBFillTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)lineTranslateAnchor:(TMBLineTranslateAnchor * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+
+@interface TMBValue (SWIFT_EXTENSION(MapboxMapObjC))
++ (TMBValue * _Nonnull)scheme:(TMBScheme * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7202,40 +7442,52 @@ SWIFT_CLASS("_TtC13MapboxMapObjC8TMBValue")
 /// <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/#vector">Mapbox Style Specification</a>
 SWIFT_CLASS("_TtC13MapboxMapObjC15TMBVectorSource")
 @interface TMBVectorSource : NSObject <TMBSource>
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, strong) TMBSourceType * _Nonnull type;
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
-/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>.
+/// A URL to a TileJSON resource. Supported protocols are <code>http:</code>, <code>https:</code>, and <code>mapbox://<Tileset ID></code>. Required if <code>tiles</code> is not provided.
 @property (nonatomic, copy) NSString * _Nullable url;
-/// An array of one or more tile source URLs, as in the TileJSON spec.
+/// An array of one or more tile source URLs, as in the TileJSON spec. Required if <code>url</code> is not provided.
 @property (nonatomic, copy) NSArray<NSString *> * _Nullable tiles;
 /// An array containing the longitude and latitude of the southwest and northeast corners of the source’s bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by Mapbox GL.
+/// Default value: [-180,-85.051129,180,85.051129].
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nullable bounds;
 /// Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.
+/// Default value: “xyz”.
 @property (nonatomic, strong) TMBScheme * _Nullable scheme;
 /// Minimum zoom level for which tiles are available, as in the TileJSON spec.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minzoom;
 /// Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.
+/// Default value: 22.
 @property (nonatomic, strong) NSNumber * _Nullable maxzoom;
 /// Contains an attribution to be displayed when the map is shown to a user.
 @property (nonatomic, copy) NSString * _Nullable attribution;
 /// A property to use as a feature id (for feature state). Either a property name, or an object of the form <code>{<sourceLayer>: <propertyName>}</code>. If specified as a string for a vector tile source, the same property is used across all its source layers. If specified as an object only specified source layers will have id overriden, others will fallback to original feature id
 @property (nonatomic, strong) TMBPromoteId * _Nullable promoteId;
 /// A setting to determine whether a source’s tiles are cached locally.
+/// Default value: false.
 @property (nonatomic, strong, getter=volatile, setter=setVolatile:) NSNumber * _Nullable volatile_;
-/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom. The default delta is 4.
+/// When loading a map, if PrefetchZoomDelta is set to any number greater than 0, the map will first request a tile at zoom level lower than zoom - delta, but so that the zoom level is multiple of delta, in an attempt to display a full map at lower resolution as quick as possible. It will get clamped at the tile source minimum zoom.
+/// Default value: 4.
 @property (nonatomic, strong) NSNumber * _Nullable prefetchZoomDelta;
+/// This property defines a source-specific resource budget, either in tile units or in megabytes. Whenever the tile cache goes over the defined limit, the least recently used tile will be evicted from the in-memory cache. Note that the current implementation does not take into account resources allocated by the visible tiles.
+@property (nonatomic, strong) TMBTileCacheBudgetSize * _Nullable tileCacheBudget;
 /// Minimum tile update interval in seconds, which is used to throttle the tile update network requests. If the given source supports loading tiles from a server, sets the minimum tile update interval. Update network requests that are more frequent than the minimum tile update interval are suppressed.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable minimumTileUpdateInterval;
 /// When a set of tiles for a current zoom level is being rendered and some of the ideal tiles that cover the screen are not yet loaded, parent tile could be used instead. This might introduce unwanted rendering side-effects, especially for raster tiles that are overscaled multiple times. This property sets the maximum limit for how much a parent tile can be overscaled.
 @property (nonatomic, strong) NSNumber * _Nullable maxOverscaleFactorForParentTiles;
 /// For the tiled sources, this property sets the tile requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading, parsing and rendering of the transient tiles and thus to improve the rendering performance, especially on low-end devices.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileRequestsDelay;
 /// For the tiled sources, this property sets the tile network requests delay. The given delay comes in action only during an ongoing animation or gestures. It helps to avoid loading the transient tiles from the network and thus to avoid redundant network requests. Note that tile-network-requests-delay value is superseded with tile-requests-delay property value, if both are provided.
+/// Default value: 0.
 @property (nonatomic, strong) NSNumber * _Nullable tileNetworkRequestsDelay;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 @class MBMViewAnnotationAnchorConfig;
