@@ -7005,7 +7005,7 @@ namespace MapboxMapsObjC
         TMBTileCacheBudgetSize InMegabytes(int megabytes);
 
         // @property (nonatomic, readonly, strong) NSNumber * _Nullable tiles;
-        [NullAllowed, Export("coreTileCacheBudget", ArgumentSemantic.Strong)]
+        [NullAllowed, Export("tiles", ArgumentSemantic.Strong)]
         NSNumber Tiles { get; }
 
         // @property (nonatomic, readonly, strong) NSNumber * _Nullable megabytes;
