@@ -19,7 +19,7 @@ __attribute__((visibility ("default")))
 
 /**
  * The fastest rate at which the application will receive location updates,
- * which migth be faster than the `Interval`. Unlike `Interval` this parameter
+ * which might be faster than the `Interval`. Unlike `Interval` this parameter
  * is exact.
  */
 @property (nonatomic, readonly, nullable) NSNumber *minimumInterval;

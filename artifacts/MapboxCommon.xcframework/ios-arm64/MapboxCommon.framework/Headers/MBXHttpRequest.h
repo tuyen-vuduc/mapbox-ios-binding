@@ -1,8 +1,8 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBXHttpMethod.h"
-#import "MBXNetworkRestriction.h"
+#import <MapboxCommon/MBXHttpMethod.h>
+#import <MapboxCommon/MBXNetworkRestriction.h>
 
 @class MBXSdkInformation;
 

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MBXCoordinate2D_h
+#define MBXCoordinate2D_h
 
 #import <CoreLocation/CoreLocation.h>
 
@@ -18,3 +19,5 @@ __attribute__((visibility ("default")))
 // This class provides custom init which should be called
 + (nonnull instancetype)new NS_UNAVAILABLE;
 @end
+
+#endif /* MBXCoordinate2D_h */

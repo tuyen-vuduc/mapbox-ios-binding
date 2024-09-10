@@ -1,8 +1,8 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBXHttpServiceInterceptorRequestContinuation.h"
-#import "MBXHttpServiceInterceptorResponseContinuation.h"
+#import <MapboxCommon/MBXHttpServiceInterceptorRequestContinuation.h>
+#import <MapboxCommon/MBXHttpServiceInterceptorResponseContinuation.h>
 
 @class MBXHttpRequest;
 @class MBXHttpResponse;

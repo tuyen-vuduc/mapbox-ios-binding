@@ -1,3 +1,6 @@
+#ifndef MBXGeometry_h
+#define MBXGeometry_h
+
 #import <Foundation/Foundation.h>
 
 // NOLINTNEXTLINE(modernize-use-using)
@@ -34,3 +37,5 @@ __attribute__((visibility ("default")))
 -(nullable NSArray<MBXGeometry*> *)extractGeometriesArray;
 
 @end
+
+#endif /* MBXGeometry_h */

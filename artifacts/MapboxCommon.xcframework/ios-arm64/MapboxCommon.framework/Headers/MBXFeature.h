@@ -1,3 +1,6 @@
+#ifndef MBXFeature_h
+#define MBXFeature_h
+
 #import <Foundation/Foundation.h>
 
 @class MBXGeometry;
@@ -21,3 +24,5 @@ __attribute__((visibility ("default")))
 + (nonnull instancetype)new NS_UNAVAILABLE;
 
 @end
+
+#endif /* MBXFeature_h */

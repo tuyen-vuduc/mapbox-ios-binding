@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBXLocationErrorCode.h"
+#import <MapboxCommon/MBXLocationErrorCode.h>
 
 /** Error code with brief explanation. */
 NS_SWIFT_NAME(LocationError)

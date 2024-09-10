@@ -1,7 +1,6 @@
 // This file is generated and will be overwritten automatically.
 
 #import "MBXTileDataDomain.h"
-#import "MBXTileStoreAmbientCacheType.h"
 #import "MBXTileRegionErrorType.h"
 #import "MBXCacheClearingErrorType.h"
 #import "MBXTileRegion.h"

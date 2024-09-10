@@ -1,9 +1,9 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMRequestLoadingMethodType.h"
-#import "MBMRequestPriorityType.h"
-#import "MBMRequestResourceType.h"
+#import <MapboxCoreMaps/MBMRequestLoadingMethodType.h>
+#import <MapboxCoreMaps/MBMRequestPriorityType.h>
+#import <MapboxCoreMaps/MBMRequestResourceType.h>
 
 /** The structure defines the information about the resource request. */
 NS_SWIFT_NAME(RequestInfo)

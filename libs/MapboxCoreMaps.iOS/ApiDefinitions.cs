@@ -8,6 +8,72 @@ using MapboxCommon;
 
 namespace MapboxCoreMaps
 {
+    // @protocol MBMCustomRasterSourceTileRenderer
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface MBMCustomRasterSourceTileRenderer
+    {
+        // - (void)initializeForDevice:(uint64_t)device
+        //         colorPixelFormat:(uint64_t)colorPixelFormat;
+        [Export("initializeForDevice:colorPixelFormat:")]
+        void InitializeForDevice(long device, long colorPixelFormat);
+        
+        // - (BOOL)isTileRenderableForTileID:(nonnull MBMCanonicalTileID *)tileID
+        //                         status:(MBMCustomRasterSourceTileStatus)status;
+        [Export("isTileRenderableForTileID:status:")]
+        void IsTileRenderableForTileID(MBMCanonicalTileID tileID, MBMCustomRasterSourceTileStatus status);
+        
+        // - (void)prerenderForParameters:(nonnull MBMCustomLayerRenderParameters *)parameters
+        //                 commandBuffer:(uint64_t)commandBuffer;
+        [Export("prerenderForParameters:commandBuffer:")]
+        void PrerenderForParameters(MBMCustomLayerRenderParameters parameters, long commandBuffer);
+        
+        // - (void)renderToTileForTileID:(nonnull MBMCanonicalTileID *)tileID
+        //             commandEncoder:(uint64_t)commandEncoder;
+        [Export("renderToTileForTileID:commandEncoder:")]
+        void renderToTileForTileID(MBMCanonicalTileID parameters, long commandEncoder);
+        
+        // - (void)deinitialize;
+        [Export("deinitialize")]
+        void Deinitialize();
+    }
+
+    partial interface IMBMCustomRasterSourceTileRenderer {}
+
+    // @interface MBMCustomRasterSourceClient : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface MBMCustomRasterSourceClient
+	{
+        // + (nonnull instancetype)fromCustomRasterSourceTileStatusChangedCallback:(nonnull MBMCustomRasterSourceTileStatusChangedCallback)value;
+		[Static, Export ("fromCustomRasterSourceTileStatusChangedCallback:")]
+		NativeHandle FromCustomRasterSourceTileStatusChangedCallback (MBMCustomRasterSourceTileStatusChangedCallback value);
+
+        // + (nonnull instancetype)fromCustomRasterSourceTileRenderer:(nonnull id<MBMCustomRasterSourceTileRenderer>)value;
+        [Static, Export ("fromCustomRasterSourceTileRenderer:")]
+		NativeHandle FromCustomRasterSourceTileRenderer (IMBMCustomRasterSourceTileRenderer value);
+
+        // - (BOOL)isCustomRasterSourceTileStatusChangedCallback;
+        [Export("isCustomRasterSourceTileStatusChangedCallback")]
+        bool IsCustomRasterSourceTileStatusChangedCallback();
+
+        // - (BOOL)isCustomRasterSourceTileRenderer;
+        [Export("isCustomRasterSourceTileRenderer")]
+        bool IsCustomRasterSourceTileRenderer();
+
+        // - (nonnull MBMCustomRasterSourceTileStatusChangedCallback)getCustomRasterSourceTileStatusChangedCallback __attribute((ns_returns_retained));
+        [Export("getCustomRasterSourceTileStatusChangedCallback")]
+        MBMCustomRasterSourceTileStatusChangedCallback GetCustomRasterSourceTileStatusChangedCallback();
+
+        // - (nonnull id<MBMCustomRasterSourceTileRenderer>)getCustomRasterSourceTileRenderer __attribute((ns_returns_retained));
+        [Export("getCustomRasterSourceTileRenderer")]
+        IMBMCustomRasterSourceTileRenderer GetCustomRasterSourceTileRenderer();
+
+        // @property (nonatomic, readonly) MBMCustomRasterSourceClientType type;
+		[Export ("type")]
+		MBMCustomRasterSourceClientType Type { get; }
+    }
+
     // typedef void (^MBMCustomRasterSourceTileStatusChangedCallback)(MBMCanonicalTileID * _Nonnull tileId, MBMCustomRasterSourceTileStatus status); 
     delegate void MBMCustomRasterSourceTileStatusChangedCallback(MBMCanonicalTileID tileID, MBMCustomRasterSourceTileStatus status);
     
@@ -1776,21 +1842,20 @@ namespace MapboxCoreMaps
 	[DisableDefaultCtor]
 	interface MBMCustomRasterSourceOptions
 	{
-		// -(instancetype _Nonnull)initWithFetchTileFunction:(MBMTileFunctionCallback _Nonnull)fetchTileFunction cancelTileFunction:(MBMTileFunctionCallback _Nonnull)cancelTileFunction;
-		[Export ("initWithFetchTileFunction:cancelTileFunction:")]
-		NativeHandle Constructor (MBMTileFunctionCallback fetchTileFunction, MBMTileFunctionCallback cancelTileFunction);
+		// - (nonnull instancetype)initWithClientCallback:(nonnull MBMCustomRasterSourceClient *)clientCallback;
+		[Export ("initWithClientCallback:")]
+		NativeHandle Constructor (MBMCustomRasterSourceClient clientCallback);
 
-		// -(instancetype _Nonnull)initWithFetchTileFunction:(MBMTileFunctionCallback _Nonnull)fetchTileFunction cancelTileFunction:(MBMTileFunctionCallback _Nonnull)cancelTileFunction minZoom:(uint8_t)minZoom maxZoom:(uint8_t)maxZoom tileSize:(uint16_t)tileSize;
-		[Export ("initWithFetchTileFunction:cancelTileFunction:minZoom:maxZoom:tileSize:")]
-		NativeHandle Constructor (MBMTileFunctionCallback fetchTileFunction, MBMTileFunctionCallback cancelTileFunction, byte minZoom, byte maxZoom, ushort tileSize);
+		// - (nonnull instancetype)initWithClientCallback:(nonnull MBMCustomRasterSourceClient *)clientCallback
+        //                               minZoom:(uint8_t)minZoom
+        //                               maxZoom:(uint8_t)maxZoom
+        //                              tileSize:(uint16_t)tileSize;
+		[Export ("initWithClientCallback:minZoom:maxZoom:tileSize:")]
+		NativeHandle Constructor (MBMCustomRasterSourceClient clientCallback, byte minZoom, byte maxZoom, ushort tileSize);
 
-		// @property (readonly, nonatomic) MBMTileFunctionCallback _Nonnull fetchTileFunction;
-		[Export ("fetchTileFunction")]
-		MBMTileFunctionCallback FetchTileFunction { get; }
-
-		// @property (readonly, nonatomic) MBMTileFunctionCallback _Nonnull cancelTileFunction;
-		[Export ("cancelTileFunction")]
-		MBMTileFunctionCallback CancelTileFunction { get; }
+		// @property (nonatomic, readonly, nonnull) MBMCustomRasterSourceClient *clientCallback;
+		[Export ("clientCallback")]
+		MBMCustomRasterSourceClient ClientCallback { get; }
 
 		// @property (readonly, nonatomic) uint8_t minZoom;
 		[Export ("minZoom")]

@@ -1,14 +1,15 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBXTileDataDomain.h"
-#import "MBXTileRegionEstimateProgressCallback.h"
-#import "MBXTileRegionLoadProgressCallback.h"
+#import <MapboxCommon/MBXTileDataDomain.h>
+#import <MapboxCommon/MBXTileRegionEstimateProgressCallback.h>
+#import <MapboxCommon/MBXTileRegionLoadProgressCallback.h>
 
 @class MBXResourceDescription;
 @class MBXResourceLoadOptions;
 @class MBXTileRegionEstimateOptions;
 @class MBXTileRegionLoadOptions;
+@class MBXTileStoreAmbientCacheFilterOptions;
 @class MBXTilesetDescriptor;
 @protocol MBXCancelable;
 @protocol MBXTileStoreObserver;
