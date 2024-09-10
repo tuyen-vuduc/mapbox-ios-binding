@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBXSettingsServiceStorageType.h"
+#import <MapboxCommon/MBXSettingsServiceStorageType.h>
 
 @class MBXSettingsService;
 

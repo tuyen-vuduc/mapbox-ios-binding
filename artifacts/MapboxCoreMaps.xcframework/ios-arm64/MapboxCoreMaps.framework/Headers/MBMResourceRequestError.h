@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMRequestErrorType.h"
+#import <MapboxCoreMaps/MBMRequestErrorType.h>
 
 /** The structure defines the information about errors that may occur during a resource request. */
 NS_SWIFT_NAME(ResourceRequestError)

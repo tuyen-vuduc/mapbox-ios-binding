@@ -5,6 +5,13 @@ using ObjCRuntime;
 
 namespace MapboxCoreMaps
 {
+    [Native]
+	public enum MBMCustomRasterSourceClientType : long
+    {
+        CustomRasterSourceTileStatusChangedCallback,
+        CustomRasterSourceTileRenderer,
+    }
+
 	[Native]
 	public enum MBMCustomRasterSourceTileStatus : long
     {

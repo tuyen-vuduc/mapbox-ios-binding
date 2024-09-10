@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBXCacheClearingErrorType.h"
+#import <MapboxCommon/MBXCacheClearingErrorType.h>
 
 /** Describes a cache clearing error. */
 NS_SWIFT_NAME(CacheClearingError)

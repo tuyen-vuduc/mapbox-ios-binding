@@ -1,7 +1,8 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMCustomRasterSourceTileStatusChangedCallback.h"
+
+@class MBMCustomRasterSourceClient;
 
 /** Options for custom raster source. */
 NS_SWIFT_NAME(CustomRasterSourceOptions)
@@ -14,15 +15,24 @@ __attribute__((visibility ("default")))
 // This class provides custom init which should be called
 + (nonnull instancetype)new NS_UNAVAILABLE;
 
-- (nonnull instancetype)initWithTileStatusChangedFunction:(nonnull MBMCustomRasterSourceTileStatusChangedCallback)tileStatusChangedFunction;
+- (nonnull instancetype)initWithClientCallback:(nonnull MBMCustomRasterSourceClient *)clientCallback;
 
-- (nonnull instancetype)initWithTileStatusChangedFunction:(nonnull MBMCustomRasterSourceTileStatusChangedCallback)tileStatusChangedFunction
-                                                  minZoom:(uint8_t)minZoom
-                                                  maxZoom:(uint8_t)maxZoom
-                                                 tileSize:(uint16_t)tileSize;
+- (nonnull instancetype)initWithClientCallback:(nonnull MBMCustomRasterSourceClient *)clientCallback
+                                       minZoom:(uint8_t)minZoom
+                                       maxZoom:(uint8_t)maxZoom
+                                      tileSize:(uint16_t)tileSize;
 
-/** The callback with notification about tile status change. */
-@property (nonatomic, readonly, nonnull) MBMCustomRasterSourceTileStatusChangedCallback tileStatusChangedFunction;
+/**
+ * The client callback.
+ *
+ * Custom raster sourtce can be configured for either direct or asynchronous rendering:
+ * When `CustomRasterSourceTileStatusChangedCallback` instance is provided, rendering is asynchronous, and
+ * the client should use setStyleCustomRasterSourceTileData() API to provide the tile data.
+ *
+ * When `CustomRasterSourceTileRenderer` instance is provided, rendering is direct, and the client should
+ * render to the tile from within the `CustomRasterSourceTileRenderer.renderToTile()` method.
+ */
+@property (nonatomic, readonly, nonnull) MBMCustomRasterSourceClient *clientCallback;
 
 /**
  * A minimum zoom level, at which to create vector tiles.

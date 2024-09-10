@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBXAccuracyLevel.h"
+#import <MapboxCommon/MBXAccuracyLevel.h>
 
 @class MBXIntervalSettings;
 

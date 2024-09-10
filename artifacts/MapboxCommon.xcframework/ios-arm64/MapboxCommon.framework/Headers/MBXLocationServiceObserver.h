@@ -1,8 +1,8 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBXAccuracyAuthorization.h"
-#import "MBXPermissionStatus.h"
+#import <MapboxCommon/MBXAccuracyAuthorization.h>
+#import <MapboxCommon/MBXPermissionStatus.h>
 
 /** Observers for getting updates from LocationService. */
 NS_SWIFT_NAME(LocationServiceObserver)

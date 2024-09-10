@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBMSourceDataLoadedType.h"
+#import <MapboxCoreMaps/MBMSourceDataLoadedType.h>
 
 @class MBMCanonicalTileID;
 @class MBMEventTimeInterval;

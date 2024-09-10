@@ -1,7 +1,7 @@
 // This file is generated and will be overwritten automatically.
 
 #import <Foundation/Foundation.h>
-#import "MBXLocationProvider.h"
+#import <MapboxCommon/MBXLocationProvider.h>
 
 /** Location provider specialisation that provides real-time locations generated from the device */
 NS_SWIFT_NAME(DeviceLocationProvider)
