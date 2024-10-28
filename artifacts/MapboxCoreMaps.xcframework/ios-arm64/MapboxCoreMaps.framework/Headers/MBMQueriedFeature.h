@@ -3,6 +3,8 @@
 #import <Foundation/Foundation.h>
 @class MBXFeature;
 
+@class MBMFeaturesetFeatureId;
+
 /** Represents queried feature that is returned through `QueriedRenderedFeature` or `QueriedSourceFeature` */
 NS_SWIFT_NAME(QueriedFeature)
 __attribute__((visibility ("default")))
@@ -14,10 +16,6 @@ __attribute__((visibility ("default")))
 // This class provides custom init which should be called
 + (nonnull instancetype)new NS_UNAVAILABLE;
 
-- (nonnull instancetype)initWithFeature:(nonnull MBXFeature *)feature
-                                 source:(nonnull NSString *)source
-                            sourceLayer:(nullable NSString *)sourceLayer
-                                  state:(nonnull id)state NS_REFINED_FOR_SWIFT;
 
 /** Feature returned by the query. */
 @property (nonatomic, readonly, nonnull) MBXFeature *feature NS_REFINED_FOR_SWIFT;

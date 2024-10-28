@@ -3,6 +3,7 @@
 #import <MapboxCoreMaps/FreeCameraOptions.h>
 #import <MapboxCoreMaps/GlyphsRasterization.h>
 #import <MapboxCoreMaps/Image.h>
+#import <MapboxCoreMaps/Interactions.h>
 #import <MapboxCoreMaps/Map.h>
 #import <MapboxCoreMaps/MapConstants.h>
 #import <MapboxCoreMaps/MapRecorder.h>

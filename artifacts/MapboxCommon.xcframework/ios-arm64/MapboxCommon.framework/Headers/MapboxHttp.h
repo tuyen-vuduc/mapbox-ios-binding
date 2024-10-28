@@ -12,5 +12,6 @@
 #import "MBXHttpResponseCallback.h"
 #import "MBXHttpServiceInterceptorRequestContinuation.h"
 #import "MBXHttpServiceInterceptorResponseContinuation.h"
+#import "MBXHttpServiceCancellationCallback.h"
 #import "MBXHttpRequestOrResponse.h"
 #import "MBXHttpRequestFlags.h"

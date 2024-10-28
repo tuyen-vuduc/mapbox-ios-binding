@@ -2,6 +2,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class MBMFeaturesetQueryTarget;
 @class MBMQueriedFeature;
 
 /**
@@ -18,7 +19,6 @@ __attribute__((visibility ("default")))
 // This class provides custom init which should be called
 + (nonnull instancetype)new NS_UNAVAILABLE;
 
-- (nonnull instancetype)initWithQueriedFeature:(nonnull MBMQueriedFeature *)queriedFeature NS_REFINED_FOR_SWIFT;
 
 /** Feature returned by the query. */
 @property (nonatomic, readonly, nonnull) MBMQueriedFeature *queriedFeature;

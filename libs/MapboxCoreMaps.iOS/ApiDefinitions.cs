@@ -8,6 +8,33 @@ using MapboxCommon;
 
 namespace MapboxCoreMaps
 {
+    // @interface MBMFeaturesetDescriptor : NSObject
+    [BaseType(typeof(NSObject))]
+    interface MBMFeaturesetDescriptor
+    {
+        // - (nonnull instancetype)initWithFeaturesetId:(nullable NSString *)featuresetId
+        //                                     importId:(nullable NSString *)importId
+        //                                     layerId:(nullable NSString *)layerId NS_REFINED_FOR_SWIFT;
+        [Export("initWithFeaturesetId:importId:layerId:")]
+        IntPtr Constructor([NullAllowed] string featuresetId, [NullAllowed] string importId, [NullAllowed] string layerId);
+
+        // @property (nonatomic, readonly, nullable, copy) NSString *featuresetId;
+        [Export("featuresetId")]
+        string FeaturesetId { get; }
+
+        // @property (nonatomic, readonly, nullable, copy) NSString *importId;
+        [Export("importId")]
+        string ImportId { get; }
+
+        // @property (nonatomic, readonly, nullable, copy) NSString *layerId;
+        [Export("layerId")]
+        string LayerId { get; }
+
+        // - (BOOL)isEqualToFeaturesetDescriptor:(nonnull MBMFeaturesetDescriptor *)other;
+        [Export("isEqualToFeaturesetDescriptor:")]
+        bool IsEqualToFeaturesetDescriptor(MBMFeaturesetDescriptor other);
+    }
+
     // @protocol MBMCustomRasterSourceTileRenderer
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
@@ -574,10 +601,6 @@ namespace MapboxCoreMaps
 	[DisableDefaultCtor]
 	interface MBMQueriedRenderedFeature
 	{
-		// -(instancetype _Nonnull)initWithQueriedFeature:(MBMQueriedFeature * _Nonnull)queriedFeature layers:(NSArray<NSString *> * _Nonnull)layers __attribute__((swift_private));
-		[Export ("initWithQueriedFeature:layers:")]
-		NativeHandle Constructor (MBMQueriedFeature queriedFeature, string[] layers);
-
 		// @property (readonly, nonatomic) MBMQueriedFeature * _Nonnull queriedFeature;
 		[Export ("queriedFeature")]
 		MBMQueriedFeature QueriedFeature { get; }
@@ -592,10 +615,6 @@ namespace MapboxCoreMaps
 	[DisableDefaultCtor]
 	interface MBMQueriedSourceFeature
 	{
-		// -(instancetype _Nonnull)initWithQueriedFeature:(MBMQueriedFeature * _Nonnull)queriedFeature __attribute__((swift_private));
-		[Export ("initWithQueriedFeature:")]
-		NativeHandle Constructor (MBMQueriedFeature queriedFeature);
-
 		// @property (readonly, nonatomic) MBMQueriedFeature * _Nonnull queriedFeature;
 		[Export ("queriedFeature")]
 		MBMQueriedFeature QueriedFeature { get; }

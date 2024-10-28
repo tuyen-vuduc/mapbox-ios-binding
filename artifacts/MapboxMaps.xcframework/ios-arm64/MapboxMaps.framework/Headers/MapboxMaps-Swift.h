@@ -307,13 +307,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
-SWIFT_CLASS("_TtC10MapboxMaps26AnnotationOrchestratorImpl")
-@interface AnnotationOrchestratorImpl : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
 SWIFT_CLASS("_TtC10MapboxMaps14GestureHandler")
 @interface GestureHandler : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -430,6 +423,7 @@ SWIFT_CLASS("_TtC10MapboxMaps19EmptyCustomRenderer")
 
 
 
+
 @interface MBMGlyphsRasterizationOptions (SWIFT_EXTENSION(MapboxMaps))
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly) NSUInteger hash;
@@ -446,6 +440,7 @@ SWIFT_CLASS("_TtC10MapboxMaps18InfoButtonOrnament")
 - (void)infoTapped;
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 @end
+
 
 
 SWIFT_CLASS("_TtC10MapboxMaps35InterruptDecelerationGestureHandler")
@@ -471,8 +466,7 @@ SWIFT_CLASS("_TtC10MapboxMaps8LogoView")
 
 
 SWIFT_CLASS("_TtC10MapboxMaps23LongPressGestureHandler")
-@interface LongPressGestureHandler : NSObject <UIGestureRecognizerDelegate>
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@interface LongPressGestureHandler : GestureHandler <UIGestureRecognizerDelegate>
 - (BOOL)gestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer * _Nonnull)otherGestureRecognizer SWIFT_WARN_UNUSED_RESULT;
 @end
 

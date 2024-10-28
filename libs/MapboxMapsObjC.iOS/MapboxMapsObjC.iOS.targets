@@ -2,7 +2,7 @@
 <Project>
 	<PropertyGroup>
 		<_MapboxMapsObjCFileId>1Vjj79RlnXLeHFUbVYpEN0dbAsCY1CcvY</_MapboxMapsObjCFileId>
-		<_MapboxMapsObjCVersion>11.6.0</_MapboxMapsObjCVersion>
+		<_MapboxMapsObjCVersion>11.7.1</_MapboxMapsObjCVersion>
 		<_MapboxMapsObjCNugetSuffix></_MapboxMapsObjCNugetSuffix>
 		<_MapboxMapsObjCAssemblyName>MapboxMapsObjC.iOS, Version=$(_MapboxMapsObjCVersion), Culture=neutral, PublicKeyToken=null </_MapboxMapsObjCAssemblyName>
 		<_MapboxMapsObjCItemsFolder>MapboxMapsObjC-$(_MapboxMapsObjCVersion)$(_MapboxMapsObjCNugetSuffix)</_MapboxMapsObjCItemsFolder>

@@ -354,6 +354,9 @@ namespace MapboxCommon
 		MBXHttpRequest Request { get; }
 	}
 
+    // typedef void (^MBXHttpServiceCancellationCallback)(uint64_t id_, MBXHttpRequest * _Nonnull request); // NOLINT(modernize-use-using)
+    delegate void MBXHttpServiceCancellationCallback (ulong id_, MBXHttpRequest request);
+
 	// @interface MBXHttpServiceFactory : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
@@ -363,6 +366,11 @@ namespace MapboxCommon
 		[Static]
 		[Export ("setHttpServiceInterceptorForInterceptor:")]
 		void SetHttpServiceInterceptorForInterceptor ([NullAllowed] MBXHttpServiceInterceptorInterface interceptor);
+
+        // + (nonnull id<MBXCancelable>)setCancellationCallbackForCallback:(nonnull MBXHttpServiceCancellationCallback)callback __attribute((ns_returns_retained));
+        [Static]
+		[Export ("setCancellationCallbackForCallback:")]
+        IMBXCancelable setCancellationCallbackForCallback (MBXHttpServiceCancellationCallback interceptor);
 
 		// +(void)setMaxRequestsPerHostForMax:(uint8_t)max;
 		[Static]
