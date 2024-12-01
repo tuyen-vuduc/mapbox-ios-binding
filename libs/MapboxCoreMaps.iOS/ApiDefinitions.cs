@@ -8,33 +8,6 @@ using MapboxCommon;
 
 namespace MapboxCoreMaps
 {
-    // @interface MBMFeaturesetDescriptor : NSObject
-    [BaseType(typeof(NSObject))]
-    interface MBMFeaturesetDescriptor
-    {
-        // - (nonnull instancetype)initWithFeaturesetId:(nullable NSString *)featuresetId
-        //                                     importId:(nullable NSString *)importId
-        //                                     layerId:(nullable NSString *)layerId NS_REFINED_FOR_SWIFT;
-        [Export("initWithFeaturesetId:importId:layerId:")]
-        IntPtr Constructor([NullAllowed] string featuresetId, [NullAllowed] string importId, [NullAllowed] string layerId);
-
-        // @property (nonatomic, readonly, nullable, copy) NSString *featuresetId;
-        [Export("featuresetId")]
-        string FeaturesetId { get; }
-
-        // @property (nonatomic, readonly, nullable, copy) NSString *importId;
-        [Export("importId")]
-        string ImportId { get; }
-
-        // @property (nonatomic, readonly, nullable, copy) NSString *layerId;
-        [Export("layerId")]
-        string LayerId { get; }
-
-        // - (BOOL)isEqualToFeaturesetDescriptor:(nonnull MBMFeaturesetDescriptor *)other;
-        [Export("isEqualToFeaturesetDescriptor:")]
-        bool IsEqualToFeaturesetDescriptor(MBMFeaturesetDescriptor other);
-    }
-
     // @protocol MBMCustomRasterSourceTileRenderer
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
@@ -1568,9 +1541,10 @@ namespace MapboxCoreMaps
         //                          textureBytes:(nullable NSNumber *)textureBytes
         //                           vertexBytes:(nullable NSNumber *)vertexBytes
         //                      graphicsPrograms:(nullable NSNumber *)graphicsPrograms
-        //    graphicsProgramsCreationTimeMillis:(nullable NSNumber *)graphicsProgramsCreationTimeMillis;
-		[Export ("initWithDrawCalls:textureBytes:vertexBytes:graphicsPrograms:graphicsProgramsCreationTimeMillis:")]
-		NativeHandle Constructor ([NullAllowed] NSNumber drawCalls, [NullAllowed] NSNumber textureBytes, [NullAllowed] NSNumber vertexBytes, [NullAllowed] NSNumber graphicsPrograms, [NullAllowed] NSNumber graphicsProgramsCreationTimeMillis);
+        //    graphicsProgramsCreationTimeMillis:(nullable NSNumber *)graphicsProgramsCreationTimeMillis
+        //                   fboSwitchCount:(nullable NSNumber *)fboSwitchCount
+		[Export ("initWithDrawCalls:textureBytes:vertexBytes:graphicsPrograms:graphicsProgramsCreationTimeMillis:fboSwitchCount:")]
+		NativeHandle Constructor ([NullAllowed] NSNumber drawCalls, [NullAllowed] NSNumber textureBytes, [NullAllowed] NSNumber vertexBytes, [NullAllowed] NSNumber graphicsPrograms, [NullAllowed] NSNumber graphicsProgramsCreationTimeMillis, [NullAllowed] NSNumber fboSwitchCount);
 
 		// @property (readonly, nonatomic) NS_REFINED_FOR_SWIFT NSNumber * drawCalls __attribute__((swift_private));
 		[Export ("drawCalls")]
@@ -1591,6 +1565,10 @@ namespace MapboxCoreMaps
         // @property (nonatomic, readonly, nullable) NSNumber *graphicsProgramsCreationTimeMillis NS_REFINED_FOR_SWIFT;
 		[Export ("graphicsProgramsCreationTimeMillis")]
 		NSNumber GraphicsProgramsCreationTimeMillis { get; }
+
+        // @property (nonatomic, readonly, nullable) NSNumber *fboSwitchCount NS_REFINED_FOR_SWIFT;
+        [Export ("fboSwitchCount")]
+        NSNumber FboSwitchCount { get; }
 	}
 
 	// @interface MBMDurationStatistics : NSObject

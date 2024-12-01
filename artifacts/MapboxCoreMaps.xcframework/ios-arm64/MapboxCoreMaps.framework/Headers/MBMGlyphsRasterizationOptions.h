@@ -4,6 +4,7 @@
 #import <MapboxCoreMaps/MBMGlyphsRasterizationMode.h>
 
 /** Describes the glyphs rasterization option values. */
+NS_SWIFT_SENDABLE
 NS_SWIFT_NAME(GlyphsRasterizationOptions)
 __attribute__((visibility ("default")))
 @interface MBMGlyphsRasterizationOptions : NSObject

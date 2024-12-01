@@ -12,8 +12,10 @@ typedef NS_ENUM(NSInteger, MBXTileDataDomain)
     MBXTileDataDomainNavigation,
     /** Data for Search. */
     MBXTileDataDomainSearch,
-    /** Data for ADAS */
-    MBXTileDataDomainAdas
+    /** Data for ADAS. */
+    MBXTileDataDomainAdas,
+    /** Data for Navigation HD. */
+    MBXTileDataDomainNavigationHD
 } NS_SWIFT_NAME(TileDataDomain);
 
 NSString* MBXTileDataDomainToString(MBXTileDataDomain tile_data_domain);

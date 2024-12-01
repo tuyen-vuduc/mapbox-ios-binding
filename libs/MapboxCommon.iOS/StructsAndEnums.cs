@@ -165,7 +165,8 @@ namespace MapboxCommon
 		Maps,
 		Navigation,
 		Search,
-		Adas
+		Adas,
+        NavigationHD,
 	}
 
 	[Native]

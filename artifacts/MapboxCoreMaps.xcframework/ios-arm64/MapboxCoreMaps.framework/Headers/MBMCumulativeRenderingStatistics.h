@@ -16,7 +16,8 @@ __attribute__((visibility ("default")))
                              textureBytes:(nullable NSNumber *)textureBytes
                               vertexBytes:(nullable NSNumber *)vertexBytes
                          graphicsPrograms:(nullable NSNumber *)graphicsPrograms
-       graphicsProgramsCreationTimeMillis:(nullable NSNumber *)graphicsProgramsCreationTimeMillis;
+       graphicsProgramsCreationTimeMillis:(nullable NSNumber *)graphicsProgramsCreationTimeMillis
+                           fboSwitchCount:(nullable NSNumber *)fboSwitchCount;
 
 /** The number of draw calls at the end of the collection window. */
 @property (nonatomic, readonly, nullable) NSNumber *drawCalls NS_REFINED_FOR_SWIFT;
@@ -32,6 +33,9 @@ __attribute__((visibility ("default")))
 
 /** The total amount of time spent on all graphics pipeline program creation, in milliseconds. */
 @property (nonatomic, readonly, nullable) NSNumber *graphicsProgramsCreationTimeMillis NS_REFINED_FOR_SWIFT;
+
+/** The number of FBO switches. */
+@property (nonatomic, readonly, nullable) NSNumber *fboSwitchCount NS_REFINED_FOR_SWIFT;
 
 
 @end

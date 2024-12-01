@@ -4,6 +4,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 /** A rectangular area as measured on a two-dimensional map projection. */
+NS_SWIFT_SENDABLE
 NS_SWIFT_NAME(CoordinateBounds)
 __attribute__((visibility ("default")))
 @interface MBMCoordinateBounds : NSObject
